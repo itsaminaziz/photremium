@@ -1,17 +1,33 @@
 {
   "files": {
-    "main.css": "/youeditfree/static/css/main.3020cf6e.css",
-    "main.js": "/youeditfree/static/js/main.17061c9a.js",
+    "main.css": "/youeditfree/static/css/main.e9a8c3b3.css",
+    "main.js": "/youeditfree/static/js/main.edf134f7.js",
+    "static/js/768.7efed774.chunk.js": "/youeditfree/static/js/768.7efed774.chunk.js",
+    "static/js/981.52fe6593.chunk.js": "/youeditfree/static/js/981.52fe6593.chunk.js",
+    "static/js/455.88a114eb.chunk.js": "/youeditfree/static/js/455.88a114eb.chunk.js",
+    "static/js/836.d0fee0b4.chunk.js": "/youeditfree/static/js/836.d0fee0b4.chunk.js",
+    "static/js/391.90b36cbc.chunk.js": "/youeditfree/static/js/391.90b36cbc.chunk.js",
+    "static/js/535.26a58653.chunk.js": "/youeditfree/static/js/535.26a58653.chunk.js",
+    "static/js/191.c6280575.chunk.js": "/youeditfree/static/js/191.c6280575.chunk.js",
+    "static/js/475.5417133d.chunk.js": "/youeditfree/static/js/475.5417133d.chunk.js",
     "static/js/159.b4f5ea42.chunk.js": "/youeditfree/static/js/159.b4f5ea42.chunk.js",
     "static/js/453.b355b68f.chunk.js": "/youeditfree/static/js/453.b355b68f.chunk.js",
     "index.html": "/youeditfree/index.html",
-    "main.3020cf6e.css.map": "/youeditfree/static/css/main.3020cf6e.css.map",
-    "main.17061c9a.js.map": "/youeditfree/static/js/main.17061c9a.js.map",
+    "main.e9a8c3b3.css.map": "/youeditfree/static/css/main.e9a8c3b3.css.map",
+    "main.edf134f7.js.map": "/youeditfree/static/js/main.edf134f7.js.map",
+    "768.7efed774.chunk.js.map": "/youeditfree/static/js/768.7efed774.chunk.js.map",
+    "981.52fe6593.chunk.js.map": "/youeditfree/static/js/981.52fe6593.chunk.js.map",
+    "455.88a114eb.chunk.js.map": "/youeditfree/static/js/455.88a114eb.chunk.js.map",
+    "836.d0fee0b4.chunk.js.map": "/youeditfree/static/js/836.d0fee0b4.chunk.js.map",
+    "391.90b36cbc.chunk.js.map": "/youeditfree/static/js/391.90b36cbc.chunk.js.map",
+    "535.26a58653.chunk.js.map": "/youeditfree/static/js/535.26a58653.chunk.js.map",
+    "191.c6280575.chunk.js.map": "/youeditfree/static/js/191.c6280575.chunk.js.map",
+    "475.5417133d.chunk.js.map": "/youeditfree/static/js/475.5417133d.chunk.js.map",
     "159.b4f5ea42.chunk.js.map": "/youeditfree/static/js/159.b4f5ea42.chunk.js.map",
     "453.b355b68f.chunk.js.map": "/youeditfree/static/js/453.b355b68f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3020cf6e.css",
-    "static/js/main.17061c9a.js"
+    "static/css/main.e9a8c3b3.css",
+    "static/js/main.edf134f7.js"
   ]
 }
