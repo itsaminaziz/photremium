@@ -2,6 +2,34 @@
    IMAGE COMPRESSOR – upload view & workspace
    ========================================================== */
 
+/* Global scrollbar styling for compressor page */
+.comp-workspace *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.comp-workspace *::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.comp-workspace *::-webkit-scrollbar-thumb {
+  background: #93c5fd;
+  border-radius: 0;
+}
+
+.comp-workspace *::-webkit-scrollbar-thumb:hover {
+  background: #60a5fa;
+}
+
+.comp-workspace *::-webkit-scrollbar-button {
+  display: none;
+}
+
+.comp-workspace * {
+  scrollbar-width: thin;
+  scrollbar-color: #93c5fd #f1f5f9;
+}
+
 /* ---- Upload View ---- */
 .comp-upload {
   max-width: 680px;
@@ -188,7 +216,15 @@
   background: #e2e8f0;
   border-radius: 50px;
   outline: none;
-  transition: background 0.15s;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.comp-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 50px;
+  background: #e2e8f0;
 }
 
 .comp-slider::-webkit-slider-thumb {
@@ -198,33 +234,68 @@
   height: 20px;
   border-radius: 50%;
   background: #4f46e5;
-  cursor: pointer;
+  cursor: grab;
   border: 3px solid #fff;
   box-shadow: 0 1px 6px rgba(79, 70, 229, 0.35);
-  transition: transform 0.15s;
+  margin-top: -7px; /* vertically center: -(thumb-height/2 - track-height/2) */
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .comp-slider::-webkit-slider-thumb:hover {
   transform: scale(1.15);
+  box-shadow: 0 2px 10px rgba(79, 70, 229, 0.45);
+}
+
+.comp-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.25);
+  box-shadow: 0 2px 14px rgba(79, 70, 229, 0.55);
 }
 
 .comp-slider::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #4f46e5;
-  cursor: pointer;
+  cursor: grab;
   border: 3px solid #fff;
   box-shadow: 0 1px 6px rgba(79, 70, 229, 0.35);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.comp-slider::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 10px rgba(79, 70, 229, 0.45);
+}
+
+.comp-slider::-moz-range-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.25);
+  box-shadow: 0 2px 14px rgba(79, 70, 229, 0.55);
+}
+
+.comp-slider::-moz-range-track {
+  height: 6px;
+  border-radius: 50px;
+  background: #e2e8f0;
 }
 
 .comp-slider--global {
   height: 8px;
 }
 
+.comp-slider--global::-webkit-slider-runnable-track {
+  height: 8px;
+}
+
 .comp-slider--global::-webkit-slider-thumb {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+  margin-top: -8px; /* -(24/2 - 8/2) */
+}
+
+.comp-slider--global::-moz-range-track {
+  height: 8px;
 }
 
 /* ---- Image cards ---- */
@@ -382,6 +453,38 @@
 .comp-card__dl:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* +Add Image card */
+.comp-card--add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #cbd5e1;
+  background: transparent;
+  cursor: pointer;
+  min-height: 180px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.comp-card--add:hover {
+  border-color: #6366f1;
+  background: #eef2ff;
+}
+.comp-card__add-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.comp-card--add:hover .comp-card__add-inner {
+  color: #6366f1;
+}
+.comp-card__add-inner i {
+  font-size: 1.5rem;
 }
 
 /* ---- Right panel ---- */
@@ -751,4 +854,15 @@
     width: 100%;
     height: 120px;
   }
+}
+
+/* ---- Footer hiding when workspace active ---- */
+body.comp-workspace-active footer,
+body.comp-workspace-active .footer {
+  display: none !important;
+}
+
+body.comp-workspace-active .main-content {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }

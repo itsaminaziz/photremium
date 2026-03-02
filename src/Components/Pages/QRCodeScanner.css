@@ -1040,3 +1040,14 @@
     font-size: 1.05rem;
   }
 }
+
+/* ---- Footer hiding when workspace active ---- */
+body.qrs-workspace-active footer,
+body.qrs-workspace-active .footer {
+  display: none !important;
+}
+
+body.qrs-workspace-active .main-content {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}

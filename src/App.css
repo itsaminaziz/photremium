@@ -10,3 +10,37 @@
   flex: 1;
   padding-top: 64px; /* navbar height */
 }
+
+/* ===== RTL Support ===== */
+[dir="rtl"] .navbar__links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__dropdown-menu {
+  left: 0;
+  right: auto;
+}
+
+[dir="rtl"] .lang-switch__menu {
+  left: 0;
+  right: auto;
+}
+
+[dir="rtl"] .footer__container {
+  direction: rtl;
+}
+
+[dir="rtl"] .hero-cards__header,
+[dir="rtl"] .why-choose__header,
+[dir="rtl"] .faq-header,
+[dir="rtl"] .page-header {
+  text-align: right;
+}
+
+[dir="rtl"] .faq-table__q-btn {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .about-card {
+  text-align: right;
+}

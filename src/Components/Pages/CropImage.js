@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './CropImage.css';
 
 /* ---- helpers ---- */
@@ -69,6 +71,7 @@ const TEMPLATES = [
 /*             IMAGE CROPPER PAGE                */
 /* ============================================= */
 const CropImage = () => {
+  const { t } = useLanguage();
   const [images, setImages] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [dragOver, setDragOver] = useState(false);
@@ -181,6 +184,16 @@ const CropImage = () => {
     observer.observe(img);
     return () => observer.disconnect();
   }, [selected]);
+
+  /* --- hide footer when editing --- */
+  useEffect(() => {
+    if (images.length > 0) {
+      document.body.classList.add('ci-workspace-active');
+    } else {
+      document.body.classList.remove('ci-workspace-active');
+    }
+    return () => document.body.classList.remove('ci-workspace-active');
+  }, [images.length]);
 
   /* --- clamp helper --- */
   const clampBox = useCallback(
@@ -488,7 +501,7 @@ const CropImage = () => {
 
   /* --- start over --- */
   const handleStartOver = () => {
-    if (!window.confirm('Are you sure you want to remove all images and start over?')) return;
+    if (!window.confirm(t('common.startOverConfirm'))) return;
     images.forEach((i) => URL.revokeObjectURL(i.preview));
     cropBoxesRef.current = {};
     setImages([]);
@@ -510,15 +523,15 @@ const CropImage = () => {
     return (
       <>
         <SEO
-          title="Crop Image Online — Crop JPG, PNG, GIF Free | favIMG"
-          description="Crop JPG, PNG and GIF images online with ease. Choose pixels to define your crop area or use our visual editor. Free, fast and private."
-          keywords="crop image, image cropper, crop jpg, crop png, crop photo online free, image crop tool"
+          title={t('cropper.seo.uploadTitle')}
+          description={t('cropper.seo.uploadDesc')}
+          keywords={t('cropper.seo.uploadKeywords')}
         />
         <section className="crp-upload">
           <div className="crp-upload__inner">
-            <h1 className="crp-upload__title">Crop Image</h1>
+            <h1 className="crp-upload__title">{t('cropper.title')}</h1>
             <p className="crp-upload__desc">
-              Crop JPG, PNG, GIF &amp; more with our visual editor. Choose from preset ratios or free-form crop. Runs entirely in your browser.
+              {t('cropper.desc')}
             </p>
 
             <div
@@ -530,13 +543,13 @@ const CropImage = () => {
               <div className="crp-dropzone__cloud">
                 <i className="fa-solid fa-cloud-arrow-up"></i>
               </div>
-              <h3>Drop your images here</h3>
-              <p>or <span className="crp-dropzone__browse" onClick={() => fileInputRef.current?.click()}>browse files</span> to crop</p>
+              <h3>{t('common.dropHere')}</h3>
+              <p>{t('common.or')} <span className="crp-dropzone__browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('cropper.toCrop')}</p>
               <p className="crp-dropzone__hint">
-                <i className="fa-regular fa-keyboard"></i> You can also paste images with <kbd>Ctrl</kbd> + <kbd>V</kbd>
+                <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
               <button className="crp-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> Choose Files
+                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
               </button>
               <input
                 ref={fileInputRef}
@@ -549,6 +562,8 @@ const CropImage = () => {
             </div>
           </div>
         </section>
+
+        <FAQ faqKey="cropImage" />
       </>
     );
   }
@@ -559,9 +574,9 @@ const CropImage = () => {
   return (
     <>
       <SEO
-        title="Cropping Images — favIMG Image Cropper"
-        description="Crop images online for free. Visual crop editor with preset ratios. No signup required."
-        keywords="crop image, image cropper, crop jpg, crop png"
+        title={t('cropper.seo.workspaceTitle')}
+        description={t('cropper.seo.workspaceDesc')}
+        keywords={t('cropper.seo.workspaceKeywords')}
       />
 
       <section className="crp-workspace">
@@ -580,7 +595,7 @@ const CropImage = () => {
         {isMulti && (
           <div className="crp-preview">
             <div className="crp-preview__stat">
-              <span className="crp-preview__stat-value">{images.length} Images</span>
+              <span className="crp-preview__stat-value">{images.length} {t('common.images')}</span>
               <span className="crp-preview__stat-label">{fmtSize(totalSize)}</span>
             </div>
             <div className="crp-preview__list">
@@ -593,7 +608,7 @@ const CropImage = () => {
                   <button
                     className="crp-preview__remove"
                     onClick={(e) => { e.stopPropagation(); removeImage(img.id); }}
-                    title="Remove"
+                    title={t('common.remove')}
                   >
                     <i className="fa-solid fa-xmark"></i>
                   </button>
@@ -604,12 +619,18 @@ const CropImage = () => {
                   </div>
                 </div>
               ))}
+              {/* +Add Image box */}
+              <div className="crp-preview__add" onClick={() => addFileInputRef.current?.click()} title={t('common.addMoreImages')}>
+                <i className="fa-solid fa-plus"></i>
+                <span>{t('common.addImage')}</span>
+              </div>
             </div>
           </div>
         )}
 
         {/* ---------- LEFT PANEL (crop canvas) ---------- */}
         <div className="crp-left">
+          <div className="crp-canvas-scroll">
           {selected && (
             <div className="crp-canvas-wrap">
               <div className="crp-canvas" ref={canvasRef}>
@@ -655,23 +676,24 @@ const CropImage = () => {
               {/* Action buttons below image */}
               <div className="crp-left__actions">
                 <button className="crp-left__download" onClick={() => cropAndDownloadSingle(selected)}>
-                  <i className="fa-solid fa-download"></i> Download
+                  <i className="fa-solid fa-download"></i> {t('common.download')}
                 </button>
                 {isMulti && (
                   <button className="crp-left__next" onClick={saveAndNext}>
-                    <i className="fa-solid fa-forward"></i> Save & Next
+                    <i className="fa-solid fa-forward"></i> {t('cropper.saveNext')}
                   </button>
                 )}
               </div>
             </div>
           )}
+          </div>
         </div>
 
         {/* ---------- RIGHT PANEL (tools) ---------- */}
         <div className={`crp-right ${mobileToolsOpen ? 'crp-right--open' : ''}`}>
           <div className="crp-right__sticky">
             <div className="crp-right__header">
-              <h3><i className="fa-solid fa-crop-simple"></i> Crop Settings</h3>
+              <h3><i className="fa-solid fa-crop-simple"></i> {t('cropper.cropSettings')}</h3>
               <button className="crp-right__close" onClick={() => setMobileToolsOpen(false)} aria-label="Close panel">
                 <i className="fa-solid fa-xmark"></i>
               </button>
@@ -680,11 +702,11 @@ const CropImage = () => {
             {/* Selected image stats */}
             <div className="crp-right__stats">
               <div className="crp-stat">
-                <span className="crp-stat__label">Size</span>
+                <span className="crp-stat__label">{t('common.size')}</span>
                 <span className="crp-stat__value">{fmtSize(selected?.file.size || 0)}</span>
               </div>
               <div className="crp-stat">
-                <span className="crp-stat__label">Type</span>
+                <span className="crp-stat__label">{t('common.type')}</span>
                 <span className="crp-stat__value">{selected ? getExt(selected.file.name) : '—'}</span>
               </div>
             </div>
@@ -692,7 +714,7 @@ const CropImage = () => {
             {/* Crop dimensions */}
             <div className="crp-right__section">
               <div className="crp-input-row">
-                <label className="crp-input-row__label">Width (px)</label>
+                <label className="crp-input-row__label">{t('cropper.widthPx')}</label>
                 <div className="crp-input-wrap">
                   <input
                     type="number"
@@ -713,7 +735,7 @@ const CropImage = () => {
                 </div>
               </div>
               <div className="crp-input-row">
-                <label className="crp-input-row__label">Height (px)</label>
+                <label className="crp-input-row__label">{t('cropper.heightPx')}</label>
                 <div className="crp-input-wrap">
                   <input
                     type="number"
@@ -734,7 +756,7 @@ const CropImage = () => {
                 </div>
               </div>
               <div className="crp-input-row">
-                <label className="crp-input-row__label">Position X (px)</label>
+                <label className="crp-input-row__label">{t('cropper.positionX')}</label>
                 <div className="crp-input-wrap">
                   <input
                     type="number"
@@ -755,7 +777,7 @@ const CropImage = () => {
                 </div>
               </div>
               <div className="crp-input-row">
-                <label className="crp-input-row__label">Position Y (px)</label>
+                <label className="crp-input-row__label">{t('cropper.positionY')}</label>
                 <div className="crp-input-wrap">
                   <input
                     type="number"
@@ -779,18 +801,18 @@ const CropImage = () => {
 
             {/* Crop templates */}
             <div className="crp-right__section">
-              <label className="crp-right__label">Crop Template</label>
+              <label className="crp-right__label">{t('cropper.cropTemplate')}</label>
               <div className="crp-templates">
-                {TEMPLATES.map((t) => (
+                {TEMPLATES.map((tmpl) => (
                   <button
-                    key={t.key}
-                    className={`crp-template crp-template--${t.key} ${template === t.key ? 'crp-template--active' : ''}`}
-                    onClick={() => handleTemplateChange(t.key)}
+                    key={tmpl.key}
+                    className={`crp-template crp-template--${tmpl.key} ${template === tmpl.key ? 'crp-template--active' : ''}`}
+                    onClick={() => handleTemplateChange(tmpl.key)}
                   >
                     <div className="crp-template__icon">
-                      {t.display && <span>{t.display}</span>}
+                      {tmpl.display && <span>{tmpl.display}</span>}
                     </div>
-                    <span className="crp-template__label">{t.label}</span>
+                    <span className="crp-template__label">{t(`cropper.${tmpl.key}`)}</span>
                   </button>
                 ))}
               </div>
@@ -798,7 +820,7 @@ const CropImage = () => {
 
             {/* Add More Images */}
             <button className="crp-right__add" onClick={() => addFileInputRef.current?.click()}>
-              <i className="fa-solid fa-plus"></i> Add More Images
+              <i className="fa-solid fa-plus"></i> {t('common.addMoreImages')}
             </button>
             <input
               ref={addFileInputRef}
@@ -812,19 +834,19 @@ const CropImage = () => {
             {/* Download mode */}
             {images.length > 1 && (
               <div className="crp-right__dl-mode">
-                <label>Download as:</label>
+                <label>{t('common.downloadAs')}:</label>
                 <div className="crp-dl-toggle">
                   <button
                     className={`crp-dl-toggle__btn ${downloadMode === 'zip' ? 'active' : ''}`}
                     onClick={() => setDownloadMode('zip')}
                   >
-                    <i className="fa-solid fa-file-zipper"></i> ZIP
+                    <i className="fa-solid fa-file-zipper"></i> {t('common.zip')}
                   </button>
                   <button
                     className={`crp-dl-toggle__btn ${downloadMode === 'separate' ? 'active' : ''}`}
                     onClick={() => setDownloadMode('separate')}
                   >
-                    <i className="fa-regular fa-copy"></i> Separate
+                    <i className="fa-regular fa-copy"></i> {t('common.separate')}
                   </button>
                 </div>
               </div>
@@ -832,7 +854,7 @@ const CropImage = () => {
 
             {/* Start Over */}
             <button className="crp-right__reset" onClick={handleStartOver}>
-              <i className="fa-solid fa-arrow-rotate-left"></i> Start Over
+              <i className="fa-solid fa-arrow-rotate-left"></i> {t('common.startOver')}
             </button>
 
             {/* Sticky download */}
@@ -845,11 +867,11 @@ const CropImage = () => {
                 {cropping ? (
                   <>
                     <span className="crp-download-spinner"></span>
-                    Cropping…
+                    {t('cropper.cropping')}
                   </>
                 ) : (
                   <>
-                    <i className="fa-solid fa-crop-simple"></i> Crop & Download{images.length > 1 ? ' All' : ''}
+                    <i className="fa-solid fa-crop-simple"></i> {images.length > 1 ? t('cropper.cropDownloadAll') : t('cropper.cropDownload')}
                   </>
                 )}
               </button>
@@ -863,14 +885,14 @@ const CropImage = () => {
         <div className="crp-modal-overlay" onClick={() => setNotAllCroppedMsg(null)}>
           <div className="crp-modal" onClick={(e) => e.stopPropagation()}>
             <p className="crp-modal__text">
-              You have cropped {notAllCroppedMsg.cropped} out of {notAllCroppedMsg.total} images.
+              {t('cropper.croppedNofTotal').replace('{n}', notAllCroppedMsg.cropped).replace('{total}', notAllCroppedMsg.total)}
             </p>
             <div className="crp-modal__actions">
               <button className="crp-modal__download" onClick={downloadCroppedOnly}>
-                Download {notAllCroppedMsg.cropped}
+                {t('cropper.downloadN').replace('{n}', notAllCroppedMsg.cropped)}
               </button>
               <button className="crp-modal__cancel" onClick={() => setNotAllCroppedMsg(null)}>
-                Cancel
+                {t('common.cancel')}
               </button>
             </div>
           </div>

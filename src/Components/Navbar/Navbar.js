@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -8,6 +10,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef(null);
+  const { t, localePath } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -34,7 +37,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__container">
         {/* Logo */}
-        <Link to="/" className="navbar__logo">
+        <Link to={localePath('/')} className="navbar__logo">
           <i className="fa-solid fa-image navbar__logo-icon"></i>
           <span className="navbar__logo-text">fav<strong>IMG</strong></span>
         </Link>
@@ -53,18 +56,18 @@ const Navbar = () => {
         {/* Links */}
         <ul className={`navbar__links ${mobileOpen ? 'navbar__links--open' : ''}`}>
           <li>
-            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
-              <i className="fa-solid fa-house"></i> Home
+            <Link to={localePath('/')} className={location.pathname === '/' || location.pathname === localePath('/') ? 'active' : ''}>
+              <i className="fa-solid fa-house"></i> {t('nav.home')}
             </Link>
           </li>
           <li>
-            <Link to="/image-converter" className={location.pathname === '/image-converter' ? 'active' : ''}>
-              <i className="fa-solid fa-right-left"></i> Image Converter
+            <Link to={localePath('/image-converter')} className={location.pathname.includes('/image-converter') ? 'active' : ''}>
+              <i className="fa-solid fa-right-left"></i> {t('nav.imageConverter')}
             </Link>
           </li>
           <li>
-            <Link to="/image-compressor" className={location.pathname === '/image-compressor' ? 'active' : ''}>
-              <i className="fa-solid fa-compress"></i> Image Compressor
+            <Link to={localePath('/image-compressor')} className={location.pathname.includes('/image-compressor') ? 'active' : ''}>
+              <i className="fa-solid fa-compress"></i> {t('nav.imageCompressor')}
             </Link>
           </li>
           <li className="navbar__dropdown" ref={dropdownRef}>
@@ -72,61 +75,54 @@ const Navbar = () => {
               className={`navbar__dropdown-toggle ${dropdownOpen ? 'open' : ''}`}
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
-              <i className="fa-solid fa-ellipsis"></i> Other Tools
+              <i className="fa-solid fa-ellipsis"></i> {t('nav.otherTools')}
               <i className={`fa-solid fa-chevron-down navbar__chevron ${dropdownOpen ? 'rotate' : ''}`}></i>
             </button>
             <ul className={`navbar__dropdown-menu ${dropdownOpen ? 'navbar__dropdown-menu--open' : ''}`}>
               <li>
-                <Link to="/resize-image">
-                  <i className="fa-solid fa-up-right-and-down-left-from-center"></i> Resize Image
+                <Link to={localePath('/resize-image')}>
+                  <i className="fa-solid fa-up-right-and-down-left-from-center"></i> {t('nav.resizeImage')}
                 </Link>
               </li>
               <li>
-                <Link to="/crop-image">
-                  <i className="fa-solid fa-crop-simple"></i> Crop Image
+                <Link to={localePath('/crop-image')}>
+                  <i className="fa-solid fa-crop-simple"></i> {t('nav.cropImage')}
                 </Link>
               </li>
               <li>
-                <Link to="/photo-editor">
-                  <i className="fa-solid fa-pen-to-square"></i> Photo Editor
+                <Link to={localePath('/remove-background')}>
+                  <i className="fa-solid fa-eraser"></i> {t('nav.removeBackground')}
                 </Link>
               </li>
               <li>
-                <Link to="/remove-background">
-                  <i className="fa-solid fa-eraser"></i> Remove Background
+                <Link to={localePath('/watermark-image')}>
+                  <i className="fa-solid fa-stamp"></i> {t('nav.watermarkImage')}
                 </Link>
               </li>
               <li>
-                <Link to="/watermark-image">
-                  <i className="fa-solid fa-stamp"></i> Watermark Image
+                <Link to={localePath('/qr-code-generator')}>
+                  <i className="fa-solid fa-qrcode"></i> {t('nav.qrCodeGenerator')}
                 </Link>
               </li>
               <li>
-                <Link to="/meme-generator">
-                  <i className="fa-solid fa-face-laugh-squint"></i> Meme Generator
+                <Link to={localePath('/qr-code-scanner')}>
+                  <i className="fa-solid fa-expand"></i> {t('nav.qrCodeScanner')}
                 </Link>
               </li>
               <li>
-                <Link to="/upscale-image">
-                  <i className="fa-solid fa-magnifying-glass-plus"></i> Upscale Image
+                <Link to={localePath('/face-blur')}>
+                  <i className="fa-solid fa-face-dizzy"></i> {t('nav.faceBlur')}
                 </Link>
               </li>
               <li>
-                <Link to="/qr-code-generator">
-                  <i className="fa-solid fa-qrcode"></i> QR Code Generator
-                </Link>
-              </li>
-              <li>
-                <Link to="/qr-code-scanner">
-                  <i className="fa-solid fa-expand"></i> QR Code Scanner
-                </Link>
-              </li>
-              <li>
-                <Link to="/about">
-                  <i className="fa-solid fa-circle-info"></i> About Us
+                <Link to={localePath('/about')}>
+                  <i className="fa-solid fa-circle-info"></i> {t('nav.aboutUs')}
                 </Link>
               </li>
             </ul>
+          </li>
+          <li className="navbar__lang-item">
+            <LanguageSwitcher />
           </li>
         </ul>
       </div>

@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './WatermarkImage.css';
 
 /* ---- helpers ---- */
@@ -110,6 +112,7 @@ const roundRect = (ctx, x, y, w, h, r) => {
 /*          WATERMARK IMAGE PAGE                 */
 /* ============================================= */
 const WatermarkImage = () => {
+  const { t } = useLanguage();
   const [images, setImages] = useState([]);
   const [selectedImgId, setSelectedImgId] = useState(null);
   const [dragOver, setDragOver] = useState(false);
@@ -163,7 +166,7 @@ const WatermarkImage = () => {
   useEffect(() => {
     if (!images.length) return;
     const handler = () => {
-      if (!window.confirm('You have unsaved edits. Leave this page?')) {
+      if (!window.confirm(t('common.unsavedEdits'))) {
         window.history.pushState(null, '', window.location.href);
       }
     };
@@ -753,7 +756,7 @@ const WatermarkImage = () => {
 
   /* --- start over --- */
   const handleStartOver = () => {
-    if (!window.confirm('Remove all images and watermarks?')) return;
+    if (!window.confirm(t('watermark.removeAllConfirm'))) return;
     images.forEach((i) => URL.revokeObjectURL(i.preview));
     layersRef.current.forEach((l) => { if (l.type === 'image' && l.preview) URL.revokeObjectURL(l.preview); });
     Object.values(perImageLayersRef.current).forEach(ls => ls.forEach(l => { if (l.type === 'image' && l.preview) URL.revokeObjectURL(l.preview); }));
@@ -773,15 +776,15 @@ const WatermarkImage = () => {
     return (
       <>
         <SEO
-          title="Watermark Image Online — Add Text & Logo Watermarks Free | favIMG"
-          description="Add text or image watermarks to your photos in seconds. Free, fast and private."
-          keywords="watermark image, add watermark, text watermark, logo watermark, watermark photos free"
+          title={t('watermark.seo.uploadTitle')}
+          description={t('watermark.seo.uploadDesc')}
+          keywords={t('watermark.seo.uploadKeywords')}
         />
         <section className="wm-upload">
           <div className="wm-upload__inner">
-            <h1 className="wm-upload__title">Watermark Image</h1>
+            <h1 className="wm-upload__title">{t('watermark.title')}</h1>
             <p className="wm-upload__desc">
-              Add text or logo watermarks to your images. Customize font, opacity, size, position and more. Runs entirely in your browser.
+              {t('watermark.desc')}
             </p>
             <div
               className={`wm-dropzone ${dragOver ? 'wm-dropzone--active' : ''}`}
@@ -790,18 +793,20 @@ const WatermarkImage = () => {
               onDrop={onDrop}
             >
               <div className="wm-dropzone__cloud"><i className="fa-solid fa-cloud-arrow-up"></i></div>
-              <h3>Drop your images here</h3>
-              <p>or <span className="wm-dropzone__browse" onClick={() => fileInputRef.current?.click()}>browse files</span> to watermark</p>
+              <h3>{t('common.dropHere')}</h3>
+              <p>{t('common.or')} <span className="wm-dropzone__browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('watermark.toWatermark')}</p>
               <p className="wm-dropzone__hint">
-                <i className="fa-regular fa-keyboard"></i> You can also paste images with <kbd>Ctrl</kbd> + <kbd>V</kbd>
+                <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
               <button className="wm-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> Choose Files
+                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
               </button>
               <input ref={fileInputRef} type="file" accept="image/*" multiple hidden onChange={(e) => addFiles(e.target.files)} />
             </div>
           </div>
         </section>
+
+        <FAQ faqKey="watermarkImage" />
       </>
     );
   }
@@ -852,9 +857,9 @@ const WatermarkImage = () => {
   return (
     <>
       <SEO
-        title="Watermarking Images — favIMG Watermark Tool"
-        description="Add watermarks to images online for free. No signup required."
-        keywords="watermark image, add watermark, text watermark, logo watermark"
+        title={t('watermark.seo.workspaceTitle')}
+        description={t('watermark.seo.workspaceDesc')}
+        keywords={t('watermark.seo.workspaceKeywords')}
       />
 
       <section className="wm-workspace">
@@ -868,13 +873,13 @@ const WatermarkImage = () => {
         {isMulti && (
           <div className="wm-preview">
             <div className="wm-preview__stat">
-              <span className="wm-preview__stat-value">{images.length} Images</span>
+              <span className="wm-preview__stat-value">{images.length} {t('common.images')}</span>
               <span className="wm-preview__stat-label">{fmtSize(totalSize)}</span>
             </div>
             <div className="wm-preview__list">
               {images.map((img) => (
                 <div key={img.id} className={`wm-preview__item ${img.id === selectedImgId ? 'wm-preview__item--active' : ''}`} onClick={() => selectImage(img.id)}>
-                  <button className="wm-preview__remove" onClick={(e) => { e.stopPropagation(); removeImage(img.id); }} title="Remove">
+                  <button className="wm-preview__remove" onClick={(e) => { e.stopPropagation(); removeImage(img.id); }} title={t('common.remove')}>
                     <i className="fa-solid fa-xmark"></i>
                   </button>
                   <img src={img.preview} alt="" draggable={false} />
@@ -884,6 +889,11 @@ const WatermarkImage = () => {
                   </div>
                 </div>
               ))}
+              {/* +Add Image box */}
+              <div className="wm-preview__add" onClick={() => addFileInputRef.current?.click()} title={t('common.addMoreImages')}>
+                <i className="fa-solid fa-plus"></i>
+                <span>{t('common.addImage')}</span>
+              </div>
             </div>
           </div>
         )}
@@ -897,7 +907,7 @@ const WatermarkImage = () => {
                 {/* Private mode banner */}
                 {isPrivateMode && selectedLayer && (
                   <div className="wm-top-toolbar__placeholder" style={{ color: '#7c3aed' }}>
-                    <i className="fa-solid fa-lock"></i> Private Mode — only move, resize, and change font size are allowed
+                    <i className="fa-solid fa-lock"></i> {t('watermark.privateModeActive')}
                   </div>
                 )}
 
@@ -911,11 +921,11 @@ const WatermarkImage = () => {
                       {[8,10,12,14,16,18,20,24,28,32,36,40,48,56,64,72,80,96,120,150,200].map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                     <div className="wm-top-toolbar__sep" />
-                    <button className={`wm-top-toolbar__btn ${selectedLayer.bold ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { bold: !selectedLayer.bold })} title="Bold"><b>B</b></button>
-                    <button className={`wm-top-toolbar__btn ${selectedLayer.italic ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { italic: !selectedLayer.italic })} title="Italic"><i>I</i></button>
-                    <button className={`wm-top-toolbar__btn ${selectedLayer.underline ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { underline: !selectedLayer.underline })} title="Underline"><u>U</u></button>
+                    <button className={`wm-top-toolbar__btn ${selectedLayer.bold ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { bold: !selectedLayer.bold })} title={t('watermark.bold')}><b>B</b></button>
+                    <button className={`wm-top-toolbar__btn ${selectedLayer.italic ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { italic: !selectedLayer.italic })} title={t('watermark.italic')}><i>I</i></button>
+                    <button className={`wm-top-toolbar__btn ${selectedLayer.underline ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { underline: !selectedLayer.underline })} title={t('watermark.underline')}><u>U</u></button>
                     <div className="wm-top-toolbar__sep" />
-                    <label className="wm-top-toolbar__color" title="Background Color">
+                    <label className="wm-top-toolbar__color" title={t('watermark.bgColor')}>
                       <i className="fa-solid fa-fill-drip"></i>
                       <input type="color" value={selectedLayer.bgColor === 'transparent' ? '#ffffff' : selectedLayer.bgColor} onChange={(e) => updateLayer(selectedLayer.id, { bgColor: e.target.value })} />
                       {selectedLayer.bgColor !== 'transparent' && <span className="wm-top-toolbar__color-dot" style={{ background: selectedLayer.bgColor }} />}
@@ -923,15 +933,15 @@ const WatermarkImage = () => {
                     {selectedLayer.bgColor !== 'transparent' && (
                       <button className="wm-top-toolbar__btn wm-top-toolbar__btn--xs" onClick={() => updateLayer(selectedLayer.id, { bgColor: 'transparent' })} title="Clear Background"><i className="fa-solid fa-xmark"></i></button>
                     )}
-                    <label className="wm-top-toolbar__color" title="Text Color">
+                    <label className="wm-top-toolbar__color" title={t('watermark.textColor')}>
                       <span style={{ fontWeight: 700, fontSize: '0.85rem' }}>A</span>
                       <input type="color" value={selectedLayer.color} onChange={(e) => updateLayer(selectedLayer.id, { color: e.target.value })} />
                       <span className="wm-top-toolbar__color-dot" style={{ background: selectedLayer.color }} />
                     </label>
                     <div className="wm-top-toolbar__sep" />
-                    <button className={`wm-top-toolbar__btn ${selectedLayer.align === 'left' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { align: 'left' })} title="Align Left"><i className="fa-solid fa-align-left"></i></button>
-                    <button className={`wm-top-toolbar__btn ${selectedLayer.align === 'center' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { align: 'center' })} title="Align Center"><i className="fa-solid fa-align-center"></i></button>
-                    <button className={`wm-top-toolbar__btn ${selectedLayer.align === 'right' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { align: 'right' })} title="Align Right"><i className="fa-solid fa-align-right"></i></button>
+                    <button className={`wm-top-toolbar__btn ${selectedLayer.align === 'left' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { align: 'left' })} title={t('watermark.alignLeft')}><i className="fa-solid fa-align-left"></i></button>
+                    <button className={`wm-top-toolbar__btn ${selectedLayer.align === 'center' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { align: 'center' })} title={t('watermark.alignCenter')}><i className="fa-solid fa-align-center"></i></button>
+                    <button className={`wm-top-toolbar__btn ${selectedLayer.align === 'right' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { align: 'right' })} title={t('watermark.alignRight')}><i className="fa-solid fa-align-right"></i></button>
                     <div className="wm-top-toolbar__sep" />
                     {/* Opacity dropdown */}
                     <div className="wm-top-toolbar__dropdown-wrap">
@@ -948,17 +958,17 @@ const WatermarkImage = () => {
                     </div>
                     {/* Stroke dropdown */}
                     <div className="wm-top-toolbar__dropdown-wrap">
-                      <button className={`wm-top-toolbar__btn ${openDropdown === 'stroke' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'stroke' ? null : 'stroke')} title="Stroke"><i className="fa-solid fa-pen-nib"></i></button>
+                      <button className={`wm-top-toolbar__btn ${openDropdown === 'stroke' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'stroke' ? null : 'stroke')} title={t('watermark.stroke')}><i className="fa-solid fa-pen-nib"></i></button>
                       {openDropdown === 'stroke' && (
                         <div className="wm-top-toolbar__dropdown">
-                          <label className="wm-top-toolbar__dropdown-label">Stroke Width</label>
+                          <label className="wm-top-toolbar__dropdown-label">{t('watermark.strokeWidth')}</label>
                           <div className="wm-top-toolbar__dropdown-row">
                             <input type="range" className="wm-top-toolbar__range" min={0} max={10} value={selectedLayer.strokeWidth} onChange={(e) => updateLayer(selectedLayer.id, { strokeWidth: +e.target.value })} />
                             <span className="wm-top-toolbar__dropdown-val">{selectedLayer.strokeWidth}px</span>
                           </div>
                           {selectedLayer.strokeWidth > 0 && (
                             <div className="wm-top-toolbar__dropdown-row">
-                              <label className="wm-top-toolbar__dropdown-label">Stroke Color</label>
+                              <label className="wm-top-toolbar__dropdown-label">{t('watermark.strokeColor')}</label>
                               <input type="color" className="wm-top-toolbar__dropdown-color" value={selectedLayer.strokeColor} onChange={(e) => updateLayer(selectedLayer.id, { strokeColor: e.target.value })} />
                             </div>
                           )}
@@ -968,24 +978,24 @@ const WatermarkImage = () => {
                     <div className="wm-top-toolbar__sep" />
                     {/* Tile dropdown */}
                     <div className="wm-top-toolbar__dropdown-wrap">
-                      <button className={`wm-top-toolbar__btn ${openDropdown === 'tile' ? 'active' : ''} ${selectedLayer.tile !== 'none' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'tile' ? null : 'tile')} title="Tile / Repeat"><i className="fa-solid fa-table-cells"></i></button>
+                      <button className={`wm-top-toolbar__btn ${openDropdown === 'tile' ? 'active' : ''} ${selectedLayer.tile !== 'none' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'tile' ? null : 'tile')} title={t('watermark.tileRepeat')}><i className="fa-solid fa-table-cells"></i></button>
                       {openDropdown === 'tile' && (
                         <div className="wm-top-toolbar__dropdown">
-                          <label className="wm-top-toolbar__dropdown-label">Tile Pattern</label>
+                          <label className="wm-top-toolbar__dropdown-label">{t('watermark.tilePattern')}</label>
                           <div className="wm-tile-options">
-                            <button className={`wm-tile-opt ${selectedLayer.tile === 'none' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'none' })} title="Single">
+                            <button className={`wm-tile-opt ${selectedLayer.tile === 'none' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'none' })} title={t('watermark.tileSingle')}>
                               <span className="wm-tile-dots wm-tile-dots--1"><span></span></span>
                             </button>
-                            <button className={`wm-tile-opt ${selectedLayer.tile === 'grid4' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'grid4' })} title="2×2 Grid">
+                            <button className={`wm-tile-opt ${selectedLayer.tile === 'grid4' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'grid4' })} title={t('watermark.tile2x2')}>
                               <span className="wm-tile-dots wm-tile-dots--4"><span></span><span></span><span></span><span></span></span>
                             </button>
-                            <button className={`wm-tile-opt ${selectedLayer.tile === 'grid9' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'grid9' })} title="3×3 Grid">
+                            <button className={`wm-tile-opt ${selectedLayer.tile === 'grid9' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'grid9' })} title={t('watermark.tile3x3')}>
                               <span className="wm-tile-dots wm-tile-dots--9"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
                             </button>
                           </div>
                           {selectedLayer.tile !== 'none' && (
                             <>
-                              <label className="wm-top-toolbar__dropdown-label">Spacing</label>
+                              <label className="wm-top-toolbar__dropdown-label">{t('watermark.spacing')}</label>
                               <div className="wm-top-toolbar__dropdown-row">
                                 <input type="range" className="wm-top-toolbar__range" min={0} max={200} value={selectedLayer.tileSpacing} onChange={(e) => updateLayer(selectedLayer.id, { tileSpacing: +e.target.value })} />
                                 <span className="wm-top-toolbar__dropdown-val">{selectedLayer.tileSpacing}px</span>
@@ -996,26 +1006,26 @@ const WatermarkImage = () => {
                       )}
                     </div>
                     <div className="wm-top-toolbar__sep" />
-                    <button className="wm-top-toolbar__btn" onClick={() => { const img = bgImgRef.current; if (!img) return; const cw = img.naturalWidth; const ch = img.naturalHeight; updateLayer(selectedLayer.id, { x: Math.round(cw / 2 - selectedLayer.width / 2), y: Math.round(ch / 2 - selectedLayer.height / 2) }); }} title="Snap to Center"><i className="fa-solid fa-crosshairs"></i></button>
-                    <button className="wm-top-toolbar__btn" onClick={() => duplicateLayer(selectedLayer.id)} title="Duplicate"><i className="fa-regular fa-copy"></i></button>
-                    <button className="wm-top-toolbar__btn wm-top-toolbar__btn--danger" onClick={() => deleteLayer(selectedLayer.id)} title="Delete"><i className="fa-solid fa-trash"></i></button>
+                    <button className="wm-top-toolbar__btn" onClick={() => { const img = bgImgRef.current; if (!img) return; const cw = img.naturalWidth; const ch = img.naturalHeight; updateLayer(selectedLayer.id, { x: Math.round(cw / 2 - selectedLayer.width / 2), y: Math.round(ch / 2 - selectedLayer.height / 2) }); }} title={t('watermark.snapToCenter')}><i className="fa-solid fa-crosshairs"></i></button>
+                    <button className="wm-top-toolbar__btn" onClick={() => duplicateLayer(selectedLayer.id)} title={t('watermark.duplicate')}><i className="fa-regular fa-copy"></i></button>
+                    <button className="wm-top-toolbar__btn wm-top-toolbar__btn--danger" onClick={() => deleteLayer(selectedLayer.id)} title={t('watermark.delete')}><i className="fa-solid fa-trash"></i></button>
                   </div>
                 )}
 
                 {/* Image layer tools */}
                 {!isPrivateMode && selectedLayer?.type === 'image' && (
                   <div className="wm-top-toolbar__tools">
-                    <button className={`wm-top-toolbar__btn ${selectedLayer.flipH ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { flipH: !selectedLayer.flipH })} title="Flip Horizontal"><i className="fa-solid fa-arrows-left-right"></i></button>
-                    <button className={`wm-top-toolbar__btn ${selectedLayer.flipV ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { flipV: !selectedLayer.flipV })} title="Flip Vertical"><i className="fa-solid fa-arrows-up-down"></i></button>
-                    <button className="wm-top-toolbar__btn" onClick={() => updateLayer(selectedLayer.id, { rotation: selectedLayer.rotation - 90 })} title="Rotate Left"><i className="fa-solid fa-rotate-left"></i></button>
-                    <button className="wm-top-toolbar__btn" onClick={() => updateLayer(selectedLayer.id, { rotation: selectedLayer.rotation + 90 })} title="Rotate Right"><i className="fa-solid fa-rotate-right"></i></button>
+                    <button className={`wm-top-toolbar__btn ${selectedLayer.flipH ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { flipH: !selectedLayer.flipH })} title={t('watermark.flipHorizontal')}><i className="fa-solid fa-arrows-left-right"></i></button>
+                    <button className={`wm-top-toolbar__btn ${selectedLayer.flipV ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { flipV: !selectedLayer.flipV })} title={t('watermark.flipVertical')}><i className="fa-solid fa-arrows-up-down"></i></button>
+                    <button className="wm-top-toolbar__btn" onClick={() => updateLayer(selectedLayer.id, { rotation: selectedLayer.rotation - 90 })} title={t('watermark.rotateLeft')}><i className="fa-solid fa-rotate-left"></i></button>
+                    <button className="wm-top-toolbar__btn" onClick={() => updateLayer(selectedLayer.id, { rotation: selectedLayer.rotation + 90 })} title={t('watermark.rotateRight')}><i className="fa-solid fa-rotate-right"></i></button>
                     <div className="wm-top-toolbar__sep" />
                     {/* Opacity dropdown */}
                     <div className="wm-top-toolbar__dropdown-wrap">
-                      <button className={`wm-top-toolbar__btn ${openDropdown === 'opacity' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'opacity' ? null : 'opacity')} title="Opacity"><i className="fa-solid fa-droplet-slash"></i></button>
+                      <button className={`wm-top-toolbar__btn ${openDropdown === 'opacity' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'opacity' ? null : 'opacity')} title={t('watermark.opacity')}><i className="fa-solid fa-droplet-slash"></i></button>
                       {openDropdown === 'opacity' && (
                         <div className="wm-top-toolbar__dropdown">
-                          <label className="wm-top-toolbar__dropdown-label">Opacity</label>
+                          <label className="wm-top-toolbar__dropdown-label">{t('watermark.opacity')}</label>
                           <div className="wm-top-toolbar__dropdown-row">
                             <input type="range" className="wm-top-toolbar__range" min={0} max={100} value={selectedLayer.opacity} onChange={(e) => updateLayer(selectedLayer.id, { opacity: +e.target.value })} />
                             <span className="wm-top-toolbar__dropdown-val">{selectedLayer.opacity}%</span>
@@ -1025,11 +1035,11 @@ const WatermarkImage = () => {
                     </div>
                     {/* Corner radius dropdown */}
                     <div className="wm-top-toolbar__dropdown-wrap">
-                      <button className={`wm-top-toolbar__btn ${openDropdown === 'radius' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'radius' ? null : 'radius')} title="Corner Radius"><i className="fa-solid fa-vector-square"></i></button>
+                      <button className={`wm-top-toolbar__btn ${openDropdown === 'radius' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'radius' ? null : 'radius')} title={t('watermark.cornerRadius')}><i className="fa-solid fa-vector-square"></i></button>
                       {openDropdown === 'radius' && (
                         <div className="wm-top-toolbar__dropdown wm-top-toolbar__dropdown--wide">
                           <div className="wm-top-toolbar__dropdown-row">
-                            <label className="wm-top-toolbar__dropdown-label">Corner Radius</label>
+                            <label className="wm-top-toolbar__dropdown-label">{t('watermark.cornerRadius')}</label>
                             <button className={`wm-top-toolbar__btn ${selectedLayer.separateCorners ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { separateCorners: !selectedLayer.separateCorners })} title={selectedLayer.separateCorners ? 'Link corners' : 'Separate corners'} style={{ marginLeft: 'auto' }}>
                               <i className={`fa-solid ${selectedLayer.separateCorners ? 'fa-link' : 'fa-link-slash'}`}></i>
                             </button>
@@ -1052,10 +1062,10 @@ const WatermarkImage = () => {
                     </div>
                     {/* Stroke / Border dropdown */}
                     <div className="wm-top-toolbar__dropdown-wrap">
-                      <button className={`wm-top-toolbar__btn ${openDropdown === 'border' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'border' ? null : 'border')} title="Border / Stroke"><i className="fa-solid fa-border-top-left"></i></button>
+                      <button className={`wm-top-toolbar__btn ${openDropdown === 'border' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'border' ? null : 'border')} title={t('watermark.borderStroke')}><i className="fa-solid fa-border-top-left"></i></button>
                       {openDropdown === 'border' && (
                         <div className="wm-top-toolbar__dropdown wm-top-toolbar__dropdown--wide">
-                          <label className="wm-top-toolbar__dropdown-label">Border Width</label>
+                          <label className="wm-top-toolbar__dropdown-label">{t('watermark.borderWidth')}</label>
                           <div className="wm-top-toolbar__dropdown-row">
                             <input type="range" className="wm-top-toolbar__range" min={0} max={20} value={selectedLayer.borderWidth} onChange={(e) => updateLayer(selectedLayer.id, { borderWidth: +e.target.value })} />
                             <span className="wm-top-toolbar__dropdown-val">{selectedLayer.borderWidth}px</span>
@@ -1063,16 +1073,16 @@ const WatermarkImage = () => {
                           {selectedLayer.borderWidth > 0 && (
                             <>
                               <div className="wm-top-toolbar__dropdown-row">
-                                <label className="wm-top-toolbar__dropdown-label">Color</label>
+                                <label className="wm-top-toolbar__dropdown-label">{t('watermark.color')}</label>
                                 <input type="color" className="wm-top-toolbar__dropdown-color" value={selectedLayer.borderColor} onChange={(e) => updateLayer(selectedLayer.id, { borderColor: e.target.value })} />
                               </div>
                               <div className="wm-top-toolbar__dropdown-row">
-                                <label className="wm-top-toolbar__dropdown-label">Style</label>
+                                <label className="wm-top-toolbar__dropdown-label">{t('watermark.style')}</label>
                                 <select className="wm-top-toolbar__select" value={selectedLayer.borderStyle} onChange={(e) => updateLayer(selectedLayer.id, { borderStyle: e.target.value })}>
-                                  <option value="solid">Solid</option>
-                                  <option value="dashed">Dashed</option>
-                                  <option value="dotted">Dotted</option>
-                                  <option value="double">Double</option>
+                                  <option value="solid">{t('watermark.solid')}</option>
+                                  <option value="dashed">{t('watermark.dashed')}</option>
+                                  <option value="dotted">{t('watermark.dotted')}</option>
+                                  <option value="double">{t('watermark.double')}</option>
                                 </select>
                               </div>
                             </>
@@ -1082,24 +1092,24 @@ const WatermarkImage = () => {
                     </div>
                     {/* Tile dropdown */}
                     <div className="wm-top-toolbar__dropdown-wrap">
-                      <button className={`wm-top-toolbar__btn ${openDropdown === 'tile' ? 'active' : ''} ${selectedLayer.tile !== 'none' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'tile' ? null : 'tile')} title="Tile / Repeat"><i className="fa-solid fa-table-cells"></i></button>
+                      <button className={`wm-top-toolbar__btn ${openDropdown === 'tile' ? 'active' : ''} ${selectedLayer.tile !== 'none' ? 'active' : ''}`} onClick={() => setOpenDropdown(openDropdown === 'tile' ? null : 'tile')} title={t('watermark.tileRepeat')}><i className="fa-solid fa-table-cells"></i></button>
                       {openDropdown === 'tile' && (
                         <div className="wm-top-toolbar__dropdown">
-                          <label className="wm-top-toolbar__dropdown-label">Tile Pattern</label>
+                          <label className="wm-top-toolbar__dropdown-label">{t('watermark.tilePattern')}</label>
                           <div className="wm-tile-options">
-                            <button className={`wm-tile-opt ${selectedLayer.tile === 'none' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'none' })} title="Single">
+                            <button className={`wm-tile-opt ${selectedLayer.tile === 'none' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'none' })} title={t('watermark.tileSingle')}>
                               <span className="wm-tile-dots wm-tile-dots--1"><span></span></span>
                             </button>
-                            <button className={`wm-tile-opt ${selectedLayer.tile === 'grid4' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'grid4' })} title="2×2 Grid">
+                            <button className={`wm-tile-opt ${selectedLayer.tile === 'grid4' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'grid4' })} title={t('watermark.tile2x2')}>
                               <span className="wm-tile-dots wm-tile-dots--4"><span></span><span></span><span></span><span></span></span>
                             </button>
-                            <button className={`wm-tile-opt ${selectedLayer.tile === 'grid9' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'grid9' })} title="3×3 Grid">
+                            <button className={`wm-tile-opt ${selectedLayer.tile === 'grid9' ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { tile: 'grid9' })} title={t('watermark.tile3x3')}>
                               <span className="wm-tile-dots wm-tile-dots--9"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
                             </button>
                           </div>
                           {selectedLayer.tile !== 'none' && (
                             <>
-                              <label className="wm-top-toolbar__dropdown-label">Spacing</label>
+                              <label className="wm-top-toolbar__dropdown-label">{t('watermark.spacing')}</label>
                               <div className="wm-top-toolbar__dropdown-row">
                                 <input type="range" className="wm-top-toolbar__range" min={0} max={200} value={selectedLayer.tileSpacing} onChange={(e) => updateLayer(selectedLayer.id, { tileSpacing: +e.target.value })} />
                                 <span className="wm-top-toolbar__dropdown-val">{selectedLayer.tileSpacing}px</span>
@@ -1110,16 +1120,16 @@ const WatermarkImage = () => {
                       )}
                     </div>
                     <div className="wm-top-toolbar__sep" />
-                    <button className="wm-top-toolbar__btn" onClick={() => { const img = bgImgRef.current; if (!img) return; const cw = img.naturalWidth; const ch = img.naturalHeight; updateLayer(selectedLayer.id, { x: Math.round(cw / 2 - selectedLayer.width / 2), y: Math.round(ch / 2 - selectedLayer.height / 2) }); }} title="Snap to Center"><i className="fa-solid fa-crosshairs"></i></button>
-                    <button className="wm-top-toolbar__btn" onClick={() => duplicateLayer(selectedLayer.id)} title="Duplicate"><i className="fa-regular fa-copy"></i></button>
-                    <button className="wm-top-toolbar__btn wm-top-toolbar__btn--danger" onClick={() => deleteLayer(selectedLayer.id)} title="Delete"><i className="fa-solid fa-trash"></i></button>
+                    <button className="wm-top-toolbar__btn" onClick={() => { const img = bgImgRef.current; if (!img) return; const cw = img.naturalWidth; const ch = img.naturalHeight; updateLayer(selectedLayer.id, { x: Math.round(cw / 2 - selectedLayer.width / 2), y: Math.round(ch / 2 - selectedLayer.height / 2) }); }} title={t('watermark.snapToCenter')}><i className="fa-solid fa-crosshairs"></i></button>
+                    <button className="wm-top-toolbar__btn" onClick={() => duplicateLayer(selectedLayer.id)} title={t('watermark.duplicate')}><i className="fa-regular fa-copy"></i></button>
+                    <button className="wm-top-toolbar__btn wm-top-toolbar__btn--danger" onClick={() => deleteLayer(selectedLayer.id)} title={t('watermark.delete')}><i className="fa-solid fa-trash"></i></button>
                   </div>
                 )}
 
                 {/* Nothing selected placeholder */}
                 {!selectedLayer && (
                   <div className="wm-top-toolbar__placeholder">
-                    <i className="fa-solid fa-mouse-pointer"></i> Select any image or text to start editing
+                    <i className="fa-solid fa-mouse-pointer"></i> {t('watermark.selectToEdit')}
                   </div>
                 )}
               </div>
@@ -1199,19 +1209,19 @@ const WatermarkImage = () => {
                         onClick={() => togglePrivate(selectedImgId)}
                       >
                         <i className={`fa-solid ${privateImages[selectedImgId] ? 'fa-lock' : 'fa-lock-open'}`}></i>
-                        Private Mode
+                        {t('watermark.privateMode')}
                         <span className="wm-left__private-info">
                           i
                           <span className="wm-left__private-tooltip">
                             {privateImages[selectedImgId]
-                              ? 'Private Mode ON: Only move and resize watermarks on this image. All other settings are disabled.'
-                              : 'Enable Private Mode to adjust only position and size for this image, without changing shared watermark settings.'}
+                              ? t('watermark.privateModeOn')
+                              : t('watermark.privateModeHint')}
                           </span>
                         </span>
                       </button>
                     )}
                     <button className="wm-left__download" onClick={() => downloadSingle(selected)} disabled={processing}>
-                      <i className="fa-solid fa-download"></i> Download
+                      <i className="fa-solid fa-download"></i> {t('common.download')}
                     </button>
                     {isMulti && (
                       <button className="wm-left__next" onClick={() => {
@@ -1224,7 +1234,7 @@ const WatermarkImage = () => {
                         setSelectedLayerId(null);
                         setSelectedImgId(nextId);
                       }}>
-                        <i className="fa-solid fa-forward"></i> Next Image
+                        <i className="fa-solid fa-forward"></i> {t('watermark.nextImage')}
                       </button>
                     )}
                   </div>
@@ -1238,8 +1248,8 @@ const WatermarkImage = () => {
         <div className={`wm-right ${mobileToolsOpen ? 'wm-right--open' : ''}`}>
           <div className="wm-right__sticky">
             <div className="wm-right__header">
-              <h3><i className="fa-solid fa-stamp"></i> Watermark Tools</h3>
-              <button className="wm-right__close" onClick={() => setMobileToolsOpen(false)} aria-label="Close panel">
+              <h3><i className="fa-solid fa-stamp"></i> {t('watermark.watermarkTools')}</h3>
+              <button className="wm-right__close" onClick={() => setMobileToolsOpen(false)} aria-label={t('common.close')}>
                 <i className="fa-solid fa-xmark"></i>
               </button>
             </div>
@@ -1247,30 +1257,30 @@ const WatermarkImage = () => {
             {/* Stats */}
             <div className="wm-right__stats">
               <div className="wm-stat">
-                <span className="wm-stat__label">Images</span>
+                <span className="wm-stat__label">{t('common.images')}</span>
                 <span className="wm-stat__value">{images.length}</span>
               </div>
               <div className="wm-stat">
-                <span className="wm-stat__label">Size</span>
+                <span className="wm-stat__label">{t('common.size')}</span>
                 <span className="wm-stat__value">{fmtSize(totalSize)}</span>
               </div>
             </div>
 
             {/* Add Text / Add Image buttons */}
             <div className="wm-right__mode-add">
-              <button className="wm-right__add-layer wm-right__add-layer--text" onClick={addTextLayer} title="Add Text Layer" disabled={isPrivateMode}>
-                <i className="fa-solid fa-font"></i> Add Text
+              <button className="wm-right__add-layer wm-right__add-layer--text" onClick={addTextLayer} title={t('watermark.addText')} disabled={isPrivateMode}>
+                <i className="fa-solid fa-font"></i> {t('watermark.addText')}
               </button>
-              <button className="wm-right__add-layer wm-right__add-layer--image" onClick={() => wmImageInputRef.current?.click()} title="Add Image Layer" disabled={isPrivateMode}>
-                <i className="fa-solid fa-image"></i> Add Image
+              <button className="wm-right__add-layer wm-right__add-layer--image" onClick={() => wmImageInputRef.current?.click()} title={t('watermark.addImage')} disabled={isPrivateMode}>
+                <i className="fa-solid fa-image"></i> {t('watermark.addImage')}
               </button>
             </div>
 
             {/* Layer List */}
             <div className="wm-layer-list">
-              <label className="wm-section__label">Layers ({layers.length})</label>
+              <label className="wm-section__label">{t('watermark.layersN').replace('{n}', layers.length)}</label>
               {layers.length === 0 && (
-                <div className="wm-no-layers-mini">No layers added yet</div>
+                <div className="wm-no-layers-mini">{t('watermark.noLayers')}</div>
               )}
               {layers.map((layer) => (
                 <div key={layer.id} className={`wm-layer-item ${layer.id === selectedLayerId ? 'wm-layer-item--active' : ''}`}
@@ -1279,23 +1289,23 @@ const WatermarkImage = () => {
                     <i className={`fa-solid ${layer.type === 'text' ? 'fa-font' : 'fa-image'}`}></i>
                   </span>
                   <span className="wm-layer-item__name">
-                    {layer.type === 'text' ? (layer.text || 'Text Layer') : 'Image Layer'}
+                    {layer.type === 'text' ? (layer.text || t('watermark.textLayer')) : t('watermark.imageLayer')}
                   </span>
                   <button className={`wm-layer-item__btn ${!layer.visible ? 'active' : ''}`}
                     onClick={(e) => { e.stopPropagation(); if (!isPrivateMode) updateLayer(layer.id, { visible: !layer.visible }); }}
-                    title={layer.visible ? 'Hide' : 'Show'}
+                    title={layer.visible ? t('watermark.hide') : t('watermark.show')}
                     disabled={isPrivateMode}>
                     <i className={`fa-solid ${layer.visible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
                   </button>
                   <button className={`wm-layer-item__btn ${layer.locked ? 'active' : ''}`}
                     onClick={(e) => { e.stopPropagation(); if (!isPrivateMode) updateLayer(layer.id, { locked: !layer.locked }); }}
-                    title={layer.locked ? 'Unlock' : 'Lock'}
+                    title={layer.locked ? t('watermark.unlock') : t('watermark.lock')}
                     disabled={isPrivateMode}>
                     <i className={`fa-solid ${layer.locked ? 'fa-lock' : 'fa-lock-open'}`}></i>
                   </button>
                   <button className="wm-layer-item__btn wm-layer-item__btn--danger"
                     onClick={(e) => { e.stopPropagation(); if (!isPrivateMode) deleteLayer(layer.id); }}
-                    title="Delete"
+                    title={t('watermark.delete')}
                     disabled={isPrivateMode}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
@@ -1305,20 +1315,20 @@ const WatermarkImage = () => {
 
             {/* Add more images */}
             <button className="wm-right__add" onClick={() => addFileInputRef.current?.click()}>
-              <i className="fa-solid fa-plus"></i> Add More Images
+              <i className="fa-solid fa-plus"></i> {t('common.addMoreImages')}
             </button>
             <input ref={addFileInputRef} type="file" accept="image/*" multiple hidden onChange={(e) => { addFiles(e.target.files); e.target.value = ''; }} />
 
             {/* Download mode (multi) */}
             {isMulti && (
               <div>
-                <label style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 600, marginBottom: 8, display: 'block' }}>Download as:</label>
+                <label style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 600, marginBottom: 8, display: 'block' }}>{t('common.downloadAs')}</label>
                 <div className="wm-dl-toggle">
                   <button className={`wm-dl-toggle__btn ${downloadMode === 'zip' ? 'active' : ''}`} onClick={() => setDownloadMode('zip')}>
-                    <i className="fa-solid fa-file-zipper"></i> ZIP
+                    <i className="fa-solid fa-file-zipper"></i> {t('common.zip')}
                   </button>
                   <button className={`wm-dl-toggle__btn ${downloadMode === 'separate' ? 'active' : ''}`} onClick={() => setDownloadMode('separate')}>
-                    <i className="fa-regular fa-copy"></i> Separate
+                    <i className="fa-regular fa-copy"></i> {t('common.separate')}
                   </button>
                 </div>
               </div>
@@ -1326,16 +1336,16 @@ const WatermarkImage = () => {
 
             {/* Start Over */}
             <button className="wm-right__reset" onClick={handleStartOver}>
-              <i className="fa-solid fa-arrow-rotate-left"></i> Start Over
+              <i className="fa-solid fa-arrow-rotate-left"></i> {t('common.startOver')}
             </button>
 
             {/* Sticky download */}
             <div className="wm-right__actions">
               <button className="wm-right__download" onClick={downloadAll} disabled={processing || layers.length === 0}>
                 {processing ? (
-                  <><span className="wm-download-spinner"></span> Processing…</>
+                  <><span className="wm-download-spinner"></span> {t('common.processing')}</>
                 ) : (
-                  <><i className="fa-solid fa-stamp"></i> {isMulti ? 'Watermark & Download All' : 'Watermark & Download'}</>
+                  <><i className="fa-solid fa-stamp"></i> {isMulti ? t('watermark.watermarkDownloadAll') : t('watermark.watermarkDownload')}</>
                 )}
               </button>
             </div>

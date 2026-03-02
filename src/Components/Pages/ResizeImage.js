@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './ResizeImage.css';
 
 /* ---- helpers ---- */
@@ -81,16 +83,17 @@ const loadDimensions = (file) =>
   });
 
 const RESIZE_MODES = [
-  { value: 'pixel', label: 'By Pixels' },
-  { value: 'percentage', label: 'By Percentage' },
-  { value: 'cm', label: 'By Centimeters' },
-  { value: 'inch', label: 'By Inches' },
+  { value: 'pixel', tKey: 'byPixels' },
+  { value: 'percentage', tKey: 'byPercentage' },
+  { value: 'cm', tKey: 'byCentimeters' },
+  { value: 'inch', tKey: 'byInches' },
 ];
 
 /* ============================================= */
 /*             IMAGE RESIZER PAGE                */
 /* ============================================= */
 const ResizeImage = () => {
+  const { t } = useLanguage();
   const [images, setImages] = useState([]);
   const [dragOver, setDragOver] = useState(false);
   const [resizing, setResizing] = useState(false);
@@ -169,6 +172,16 @@ const ResizeImage = () => {
     document.addEventListener('paste', handler);
     return () => document.removeEventListener('paste', handler);
   }, [addFiles]);
+
+  /* --- hide footer when editing --- */
+  useEffect(() => {
+    if (images.length > 0) {
+      document.body.classList.add('ri-workspace-active');
+    } else {
+      document.body.classList.remove('ri-workspace-active');
+    }
+    return () => document.body.classList.remove('ri-workspace-active');
+  }, [images.length]);
 
   /* --- handle dimension changes with aspect lock --- */
   const handleWidthChange = (val) => {
@@ -341,7 +354,7 @@ const ResizeImage = () => {
 
   /* --- start over --- */
   const handleStartOver = () => {
-    const confirmed = window.confirm('Are you sure you want to remove all images and start over?');
+    const confirmed = window.confirm(t('common.startOverConfirm'));
     if (!confirmed) return;
     images.forEach((i) => URL.revokeObjectURL(i.preview));
     setImages([]);
@@ -369,15 +382,15 @@ const ResizeImage = () => {
     return (
       <>
         <SEO
-          title="Resize Image Online — Resize JPG, PNG, SVG, GIF Free | favIMG"
-          description="Resize images online for free by pixel or percentage. Resize JPG, PNG, SVG and GIF images while preserving quality. No signup required."
-          keywords="resize image, image resizer, resize jpg, resize png, change image dimensions, resize photo online free"
+          title={t('resizer.seo.uploadTitle')}
+          description={t('resizer.seo.uploadDesc')}
+          keywords={t('resizer.seo.uploadKeywords')}
         />
         <section className="rsz-upload">
           <div className="rsz-upload__inner">
-            <h1 className="rsz-upload__title">Resize Image</h1>
+            <h1 className="rsz-upload__title">{t('resizer.title')}</h1>
             <p className="rsz-upload__desc">
-              Define your dimensions by pixel, percentage, centimeters or inches and resize your JPG, PNG, SVG and GIF images instantly. Batch resize multiple files at once.
+              {t('resizer.desc')}
             </p>
 
             <div
@@ -389,13 +402,13 @@ const ResizeImage = () => {
               <div className="rsz-dropzone__cloud">
                 <i className="fa-solid fa-cloud-arrow-up"></i>
               </div>
-              <h3>Drop your images here</h3>
-              <p>or <span className="rsz-dropzone__browse" onClick={() => fileInputRef.current?.click()}>browse files</span> to resize</p>
+              <h3>{t('common.dropHere')}</h3>
+              <p>{t('common.or')} <span className="rsz-dropzone__browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('resizer.toResize')}</p>
               <p className="rsz-dropzone__hint">
-                <i className="fa-regular fa-keyboard"></i> You can also paste images with <kbd>Ctrl</kbd> + <kbd>V</kbd>
+                <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
               <button className="rsz-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> Choose Files
+                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
               </button>
               <input
                 ref={fileInputRef}
@@ -408,6 +421,8 @@ const ResizeImage = () => {
             </div>
           </div>
         </section>
+
+        <FAQ faqKey="resizeImage" />
       </>
     );
   }
@@ -416,9 +431,9 @@ const ResizeImage = () => {
   return (
     <>
       <SEO
-        title="Resizing Images — favIMG Image Resizer"
-        description="Resize images online for free by pixel or percentage. No signup required."
-        keywords="resize image, image resizer, resize jpg, resize png"
+        title={t('resizer.seo.workspaceTitle')}
+        description={t('resizer.seo.workspaceDesc')}
+        keywords={t('resizer.seo.workspaceKeywords')}
       />
 
       <section className="rsz-workspace">
@@ -440,7 +455,7 @@ const ResizeImage = () => {
           <div className="rsz-cards">
             {images.map((img) => (
               <div className="rsz-card" key={img.id}>
-                <button className="rsz-card__remove" title="Remove" onClick={() => removeImage(img.id)}>
+                <button className="rsz-card__remove" title={t('common.remove')} onClick={() => removeImage(img.id)}>
                   <i className="fa-solid fa-xmark"></i>
                 </button>
 
@@ -471,12 +486,19 @@ const ResizeImage = () => {
 
                   {img.resizedBlob && (
                     <button className="rsz-card__dl" onClick={() => downloadSingle(img)}>
-                      <i className="fa-solid fa-download"></i> Download
+                      <i className="fa-solid fa-download"></i> {t('common.download')}
                     </button>
                   )}
                 </div>
               </div>
             ))}
+            {/* +Add Image card */}
+            <div className="rsz-card rsz-card--add" onClick={() => addFileInputRef.current?.click()} title={t('common.addMoreImages')}>
+              <div className="rsz-card__add-inner">
+                <i className="fa-solid fa-plus"></i>
+                <span>{t('common.addImage')}</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -484,7 +506,7 @@ const ResizeImage = () => {
         <div className={`rsz-right ${mobileToolsOpen ? 'rsz-right--open' : ''}`}>
           <div className="rsz-right__sticky">
             <div className="rsz-right__header">
-              <h3><i className="fa-solid fa-up-right-and-down-left-from-center"></i> Resize Settings</h3>
+              <h3><i className="fa-solid fa-up-right-and-down-left-from-center"></i> {t('resizer.resizeSettings')}</h3>
               <button className="rsz-right__close" onClick={() => setMobileToolsOpen(false)} aria-label="Close panel">
                 <i className="fa-solid fa-xmark"></i>
               </button>
@@ -493,25 +515,25 @@ const ResizeImage = () => {
             {/* Summary stats */}
             <div className="rsz-right__stats">
               <div className="rsz-stat">
-                <span className="rsz-stat__label">Images</span>
+                <span className="rsz-stat__label">{t('common.images')}</span>
                 <span className="rsz-stat__value">{images.length}</span>
               </div>
               <div className="rsz-stat">
-                <span className="rsz-stat__label">Total Size</span>
+                <span className="rsz-stat__label">{t('common.totalSize')}</span>
                 <span className="rsz-stat__value">{fmtSize(totalOriginal)}</span>
               </div>
             </div>
 
             {/* Resize mode dropdown */}
             <div className="rsz-right__section">
-              <label className="rsz-right__label">Resize by:</label>
+              <label className="rsz-right__label">{t('resizer.resizeBy')}</label>
               <select
                 className="rsz-select"
                 value={resizeMode}
                 onChange={(e) => handleModeChange(e.target.value)}
               >
                 {RESIZE_MODES.map((m) => (
-                  <option key={m.value} value={m.value}>{m.label}</option>
+                  <option key={m.value} value={m.value}>{t(`resizer.${m.tKey}`)}</option>
                 ))}
               </select>
             </div>
@@ -520,7 +542,7 @@ const ResizeImage = () => {
             <div className="rsz-right__section">
               <div className="rsz-dims">
                 <div className="rsz-dim">
-                  <label className="rsz-dim__label">Width</label>
+                  <label className="rsz-dim__label">{t('common.width')}</label>
                   <div className="rsz-dim__input-wrap">
                     <div className="rsz-dim__arrows">
                       <button type="button" className="rsz-dim__arrow" onClick={() => handleWidthChange(parseFloat((Number(width || 0) + inputStep).toFixed(2)))} tabIndex={-1}>
@@ -545,13 +567,13 @@ const ResizeImage = () => {
                   <button
                     className={`rsz-dim__lock ${lockAspect ? 'active' : ''}`}
                     onClick={() => setLockAspect((p) => !p)}
-                    title={lockAspect ? 'Unlock aspect ratio' : 'Lock aspect ratio'}
+                    title={lockAspect ? t('resizer.unlockAspect') : t('resizer.lockAspect')}
                   >
                     <i className={lockAspect ? 'fa-solid fa-lock' : 'fa-solid fa-lock-open'}></i>
                   </button>
                 </div>
                 <div className="rsz-dim">
-                  <label className="rsz-dim__label">Height</label>
+                  <label className="rsz-dim__label">{t('common.height')}</label>
                   <div className="rsz-dim__input-wrap">
                     <div className="rsz-dim__arrows">
                       <button type="button" className="rsz-dim__arrow" onClick={() => handleHeightChange(parseFloat((Number(height || 0) + inputStep).toFixed(2)))} tabIndex={-1}>
@@ -577,7 +599,7 @@ const ResizeImage = () => {
 
             {/* Advanced options */}
             <div className="rsz-right__section">
-              <label className="rsz-right__label">Advanced</label>
+              <label className="rsz-right__label">{t('resizer.advanced')}</label>
               <div className="rsz-toggle-list">
                 <label className="rsz-toggle-item">
                   <input
@@ -588,7 +610,7 @@ const ResizeImage = () => {
                   <span className="rsz-toggle-item__check">
                     <i className="fa-solid fa-check"></i>
                   </span>
-                  <span>Lock aspect ratio</span>
+                  <span>{t('resizer.lockAspect')}</span>
                 </label>
                 <label className="rsz-toggle-item">
                   <input
@@ -599,14 +621,14 @@ const ResizeImage = () => {
                   <span className="rsz-toggle-item__check">
                     <i className="fa-solid fa-check"></i>
                   </span>
-                  <span>Don't enlarge if original is smaller</span>
+                  <span>{t('resizer.dontEnlarge')}</span>
                 </label>
               </div>
             </div>
 
             {/* Add more images */}
             <button className="rsz-right__add" onClick={() => addFileInputRef.current?.click()}>
-              <i className="fa-solid fa-plus"></i> Add More Images
+              <i className="fa-solid fa-plus"></i> {t('common.addMoreImages')}
             </button>
             <input
               ref={addFileInputRef}
@@ -620,26 +642,26 @@ const ResizeImage = () => {
             {/* Download mode selector */}
             {images.length > 1 && (
               <div className="rsz-right__dl-mode">
-                <label>Download as:</label>
+                <label>{t('common.downloadAs')}:</label>
                 <div className="rsz-dl-toggle">
                   <button
                     className={`rsz-dl-toggle__btn ${downloadMode === 'zip' ? 'active' : ''}`}
                     onClick={() => setDownloadMode('zip')}
                   >
-                    <i className="fa-solid fa-file-zipper"></i> ZIP
+                    <i className="fa-solid fa-file-zipper"></i> {t('common.zip')}
                   </button>
                   <button
                     className={`rsz-dl-toggle__btn ${downloadMode === 'separate' ? 'active' : ''}`}
                     onClick={() => setDownloadMode('separate')}
                   >
-                    <i className="fa-regular fa-copy"></i> Separate
+                    <i className="fa-regular fa-copy"></i> {t('common.separate')}
                   </button>
                 </div>
               </div>
             )}
 
             <button className="rsz-right__reset" onClick={handleStartOver}>
-              <i className="fa-solid fa-arrow-rotate-left"></i> Start Over
+              <i className="fa-solid fa-arrow-rotate-left"></i> {t('common.startOver')}
             </button>
 
             {/* Sticky download button */}
@@ -652,15 +674,15 @@ const ResizeImage = () => {
                 {resizing ? (
                   <>
                     <span className="rsz-download-spinner"></span>
-                    Resizing…
+                    {t('resizer.resizing')}
                   </>
                 ) : allResized ? (
                   <>
-                    <i className="fa-solid fa-download"></i> Download {images.length > 1 ? 'All' : ''}
+                    <i className="fa-solid fa-download"></i> {t('common.download')} {images.length > 1 ? t('converter.all') : ''}
                   </>
                 ) : (
                   <>
-                    <i className="fa-solid fa-bolt"></i> Resize & Download
+                    <i className="fa-solid fa-bolt"></i> {t('resizer.resizeDownload')}
                   </>
                 )}
               </button>

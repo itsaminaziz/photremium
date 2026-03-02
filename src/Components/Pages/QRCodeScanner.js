@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './QRCodeScanner.css';
 
 /* ================================================================
@@ -34,17 +36,17 @@ const isURL = (str) => {
 
 /** Detect content type for display */
 const detectType = (data) => {
-  if (!data) return { type: 'text', label: 'Text' };
+  if (!data) return { type: 'text', label: 'typeText' };
   const lower = data.toLowerCase();
-  if (lower.startsWith('http://') || lower.startsWith('https://')) return { type: 'url', label: 'URL' };
-  if (lower.startsWith('wifi:')) return { type: 'wifi', label: 'WiFi Network' };
-  if (lower.startsWith('begin:vcard')) return { type: 'vcard', label: 'Contact Card' };
-  if (lower.startsWith('mailto:')) return { type: 'email', label: 'Email' };
-  if (lower.startsWith('tel:')) return { type: 'phone', label: 'Phone Number' };
-  if (lower.startsWith('sms:')) return { type: 'sms', label: 'SMS' };
-  if (lower.startsWith('geo:')) return { type: 'geo', label: 'Location' };
-  if (isURL(data)) return { type: 'url', label: 'URL' };
-  return { type: 'text', label: 'Text' };
+  if (lower.startsWith('http://') || lower.startsWith('https://')) return { type: 'url', label: 'typeUrl' };
+  if (lower.startsWith('wifi:')) return { type: 'wifi', label: 'typeWifi' };
+  if (lower.startsWith('begin:vcard')) return { type: 'vcard', label: 'typeContact' };
+  if (lower.startsWith('mailto:')) return { type: 'email', label: 'typeEmail' };
+  if (lower.startsWith('tel:')) return { type: 'phone', label: 'typePhone' };
+  if (lower.startsWith('sms:')) return { type: 'sms', label: 'typeSms' };
+  if (lower.startsWith('geo:')) return { type: 'geo', label: 'typeLocation' };
+  if (isURL(data)) return { type: 'url', label: 'typeUrl' };
+  return { type: 'text', label: 'typeText' };
 };
 
 /** Parse WiFi string: WIFI:T:WPA;S:MySSID;P:MyPass;; */
@@ -57,6 +59,7 @@ const parseWifi = (data) => {
    QR CODE SCANNER PAGE
    ================================================================ */
 const QRCodeScanner = () => {
+  const { t, localePath } = useLanguage();
   /* ---------- state ---------- */
   const [showCamera, setShowCamera] = useState(false);
   const [scanning, setScanning] = useState(false);
@@ -147,7 +150,7 @@ const QRCodeScanner = () => {
       setScanning(true);
       animRef.current = requestAnimationFrame(scanFrame);
     } catch {
-      setCameraError('Could not start video playback.');
+      setCameraError(t('qrScanner.videoError'));
     }
   }, [scanFrame]);
 
@@ -164,11 +167,11 @@ const QRCodeScanner = () => {
       await attachStream(stream);
     } catch (err) {
       if (err.name === 'NotAllowedError') {
-        setCameraError('Camera access denied. Please allow camera permission and try again.');
+        setCameraError(t('qrScanner.cameraDenied'));
       } else if (err.name === 'NotFoundError') {
-        setCameraError('No camera found on this device.');
+        setCameraError(t('qrScanner.noCamera'));
       } else {
-        setCameraError('Could not access camera. Please try again.');
+        setCameraError(t('qrScanner.cameraError'));
       }
     }
   }, [facingMode, attachStream]);
@@ -191,7 +194,7 @@ const QRCodeScanner = () => {
       streamRef.current = stream;
       await attachStream(stream);
     } catch {
-      setCameraError('Could not switch camera.');
+      setCameraError(t('qrScanner.switchError'));
     }
   }, [facingMode, attachStream]);
 
@@ -214,18 +217,18 @@ const QRCodeScanner = () => {
         if (code && code.data) {
           handleResult(code.data);
         } else {
-          setResult({ data: null, type: 'error', label: 'No QR Code Found' });
+          setResult({ data: null, type: 'error', label: 'noQrFound' });
           setShowPopup(true);
         }
       };
       img.onerror = () => {
         URL.revokeObjectURL(url);
-        setResult({ data: null, type: 'error', label: 'Could not read image' });
+        setResult({ data: null, type: 'error', label: 'couldNotRead' });
         setShowPopup(true);
       };
       img.src = url;
     } catch {
-      setResult({ data: null, type: 'error', label: 'Scanner failed to load' });
+      setResult({ data: null, type: 'error', label: 'scannerFailed' });
       setShowPopup(true);
     }
   }, [handleResult]);
@@ -253,6 +256,16 @@ const QRCodeScanner = () => {
     window.addEventListener('paste', handlePaste);
     return () => window.removeEventListener('paste', handlePaste);
   }, [stopCamera, scanImage]);
+
+  /* --- hide footer when camera or result active --- */
+  useEffect(() => {
+    if (showCamera || result) {
+      document.body.classList.add('qrs-workspace-active');
+    } else {
+      document.body.classList.remove('qrs-workspace-active');
+    }
+    return () => document.body.classList.remove('qrs-workspace-active');
+  }, [showCamera, result]);
 
   const onDrop = (e) => { e.preventDefault(); setDragOver(false); handleFiles(e.dataTransfer.files); };
 
@@ -301,17 +314,17 @@ const QRCodeScanner = () => {
     return (
       <div className="qrscan-wifi-details">
         <div className="qrscan-wifi-row">
-          <span className="qrscan-wifi-label"><i className="fa-solid fa-wifi"></i> Network</span>
-          <span className="qrscan-wifi-value">{wifi.ssid || 'Unknown'}</span>
+          <span className="qrscan-wifi-label"><i className="fa-solid fa-wifi"></i> {t('qrScanner.network')}</span>
+          <span className="qrscan-wifi-value">{wifi.ssid || t('qrScanner.unknown')}</span>
         </div>
         {wifi.password && (
           <div className="qrscan-wifi-row">
-            <span className="qrscan-wifi-label"><i className="fa-solid fa-key"></i> Password</span>
+            <span className="qrscan-wifi-label"><i className="fa-solid fa-key"></i> {t('qrScanner.password')}</span>
             <span className="qrscan-wifi-value">{wifi.password}</span>
           </div>
         )}
         <div className="qrscan-wifi-row">
-          <span className="qrscan-wifi-label"><i className="fa-solid fa-shield-halved"></i> Security</span>
+          <span className="qrscan-wifi-label"><i className="fa-solid fa-shield-halved"></i> {t('qrScanner.security')}</span>
           <span className="qrscan-wifi-value">{wifi.encryption || 'None'}</span>
         </div>
       </div>
@@ -324,25 +337,25 @@ const QRCodeScanner = () => {
   return (
     <>
       <SEO
-        title="QR Code Scanner — Scan QR Codes from Camera or Image | favIMG"
-        description="Scan QR codes instantly using your camera or by uploading an image. Detect URLs, text, WiFi, contacts and more. Free, fast, private."
-        keywords="qr code scanner, scan qr code, qr reader, qr code reader online, scan qr from image, camera qr scanner"
+        title={t('qrScanner.seo.title')}
+        description={t('qrScanner.seo.desc')}
+        keywords={t('qrScanner.seo.keywords')}
       />
 
       <section className="qrscan-page">
         <div className="qrscan-inner">
           {/* Header */}
           <div className="qrscan-header">
-            <h1 className="qrscan-title">QR Code Scanner</h1>
+            <h1 className="qrscan-title">{t('qrScanner.title')}</h1>
             <p className="qrscan-desc">
-              Scan QR codes instantly using your camera or upload an image. Fast, private &amp; secure — everything runs in your browser.
+              {t('qrScanner.desc')}
             </p>
             <div className="qrscan-nav-pills">
-              <Link to="/qr-code-generator" className="qrscan-pill">
-                <i className="fa-solid fa-qrcode"></i> Generate QR Code
+              <Link to={localePath('/qr-code-generator')} className="qrscan-pill">
+                <i className="fa-solid fa-qrcode"></i> {t('qrScanner.generateQrCode')}
               </Link>
               <span className="qrscan-pill qrscan-pill--active">
-                <i className="fa-solid fa-expand"></i> Scan
+                <i className="fa-solid fa-expand"></i> {t('qrScanner.scan')}
               </span>
             </div>
           </div>
@@ -353,7 +366,7 @@ const QRCodeScanner = () => {
             <div className="qrscan-box qrscan-box--camera">
               <div className="qrscan-box__header">
                 <i className="fa-solid fa-video"></i>
-                <span>Camera Scanner</span>
+                <span>{t('qrScanner.cameraScanner')}</span>
               </div>
 
               <div className="qrscan-camera-area">
@@ -361,10 +374,10 @@ const QRCodeScanner = () => {
                   <div className="qrscan-camera-icon">
                     <i className="fa-solid fa-camera"></i>
                   </div>
-                  <p>Point your camera at a QR code</p>
+                  <p>{t('qrScanner.pointCamera')}</p>
                   <button className="qrscan-start-btn" onClick={startCamera} disabled={!jsQRLoaded}>
                     <i className="fa-solid fa-play"></i>
-                    {jsQRLoaded ? 'Start Camera' : 'Loading…'}
+                    {jsQRLoaded ? t('qrScanner.startCamera') : t('qrScanner.loading')}
                   </button>
                 </div>
               </div>
@@ -380,19 +393,19 @@ const QRCodeScanner = () => {
             >
               <div className="qrscan-box__header">
                 <i className="fa-solid fa-image"></i>
-                <span>Upload Image</span>
+                <span>{t('qrScanner.uploadImage')}</span>
               </div>
 
               <div className="qrscan-upload-area">
                 <div className="qrscan-upload-icon">
                   <i className="fa-solid fa-cloud-arrow-up"></i>
                 </div>
-                <h3>Drop QR code image here</h3>
-                <p>or <span className="qrscan-browse" onClick={() => fileInputRef.current?.click()}>browse files</span> to scan</p>
-                <p className="qrscan-upload-hint">Supports JPG, PNG, GIF, WEBP &bull; Ctrl+V to paste</p>
+                <h3>{t('qrScanner.dropQrImage')}</h3>
+                <p>{t('common.or')} <span className="qrscan-browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('qrScanner.toScan')}</p>
+                <p className="qrscan-upload-hint">{t('qrScanner.supportedFormats')} &bull; {t('qrScanner.ctrlVPaste')}</p>
                 <div className="qrscan-upload-actions">
                   <button className="qrscan-gallery-btn" onClick={() => fileInputRef.current?.click()}>
-                    <i className="fa-solid fa-images"></i> Scan from Gallery
+                    <i className="fa-solid fa-images"></i> {t('qrScanner.scanFromGallery')}
                   </button>
                 </div>
               </div>
@@ -411,18 +424,18 @@ const QRCodeScanner = () => {
           <div className="qrscan-features">
             <div className="qrscan-feature">
               <div className="qrscan-feature__icon"><i className="fa-solid fa-bolt"></i></div>
-              <h4>Instant Scanning</h4>
-              <p>Real-time QR code detection from camera or uploaded images</p>
+              <h4>{t('qrScanner.instantScanning')}</h4>
+              <p>{t('qrScanner.instantScanningDesc')}</p>
             </div>
             <div className="qrscan-feature">
               <div className="qrscan-feature__icon"><i className="fa-solid fa-shield-halved"></i></div>
-              <h4>100% Private</h4>
-              <p>All processing happens in your browser. Nothing is uploaded</p>
+              <h4>{t('qrScanner.private100')}</h4>
+              <p>{t('qrScanner.private100Desc')}</p>
             </div>
             <div className="qrscan-feature">
               <div className="qrscan-feature__icon"><i className="fa-solid fa-layer-group"></i></div>
-              <h4>Multi-Format</h4>
-              <p>Detect URLs, text, WiFi, contacts, email, phone &amp; more</p>
+              <h4>{t('qrScanner.multiFormat')}</h4>
+              <p>{t('qrScanner.multiFormatDesc')}</p>
             </div>
           </div>
         </div>
@@ -433,7 +446,7 @@ const QRCodeScanner = () => {
         <div className="qrscan-cam-overlay">
           <div className="qrscan-cam-popup">
             <div className="qrscan-cam-popup__header">
-              <span><i className="fa-solid fa-video"></i> Camera Scanner</span>
+              <span><i className="fa-solid fa-video"></i> {t('qrScanner.cameraScanner')}</span>
               <button className="qrscan-cam-popup__close" onClick={stopCamera}>
                 <i className="fa-solid fa-xmark"></i>
               </button>
@@ -447,13 +460,13 @@ const QRCodeScanner = () => {
                   </div>
                   <p className="qrscan-error-text">{cameraError}</p>
                   <button className="qrscan-start-btn" onClick={() => { setCameraError(''); startCamera(); }}>
-                    <i className="fa-solid fa-rotate-right"></i> Try Again
+                    <i className="fa-solid fa-rotate-right"></i> {t('qrScanner.tryAgain')}
                   </button>
                 </div>
               ) : !scanning ? (
                 <div className="qrscan-camera-placeholder">
                   <div className="qrscan-cam-loader"></div>
-                  <p>Accessing camera…</p>
+                  <p>{t('qrScanner.accessingCamera')}</p>
                 </div>
               ) : null}
 
@@ -475,10 +488,10 @@ const QRCodeScanner = () => {
             {/* Controls outside body so they never get clipped */}
             {scanning && (
               <div className="qrscan-cam-popup__controls">
-                <button className="qrscan-ctrl-btn" onClick={switchCamera} title="Switch Camera">
+                <button className="qrscan-ctrl-btn" onClick={switchCamera} title={t('qrScanner.switchCamera')}>
                   <i className="fa-solid fa-camera-rotate"></i>
                 </button>
-                <button className="qrscan-ctrl-btn qrscan-ctrl-btn--stop" onClick={stopCamera} title="Stop">
+                <button className="qrscan-ctrl-btn qrscan-ctrl-btn--stop" onClick={stopCamera} title={t('qrScanner.stop')}>
                   <i className="fa-solid fa-stop"></i>
                 </button>
               </div>
@@ -501,10 +514,10 @@ const QRCodeScanner = () => {
                 <div className="qrscan-popup__icon qrscan-popup__icon--error">
                   <i className="fa-solid fa-circle-xmark"></i>
                 </div>
-                <h3>{result.label}</h3>
-                <p>No QR code was detected in the image. Please try another image or use the camera scanner.</p>
+                <h3>{t('qrScanner.' + result.label)}</h3>
+                <p>{t('qrScanner.noQrFoundDesc')}</p>
                 <button className="qrscan-popup__action" onClick={scanAgain}>
-                  <i className="fa-solid fa-rotate-right"></i> Try Again
+                  <i className="fa-solid fa-rotate-right"></i> {t('qrScanner.tryAgain')}
                 </button>
               </div>
             ) : (
@@ -523,8 +536,8 @@ const QRCodeScanner = () => {
                   }></i>
                 </div>
 
-                <span className="qrscan-popup__badge">{result?.label}</span>
-                <h3>QR Code Scanned!</h3>
+                <span className="qrscan-popup__badge">{t('qrScanner.' + result?.label)}</span>
+                <h3>{t('qrScanner.qrScanned')}</h3>
 
                 {/* Content */}
                 {result?.type === 'wifi' ? (
@@ -539,18 +552,18 @@ const QRCodeScanner = () => {
                 <div className="qrscan-popup__actions">
                   {result?.type === 'url' && (
                     <button className="qrscan-popup__action qrscan-popup__action--primary" onClick={openURL}>
-                      <i className="fa-solid fa-arrow-up-right-from-square"></i> Open Link
+                      <i className="fa-solid fa-arrow-up-right-from-square"></i> {t('qrScanner.openLink')}
                     </button>
                   )}
                   <button className={`qrscan-popup__action ${copied ? 'qrscan-popup__action--copied' : ''}`} onClick={copyToClipboard}>
                     <i className={copied ? 'fa-solid fa-check' : 'fa-regular fa-copy'}></i>
-                    {copied ? 'Copied!' : 'Copy'}
+                    {copied ? t('qrScanner.copied') : t('qrScanner.copy')}
                   </button>
                   <button className="qrscan-popup__action" onClick={shareResult}>
-                    <i className="fa-solid fa-share-nodes"></i> Share
+                    <i className="fa-solid fa-share-nodes"></i> {t('qrScanner.share')}
                   </button>
                   <button className="qrscan-popup__action" onClick={scanAgain}>
-                    <i className="fa-solid fa-rotate-right"></i> Scan Again
+                    <i className="fa-solid fa-rotate-right"></i> {t('qrScanner.scanAgain')}
                   </button>
                 </div>
               </div>
@@ -558,6 +571,8 @@ const QRCodeScanner = () => {
           </div>
         </div>
       )}
+
+      <FAQ faqKey="qrCodeScanner" />
     </>
   );
 };

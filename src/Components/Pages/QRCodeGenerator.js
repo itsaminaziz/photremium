@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './QRCodeGenerator.css';
 
 /* ================================================================
@@ -8,21 +10,21 @@ import './QRCodeGenerator.css';
    ================================================================ */
 
 const INPUT_TABS = [
-  { id: 'url', label: 'Link / URL', icon: 'fa-solid fa-link' },
-  { id: 'text', label: 'Text', icon: 'fa-solid fa-font' },
-  { id: 'wifi', label: 'WiFi', icon: 'fa-solid fa-wifi' },
-  { id: 'contact', label: 'Contact', icon: 'fa-solid fa-address-book' },
-  { id: 'email', label: 'Gmail', icon: 'fa-solid fa-envelope' },
-  { id: 'maps', label: 'Google Maps', icon: 'fa-solid fa-location-dot' },
+  { id: 'url', tKey: 'tabUrl', icon: 'fa-solid fa-link' },
+  { id: 'text', tKey: 'tabText', icon: 'fa-solid fa-font' },
+  { id: 'wifi', tKey: 'tabWifi', icon: 'fa-solid fa-wifi' },
+  { id: 'contact', tKey: 'tabContact', icon: 'fa-solid fa-address-book' },
+  { id: 'email', tKey: 'tabEmail', icon: 'fa-solid fa-envelope' },
+  { id: 'maps', tKey: 'tabMaps', icon: 'fa-solid fa-location-dot' },
 ];
 
 const TOOL_TABS = [
-  { id: 'style', label: 'Style & Shape', icon: 'fa-solid fa-shapes' },
-  { id: 'color', label: 'Color', icon: 'fa-solid fa-palette' },
-  { id: 'frames', label: 'Frames', icon: 'fa-solid fa-border-all' },
-  { id: 'logo', label: 'Logo', icon: 'fa-solid fa-icons' },
-  { id: 'templates', label: 'Templates', icon: 'fa-solid fa-swatchbook' },
-  { id: 'format', label: 'File Format', icon: 'fa-solid fa-file-export' },
+  { id: 'style', tKey: 'styleShape', icon: 'fa-solid fa-shapes' },
+  { id: 'color', tKey: 'colorTab', icon: 'fa-solid fa-palette' },
+  { id: 'frames', tKey: 'framesTab', icon: 'fa-solid fa-border-all' },
+  { id: 'logo', tKey: 'logoTab', icon: 'fa-solid fa-icons' },
+  { id: 'templates', tKey: 'templatesTab', icon: 'fa-solid fa-swatchbook' },
+  { id: 'format', tKey: 'fileFormatTab', icon: 'fa-solid fa-file-export' },
 ];
 
 const DOT_SHAPES = [
@@ -193,11 +195,11 @@ const colorSimilarity = (c1, c2) => {
 };
 
 const FILE_FORMATS = [
-  { id: 'png', label: 'PNG', desc: 'Lossless, transparent support', mime: 'image/png', ext: '.png' },
-  { id: 'jpg', label: 'JPG', desc: 'Compressed, smaller file', mime: 'image/jpeg', ext: '.jpg' },
-  { id: 'webp', label: 'WEBP', desc: 'Modern format, best quality/size', mime: 'image/webp', ext: '.webp' },
-  { id: 'svg', label: 'SVG', desc: 'Scalable vector graphic', mime: 'image/svg+xml', ext: '.svg' },
-  { id: 'pdf', label: 'PDF', desc: 'Print-ready document', mime: 'application/pdf', ext: '.pdf' },
+  { id: 'png', label: 'PNG', descKey: 'pngDesc', mime: 'image/png', ext: '.png' },
+  { id: 'jpg', label: 'JPG', descKey: 'jpgDesc', mime: 'image/jpeg', ext: '.jpg' },
+  { id: 'webp', label: 'WEBP', descKey: 'webpDesc', mime: 'image/webp', ext: '.webp' },
+  { id: 'svg', label: 'SVG', descKey: 'svgDesc', mime: 'image/svg+xml', ext: '.svg' },
+  { id: 'pdf', label: 'PDF', descKey: 'pdfDesc', mime: 'application/pdf', ext: '.pdf' },
 ];
 
 /* ================================================================
@@ -921,6 +923,8 @@ const drawFrame = (ctx, fid, w, h, margin, qrPxSize) => {
    ================================================================ */
 
 const QRCodeGenerator = () => {
+  const { t, localePath } = useLanguage();
+
   /* ---- phase ---- */
   const [phase, setPhase] = useState('input'); // 'input' | 'customize'
 
@@ -1257,6 +1261,16 @@ const QRCodeGenerator = () => {
     if (phase === 'customize') renderQR();
   }, [phase, renderQR]);
 
+  /* --- hide footer when in customize phase --- */
+  useEffect(() => {
+    if (phase === 'customize') {
+      document.body.classList.add('qrg-workspace-active');
+    } else {
+      document.body.classList.remove('qrg-workspace-active');
+    }
+    return () => document.body.classList.remove('qrg-workspace-active');
+  }, [phase]);
+
   /* ---- generate SVG string ---- */
   const generateSVG = useCallback(() => {
     if (!qrData) return '';
@@ -1389,24 +1403,24 @@ const QRCodeGenerator = () => {
     return (
       <>
         <SEO
-          title="QR Code Generator — Create & Customize Free | favIMG"
-          description="Generate custom QR codes for URLs, text, WiFi, contacts, email and Google Maps locations. Customize colors, shapes, frames, logos and download in multiple formats."
-          keywords="qr code generator, custom qr code, qr code maker, generate qr code free, qr code with logo"
+          title={t('qrGenerator.seo.inputTitle')}
+          description={t('qrGenerator.seo.inputDesc')}
+          keywords={t('qrGenerator.seo.inputKeywords')}
         />
         <section className="qr-upload">
           <div className="qr-upload__inner">
-            <h1 className="qr-upload__title">QR Code Generator</h1>
+            <h1 className="qr-upload__title">{t('qrGenerator.title')}</h1>
             <p className="qr-upload__desc">
-              Generate, customize and download QR codes for URLs, text, WiFi, contacts, email &amp; maps. Fully free, runs in your browser.
+              {t('qrGenerator.desc')}
             </p>
 
             {/* Generator ↔ Scanner pills */}
             <div className="qr-mode-pills">
               <span className="qr-mode-pill qr-mode-pill--active">
-                <i className="fa-solid fa-qrcode"></i> Generate
+                <i className="fa-solid fa-qrcode"></i> {t('qrGenerator.generate')}
               </span>
-              <Link to="/qr-code-scanner" className="qr-mode-pill">
-                <i className="fa-solid fa-expand"></i> Scan QR Code
+              <Link to={localePath('/qr-code-scanner')} className="qr-mode-pill">
+                <i className="fa-solid fa-expand"></i> {t('qrGenerator.scanQrCode')}
               </Link>
             </div>
 
@@ -1419,7 +1433,7 @@ const QRCodeGenerator = () => {
                   onClick={() => setInputTab(tab.id)}
                 >
                   <i className={tab.icon}></i>
-                  <span>{tab.label}</span>
+                  <span>{t('qrGenerator.' + tab.tKey)}</span>
                 </button>
               ))}
             </div>
@@ -1433,11 +1447,11 @@ const QRCodeGenerator = () => {
               {/* URL */}
               {inputTab === 'url' && (
                 <div className="qr-form">
-                  <label className="qr-form__label">Enter URL</label>
+                  <label className="qr-form__label">{t('qrGenerator.enterUrl')}</label>
                   <input
                     type="url"
                     className="qr-form__input"
-                    placeholder="https://example.com"
+                    placeholder={t('qrGenerator.urlPlaceholder')}
                     value={urlValue}
                     onChange={(e) => setUrlValue(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && canGenerate && handleGenerate()}
@@ -1448,27 +1462,27 @@ const QRCodeGenerator = () => {
               {/* Text */}
               {inputTab === 'text' && (
                 <div className="qr-form">
-                  <label className="qr-form__label">Enter Text</label>
+                  <label className="qr-form__label">{t('qrGenerator.enterText')}</label>
                   <textarea
                     className="qr-form__textarea"
-                    placeholder="Type your text here…"
+                    placeholder={t('qrGenerator.textPlaceholder')}
                     rows={4}
                     value={textValue}
                     onChange={(e) => setTextValue(e.target.value)}
                   />
                   <div className="qr-char-count-row">
                     <span className={`qr-char-count ${textValue.length > 400 ? 'qr-char-count--danger' : textValue.length > 200 ? 'qr-char-count--warn' : ''}`}>
-                      {textValue.length} characters
+                      {textValue.length} {t('qrGenerator.characters')}
                     </span>
                   </div>
                   {textValue.length > 200 && textValue.length <= 400 && (
                     <div className="qr-char-warning qr-char-warning--yellow">
-                      <i className="fa-solid fa-triangle-exclamation"></i> QR code is getting complex — may be hard to scan.
+                      <i className="fa-solid fa-triangle-exclamation"></i> {t('qrGenerator.qrGettingComplex')}
                     </div>
                   )}
                   {textValue.length > 400 && (
                     <div className="qr-char-warning qr-char-warning--red">
-                      <i className="fa-solid fa-circle-exclamation"></i> QR code is too complex! Most scanners will fail to read it.
+                      <i className="fa-solid fa-circle-exclamation"></i> {t('qrGenerator.qrTooComplex')}
                     </div>
                   )}
                 </div>
@@ -1477,19 +1491,19 @@ const QRCodeGenerator = () => {
               {/* WiFi */}
               {inputTab === 'wifi' && (
                 <div className="qr-form">
-                  <label className="qr-form__label">Network Name (SSID)</label>
-                  <input className="qr-form__input" placeholder="My WiFi" value={wifiSSID} onChange={(e) => setWifiSSID(e.target.value)} />
-                  <label className="qr-form__label">Password</label>
-                  <input className="qr-form__input" type="password" placeholder="Password" value={wifiPass} onChange={(e) => setWifiPass(e.target.value)} />
-                  <label className="qr-form__label">Encryption</label>
+                  <label className="qr-form__label">{t('qrGenerator.networkName')}</label>
+                  <input className="qr-form__input" placeholder={t('qrGenerator.wifiNamePlaceholder')} value={wifiSSID} onChange={(e) => setWifiSSID(e.target.value)} />
+                  <label className="qr-form__label">{t('qrGenerator.password')}</label>
+                  <input className="qr-form__input" type="password" placeholder={t('qrGenerator.passwordPlaceholder')} value={wifiPass} onChange={(e) => setWifiPass(e.target.value)} />
+                  <label className="qr-form__label">{t('qrGenerator.encryption')}</label>
                   <select className="qr-form__select" value={wifiEnc} onChange={(e) => setWifiEnc(e.target.value)}>
-                    <option value="WPA">WPA / WPA2</option>
-                    <option value="WEP">WEP</option>
-                    <option value="nopass">None</option>
+                    <option value="WPA">{t('qrGenerator.wpaWpa2')}</option>
+                    <option value="WEP">{t('qrGenerator.wep')}</option>
+                    <option value="nopass">{t('qrGenerator.none')}</option>
                   </select>
                   <label className="qr-form__checkbox">
                     <input type="checkbox" checked={wifiHidden} onChange={(e) => setWifiHidden(e.target.checked)} />
-                    Hidden Network
+                    {t('qrGenerator.hiddenNetwork')}
                   </label>
                 </div>
               )}
@@ -1497,33 +1511,33 @@ const QRCodeGenerator = () => {
               {/* Contact */}
               {inputTab === 'contact' && (
                 <div className="qr-form">
-                  <label className="qr-form__label">Contact Name (optional)</label>
-                  <input className="qr-form__input" placeholder="John Doe" value={contactName} onChange={(e) => setContactName(e.target.value)} />
-                  <label className="qr-form__label">Phone Number</label>
-                  <input className="qr-form__input" type="tel" placeholder="+1 234 567 8900" value={contactPhone} onChange={(e) => setContactPhone(e.target.value)} />
+                  <label className="qr-form__label">{t('qrGenerator.contactName')}</label>
+                  <input className="qr-form__input" placeholder={t('qrGenerator.contactPlaceholder')} value={contactName} onChange={(e) => setContactName(e.target.value)} />
+                  <label className="qr-form__label">{t('qrGenerator.phoneNumber')}</label>
+                  <input className="qr-form__input" type="tel" placeholder={t('qrGenerator.phonePlaceholder')} value={contactPhone} onChange={(e) => setContactPhone(e.target.value)} />
                 </div>
               )}
 
               {/* Gmail */}
               {inputTab === 'email' && (
                 <div className="qr-form">
-                  <label className="qr-form__label">Email Address</label>
-                  <input className="qr-form__input" type="email" placeholder="example@gmail.com" value={emailTo} onChange={(e) => setEmailTo(e.target.value)} />
-                  <label className="qr-form__label">Subject (optional)</label>
-                  <input className="qr-form__input" placeholder="Subject" value={emailSubject} onChange={(e) => setEmailSubject(e.target.value)} />
-                  <label className="qr-form__label">Body (optional)</label>
-                  <textarea className="qr-form__textarea" rows={3} placeholder="Email body…" value={emailBody} onChange={(e) => setEmailBody(e.target.value)} />
+                  <label className="qr-form__label">{t('qrGenerator.emailAddress')}</label>
+                  <input className="qr-form__input" type="email" placeholder={t('qrGenerator.emailPlaceholder')} value={emailTo} onChange={(e) => setEmailTo(e.target.value)} />
+                  <label className="qr-form__label">{t('qrGenerator.subject')}</label>
+                  <input className="qr-form__input" placeholder={t('qrGenerator.subjectPlaceholder')} value={emailSubject} onChange={(e) => setEmailSubject(e.target.value)} />
+                  <label className="qr-form__label">{t('qrGenerator.body')}</label>
+                  <textarea className="qr-form__textarea" rows={3} placeholder={t('qrGenerator.bodyPlaceholder')} value={emailBody} onChange={(e) => setEmailBody(e.target.value)} />
                 </div>
               )}
 
               {/* Google Maps */}
               {inputTab === 'maps' && (
                 <div className="qr-form">
-                  <label className="qr-form__label">Search Location</label>
+                  <label className="qr-form__label">{t('qrGenerator.searchLocation')}</label>
                   <div className="qr-form__search-row">
                     <input
                       className="qr-form__input"
-                      placeholder="Search city, address, place…"
+                      placeholder={t('qrGenerator.locationPlaceholder')}
                       value={mapQuery}
                       onChange={(e) => setMapQuery(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && searchMapLocation()}
@@ -1552,11 +1566,13 @@ const QRCodeGenerator = () => {
               )}
 
               <button className="qr-form-card__btn" onClick={handleGenerate} disabled={!canGenerate}>
-                <i className="fa-solid fa-wand-magic-sparkles"></i> Generate &amp; Customize
+                <i className="fa-solid fa-wand-magic-sparkles"></i> {t('qrGenerator.generateCustomize')}
               </button>
             </div>
           </div>
         </section>
+
+        <FAQ faqKey="qrCodeGenerator" />
       </>
     );
   }
@@ -1567,9 +1583,9 @@ const QRCodeGenerator = () => {
   return (
     <>
       <SEO
-        title="Customize QR Code — favIMG QR Code Generator"
-        description="Customize your QR code's style, color, frame and logo. Download in PNG, JPG, SVG, WEBP or PDF."
-        keywords="customize qr code, qr code style, qr code color, qr code logo, qr code frames"
+        title={t('qrGenerator.seo.customizeTitle')}
+        description={t('qrGenerator.seo.customizeDesc')}
+        keywords={t('qrGenerator.seo.customizeKeywords')}
       />
 
       <section className="qr-workspace">
@@ -1584,7 +1600,7 @@ const QRCodeGenerator = () => {
           {/* Back button + tool tabs in same flex row */}
           <div className="qr-left__header">
             <button className="qr-left__back" onClick={handleBack}>
-              <i className="fa-solid fa-arrow-left"></i> Edit QR Data
+              <i className="fa-solid fa-arrow-left"></i> {t('qrGenerator.editQrData')}
             </button>
 
             {/* Tool sub-nav */}
@@ -1596,7 +1612,7 @@ const QRCodeGenerator = () => {
                   onClick={() => setToolTab(tab.id)}
                 >
                   <i className={tab.icon}></i>
-                  <span>{tab.label}</span>
+                  <span>{t('qrGenerator.' + tab.tKey)}</span>
                 </button>
               ))}
             </div>
@@ -1607,7 +1623,7 @@ const QRCodeGenerator = () => {
             {/* ---- STYLE & SHAPE ---- */}
             {toolTab === 'style' && (
               <div className="qr-tool-section">
-                <h4 className="qr-tool-section__title">Dot Shape</h4>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.dotShape')}</h4>
                 <div className="qr-shape-grid">
                   {DOT_SHAPES.map((s) => (
                     <button key={s.id} className={`qr-shape-btn ${dotShape === s.id ? 'active' : ''}`} onClick={() => setDotShape(s.id)}>
@@ -1635,7 +1651,7 @@ const QRCodeGenerator = () => {
                   ))}
                 </div>
 
-                <h4 className="qr-tool-section__title">Corner Eye — Outer</h4>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.cornerEyeOuter')}</h4>
                 <div className="qr-shape-grid qr-shape-grid--small">
                   {CORNER_OUTER.map((s) => (
                     <button key={s.id} className={`qr-shape-btn ${cornerOuter === s.id ? 'active' : ''}`} onClick={() => setCornerOuter(s.id)}>
@@ -1656,7 +1672,7 @@ const QRCodeGenerator = () => {
                   ))}
                 </div>
 
-                <h4 className="qr-tool-section__title">Corner Eye — Inner</h4>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.cornerEyeInner')}</h4>
                 <div className="qr-shape-grid qr-shape-grid--small">
                   {CORNER_INNER.map((s) => (
                     <button key={s.id} className={`qr-shape-btn ${cornerInner === s.id ? 'active' : ''}`} onClick={() => setCornerInner(s.id)}>
@@ -1682,38 +1698,38 @@ const QRCodeGenerator = () => {
             {/* ---- COLOR ---- */}
             {toolTab === 'color' && (
               <div className="qr-tool-section">
-                <h4 className="qr-tool-section__title">Foreground Color</h4>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.fgColor')}</h4>
                 <div className="qr-color-row">
                   <input type="color" value={gradientOn ? gradColor1 : fgColor} onChange={(e) => gradientOn ? setGradColor1(e.target.value) : setFgColor(e.target.value)} className="qr-color-picker" />
                   <input type="text" value={gradientOn ? gradColor1 : fgColor} onChange={(e) => gradientOn ? setGradColor1(e.target.value) : setFgColor(e.target.value)} className="qr-color-text" />
                 </div>
 
-                <h4 className="qr-tool-section__title">Background Color</h4>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.bgColor')}</h4>
                 <div className="qr-color-row">
                   <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="qr-color-picker" />
                   <input type="text" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="qr-color-text" />
                 </div>
 
                 <label className="qr-toggle-row">
-                  <span>Enable Gradient</span>
+                  <span>{t('qrGenerator.enableGradient')}</span>
                   <input type="checkbox" checked={gradientOn} onChange={(e) => setGradientOn(e.target.checked)} className="qr-toggle" />
                 </label>
 
                 {gradientOn && (
                   <>
-                    <h4 className="qr-tool-section__title">Gradient Type</h4>
+                    <h4 className="qr-tool-section__title">{t('qrGenerator.gradientType')}</h4>
                     <div className="qr-pill-toggle">
-                      <button className={gradType === 'linear' ? 'active' : ''} onClick={() => setGradType('linear')}>Linear</button>
-                      <button className={gradType === 'radial' ? 'active' : ''} onClick={() => setGradType('radial')}>Radial</button>
+                      <button className={gradType === 'linear' ? 'active' : ''} onClick={() => setGradType('linear')}>{t('qrGenerator.linear')}</button>
+                      <button className={gradType === 'radial' ? 'active' : ''} onClick={() => setGradType('radial')}>{t('qrGenerator.radial')}</button>
                     </div>
 
-                    <h4 className="qr-tool-section__title">Gradient Color 1</h4>
+                    <h4 className="qr-tool-section__title">{t('qrGenerator.gradientColor1')}</h4>
                     <div className="qr-color-row">
                       <input type="color" value={gradColor1} onChange={(e) => setGradColor1(e.target.value)} className="qr-color-picker" />
                       <input type="text" value={gradColor1} onChange={(e) => setGradColor1(e.target.value)} className="qr-color-text" />
                     </div>
 
-                    <h4 className="qr-tool-section__title">Gradient Color 2</h4>
+                    <h4 className="qr-tool-section__title">{t('qrGenerator.gradientColor2')}</h4>
                     <div className="qr-color-row">
                       <input type="color" value={gradColor2} onChange={(e) => setGradColor2(e.target.value)} className="qr-color-picker" />
                       <input type="text" value={gradColor2} onChange={(e) => setGradColor2(e.target.value)} className="qr-color-text" />
@@ -1721,12 +1737,12 @@ const QRCodeGenerator = () => {
 
                     {gradType === 'linear' && (
                       <>
-                        <h4 className="qr-tool-section__title">Angle: {gradAngle}°</h4>
+                        <h4 className="qr-tool-section__title">{t('qrGenerator.angle')}: {gradAngle}°</h4>
                         <input type="range" min={0} max={360} value={gradAngle} onChange={(e) => setGradAngle(Number(e.target.value))} className="qr-range" />
                       </>
                     )}
 
-                    <h4 className="qr-tool-section__title">Suggested Gradients</h4>
+                    <h4 className="qr-tool-section__title">{t('qrGenerator.suggestedGradients')}</h4>
                     <div className="qr-gradient-suggestions">
                       {GRADIENT_SUGGESTIONS.map((g, idx) => (
                         <button
@@ -1748,7 +1764,7 @@ const QRCodeGenerator = () => {
             {/* ---- FRAMES ---- */}
             {toolTab === 'frames' && (
               <div className="qr-tool-section">
-                <h4 className="qr-tool-section__title">Select Frame</h4>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.selectFrame')}</h4>
                 <div className="qr-frames-grid">
                   {FRAMES.map((f) => (
                     <button
@@ -1772,7 +1788,7 @@ const QRCodeGenerator = () => {
             {/* ---- LOGO ---- */}
             {toolTab === 'logo' && (
               <div className="qr-tool-section">
-                <h4 className="qr-tool-section__title">Select Logo</h4>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.selectLogo')}</h4>
                 <div className="qr-logo-grid">
                   {LOGOS.map((logo) => (
                     <button
@@ -1792,11 +1808,11 @@ const QRCodeGenerator = () => {
                     </button>
                   ))}
                 </div>
-                <h4 className="qr-tool-section__title">Or Upload Custom Logo</h4>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.uploadCustomLogo')}</h4>
                 <button className="qr-upload-logo-btn" onClick={() => customLogoInputRef.current?.click()}>
-                  <i className="fa-solid fa-cloud-arrow-up"></i> Upload Image
+                  <i className="fa-solid fa-cloud-arrow-up"></i> {t('qrGenerator.uploadImage')}
                 </button>
-                {customLogoImg && <p className="qr-custom-logo-badge"><i className="fa-solid fa-check"></i> Custom logo applied</p>}
+                {customLogoImg && <p className="qr-custom-logo-badge"><i className="fa-solid fa-check"></i> {t('qrGenerator.customLogoApplied')}</p>}
                 <input ref={customLogoInputRef} type="file" accept="image/*" hidden onChange={handleCustomLogo} />
               </div>
             )}
@@ -1804,8 +1820,8 @@ const QRCodeGenerator = () => {
             {/* ---- TEMPLATES ---- */}
             {toolTab === 'templates' && (
               <div className="qr-tool-section">
-                <h4 className="qr-tool-section__title">Premade Templates</h4>
-                <p className="qr-tool-section__hint">Click a template to instantly apply its style combination.</p>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.premadeTemplates')}</h4>
+                <p className="qr-tool-section__hint">{t('qrGenerator.templateHint')}</p>
                 <div className="qr-templates-grid">
                   {QR_TEMPLATES.map((t) => (
                     <button
@@ -1847,7 +1863,7 @@ const QRCodeGenerator = () => {
             {/* ---- FILE FORMAT ---- */}
             {toolTab === 'format' && (
               <div className="qr-tool-section">
-                <h4 className="qr-tool-section__title">Download Format</h4>
+                <h4 className="qr-tool-section__title">{t('qrGenerator.downloadFormat')}</h4>
                 <div className="qr-format-list">
                   {FILE_FORMATS.map((fmt) => (
                     <button
@@ -1856,7 +1872,7 @@ const QRCodeGenerator = () => {
                       onClick={() => setFileFormat(fmt.id)}
                     >
                       <span className="qr-format-btn__ext">{fmt.label}</span>
-                      <span className="qr-format-btn__desc">{fmt.desc}</span>
+                      <span className="qr-format-btn__desc">{t('qrGenerator.' + fmt.descKey)}</span>
                     </button>
                   ))}
                 </div>
@@ -1873,7 +1889,7 @@ const QRCodeGenerator = () => {
         {/* ---------- RIGHT PANEL (preview 25%) ---------- */}
         <div className="qr-right">
           <div className="qr-right__sticky">
-            <h3 className="qr-right__title"><i className="fa-solid fa-eye"></i> Preview</h3>
+            <h3 className="qr-right__title"><i className="fa-solid fa-eye"></i> {t('qrGenerator.preview')}</h3>
 
             <div className="qr-right__preview-wrap">
               <canvas ref={canvasRef} className="qr-right__canvas" />
@@ -1884,12 +1900,12 @@ const QRCodeGenerator = () => {
               const sim = colorSimilarity(activeFg, bgColor);
               if (sim >= 1) return (
                 <div className="qr-char-warning qr-char-warning--red">
-                  <i className="fa-solid fa-circle-exclamation"></i> Foreground and background colors are identical — QR code will be invisible!
+                  <i className="fa-solid fa-circle-exclamation"></i> {t('qrGenerator.fgBgIdentical')}
                 </div>
               );
               if (sim >= 0.80) return (
                 <div className="qr-char-warning qr-char-warning--yellow">
-                  <i className="fa-solid fa-triangle-exclamation"></i> Foreground and background colors are very similar — QR code may be hard to scan.
+                  <i className="fa-solid fa-triangle-exclamation"></i> {t('qrGenerator.fgBgSimilar')}
                 </div>
               );
               return null;
@@ -1902,7 +1918,7 @@ const QRCodeGenerator = () => {
 
             <div className="qr-right__actions">
               <button className="qr-right__download" onClick={handleDownload}>
-                <i className="fa-solid fa-download"></i> Download {fileFormat.toUpperCase()}
+                <i className="fa-solid fa-download"></i> {t('qrGenerator.downloadFormatBtn').replace('{format}', fileFormat.toUpperCase())}
               </button>
             </div>
           </div>

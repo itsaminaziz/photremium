@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './RemoveBackground.css';
 
 /* ---- helpers ---- */
@@ -354,6 +356,7 @@ const removeBg = (imgElement) => {
 /*       REMOVE BACKGROUND IMAGE PAGE            */
 /* ============================================= */
 const RemoveBackground = () => {
+  const { t } = useLanguage();
   const [images, setImages] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [dragOver, setDragOver] = useState(false);
@@ -388,7 +391,7 @@ const RemoveBackground = () => {
   useEffect(() => {
     if (!images.length) return;
     const handler = () => {
-      if (!window.confirm('You have unsaved edits. Leave this page?')) {
+      if (!window.confirm(t('common.unsavedEdits'))) {
         window.history.pushState(null, '', window.location.href);
       }
     };
@@ -581,7 +584,7 @@ const RemoveBackground = () => {
 
   /* --- start over --- */
   const handleStartOver = () => {
-    if (!window.confirm('Are you sure you want to remove all images and start over?')) return;
+    if (!window.confirm(t('common.startOverConfirm'))) return;
     images.forEach((i) => {
       URL.revokeObjectURL(i.preview);
       if (i.resultUrl) URL.revokeObjectURL(i.resultUrl);
@@ -610,15 +613,15 @@ const RemoveBackground = () => {
     return (
       <>
         <SEO
-          title="Remove Background from Image Online Free | favIMG"
-          description="Quickly remove image backgrounds with high accuracy. Free online background remover — runs entirely in your browser."
-          keywords="remove background, background remover, remove bg, cut out background, transparent background"
+          title={t('removeBg.seo.uploadTitle')}
+          description={t('removeBg.seo.uploadDesc')}
+          keywords={t('removeBg.seo.uploadKeywords')}
         />
         <section className="rbg-upload">
           <div className="rbg-upload__inner">
-            <h1 className="rbg-upload__title">Remove Background</h1>
+            <h1 className="rbg-upload__title">{t('removeBg.title')}</h1>
             <p className="rbg-upload__desc">
-              Instantly remove backgrounds from your images with advanced edge detection. 100% free, runs entirely in your browser — no uploads, no servers.
+              {t('removeBg.desc')}
             </p>
 
             <div
@@ -630,13 +633,13 @@ const RemoveBackground = () => {
               <div className="rbg-dropzone__cloud">
                 <i className="fa-solid fa-cloud-arrow-up"></i>
               </div>
-              <h3>Drop your images here</h3>
-              <p>or <span className="rbg-dropzone__browse" onClick={() => fileInputRef.current?.click()}>browse files</span> to remove background</p>
+              <h3>{t('common.dropHere')}</h3>
+              <p>{t('common.or')} <span className="rbg-dropzone__browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('removeBg.toRemoveBg')}</p>
               <p className="rbg-dropzone__hint">
-                <i className="fa-regular fa-keyboard"></i> You can also paste images with <kbd>Ctrl</kbd> + <kbd>V</kbd>
+                <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
               <button className="rbg-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> Choose Files
+                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
               </button>
               <input
                 ref={fileInputRef}
@@ -649,6 +652,8 @@ const RemoveBackground = () => {
             </div>
           </div>
         </section>
+
+        <FAQ faqKey="removeBackground" />
       </>
     );
   }
@@ -659,9 +664,9 @@ const RemoveBackground = () => {
   return (
     <>
       <SEO
-        title="Removing Backgrounds — favIMG Background Remover"
-        description="Remove image backgrounds online for free. No signup required."
-        keywords="remove background, background remover, remove bg, transparent background"
+        title={t('removeBg.seo.workspaceTitle')}
+        description={t('removeBg.seo.workspaceDesc')}
+        keywords={t('removeBg.seo.workspaceKeywords')}
       />
 
       <section className="rbg-workspace">
@@ -680,7 +685,7 @@ const RemoveBackground = () => {
         {isMulti && (
           <div className="rbg-preview">
             <div className="rbg-preview__stat">
-              <span className="rbg-preview__stat-value">{images.length} Images</span>
+              <span className="rbg-preview__stat-value">{images.length} {t('common.images')}</span>
               <span className="rbg-preview__stat-label">{fmtSize(totalSize)}</span>
             </div>
             <div className="rbg-preview__list">
@@ -693,20 +698,25 @@ const RemoveBackground = () => {
                   <button
                     className="rbg-preview__remove"
                     onClick={(e) => { e.stopPropagation(); removeImage(img.id); }}
-                    title="Remove"
+                    title={t('common.remove')}
                   >
                     <i className="fa-solid fa-xmark"></i>
                   </button>
                   <img src={img.status === 'done' && img.resultUrl ? img.resultUrl : img.preview} alt="" draggable={false} />
-                  {img.status === 'processing' && <div className="rbg-preview__badge rbg-preview__badge--processing">Processing…</div>}
-                  {img.status === 'done' && <div className="rbg-preview__badge rbg-preview__badge--done">Done</div>}
-                  {img.status === 'error' && <div className="rbg-preview__badge rbg-preview__badge--error">Error</div>}
+                  {img.status === 'processing' && <div className="rbg-preview__badge rbg-preview__badge--processing">{t('removeBg.badgeProcessing')}</div>}
+                  {img.status === 'done' && <div className="rbg-preview__badge rbg-preview__badge--done">{t('removeBg.badgeDone')}</div>}
+                  {img.status === 'error' && <div className="rbg-preview__badge rbg-preview__badge--error">{t('removeBg.badgeError')}</div>}
                   <div className="rbg-preview__meta">
                     <span className="rbg-preview__size">{fmtSize(img.file.size)}</span>
                     <span className="rbg-preview__type">{getExt(img.file.name)}</span>
                   </div>
                 </div>
               ))}
+              {/* +Add Image box */}
+              <div className="rbg-preview__add" onClick={() => addFileInputRef.current?.click()} title={t('common.addMoreImages')}>
+                <i className="fa-solid fa-plus"></i>
+                <span>{t('common.addImage')}</span>
+              </div>
             </div>
           </div>
         )}
@@ -728,7 +738,7 @@ const RemoveBackground = () => {
                 {selected.status === 'processing' && (
                   <div className="rbg-processing-overlay">
                     <div className="rbg-processing-spinner" />
-                    <span>Removing background…</span>
+                    <span>{t('removeBg.removingBg')}</span>
                   </div>
                 )}
               </div>
@@ -759,8 +769,8 @@ const RemoveBackground = () => {
                       <i className="fa-solid fa-chevron-right"></i>
                     </div>
                   </div>
-                  <span className="rbg-compare__label rbg-compare__label--original">Original</span>
-                  <span className="rbg-compare__label rbg-compare__label--result">Result</span>
+                  <span className="rbg-compare__label rbg-compare__label--original">{t('common.original')}</span>
+                  <span className="rbg-compare__label rbg-compare__label--result">{t('common.result')}</span>
                 </div>
               )}
 
@@ -771,13 +781,13 @@ const RemoveBackground = () => {
                     className={`rbg-toggle-view__btn ${viewMode === 'result' && !compareMode ? 'active' : ''}`}
                     onClick={() => { setViewMode('result'); setCompareMode(false); }}
                   >
-                    <i className="fa-solid fa-eraser"></i> Result
+                    <i className="fa-solid fa-eraser"></i> {t('common.result')}
                   </button>
                   <button
                     className={`rbg-toggle-view__btn ${viewMode === 'original' && !compareMode ? 'active' : ''}`}
                     onClick={() => { setViewMode('original'); setCompareMode(false); }}
                   >
-                    <i className="fa-solid fa-image"></i> Original
+                    <i className="fa-solid fa-image"></i> {t('common.original')}
                   </button>
                   <button
                     className={`rbg-toggle-view__btn rbg-toggle-view__btn--compare ${compareMode ? 'active' : ''}`}
@@ -792,7 +802,7 @@ const RemoveBackground = () => {
               {/* Error retry */}
               {selected.status === 'error' && (
                 <button className="rbg-left__download" onClick={() => retryImage(selected)}>
-                  <i className="fa-solid fa-rotate-right"></i> Retry
+                  <i className="fa-solid fa-rotate-right"></i> {t('removeBg.retry')}
                 </button>
               )}
 
@@ -803,7 +813,7 @@ const RemoveBackground = () => {
                   onClick={() => downloadSingle(selected)}
                   disabled={selected.status !== 'done'}
                 >
-                  <i className="fa-solid fa-download"></i> Download
+                  <i className="fa-solid fa-download"></i> {t('common.download')}
                 </button>
                 {isMulti && (
                   <button className="rbg-left__next" onClick={() => {
@@ -811,7 +821,7 @@ const RemoveBackground = () => {
                     const nextIdx = (idx + 1) % images.length;
                     selectImage(images[nextIdx].id);
                   }}>
-                    <i className="fa-solid fa-forward"></i> Next Image
+                    <i className="fa-solid fa-forward"></i> {t('removeBg.nextImage')}
                   </button>
                 )}
               </div>
@@ -824,7 +834,7 @@ const RemoveBackground = () => {
         <div className={`rbg-right ${mobileToolsOpen ? 'rbg-right--open' : ''}`}>
           <div className="rbg-right__sticky">
             <div className="rbg-right__header">
-              <h3><i className="fa-solid fa-eraser"></i> Background Remover</h3>
+              <h3><i className="fa-solid fa-eraser"></i> {t('removeBg.backgroundRemover')}</h3>
               <button className="rbg-right__close" onClick={() => setMobileToolsOpen(false)} aria-label="Close panel">
                 <i className="fa-solid fa-xmark"></i>
               </button>
@@ -833,11 +843,11 @@ const RemoveBackground = () => {
             {/* Stats */}
             <div className="rbg-right__stats">
               <div className="rbg-stat">
-                <span className="rbg-stat__label">Images</span>
+                <span className="rbg-stat__label">{t('common.images')}</span>
                 <span className="rbg-stat__value">{images.length}</span>
               </div>
               <div className="rbg-stat">
-                <span className="rbg-stat__label">Size</span>
+                <span className="rbg-stat__label">{t('common.size')}</span>
                 <span className="rbg-stat__value">{fmtSize(totalSize)}</span>
               </div>
             </div>
@@ -845,7 +855,7 @@ const RemoveBackground = () => {
             {/* Progress */}
             {images.length > 0 && (
               <div className="rbg-right__progress">
-                <span className="rbg-right__progress-label">Processing Progress</span>
+                <span className="rbg-right__progress-label">{t('removeBg.processingProgress')}</span>
                 <div className="rbg-progress-bar">
                   <div
                     className="rbg-progress-bar__fill"
@@ -854,10 +864,10 @@ const RemoveBackground = () => {
                 </div>
                 <span className="rbg-right__progress-status">
                   {processingCount > 0
-                    ? `Processing ${processingCount} image${processingCount > 1 ? 's' : ''}…`
+                    ? t('removeBg.processingNImages').replace('{n}', processingCount)
                     : doneCount === images.length
-                    ? `All ${doneCount} image${doneCount > 1 ? 's' : ''} processed!`
-                    : `${doneCount} / ${images.length} done`
+                    ? t('removeBg.allNProcessed').replace('{n}', doneCount)
+                    : t('removeBg.nOfTotalDone').replace('{n}', doneCount).replace('{total}', images.length)
                   }
                 </span>
               </div>
@@ -867,29 +877,29 @@ const RemoveBackground = () => {
             {selected && (
               <div className="rbg-right__info">
                 <div className="rbg-info-row">
-                  <span className="rbg-info-row__label">File Name</span>
+                  <span className="rbg-info-row__label">{t('removeBg.fileName')}</span>
                   <span className="rbg-info-row__value" style={{ maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {selected.file.name}
                   </span>
                 </div>
                 <div className="rbg-info-row">
-                  <span className="rbg-info-row__label">Dimensions</span>
+                  <span className="rbg-info-row__label">{t('removeBg.dimensions')}</span>
                   <span className="rbg-info-row__value">{selected.origW} × {selected.origH}</span>
                 </div>
                 <div className="rbg-info-row">
-                  <span className="rbg-info-row__label">Size</span>
+                  <span className="rbg-info-row__label">{t('common.size')}</span>
                   <span className="rbg-info-row__value">{fmtSize(selected.file.size)}</span>
                 </div>
                 <div className="rbg-info-row">
-                  <span className="rbg-info-row__label">Type</span>
+                  <span className="rbg-info-row__label">{t('common.type')}</span>
                   <span className="rbg-info-row__value">{getExt(selected.file.name)}</span>
                 </div>
                 <div className="rbg-info-row">
-                  <span className="rbg-info-row__label">Status</span>
+                  <span className="rbg-info-row__label">{t('removeBg.status')}</span>
                   <span className="rbg-info-row__value" style={{
                     color: selected.status === 'done' ? '#10b981' : selected.status === 'processing' ? '#f59e0b' : selected.status === 'error' ? '#ef4444' : '#94a3b8'
                   }}>
-                    {selected.status === 'done' ? '✓ Done' : selected.status === 'processing' ? '⏳ Processing' : selected.status === 'error' ? '✗ Error' : '⏸ Pending'}
+                    {selected.status === 'done' ? t('removeBg.statusDone') : selected.status === 'processing' ? t('removeBg.statusProcessing') : selected.status === 'error' ? t('removeBg.statusError') : t('removeBg.statusPending')}
                   </span>
                 </div>
               </div>
@@ -897,7 +907,7 @@ const RemoveBackground = () => {
 
             {/* Add More Images */}
             <button className="rbg-right__add" onClick={() => addFileInputRef.current?.click()}>
-              <i className="fa-solid fa-plus"></i> Add More Images
+              <i className="fa-solid fa-plus"></i> {t('common.addMoreImages')}
             </button>
             <input
               ref={addFileInputRef}
@@ -911,19 +921,19 @@ const RemoveBackground = () => {
             {/* Download mode */}
             {images.length > 1 && (
               <div className="rbg-right__dl-mode">
-                <label>Download as:</label>
+                <label>{t('common.downloadAs')}:</label>
                 <div className="rbg-dl-toggle">
                   <button
                     className={`rbg-dl-toggle__btn ${downloadMode === 'zip' ? 'active' : ''}`}
                     onClick={() => setDownloadMode('zip')}
                   >
-                    <i className="fa-solid fa-file-zipper"></i> ZIP
+                    <i className="fa-solid fa-file-zipper"></i> {t('common.zip')}
                   </button>
                   <button
                     className={`rbg-dl-toggle__btn ${downloadMode === 'separate' ? 'active' : ''}`}
                     onClick={() => setDownloadMode('separate')}
                   >
-                    <i className="fa-regular fa-copy"></i> Separate
+                    <i className="fa-regular fa-copy"></i> {t('common.separate')}
                   </button>
                 </div>
               </div>
@@ -931,7 +941,7 @@ const RemoveBackground = () => {
 
             {/* Start Over */}
             <button className="rbg-right__reset" onClick={handleStartOver}>
-              <i className="fa-solid fa-arrow-rotate-left"></i> Start Over
+              <i className="fa-solid fa-arrow-rotate-left"></i> {t('common.startOver')}
             </button>
 
             {/* Sticky download */}
@@ -944,11 +954,11 @@ const RemoveBackground = () => {
                 {downloading ? (
                   <>
                     <span className="rbg-download-spinner"></span>
-                    Downloading…
+                    {t('removeBg.downloading')}
                   </>
                 ) : (
                   <>
-                    <i className="fa-solid fa-download"></i> Download{images.length > 1 ? ' All' : ''}
+                    <i className="fa-solid fa-download"></i> {t('common.download')}{images.length > 1 ? ` ${t('converter.all')}` : ''}
                   </>
                 )}
               </button>

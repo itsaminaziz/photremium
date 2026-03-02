@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './ImageConverter.css';
 
 /* ---- helpers ---- */
@@ -137,6 +139,7 @@ const getSourceFormat = (file) => {
 /* ============================================= */
 const ImageConverter = () => {
   const { conversionType } = useParams();
+  const { t, localePath } = useLanguage();
   const routeInfo = conversionType ? CONVERSION_ROUTES[conversionType] : null;
 
   const [images, setImages] = useState([]);
@@ -191,6 +194,16 @@ const ImageConverter = () => {
     document.addEventListener('paste', handler);
     return () => document.removeEventListener('paste', handler);
   }, [addFiles]);
+
+  /* --- hide footer when editing --- */
+  useEffect(() => {
+    if (images.length > 0) {
+      document.body.classList.add('ic-workspace-active');
+    } else {
+      document.body.classList.remove('ic-workspace-active');
+    }
+    return () => document.body.classList.remove('ic-workspace-active');
+  }, [images.length]);
 
   /* --- convert all images --- */
   const convertAll = async () => {
@@ -294,7 +307,7 @@ const ImageConverter = () => {
 
   /* --- start over --- */
   const handleStartOver = () => {
-    const confirmed = window.confirm('Are you sure you want to remove all images and start over?');
+    const confirmed = window.confirm(t('common.startOverConfirm'));
     if (!confirmed) return;
     images.forEach((i) => URL.revokeObjectURL(i.preview));
     setImages([]);
@@ -317,13 +330,13 @@ const ImageConverter = () => {
   /* --- SEO data --- */
   const seoTitle = routeInfo
     ? `${routeInfo.title} — Free Online | favIMG`
-    : 'Image Converter — Convert PNG, JPG, WEBP, GIF, SVG Online Free | favIMG';
+    : t('converter.seo.uploadTitle');
   const seoDesc = routeInfo
     ? routeInfo.desc
-    : 'Convert images between JPG, PNG, WEBP, GIF, SVG, TIFF, BMP and more. Free online image format converter — fast, private, no signup required.';
+    : t('converter.seo.uploadDesc');
   const seoKeywords = routeInfo
     ? `${routeInfo.title.toLowerCase()}, convert ${routeInfo.from.toLowerCase()} to ${currentFormatLabel.toLowerCase()}, free image converter`
-    : 'image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online';
+    : t('converter.seo.uploadKeywords');
 
   /* =========================== UPLOAD VIEW =========================== */
   if (!images.length) {
@@ -333,12 +346,12 @@ const ImageConverter = () => {
         <section className="conv-upload">
           <div className="conv-upload__inner">
             <h1 className="conv-upload__title">
-              {routeInfo ? routeInfo.title : 'Image Converter'}
+              {routeInfo ? routeInfo.title : t('converter.title')}
             </h1>
             <p className="conv-upload__desc">
               {routeInfo
                 ? routeInfo.desc
-                : 'Convert images between JPG, PNG, WEBP, GIF, SVG, TIFF, BMP and more. Batch convert multiple files at once — fast, private, runs entirely in your browser.'}
+                : t('converter.desc')}
             </p>
 
             <div
@@ -350,13 +363,13 @@ const ImageConverter = () => {
               <div className="conv-dropzone__cloud">
                 <i className="fa-solid fa-cloud-arrow-up"></i>
               </div>
-              <h3>Drop your images here</h3>
-              <p>or <span className="conv-dropzone__browse" onClick={() => fileInputRef.current?.click()}>browse files</span> to convert</p>
+              <h3>{t('common.dropHere')}</h3>
+              <p>{t('common.or')} <span className="conv-dropzone__browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('converter.toConvert')}</p>
               <p className="conv-dropzone__hint">
-                <i className="fa-regular fa-keyboard"></i> You can also paste images with <kbd>Ctrl</kbd> + <kbd>V</kbd>
+                <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
               <button className="conv-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> Choose Files
+                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
               </button>
               <input
                 ref={fileInputRef}
@@ -370,10 +383,10 @@ const ImageConverter = () => {
 
             {/* Quick conversion links for SEO */}
             <div className="conv-quick-links">
-              <h3>Popular Conversions</h3>
+              <h3>{t('converter.popularConversions')}</h3>
               <div className="conv-quick-links__grid">
                 {Object.entries(CONVERSION_ROUTES).slice(0, 12).map(([slug, info]) => (
-                  <Link key={slug} to={`/convert/${slug}`} className="conv-quick-link">
+                  <Link key={slug} to={localePath(`/convert/${slug}`)} className="conv-quick-link">
                     <i className="fa-solid fa-right-left"></i> {info.title.replace(' Converter', '')}
                   </Link>
                 ))}
@@ -381,6 +394,8 @@ const ImageConverter = () => {
             </div>
           </div>
         </section>
+
+        <FAQ faqKey="imageConverter" />
       </>
     );
   }
@@ -388,7 +403,7 @@ const ImageConverter = () => {
   /* =========================== WORKSPACE VIEW =========================== */
   return (
     <>
-      <SEO title={`Converting to ${currentFormatLabel} — favIMG Image Converter`} description={seoDesc} keywords={seoKeywords} />
+      <SEO title={`${t('converter.convertingTo')} ${currentFormatLabel} — favIMG ${t('converter.title')}`} description={seoDesc} keywords={seoKeywords} />
 
       <section className="conv-workspace">
         {/* Mobile settings toggle */}
@@ -432,12 +447,19 @@ const ImageConverter = () => {
 
                   {img.convertedBlob && (
                     <button className="conv-card__dl" onClick={() => downloadSingle(img)}>
-                      <i className="fa-solid fa-download"></i> Download
+                      <i className="fa-solid fa-download"></i> {t('common.download')}
                     </button>
                   )}
                 </div>
               </div>
             ))}
+            {/* +Add Image card */}
+            <div className="conv-card conv-card--add" onClick={() => addFileInputRef.current?.click()} title={t('common.addMoreImages')}>
+              <div className="conv-card__add-inner">
+                <i className="fa-solid fa-plus"></i>
+                <span>{t('common.addImage')}</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -447,28 +469,28 @@ const ImageConverter = () => {
         >
           <div className="conv-right__sticky">
             <div className="conv-right__header">
-              <h3><i className="fa-solid fa-right-left"></i> Convert Settings</h3>
+              <h3><i className="fa-solid fa-right-left"></i> {t('converter.convertSettings')}</h3>
             </div>
 
             {/* Summary stats */}
             <div className="conv-right__stats">
               <div className="conv-stat">
-                <span className="conv-stat__label">Images</span>
+                <span className="conv-stat__label">{t('common.images')}</span>
                 <span className="conv-stat__value">{images.length}</span>
               </div>
               <div className="conv-stat">
-                <span className="conv-stat__label">Total Size</span>
+                <span className="conv-stat__label">{t('common.totalSize')}</span>
                 <span className="conv-stat__value">{fmtSize(totalOriginal)}</span>
               </div>
               <div className="conv-stat">
-                <span className="conv-stat__label">Detected</span>
+                <span className="conv-stat__label">{t('converter.detected')}</span>
                 <span className="conv-stat__value">{detectedFormats.join(', ')}</span>
               </div>
             </div>
 
             {/* Output format selector */}
             <div className="conv-right__format">
-              <label>Convert to:</label>
+              <label>{t('converter.convertTo')}:</label>
               <div className="conv-format-grid">
                 {OUTPUT_FORMATS.map((fmt) => (
                   <button
@@ -484,7 +506,7 @@ const ImageConverter = () => {
 
             {/* Add more images */}
             <button className="conv-right__add" onClick={() => addFileInputRef.current?.click()}>
-              <i className="fa-solid fa-plus"></i> Add More Images
+              <i className="fa-solid fa-plus"></i> {t('common.addMoreImages')}
             </button>
             <input
               ref={addFileInputRef}
@@ -498,49 +520,52 @@ const ImageConverter = () => {
             {/* Download mode selector */}
             {images.length > 1 && (
               <div className="conv-right__dl-mode">
-                <label>Download as:</label>
+                <label>{t('common.downloadAs')}:</label>
                 <div className="conv-dl-toggle">
                   <button
                     className={`conv-dl-toggle__btn ${downloadMode === 'zip' ? 'active' : ''}`}
                     onClick={() => setDownloadMode('zip')}
                   >
-                    <i className="fa-solid fa-file-zipper"></i> ZIP
+                    <i className="fa-solid fa-file-zipper"></i> {t('common.zip')}
                   </button>
                   <button
                     className={`conv-dl-toggle__btn ${downloadMode === 'separate' ? 'active' : ''}`}
                     onClick={() => setDownloadMode('separate')}
                   >
-                    <i className="fa-regular fa-copy"></i> Separate
+                    <i className="fa-regular fa-copy"></i> {t('common.separate')}
                   </button>
                 </div>
               </div>
             )}
 
-            {/* Convert & Download button */}
-            <button
-              className="conv-right__download"
-              onClick={allConverted ? downloadAll : convertAll}
-              disabled={converting}
-            >
-              {converting ? (
-                <>
-                  <span className="conv-download-spinner"></span>
-                  Converting…
-                </>
-              ) : allConverted ? (
-                <>
-                  <i className="fa-solid fa-download"></i> Download {images.length > 1 ? 'All' : ''}
-                </>
-              ) : (
-                <>
-                  <i className="fa-solid fa-bolt"></i> Convert to {currentFormatLabel}
-                </>
-              )}
+            {/* Start Over */}
+            <button className="conv-right__reset" onClick={handleStartOver}>
+              <i className="fa-solid fa-arrow-rotate-left"></i> {t('common.startOver')}
             </button>
 
-            <button className="conv-right__reset" onClick={handleStartOver}>
-              <i className="fa-solid fa-arrow-rotate-left"></i> Start Over
-            </button>
+            {/* Convert & Download button */}
+            <div className="conv-right__actions">
+              <button
+                className="conv-right__download"
+                onClick={allConverted ? downloadAll : convertAll}
+                disabled={converting}
+              >
+                {converting ? (
+                  <>
+                    <span className="conv-download-spinner"></span>
+                    {t('converter.converting')}
+                  </>
+                ) : allConverted ? (
+                  <>
+                    <i className="fa-solid fa-download"></i> {t('common.download')} {images.length > 1 ? t('converter.all') : ''}
+                  </>
+                ) : (
+                  <>
+                    <i className="fa-solid fa-bolt"></i> {t('converter.convertTo')} {currentFormatLabel}
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </section>

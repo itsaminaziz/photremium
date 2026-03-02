@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './ImageCompressor.css';
 
 /* ---- helpers ---- */
@@ -38,6 +40,7 @@ const compressImage = (file, qualityRatio) =>
 /*            IMAGE COMPRESSOR PAGE              */
 /* ============================================= */
 const ImageCompressor = () => {
+  const { t } = useLanguage();
   /*
    * "compression" = how much smaller the file should become.
    *  30 means "reduce by 30%" → canvas quality = 0.70
@@ -143,18 +146,48 @@ const ImageCompressor = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [unprocessedKey]);
 
-  /* --- global compression change --- */
-  const handleGlobalCompression = (val) => {
-    const c = Number(val);
+  /* --- hide footer when editing --- */
+  useEffect(() => {
+    if (images.length > 0) {
+      document.body.classList.add('comp-workspace-active');
+    } else {
+      document.body.classList.remove('comp-workspace-active');
+    }
+    return () => document.body.classList.remove('comp-workspace-active');
+  }, [images.length]);
+
+  /* --- global compression change (visual only while dragging) --- */
+  const handleGlobalCompressionDrag = (val) => {
+    const c = parseFloat(val);
+    setGlobalCompression(c);
+    // Update displayed value only — no recompression yet
+    setImages((prev) =>
+      prev.map((img) => ({ ...img, compression: c }))
+    );
+  };
+
+  /* --- global compression commit (triggers compression on release) --- */
+  const handleGlobalCompressionCommit = (e) => {
+    const c = Math.round(parseFloat(e.target.value));
     setGlobalCompression(c);
     setImages((prev) =>
       prev.map((img) => ({ ...img, compression: c, compressedBlob: null, compressedSize: null }))
     );
   };
 
-  /* --- individual compression --- */
-  const handleCompression = (id, val) => {
-    const c = Number(val);
+  /* --- individual compression drag (visual only) --- */
+  const handleCompressionDrag = (id, val) => {
+    const c = parseFloat(val);
+    setImages((prev) =>
+      prev.map((img) =>
+        img.id === id ? { ...img, compression: c } : img
+      )
+    );
+  };
+
+  /* --- individual compression commit (triggers compression on release) --- */
+  const handleCompressionCommit = (id, val) => {
+    const c = Math.round(parseFloat(val));
     setImages((prev) =>
       prev.map((img) =>
         img.id === id ? { ...img, compression: c, compressedBlob: null, compressedSize: null } : img
@@ -230,7 +263,7 @@ const ImageCompressor = () => {
 
   /* --- start over with confirmation --- */
   const handleStartOver = () => {
-    const confirmed = window.confirm('Are you sure you want to remove all images and start over?');
+    const confirmed = window.confirm(t('common.startOverConfirm'));
     if (!confirmed) return;
     images.forEach((i) => URL.revokeObjectURL(i.preview));
     setImages([]);
@@ -255,16 +288,16 @@ const ImageCompressor = () => {
     return (
       <>
         <SEO
-          title="Image Compressor — Compress JPG, PNG, SVG, GIF Online Free | favIMG"
-          description="Compress JPG, PNG, SVG and GIF images online for free. Reduce file size by up to 80% while maintaining visual quality. No signup required."
-          keywords="image compressor, compress jpg, compress png, reduce image size, image optimization, compress photos online free"
+          title={t('compressor.seo.uploadTitle')}
+          description={t('compressor.seo.uploadDesc')}
+          keywords={t('compressor.seo.uploadKeywords')}
         />
 
         <section className="comp-upload">
           <div className="comp-upload__inner">
-            <h1 className="comp-upload__title">Image Compressor</h1>
+            <h1 className="comp-upload__title">{t('compressor.title')}</h1>
             <p className="comp-upload__desc">
-              Compress JPG, PNG &amp; GIF images up to 80% smaller. Fast, private — runs entirely in your browser.
+              {t('compressor.desc')}
             </p>
 
             <div
@@ -276,13 +309,13 @@ const ImageCompressor = () => {
               <div className="comp-dropzone__cloud">
                 <i className="fa-solid fa-cloud-arrow-up"></i>
               </div>
-              <h3>Drop your images here</h3>
-              <p>or <span className="comp-dropzone__browse" onClick={() => fileInputRef.current?.click()}>browse files</span> to compress</p>
+              <h3>{t('common.dropHere')}</h3>
+              <p>{t('common.or')} <span className="comp-dropzone__browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('compressor.toCompress')}</p>
               <p className="comp-dropzone__hint">
-                <i className="fa-regular fa-keyboard"></i> You can also paste images with <kbd>Ctrl</kbd> + <kbd>V</kbd>
+                <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
               <button className="comp-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> Choose Files
+                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
               </button>
               <input
                 ref={fileInputRef}
@@ -295,6 +328,8 @@ const ImageCompressor = () => {
             </div>
           </div>
         </section>
+
+        <FAQ faqKey="imageCompressor" />
       </>
     );
   }
@@ -303,9 +338,9 @@ const ImageCompressor = () => {
   return (
     <>
       <SEO
-        title="Compressing Images — favIMG Image Compressor"
-        description="Adjust compression level and download your optimized images. Real-time preview and size estimation."
-        keywords="compress images, image compression slider, bulk compress images, image optimization tool"
+        title={t('compressor.seo.workspaceTitle')}
+        description={t('compressor.seo.workspaceDesc')}
+        keywords={t('compressor.seo.workspaceKeywords')}
       />
 
       <section className="comp-workspace">
@@ -328,15 +363,18 @@ const ImageCompressor = () => {
           {/* Global slider */}
           <div className="comp-global-bar">
             <div className="comp-global-bar__label">
-              <span><i className="fa-solid fa-sliders"></i> Compression for all images</span>
-              <strong>{globalCompression}%</strong>
+              <span><i className="fa-solid fa-sliders"></i> {t('compressor.compressionForAll')}</span>
+              <strong>{Math.round(globalCompression)}%</strong>
             </div>
             <input
               type="range"
               min="1"
               max="99"
+              step="0.1"
               value={globalCompression}
-              onChange={(e) => handleGlobalCompression(e.target.value)}
+              onChange={(e) => handleGlobalCompressionDrag(e.target.value)}
+              onMouseUp={(e) => handleGlobalCompressionCommit(e)}
+              onTouchEnd={(e) => handleGlobalCompressionCommit(e)}
               className="comp-slider comp-slider--global"
             />
           </div>
@@ -350,7 +388,7 @@ const ImageCompressor = () => {
 
               return (
                 <div className="comp-card" key={img.id}>
-                  <button className="comp-card__remove" title="Remove" onClick={() => removeImage(img.id)}>
+                  <button className="comp-card__remove" title={t('common.remove')} onClick={() => removeImage(img.id)}>
                     <i className="fa-solid fa-xmark"></i>
                   </button>
 
@@ -376,24 +414,34 @@ const ImageCompressor = () => {
                     </div>
 
                     <div className="comp-card__slider-row">
-                      <label>Compression: <strong>{img.compression}%</strong></label>
+                      <label>{t('compressor.compressionLabel')} <strong>{Math.round(img.compression)}%</strong></label>
                       <input
                         type="range"
                         min="1"
                         max="99"
+                        step="0.1"
                         value={img.compression}
-                        onChange={(e) => handleCompression(img.id, e.target.value)}
+                        onChange={(e) => handleCompressionDrag(img.id, e.target.value)}
+                        onMouseUp={(e) => handleCompressionCommit(img.id, e.target.value)}
+                        onTouchEnd={(e) => handleCompressionCommit(img.id, e.target.value)}
                         className="comp-slider"
                       />
                     </div>
 
                     <button className="comp-card__dl" onClick={() => downloadSingle(img)} disabled={!img.compressedBlob}>
-                      <i className="fa-solid fa-download"></i> Download
+                      <i className="fa-solid fa-download"></i> {t('common.download')}
                     </button>
                   </div>
                 </div>
               );
             })}
+            {/* +Add Image card */}
+            <div className="comp-card comp-card--add" onClick={() => addFileInputRef.current?.click()} title={t('common.addMoreImages')}>
+              <div className="comp-card__add-inner">
+                <i className="fa-solid fa-plus"></i>
+                <span>{t('common.addImage')}</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -401,20 +449,20 @@ const ImageCompressor = () => {
         <div className={`comp-right ${mobileToolsOpen ? 'comp-right--open' : ''}`}>
           <div className="comp-right__sticky">
             <div className="comp-right__header">
-              <h3><i className="fa-solid fa-images"></i> Summary</h3>
+              <h3><i className="fa-solid fa-images"></i> {t('compressor.summary')}</h3>
             </div>
 
             <div className="comp-right__stats">
               <div className="comp-stat">
-                <span className="comp-stat__label">Images</span>
+                <span className="comp-stat__label">{t('common.images')}</span>
                 <span className="comp-stat__value">{images.length}</span>
               </div>
               <div className="comp-stat">
-                <span className="comp-stat__label">Original Size</span>
+                <span className="comp-stat__label">{t('compressor.originalSize')}</span>
                 <span className="comp-stat__value">{fmtSize(totalOriginal)}</span>
               </div>
               <div className="comp-stat">
-                <span className="comp-stat__label">Compressed</span>
+                <span className="comp-stat__label">{t('compressor.compressed')}</span>
                 {allCompressed ? (
                   <span className="comp-stat__value comp-stat__value--green">{fmtSize(totalCompressed)}</span>
                 ) : (
@@ -422,7 +470,7 @@ const ImageCompressor = () => {
                 )}
               </div>
               <div className="comp-stat">
-                <span className="comp-stat__label">Saved</span>
+                <span className="comp-stat__label">{t('compressor.saved')}</span>
                 {allCompressed ? (
                   <span className="comp-stat__value comp-stat__value--green">{savedPercent}%</span>
                 ) : (
@@ -432,7 +480,7 @@ const ImageCompressor = () => {
             </div>
 
             <button className="comp-right__add" onClick={() => addFileInputRef.current?.click()}>
-              <i className="fa-solid fa-plus"></i> Add More Images
+              <i className="fa-solid fa-plus"></i> {t('common.addMoreImages')}
             </button>
             <input
               ref={addFileInputRef}
@@ -445,13 +493,13 @@ const ImageCompressor = () => {
 
             {/* Download mode */}
             <div className="comp-right__mode">
-              <label>Download as:</label>
+              <label>{t('common.downloadAs')}</label>
               <div className="comp-right__mode-btns">
                 <button className={downloadMode === 'zip' ? 'active' : ''} onClick={() => setDownloadMode('zip')}>
-                  <i className="fa-solid fa-file-zipper"></i> ZIP
+                  <i className="fa-solid fa-file-zipper"></i> {t('common.zip')}
                 </button>
                 <button className={downloadMode === 'separate' ? 'active' : ''} onClick={() => setDownloadMode('separate')}>
-                  <i className="fa-regular fa-copy"></i> Separate
+                  <i className="fa-regular fa-copy"></i> {t('common.separate')}
                 </button>
               </div>
             </div>
@@ -460,17 +508,17 @@ const ImageCompressor = () => {
               {!allCompressed ? (
                 <>
                   <span className="comp-download-spinner"></span>
-                  Compressing…
+                  {t('compressor.compressing')}
                 </>
               ) : (
                 <>
-                  <i className="fa-solid fa-bolt"></i> Compress &amp; Download
+                  <i className="fa-solid fa-bolt"></i> {t('compressor.compressDownload')}
                 </>
               )}
             </button>
 
             <button className="comp-right__reset" onClick={handleStartOver}>
-              <i className="fa-solid fa-arrow-rotate-left"></i> Start Over
+              <i className="fa-solid fa-arrow-rotate-left"></i> {t('common.startOver')}
             </button>
           </div>
         </div>

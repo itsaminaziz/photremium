@@ -189,7 +189,7 @@
   width: 100%;
   padding: 12px 14px;
   border: 2px solid #e5e7eb;
-  border-radius: 10px;
+  border-radius: 0;
   font-size: 0.95rem;
   color: #1e1b4b;
   font-family: 'Inter', sans-serif;
@@ -1247,4 +1247,15 @@
   .qr-logo-grid {
     grid-template-columns: repeat(auto-fill, minmax(62px, 1fr));
   }
+}
+
+/* ---- Footer hiding when workspace active ---- */
+body.qrg-workspace-active footer,
+body.qrg-workspace-active .footer {
+  display: none !important;
+}
+
+body.qrg-workspace-active .main-content {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }

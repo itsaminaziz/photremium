@@ -1,13 +1,17 @@
 import React from 'react';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './Pages.css';
 
-const PhotoEditor = () => (
+const PhotoEditor = () => {
+  const { t } = useLanguage();
+  return (
   <>
     <SEO
-      title="Photo Editor Online — Edit Images Free with Text, Effects & Frames | favIMG"
-      description="Edit photos online for free — add text, effects, frames, stickers and more. Simple yet powerful image editing tools right in your browser."
-      keywords="photo editor, online photo editor, edit photo online free, add text to image, image effects, photo frames"
+      title={t('photoEditor.seo.title')}
+      description={t('photoEditor.seo.desc')}
+      keywords={t('photoEditor.seo.keywords')}
     />
     <section className="page-section">
       <div className="page-container">
@@ -15,38 +19,41 @@ const PhotoEditor = () => (
           <div className="product-hero__icon" style={{ background: '#fdf2f8', color: '#ec4899' }}>
             <i className="fa-solid fa-pen-to-square"></i>
           </div>
-          <h1>Photo Editor</h1>
+          <h1>{t('photoEditor.title')}</h1>
           <p>
-            Spice up your pictures with text, effects, frames and stickers. Simple editing tools for all your image needs.
+            {t('photoEditor.desc')}
           </p>
         </div>
 
         <div className="upload-area">
           <div className="upload-area__icon"><i className="fa-solid fa-cloud-arrow-up"></i></div>
-          <h3>Drop your images here</h3>
-          <p>or <span>browse files</span> to edit</p>
+          <h3>{t('common.dropHere')}</h3>
+          <p>{t('common.or')} <span>{t('common.browseFiles')}</span> {t('photoEditor.toEdit')}</p>
         </div>
 
         <div className="features-list">
           <div className="feature-item">
             <i className="fa-solid fa-font"></i>
-            <h4>Text & Typography</h4>
-            <p>Add custom text with various fonts, colors, shadows and positioning options.</p>
+            <h4>{t('photoEditor.textTypography')}</h4>
+            <p>{t('photoEditor.textTypographyDesc')}</p>
           </div>
           <div className="feature-item">
             <i className="fa-solid fa-wand-magic-sparkles"></i>
-            <h4>Filters & Effects</h4>
-            <p>Apply professional filters, adjust brightness, contrast, saturation and more.</p>
+            <h4>{t('photoEditor.filtersEffects')}</h4>
+            <p>{t('photoEditor.filtersEffectsDesc')}</p>
           </div>
           <div className="feature-item">
             <i className="fa-solid fa-border-all"></i>
-            <h4>Frames & Stickers</h4>
-            <p>Choose from beautiful frames and fun stickers to enhance your images.</p>
+            <h4>{t('photoEditor.framesStickers')}</h4>
+            <p>{t('photoEditor.framesStickersDesc')}</p>
           </div>
         </div>
       </div>
     </section>
+
+    <FAQ faqKey="photoEditor" />
   </>
-);
+  );
+};
 
 export default PhotoEditor;

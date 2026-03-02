@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import SEO from '../SEO/SEO';
+import FAQ from '../FAQ/FAQ';
+import { useLanguage } from '../../context/LanguageContext';
 import './FaceBlur.css';
 
 /* ---- helpers ---- */
@@ -23,112 +25,8 @@ const loadImage = (file) =>
 
 const EMOJIS = ['😀', '😎', '🤡', '👽', '🐱', '🐶', '🦊', '🐸', '💀', '🎭', '⭐', '❤️'];
 
-/* ---- stackBlur (fast Gaussian-like blur) ---- */
-const stackBlur = (imgData, radius) => {
-  const w = imgData.width, h = imgData.height;
-  const px = imgData.data;
-  if (radius < 1) return;
-  const wm = w - 1, hm = h - 1, div = radius + radius + 1;
-  const rSum = new Int32Array(w * h), gSum = new Int32Array(w * h), bSum = new Int32Array(w * h);
-  let rowI, p, p1, p2, yi = 0; // eslint-disable-line no-unused-vars
-  const mulTable = [512,512,456,512,328,456,335,512,405,328,271,456,388,335,292,512,
-    454,405,364,328,298,271,496,456,420,388,360,335,312,292,273,512,
-    482,454,428,405,383,364,345,328,312,298,284,271,259,496,475,456,
-    437,420,404,388,374,360,347,335,323,312,302,292,282,273,265,512,
-    497,482,468,454,441,428,417,405,394,383,373,364,354,345,337,328,
-    320,312,305,298,291,284,278,271,265,259,507,496,485,475,465,456,
-    446,437,428,420,412,404,396,388,381,374,367,360,354,347,341,335,
-    329,323,318,312,307,302,297,292,287,282,278,273,269,265,261,512,
-    505,497,489,482,475,468,461,454,447,441,435,428,422,417,411,405,
-    399,394,389,383,378,373,368,364,359,354,350,345,341,337,332,328,
-    324,320,316,312,309,305,301,298,294,291,287,284,281,278,274,271,
-    268,265,262,259,257,507,501,496,491,485,480,475,470,465,460,456,
-    451,446,442,437,433,428,424,420,416,412,408,404,400,396,392,388,
-    385,381,377,374,370,367,363,360,357,354,350,347,344,341,338,335,
-    332,329,326,323,320,318,315,312,310,307,304,302,299,297,294,292,
-    289,287,285,282,280,278,275,273,271,269,267,265,263,261,259];
-  const shgTable = [9,11,12,13,13,14,14,15,15,15,15,16,16,16,16,17,
-    17,17,17,17,17,17,18,18,18,18,18,18,18,18,18,19,
-    19,19,19,19,19,19,19,19,19,19,19,19,19,20,20,20,
-    20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,21,
-    21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,
-    21,21,21,21,21,21,21,21,21,21,22,22,22,22,22,22,
-    22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,
-    22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,23,
-    23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,
-    23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,
-    23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,
-    23,23,23,23,23,24,24,24,24,24,24,24,24,24,24,24,
-    24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,
-    24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,
-    24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,
-    24,24,24,24,24,24,24,24,24,24,24,24,24,24,24];
-  const mulS = mulTable[radius] || 512;
-  const shgS = shgTable[radius] || 24;
-  // horizontal pass
-  for (let y = 0; y < h; y++) {
-    let rS = 0, gS = 0, bS = 0, rIns = 0, gIns = 0, bIns = 0, rOut = 0, gOut = 0, bOut = 0;
-    for (let i = -radius; i <= radius; i++) {
-      p = (yi + Math.min(wm, Math.max(0, i))) * 4;
-      const f = radius + 1 - Math.abs(i);
-      rS += px[p] * f; gS += px[p + 1] * f; bS += px[p + 2] * f;
-      if (i > 0) { rIns += px[p]; gIns += px[p + 1]; bIns += px[p + 2]; }
-      else { rOut += px[p]; gOut += px[p + 1]; bOut += px[p + 2]; }
-    }
-    for (let x = 0; x < w; x++) {
-      rowI = yi + x;
-      rSum[rowI] = (rS * mulS) >>> shgS;
-      gSum[rowI] = (gS * mulS) >>> shgS;
-      bSum[rowI] = (bS * mulS) >>> shgS;
-      rS -= rOut; gS -= gOut; bS -= bOut;
-      p1 = (yi + Math.min(x + radius + 1, wm)) * 4;
-      p2 = (yi + Math.max(x - radius, 0)) * 4;
-      rIns += px[p1]; gIns += px[p1 + 1]; bIns += px[p1 + 2];
-      rOut -= px[p2]; gOut -= px[p2 + 1]; bOut -= px[p2 + 2];
-      rOut += px[p1]; gOut += px[p1 + 1]; bOut += px[p1 + 2];
-      rS += rIns; gS += gIns; bS += bIns;
-      rIns -= px[p2]; gIns -= px[p2 + 1]; bIns -= px[p2 + 2];
-    }
-    yi += w;
-  }
-  // vertical pass
-  for (let x = 0; x < w; x++) {
-    let rS = 0, gS = 0, bS = 0, rIns = 0, gIns = 0, bIns = 0, rOut = 0, gOut = 0, bOut = 0;
-    let yp = -radius * w;
-    for (let i = -radius; i <= radius; i++) {
-      yi = Math.max(0, yp) + x;
-      const f = radius + 1 - Math.abs(i);
-      rS += rSum[yi] * f; gS += gSum[yi] * f; bS += bSum[yi] * f;
-      if (i > 0) { rIns += rSum[yi]; gIns += gSum[yi]; bIns += bSum[yi]; }
-      else { rOut += rSum[yi]; gOut += gSum[yi]; bOut += bSum[yi]; }
-      if (i < hm) yp += w;
-    }
-    yi = x;
-    for (let y = 0; y < h; y++) {
-      p = yi * 4;
-      px[p] = (rS * mulS) >>> shgS;
-      px[p + 1] = (gS * mulS) >>> shgS;
-      px[p + 2] = (bS * mulS) >>> shgS;
-      rS -= rOut; gS -= gOut; bS -= bOut;
-      p1 = x + Math.min(y + radius + 1, hm) * w;
-      p2 = x + Math.max(y - radius, 0) * w;
-      rIns += rSum[p1]; gIns += gSum[p1]; bIns += bSum[p1];
-      rOut -= rSum[p2]; gOut -= gSum[p2]; bOut -= bSum[p2];
-      rOut += rSum[p1]; gOut += gSum[p1]; bOut += bSum[p1];
-      rS += rIns; gS += gIns; bS += bIns;
-      rIns -= rSum[p2]; gIns -= gSum[p2]; bIns -= bSum[p2];
-      yi += w;
-    }
-  }
-  // write back
-  for (let i = 0; i < rSum.length; i++) {
-    p = i * 4;
-    px[p] = rSum[i]; px[p + 1] = gSum[i]; px[p + 2] = bSum[i];
-  }
-};
-
-/* ---- Apply blur / emoji to face regions on canvas ---- */
-const applyBlurToCanvas = (srcCanvas, regions, blurIntensity, blurShape, blurMode, selectedEmoji) => {
+/* ---- Apply blur / emoji to face regions on canvas (smooth CSS filter blur) ---- */
+const applyBlurToCanvas = (srcCanvas, regions, defaultBlurMode, defaultEmoji) => {
   const w = srcCanvas.width, h = srcCanvas.height;
   const out = document.createElement('canvas');
   out.width = w; out.height = h;
@@ -141,43 +39,56 @@ const applyBlurToCanvas = (srcCanvas, regions, blurIntensity, blurShape, blurMod
     const rw = Math.round(r.w * w);
     const rh = Math.round(r.h * h);
     if (rw < 2 || rh < 2) continue;
+    const shape = r.shape || 'rectangle';
+    const regionIntensity = r.intensity != null ? r.intensity : 40;
+    const regionMode = r.blurMode || defaultBlurMode;
+    const regionEmoji = r.emoji || defaultEmoji;
 
-    if (blurMode === 'emoji' && selectedEmoji) {
-      // Draw emoji over face
+    if (regionMode === 'emoji' && regionEmoji) {
       const fontSize = Math.min(rw, rh) * 1.1;
       ctx.font = `${fontSize}px sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(selectedEmoji, rx + rw / 2, ry + rh / 2);
-    } else {
-      // Extract region, blur, put back
-      const pad = 2;
-      const sx = Math.max(0, rx - pad), sy = Math.max(0, ry - pad);
-      const sw = Math.min(w - sx, rw + pad * 2), sh = Math.min(h - sy, rh + pad * 2);
-      const regionData = ctx.getImageData(sx, sy, sw, sh);
-      const radius = Math.max(1, Math.round(blurIntensity * 0.5));
-      // Apply multiple passes for stronger blur
-      const passes = blurIntensity > 50 ? 3 : blurIntensity > 25 ? 2 : 1;
-      for (let p = 0; p < passes; p++) stackBlur(regionData, radius);
-
-      if (blurShape === 'circle') {
-        // Mask to ellipse
-        const cx = sw / 2, cy = sh / 2, a = sw / 2, b = sh / 2;
-        const origData = ctx.getImageData(sx, sy, sw, sh);
-        for (let py = 0; py < sh; py++) {
-          for (let px = 0; px < sw; px++) {
-            const dx = (px - cx) / a, dy = (py - cy) / b;
-            if (dx * dx + dy * dy > 1) {
-              const idx = (py * sw + px) * 4;
-              regionData.data[idx] = origData.data[idx];
-              regionData.data[idx + 1] = origData.data[idx + 1];
-              regionData.data[idx + 2] = origData.data[idx + 2];
-              regionData.data[idx + 3] = origData.data[idx + 3];
-            }
-          }
-        }
+      if (shape === 'circle') {
+        ctx.save();
+        ctx.beginPath();
+        ctx.ellipse(rx + rw / 2, ry + rh / 2, rw / 2, rh / 2, 0, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.fillText(regionEmoji, rx + rw / 2, ry + rh / 2);
+        ctx.restore();
+      } else {
+        ctx.fillText(regionEmoji, rx + rw / 2, ry + rh / 2);
       }
-      ctx.putImageData(regionData, sx, sy);
+    } else {
+      /* Use CSS filter for smooth Gaussian blur */
+      const blurRadius = Math.max(2, Math.round(Math.min(rw, rh) * regionIntensity / 100 * 0.15));
+      /* Create a temp canvas for the region */
+      const tmp = document.createElement('canvas');
+      tmp.width = rw; tmp.height = rh;
+      const tctx = tmp.getContext('2d');
+      /* Draw the region onto temp */
+      tctx.drawImage(srcCanvas, rx, ry, rw, rh, 0, 0, rw, rh);
+      /* Apply CSS filter blur (smooth, GPU-accelerated) */
+      const blurred = document.createElement('canvas');
+      blurred.width = rw; blurred.height = rh;
+      const bctx = blurred.getContext('2d');
+      bctx.filter = `blur(${blurRadius}px)`;
+      /* Draw slightly oversized to avoid edge darkening, then crop */
+      const expand = blurRadius * 2;
+      bctx.drawImage(tmp, -expand, -expand, rw + expand * 2, rh + expand * 2);
+      bctx.filter = 'none';
+
+      if (shape === 'circle') {
+        /* Clip to ellipse */
+        ctx.save();
+        ctx.beginPath();
+        ctx.ellipse(rx + rw / 2, ry + rh / 2, rw / 2, rh / 2, 0, 0, Math.PI * 2);
+        ctx.clip();
+        ctx.drawImage(blurred, rx, ry);
+        ctx.restore();
+      } else {
+        ctx.drawImage(blurred, rx, ry);
+      }
     }
   }
   return out;
@@ -187,12 +98,14 @@ const applyBlurToCanvas = (srcCanvas, regions, blurIntensity, blurShape, blurMod
 /*          FACE BLUR PAGE                       */
 /* ============================================= */
 const FaceBlur = () => {
+  const { t } = useLanguage();
   const [images, setImages] = useState([]);
   const [selectedImgId, setSelectedImgId] = useState(null);
   const [dragOver, setDragOver] = useState(false);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const [downloadMode, setDownloadMode] = useState('zip');
   const [downloading, setDownloading] = useState(false);
+  const [showDownloadDialog, setShowDownloadDialog] = useState(false);
 
   /* Blur settings */
   const [blurIntensity, setBlurIntensity] = useState(40);
@@ -203,14 +116,15 @@ const FaceBlur = () => {
   /* Face regions (normalised 0-1 coords per image) */
   const regionsMapRef = useRef({}); // { imgId: [{x,y,w,h,auto:bool},...] }
   const [regions, setRegions] = useState([]); // current image regions
-  const [detecting, setDetecting] = useState(false);
-  const [detectStatus, setDetectStatus] = useState(''); // '', 'success', 'notfound', 'manual'
 
   /* Manual draw state */
-  const [manualMode, setManualMode] = useState(false);
   const [drawing, setDrawing] = useState(false);
   const [drawStart, setDrawStart] = useState(null);
   const [drawCurrent, setDrawCurrent] = useState(null);
+  const [selectedRegionIdx, setSelectedRegionIdx] = useState(null); // index of region being edited
+  const [draggingRegion, setDraggingRegion] = useState(null); // {idx, startX, startY, origRegion}
+  const [resizingRegion, setResizingRegion] = useState(null); // {idx, handle, startX, startY, origRegion}
+  const [overlayCursor, setOverlayCursor] = useState('default');
 
   /* Refs */
   const fileInputRef = useRef(null);
@@ -243,7 +157,7 @@ const FaceBlur = () => {
   useEffect(() => {
     if (!images.length) return;
     const handler = () => {
-      if (!window.confirm('You have unsaved edits. Leave this page?')) {
+      if (!window.confirm(t('common.unsavedEdits'))) {
         window.history.pushState(null, '', window.location.href);
       }
     };
@@ -299,9 +213,7 @@ const FaceBlur = () => {
     saveRegions();
     const loaded = loadRegions(id);
     setRegions(loaded);
-    setDetectStatus(loaded.length > 0 ? 'success' : '');
     setSelectedImgId(id);
-    setManualMode(false);
   }, [selectedImgId, saveRegions, loadRegions]);
 
   /* ---- remove image ---- */
@@ -317,11 +229,9 @@ const FaceBlur = () => {
         const next = remaining[0];
         setSelectedImgId(next.id);
         setRegions(loadRegions(next.id));
-        setDetectStatus('');
       } else {
         setSelectedImgId(null);
         setRegions([]);
-        setDetectStatus('');
       }
     }
   }, [images, selectedImgId, loadRegions]);
@@ -351,229 +261,217 @@ const FaceBlur = () => {
 
     // If we have regions, apply blur preview
     if (regions.length > 0) {
-      const blurred = applyBlurToCanvas(src, regions, blurIntensity, blurShape, blurMode, selectedEmoji);
+      const blurred = applyBlurToCanvas(src, regions, blurMode, selectedEmoji);
       const ctx = canvas.getContext('2d');
       ctx.drawImage(blurred, 0, 0, dw, dh);
     } else {
       const ctx = canvas.getContext('2d');
       ctx.drawImage(imgEl, 0, 0, dw, dh);
     }
-  }, [selected, regions, blurIntensity, blurShape, blurMode, selectedEmoji]);
+  }, [selected, regions, blurMode, selectedEmoji]);
 
   useEffect(() => { drawCanvas(); }, [drawCanvas]);
 
   /* Save regions whenever they change */
   useEffect(() => { saveRegions(); }, [regions, saveRegions]);
 
-  /* ---- Face detection ---- */
-  const detectFaces = useCallback(async () => { // eslint-disable-line react-hooks/exhaustive-deps
-    if (!selected) return;
-    setDetecting(true);
-    setDetectStatus('');
-
-    const imgEl = imgCacheRef.current[selected.id];
-    if (!imgEl) { setDetecting(false); return; }
-
-    let detected = [];
-
-    // Try browser FaceDetector API (Chrome/Edge)
-    if ('FaceDetector' in window) {
-      try {
-        const detector = new window.FaceDetector({ fastMode: true, maxDetectedFaces: 20 });
-        const faces = await detector.detect(imgEl);
-        detected = faces.map((f) => ({
-          x: f.boundingBox.x / imgEl.naturalWidth,
-          y: f.boundingBox.y / imgEl.naturalHeight,
-          w: f.boundingBox.width / imgEl.naturalWidth,
-          h: f.boundingBox.height / imgEl.naturalHeight,
-          auto: true,
-        }));
-      } catch {
-        /* fallback below */
-      }
+  /* ---- Resize handle hit detection ---- */
+  const HANDLE_SIZE_NORM = 0.025; // normalized size of resize handle hit zone
+  const getResizeHandle = (x, y, r) => {
+    const hs = HANDLE_SIZE_NORM;
+    const handles = [
+      { name: 'nw', hx: r.x, hy: r.y },
+      { name: 'ne', hx: r.x + r.w, hy: r.y },
+      { name: 'sw', hx: r.x, hy: r.y + r.h },
+      { name: 'se', hx: r.x + r.w, hy: r.y + r.h },
+      { name: 'n', hx: r.x + r.w / 2, hy: r.y },
+      { name: 's', hx: r.x + r.w / 2, hy: r.y + r.h },
+      { name: 'w', hx: r.x, hy: r.y + r.h / 2 },
+      { name: 'e', hx: r.x + r.w, hy: r.y + r.h / 2 },
+    ];
+    for (const h of handles) {
+      if (Math.abs(x - h.hx) < hs && Math.abs(y - h.hy) < hs) return h.name;
     }
-
-    // Fallback: skin-color heuristic detection
-    if (detected.length === 0) {
-      try {
-        detected = skinColorDetect(imgEl);
-      } catch {
-        /* ignore */
-      }
-    }
-
-    if (detected.length > 0) {
-      setRegions(detected);
-      setDetectStatus('success');
-    } else {
-      setDetectStatus('notfound');
-      setManualMode(true);
-    }
-    setDetecting(false);
-  }, [selected]);
-
-  /* ---- Skin-color heuristic face detection fallback ---- */
-  const skinColorDetect = (imgEl) => {
-    const tmpCanvas = document.createElement('canvas');
-    const scale = Math.min(1, 400 / Math.max(imgEl.naturalWidth, imgEl.naturalHeight));
-    const w = Math.round(imgEl.naturalWidth * scale);
-    const h = Math.round(imgEl.naturalHeight * scale);
-    tmpCanvas.width = w; tmpCanvas.height = h;
-    const ctx = tmpCanvas.getContext('2d');
-    ctx.drawImage(imgEl, 0, 0, w, h);
-    const data = ctx.getImageData(0, 0, w, h).data;
-
-    // Create skin mask
-    const mask = new Uint8Array(w * h);
-    for (let i = 0; i < data.length; i += 4) {
-      const r = data[i], g = data[i + 1], b = data[i + 2];
-      // Skin color detection in RGB
-      const isSkin = r > 95 && g > 40 && b > 20 &&
-        r > g && r > b &&
-        (r - g) > 15 &&
-        Math.abs(r - g) > 15 &&
-        (r - b) > 15;
-      mask[i / 4] = isSkin ? 1 : 0;
-    }
-
-    // Erode + dilate to clean up
-    const cleaned = erode(dilate(erode(mask, w, h, 2), w, h, 3), w, h, 1);
-
-    // Connected components
-    const labels = new Int32Array(w * h);
-    let nextLabel = 1;
-    const parent = [0];
-    const findRoot = (x) => { while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; } return x; };
-    const union = (a, b) => { a = findRoot(a); b = findRoot(b); if (a !== b) parent[Math.max(a, b)] = Math.min(a, b); };
-
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
-        const idx = y * w + x;
-        if (!cleaned[idx]) continue;
-        const left = x > 0 ? labels[idx - 1] : 0;
-        const up = y > 0 ? labels[idx - w] : 0;
-        if (left && up) { labels[idx] = Math.min(left, up); if (left !== up) union(left, up); }
-        else if (left) labels[idx] = left;
-        else if (up) labels[idx] = up;
-        else { labels[idx] = nextLabel; parent.push(nextLabel); nextLabel++; }
-      }
-    }
-
-    // Second pass: resolve labels
-    for (let i = 0; i < labels.length; i++) { if (labels[i]) labels[i] = findRoot(labels[i]); }
-
-    // Bounding boxes per component
-    const bboxes = {};
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
-        const l = labels[y * w + x];
-        if (!l) continue;
-        if (!bboxes[l]) bboxes[l] = { minX: x, minY: y, maxX: x, maxY: y, count: 0 };
-        const bb = bboxes[l];
-        bb.minX = Math.min(bb.minX, x); bb.minY = Math.min(bb.minY, y);
-        bb.maxX = Math.max(bb.maxX, x); bb.maxY = Math.max(bb.maxY, y);
-        bb.count++;
-      }
-    }
-
-    // Filter: only face-like regions (aspect ratio, size)
-    const minArea = w * h * 0.005;
-    const maxArea = w * h * 0.6;
-    const results = [];
-    for (const key of Object.keys(bboxes)) {
-      const bb = bboxes[key];
-      const bw = bb.maxX - bb.minX;
-      const bh = bb.maxY - bb.minY;
-      const area = bb.count;
-      const aspect = bw / (bh || 1);
-      if (area < minArea || area > maxArea) continue;
-      if (aspect < 0.3 || aspect > 2.5) continue;
-      // Expand bounding box by 30% for padding
-      const padX = bw * 0.3, padY = bh * 0.3;
-      results.push({
-        x: Math.max(0, (bb.minX - padX) / w),
-        y: Math.max(0, (bb.minY - padY) / h),
-        w: Math.min(1, (bw + padX * 2) / w),
-        h: Math.min(1, (bh + padY * 2) / h),
-        auto: true,
-      });
-    }
-    return results;
-  };
-
-  /* Morphology helpers */
-  const erode = (mask, w, h, r) => {
-    const out = new Uint8Array(w * h);
-    for (let y = r; y < h - r; y++) {
-      for (let x = r; x < w - r; x++) {
-        let all = true;
-        outer: for (let dy = -r; dy <= r; dy++) for (let dx = -r; dx <= r; dx++) { if (!mask[(y + dy) * w + (x + dx)]) { all = false; break outer; } }
-        out[y * w + x] = all ? 1 : 0;
-      }
-    }
-    return out;
-  };
-
-  const dilate = (mask, w, h, r) => {
-    const out = new Uint8Array(w * h);
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
-        if (!mask[y * w + x]) continue;
-        for (let dy = -r; dy <= r; dy++) {
-          for (let dx = -r; dx <= r; dx++) {
-            const ny = y + dy, nx = x + dx;
-            if (ny >= 0 && ny < h && nx >= 0 && nx < w) out[ny * w + nx] = 1;
-          }
-        }
-      }
-    }
-    return out;
+    return null;
   };
 
   /* ---- Manual region drawing handlers ---- */
+  const getPointerPos = (e) => {
+    if (e.touches && e.touches.length > 0) {
+      return { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
+    }
+    return { clientX: e.clientX, clientY: e.clientY };
+  };
+
   const handleDrawStart = (e) => {
-    if (!manualMode || !canvasRef.current) return;
+    if (!canvasRef.current) return;
+    const { clientX, clientY } = getPointerPos(e);
     const rect = canvasRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
+    const x = (clientX - rect.left) / rect.width;
+    const y = (clientY - rect.top) / rect.height;
+
+    /* Check if clicking on a resize handle of selected region first */
+    if (selectedRegionIdx != null && regions[selectedRegionIdx]) {
+      const handle = getResizeHandle(x, y, regions[selectedRegionIdx]);
+      if (handle) {
+        setResizingRegion({ idx: selectedRegionIdx, handle, startX: x, startY: y, origRegion: { ...regions[selectedRegionIdx] } });
+        return;
+      }
+    }
+
+    /* Check if clicking on an existing region to drag it */
+    for (let i = regions.length - 1; i >= 0; i--) {
+      const r = regions[i];
+      const rShape = r.shape || 'rectangle';
+      if (rShape === 'circle') {
+        const cx = r.x + r.w / 2, cy = r.y + r.h / 2;
+        const dx = (x - cx) / (r.w / 2), dy = (y - cy) / (r.h / 2);
+        if (dx * dx + dy * dy <= 1) {
+          setSelectedRegionIdx(i);
+          setDraggingRegion({ idx: i, startX: x, startY: y, origRegion: { ...r } });
+          return;
+        }
+      } else {
+        if (x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h) {
+          setSelectedRegionIdx(i);
+          setDraggingRegion({ idx: i, startX: x, startY: y, origRegion: { ...r } });
+          return;
+        }
+      }
+    }
+
+    /* Otherwise start new draw */
+    setSelectedRegionIdx(null);
     setDrawing(true);
     setDrawStart({ x, y });
     setDrawCurrent({ x, y });
   };
 
   const handleDrawMove = (e) => {
-    if (!drawing || !canvasRef.current) return;
+    if (!canvasRef.current) return;
+    const { clientX, clientY } = getPointerPos(e);
     const rect = canvasRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    const y = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+    const x = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    const y = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+
+    /* Resizing an existing region */
+    if (resizingRegion) {
+      const { handle, origRegion: o } = resizingRegion;
+      let nx = o.x, ny = o.y, nw = o.w, nh = o.h;
+      const MIN_SIZE = 0.02;
+      if (handle.includes('w')) { nx = Math.min(x, o.x + o.w - MIN_SIZE); nw = o.x + o.w - nx; }
+      if (handle.includes('e')) { nw = Math.max(MIN_SIZE, x - o.x); }
+      if (handle.includes('n')) { ny = Math.min(y, o.y + o.h - MIN_SIZE); nh = o.y + o.h - ny; }
+      if (handle.includes('s')) { nh = Math.max(MIN_SIZE, y - o.y); }
+      // Clamp to canvas bounds
+      nx = Math.max(0, nx); ny = Math.max(0, ny);
+      nw = Math.min(nw, 1 - nx); nh = Math.min(nh, 1 - ny);
+      setRegions((prev) => prev.map((r, i) =>
+        i === resizingRegion.idx ? { ...r, x: nx, y: ny, w: nw, h: nh } : r
+      ));
+      return;
+    }
+
+    /* Dragging an existing region */
+    if (draggingRegion) {
+      const dx = x - draggingRegion.startX;
+      const dy = y - draggingRegion.startY;
+      const orig = draggingRegion.origRegion;
+      const newX = Math.max(0, Math.min(1 - orig.w, orig.x + dx));
+      const newY = Math.max(0, Math.min(1 - orig.h, orig.y + dy));
+      setRegions((prev) => prev.map((r, i) =>
+        i === draggingRegion.idx ? { ...r, x: newX, y: newY } : r
+      ));
+      return;
+    }
+
+    if (!drawing) {
+      /* Update cursor based on what's under the mouse */
+      const CURSOR_MAP = { nw: 'nw-resize', ne: 'ne-resize', sw: 'sw-resize', se: 'se-resize', n: 'n-resize', s: 's-resize', w: 'w-resize', e: 'e-resize' };
+      if (selectedRegionIdx != null && regions[selectedRegionIdx]) {
+        const handle = getResizeHandle(x, y, regions[selectedRegionIdx]);
+        if (handle) { setOverlayCursor(CURSOR_MAP[handle]); return; }
+      }
+      // Check if over any region
+      let overRegion = false;
+      for (let i = regions.length - 1; i >= 0; i--) {
+        const r = regions[i];
+        const rShape = r.shape || 'rectangle';
+        if (rShape === 'circle') {
+          const cx = r.x + r.w / 2, cy = r.y + r.h / 2;
+          const dx = (x - cx) / (r.w / 2), dy = (y - cy) / (r.h / 2);
+          if (dx * dx + dy * dy <= 1) { overRegion = true; break; }
+        } else {
+          if (x >= r.x && x <= r.x + r.w && y >= r.y && y <= r.y + r.h) { overRegion = true; break; }
+        }
+      }
+      setOverlayCursor(overRegion ? 'move' : 'crosshair');
+      return;
+    }
     setDrawCurrent({ x, y });
   };
 
   const handleDrawEnd = () => {
+    /* Finish resizing */
+    if (resizingRegion) {
+      setResizingRegion(null);
+      return;
+    }
+
+    /* Finish dragging existing region */
+    if (draggingRegion) {
+      setDraggingRegion(null);
+      return;
+    }
+
     if (!drawing || !drawStart || !drawCurrent) { setDrawing(false); return; }
-    const x = Math.min(drawStart.x, drawCurrent.x);
-    const y = Math.min(drawStart.y, drawCurrent.y);
-    const w = Math.abs(drawCurrent.x - drawStart.x);
-    const h = Math.abs(drawCurrent.y - drawStart.y);
-    if (w > 0.02 && h > 0.02) {
-      setRegions((prev) => [...prev, { x, y, w, h, auto: false }]);
-      setDetectStatus('success');
+
+    if (blurShape === 'circle') {
+      /* For circle: use the drawn area to create a circular region */
+      const cx = (drawStart.x + drawCurrent.x) / 2;
+      const cy = (drawStart.y + drawCurrent.y) / 2;
+      const radius = Math.max(Math.abs(drawCurrent.x - drawStart.x), Math.abs(drawCurrent.y - drawStart.y)) / 2;
+      if (radius > 0.01) {
+        setRegions((prev) => [...prev, {
+          x: Math.max(0, cx - radius),
+          y: Math.max(0, cy - radius),
+          w: Math.min(1, radius * 2),
+          h: Math.min(1, radius * 2),
+          auto: false,
+          shape: 'circle',
+          intensity: blurIntensity,
+          blurMode,
+          emoji: selectedEmoji,
+        }]);
+      }
+    } else {
+      const x = Math.min(drawStart.x, drawCurrent.x);
+      const y = Math.min(drawStart.y, drawCurrent.y);
+      const w = Math.abs(drawCurrent.x - drawStart.x);
+      const h = Math.abs(drawCurrent.y - drawStart.y);
+      if (w > 0.02 && h > 0.02) {
+        setRegions((prev) => [...prev, { x, y, w, h, auto: false, shape: 'rectangle', intensity: blurIntensity, blurMode, emoji: selectedEmoji }]);
+      }
     }
     setDrawing(false);
     setDrawStart(null);
     setDrawCurrent(null);
   };
 
+  const handleTouchStart = (e) => { e.preventDefault(); handleDrawStart(e); };
+  const handleTouchMove = (e) => { e.preventDefault(); handleDrawMove(e); };
+  const handleTouchEnd = (e) => { e.preventDefault(); handleDrawEnd(); };
+
   /* ---- Remove single region ---- */
   const removeRegion = (idx) => {
     setRegions((prev) => { const n = [...prev]; n.splice(idx, 1); return n; });
+    setSelectedRegionIdx(null);
   };
 
   /* ---- Clear all regions ---- */
   const clearRegions = () => {
     setRegions([]);
-    setDetectStatus('');
-    setManualMode(false);
+    setSelectedRegionIdx(null);
   };
 
   /* ---- Export single image ---- */
@@ -590,21 +488,23 @@ const FaceBlur = () => {
         src.toBlob((blob) => resolve(blob), 'image/png');
         return;
       }
-      const result = applyBlurToCanvas(src, imgRegions, blurIntensity, blurShape, blurMode, selectedEmoji);
+      const result = applyBlurToCanvas(src, imgRegions, blurMode, selectedEmoji);
       result.toBlob((blob) => resolve(blob), 'image/png');
     });
-  }, [blurIntensity, blurShape, blurMode, selectedEmoji]);
+  }, [blurMode, selectedEmoji]);
 
   /* ---- Download ---- */
-  const handleDownload = useCallback(async () => {
-    if (!images.length) return;
+  const getEditedImages = useCallback(() => {
     saveRegions();
-    setDownloading(true);
+    return images.filter(img => (regionsMapRef.current[img.id] || []).length > 0);
+  }, [images, saveRegions]);
 
+  const performDownload = useCallback(async (imageList) => {
+    if (!imageList.length) return;
+    setDownloading(true);
     try {
-      if (images.length === 1 || downloadMode === 'separate') {
-        // Download each individually
-        for (const img of images) {
+      if (imageList.length === 1 || downloadMode === 'separate') {
+        for (const img of imageList) {
           const blob = await exportImage(img);
           if (!blob) continue;
           const url = URL.createObjectURL(blob);
@@ -616,10 +516,9 @@ const FaceBlur = () => {
           URL.revokeObjectURL(url);
         }
       } else {
-        // ZIP download
         const JSZip = (await import('jszip')).default;
         const zip = new JSZip();
-        for (const img of images) {
+        for (const img of imageList) {
           const blob = await exportImage(img);
           if (!blob) continue;
           const name = img.file.name.replace(/\.[^.]+$/, '');
@@ -635,7 +534,61 @@ const FaceBlur = () => {
       console.error('Download error:', err);
     }
     setDownloading(false);
-  }, [images, downloadMode, exportImage, saveRegions]);
+  }, [downloadMode, exportImage]);
+
+  const handleDownload = useCallback(async () => {
+    if (!images.length) return;
+    saveRegions();
+    const edited = getEditedImages();
+    if (edited.length >= images.length) {
+      // All edited — download directly
+      await performDownload(images);
+    } else {
+      // Not all edited — show dialog
+      setShowDownloadDialog(true);
+    }
+  }, [images, saveRegions, getEditedImages, performDownload]);
+
+  const handleDownloadEdited = useCallback(async () => {
+    setShowDownloadDialog(false);
+    const edited = getEditedImages();
+    await performDownload(edited);
+  }, [getEditedImages, performDownload]);
+
+  const handleDownloadAll = useCallback(async () => {
+    setShowDownloadDialog(false);
+    await performDownload(images);
+  }, [images, performDownload]);
+
+  /* ---- Download current image ---- */
+  const handleDownloadCurrent = useCallback(async () => {
+    if (!selected) return;
+    saveRegions();
+    setDownloading(true);
+    try {
+      const blob = await exportImage(selected);
+      if (blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        const name = selected.file.name.replace(/\.[^.]+$/, '');
+        a.download = `${name}_blurred.png`;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    } catch (err) {
+      console.error('Download error:', err);
+    }
+    setDownloading(false);
+  }, [selected, exportImage, saveRegions]);
+
+  /* ---- Next image ---- */
+  const handleNextImage = useCallback(() => {
+    if (images.length < 2) return;
+    const idx = images.findIndex((i) => i.id === selectedImgId);
+    const nextIdx = (idx + 1) % images.length;
+    selectImage(images[nextIdx].id);
+  }, [images, selectedImgId, selectImage]);
 
   /* ---- Reset all ---- */
   const resetAll = () => {
@@ -643,8 +596,6 @@ const FaceBlur = () => {
     setImages([]);
     setSelectedImgId(null);
     setRegions([]);
-    setDetectStatus('');
-    setManualMode(false);
     setMobileToolsOpen(false);
     regionsMapRef.current = {};
     imgCacheRef.current = {};
@@ -655,15 +606,26 @@ const FaceBlur = () => {
   const onDragOver = (e) => { e.preventDefault(); setDragOver(true); };
   const onDragLeave = () => setDragOver(false);
 
-  /* ---- Draw rect helper for manual mode ---- */
+  /* ---- Draw rect/circle helper for manual mode ---- */
   const getDrawRect = () => {
     if (!drawing || !drawStart || !drawCurrent || !canvasRef.current) return null;
     const rect = canvasRef.current.getBoundingClientRect();
+
+    if (blurShape === 'circle') {
+      const cx = ((drawStart.x + drawCurrent.x) / 2) * rect.width;
+      const cy = ((drawStart.y + drawCurrent.y) / 2) * rect.height;
+      const radius = Math.max(
+        Math.abs(drawCurrent.x - drawStart.x) * rect.width,
+        Math.abs(drawCurrent.y - drawStart.y) * rect.height
+      ) / 2;
+      return { isCircle: true, cx, cy, radius };
+    }
+
     const x = Math.min(drawStart.x, drawCurrent.x) * rect.width;
     const y = Math.min(drawStart.y, drawCurrent.y) * rect.height;
     const w = Math.abs(drawCurrent.x - drawStart.x) * rect.width;
     const h = Math.abs(drawCurrent.y - drawStart.y) * rect.height;
-    return { left: x, top: y, width: w, height: h };
+    return { isCircle: false, left: x, top: y, width: w, height: h };
   };
   const drawRect = getDrawRect();
 
@@ -672,15 +634,14 @@ const FaceBlur = () => {
     return (
       <>
         <SEO
-          title="Face Blur Tool — Blur Faces in Images Online | favIMG"
-          description="Blur faces in your images automatically with AI face detection. Choose blur intensity, shape, or emoji overlays. 100% free, fast & private."
-          keywords="blur face, face blur online, pixelate face, face anonymizer, privacy tool"
+          title={t('faceBlur.seo.uploadTitle')}
+          description={t('faceBlur.seo.uploadDesc')}
+          keywords={t('faceBlur.seo.uploadKeywords')}
         />
         <section className="fb-upload">
-          <h1 className="fb-upload__title"><i className="fa-solid fa-user-shield"></i> Face Blur</h1>
+          <h1 className="fb-upload__title"><i className="fa-solid fa-user-shield"></i> {t('faceBlur.title')}</h1>
           <p className="fb-upload__subtitle">
-            Automatically detect and blur faces in your images for privacy. Choose blur intensity,
-            shape, or cover faces with fun emojis. 100% client-side — your images never leave your device.
+            {t('faceBlur.desc')}
           </p>
 
           <div
@@ -688,16 +649,18 @@ const FaceBlur = () => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             onDragLeave={onDragLeave}
-            onClick={() => fileInputRef.current?.click()}
           >
-            <div className="fb-dropzone__icon"><i className="fa-solid fa-cloud-arrow-up"></i></div>
-            <div className="fb-dropzone__text">
-              <h3>Drag &amp; Drop images here</h3>
-              <p>or <span className="fb-dropzone__browse">browse files</span></p>
-              <span className="fb-dropzone__hint">
-                <i className="fa-solid fa-circle-info"></i> Supports JPG, PNG, WEBP, GIF — batch processing supported
-              </span>
+            <div className="fb-dropzone__cloud">
+              <i className="fa-solid fa-cloud-arrow-up"></i>
             </div>
+            <h3>{t('common.dropHere')}</h3>
+            <p>{t('common.or')} <span className="fb-dropzone__browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('faceBlur.toBlurFaces')}</p>
+            <p className="fb-dropzone__hint">
+              <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
+            </p>
+            <button className="fb-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
+              <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
+            </button>
             <input
               ref={fileInputRef}
               type="file"
@@ -708,30 +671,26 @@ const FaceBlur = () => {
             />
           </div>
 
-          <p className="fb-upload__paste">or paste from clipboard <kbd>Ctrl</kbd>+<kbd>V</kbd></p>
-
-          <button className="fb-upload__btn" onClick={() => fileInputRef.current?.click()}>
-            <i className="fa-solid fa-image"></i> Select Images
-          </button>
-
           <div className="fb-upload__features">
             <div className="fb-feature">
-              <div className="fb-feature__icon"><i className="fa-solid fa-robot"></i></div>
-              <div className="fb-feature__title">Auto Detection</div>
-              <div className="fb-feature__desc">AI-powered face detection finds all faces instantly</div>
+              <div className="fb-feature__icon"><i className="fa-solid fa-sliders"></i></div>
+              <div className="fb-feature__title">{t('faceBlur.customBlur')}</div>
+              <div className="fb-feature__desc">{t('faceBlur.customBlurDesc')}</div>
             </div>
             <div className="fb-feature">
-              <div className="fb-feature__icon"><i className="fa-solid fa-sliders"></i></div>
-              <div className="fb-feature__title">Custom Blur</div>
-              <div className="fb-feature__desc">Adjust blur intensity, shape, and style</div>
+              <div className="fb-feature__icon"><i className="fa-solid fa-hand-pointer"></i></div>
+              <div className="fb-feature__title">{t('faceBlur.manualSelect')}</div>
+              <div className="fb-feature__desc">{t('faceBlur.manualHint')}</div>
             </div>
             <div className="fb-feature">
               <div className="fb-feature__icon"><i className="fa-solid fa-lock"></i></div>
-              <div className="fb-feature__title">100% Private</div>
-              <div className="fb-feature__desc">All processing happens locally in your browser</div>
+              <div className="fb-feature__title">{t('faceBlur.private100')}</div>
+              <div className="fb-feature__desc">{t('faceBlur.private100Desc')}</div>
             </div>
           </div>
         </section>
+
+        <FAQ faqKey="faceBlur" />
       </>
     );
   }
@@ -740,14 +699,14 @@ const FaceBlur = () => {
   return (
     <>
       <SEO
-        title="Face Blur Tool — Blur Faces in Images Online | favIMG"
-        description="Blur faces in your images automatically. 100% free, fast & private."
-        keywords="blur face, face blur online, pixelate face, face anonymizer"
+        title={t('faceBlur.seo.workspaceTitle')}
+        description={t('faceBlur.seo.workspaceDesc')}
+        keywords={t('faceBlur.seo.workspaceKeywords')}
       />
 
       <section className="fb-workspace">
         {/* Mobile toggle */}
-        <button className="fb-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label="Toggle tools panel">
+        <button className="fb-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label={t('common.toggleToolsPanel')}>
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
         </button>
         {mobileToolsOpen && <div className="fb-overlay" onClick={() => setMobileToolsOpen(false)} />}
@@ -756,13 +715,13 @@ const FaceBlur = () => {
         {isMulti && (
           <div className="fb-preview">
             <div className="fb-preview__stat">
-              <span className="fb-preview__stat-value">{images.length} Images</span>
+              <span className="fb-preview__stat-value">{images.length} {t('common.images')}</span>
               <span className="fb-preview__stat-label">{fmtSize(totalSize)}</span>
             </div>
             <div className="fb-preview__list">
               {images.map((img) => (
                 <div key={img.id} className={`fb-preview__item ${img.id === selectedImgId ? 'fb-preview__item--active' : ''}`} onClick={() => selectImage(img.id)}>
-                  <button className="fb-preview__remove" onClick={(e) => { e.stopPropagation(); removeImage(img.id); }} title="Remove">
+                  <button className="fb-preview__remove" onClick={(e) => { e.stopPropagation(); removeImage(img.id); }} title={t('common.remove')}>
                     <i className="fa-solid fa-xmark"></i>
                   </button>
                   <img src={img.preview} alt="" draggable={false} />
@@ -772,6 +731,11 @@ const FaceBlur = () => {
                   </div>
                 </div>
               ))}
+              {/* +Add Image box */}
+              <div className="fb-preview__add" onClick={() => addFileInputRef.current?.click()} title={t('common.addMoreImages')}>
+                <i className="fa-solid fa-plus"></i>
+                <span>{t('common.addImage')}</span>
+              </div>
             </div>
           </div>
         )}
@@ -783,43 +747,89 @@ const FaceBlur = () => {
               <div className="fb-canvas" style={{ position: 'relative' }}>
                 <canvas ref={canvasRef} />
 
-                {/* Face region indicators (visual overlay) */}
+                {/* Face region indicators (visual overlay, clickable) */}
                 {regions.map((r, i) => {
                   const canvas = canvasRef.current;
                   if (!canvas) return null;
                   const cw = canvas.clientWidth, ch = canvas.clientHeight;
+                  const isSelected = selectedRegionIdx === i;
+                  const rShape = r.shape || 'rectangle';
                   return (
                     <div
                       key={i}
-                      className={`fb-face-indicator ${blurShape === 'circle' ? 'fb-face-indicator--circle' : ''}`}
+                      className={`fb-face-indicator ${rShape === 'circle' ? 'fb-face-indicator--circle' : ''} ${isSelected ? 'fb-face-indicator--selected' : ''}`}
                       style={{
                         left: r.x * cw,
                         top: r.y * ch,
                         width: r.w * cw,
                         height: r.h * ch,
-                        borderColor: r.auto ? '#3b82f6' : '#f59e0b',
+                        borderColor: isSelected ? '#3b82f6' : 'transparent',
+                        cursor: 'move',
+                        pointerEvents: 'auto',
+                        zIndex: isSelected ? 6 : 5,
                       }}
+                      onClick={(e) => { e.stopPropagation(); setSelectedRegionIdx(selectedRegionIdx === i ? null : i); }}
                     >
-                      <span className="fb-face-indicator__label" style={{ background: r.auto ? '#3b82f6' : '#f59e0b' }}>
-                        {r.auto ? `Face ${i + 1}` : `Manual ${i + 1}`}
+                      <span className="fb-face-indicator__label">
+                        {(r.blurMode === 'emoji' ? t('faceBlur.emoji') : t('faceBlur.blur')) + ' ' + (i + 1)}
                       </span>
+                      {isSelected && (
+                        <>
+                          <div className="fb-resize-handle fb-resize-handle--nw" />
+                          <div className="fb-resize-handle fb-resize-handle--ne" />
+                          <div className="fb-resize-handle fb-resize-handle--sw" />
+                          <div className="fb-resize-handle fb-resize-handle--se" />
+                          <div className="fb-resize-handle fb-resize-handle--n" />
+                          <div className="fb-resize-handle fb-resize-handle--s" />
+                          <div className="fb-resize-handle fb-resize-handle--w" />
+                          <div className="fb-resize-handle fb-resize-handle--e" />
+                        </>
+                      )}
                     </div>
                   );
                 })}
 
-                {/* Manual draw overlay */}
-                {manualMode && (
-                  <div
-                    className="fb-draw-overlay"
-                    onMouseDown={handleDrawStart}
-                    onMouseMove={handleDrawMove}
-                    onMouseUp={handleDrawEnd}
-                    onMouseLeave={handleDrawEnd}
-                  >
-                    {drawRect && (
-                      <div className="fb-draw-rect" style={{ left: drawRect.left, top: drawRect.top, width: drawRect.width, height: drawRect.height }} />
-                    )}
-                  </div>
+                {/* Interactive overlay: always present for region dragging, crosshair in manual mode */}
+                <div
+                  className="fb-draw-overlay"
+                  style={{ cursor: overlayCursor }}
+                  onMouseDown={handleDrawStart}
+                  onMouseMove={handleDrawMove}
+                  onMouseUp={handleDrawEnd}
+                  onMouseLeave={handleDrawEnd}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  {drawRect && !drawRect.isCircle && (
+                    <div className="fb-draw-rect" style={{ left: drawRect.left, top: drawRect.top, width: drawRect.width, height: drawRect.height }} />
+                  )}
+                  {drawRect && drawRect.isCircle && (
+                    <div className="fb-draw-circle" style={{
+                      left: drawRect.cx - drawRect.radius,
+                      top: drawRect.cy - drawRect.radius,
+                      width: drawRect.radius * 2,
+                      height: drawRect.radius * 2,
+                    }} />
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Action buttons below image */}
+            {selected && (
+              <div className="fb-left__actions">
+                <button
+                  className="fb-left__download"
+                  onClick={handleDownloadCurrent}
+                  disabled={downloading || regions.length === 0}
+                >
+                  <i className="fa-solid fa-download"></i> {t('common.download')}
+                </button>
+                {isMulti && (
+                  <button className="fb-left__next" onClick={handleNextImage}>
+                    <i className="fa-solid fa-forward"></i> {t('removeBg.nextImage')}
+                  </button>
                 )}
               </div>
             )}
@@ -831,7 +841,7 @@ const FaceBlur = () => {
           <div className="fb-right__sticky">
             {/* Header */}
             <div className="fb-right__header">
-              <h3><i className="fa-solid fa-user-shield"></i> Blur Tools</h3>
+              <h3><i className="fa-solid fa-user-shield"></i> {t('faceBlur.blurTools')}</h3>
               <button className="fb-right__close" onClick={() => setMobileToolsOpen(false)}>
                 <i className="fa-solid fa-xmark"></i>
               </button>
@@ -840,105 +850,104 @@ const FaceBlur = () => {
             {/* Stats */}
             {selected && (
               <div className="fb-right__stats">
-                <div className="fb-stat"><span className="fb-stat__label">Width</span><span className="fb-stat__value">{selected.origW}px</span></div>
-                <div className="fb-stat"><span className="fb-stat__label">Height</span><span className="fb-stat__value">{selected.origH}px</span></div>
-                <div className="fb-stat"><span className="fb-stat__label">Size</span><span className="fb-stat__value">{fmtSize(selected.file.size)}</span></div>
-                <div className="fb-stat"><span className="fb-stat__label">Faces</span><span className="fb-stat__value">{regions.length}</span></div>
-              </div>
-            )}
-
-            <div className="fb-separator" />
-
-            {/* ---- Detection ---- */}
-            <div className="fb-section">
-              <span className="fb-section__label">Face Detection</span>
-              <button className="fb-detect-btn" onClick={detectFaces} disabled={detecting || !selected}>
-                {detecting ? <><span className="fb-spinner" /> Detecting...</> : <><i className="fa-solid fa-wand-magic-sparkles"></i> Auto-Detect Faces</>}
-              </button>
-
-              <div style={{ height: 8 }} />
-
-              <button
-                className={`fb-detect-btn fb-detect-btn--secondary`}
-                onClick={() => setManualMode((p) => !p)}
-                disabled={!selected}
-              >
-                <i className={`fa-solid ${manualMode ? 'fa-xmark' : 'fa-hand-pointer'}`}></i>
-                {manualMode ? 'Exit Manual Mode' : 'Manual Select'}
-              </button>
-            </div>
-
-            {/* Status */}
-            {detectStatus === 'success' && (
-              <div className="fb-status fb-status--success">
-                <i className="fa-solid fa-circle-check"></i> {regions.length} face region{regions.length !== 1 ? 's' : ''} found
-              </div>
-            )}
-            {detectStatus === 'notfound' && (
-              <div className="fb-status fb-status--warning">
-                <i className="fa-solid fa-triangle-exclamation"></i> No faces detected — use manual mode
-              </div>
-            )}
-
-            {/* Manual mode hint */}
-            {manualMode && (
-              <div className="fb-manual-hint">
-                <i className="fa-solid fa-draw-polygon"></i>
-                Click and drag on the image to draw a rectangle over the area you want to blur.
+                <div className="fb-stat"><span className="fb-stat__label">{t('common.width')}</span><span className="fb-stat__value">{selected.origW}px</span></div>
+                <div className="fb-stat"><span className="fb-stat__label">{t('common.height')}</span><span className="fb-stat__value">{selected.origH}px</span></div>
+                <div className="fb-stat"><span className="fb-stat__label">{t('common.size')}</span><span className="fb-stat__value">{fmtSize(selected.file.size)}</span></div>
+                <div className="fb-stat"><span className="fb-stat__label">{t('faceBlur.faces')}</span><span className="fb-stat__value">{regions.length}</span></div>
               </div>
             )}
 
             <div className="fb-separator" />
 
             {/* ---- Blur Settings ---- */}
+            {(() => {
+              const sr = selectedRegionIdx != null ? regions[selectedRegionIdx] : null;
+              const effectiveMode = sr ? (sr.blurMode || blurMode) : blurMode;
+              const effectiveEmoji = sr ? (sr.emoji || selectedEmoji) : selectedEmoji;
+              return (
+              <>
             <div className="fb-section">
-              <span className="fb-section__label">Blur Type</span>
+              <span className="fb-section__label">{t('faceBlur.blurType')}</span>
               <div className="fb-shape-options">
-                <button className={`fb-shape-btn ${blurMode === 'blur' ? 'active' : ''}`} onClick={() => setBlurMode('blur')}>
-                  <i className="fa-solid fa-eye-slash"></i> Blur
+                <button className={`fb-shape-btn ${effectiveMode === 'blur' ? 'active' : ''}`} onClick={() => {
+                  setBlurMode('blur');
+                  if (selectedRegionIdx != null) {
+                    setRegions((prev) => prev.map((r, i) => i === selectedRegionIdx ? { ...r, blurMode: 'blur' } : r));
+                  }
+                }}>
+                  <i className="fa-solid fa-eye-slash"></i> {t('faceBlur.blur')}
                 </button>
-                <button className={`fb-shape-btn ${blurMode === 'emoji' ? 'active' : ''}`} onClick={() => setBlurMode('emoji')}>
-                  <i className="fa-solid fa-face-grin"></i> Emoji
+                <button className={`fb-shape-btn ${effectiveMode === 'emoji' ? 'active' : ''}`} onClick={() => {
+                  setBlurMode('emoji');
+                  if (selectedRegionIdx != null) {
+                    setRegions((prev) => prev.map((r, i) => i === selectedRegionIdx ? { ...r, blurMode: 'emoji' } : r));
+                  }
+                }}>
+                  <i className="fa-solid fa-face-grin"></i> {t('faceBlur.emoji')}
                 </button>
               </div>
             </div>
 
-            {blurMode === 'blur' && (
+            {effectiveMode === 'blur' && (
               <>
                 <div className="fb-section">
-                  <span className="fb-section__label">Blur Intensity</span>
+                  <span className="fb-section__label">{t('faceBlur.blurIntensity')}{selectedRegionIdx != null ? ` (${t('faceBlur.regionLabel')} ${selectedRegionIdx + 1})` : ''}</span>
                   <div className="fb-slider-row">
                     <div className="fb-slider-row__top">
-                      <span className="fb-slider-row__label">Strength</span>
-                      <span className="fb-slider-row__value">{blurIntensity}%</span>
+                      <span className="fb-slider-row__label">{t('faceBlur.strength')}</span>
+                      <span className="fb-slider-row__value">{selectedRegionIdx != null && regions[selectedRegionIdx] ? (regions[selectedRegionIdx].intensity != null ? regions[selectedRegionIdx].intensity : blurIntensity) : blurIntensity}%</span>
                     </div>
-                    <input type="range" className="fb-slider" min={5} max={100} value={blurIntensity} onChange={(e) => setBlurIntensity(+e.target.value)} />
+                    <input type="range" className="fb-slider" min={5} max={100}
+                      value={selectedRegionIdx != null && regions[selectedRegionIdx] ? (regions[selectedRegionIdx].intensity != null ? regions[selectedRegionIdx].intensity : blurIntensity) : blurIntensity}
+                      onChange={(e) => {
+                        const val = +e.target.value;
+                        setBlurIntensity(val);
+                        if (selectedRegionIdx != null) {
+                          setRegions((prev) => prev.map((r, i) => i === selectedRegionIdx ? { ...r, intensity: val } : r));
+                        }
+                      }}
+                    />
                   </div>
                 </div>
 
                 <div className="fb-section">
-                  <span className="fb-section__label">Blur Shape</span>
+                  <span className="fb-section__label">{t('faceBlur.blurShape')}</span>
                   <div className="fb-shape-options">
-                    <button className={`fb-shape-btn ${blurShape === 'rectangle' ? 'active' : ''}`} onClick={() => setBlurShape('rectangle')}>
-                      <i className="fa-regular fa-square"></i> Rectangle
+                    <button className={`fb-shape-btn ${blurShape === 'rectangle' ? 'active' : ''}`} onClick={() => {
+                      setBlurShape('rectangle');
+                      if (selectedRegionIdx != null) {
+                        setRegions((prev) => prev.map((r, i) => i === selectedRegionIdx ? { ...r, shape: 'rectangle' } : r));
+                      }
+                    }}>
+                      <i className="fa-regular fa-square"></i> {t('faceBlur.rectangle')}
                     </button>
-                    <button className={`fb-shape-btn ${blurShape === 'circle' ? 'active' : ''}`} onClick={() => setBlurShape('circle')}>
-                      <i className="fa-regular fa-circle"></i> Ellipse
+                    <button className={`fb-shape-btn ${blurShape === 'circle' ? 'active' : ''}`} onClick={() => {
+                      setBlurShape('circle');
+                      if (selectedRegionIdx != null) {
+                        setRegions((prev) => prev.map((r, i) => i === selectedRegionIdx ? { ...r, shape: 'circle' } : r));
+                      }
+                    }}>
+                      <i className="fa-regular fa-circle"></i> {t('faceBlur.circle')}
                     </button>
                   </div>
                 </div>
               </>
             )}
 
-            {blurMode === 'emoji' && (
+            {effectiveMode === 'emoji' && (
               <div className="fb-emoji-section">
-                <span className="fb-section__label">Choose Emoji</span>
+                <span className="fb-section__label">{t('faceBlur.chooseEmoji')}</span>
                 <div className="fb-emoji-grid">
                   {EMOJIS.map((em) => (
                     <button
                       key={em}
-                      className={`fb-emoji-btn ${selectedEmoji === em ? 'active' : ''}`}
-                      onClick={() => setSelectedEmoji(em)}
+                      className={`fb-emoji-btn ${effectiveEmoji === em ? 'active' : ''}`}
+                      onClick={() => {
+                        setSelectedEmoji(em);
+                        if (selectedRegionIdx != null) {
+                          setRegions((prev) => prev.map((r, i) => i === selectedRegionIdx ? { ...r, emoji: em, blurMode: 'emoji' } : r));
+                        }
+                      }}
                     >
                       {em}
                     </button>
@@ -946,19 +955,27 @@ const FaceBlur = () => {
                 </div>
               </div>
             )}
+              </>
+              );
+            })()}
 
             <div className="fb-separator" />
 
             {/* ---- Regions list ---- */}
             {regions.length > 0 && (
               <div className="fb-section">
-                <span className="fb-section__label">Blur Regions ({regions.length})</span>
+                <span className="fb-section__label">{t('faceBlur.blurRegionsN').replace('{n}', regions.length)}</span>
                 <div className="fb-region-list">
                   {regions.map((r, i) => (
-                    <div key={i} className="fb-region-item">
-                      <i className={`fb-region-item__icon fa-solid ${r.auto ? 'fa-robot' : 'fa-hand-pointer'}`}></i>
-                      <span className="fb-region-item__label">{r.auto ? `Face ${i + 1}` : `Manual Region ${i + 1}`}</span>
-                      <button className="fb-region-item__remove" onClick={() => removeRegion(i)} title="Remove region">
+                    <div
+                      key={i}
+                      className={`fb-region-item ${selectedRegionIdx === i ? 'fb-region-item--selected' : ''}`}
+                      onClick={() => setSelectedRegionIdx(selectedRegionIdx === i ? null : i)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <i className={`fb-region-item__icon fa-solid ${r.blurMode === 'emoji' ? 'fa-face-grin' : 'fa-eye-slash'}`}></i>
+                      <span className="fb-region-item__label">{(r.blurMode === 'emoji' ? t('faceBlur.emoji') : t('faceBlur.blur')) + ' ' + (i + 1)}</span>
+                      <button className="fb-region-item__remove" onClick={(e) => { e.stopPropagation(); removeRegion(i); }} title={t('faceBlur.removeRegion')}>
                         <i className="fa-solid fa-trash"></i>
                       </button>
                     </div>
@@ -966,7 +983,7 @@ const FaceBlur = () => {
                 </div>
                 <div style={{ height: 4 }} />
                 <button className="fb-detect-btn fb-detect-btn--secondary" onClick={clearRegions} style={{ fontSize: '0.8rem', padding: '8px 12px' }}>
-                  <i className="fa-solid fa-trash-can"></i> Clear All Regions
+                  <i className="fa-solid fa-trash-can"></i> {t('faceBlur.clearAllRegions')}
                 </button>
               </div>
             )}
@@ -975,7 +992,7 @@ const FaceBlur = () => {
 
             {/* Add more */}
             <button className="fb-right__add" onClick={() => addFileInputRef.current?.click()}>
-              <i className="fa-solid fa-plus"></i> Add More Images
+              <i className="fa-solid fa-plus"></i> {t('common.addMoreImages')}
             </button>
             <input
               ref={addFileInputRef}
@@ -988,32 +1005,60 @@ const FaceBlur = () => {
 
             {/* Reset */}
             <button className="fb-right__reset" onClick={resetAll}>
-              <i className="fa-solid fa-rotate-left"></i> Start Over
+              <i className="fa-solid fa-rotate-left"></i> {t('common.startOver')}
             </button>
+
+            {/* ---- Download mode toggle (above download button if multi) ---- */}
+            {isMulti && (
+              <div className="fb-dl-toggle">
+                <button className={`fb-dl-toggle__btn ${downloadMode === 'zip' ? 'active' : ''}`} onClick={() => setDownloadMode('zip')}>
+                  <i className="fa-solid fa-file-zipper"></i> {t('common.zip')}
+                </button>
+                <button className={`fb-dl-toggle__btn ${downloadMode === 'separate' ? 'active' : ''}`} onClick={() => setDownloadMode('separate')}>
+                  <i className="fa-solid fa-download"></i> {t('common.separate')}
+                </button>
+              </div>
+            )}
 
             {/* ---- Download ---- */}
             <div className="fb-right__actions">
-              {isMulti && (
-                <div className="fb-dl-toggle">
-                  <button className={`fb-dl-toggle__btn ${downloadMode === 'zip' ? 'active' : ''}`} onClick={() => setDownloadMode('zip')}>
-                    <i className="fa-solid fa-file-zipper"></i> ZIP
-                  </button>
-                  <button className={`fb-dl-toggle__btn ${downloadMode === 'separate' ? 'active' : ''}`} onClick={() => setDownloadMode('separate')}>
-                    <i className="fa-solid fa-download"></i> Separate
-                  </button>
-                </div>
-              )}
               <button className="fb-right__download" onClick={handleDownload} disabled={downloading || regions.length === 0}>
                 {downloading ? (
-                  <><span className="fb-download-spinner" /> Processing...</>
+                  <><span className="fb-download-spinner" /> {t('faceBlur.processingDots')}</>
                 ) : (
-                  <><i className="fa-solid fa-download"></i> {images.length === 1 ? 'Download Blurred Image' : `Download ${images.length} Images`}</>
+                  <><i className="fa-solid fa-download"></i> {t('common.download')}</>
                 )}
               </button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ---- Download confirmation dialog ---- */}
+      {showDownloadDialog && (
+        <div className="fb-dialog-overlay" onClick={() => setShowDownloadDialog(false)}>
+          <div className="fb-dialog" onClick={(e) => e.stopPropagation()}>
+            <div className="fb-dialog__icon">
+              <i className="fa-solid fa-circle-info"></i>
+            </div>
+            <div className="fb-dialog__title">{t('faceBlur.downloadDialogTitle')}</div>
+            <div className="fb-dialog__text">
+              {t('faceBlur.downloadDialogText').replace('{edited}', getEditedImages().length).replace('{total}', images.length)}
+            </div>
+            <div className="fb-dialog__actions">
+              <button className="fb-dialog__btn fb-dialog__btn--primary" onClick={handleDownloadEdited}>
+                <i className="fa-solid fa-download"></i> {t('common.download')} ({getEditedImages().length})
+              </button>
+              <button className="fb-dialog__btn fb-dialog__btn--secondary" onClick={handleDownloadAll}>
+                <i className="fa-solid fa-download"></i> {t('faceBlur.downloadAll')}
+              </button>
+              <button className="fb-dialog__btn fb-dialog__btn--cancel" onClick={() => setShowDownloadDialog(false)}>
+                {t('common.cancel')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

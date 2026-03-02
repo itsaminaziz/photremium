@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import './Footer.css';
 
 const Footer = () => {
+  const { t, localePath } = useLanguage();
+
   return (
     <footer className="footer">
       <div className="footer__wave">
@@ -15,12 +19,12 @@ const Footer = () => {
         <div className="footer__container">
           {/* Brand */}
           <div className="footer__brand">
-            <Link to="/" className="footer__logo">
+            <Link to={localePath('/')} className="footer__logo">
               <i className="fa-solid fa-image"></i>
               <span>fav<strong>IMG</strong></span>
             </Link>
             <p className="footer__tagline">
-              Free online image tools — convert, compress, resize, crop &amp; edit your images in seconds. No signup required.
+              {t('footer.tagline')}
             </p>
             <div className="footer__socials">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -43,47 +47,51 @@ const Footer = () => {
 
           {/* Quick links */}
           <div className="footer__col">
-            <h4>Image Tools</h4>
+            <h4>{t('footer.imageTools')}</h4>
             <ul>
-              <li><Link to="/image-converter"><i className="fa-solid fa-right-left"></i> Image Converter</Link></li>
-              <li><Link to="/image-compressor"><i className="fa-solid fa-compress"></i> Image Compressor</Link></li>
-              <li><Link to="/resize-image"><i className="fa-solid fa-up-right-and-down-left-from-center"></i> Resize Image</Link></li>
-              <li><Link to="/crop-image"><i className="fa-solid fa-crop-simple"></i> Crop Image</Link></li>
+              <li><Link to={localePath('/image-converter')}><i className="fa-solid fa-right-left"></i> {t('nav.imageConverter')}</Link></li>
+              <li><Link to={localePath('/image-compressor')}><i className="fa-solid fa-compress"></i> {t('nav.imageCompressor')}</Link></li>
+              <li><Link to={localePath('/resize-image')}><i className="fa-solid fa-up-right-and-down-left-from-center"></i> {t('nav.resizeImage')}</Link></li>
+              <li><Link to={localePath('/crop-image')}><i className="fa-solid fa-crop-simple"></i> {t('nav.cropImage')}</Link></li>
             </ul>
           </div>
 
           <div className="footer__col">
-            <h4>More Tools</h4>
+            <h4>{t('footer.moreTools')}</h4>
             <ul>
-              <li><Link to="/photo-editor"><i className="fa-solid fa-pen-to-square"></i> Photo Editor</Link></li>
-              <li><Link to="/remove-background"><i className="fa-solid fa-eraser"></i> Remove Background</Link></li>
-              <li><Link to="/watermark-image"><i className="fa-solid fa-stamp"></i> Watermark Image</Link></li>
-              <li><Link to="/meme-generator"><i className="fa-solid fa-face-laugh-squint"></i> Meme Generator</Link></li>
-              <li><Link to="/upscale-image"><i className="fa-solid fa-magnifying-glass-plus"></i> Upscale Image</Link></li>
+              <li><Link to={localePath('/remove-background')}><i className="fa-solid fa-eraser"></i> {t('nav.removeBackground')}</Link></li>
+              <li><Link to={localePath('/watermark-image')}><i className="fa-solid fa-stamp"></i> {t('nav.watermarkImage')}</Link></li>
+              <li><Link to={localePath('/qr-code-generator')}><i className="fa-solid fa-qrcode"></i> {t('nav.qrCodeGenerator')}</Link></li>
+              <li><Link to={localePath('/qr-code-scanner')}><i className="fa-solid fa-expand"></i> {t('nav.qrCodeScanner')}</Link></li>
+              <li><Link to={localePath('/face-blur')}><i className="fa-solid fa-face-viewfinder"></i> {t('nav.faceBlur')}</Link></li>
             </ul>
           </div>
 
           <div className="footer__col">
-            <h4>Company</h4>
+            <h4>{t('footer.company')}</h4>
             <ul>
-              <li><Link to="/about"><i className="fa-solid fa-circle-info"></i> About Us</Link></li>
-              <li><Link to="/"><i className="fa-solid fa-house"></i> Home</Link></li>
+              <li><Link to={localePath('/about')}><i className="fa-solid fa-circle-info"></i> {t('nav.aboutUs')}</Link></li>
+              <li><Link to={localePath('/')}><i className="fa-solid fa-house"></i> {t('nav.home')}</Link></li>
             </ul>
 
-            <h4 style={{ marginTop: 24 }}>Contact</h4>
+            <h4 style={{ marginTop: 24 }}>{t('footer.contact')}</h4>
             <ul>
               <li>
                 <a href="mailto:hello@favimg.com"><i className="fa-solid fa-envelope"></i> hello@favimg.com</a>
               </li>
             </ul>
+
+            <div style={{ marginTop: 24 }}>
+              <LanguageSwitcher variant="footer" />
+            </div>
           </div>
         </div>
 
         <div className="footer__bottom">
-          <p>&copy; {new Date().getFullYear()} favIMG. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} favIMG. {t('footer.allRightsReserved')}</p>
           <div className="footer__bottom-links">
-            <Link to="/">Privacy Policy</Link>
-            <Link to="/">Terms of Service</Link>
+            <Link to={localePath('/')}>{t('footer.privacyPolicy')}</Link>
+            <Link to={localePath('/')}>{t('footer.termsOfService')}</Link>
           </div>
         </div>
       </div>

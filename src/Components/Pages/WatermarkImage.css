@@ -14,7 +14,7 @@
 
 .wm-workspace *::-webkit-scrollbar-thumb {
   background: #93c5fd;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .wm-workspace *::-webkit-scrollbar-thumb:hover {
@@ -192,12 +192,12 @@
 
 .wm-preview::-webkit-scrollbar-track {
   background: #f1f5f9;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .wm-preview::-webkit-scrollbar-thumb {
   background: #93c5fd;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .wm-preview::-webkit-scrollbar-thumb:hover {
@@ -263,8 +263,8 @@
 .wm-preview__item img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .wm-preview__remove {
@@ -316,6 +316,33 @@
   text-transform: uppercase;
 }
 
+/* +Add Image box */
+.wm-preview__add {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  height: 80px;
+  border: 2px dashed #cbd5e1;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: 600;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.wm-preview__add:hover {
+  border-color: #6366f1;
+  color: #6366f1;
+  background: #eef2ff;
+}
+.wm-preview__add i {
+  font-size: 1.1rem;
+}
+
 /* ---- Left Panel (canvas area) ---- */
 .wm-left {
   flex: 1;
@@ -349,11 +376,15 @@
 
 .wm-canvas-scroll::-webkit-scrollbar-thumb {
   background: #93c5fd;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .wm-canvas-scroll::-webkit-scrollbar-thumb:hover {
   background: #60a5fa;
+}
+
+.wm-canvas-scroll::-webkit-scrollbar-button {
+  display: none;
 }
 
 .wm-canvas-wrap {
@@ -1961,7 +1992,7 @@ body.wm-workspace-active .main-content {
 .wm-right__add-layer--image {
   background: linear-gradient(135deg, #06b6d4, #3b82f6);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 14px rgba(118, 0, 0, 0.3);
 }
 
 .wm-right__add-layer--image:hover {

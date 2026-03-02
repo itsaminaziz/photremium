@@ -2,6 +2,34 @@
    IMAGE CONVERTER – upload view & workspace
    ========================================================== */
 
+/* Global scrollbar styling for image converter page */
+.conv-workspace *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.conv-workspace *::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.conv-workspace *::-webkit-scrollbar-thumb {
+  background: #93c5fd;
+  border-radius: 0;
+}
+
+.conv-workspace *::-webkit-scrollbar-thumb:hover {
+  background: #60a5fa;
+}
+
+.conv-workspace *::-webkit-scrollbar-button {
+  display: none;
+}
+
+.conv-workspace * {
+  scrollbar-width: thin;
+  scrollbar-color: #93c5fd #f1f5f9;
+}
+
 /* ---- Upload View ---- */
 .conv-upload {
   max-width: 720px;
@@ -192,6 +220,7 @@
   padding: 20px 28px 48px;
   overflow-y: auto;
   background: #f8fafc;
+  max-height: calc(100vh - 64px);
 }
 
 /* Image cards grid */
@@ -357,6 +386,38 @@
 .conv-card__dl:hover {
   background: #4f46e5;
   color: #fff;
+}
+
+/* +Add Image card */
+.conv-card--add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #cbd5e1;
+  background: transparent;
+  cursor: pointer;
+  min-height: 180px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.conv-card--add:hover {
+  border-color: #6366f1;
+  background: #eef2ff;
+}
+.conv-card__add-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.conv-card--add:hover .conv-card__add-inner {
+  color: #6366f1;
+}
+.conv-card__add-inner i {
+  font-size: 1.5rem;
 }
 
 /* ---- Right panel (25%) ---- */
@@ -624,6 +685,22 @@
   color: #475569;
 }
 
+/* Sticky download action */
+.conv-right__actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  background: #fafbfc;
+  z-index: 2;
+  padding: 12px 0 20px;
+  border-top: 1px solid #eef0f4;
+}
+
 /* CTA button */
 .conv-right__download {
   display: flex;
@@ -643,6 +720,8 @@
   letter-spacing: 0.2px;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .conv-right__download:hover:not(:disabled) {
@@ -843,4 +922,15 @@
   .conv-format-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* ---- Footer hiding when workspace active ---- */
+body.ic-workspace-active footer,
+body.ic-workspace-active .footer {
+  display: none !important;
+}
+
+body.ic-workspace-active .main-content {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
