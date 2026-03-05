@@ -354,14 +354,51 @@
   overflow: hidden;
 }
 
+/* Zoom toolbar */
+.wm-zoom-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.wm-zoom-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.15s;
+}
+
+.wm-zoom-btn:hover {
+  background: #e0e7ff;
+  border-color: #818cf8;
+  color: #4338ca;
+}
+
+.wm-zoom-level {
+  min-width: 48px;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+}
+
 .wm-canvas-scroll {
   flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
   padding: 24px 28px 48px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
   scrollbar-width: thin;
   scrollbar-color: #93c5fd #f1f5f9;
 }
@@ -392,20 +429,19 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  width: 100%;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 /* Canvas: wraps tightly around image, allow layers outside */
 .wm-canvas {
   position: relative;
   display: block;
-  width: 100%;
   -webkit-user-select: none;
   user-select: none;
   overflow: visible;
   border-radius: 8px;
   line-height: 0;
-  touch-action: none;
   box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 1.5px 6px rgba(0,0,0,0.08);
 }
 
@@ -1071,6 +1107,7 @@
   -webkit-user-select: none;
   user-select: none;
   will-change: transform;
+  touch-action: none;
 }
 
 .wm-layer:hover {
@@ -1107,6 +1144,20 @@
   padding: 4px;
   box-sizing: border-box;
   width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Force child spans (browser-generated in contentEditable) to inherit font styles */
+.wm-layer__text * {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-style: inherit !important;
+  text-decoration: inherit !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .wm-layer__text:empty::before {
@@ -1312,6 +1363,75 @@ body.wm-workspace-active .footer {
 body.wm-workspace-active .main-content {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
+}
+
+/* ---- Dimension mismatch warning ---- */
+.wm-dim-warning {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-bottom: 1px solid #f59e0b;
+  color: #92400e;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.5;
+  animation: wmSlideDown 0.3s ease;
+}
+
+@keyframes wmSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.wm-dim-warning i.fa-triangle-exclamation {
+  font-size: 1rem;
+  color: #d97706;
+  flex-shrink: 0;
+}
+
+.wm-dim-warning span {
+  flex: 1;
+}
+
+.wm-dim-warning__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(146, 64, 14, 0.1);
+  color: #92400e;
+  font-size: 0.72rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.wm-dim-warning__close:hover {
+  background: rgba(146, 64, 14, 0.2);
+}
+
+/* ---- Tile ghost clones (non-interactive preview) ---- */
+.wm-layer--tile-ghost {
+  pointer-events: none !important;
+  z-index: 4 !important;
+  outline: none !important;
+}
+
+.wm-layer--tile-ghost .wm-layer__handle,
+.wm-layer--tile-ghost .wm-layer__rotate,
+.wm-layer--tile-ghost .wm-layer__rotate-line,
+.wm-layer--tile-ghost .wm-layer__picker {
+  display: none !important;
 }
 
 /* ---- Download mode pill ---- */
@@ -2111,6 +2231,9 @@ body.wm-workspace-active .main-content {
 @media (max-width: 900px) {
   .wm-workspace {
     flex-direction: column;
+    height: calc(100vh - 64px);
+    max-height: calc(100vh - 64px);
+    overflow: hidden;
   }
 
   /* Preview panel → horizontal strip */
@@ -2152,17 +2275,26 @@ body.wm-workspace-active .main-content {
 
   .wm-left {
     padding: 0;
-    height: auto;
-    overflow: visible;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .wm-canvas-scroll {
+    flex: 1;
+    min-height: 0;
     padding: 16px 16px 32px;
-    overflow: visible;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .wm-top-toolbar {
+    min-height: 74px;
+    align-content: flex-start;
   }
 
   .wm-canvas img.wm-canvas__bg {
-    max-height: 50vh;
+    /* no max-height constraint */
   }
 
   /* Mobile settings gear button */

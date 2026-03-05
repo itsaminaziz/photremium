@@ -37,9 +37,9 @@ const nextLayerId = () => `layer-${++_layerId}`;
 const makeTextLayer = (canvasW, canvasH, scale) => ({
   id: nextLayerId(),
   type: 'text',
-  text: '',
+  text: 'Type here...',
   fontFamily: 'Arial',
-  fontSize: 32,
+  fontSize: window.innerWidth <= 900 ? 48 : 32,
   bold: false,
   italic: false,
   underline: false,
@@ -63,17 +63,27 @@ const makeTextLayer = (canvasW, canvasH, scale) => ({
 });
 
 /* Default image layer */
-const makeImageLayer = (file, imgW, imgH, canvasW, canvasH, scale) => ({
+const makeImageLayer = (file, imgW, imgH, canvasW, canvasH, scale) => {
+  /* Scale to fit within 30% of canvas, maintaining aspect ratio (never upscale) */
+  const areaW = canvasW / scale;
+  const areaH = canvasH / scale;
+  const maxW = areaW * 0.3;
+  const maxH = areaH * 0.3;
+  const ratio = Math.min(maxW / Math.max(1, imgW), maxH / Math.max(1, imgH), 1);
+  const w = Math.round(imgW * ratio);
+  const h = Math.round(imgH * ratio);
+  return {
   id: nextLayerId(),
   type: 'image',
   file,
+  name: file.name,
   preview: URL.createObjectURL(file),
   origW: imgW,
   origH: imgH,
-  width: Math.round(Math.min(imgW, (canvasW / scale) * 0.3)),
-  height: Math.round(Math.min(imgH, (canvasH / scale) * 0.3)),
-  x: Math.round(((canvasW / scale) - Math.min(imgW, (canvasW / scale) * 0.3)) / 2),
-  y: Math.round(((canvasH / scale) - Math.min(imgH, (canvasH / scale) * 0.3)) / 2),
+  width: w,
+  height: h,
+  x: Math.round((areaW - w) / 2),
+  y: Math.round((areaH - h) / 2),
   opacity: 100,
   rotation: 0,
   flipH: false,
@@ -91,7 +101,8 @@ const makeImageLayer = (file, imgW, imgH, canvasW, canvasH, scale) => ({
   separateCorners: false,
   tile: 'none',
   tileSpacing: 40,
-});
+};
+};
 
 /* roundRect helper (used in canvas export) */
 const roundRect = (ctx, x, y, w, h, r) => {
@@ -119,17 +130,18 @@ const WatermarkImage = () => {
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const [downloadMode, setDownloadMode] = useState('zip');
   const [processing, setProcessing] = useState(false);
+  const [dimWarning, setDimWarning] = useState(null);
 
   /* Layers = watermark objects */
   const [layers, setLayers] = useState([]);
   const [selectedLayerId, setSelectedLayerId] = useState(null);
   const [mode, setMode] = useState('text'); // eslint-disable-line no-unused-vars
-  const [privateImages, setPrivateImages] = useState({}); /* { imgId: true } */
   const [showGuides, setShowGuides] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
 
-  /* Canvas scale */
+  /* Canvas scale (zoom level) */
   const [scale, setScale] = useState(1);
+  const [naturalDims, setNaturalDims] = useState({ w: 0, h: 0 });
 
   /* Guides */
   const [guideH, setGuideH] = useState(false);
@@ -143,12 +155,9 @@ const WatermarkImage = () => {
   const bgImgRef = useRef(null);
   const layersRef = useRef(layers);
   layersRef.current = layers;
-  const perImageLayersRef = useRef({});
-
   const selected = images.find((i) => i.id === selectedImgId) || null;
   const totalSize = images.reduce((s, i) => s + i.file.size, 0);
   const selectedLayer = layers.find((l) => l.id === selectedLayerId) || null;
-  const isPrivateMode = !!(selectedImgId && privateImages[selectedImgId]);
 
   /* Close dropdown when selection changes */
   useEffect(() => { setOpenDropdown(null); }, [selectedLayerId]);
@@ -198,6 +207,26 @@ const WatermarkImage = () => {
     setImages((prev) => {
       const merged = [...prev, ...newImgs];
       if (prev.length === 0 && newImgs.length > 0) setSelectedImgId(newImgs[0].id);
+
+      /* Resolution consistency check (5% tolerance) */
+      if (merged.length > 1) {
+        const refW = merged[0].origW;
+        const refH = merged[0].origH;
+        const threshold = 0.05;
+        const mismatch = merged.some((img) => {
+          const dw = Math.abs(img.origW - refW) / Math.max(1, refW);
+          const dh = Math.abs(img.origH - refH) / Math.max(1, refH);
+          return dw > threshold || dh > threshold;
+        });
+        if (mismatch) {
+          setDimWarning('mismatch');
+        } else {
+          setDimWarning(null);
+        }
+      } else {
+        setDimWarning(null);
+      }
+
       return merged;
     });
   }, []);
@@ -218,14 +247,6 @@ const WatermarkImage = () => {
   /* --- select image (save/restore per-image layers for private images) --- */
   const selectImage = (id) => {
     if (id === selectedImgId) return;
-    // Save current layers for the outgoing image if it's private
-    if (selectedImgId && privateImages[selectedImgId]) {
-      perImageLayersRef.current[selectedImgId] = [...layersRef.current];
-    }
-    // Load saved layers for incoming image if it's private, otherwise keep current layers
-    if (privateImages[id] && perImageLayersRef.current[id]) {
-      setLayers([...perImageLayersRef.current[id]]);
-    }
     setSelectedLayerId(null);
     setSelectedImgId(id);
   };
@@ -234,34 +255,33 @@ const WatermarkImage = () => {
   const removeImage = (id) => {
     const img = images.find((i) => i.id === id);
     if (img) URL.revokeObjectURL(img.preview);
-    delete perImageLayersRef.current[id];
     const remaining = images.filter((i) => i.id !== id);
     setImages(remaining);
     if (id === selectedImgId && remaining.length > 0) {
-      const nextId = remaining[0].id;
-      const saved = perImageLayersRef.current[nextId];
-      setLayers(saved ? [...saved] : []);
       setSelectedLayerId(null);
-      setSelectedImgId(nextId);
+      setSelectedImgId(remaining[0].id);
     }
-    if (remaining.length === 0) { setLayers([]); setSelectedLayerId(null); }
+    if (remaining.length === 0) { setLayers([]); setSelectedLayerId(null); setDimWarning(null); }
   };
 
-  /* --- image load (compute scale) --- */
+  /* --- image load (compute fit zoom) --- */
   const handleBgLoad = useCallback(() => {
     const img = bgImgRef.current;
     if (!img) return;
-    if (img.clientWidth && img.naturalWidth) setScale(img.clientWidth / img.naturalWidth);
+    setNaturalDims({ w: img.naturalWidth, h: img.naturalHeight });
+    /* Compute zoom-to-fit based on scroll container width */
+    const scrollEl = img.closest('.wm-canvas-scroll');
+    if (scrollEl && img.naturalWidth) {
+      const availW = scrollEl.clientWidth - 56;
+      const fit = availW / img.naturalWidth;
+      setScale(Math.min(fit, 1));
+    }
   }, []);
 
   useEffect(() => {
     const img = bgImgRef.current;
     if (!img) return;
-    const observer = new ResizeObserver(() => {
-      if (img.clientWidth && img.naturalWidth) setScale(img.clientWidth / img.naturalWidth);
-    });
-    observer.observe(img);
-    return () => observer.disconnect();
+    if (img.naturalWidth) setNaturalDims({ w: img.naturalWidth, h: img.naturalHeight });
   }, [selected]);
 
   /* --- guide detection --- */
@@ -306,18 +326,6 @@ const WatermarkImage = () => {
     setSelectedLayerId(copy.id);
   }, []);
 
-  /* --- toggle private mode for an image --- */
-  const togglePrivate = (imgId) => {
-    if (privateImages[imgId]) {
-      // Turning off private: remove per-image layers
-      setPrivateImages((prev) => { const n = { ...prev }; delete n[imgId]; return n; });
-    } else {
-      // Turning on private: save current layers for this image
-      perImageLayersRef.current[imgId] = [...layersRef.current];
-      setPrivateImages((prev) => ({ ...prev, [imgId]: true }));
-    }
-  };
-
   /* --- keyboard move --- */
   useEffect(() => {
     if (!openDropdown) return;
@@ -339,7 +347,7 @@ const WatermarkImage = () => {
       else if (e.key === 'ArrowRight') dx = step;
       else if (e.key === 'ArrowUp') dy = -step;
       else if (e.key === 'ArrowDown') dy = step;
-      else if (e.key === 'Delete') { if (!isPrivateMode) deleteLayer(selectedLayerId); return; }
+      else if (e.key === 'Delete') { deleteLayer(selectedLayerId); return; }
       else return;
       e.preventDefault();
       setShowGuides(true);
@@ -348,7 +356,7 @@ const WatermarkImage = () => {
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [selectedLayerId, checkGuides, deleteLayer, isPrivateMode]);
+  }, [selectedLayerId, checkGuides, deleteLayer]);
 
   /* --- add text layer --- */
   const addTextLayer = () => {
@@ -360,6 +368,23 @@ const WatermarkImage = () => {
     setLayers((prev) => [...prev, nl]);
     setSelectedLayerId(nl.id);
     setMode('text');
+    // Close mobile tools panel
+    if (window.innerWidth <= 900) {
+      setMobileToolsOpen(false);
+    }
+    // Focus the text box and select placeholder text after render
+    setTimeout(() => {
+      const layerDiv = canvasRef.current?.querySelector(`[data-layer-id="${nl.id}"]`);
+      const textEl = layerDiv?.querySelector('.wm-layer__text');
+      if (textEl) {
+        textEl.focus();
+        const sel = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(textEl);
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    }, 120);
   };
 
   /* --- add image layer --- */
@@ -373,6 +398,10 @@ const WatermarkImage = () => {
     setLayers((prev) => [...prev, nl]);
     setSelectedLayerId(nl.id);
     setMode('image');
+    // Close mobile tools panel
+    if (window.innerWidth <= 900) {
+      setMobileToolsOpen(false);
+    }
   };
 
   /* --- drag layer (move) --- */
@@ -546,11 +575,6 @@ const WatermarkImage = () => {
     const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0);
 
-    /* Scale factors for proportional watermark sizing on different-sized images */
-    const sfW = refDims ? canvas.width / refDims.w : 1;
-    const sfH = refDims ? canvas.height / refDims.h : 1;
-    const sfSize = Math.min(sfW, sfH); /* size scales by smaller axis to keep aspect */
-
     /* Helper: draw a single layer instance at given offset */
     const drawLayerAt = async (layer, ox, oy) => {
       ctx.save();
@@ -579,7 +603,8 @@ const WatermarkImage = () => {
         if (layer.align === 'center') tx = ox + layer.width / 2;
         else if (layer.align === 'right') tx = ox + layer.width;
 
-        const text = layer.text || 'Type here...';
+        const text = layer.text || '';
+        if (!text) { ctx.restore(); return; }
         const lines = text.split('\n');
         const lineHeight = layer.fontSize * 1.3;
 
@@ -627,42 +652,110 @@ const WatermarkImage = () => {
       ctx.restore();
     };
 
+    /* Reposition & resize watermark for a different-sized target image.
+       Algorithm:
+       1. Find center of gravity of the layer on the reference image.
+       2. Express its horizontal offset from center as a fraction of refW.
+       3. Express its vertical offset from center as a fraction of refH.
+       4. Scale the layer size proportionally (maintain aspect ratio).
+       5. Apply the same proportional offsets on the target image.
+       6. Clamp so no part of the watermark goes outside the image. */
+    const repositionLayer = (rawLayer) => {
+      if (!refDims || (canvas.width === refDims.w && canvas.height === refDims.h)) return rawLayer;
+      const refW = refDims.w;
+      const refH = refDims.h;
+      const tgtW = canvas.width;
+      const tgtH = canvas.height;
+
+      /* Step 1: center of gravity on the reference image */
+      const cogX = rawLayer.x + rawLayer.width / 2;
+      const cogY = rawLayer.y + rawLayer.height / 2;
+
+      /* Step 2-3: proportional offset from ref image center */
+      const offsetPctX = (cogX - refW / 2) / refW;   // -0.5 .. +0.5
+      const offsetPctY = (cogY - refH / 2) / refH;
+
+      /* Step 4: scale watermark size to maintain same visual proportion.
+         Use the smaller scale factor to preserve aspect ratio. */
+      const scaleX = tgtW / refW;
+      const scaleY = tgtH / refH;
+      const layerScale = Math.min(scaleX, scaleY);
+
+      let newW, newH, newFontSize;
+      if (rawLayer.type === 'text') {
+        newFontSize = Math.round(rawLayer.fontSize * layerScale);
+        newW = Math.round(rawLayer.width * layerScale);
+        newH = rawLayer.height ? Math.round(rawLayer.height * layerScale) : rawLayer.height;
+      } else {
+        /* Image layer: scale maintaining aspect ratio */
+        newW = Math.round(rawLayer.width * layerScale);
+        newH = Math.round(rawLayer.height * layerScale);
+      }
+
+      /* Step 5: place center of gravity at the same proportional offset on target */
+      const newCogX = tgtW / 2 + offsetPctX * tgtW;
+      const newCogY = tgtH / 2 + offsetPctY * tgtH;
+      let newX = Math.round(newCogX - newW / 2);
+      let newY = Math.round(newCogY - newH / 2);
+
+      /* Step 6: clamp — watermark must never go outside the image */
+      if (newX < 0) newX = 0;
+      if (newY < 0) newY = 0;
+      if (newX + newW > tgtW) newX = tgtW - newW;
+      if (newY + newH > tgtH) newY = tgtH - newH;
+      /* If watermark is larger than the target, shrink to fit */
+      if (newW > tgtW) {
+        const fit = tgtW / newW;
+        newW = tgtW;
+        newH = Math.round(newH * fit);
+        newX = 0;
+        if (rawLayer.type === 'text') newFontSize = Math.round(newFontSize * fit);
+      }
+      if (newH > tgtH) {
+        const fit = tgtH / newH;
+        newH = tgtH;
+        newW = Math.round(newW * fit);
+        newY = 0;
+        if (rawLayer.type === 'text') newFontSize = Math.round(newFontSize * fit);
+      }
+
+      const result = { ...rawLayer, x: newX, y: newY, width: newW, height: newH };
+      if (rawLayer.type === 'text') result.fontSize = newFontSize;
+      return result;
+    };
+
     /* Draw each layer (with optional tiling) */
     for (const rawLayer of (customLayers || layersRef.current)) {
       if (!rawLayer.visible) continue;
 
-      /* Scale layer proportionally for different-sized images */
-      const noScale = sfW === 1 && sfH === 1;
-      const layer = noScale ? rawLayer : {
-        ...rawLayer,
-        x: rawLayer.x * sfW, y: rawLayer.y * sfH,
-        width: rawLayer.width * sfSize, height: rawLayer.height * sfSize,
-        fontSize: rawLayer.type === 'text' ? rawLayer.fontSize * sfSize : rawLayer.fontSize,
-        strokeWidth: (rawLayer.strokeWidth || 0) * sfSize,
-        borderWidth: (rawLayer.borderWidth || 0) * sfSize,
-        borderRadius: (rawLayer.borderRadius || 0) * sfSize,
-        borderRadiusTL: (rawLayer.borderRadiusTL || 0) * sfSize,
-        borderRadiusTR: (rawLayer.borderRadiusTR || 0) * sfSize,
-        borderRadiusBL: (rawLayer.borderRadiusBL || 0) * sfSize,
-        borderRadiusBR: (rawLayer.borderRadiusBR || 0) * sfSize,
-        tileSpacing: (rawLayer.tileSpacing || 0) * sfSize,
-      };
+      const layer = repositionLayer(rawLayer);
 
       if (layer.tile && layer.tile !== 'none') {
-        /* Tile grid: 'grid4' = 2x2, 'grid9' = 3x3 */
+        /* Tile: evenly distribute copies across the canvas.
+           grid4 = 2×2, grid9 = 3×3.  Step = canvas / gridCount + spacing.
+           Original position anchors the grid so all tiles shift with it. */
         const cols = layer.tile === 'grid4' ? 2 : 3;
         const rows = cols;
         const spacing = layer.tileSpacing || 0;
-        const cellW = (canvas.width - spacing * (cols + 1)) / cols;
-        const cellH = (canvas.height - spacing * (rows + 1)) / rows;
-        for (let r = 0; r < rows; r++) {
-          for (let c = 0; c < cols; c++) {
-            const cellX = spacing + c * (cellW + spacing);
-            const cellY = spacing + r * (cellH + spacing);
-            const ox = cellX + (cellW - layer.width) / 2;
-            const oy = cellY + (cellH - layer.height) / 2;
-            await drawLayerAt(layer, ox, oy);
+        const stepX = Math.max(canvas.width / cols + spacing, layer.width + 1);
+        const stepY = Math.max(canvas.height / rows + spacing, layer.height + 1);
+        /* Find col/row range that covers the canvas from the anchor position */
+        const startCol = Math.floor((-layer.x - layer.width) / stepX);
+        const endCol   = Math.ceil((canvas.width - layer.x) / stepX);
+        const startRow = Math.floor((-layer.y - layer.height) / stepY);
+        const endRow   = Math.ceil((canvas.height - layer.y) / stepY);
+        const positions = [];
+        for (let row = startRow; row <= endRow; row++) {
+          for (let col = startCol; col <= endCol; col++) {
+            const ox = layer.x + col * stepX;
+            const oy = layer.y + row * stepY;
+            if (ox + layer.width > 0 && ox < canvas.width && oy + layer.height > 0 && oy < canvas.height) {
+              positions.push({ ox, oy });
+            }
           }
+        }
+        for (const { ox, oy } of positions) {
+          await drawLayerAt(layer, ox, oy);
         }
       } else {
         await drawLayerAt(layer, layer.x, layer.y);
@@ -694,19 +787,11 @@ const WatermarkImage = () => {
   const downloadAll = async () => {
     setProcessing(true);
     try {
-      // Save current layers before exporting
-      if (selectedImgId) perImageLayersRef.current[selectedImgId] = [...layersRef.current];
       // Reference dimensions: the currently selected image where layers were authored
       const refImg = bgImgRef.current;
       const refDims = refImg ? { w: refImg.naturalWidth, h: refImg.naturalHeight } : null;
-      // Check which images have private (own) layers vs shared
       const results = await Promise.all(images.map(async (img) => {
-        const isPrivate = privateImages[img.id];
-        const imgLayers = isPrivate ? (perImageLayersRef.current[img.id] || layersRef.current) : layersRef.current;
-        // Private images use their own layers authored on that image, so no scaling needed
-        // Shared layers scale relative to the reference (selected) image
-        const dims = isPrivate ? null : refDims;
-        const blob = await renderWatermark(img, imgLayers, dims);
+        const blob = await renderWatermark(img, layersRef.current, refDims);
         return { img, blob };
       }));
 
@@ -759,13 +844,10 @@ const WatermarkImage = () => {
     if (!window.confirm(t('watermark.removeAllConfirm'))) return;
     images.forEach((i) => URL.revokeObjectURL(i.preview));
     layersRef.current.forEach((l) => { if (l.type === 'image' && l.preview) URL.revokeObjectURL(l.preview); });
-    Object.values(perImageLayersRef.current).forEach(ls => ls.forEach(l => { if (l.type === 'image' && l.preview) URL.revokeObjectURL(l.preview); }));
-    perImageLayersRef.current = {};
     setImages([]);
     setLayers([]);
     setSelectedImgId(null);
     setSelectedLayerId(null);
-    setPrivateImages({});
   };
 
   /* --- drag & drop --- */
@@ -863,6 +945,16 @@ const WatermarkImage = () => {
       />
 
       <section className="wm-workspace">
+        {/* Dimension mismatch warning */}
+        {dimWarning === 'mismatch' && (
+          <div className="wm-dim-warning">
+            <i className="fa-solid fa-triangle-exclamation"></i>
+            <span>{t('watermark.dimMismatch')}</span>
+            <button className="wm-dim-warning__close" onClick={() => setDimWarning(null)} aria-label={t('common.close')}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        )}
         {/* Mobile toggle */}
         <button className="wm-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label="Toggle tools panel">
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
@@ -904,15 +996,8 @@ const WatermarkImage = () => {
             <>
               {/* Top toolbar: tools only (mode toggle moved to right panel) */}
               <div className="wm-top-toolbar">
-                {/* Private mode banner */}
-                {isPrivateMode && selectedLayer && (
-                  <div className="wm-top-toolbar__placeholder" style={{ color: '#7c3aed' }}>
-                    <i className="fa-solid fa-lock"></i> {t('watermark.privateModeActive')}
-                  </div>
-                )}
-
                 {/* Text layer tools */}
-                {!isPrivateMode && selectedLayer?.type === 'text' && (
+                {selectedLayer?.type === 'text' && (
                   <div className="wm-top-toolbar__tools">
                     <select className="wm-top-toolbar__select" value={selectedLayer.fontFamily} onChange={(e) => updateLayer(selectedLayer.id, { fontFamily: e.target.value })}>
                       {FONTS.map((f) => <option key={f} value={f} style={{ fontFamily: f }}>{f}</option>)}
@@ -1013,7 +1098,7 @@ const WatermarkImage = () => {
                 )}
 
                 {/* Image layer tools */}
-                {!isPrivateMode && selectedLayer?.type === 'image' && (
+                {selectedLayer?.type === 'image' && (
                   <div className="wm-top-toolbar__tools">
                     <button className={`wm-top-toolbar__btn ${selectedLayer.flipH ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { flipH: !selectedLayer.flipH })} title={t('watermark.flipHorizontal')}><i className="fa-solid fa-arrows-left-right"></i></button>
                     <button className={`wm-top-toolbar__btn ${selectedLayer.flipV ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { flipV: !selectedLayer.flipV })} title={t('watermark.flipVertical')}><i className="fa-solid fa-arrows-up-down"></i></button>
@@ -1135,28 +1220,56 @@ const WatermarkImage = () => {
               </div>
               <input ref={wmImageInputRef} type="file" accept="image/*" hidden onChange={(e) => { if (e.target.files[0]) addImageLayer(e.target.files[0]); e.target.value = ''; }} />
 
+              {/* Zoom toolbar */}
+              <div className="wm-zoom-toolbar">
+                <button className="wm-zoom-btn" onClick={() => setScale(s => Math.max(s * 0.8, 0.05))} title="Zoom Out"><i className="fa-solid fa-minus"></i></button>
+                <span className="wm-zoom-level">{Math.round(scale * 100)}%</span>
+                <button className="wm-zoom-btn" onClick={() => setScale(s => Math.min(s * 1.25, 3))} title="Zoom In"><i className="fa-solid fa-plus"></i></button>
+                <button className="wm-zoom-btn" onClick={() => { const img = bgImgRef.current; const scrollEl = canvasRef.current?.closest('.wm-canvas-scroll'); if (img && scrollEl) { const fit = (scrollEl.clientWidth - 56) / img.naturalWidth; setScale(Math.min(fit, 1)); } }} title="Fit"><i className="fa-solid fa-expand"></i></button>
+              </div>
+
               {/* Scrollable canvas area */}
               <div className="wm-canvas-scroll">
                 <div className="wm-canvas-wrap">
-                  <div className="wm-canvas" ref={canvasRef} onClick={handleCanvasClick}>
+                  <div className="wm-canvas" ref={canvasRef} onClick={handleCanvasClick} style={{ width: naturalDims.w ? naturalDims.w * scale : '100%' }}>
                     <img ref={bgImgRef} className="wm-canvas__bg" src={selected.preview} alt="" onLoad={handleBgLoad} draggable={false} />
 
                     {/* Center guides */}
                     <div className={`wm-guide wm-guide--h ${guideH && showGuides ? 'wm-guide--visible' : ''}`} />
                     <div className={`wm-guide wm-guide--v ${guideV && showGuides ? 'wm-guide--visible' : ''}`} />
 
-                    {/* Rotation snap guides: show only during active interaction */}
-                    {showGuides && selectedLayer && [0, 90, 180, 270, 360, -90, -180, -270].includes(selectedLayer.rotation % 360 === 0 ? 0 : selectedLayer.rotation % 360) && selectedLayer.rotation !== 0 && (
-                      <>
-                        <div className="wm-guide wm-guide--h wm-guide--visible wm-guide--snap" />
-                        <div className="wm-guide wm-guide--v wm-guide--visible wm-guide--snap" />
-                      </>
-                    )}
-
                     {/* Layers */}
-                    {layers.map((layer) => (
+                    {layers.map((layer) => {
+                      /* Compute tile positions radiating from the original watermark */
+                      const tilePositions = [];
+                      if (layer.tile && layer.tile !== 'none' && naturalDims.w && naturalDims.h) {
+                        const cols = layer.tile === 'grid4' ? 2 : 3;
+                        const rows = cols;
+                        const spacing = layer.tileSpacing || 0;
+                        const stepX = Math.max(naturalDims.w / cols + spacing, layer.width + 1);
+                        const stepY = Math.max(naturalDims.h / rows + spacing, layer.height + 1);
+                        const startCol = Math.floor((-layer.x - layer.width) / stepX);
+                        const endCol   = Math.ceil((naturalDims.w - layer.x) / stepX);
+                        const startRow = Math.floor((-layer.y - layer.height) / stepY);
+                        const endRow   = Math.ceil((naturalDims.h - layer.y) / stepY);
+                        for (let row = startRow; row <= endRow; row++) {
+                          for (let col = startCol; col <= endCol; col++) {
+                            if (row === 0 && col === 0) continue; /* skip original */
+                            const ox = layer.x + col * stepX;
+                            const oy = layer.y + row * stepY;
+                            if (ox + layer.width > 0 && ox < naturalDims.w && oy + layer.height > 0 && oy < naturalDims.h) {
+                              tilePositions.push({ x: ox, y: oy });
+                            }
+                          }
+                        }
+                      }
+                      const showTile = tilePositions.length > 0;
+
+                      return (
+                      <React.Fragment key={layer.id}>
+                      {/* Main draggable layer */}
                       <div
-                        key={layer.id}
+                        data-layer-id={layer.id}
                         className={`wm-layer ${layer.id === selectedLayerId ? 'wm-layer--selected' : ''} ${!layer.visible ? 'wm-layer--hidden' : ''} ${layer.locked ? 'wm-layer--locked' : ''}`}
                         style={layerStyle(layer)}
                         onMouseDown={(e) => startLayerDrag(e, layer.id)}
@@ -1165,12 +1278,13 @@ const WatermarkImage = () => {
                       >
                         {layer.type === 'text' ? (
                           <span
+                            key={`${layer.id}-${layer.fontFamily}-${layer.bold}-${layer.italic}-${layer.underline}`}
                             className="wm-layer__text"
-                            contentEditable={!layer.locked && !isPrivateMode}
+                            contentEditable={!layer.locked}
                             suppressContentEditableWarning
                             style={textStyle(layer)}
                             ref={(el) => { if (el && !el.dataset.inited) { el.textContent = layer.text || ''; el.dataset.inited = '1'; } }}
-                            onInput={(e) => { if (!isPrivateMode) updateLayer(layer.id, { text: e.currentTarget.textContent }); }}
+                            onInput={(e) => { updateLayer(layer.id, { text: e.currentTarget.textContent }); }}
                             onFocus={() => setSelectedLayerId(layer.id)}
                           />
                         ) : (
@@ -1198,39 +1312,45 @@ const WatermarkImage = () => {
                           <i className="fa-solid fa-up-down-left-right"></i>
                         </div>
                       </div>
-                    ))}
+
+                      {/* Tile ghost clones (visual preview only, not interactive) */}
+                      {showTile && tilePositions.map((pos, idx) => (
+                        <div
+                          key={`${layer.id}-tile-${idx}`}
+                          className={`wm-layer wm-layer--tile-ghost ${!layer.visible ? 'wm-layer--hidden' : ''}`}
+                          style={{
+                            left: pos.x * scale,
+                            top: pos.y * scale,
+                            width: layer.width * scale,
+                            height: layer.type === 'text' ? 'auto' : layer.height * scale,
+                            minHeight: layer.type === 'text' ? 20 * scale : undefined,
+                            transform: `rotate(${layer.rotation}deg) scaleX(${layer.flipH ? -1 : 1}) scaleY(${layer.flipV ? -1 : 1})`,
+                            pointerEvents: 'none',
+                          }}
+                        >
+                          {layer.type === 'text' ? (
+                            <span className="wm-layer__text" style={textStyle(layer)}>
+                              {layer.text || 'Type here...'}
+                            </span>
+                          ) : (
+                            <img className="wm-layer__img" src={layer.preview} alt="" style={imgLayerStyle(layer)} draggable={false} />
+                          )}
+                        </div>
+                      ))}
+                      </React.Fragment>
+                    );
+                    })}
                   </div>
 
                   {/* Actions below image */}
                   <div className="wm-left__actions">
-                    {isMulti && (
-                      <button
-                        className={`wm-left__private ${privateImages[selectedImgId] ? 'wm-left__private--active' : ''}`}
-                        onClick={() => togglePrivate(selectedImgId)}
-                      >
-                        <i className={`fa-solid ${privateImages[selectedImgId] ? 'fa-lock' : 'fa-lock-open'}`}></i>
-                        {t('watermark.privateMode')}
-                        <span className="wm-left__private-info">
-                          i
-                          <span className="wm-left__private-tooltip">
-                            {privateImages[selectedImgId]
-                              ? t('watermark.privateModeOn')
-                              : t('watermark.privateModeHint')}
-                          </span>
-                        </span>
-                      </button>
-                    )}
                     <button className="wm-left__download" onClick={() => downloadSingle(selected)} disabled={processing}>
                       <i className="fa-solid fa-download"></i> {t('common.download')}
                     </button>
                     {isMulti && (
                       <button className="wm-left__next" onClick={() => {
                         const idx = images.findIndex((i) => i.id === selectedImgId);
-                        if (selectedImgId && privateImages[selectedImgId]) perImageLayersRef.current[selectedImgId] = [...layersRef.current];
                         const nextId = images[(idx + 1) % images.length].id;
-                        if (privateImages[nextId] && perImageLayersRef.current[nextId]) {
-                          setLayers([...perImageLayersRef.current[nextId]]);
-                        }
                         setSelectedLayerId(null);
                         setSelectedImgId(nextId);
                       }}>
@@ -1268,10 +1388,10 @@ const WatermarkImage = () => {
 
             {/* Add Text / Add Image buttons */}
             <div className="wm-right__mode-add">
-              <button className="wm-right__add-layer wm-right__add-layer--text" onClick={addTextLayer} title={t('watermark.addText')} disabled={isPrivateMode}>
+              <button className="wm-right__add-layer wm-right__add-layer--text" onClick={addTextLayer} title={t('watermark.addText')}>
                 <i className="fa-solid fa-font"></i> {t('watermark.addText')}
               </button>
-              <button className="wm-right__add-layer wm-right__add-layer--image" onClick={() => wmImageInputRef.current?.click()} title={t('watermark.addImage')} disabled={isPrivateMode}>
+              <button className="wm-right__add-layer wm-right__add-layer--image" onClick={() => wmImageInputRef.current?.click()} title={t('watermark.addImage')}>
                 <i className="fa-solid fa-image"></i> {t('watermark.addImage')}
               </button>
             </div>
@@ -1289,24 +1409,21 @@ const WatermarkImage = () => {
                     <i className={`fa-solid ${layer.type === 'text' ? 'fa-font' : 'fa-image'}`}></i>
                   </span>
                   <span className="wm-layer-item__name">
-                    {layer.type === 'text' ? (layer.text || t('watermark.textLayer')) : t('watermark.imageLayer')}
+                    {layer.type === 'text' ? (layer.text || t('watermark.textLayer')) : (layer.name || t('watermark.imageLayer'))}
                   </span>
                   <button className={`wm-layer-item__btn ${!layer.visible ? 'active' : ''}`}
-                    onClick={(e) => { e.stopPropagation(); if (!isPrivateMode) updateLayer(layer.id, { visible: !layer.visible }); }}
-                    title={layer.visible ? t('watermark.hide') : t('watermark.show')}
-                    disabled={isPrivateMode}>
+                    onClick={(e) => { e.stopPropagation(); updateLayer(layer.id, { visible: !layer.visible }); }}
+                    title={layer.visible ? t('watermark.hide') : t('watermark.show')}>
                     <i className={`fa-solid ${layer.visible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
                   </button>
                   <button className={`wm-layer-item__btn ${layer.locked ? 'active' : ''}`}
-                    onClick={(e) => { e.stopPropagation(); if (!isPrivateMode) updateLayer(layer.id, { locked: !layer.locked }); }}
-                    title={layer.locked ? t('watermark.unlock') : t('watermark.lock')}
-                    disabled={isPrivateMode}>
+                    onClick={(e) => { e.stopPropagation(); updateLayer(layer.id, { locked: !layer.locked }); }}
+                    title={layer.locked ? t('watermark.unlock') : t('watermark.lock')}>
                     <i className={`fa-solid ${layer.locked ? 'fa-lock' : 'fa-lock-open'}`}></i>
                   </button>
                   <button className="wm-layer-item__btn wm-layer-item__btn--danger"
-                    onClick={(e) => { e.stopPropagation(); if (!isPrivateMode) deleteLayer(layer.id); }}
-                    title={t('watermark.delete')}
-                    disabled={isPrivateMode}>
+                    onClick={(e) => { e.stopPropagation(); deleteLayer(layer.id); }}
+                    title={t('watermark.delete')}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
                 </div>

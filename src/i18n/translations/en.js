@@ -411,6 +411,7 @@ const en = {
     tile2x2: '2×2 Grid',
     tile3x3: '3×3 Grid',
     removeAllConfirm: 'Remove all images and watermarks?',
+    dimMismatch: 'The images you have uploaded have different dimensions. Try uploading images of the same resolution for best results, or apply watermark one by one.',
   },
 
   /* ————— QR Code Generator ————— */
