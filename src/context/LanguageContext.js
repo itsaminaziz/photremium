@@ -6,8 +6,8 @@ import LANGUAGES, { LANG_CODES, DEFAULT_LANG } from '../i18n/languages';
 const LanguageContext = createContext();
 
 /**
- * Extract language code from the current hash path.
- * e.g. "#/es/about" → "es",  "#/about" → "en"
+ * Extract language code from the current path.
+ * e.g. "/es/about" → "es",  "/about" → "en"
  */
 function langFromPath(pathname) {
   const segments = pathname.split('/').filter(Boolean);
