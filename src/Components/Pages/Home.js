@@ -1,6 +1,7 @@
 import React from 'react';
 import SEO from '../SEO/SEO';
 import HeroCards from '../HeroCards/HeroCards';
+import ToolsShowcase from '../ToolsShowcase/ToolsShowcase';
 import ShowcaseSection from '../ShowcaseSection/ShowcaseSection';
 import ContactForm from '../ContactForm/ContactForm';
 import { useLanguage } from '../../context/LanguageContext';
@@ -16,6 +17,7 @@ const Home = () => {
         keywords={t('seo.homeKeywords')}
       />
       <HeroCards />
+      <ToolsShowcase />
       <ShowcaseSection />
       <ContactForm mode="section" />
     </>

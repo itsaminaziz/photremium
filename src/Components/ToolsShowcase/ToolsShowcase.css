@@ -1,0 +1,463 @@
+/* ================================================================
+   ToolsShowcase — scroll-driven tool animation section
+   ================================================================ */
+
+/* ── Outer container height is set inline (350vh) ── */
+
+/* ── Sticky viewport ── */
+.tsc-sticky {
+  position: sticky;
+  top: 64px;                      /* sit below the fixed navbar */
+  height: calc(100vh - 64px);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.tsc-sticky::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.865);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Skip button ── */
+.tsc-skip {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 60;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.75);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: background 0.2s, color 0.2s;
+}
+.tsc-skip:hover { background: rgba(255,255,255,0.24); color: #fff; }
+
+/* ─────────────────────────────────────────────
+   Vertical progress bar (left edge)
+───────────────────────────────────────────── */
+.tsc-vprog {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 12px;
+  background: rgba(0,0,0,0.15);
+  z-index: 40;
+  overflow: visible;
+  flex-shrink: 0;
+}
+.tsc-vprog__fill {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(180deg, #fff 0%, #e9d5ff 55%, #fde68a 100%);
+  transition: height 0.02s linear;
+}
+.tsc-vdot {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+  overflow: visible;
+}
+.tsc-vdot--on {
+  background: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 8px rgba(255,255,255,0.7);
+}
+.tsc-vdot__lbl {
+  position: absolute;
+  left: 16px; top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  pointer-events: none;
+  letter-spacing: 0.04em;
+}
+.tsc-vdot--on .tsc-vdot__lbl { color: rgba(255,255,255,0.9); }
+
+/* ─────────────────────────────────────────────
+   Screens (full sticky area, stacked)
+───────────────────────────────────────────── */
+.tsc-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 14px 16px 12px 28px; /* left: clears progress bar */
+  will-change: opacity, transform;
+  z-index: 2;
+}
+
+/* ── Tool header ── */
+.tsc-tool-hdr {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+  will-change: opacity;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+}
+.tsc-tool-hdr i { color: #fde68a; }
+
+/* ── Stage: fills all remaining vertical space ── */
+.tsc-stage {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ─────────────────────────────────────────────
+   Image wrapper — fills the stage completely
+   NO fixed px, NO border-radius/shadow box
+───────────────────────────────────────────── */
+.tsc-imgwrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* Images fill container, maintain natural proportions */
+.tsc-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 16px;
+}
+.tsc-abs { will-change: opacity, transform; }
+
+/* ── BG compare divider line ── */
+.tsc-line {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: #fff;
+  transform: translateX(-50%);
+  z-index: 4;
+  pointer-events: none;
+  will-change: left;
+}
+.tsc-handle {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  color: #4c1d95;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+}
+
+/* BG clip overlay */
+.tsc-bgclip {
+  position: absolute;
+  inset: 0;
+  will-change: clip-path;
+  z-index: 2;
+}
+.tsc-bgclip img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Comparison labels ── */
+.tsc-lbl {
+  position: absolute;
+  bottom: 10px;
+  z-index: 5;
+  background: rgba(0,0,0,0.45);
+  color: rgba(255,255,255,0.9);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.tsc-lbl--l { left: 10px; }
+.tsc-lbl--r { right: 10px; }
+
+/* ── Crop SVG overlay ── */
+.tsc-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   Badges — float over image edges
+   All visual styles set via inline in JS
+───────────────────────────────────────────── */
+.tsc-badge {
+  position: absolute;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  background: rgba(255,255,255,0.13);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 20px;
+  z-index: 20;
+  will-change: opacity, transform;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+.tsc-badge i { opacity: 0.85; }
+
+/* Desktop: anchor badges at right edge of the stage */
+.tsc-badge--right {
+  right: 10px;
+  transform-origin: right center;
+}
+
+/* ─────────────────────────────────────────────
+   Entry screen
+───────────────────────────────────────────── */
+.tsc-wcu {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.25);
+  letter-spacing: -0.01em;
+}
+.tsc-wcu-sub {
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  text-align: center;
+  margin: 0 0 32px;
+  max-width: 480px;
+  align-self: center;
+}
+
+.tsc-entry-cta {
+  position: relative;
+  width: 80px; height: 80px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 32px;
+  align-self: center;
+}
+.tsc-entry-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.35);
+  animation: tsc-ring-pulse 2.4s ease-out infinite;
+}
+.tsc-entry-ring--2 { animation-delay: 0.7s; }
+.tsc-entry-ring--3 { animation-delay: 1.4s; }
+@keyframes tsc-ring-pulse {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(2.6); opacity: 0;   }
+}
+.tsc-entry-core {
+  position: relative; z-index: 2;
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.5);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2px; color: #fff;
+  animation: tsc-core-bob 1.6s ease-in-out infinite;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+.tsc-entry-core i { font-size: 1.1rem; }
+.tsc-entry-core span { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.08em; }
+@keyframes tsc-core-bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(7px); }
+}
+
+.tsc-wcu-pills {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
+}
+.tsc-wcu-pill {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  font-size: 0.74rem; font-weight: 600;
+  padding: 4px 13px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+}
+
+/* ─────────────────────────────────────────────
+   Compressor UI overlay
+───────────────────────────────────────────── */
+.tsc-comp-ui {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 16px 18px;
+  background: linear-gradient(to top, rgba(40,0,80,0.85) 0%, transparent 60%);
+  z-index: 2;
+  will-change: opacity;
+}
+.tsc-comp-row {
+  display: flex; align-items: center; justify-content: space-between;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.8rem;
+  margin-bottom: 9px;
+}
+.tsc-comp-row strong { color: #fde68a; font-size: 0.88rem; }
+.tsc-comp-track {
+  position: relative; height: 6px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px; margin-bottom: 10px;
+}
+.tsc-comp-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, #a78bfa, #fde68a);
+}
+.tsc-comp-thumb {
+  position: absolute; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(167,139,250,0.8);
+}
+.tsc-comp-sizes { margin-bottom: 0; }
+.tsc-green { color: #6ee7b7; }
+
+.tsc-comp-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 3;
+  will-change: opacity;
+}
+.tsc-comp-done {
+  position: absolute; inset: 0; z-index: 4;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 10px; color: #fff;
+  will-change: opacity, transform;
+}
+.tsc-comp-done i { font-size: 3rem; color: #6ee7b7; filter: drop-shadow(0 2px 8px rgba(110,231,183,0.5)); }
+.tsc-comp-done span { font-size: 1.2rem; font-weight: 700; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+
+/* ─────────────────────────────────────────────
+   Scroll hint
+───────────────────────────────────────────── */
+.tsc-hint {
+  position: absolute; bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  animation: tsc-hint-fade 0.4s ease-out;
+  pointer-events: none; z-index: 20;
+}
+@keyframes tsc-hint-fade {
+  from { opacity:0; transform:translateX(-50%) translateY(10px); }
+  to   { opacity:1; transform:translateX(-50%) translateY(0); }
+}
+.tsc-hint span { color: rgba(255,255,255,0.6); font-size: 0.72rem; letter-spacing: 0.06em; }
+.tsc-hint__mouse {
+  width: 22px; height: 34px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 11px;
+  display: flex; justify-content: center; padding-top: 5px;
+  animation: tsc-hint-bob 1.4s ease-in-out infinite;
+}
+@keyframes tsc-hint-bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(5px); } }
+.tsc-hint__wheel {
+  width: 4px; height: 7px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 2px;
+  animation: tsc-wheel-roll 1.4s ease-in-out infinite;
+}
+@keyframes tsc-wheel-roll {
+  0% { opacity:1; transform:translateY(0); }
+  70% { opacity:0; transform:translateY(6px); }
+  100% { opacity:0; transform:translateY(0); }
+}
+
+/* ─────────────────────────────────────────────
+   Responsive
+───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .tsc-wcu { font-size: 2.4rem; }
+  .tsc-tool-hdr { font-size: 1rem; }
+}
+
+/* Small screens: badges reposition ABOVE image */
+@media (max-width: 600px) {
+  .tsc-sticky { top: 64px; height: calc(100vh - 64px); }
+
+  .tsc-screen { padding: 10px 10px 8px 18px; }
+  .tsc-tool-hdr { font-size: 0.88rem; margin-bottom: 6px; }
+  .tsc-wcu { font-size: 1.8rem; }
+  .tsc-wcu-sub { font-size: 0.82rem; }
+
+  /* Create a "badge zone" above the image by padding the stage top */
+  .tsc-stage { padding-top: 80px; }
+
+  /* imgwrap starts below badge zone */
+  .tsc-imgwrap { top: 80px; }
+
+  /* Reposition all badges into the top zone */
+  .tsc-stage > .tsc-badge:nth-child(1) {
+    top: 2px !important; left: 4px !important; right: auto !important;
+  }
+  .tsc-stage > .tsc-badge:nth-child(2) {
+    top: 2px !important; right: 4px !important; left: auto !important;
+  }
+  .tsc-stage > .tsc-badge:nth-child(3) {
+    top: 38px !important; left: 4px !important; right: auto !important;
+  }
+  .tsc-stage > .tsc-badge:nth-child(4) {
+    top: 38px !important; right: 4px !important; left: auto !important;
+  }
+  .tsc-stage > .tsc-badge:nth-child(5) {
+    top: 60px !important; left: 50% !important; right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .tsc-vprog { width: 8px; }
+  .tsc-vdot__lbl { display: none; }
+  .tsc-wcu-pills { gap: 6px; }
+  .tsc-wcu-pill { font-size: 0.68rem; padding: 3px 10px; }
+}
