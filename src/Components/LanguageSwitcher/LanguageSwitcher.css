@@ -10,30 +10,30 @@
   align-items: center;
   gap: 8px;
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.10));
-  border: 1.5px solid rgba(129, 140, 248, 0.30);
-  border-radius: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.568);
+  border-radius: 4px;
   padding: 7px 14px;
-  color: #898787;
+  color: #ffffff;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.1s ease;
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
 }
 
 .lang-switch__btn:hover {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.28), rgba(139, 92, 246, 0.20));
-  border-color: rgba(129, 140, 248, 0.50);
-  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.18);
-  color: #fff;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(139, 92, 246, 0.20));
+  border-color: hsl(0, 0%, 100%);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.18);
+  color: #474747;
 }
 
 .lang-switch--open .lang-switch__btn {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.28), rgba(139, 92, 246, 0.20));
-  border-color: rgba(129, 140, 248, 0.50);
-  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.18);
-  color: #868282;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.2));
+  border-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  color: #000000;
 }
 
 /* Flag icon in button */

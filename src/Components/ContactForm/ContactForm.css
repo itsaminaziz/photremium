@@ -1,0 +1,406 @@
+/* ================================================================
+   ContactForm — Popup + Section styles
+   ================================================================ */
+
+/* ---- Overlay (popup backdrop) ---- */
+.cf__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 5, 20, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.cf__overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---- Slide-in panel (right 30%) ---- */
+.cf__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  min-width: 360px;
+  max-width: 520px;
+  height: 100%;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.cf__panel--open {
+  transform: translateX(0);
+}
+
+/* Scrollbar */
+.cf__panel::-webkit-scrollbar { width: 5px; }
+.cf__panel::-webkit-scrollbar-track { background: transparent; }
+.cf__panel::-webkit-scrollbar-thumb { background: rgba(148, 99, 227, 0.35); border-radius: 10px; }
+
+/* ================================================================
+   Card (shared between popup panel and section)
+   ================================================================ */
+.cf__card {
+  background: #ffffff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px 28px;
+  gap: 0;
+}
+
+.cf__card--section {
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 24px 64px rgba(109, 40, 217, 0.14), 0 4px 20px rgba(0,0,0,0.06);
+  max-width: 760px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 44px 48px 40px;
+}
+
+/* ----------------------------------------------------------------
+   Header
+   ---------------------------------------------------------------- */
+.cf__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.cf__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7c3aed;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.10), rgba(168, 85, 247, 0.08));
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+}
+
+.cf__title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  margin: 0 0 6px;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #2c0d47, #9463e3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cf__subtitle {
+  font-size: 0.865rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Close button */
+.cf__close {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(124,58,237,0.10), rgba(168,85,247,0.08));
+  border: 1.5px solid rgba(124,58,237,0.20);
+  border-radius: 50%;
+  color: #7c3aed;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  margin-top: 2px;
+}
+
+.cf__close:hover {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.30);
+  transform: rotate(90deg) scale(1.08);
+}
+
+/* ----------------------------------------------------------------
+   Form fields
+   ---------------------------------------------------------------- */
+.cf__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+.cf__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.cf__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cf__field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.02em;
+}
+
+.cf__field label i {
+  color: #9333ea;
+  font-size: 0.75rem;
+}
+
+.cf__field input,
+.cf__field textarea {
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  color: #1e293b;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  font-family: inherit;
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cf__field input::placeholder,
+.cf__field textarea::placeholder {
+  color: #b0bac6;
+}
+
+.cf__field input:focus,
+.cf__field textarea:focus {
+  border-color: #9333ea;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.12);
+}
+
+/* Error state */
+.cf__field--error input,
+.cf__field--error textarea {
+  border-color: #ef4444;
+  background: #fff5f5;
+}
+
+.cf__field--error input:focus,
+.cf__field--error textarea:focus {
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
+}
+
+.cf__error {
+  font-size: 0.76rem;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cf__send-error {
+  font-size: 0.83rem;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------
+   Action buttons
+   ---------------------------------------------------------------- */
+.cf__actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 4px;
+  flex-wrap: wrap;
+}
+
+.cf__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  white-space: nowrap;
+}
+
+.cf__btn:active { transform: scale(0.97); }
+
+/* Send / primary */
+.cf__btn--send {
+  background: linear-gradient(135deg, #7c3aed, #a855f7, #6366f1);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(124,58,237,0.30);
+  flex: 1;
+}
+
+.cf__btn--send:hover:not(:disabled) {
+  filter: brightness(1.10);
+  box-shadow: 0 6px 24px rgba(124,58,237,0.42);
+  transform: translateY(-1px);
+}
+
+.cf__btn--send:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* Cancel / secondary */
+.cf__btn--cancel {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: none;
+  padding: 10px 18px;
+}
+
+.cf__btn--cancel:hover {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+
+/* ----------------------------------------------------------------
+   Success state
+   ---------------------------------------------------------------- */
+.cf__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  gap: 14px;
+  padding: 40px 10px;
+}
+
+.cf__success-icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  border-radius: 50%;
+  font-size: 2rem;
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(124,58,237,0.35);
+  animation: cf-pop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+@keyframes cf-pop {
+  from { transform: scale(0.4); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.cf__success h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  margin: 0;
+}
+
+.cf__success p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* ================================================================
+   Section mode (Home page)
+   ================================================================ */
+.cf__section-wrapper {
+  position: relative;
+  padding: 80px 24px;
+  overflow: hidden;
+}
+
+.cf__section-bg-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(148,99,227,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ================================================================
+   Responsive
+   ================================================================ */
+
+/* Tablet — panel takes 50% */
+@media (max-width: 1024px) {
+  .cf__panel {
+    width: 50%;
+    min-width: 320px;
+    max-width: none;
+  }
+}
+
+/* Mobile — full width panel, stack row fields */
+@media (max-width: 640px) {
+  .cf__panel {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .cf__card {
+    padding: 24px 20px 24px;
+  }
+
+  .cf__row {
+    grid-template-columns: 1fr;
+  }
+
+  .cf__title {
+    font-size: 1.35rem;
+  }
+
+  .cf__card--section {
+    padding: 32px 24px 28px;
+  }
+}
+
+/* ---- Section inner row (inline form on wider screens) ---- */
+@media (min-width: 860px) {
+  .cf__card--section .cf__row {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContact } from '../../context/ContactContext';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import './Navbar.css';
 
@@ -8,9 +9,11 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [langCloseSignal, setLangCloseSignal] = useState(0);
   const location = useLocation();
   const dropdownRef = useRef(null);
   const { t, localePath } = useLanguage();
+  const { openContact } = useContact();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -38,14 +41,19 @@ const Navbar = () => {
       <div className="navbar__container">
         {/* Logo */}
         <Link to={localePath('/')} className="navbar__logo">
-          <i className="fa-solid fa-image navbar__logo-icon"></i>
-          <span className="navbar__logo-text">fav<strong>IMG</strong></span>
+          <img src={`${process.env.PUBLIC_URL}/Images/nav-logo.png`} alt="favIMG" className="navbar__logo-img" />
         </Link>
 
         {/* Hamburger */}
         <button
           className={`navbar__hamburger ${mobileOpen ? 'active' : ''}`}
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={() => {
+            if (mobileOpen) {
+              // Close lang switcher first, then close menu
+              setLangCloseSignal(prev => prev + 1);
+            }
+            setMobileOpen(!mobileOpen);
+          }}
           aria-label="Toggle navigation"
         >
           <span></span>
@@ -55,6 +63,14 @@ const Navbar = () => {
 
         {/* Links */}
         <ul className={`navbar__links ${mobileOpen ? 'navbar__links--open' : ''}`}>
+          {/* Mobile menu header: language switcher + close button */}
+          <li className="navbar__mobile-header">
+            <LanguageSwitcher forceClose={langCloseSignal} />
+            <button
+              className="navbar__mobile-close"
+            >
+            </button>
+          </li>
           <li>
             <Link to={localePath('/')} className={location.pathname === '/' || location.pathname === localePath('/') ? 'active' : ''}>
               <i className="fa-solid fa-house"></i> {t('nav.home')}
@@ -121,10 +137,21 @@ const Navbar = () => {
               </li>
             </ul>
           </li>
-          <li className="navbar__lang-item">
-            <LanguageSwitcher />
+          {/* Mobile: Contact Us button */}
+          <li className="navbar__contact-mobile">
+            <button className="navbar__contact-btn" onClick={() => { setMobileOpen(false); openContact(); }}>
+              <i className="fa-solid fa-envelope"></i> Contact Us
+            </button>
           </li>
         </ul>
+        {/* Desktop language switcher — always visible on desktop */}
+        <div className="navbar__lang-desktop">
+          <LanguageSwitcher />
+        </div>
+        {/* Desktop: Contact Us button */}
+        <button className="navbar__contact-btn navbar__contact-btn--desktop" onClick={openContact}>
+          <i className="fa-solid fa-envelope"></i> Contact
+        </button>
       </div>
     </nav>
   );

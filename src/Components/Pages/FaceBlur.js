@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
 import { useLanguage } from '../../context/LanguageContext';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import './FaceBlur.css';
 
 /* ---- helpers ---- */
@@ -427,16 +428,32 @@ const FaceBlur = () => {
     if (!drawing || !drawStart || !drawCurrent) { setDrawing(false); return; }
 
     if (blurShape === 'circle') {
-      /* For circle: use the drawn area to create a circular region */
+      /* For circle: compute radius in CSS-pixel space so the stored region
+         maps to an equal-pixel circle on both axes in the source image.
+         (Normalising x and y separately by different canvas dimensions would
+         make r.w * origW ≠ r.h * origH, producing a stretched ellipse.) */
+      const rect = canvasRef.current.getBoundingClientRect();
+      const cw = rect.width, ch = rect.height;
+
+      const dxPx = Math.abs(drawCurrent.x - drawStart.x) * cw;
+      const dyPx = Math.abs(drawCurrent.y - drawStart.y) * ch;
+      const radiusPx = Math.max(dxPx, dyPx) / 2;
+
       const cx = (drawStart.x + drawCurrent.x) / 2;
       const cy = (drawStart.y + drawCurrent.y) / 2;
-      const radius = Math.max(Math.abs(drawCurrent.x - drawStart.x), Math.abs(drawCurrent.y - drawStart.y)) / 2;
-      if (radius > 0.01) {
+
+      /* Normalise the SAME pixel radius back per-axis so that
+         r.w * cw == r.h * ch == radiusPx * 2 (circle in display space)
+         AND r.w * origW == r.h * origH (circle in source image space) */
+      const rw = (radiusPx * 2) / cw;
+      const rh = (radiusPx * 2) / ch;
+
+      if (radiusPx > 5) {
         setRegions((prev) => [...prev, {
-          x: Math.max(0, cx - radius),
-          y: Math.max(0, cy - radius),
-          w: Math.min(1, radius * 2),
-          h: Math.min(1, radius * 2),
+          x: Math.max(0, cx - rw / 2),
+          y: Math.max(0, cy - rh / 2),
+          w: Math.min(1, rw),
+          h: Math.min(1, rh),
           auto: false,
           shape: 'circle',
           intensity: blurIntensity,
@@ -706,7 +723,7 @@ const FaceBlur = () => {
 
       <section className="fb-workspace">
         {/* Mobile toggle */}
-        <button className="fb-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label={t('common.toggleToolsPanel')}>
+        <button className="fb-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label="Toggle tools panel">
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
         </button>
         {mobileToolsOpen && <div className="fb-overlay" onClick={() => setMobileToolsOpen(false)} />}
@@ -771,7 +788,7 @@ const FaceBlur = () => {
                       onClick={(e) => { e.stopPropagation(); setSelectedRegionIdx(selectedRegionIdx === i ? null : i); }}
                     >
                       <span className="fb-face-indicator__label">
-                        {(r.blurMode === 'emoji' ? t('faceBlur.emoji') : t('faceBlur.blur')) + ' ' + (i + 1)}
+                        {(r.blurMode === 'emoji' ? 'Emoji' : 'Blur') + ' ' + (i + 1)}
                       </span>
                       {isSelected && (
                         <>
@@ -828,7 +845,7 @@ const FaceBlur = () => {
                 </button>
                 {isMulti && (
                   <button className="fb-left__next" onClick={handleNextImage}>
-                    <i className="fa-solid fa-forward"></i> {t('removeBg.nextImage')}
+                    <i className="fa-solid fa-forward"></i> {t('removeBg.nextImage') || 'Next Image'}
                   </button>
                 )}
               </div>
@@ -842,9 +859,12 @@ const FaceBlur = () => {
             {/* Header */}
             <div className="fb-right__header">
               <h3><i className="fa-solid fa-user-shield"></i> {t('faceBlur.blurTools')}</h3>
-              <button className="fb-right__close" onClick={() => setMobileToolsOpen(false)}>
-                <i className="fa-solid fa-xmark"></i>
-              </button>
+              <div className="fb-right__header-actions">
+                <LanguageSwitcher />
+                <button className="fb-right__close" onClick={() => setMobileToolsOpen(false)}>
+                  <i className="fa-solid fa-xmark"></i>
+                </button>
+              </div>
             </div>
 
             {/* Stats */}
@@ -891,7 +911,7 @@ const FaceBlur = () => {
             {effectiveMode === 'blur' && (
               <>
                 <div className="fb-section">
-                  <span className="fb-section__label">{t('faceBlur.blurIntensity')}{selectedRegionIdx != null ? ` (${t('faceBlur.regionLabel')} ${selectedRegionIdx + 1})` : ''}</span>
+                  <span className="fb-section__label">{t('faceBlur.blurIntensity')}{selectedRegionIdx != null ? ` (Region ${selectedRegionIdx + 1})` : ''}</span>
                   <div className="fb-slider-row">
                     <div className="fb-slider-row__top">
                       <span className="fb-slider-row__label">{t('faceBlur.strength')}</span>
@@ -974,8 +994,8 @@ const FaceBlur = () => {
                       style={{ cursor: 'pointer' }}
                     >
                       <i className={`fb-region-item__icon fa-solid ${r.blurMode === 'emoji' ? 'fa-face-grin' : 'fa-eye-slash'}`}></i>
-                      <span className="fb-region-item__label">{(r.blurMode === 'emoji' ? t('faceBlur.emoji') : t('faceBlur.blur')) + ' ' + (i + 1)}</span>
-                      <button className="fb-region-item__remove" onClick={(e) => { e.stopPropagation(); removeRegion(i); }} title={t('faceBlur.removeRegion')}>
+                      <span className="fb-region-item__label">{(r.blurMode === 'emoji' ? 'Emoji' : 'Blur') + ' ' + (i + 1)}</span>
+                      <button className="fb-region-item__remove" onClick={(e) => { e.stopPropagation(); removeRegion(i); }} title="Remove region">
                         <i className="fa-solid fa-trash"></i>
                       </button>
                     </div>
@@ -1026,7 +1046,7 @@ const FaceBlur = () => {
                 {downloading ? (
                   <><span className="fb-download-spinner" /> {t('faceBlur.processingDots')}</>
                 ) : (
-                  <><i className="fa-solid fa-download"></i> {t('common.download')}</>
+                  <><i className="fa-solid fa-download"></i> {t('common.download') || 'Download'}</>
                 )}
               </button>
             </div>
@@ -1041,19 +1061,19 @@ const FaceBlur = () => {
             <div className="fb-dialog__icon">
               <i className="fa-solid fa-circle-info"></i>
             </div>
-            <div className="fb-dialog__title">{t('faceBlur.downloadDialogTitle')}</div>
+            <div className="fb-dialog__title">Not all images edited</div>
             <div className="fb-dialog__text">
-              {t('faceBlur.downloadDialogText').replace('{edited}', getEditedImages().length).replace('{total}', images.length)}
+              You have edited {getEditedImages().length} out of {images.length} images.
             </div>
             <div className="fb-dialog__actions">
               <button className="fb-dialog__btn fb-dialog__btn--primary" onClick={handleDownloadEdited}>
                 <i className="fa-solid fa-download"></i> {t('common.download')} ({getEditedImages().length})
               </button>
               <button className="fb-dialog__btn fb-dialog__btn--secondary" onClick={handleDownloadAll}>
-                <i className="fa-solid fa-download"></i> {t('faceBlur.downloadAll')}
+                <i className="fa-solid fa-download"></i> {t('faceBlur.downloadAll') || 'Download All'}
               </button>
               <button className="fb-dialog__btn fb-dialog__btn--cancel" onClick={() => setShowDownloadDialog(false)}>
-                {t('common.cancel')}
+                {t('common.cancel') || 'Cancel'}
               </button>
             </div>
           </div>

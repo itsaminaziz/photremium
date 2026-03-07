@@ -1,11 +1,16 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import './LanguageSwitcher.css';
 
-const LanguageSwitcher = ({ variant }) => {
+const LanguageSwitcher = ({ variant, forceClose }) => {
   const { lang, setLanguage, languages } = useLanguage();
   const [open, setOpen] = useState(false);
   const closeTimer = useRef(null);
+
+  // Close dropdown when forceClose signal is fired (e.g. mobile menu closing)
+  useEffect(() => {
+    if (forceClose) setOpen(false);
+  }, [forceClose]);
 
   const current = languages.find((l) => l.code === lang) || languages[0];
 

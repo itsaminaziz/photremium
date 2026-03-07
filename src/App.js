@@ -2,8 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './context/LanguageContext';
+import { ContactProvider } from './context/ContactContext';
 import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
+import ContactForm from './Components/ContactForm/ContactForm';
 import Home from './Components/Pages/Home';
 import About from './Components/Pages/About';
 import ImageConverter from './Components/Pages/ImageConverter';
@@ -41,19 +43,23 @@ function App() {
     <HelmetProvider>
       <Router>
         <LanguageProvider>
-          <ScrollToTop />
-          <div className="App">
-            <Navbar />
-            <main className="main-content">
-              <Routes>
-                {/* English / default — no prefix */}
-                <Route path="/">{pageRoutes}</Route>
-                {/* Language-prefixed routes: /es/*, /ur/*, /fr/*, etc. */}
-                <Route path="/:lang">{pageRoutes}</Route>
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+          <ContactProvider>
+            <ScrollToTop />
+            <div className="App">
+              <Navbar />
+              <main className="main-content">
+                <Routes>
+                  {/* English / default — no prefix */}
+                  <Route path="/">{pageRoutes}</Route>
+                  {/* Language-prefixed routes: /es/*, /ur/*, /fr/*, etc. */}
+                  <Route path="/:lang">{pageRoutes}</Route>
+                </Routes>
+              </main>
+              <Footer />
+              {/* Global contact popup — rendered once, controlled via ContactContext */}
+              <ContactForm mode="popup" />
+            </div>
+          </ContactProvider>
         </LanguageProvider>
       </Router>
     </HelmetProvider>

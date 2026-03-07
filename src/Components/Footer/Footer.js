@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContact } from '../../context/ContactContext';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import './Footer.css';
 
 const Footer = () => {
   const { t, localePath } = useLanguage();
+  const { openContact } = useContact();
 
   return (
     <footer className="footer">
@@ -20,8 +22,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="footer__brand">
             <Link to={localePath('/')} className="footer__logo">
-              <i className="fa-solid fa-image"></i>
-              <span>fav<strong>IMG</strong></span>
+              <img src={`${process.env.PUBLIC_URL}/Images/nav-logo.png`} alt="favIMG" className="footer__logo-img" />
             </Link>
             <p className="footer__tagline">
               {t('footer.tagline')}
@@ -72,6 +73,11 @@ const Footer = () => {
             <ul>
               <li><Link to={localePath('/about')}><i className="fa-solid fa-circle-info"></i> {t('nav.aboutUs')}</Link></li>
               <li><Link to={localePath('/')}><i className="fa-solid fa-house"></i> {t('nav.home')}</Link></li>
+              <li>
+                <button className="footer__contact-btn" onClick={openContact}>
+                  <i className="fa-solid fa-envelope"></i> Contact Us
+                </button>
+              </li>
             </ul>
 
             <h4 style={{ marginTop: 24 }}>{t('footer.contact')}</h4>
@@ -81,14 +87,14 @@ const Footer = () => {
               </li>
             </ul>
 
-            <div style={{ marginTop: 24 }}>
-              <LanguageSwitcher variant="footer" />
-            </div>
           </div>
         </div>
 
         <div className="footer__bottom">
           <p>&copy; {new Date().getFullYear()} favIMG. {t('footer.allRightsReserved')}</p>
+          <div className="footer__bottom-lang">
+            <LanguageSwitcher variant="footer" />
+          </div>
           <div className="footer__bottom-links">
             <Link to={localePath('/')}>{t('footer.privacyPolicy')}</Link>
             <Link to={localePath('/')}>{t('footer.termsOfService')}</Link>
