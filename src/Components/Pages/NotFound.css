@@ -1,0 +1,393 @@
+/* ============================================================
+   404 NOT FOUND PAGE
+   ============================================================ */
+
+.nf {
+  margin-top: -65px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 84px 20px 64px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.16) 0%, transparent 38%),
+    radial-gradient(circle at 80% 15%, rgba(168, 85, 247, 0.14) 0%, transparent 42%),
+    radial-gradient(circle at 50% 85%, rgba(236, 72, 153, 0.12) 0%, transparent 40%),
+    linear-gradient(165deg, #f8fbff 0%, #f7f3ff 48%, #fdf8ff 100%);
+}
+
+.nf__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: radial-gradient(circle at center, black 18%, transparent 78%);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.nf__scene {
+  position: relative;
+  width: min(280px, 72vw);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin-bottom: 26px;
+  z-index: 1;
+}
+
+.nf__halo {
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.34) 0%, rgba(167, 139, 250, 0.22) 32%, transparent 72%);
+  filter: blur(12px);
+  animation: nf-halo 4.6s ease-in-out infinite;
+}
+
+.nf__ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.nf__ring--outer {
+  inset: 4%;
+  animation: nf-spin 11s linear infinite;
+}
+
+.nf__ring--middle {
+  inset: 17%;
+  border-color: rgba(168, 85, 247, 0.28);
+  animation: nf-spin-rev 8s linear infinite;
+}
+
+.nf__ring--inner {
+  inset: 31%;
+  border-color: rgba(236, 72, 153, 0.26);
+  animation: nf-pulse 2.8s ease-in-out infinite;
+}
+
+.nf__orbit {
+  position: absolute;
+  inset: 5%;
+  animation: nf-spin 8s linear infinite;
+}
+
+.nf__orbit span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  left: calc(50% - 5px);
+  top: -5px;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.75);
+}
+
+.nf__orbit--1 span { background: #4f46e5; }
+
+.nf__orbit--2 {
+  inset: 18%;
+  animation-duration: 6.8s;
+  animation-direction: reverse;
+}
+
+.nf__orbit--2 span { background: #a855f7; }
+
+.nf__orbit--3 {
+  inset: 32%;
+  animation-duration: 5.2s;
+}
+
+.nf__orbit--3 span { background: #ec4899; }
+
+.nf__orbit--4 {
+  inset: 10%;
+  animation-duration: 9.4s;
+  animation-direction: reverse;
+}
+
+.nf__orbit--4 span { background: #06b6d4; }
+
+.nf__orbit--5 {
+  inset: 25%;
+  animation-duration: 7.3s;
+}
+
+.nf__orbit--5 span { background: #22c55e; }
+
+.nf__orbit--6 {
+  inset: 39%;
+  animation-duration: 4.6s;
+  animation-direction: reverse;
+}
+
+.nf__orbit--6 span { background: #f59e0b; }
+
+.nf__center {
+  width: 88px;
+  height: 88px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 1.8rem;
+  background: linear-gradient(145deg, #6366f1 0%, #a855f7 55%, #ec4899 100%);
+  box-shadow:
+    0 22px 44px rgba(99, 102, 241, 0.28),
+    inset 0 -5px 10px rgba(0, 0, 0, 0.16);
+  animation: nf-center-float 3s ease-in-out infinite;
+}
+
+.nf__code {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  font-size: clamp(5rem, 15vw, 9rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -4px;
+  background: linear-gradient(135deg, #4f46e5 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nf__code::before,
+.nf__code::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.nf__code::before {
+  color: rgba(59, 130, 246, 0.5);
+  transform: translate(-1px, 0);
+  animation: nf-glitch 4.2s steps(1, end) infinite;
+}
+
+.nf__code::after {
+  color: rgba(236, 72, 153, 0.48);
+  transform: translate(1px, 0);
+  animation: nf-glitch 4.2s steps(1, end) 1.2s infinite;
+}
+
+.nf__title {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.22rem, 3.4vw, 1.82rem);
+  font-weight: 800;
+  color: #1e1b4b;
+  margin-bottom: 12px;
+  animation: nf-rise 0.55s ease both;
+}
+
+.nf__sub {
+  position: relative;
+  z-index: 1;
+  max-width: 470px;
+  margin: 0 auto 34px;
+  color: #64748b;
+  line-height: 1.72;
+  font-size: 0.98rem;
+  animation: nf-rise 0.55s ease 0.1s both;
+}
+
+.nf__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  animation: nf-rise 0.55s ease 0.2s both;
+}
+
+.nf__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 13px 28px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.nf__btn--primary {
+  color: #fff;
+  background: linear-gradient(135deg, #4f46e5 0%, #a855f7 100%);
+  box-shadow: 0 10px 24px rgba(99, 102, 241, 0.35);
+}
+
+.nf__btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(99, 102, 241, 0.42);
+}
+
+.nf__btn--ghost {
+  color: #4f46e5;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(99, 102, 241, 0.26);
+  backdrop-filter: blur(8px);
+}
+
+.nf__btn--ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.5);
+  background: #ffffff;
+}
+
+.nf__tools-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 42px;
+  animation: nf-rise 0.55s ease 0.3s both;
+}
+
+.nf__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  text-decoration: none;
+  padding: 7px 14px;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 650;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.8);
+  transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.nf__chip i {
+  font-size: 0.72rem;
+}
+
+.nf__chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.45);
+  color: #4338ca;
+  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.12);
+}
+
+@keyframes nf-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes nf-spin-rev {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes nf-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+
+@keyframes nf-center-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes nf-halo {
+  0%, 100% { transform: scale(0.95); opacity: 0.65; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes nf-glitch {
+  0%, 88%, 100% { opacity: 0; }
+  89%, 92% { opacity: 1; }
+  93%, 95% { opacity: 0; }
+  96% { opacity: 1; }
+}
+
+@keyframes nf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .nf {
+    padding-top: 74px;
+  }
+
+  .nf__scene {
+    width: min(240px, 78vw);
+    margin-bottom: 18px;
+  }
+
+  .nf__center {
+    width: 76px;
+    height: 76px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+  }
+
+  .nf__actions {
+    gap: 10px;
+  }
+
+  .nf__btn {
+    padding: 11px 22px;
+    font-size: 0.85rem;
+  }
+
+  .nf__tools-row {
+    margin-top: 30px;
+    gap: 8px;
+  }
+
+  .nf__chip {
+    font-size: 0.74rem;
+    padding: 6px 11px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .nf {
+    padding-top: 60px;
+  }
+
+  .nf__scene {
+    margin-bottom: 20px;
+  }
+
+  .nf__tools-row {
+    margin-top: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf__halo,
+  .nf__ring,
+  .nf__orbit,
+  .nf__center,
+  .nf__code::before,
+  .nf__code::after,
+  .nf__title,
+  .nf__sub,
+  .nf__actions,
+  .nf__tools-row {
+    animation: none !important;
+  }
+}

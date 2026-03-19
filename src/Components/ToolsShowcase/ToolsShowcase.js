@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useLayoutEffect, useState } from 'react';
 import './ToolsShowcase.css';
 
 const IMG = (n) => `${process.env.PUBLIC_URL}/Images/Animation/${n}`;
@@ -48,10 +48,56 @@ const BADGE_DATA = [
 ];
 
 /* ────────────────────────────────────────────────────── */
-/* All animation math lives here — runs every RAF tick   */
+/* Build element cache ONCE after mount — no more        */
+/* querySelectorAll on every scroll/RAF tick             */
 /* ────────────────────────────────────────────────────── */
-function updateFrame(container, p) {
-  if (!container) return;
+function buildCache(container) {
+  const screenEls = Array.from(container.querySelectorAll('.tsc-screen'));
+  const hdrs      = screenEls.map(sc => sc.querySelector('.tsc-tool-hdr'));
+  const badgeGroups = screenEls.map(sc => Array.from(sc.querySelectorAll('.tsc-badge')));
+  return {
+    screenEls,
+    hdrs,
+    badgeGroups,
+    fill:         container.querySelector('.tsc-vprog__fill'),
+    vdots:        Array.from(container.querySelectorAll('.tsc-vdot')),
+    bgclip:       container.querySelector('.tsc-bgclip'),
+    bgLine:       container.querySelector('.tsc-line'),
+    cropPath:     container.querySelector('.tsc-crop-dim'),
+    cropRect:     container.querySelector('.tsc-crop-rect'),
+    cropCorners:  Array.from(container.querySelectorAll('.tsc-crop-corner')),
+    cropOrigImg:  container.querySelector('.tsc-crop-orig'),
+    cropResImg:   container.querySelector('.tsc-crop-res'),
+    cropLbl:      container.querySelector('.tsc-crop-lbl'),
+    blurImg:      container.querySelector('.tsc-blur-ov'),
+    blurLblL:     container.querySelector('.tsc-blur-lbl-l'),
+    blurLblR:     container.querySelector('.tsc-blur-lbl-r'),
+    wmImg:        container.querySelector('.tsc-wm-ov'),
+    wmLblL:       container.querySelector('.tsc-wm-lbl-l'),
+    wmLblR:       container.querySelector('.tsc-wm-lbl-r'),
+    compUI:       container.querySelector('.tsc-comp-ui'),
+    compLvl:      container.querySelector('.tsc-comp-level'),
+    compFill:     container.querySelector('.tsc-comp-fill'),
+    compThumb:    container.querySelector('.tsc-comp-thumb'),
+    compSzEl:     container.querySelector('.tsc-comp-sz'),
+    compOverlay:  container.querySelector('.tsc-comp-overlay'),
+    compDone:     container.querySelector('.tsc-comp-done'),
+  };
+}
+
+/* ────────────────────────────────────────────────────── */
+/* All animation math lives here — runs every RAF tick   */
+/* Uses pre-built cache — zero DOM queries per frame     */
+/* ────────────────────────────────────────────────────── */
+function updateFrame(cache, p) {
+  if (!cache) return;
+  const { screenEls, hdrs, badgeGroups, fill, vdots,
+          bgclip, bgLine, cropPath, cropRect, cropCorners,
+          cropOrigImg, cropResImg, cropLbl,
+          blurImg, blurLblL, blurLblR,
+          wmImg, wmLblL, wmLblR,
+          compUI, compLvl, compFill, compThumb, compSzEl, compOverlay, compDone } = cache;
+
   const sp  = (s) => clamp((p - s * SEG) / SEG, 0, 1);
   const sOp = (s) => { const q = sp(s); return map(q,0,.15,0,1) * map(q,.90,1,1,0); };
   const sTy = (s) => { const q = sp(s); return map(q,0,.15,28,0) + map(q,.90,1,0,-28); };
@@ -65,7 +111,6 @@ function updateFrame(container, p) {
 
   /* ── Entry screen ── */
   const entryOp = map(p, 0, SEG*.08, 1, 1) * map(p, SEG*.75, SEG, 1, 0);
-  const screenEls = container.querySelectorAll('.tsc-screen');
   if (screenEls[0]) {
     screenEls[0].style.opacity = entryOp;
     screenEls[0].style.pointerEvents = entryOp > 0.2 ? 'auto' : 'none';
@@ -79,11 +124,11 @@ function updateFrame(container, p) {
     sc.style.opacity = op;
     sc.style.transform = `translateY(${sTy(s)}px)`;
     sc.style.pointerEvents = op > 0.3 ? 'auto' : 'none';
-    const hdr = sc.querySelector('.tsc-tool-hdr');
+    const hdr = hdrs[s];
     if (hdr) hdr.style.opacity = tOp(s);
 
-    /* badges */
-    const badges = sc.querySelectorAll('.tsc-badge');
+    /* badges — using cached array */
+    const badges = badgeGroups[s] || [];
     badges.forEach((badge, i) => {
       const n    = badges.length;
       const side = badge.dataset.side;
@@ -99,24 +144,19 @@ function updateFrame(container, p) {
   }
 
   /* ── Vertical progress bar ── */
-  const fill = container.querySelector('.tsc-vprog__fill');
   if (fill) fill.style.height = `${p * 100}%`;
-  container.querySelectorAll('.tsc-vdot').forEach((dot, i) => {
+  vdots.forEach((dot, i) => {
     const active = p >= ((i + 1) / NSEGS - 0.01);
     dot.classList.toggle('tsc-vdot--on', active);
   });
 
   /* ── BG Remover (seg 1) ── */
   const bgSlider = map(sp(1), .40, .84, 1, 0);
-  const bgclip   = container.querySelector('.tsc-bgclip');
-  const bgLine   = container.querySelector('.tsc-line');
   if (bgclip) {
-    /* bag.jpg is 1080×1080 (1:1). object-fit:contain centres it in the wrapper.
-       Compute the visible image bounds so clip-path sweeps only the image area. */
     const wrap = bgclip.parentElement;
     const cW = wrap.offsetWidth, cH = wrap.offsetHeight;
-    const visW = cW / cH > 1 ? cH : cW;          // 1:1 aspect ratio
-    const offX = (cW - visW) / 2;                 // left offset of image
+    const visW = cW / cH > 1 ? cH : cW;
+    const offX = (cW - visW) / 2;
     const leftPx  = offX + bgSlider * visW;
     const leftPct = (leftPx / cW) * 100;
     bgclip.style.clipPath = `inset(0 0 0 ${leftPct}%)`;
@@ -129,24 +169,18 @@ function updateFrame(container, p) {
   const cropOrigOp = map(sp(2), .65, .82, 1, 0);
   const cropResOp  = map(sp(2), .65, .82, 0, 1);
   const cropResSc  = map(sp(2), .65, .82, .88, 1);
-  const cropPath   = container.querySelector('.tsc-crop-dim');
   if (cropPath) cropPath.style.opacity = dimOp * cropOrigOp;
-  const cropRect = container.querySelector('.tsc-crop-rect');
   if (cropRect) {
     const PERIM = 2 * (381 + 381);
     cropRect.style.strokeDashoffset = PERIM * cropDash;
     cropRect.style.opacity = cropOrigOp;
   }
-  const cropCorners = container.querySelectorAll('.tsc-crop-corner');
   cropCorners.forEach(c => { c.style.opacity = (1 - cropDash) * cropOrigOp; });
-  const cropOrigImg = container.querySelector('.tsc-crop-orig');
   if (cropOrigImg) cropOrigImg.style.opacity = cropOrigOp;
-  const cropResImg  = container.querySelector('.tsc-crop-res');
   if (cropResImg) {
     cropResImg.style.opacity   = cropResOp;
     cropResImg.style.transform = `scale(${cropResSc})`;
   }
-  const cropLbl = container.querySelector('.tsc-crop-lbl');
   if (cropLbl) {
     cropLbl.style.opacity = cropResOp;
     cropLbl.style.display = cropResOp > 0.02 ? '' : 'none';
@@ -154,19 +188,13 @@ function updateFrame(container, p) {
 
   /* ── Face Blur (seg 3) ── */
   const blurOp  = map(sp(3), .42, .82, 0, 1);
-  const blurImg = container.querySelector('.tsc-blur-ov');
-  if (blurImg) blurImg.style.opacity = blurOp;
-  const blurLblL = container.querySelector('.tsc-blur-lbl-l');
-  const blurLblR = container.querySelector('.tsc-blur-lbl-r');
+  if (blurImg)  blurImg.style.opacity  = blurOp;
   if (blurLblL) blurLblL.style.opacity = 1 - blurOp;
   if (blurLblR) blurLblR.style.opacity = blurOp;
 
   /* ── Watermark (seg 4) ── */
   const wmOp  = map(sp(4), .42, .82, 0, 1);
-  const wmImg = container.querySelector('.tsc-wm-ov');
-  if (wmImg) wmImg.style.opacity = wmOp;
-  const wmLblL = container.querySelector('.tsc-wm-lbl-l');
-  const wmLblR = container.querySelector('.tsc-wm-lbl-r');
+  if (wmImg)  wmImg.style.opacity  = wmOp;
   if (wmLblL) wmLblL.style.opacity = 1 - wmOp;
   if (wmLblR) wmLblR.style.opacity = wmOp;
 
@@ -175,21 +203,12 @@ function updateFrame(container, p) {
   const compSize = (33.2 - (33.2 - 11.4) * compVal / 80).toFixed(1);
   const compOvl  = map(sp(5), .70, .86, 0, 1);
   const compChk  = map(sp(5), .86, .96, 0, 1);
-  const compUI   = container.querySelector('.tsc-comp-ui');
-  if (compUI) compUI.style.opacity = 1 - compOvl;
-  const compLvl  = container.querySelector('.tsc-comp-level');
-  if (compLvl) compLvl.textContent = `${compVal}%`;
-  const compFill = container.querySelector('.tsc-comp-fill');
-  if (compFill) compFill.style.width = `${compVal}%`;
-  const compThumb = container.querySelector('.tsc-comp-thumb');
-  if (compThumb) compThumb.style.left = `${compVal}%`;
-  const compSzEl = container.querySelector('.tsc-comp-sz');
-  if (compSzEl) compSzEl.textContent = `${compSize} KB`;
-  const compOverlay = container.querySelector('.tsc-comp-overlay');
-  if (compOverlay) {
-    compOverlay.style.opacity = compOvl;
-  }
-  const compDone = container.querySelector('.tsc-comp-done');
+  if (compUI)      compUI.style.opacity      = 1 - compOvl;
+  if (compLvl)     compLvl.textContent       = `${compVal}%`;
+  if (compFill)    compFill.style.width      = `${compVal}%`;
+  if (compThumb)   compThumb.style.left      = `${compVal}%`;
+  if (compSzEl)    compSzEl.textContent      = `${compSize} KB`;
+  if (compOverlay) compOverlay.style.opacity = compOvl;
   if (compDone) {
     compDone.style.opacity   = compChk;
     compDone.style.transform = `scale(${0.72 + compChk * 0.28})`;
@@ -204,15 +223,33 @@ export default function ToolsShowcase() {
   const rafRef    = useRef(null);
   const hintTimer = useRef(null);
   const hintShownRef = useRef(false);
+  const cacheRef  = useRef(null);   // DOM element cache
+  const lastPRef  = useRef(0);      // last scroll progress — needed for resize redraws
   const [showHint, setShowHint] = useState(false);
 
-  /* ── Imperative scroll animation ── */
+  /* ── Build DOM cache and paint initial frame BEFORE first paint ── */
+  /* useLayoutEffect fires synchronously after DOM mutations but before     */
+  /* the browser has painted. This means all screen opacities are set to   */
+  /* their correct values (entry screen = 1, others = 0) before the user   */
+  /* sees anything — eliminating the blank-flash on mount / remount.       */
+  useLayoutEffect(() => {
+    const container = stickyRef.current;
+    if (!container) return;
+    cacheRef.current = buildCache(container);
+    updateFrame(cacheRef.current, 0);
+  }, []);
+
+  /* ── Imperative scroll animation (listeners only — no initial draw) ── */
   useEffect(() => {
     const container = stickyRef.current;
     if (!container) return;
 
-    /* Run once to set initial state */
-    updateFrame(container, 0);
+    const getP = () => {
+      if (!outerRef.current) return lastPRef.current;
+      const { top, height } = outerRef.current.getBoundingClientRect();
+      const scrollable = height - window.innerHeight;
+      return scrollable > 0 ? clamp(-top / scrollable, 0, 1) : 0;
+    };
 
     const onScroll = () => {
       if (hintShownRef.current) {
@@ -222,11 +259,9 @@ export default function ToolsShowcase() {
       clearTimeout(hintTimer.current);
       cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
-        if (!outerRef.current) return;
-        const { top, height } = outerRef.current.getBoundingClientRect();
-        const scrollable = height - window.innerHeight;
-        const p = clamp(-top / scrollable, 0, 1);
-        updateFrame(container, p);
+        const p = getP();
+        lastPRef.current = p;
+        updateFrame(cacheRef.current, p);
         if (p > 0.03 && p < 0.96) {
           hintTimer.current = setTimeout(() => {
             hintShownRef.current = true;
@@ -236,9 +271,21 @@ export default function ToolsShowcase() {
       });
     };
 
+    /* Resize / orientation — re-draw at current scroll position */
+    const onResize = () => {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => {
+        updateFrame(cacheRef.current, lastPRef.current);
+      });
+    };
+
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+    window.addEventListener('orientationchange', onResize, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
       cancelAnimationFrame(rafRef.current);
       clearTimeout(hintTimer.current);
     };

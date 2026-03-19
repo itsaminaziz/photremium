@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { loadTranslations, defaultTranslations } from '../i18n';
+import { getTranslationsSync } from '../i18n';
 import LANGUAGES, { LANG_CODES, DEFAULT_LANG } from '../i18n/languages';
 
 const LanguageContext = createContext();
@@ -47,21 +47,17 @@ export function LanguageProvider({ children }) {
   const navigate = useNavigate();
 
   const [lang, setLangState] = useState(() => langFromPath(location.pathname));
-  const [translations, setTranslations] = useState(defaultTranslations);
-  const [loading, setLoading] = useState(false);
 
-  /* Load translations whenever lang changes */
+  // Derive translations SYNCHRONOUSLY from lang — no async state needed.
+  // All language files are bundled eagerly so getTranslationsSync() is instant.
+  // This means:
+  //   • First render → correct language meta tags (critical for SEO crawlers)
+  //   • Language switch → correct meta tags in the same render (no flash)
+  const translations = getTranslationsSync(lang);
+
+  // Keep document.documentElement.lang in sync with lang state
   useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    loadTranslations(lang).then((t) => {
-      if (!cancelled) {
-        setTranslations(t);
-        setLoading(false);
-        document.documentElement.lang = lang;
-      }
-    });
-    return () => { cancelled = true; };
+    document.documentElement.lang = lang;
   }, [lang]);
 
   /* Sync lang from URL when location changes (e.g. back button) */
@@ -99,7 +95,7 @@ export function LanguageProvider({ children }) {
   }, [translations]);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLanguage, t, localePath, translations, loading, languages: LANGUAGES }}>
+    <LanguageContext.Provider value={{ lang, setLanguage, t, localePath, translations, loading: false, languages: LANGUAGES }}>
       {children}
     </LanguageContext.Provider>
   );

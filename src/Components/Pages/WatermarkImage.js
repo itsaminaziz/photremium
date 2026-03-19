@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
 import { useLanguage } from '../../context/LanguageContext';
@@ -124,6 +125,7 @@ const roundRect = (ctx, x, y, w, h, r) => {
 /* ============================================= */
 const WatermarkImage = () => {
   const { t } = useLanguage();
+  const location = useLocation();
   const [images, setImages] = useState([]);
   const [selectedImgId, setSelectedImgId] = useState(null);
   const [dragOver, setDragOver] = useState(false);
@@ -154,6 +156,7 @@ const WatermarkImage = () => {
   const canvasRef = useRef(null);
   const bgImgRef = useRef(null);
   const layersRef = useRef(layers);
+  const didPrefillFromStateRef = useRef(false);
   layersRef.current = layers;
   const selected = images.find((i) => i.id === selectedImgId) || null;
   const totalSize = images.reduce((s, i) => s + i.file.size, 0);
@@ -230,6 +233,15 @@ const WatermarkImage = () => {
       return merged;
     });
   }, []);
+
+  /* --- prefill from Home paste popup --- */
+  useEffect(() => {
+    if (didPrefillFromStateRef.current) return;
+    const incoming = location.state?.pastedImages;
+    if (!Array.isArray(incoming) || incoming.length === 0) return;
+    didPrefillFromStateRef.current = true;
+    addFiles(incoming);
+  }, [location.state, addFiles]);
 
   /* --- Ctrl+V paste --- */
   useEffect(() => {
@@ -956,7 +968,7 @@ const WatermarkImage = () => {
           </div>
         )}
         {/* Mobile toggle */}
-        <button className="wm-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label="Toggle tools panel">
+        <button className="wm-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label={t('common.toggleToolsPanel') || 'Toggle tools panel'}>
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
         </button>
         {mobileToolsOpen && <div className="wm-overlay" onClick={() => setMobileToolsOpen(false)} />}
@@ -1016,7 +1028,7 @@ const WatermarkImage = () => {
                       {selectedLayer.bgColor !== 'transparent' && <span className="wm-top-toolbar__color-dot" style={{ background: selectedLayer.bgColor }} />}
                     </label>
                     {selectedLayer.bgColor !== 'transparent' && (
-                      <button className="wm-top-toolbar__btn wm-top-toolbar__btn--xs" onClick={() => updateLayer(selectedLayer.id, { bgColor: 'transparent' })} title="Clear Background"><i className="fa-solid fa-xmark"></i></button>
+                      <button className="wm-top-toolbar__btn wm-top-toolbar__btn--xs" onClick={() => updateLayer(selectedLayer.id, { bgColor: 'transparent' })} title={t('watermark.clearBackground') || 'Clear Background'}><i className="fa-solid fa-xmark"></i></button>
                     )}
                     <label className="wm-top-toolbar__color" title={t('watermark.textColor')}>
                       <span style={{ fontWeight: 700, fontSize: '0.85rem' }}>A</span>
@@ -1125,7 +1137,7 @@ const WatermarkImage = () => {
                         <div className="wm-top-toolbar__dropdown wm-top-toolbar__dropdown--wide">
                           <div className="wm-top-toolbar__dropdown-row">
                             <label className="wm-top-toolbar__dropdown-label">{t('watermark.cornerRadius')}</label>
-                            <button className={`wm-top-toolbar__btn ${selectedLayer.separateCorners ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { separateCorners: !selectedLayer.separateCorners })} title={selectedLayer.separateCorners ? 'Link corners' : 'Separate corners'} style={{ marginLeft: 'auto' }}>
+                            <button className={`wm-top-toolbar__btn ${selectedLayer.separateCorners ? 'active' : ''}`} onClick={() => updateLayer(selectedLayer.id, { separateCorners: !selectedLayer.separateCorners })} title={selectedLayer.separateCorners ? (t('watermark.linkCorners') || 'Link corners') : (t('watermark.separateCorners') || 'Separate corners')} style={{ marginLeft: 'auto' }}>
                               <i className={`fa-solid ${selectedLayer.separateCorners ? 'fa-link' : 'fa-link-slash'}`}></i>
                             </button>
                           </div>
@@ -1222,10 +1234,10 @@ const WatermarkImage = () => {
 
               {/* Zoom toolbar */}
               <div className="wm-zoom-toolbar">
-                <button className="wm-zoom-btn" onClick={() => setScale(s => Math.max(s * 0.8, 0.05))} title="Zoom Out"><i className="fa-solid fa-minus"></i></button>
+                <button className="wm-zoom-btn" onClick={() => setScale(s => Math.max(s * 0.8, 0.05))} title={t('common.zoomOut') || 'Zoom Out'}><i className="fa-solid fa-minus"></i></button>
                 <span className="wm-zoom-level">{Math.round(scale * 100)}%</span>
-                <button className="wm-zoom-btn" onClick={() => setScale(s => Math.min(s * 1.25, 3))} title="Zoom In"><i className="fa-solid fa-plus"></i></button>
-                <button className="wm-zoom-btn" onClick={() => { const img = bgImgRef.current; const scrollEl = canvasRef.current?.closest('.wm-canvas-scroll'); if (img && scrollEl) { const fit = (scrollEl.clientWidth - 56) / img.naturalWidth; setScale(Math.min(fit, 1)); } }} title="Fit"><i className="fa-solid fa-expand"></i></button>
+                <button className="wm-zoom-btn" onClick={() => setScale(s => Math.min(s * 1.25, 3))} title={t('common.zoomIn') || 'Zoom In'}><i className="fa-solid fa-plus"></i></button>
+                <button className="wm-zoom-btn" onClick={() => { const img = bgImgRef.current; const scrollEl = canvasRef.current?.closest('.wm-canvas-scroll'); if (img && scrollEl) { const fit = (scrollEl.clientWidth - 56) / img.naturalWidth; setScale(Math.min(fit, 1)); } }} title={t('common.fit') || 'Fit'}><i className="fa-solid fa-expand"></i></button>
               </div>
 
               {/* Scrollable canvas area */}
@@ -1330,7 +1342,7 @@ const WatermarkImage = () => {
                         >
                           {layer.type === 'text' ? (
                             <span className="wm-layer__text" style={textStyle(layer)}>
-                              {layer.text || 'Type here...'}
+                              {layer.text || t('watermark.typeHere') || 'Type here...'}
                             </span>
                           ) : (
                             <img className="wm-layer__img" src={layer.preview} alt="" style={imgLayerStyle(layer)} draggable={false} />

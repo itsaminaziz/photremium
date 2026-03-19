@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
+import ToolBlogSection from '../ToolBlog/ToolBlogSection';
 import { useLanguage } from '../../context/LanguageContext';
 import './ImageCompressor.css';
 
@@ -41,6 +43,7 @@ const compressImage = (file, qualityRatio) =>
 /* ============================================= */
 const ImageCompressor = () => {
   const { t } = useLanguage();
+  const location = useLocation();
   /*
    * "compression" = how much smaller the file should become.
    *  30 means "reduce by 30%" → canvas quality = 0.70
@@ -52,6 +55,7 @@ const ImageCompressor = () => {
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const fileInputRef = useRef(null);
   const addFileInputRef = useRef(null);
+  const didPrefillFromStateRef = useRef(false);
 
   /* --- warn before reload when images exist --- */
   useEffect(() => {
@@ -82,6 +86,15 @@ const ImageCompressor = () => {
     },
     [globalCompression]
   );
+
+  /* --- prefill from Home paste popup --- */
+  useEffect(() => {
+    if (didPrefillFromStateRef.current) return;
+    const incoming = location.state?.pastedImages;
+    if (!Array.isArray(incoming) || incoming.length === 0) return;
+    didPrefillFromStateRef.current = true;
+    addFiles(incoming);
+  }, [location.state, addFiles]);
 
   /* --- Ctrl+V paste --- */
   useEffect(() => {
@@ -220,7 +233,9 @@ const ImageCompressor = () => {
     const ready = images.filter((i) => i.compressedBlob);
     if (!ready.length) return;
 
-    if (downloadMode === 'separate') {
+    const effectiveMode = ready.length === 1 ? 'separate' : downloadMode;
+
+    if (effectiveMode === 'separate') {
       if (ready.length >= 10) {
         const useZip = window.confirm(
           `Downloading ${ready.length} files separately may be blocked by your browser.\n\nWould you like to download as a single ZIP file instead?`
@@ -280,6 +295,7 @@ const ImageCompressor = () => {
   const totalOriginal = images.reduce((s, i) => s + i.file.size, 0);
   const totalCompressed = images.reduce((s, i) => s + (i.compressedSize ?? i.file.size), 0);
   const allCompressed = images.length > 0 && images.every((i) => i.compressedBlob);
+  const isLowQualityCompression = globalCompression > 60;
   const savedPercent =
     totalOriginal > 0 ? Math.max(0, Math.round(((totalOriginal - totalCompressed) / totalOriginal) * 100)) : 0;
 
@@ -329,6 +345,7 @@ const ImageCompressor = () => {
           </div>
         </section>
 
+        <ToolBlogSection toolKey="imageCompressor" />
         <FAQ faqKey="imageCompressor" />
       </>
     );
@@ -348,7 +365,7 @@ const ImageCompressor = () => {
         <button
           className="comp-settings-toggle"
           onClick={() => setMobileToolsOpen((prev) => !prev)}
-          aria-label="Toggle tools panel"
+          aria-label={t('common.toggleToolsPanel') || 'Toggle tools panel'}
         >
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
         </button>
@@ -375,8 +392,14 @@ const ImageCompressor = () => {
               onChange={(e) => handleGlobalCompressionDrag(e.target.value)}
               onMouseUp={(e) => handleGlobalCompressionCommit(e)}
               onTouchEnd={(e) => handleGlobalCompressionCommit(e)}
-              className="comp-slider comp-slider--global"
+              className={`comp-slider comp-slider--global ${isLowQualityCompression ? 'comp-slider--danger' : ''}`}
             />
+
+            {isLowQualityCompression && (
+              <div className="comp-global-bar__warning">
+                <i className="fa-solid fa-triangle-exclamation"></i> {t('compressor.lowQualityWarning')}
+              </div>
+            )}
           </div>
 
           {/* Image cards */}
@@ -424,7 +447,7 @@ const ImageCompressor = () => {
                         onChange={(e) => handleCompressionDrag(img.id, e.target.value)}
                         onMouseUp={(e) => handleCompressionCommit(img.id, e.target.value)}
                         onTouchEnd={(e) => handleCompressionCommit(img.id, e.target.value)}
-                        className="comp-slider"
+                        className={`comp-slider ${img.compression > 60 ? 'comp-slider--danger' : ''}`}
                       />
                     </div>
 
@@ -492,17 +515,23 @@ const ImageCompressor = () => {
             />
 
             {/* Download mode */}
-            <div className="comp-right__mode">
+            {images.length > 1 && (
+            <div className="comp-right__dl-mode">
               <label>{t('common.downloadAs')}</label>
-              <div className="comp-right__mode-btns">
-                <button className={downloadMode === 'zip' ? 'active' : ''} onClick={() => setDownloadMode('zip')}>
+              <div className="comp-dl-toggle">
+                <button className={`comp-dl-toggle__btn ${downloadMode === 'zip' ? 'active' : ''}`} onClick={() => setDownloadMode('zip')}>
                   <i className="fa-solid fa-file-zipper"></i> {t('common.zip')}
                 </button>
-                <button className={downloadMode === 'separate' ? 'active' : ''} onClick={() => setDownloadMode('separate')}>
+                <button className={`comp-dl-toggle__btn ${downloadMode === 'separate' ? 'active' : ''}`} onClick={() => setDownloadMode('separate')}>
                   <i className="fa-regular fa-copy"></i> {t('common.separate')}
                 </button>
               </div>
             </div>
+            )}
+
+            <button className="comp-right__reset" onClick={handleStartOver}>
+              <i className="fa-solid fa-arrow-rotate-left"></i> {t('common.startOver')}
+            </button>
 
             <button className="comp-right__download" onClick={downloadAll} disabled={!allCompressed}>
               {!allCompressed ? (
@@ -515,10 +544,6 @@ const ImageCompressor = () => {
                   <i className="fa-solid fa-bolt"></i> {t('compressor.compressDownload')}
                 </>
               )}
-            </button>
-
-            <button className="comp-right__reset" onClick={handleStartOver}>
-              <i className="fa-solid fa-arrow-rotate-left"></i> {t('common.startOver')}
             </button>
           </div>
         </div>

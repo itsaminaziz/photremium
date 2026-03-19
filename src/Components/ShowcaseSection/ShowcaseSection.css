@@ -11,17 +11,11 @@
 .sc-card {
   display: flex;
   align-items: stretch;
-  min-height: 80vh;
+  min-height: 560px;
   border-radius: 24px;
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    #f3d86d 0%,
-    #f4e6af 30%,
-    #fde68a 65%,
-    #fbbf24 100%
-  );
-  border: 1.5px solid rgba(251, 191, 36, 0.45);
+  background: #ffee8d;
+  border: 1.5px solid #f0c84a;
 }
 
 /* ================================================================
@@ -46,11 +40,10 @@
   border: 1px solid rgba(251, 191, 36, 0.45);
 }
 
-/* GPU-composited track — no repaints per frame */
+/* Track */
 .sc-track {
   display: flex;
   flex-direction: column;
-  will-change: transform;
 }
 
 /* Individual tool card */
@@ -65,8 +58,9 @@
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.60);
   flex-shrink: 0;
-  will-change: transform, opacity;
-  transition: background 0.15s;
+  /* will-change removed from individual items — 20 promoted GPU layers
+     simultaneously was exhausting mobile GPU memory and causing crashes.
+     The parent .sc-track handles compositing for the whole list. */
   overflow: hidden;
 }
 
@@ -103,16 +97,11 @@
   font-size: 0.70rem;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(135deg, #d97706, #b45309);
+  background: #b45309;
   padding: 5px 10px;
   border-radius: 20px;
   text-decoration: none;
   white-space: nowrap;
-  transition: filter 0.15s;
-}
-
-.sc-tool__try:hover {
-  filter: brightness(1.12);
 }
 
 .sc-tool:hover .sc-tool__try {
@@ -129,8 +118,8 @@
   z-index: 2;
 }
 
-.sc-fade--top    { top: 0;    background: linear-gradient(to bottom, #fffbeb 0%, transparent 100%); }
-.sc-fade--bottom { bottom: 0; background: linear-gradient(to top,   #fde68a 0%, transparent 100%); }
+.sc-fade--top    { top: 0;    background: linear-gradient(to bottom, #f4e06a, transparent); }
+.sc-fade--bottom { bottom: 0; background: linear-gradient(to top,   #f0c84a, transparent); }
 
 /* ================================================================
    CENTER column — engaging text (40%)
@@ -165,10 +154,7 @@
 }
 
 .sc-heading--accent {
-  background: linear-gradient(135deg, #92400e, #d97706, #f59e0b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #b45309;
 }
 
 .sc-desc {
@@ -241,19 +227,12 @@
   gap: 8px;
   align-self: flex-start;
   padding: 13px 28px;
-  background: linear-gradient(135deg, #b45309, #d97706, #f59e0b);
+  background: #b45309;
   color: #fff;
   font-size: 0.9rem;
   font-weight: 700;
   border-radius: 10px;
   text-decoration: none;
-  box-shadow: 0 4px 18px rgba(180, 83, 9, 0.32);
-  transition: filter 0.2s, transform 0.2s;
-}
-
-.sc-cta:hover {
-  filter: brightness(1.08);
-  transform: translateY(-2px);
 }
 
 /* ================================================================
@@ -298,7 +277,7 @@
 
   .sc-card {
     flex-direction: column;
-    min-height: auto;
+    min-height: 0;
   }
 
   .sc-left {

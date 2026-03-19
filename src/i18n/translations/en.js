@@ -11,8 +11,6 @@ const en = {
     photoEditor: 'Photo Editor',
     removeBackground: 'Remove Background',
     watermarkImage: 'Watermark Image',
-    memeGenerator: 'Meme Generator',
-    upscaleImage: 'Upscale Image',
     qrCodeGenerator: 'QR Code Generator',
     qrCodeScanner: 'QR Code Scanner',
     aboutUs: 'About Us',
@@ -23,6 +21,16 @@ const en = {
   hero: {
     heading: 'Every Image Tool You Need',
     subheading: 'Free online tools to convert, compress, resize, crop, edit and transform your images. All processing happens in your browser — fast, private & secure.',
+  },
+
+  homePaste: {
+    badge: 'Smart Paste',
+    title: 'Pasted content detected',
+    subtitle: 'Choose a tool and continue instantly with your pasted images, links, or text.',
+    imagesLabel: 'Image Preview',
+    textLabel: 'Detected Text / Link',
+    toolsTitle: 'Suggested Tools',
+    multiHint: 'Multiple images detected. Tools below support multi-image workflows.',
   },
 
   /* ————— Tool cards on Home ————— */
@@ -82,6 +90,32 @@ const en = {
     questionHeader: 'Question',
   },
 
+  /* ————— Contact form ————— */
+  contactForm: {
+    badge: 'Get in Touch',
+    title: 'Contact Us',
+    subtitle: "We'd love to hear from you. Drop us a message!",
+    nameLabel: 'Name',
+    namePlaceholder: 'Your full name',
+    emailLabel: 'Email',
+    emailPlaceholder: 'you@gmail.com',
+    subjectLabel: 'Subject',
+    subjectPlaceholder: "What's this about?",
+    messageLabel: 'Message',
+    messagePlaceholder: 'Write your message here…',
+    errName: 'Name is required',
+    errEmail: 'Email is required',
+    errEmailInvalid: 'Enter a valid email',
+    errSubject: 'Subject is required',
+    errMessage: 'Message is required',
+    sending: 'Sending…',
+    send: 'Send Message',
+    successTitle: 'Message Sent!',
+    successMsg: "Thanks for reaching out. We'll get back to you soon.",
+    sendAnother: 'Send Another',
+    sendError: 'Something went wrong. Please try again.',
+  },
+
   /* ————— About page ————— */
   about: {
     label: 'About Us',
@@ -123,6 +157,7 @@ const en = {
     reset: 'Reset',
     apply: 'Apply',
     cancel: 'Cancel',
+    clear: 'Clear',
     close: 'Close',
     save: 'Save',
     processing: 'Processing...',
@@ -152,6 +187,13 @@ const en = {
     size: 'Size',
     type: 'Type',
     unsavedEdits: 'You have unsaved edits. Leave this page?',
+    compareSlider: 'Compare slider',
+    toggleToolsPanel: 'Toggle tools panel',
+    closePanel: 'Close panel',
+    zoomIn: 'Zoom In',
+    zoomOut: 'Zoom Out',
+    fit: 'Fit',
+    none: 'None',
   },
 
   /* ————— Image Compressor ————— */
@@ -175,6 +217,7 @@ const en = {
     compressionLabel: 'Compression:',
     compressing: 'Compressing…',
     compressDownload: 'Compress & Download',
+    lowQualityWarning: 'High compression may noticeably reduce image clarity.',
   },
 
   /* ————— Image Converter ————— */
@@ -184,6 +227,64 @@ const en = {
       uploadDesc: 'Convert images between JPG, PNG, WEBP, GIF, SVG, TIFF, BMP and more. Free online image format converter — fast, private, no signup required.',
       uploadKeywords: 'image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
       workspaceKeywords: 'convert images, image format converter, bulk convert images',
+
+      routeKeywords: {
+
+        'png-to-jpg': 'png to convert jpg, png to jpg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'jpg-to-png': 'jpg to convert png, jpg to png, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'png-to-webp': 'png to convert webp, png to webp, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'jpg-to-webp': 'jpg to convert webp, jpg to webp, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'webp-to-jpg': 'webp to convert jpg, webp to jpg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'webp-to-png': 'webp to convert png, webp to png, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'gif-to-jpg': 'gif to convert jpg, gif to jpg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'gif-to-png': 'gif to convert png, gif to png, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'bmp-to-jpg': 'bmp to convert jpg, bmp to jpg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'bmp-to-png': 'bmp to convert png, bmp to png, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'svg-to-png': 'svg to convert png, svg to png, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'svg-to-jpg': 'svg to convert jpg, svg to jpg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'tiff-to-jpg': 'tiff to convert jpg, tiff to jpg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'tiff-to-png': 'tiff to convert png, tiff to png, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'jpg-to-gif': 'jpg to convert gif, jpg to gif, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'png-to-gif': 'png to convert gif, png to gif, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'jpg-to-bmp': 'jpg to convert bmp, jpg to bmp, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'png-to-bmp': 'png to convert bmp, png to bmp, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'webp-to-gif': 'webp to convert gif, webp to gif, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'jpg-to-ico': 'jpg to convert ico, jpg to ico, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'png-to-ico': 'png to convert ico, png to ico, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'jpg-to-svg': 'jpg to convert svg, jpg to svg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'png-to-svg': 'png to convert svg, png to svg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'webp-to-svg': 'webp to convert svg, webp to svg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'gif-to-svg': 'gif to convert svg, gif to svg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'bmp-to-svg': 'bmp to convert svg, bmp to svg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+        'tiff-to-svg': 'tiff to convert svg, tiff to svg, image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
+
+      },
     },
     title: 'Image Converter',
     desc: 'Convert images between JPG, PNG, WEBP, GIF, SVG, TIFF, BMP and more. Batch convert multiple files at once — fast, private, runs entirely in your browser.',
@@ -272,42 +373,6 @@ const en = {
     filtersEffectsDesc: 'Apply professional filters, adjust brightness, contrast, saturation and more.',
     framesStickers: 'Frames & Stickers',
     framesStickersDesc: 'Choose from beautiful frames and fun stickers to enhance your images.',
-  },
-
-  /* ————— Meme Generator (placeholder) ————— */
-  memeGenerator: {
-    seo: {
-      title: 'Meme Generator — Create Custom Memes Online Free | favIMG',
-      desc: 'Create memes online with ease. Caption popular meme templates or upload your own pictures to make custom memes. Free meme maker, no signup.',
-      keywords: 'meme generator, meme maker, create meme online, custom memes, meme creator, make memes free',
-    },
-    title: 'Meme Generator',
-    desc: 'Create your memes online with ease. Caption popular templates or upload your pictures to make custom memes.',
-    toCreateMeme: 'to create a meme',
-    popularTemplates: 'Popular Templates',
-    popularTemplatesDesc: 'Choose from hundreds of popular meme templates to get started in seconds.',
-    customCaptions: 'Custom Captions',
-    customCaptionsDesc: 'Add top and bottom text with classic meme fonts or customize with your own style.',
-    easySharing: 'Easy Sharing',
-    easySharingDesc: 'Download your memes or share directly to social media with one click.',
-  },
-
-  /* ————— Upscale Image (placeholder) ————— */
-  upscaleImage: {
-    seo: {
-      title: 'Upscale Image — Enlarge Images with AI Enhancement Free | favIMG',
-      desc: 'Enlarge your images with high resolution using AI. Easily increase the size of JPG and PNG images while maintaining visual quality. Free online upscaler.',
-      keywords: 'upscale image, image upscaler, enlarge image, increase image resolution, AI image enhancer, upscale photo free',
-    },
-    title: 'Upscale Image',
-    desc: 'Enlarge your images with high resolution. Easily increase the size of your images while maintaining visual quality.',
-    toUpscale: 'to upscale',
-    aiEnhancement: 'AI Enhancement',
-    aiEnhancementDesc: 'Smart AI algorithms enhance details and textures as your image is enlarged.',
-    upTo4x: 'Up to 4x Upscale',
-    upTo4xDesc: 'Increase image resolution by 2x, 3x or 4x while preserving sharpness and clarity.',
-    multipleFormats: 'Multiple Formats',
-    multipleFormatsDesc: 'Works with JPG, PNG and WEBP images. Export in your preferred format.',
   },
 
   /* ————— Remove Background ————— */
@@ -412,6 +477,10 @@ const en = {
     tile3x3: '3×3 Grid',
     removeAllConfirm: 'Remove all images and watermarks?',
     dimMismatch: 'The images you have uploaded have different dimensions. Try uploading images of the same resolution for best results, or apply watermark one by one.',
+    clearBackground: 'Clear Background',
+    typeHere: 'Type here...',
+    linkCorners: 'Link corners',
+    separateCorners: 'Separate corners',
   },
 
   /* ————— QR Code Generator ————— */
@@ -500,6 +569,11 @@ const en = {
     webpDesc: 'Modern format, best quality/size',
     svgDesc: 'Scalable vector graphic',
     pdfDesc: 'Print-ready document',
+    lat: 'Lat:',
+    lng: 'Lng:',
+    qrCode: 'QR Code',
+    scanMe: 'SCAN ME',
+    scanHere: 'SCAN HERE',
   },
 
   /* ————— QR Code Scanner ————— */
@@ -612,6 +686,11 @@ const en = {
     downloadDialogTitle: 'Not all images edited',
     downloadDialogText: 'You have edited {edited} out of {total} images.',
     downloadAll: 'Download All',
+    removeRegion: 'Remove region',
+    region: 'Region',
+    notAllEdited: 'Not all images edited',
+    editedXofY: 'You have edited {edited} out of {total} images.',
+    nextImage: 'Next Image',
   },
 
   /* ————— FAQ items (for translation) ————— */
@@ -679,26 +758,12 @@ const en = {
       { q: 'Can I blur faces in multiple images at once?', a: 'Yes. Upload several images, configure blur regions, and download all processed images together as a ZIP or individually.' },
       { q: 'Are my photos sent to a remote server?', a: 'No. The AI model runs in your browser using WebAssembly. Your photos are never uploaded to any server.' },
     ],
-    memeGenerator: [
-      { q: 'Do I need to sign up to create memes?', a: 'No. Our meme generator is completely free to use with no sign-up or login required. Just upload an image and start creating.' },
-      { q: 'Can I use my own images as meme templates?', a: 'Yes. Upload any image from your device or choose from popular meme templates to get started quickly.' },
-      { q: 'What text customization options are available?', a: 'You can customize font style, size, color, stroke, shadow, position, and alignment. Classic meme fonts like Impact are included.' },
-      { q: 'What format are the downloaded memes in?', a: 'Memes are downloaded as high-quality PNG images, ready to share on social media or messaging apps.' },
-      { q: 'Is my data private?', a: 'Yes. Everything runs in your browser. Your images and memes are never uploaded to any server.' },
-    ],
     photoEditor: [
       { q: 'What editing features are available?', a: 'You can adjust brightness, contrast, saturation, apply filters, add text, overlays, frames, stickers, and much more — all inside your browser.' },
       { q: 'Can I undo and redo changes?', a: 'Yes. The editor supports full undo/redo history so you can experiment freely without worrying about losing your work.' },
       { q: 'What file formats can I edit and export?', a: 'You can edit JPG, PNG, WEBP, and other common formats. The edited image can be exported in your preferred format and quality.' },
       { q: 'Does the editor work on mobile?', a: 'Yes. The editor is fully responsive and touch-friendly, so you can edit images on your phone or tablet.' },
       { q: 'Are my images stored on your servers?', a: 'No. All editing is done locally. Your images never leave your device.' },
-    ],
-    upscaleImage: [
-      { q: 'How does AI upscaling work?', a: 'Our tool uses a neural network model running in your browser to intelligently add detail and sharpness when enlarging an image, producing results far superior to simple interpolation.' },
-      { q: 'How much can I enlarge my image?', a: 'You can upscale by 2×, 3×, or 4× the original resolution. Higher factors produce larger files but the AI maintains clarity.' },
-      { q: 'Will the upscaled image look blurry?', a: 'The AI enhancement specifically targets blur and softness, adding realistic detail. Results are significantly sharper than traditional resizing methods.' },
-      { q: 'What image formats are supported?', a: 'You can upload JPG, PNG, and WEBP images. The output is saved in the same format as the original.' },
-      { q: 'Is any data sent to a server?', a: 'No. The AI model runs entirely in your browser. Your images remain on your device and are never uploaded.' },
     ],
   },
 };

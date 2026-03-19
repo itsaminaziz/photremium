@@ -12,8 +12,58 @@ const Navbar = () => {
   const [langCloseSignal, setLangCloseSignal] = useState(0);
   const location = useLocation();
   const dropdownRef = useRef(null);
+  const dropdownHoverTimer = useRef(null);
+  const isTouchDevice = useRef(false);
   const { t, localePath } = useLanguage();
   const { openContact } = useContact();
+  const shareLabelRaw = t('common.share');
+  const shareLabel = !shareLabelRaw || shareLabelRaw === 'common.share' ? 'Share' : shareLabelRaw;
+
+  const handleShare = async () => {
+    const shareData = {
+      title: document.title || 'favIMG',
+      text: t('hero.heading') || 'favIMG',
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        if (!navigator.canShare || navigator.canShare({ url: shareData.url })) {
+          await navigator.share(shareData);
+          return;
+        }
+      }
+
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(shareData.url);
+        return;
+      }
+
+      window.prompt('Copy this link:', shareData.url);
+    } catch (error) {
+      if (error?.name !== 'AbortError') {
+        console.error('Share failed:', error);
+      }
+    }
+  };
+
+  // Detect touch so we skip hover handlers on mobile/tablet touch screens
+  useEffect(() => {
+    const markTouch = () => { isTouchDevice.current = true; };
+    window.addEventListener('touchstart', markTouch, { once: true, passive: true });
+    return () => window.removeEventListener('touchstart', markTouch);
+  }, []);
+
+  const handleDropdownEnter = () => {
+    if (isTouchDevice.current) return;
+    clearTimeout(dropdownHoverTimer.current);
+    setDropdownOpen(true);
+  };
+
+  const handleDropdownLeave = () => {
+    if (isTouchDevice.current) return;
+    dropdownHoverTimer.current = setTimeout(() => setDropdownOpen(false), 150);
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -63,13 +113,9 @@ const Navbar = () => {
 
         {/* Links */}
         <ul className={`navbar__links ${mobileOpen ? 'navbar__links--open' : ''}`}>
-          {/* Mobile menu header: language switcher + close button */}
+          {/* Row 1 (mobile only): Language switcher */}
           <li className="navbar__mobile-header">
             <LanguageSwitcher forceClose={langCloseSignal} />
-            <button
-              className="navbar__mobile-close"
-            >
-            </button>
           </li>
           <li>
             <Link to={localePath('/')} className={location.pathname === '/' || location.pathname === localePath('/') ? 'active' : ''}>
@@ -77,24 +123,29 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to={localePath('/image-converter')} className={location.pathname.includes('/image-converter') ? 'active' : ''}>
-              <i className="fa-solid fa-right-left"></i> {t('nav.imageConverter')}
+            <Link to={localePath('/privacy-policy')} className={location.pathname === localePath('/privacy-policy') ? 'active' : ''}>
+              <i className="fa-solid fa-shield-halved"></i> {t('footer.privacyPolicy')}
             </Link>
           </li>
-          <li>
-            <Link to={localePath('/image-compressor')} className={location.pathname.includes('/image-compressor') ? 'active' : ''}>
-              <i className="fa-solid fa-compress"></i> {t('nav.imageCompressor')}
-            </Link>
-          </li>
-          <li className="navbar__dropdown" ref={dropdownRef}>
+          <li className="navbar__dropdown" ref={dropdownRef} onMouseEnter={handleDropdownEnter} onMouseLeave={handleDropdownLeave}>
             <button
               className={`navbar__dropdown-toggle ${dropdownOpen ? 'open' : ''}`}
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
-              <i className="fa-solid fa-ellipsis"></i> {t('nav.otherTools')}
+              <i className="fa-solid fa-grip"></i> Tools
               <i className={`fa-solid fa-chevron-down navbar__chevron ${dropdownOpen ? 'rotate' : ''}`}></i>
             </button>
             <ul className={`navbar__dropdown-menu ${dropdownOpen ? 'navbar__dropdown-menu--open' : ''}`}>
+              <li>
+                <Link to={localePath('/image-converter')}>
+                  <i className="fa-solid fa-right-left"></i> {t('nav.imageConverter')}
+                </Link>
+              </li>
+              <li>
+                <Link to={localePath('/image-compressor')}>
+                  <i className="fa-solid fa-compress"></i> {t('nav.imageCompressor')}
+                </Link>
+              </li>
               <li>
                 <Link to={localePath('/resize-image')}>
                   <i className="fa-solid fa-up-right-and-down-left-from-center"></i> {t('nav.resizeImage')}
@@ -143,6 +194,11 @@ const Navbar = () => {
               <i className="fa-solid fa-envelope"></i> Contact Us
             </button>
           </li>
+          <li className="navbar__share-mobile">
+            <button className="navbar__share-btn navbar__share-btn--mobile" onClick={() => { setMobileOpen(false); handleShare(); }}>
+              <i className="fa-solid fa-share-nodes"></i> {shareLabel}
+            </button>
+          </li>
         </ul>
         {/* Desktop language switcher — always visible on desktop */}
         <div className="navbar__lang-desktop">
@@ -151,6 +207,14 @@ const Navbar = () => {
         {/* Desktop: Contact Us button */}
         <button className="navbar__contact-btn navbar__contact-btn--desktop" onClick={openContact}>
           <i className="fa-solid fa-envelope"></i> Contact
+        </button>
+        <button
+          className="navbar__share-btn navbar__share-btn--desktop"
+          onClick={handleShare}
+          aria-label={shareLabel}
+          title={shareLabel}
+        >
+          <i className="fa-solid fa-share-nodes"></i>
         </button>
       </div>
     </nav>

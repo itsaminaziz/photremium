@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
 import { useLanguage } from '../../context/LanguageContext';
@@ -139,6 +139,7 @@ const getSourceFormat = (file) => {
 /* ============================================= */
 const ImageConverter = () => {
   const { conversionType } = useParams();
+  const location = useLocation();
   const { t, localePath } = useLanguage();
   const routeInfo = conversionType ? CONVERSION_ROUTES[conversionType] : null;
 
@@ -150,6 +151,7 @@ const ImageConverter = () => {
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const fileInputRef = useRef(null);
   const addFileInputRef = useRef(null);
+  const didPrefillFromStateRef = useRef(false);
 
   /* Update output format when route changes */
   useEffect(() => {
@@ -179,6 +181,15 @@ const ImageConverter = () => {
     }));
     setImages((prev) => [...prev, ...newImages]);
   }, []);
+
+  /* --- prefill from Home paste popup --- */
+  useEffect(() => {
+    if (didPrefillFromStateRef.current) return;
+    const incoming = location.state?.pastedImages;
+    if (!Array.isArray(incoming) || incoming.length === 0) return;
+    didPrefillFromStateRef.current = true;
+    addFiles(incoming);
+  }, [location.state, addFiles]);
 
   /* --- Ctrl+V paste --- */
   useEffect(() => {
@@ -334,8 +345,18 @@ const ImageConverter = () => {
   const seoDesc = routeInfo
     ? routeInfo.desc
     : t('converter.seo.uploadDesc');
+  const routeOutputLabel = routeInfo
+    ? (OUTPUT_FORMATS.find((f) => f.value === routeInfo.to)?.label || currentFormatLabel)
+    : currentFormatLabel;
+  const routeKeywordsKey = conversionType ? `converter.seo.routeKeywords.${conversionType}` : '';
+  const translatedRouteKeywords = routeKeywordsKey ? t(routeKeywordsKey) : '';
+  const routeKeyword = routeInfo
+    ? `${conversionType.replace(/-/g, ' ')}, ${routeInfo.from.toLowerCase()} ${t('converter.toConvert')} ${routeOutputLabel.toLowerCase()}`
+    : '';
   const seoKeywords = routeInfo
-    ? `${routeInfo.title.toLowerCase()}, convert ${routeInfo.from.toLowerCase()} to ${currentFormatLabel.toLowerCase()}, free image converter`
+    ? (translatedRouteKeywords && translatedRouteKeywords !== routeKeywordsKey
+        ? translatedRouteKeywords
+        : `${routeKeyword}, ${t('converter.seo.uploadKeywords')}`)
     : t('converter.seo.uploadKeywords');
 
   /* =========================== UPLOAD VIEW =========================== */
@@ -410,7 +431,7 @@ const ImageConverter = () => {
         <button
           className="conv-settings-toggle"
           onClick={() => setMobileToolsOpen((prev) => !prev)}
-          aria-label="Toggle tools panel"
+          aria-label={t('common.toggleToolsPanel') || 'Toggle tools panel'}
         >
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
         </button>

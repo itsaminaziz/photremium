@@ -73,14 +73,6 @@ const FAQ_DATA = {
     { q: 'Are my photos sent to a remote server?', a: 'No. The AI model runs in your browser using WebAssembly. Your photos are never uploaded to any server.' },
   ],
 
-  memeGenerator: [
-    { q: 'Do I need to sign up to create memes?', a: 'No. Our meme generator is completely free to use with no sign-up or login required. Just upload an image and start creating.' },
-    { q: 'Can I use my own images as meme templates?', a: 'Yes. Upload any image from your device or choose from popular meme templates to get started quickly.' },
-    { q: 'What text customization options are available?', a: 'You can customize font style, size, color, stroke, shadow, position, and alignment. Classic meme fonts like Impact are included.' },
-    { q: 'What format are the downloaded memes in?', a: 'Memes are downloaded as high-quality PNG images, ready to share on social media or messaging apps.' },
-    { q: 'Is my data private?', a: 'Yes. Everything runs in your browser. Your images and memes are never uploaded to any server.' },
-  ],
-
   photoEditor: [
     { q: 'What editing features are available?', a: 'You can adjust brightness, contrast, saturation, apply filters, add text, overlays, frames, stickers, and much more — all inside your browser.' },
     { q: 'Can I undo and redo changes?', a: 'Yes. The editor supports full undo/redo history so you can experiment freely without worrying about losing your work.' },
@@ -89,13 +81,6 @@ const FAQ_DATA = {
     { q: 'Are my images stored on your servers?', a: 'No. All editing is done locally. Your images never leave your device.' },
   ],
 
-  upscaleImage: [
-    { q: 'How does AI upscaling work?', a: 'Our tool uses a neural network model running in your browser to intelligently add detail and sharpness when enlarging an image, producing results far superior to simple interpolation.' },
-    { q: 'How much can I enlarge my image?', a: 'You can upscale by 2×, 3×, or 4× the original resolution. Higher factors produce larger files but the AI maintains clarity.' },
-    { q: 'Will the upscaled image look blurry?', a: 'The AI enhancement specifically targets blur and softness, adding realistic detail. Results are significantly sharper than traditional resizing methods.' },
-    { q: 'What image formats are supported?', a: 'You can upload JPG, PNG, and WEBP images. The output is saved in the same format as the original.' },
-    { q: 'Is any data sent to a server?', a: 'No. The AI model runs entirely in your browser. Your images remain on your device and are never uploaded.' },
-  ],
 };
 
 export default FAQ_DATA;

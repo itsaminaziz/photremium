@@ -723,7 +723,7 @@ const FaceBlur = () => {
 
       <section className="fb-workspace">
         {/* Mobile toggle */}
-        <button className="fb-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label="Toggle tools panel">
+        <button className="fb-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label={t('common.toggleToolsPanel') || 'Toggle tools panel'}>
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
         </button>
         {mobileToolsOpen && <div className="fb-overlay" onClick={() => setMobileToolsOpen(false)} />}
@@ -788,7 +788,7 @@ const FaceBlur = () => {
                       onClick={(e) => { e.stopPropagation(); setSelectedRegionIdx(selectedRegionIdx === i ? null : i); }}
                     >
                       <span className="fb-face-indicator__label">
-                        {(r.blurMode === 'emoji' ? 'Emoji' : 'Blur') + ' ' + (i + 1)}
+                        {(r.blurMode === 'emoji' ? (t('faceBlur.emoji') || 'Emoji') : (t('faceBlur.blur') || 'Blur')) + ' ' + (i + 1)}
                       </span>
                       {isSelected && (
                         <>
@@ -860,7 +860,6 @@ const FaceBlur = () => {
             <div className="fb-right__header">
               <h3><i className="fa-solid fa-user-shield"></i> {t('faceBlur.blurTools')}</h3>
               <div className="fb-right__header-actions">
-                <LanguageSwitcher />
                 <button className="fb-right__close" onClick={() => setMobileToolsOpen(false)}>
                   <i className="fa-solid fa-xmark"></i>
                 </button>
@@ -995,7 +994,7 @@ const FaceBlur = () => {
                     >
                       <i className={`fb-region-item__icon fa-solid ${r.blurMode === 'emoji' ? 'fa-face-grin' : 'fa-eye-slash'}`}></i>
                       <span className="fb-region-item__label">{(r.blurMode === 'emoji' ? 'Emoji' : 'Blur') + ' ' + (i + 1)}</span>
-                      <button className="fb-region-item__remove" onClick={(e) => { e.stopPropagation(); removeRegion(i); }} title="Remove region">
+                      <button className="fb-region-item__remove" onClick={(e) => { e.stopPropagation(); removeRegion(i); }} title={t('faceBlur.removeRegion') || 'Remove region'}>
                         <i className="fa-solid fa-trash"></i>
                       </button>
                     </div>
@@ -1061,9 +1060,9 @@ const FaceBlur = () => {
             <div className="fb-dialog__icon">
               <i className="fa-solid fa-circle-info"></i>
             </div>
-            <div className="fb-dialog__title">Not all images edited</div>
+            <div className="fb-dialog__title">{t('faceBlur.notAllEdited') || 'Not all images edited'}</div>
             <div className="fb-dialog__text">
-              You have edited {getEditedImages().length} out of {images.length} images.
+              {(t('faceBlur.editedXofY') || 'You have edited {edited} of {total} images.').replace('{edited}', getEditedImages().length).replace('{total}', images.length)}
             </div>
             <div className="fb-dialog__actions">
               <button className="fb-dialog__btn fb-dialog__btn--primary" onClick={handleDownloadEdited}>

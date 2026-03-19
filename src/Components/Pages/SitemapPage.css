@@ -1,0 +1,82 @@
+.sitemap-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 100px 24px 40px;
+}
+
+.sitemap-page__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sitemap-page h1 {
+  margin: 0 0 8px;
+  color: #1e1b4b;
+}
+
+.sitemap-page p {
+  margin: 0 0 18px;
+  color: #475569;
+}
+
+.sitemap-page__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.sitemap-page__btn {
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+}
+
+.sitemap-page__btn--primary {
+  background: #4f46e5;
+  color: #fff;
+}
+
+.sitemap-page__btn--ghost {
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  background: #fff;
+}
+
+.sitemap-page__table-wrap {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: auto;
+  background: #fff;
+}
+
+.sitemap-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.sitemap-page__table th,
+.sitemap-page__table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.9rem;
+}
+
+.sitemap-page__table th {
+  background: #f8fafc;
+  color: #1e293b;
+  position: sticky;
+  top: 0;
+}
+
+.sitemap-page__table a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.sitemap-page__table a:hover {
+  text-decoration: underline;
+}

@@ -11,7 +11,7 @@ const UpscaleImage = () => {
     <SEO
       title={t('upscaleImage.seo.title')}
       description={t('upscaleImage.seo.desc')}
-      keywords={t('upscaleImage.seo.keywords')}
+      keywords={t('seo.homeKeywords')}
     />
     <section className="page-section">
       <div className="page-container">

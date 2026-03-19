@@ -8,30 +8,34 @@
   inset: 0;
   z-index: 2000;
   background: rgba(10, 5, 20, 0.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  /* Flex so share aside sits to the left of the panel naturally */
+  display: flex;
+  align-items: stretch;
 }
 
 .cf__overlay--open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
-/* ---- Slide-in panel (right 30%) ---- */
+/* ---- Slide-in panel (right edge) ---- */
 .cf__panel {
-  position: absolute;
-  top: 0;
-  right: 0;
+  /* Use margin-left: auto so flex pushes it to the right */
+  margin-left: auto;
+  flex-shrink: 0;
   width: 30%;
   min-width: 360px;
   max-width: 520px;
   height: 100%;
+  background: #ffffff;
   overflow-y: auto;
   transform: translateX(100%);
-  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
 }
@@ -50,7 +54,8 @@
    ================================================================ */
 .cf__card {
   background: #ffffff;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   padding: 32px 28px 28px;
@@ -147,6 +152,7 @@
   flex-direction: column;
   gap: 16px;
   flex: 1;
+  padding-bottom: 14px;
 }
 
 .cf__row {
@@ -372,6 +378,7 @@
     min-width: 320px;
     max-width: none;
   }
+  .cf__share-aside { display: none !important; }
 }
 
 /* Mobile — full width panel, stack row fields */
@@ -404,3 +411,437 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ---- Section mode row — form + share card side by side ---- */
+.cf__section-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.cf__section-row .cf__card--section {
+  flex: 1 1 0;
+  max-width: none;
+  margin: 0;
+}
+
+.cf__share-aside-section {
+  flex: 0 0 320px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+  padding-top: 4px;
+  opacity: 0;
+  transform: translateX(30px) scale(0.97);
+  animation: cf-section-aside-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s forwards;
+}
+
+@keyframes cf-section-aside-in {
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+.cf__share-aside-section .cf__share-card {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .cf__section-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cf__share-aside-section {
+    flex: unset;
+    width: 100%;
+    transform: none;
+    animation: none;
+    opacity: 1;
+  }
+  .cf__share-aside-section .cf__share-card {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* ================================================================
+   SHARE ASIDE — desktop only, left side of overlay
+   ================================================================ */
+.cf__share-aside {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 28px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-40px) scale(0.96);
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+
+.cf__share-aside--open {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Hide on tablet / mobile */
+@media (max-width: 1024px) {
+  .cf__share-aside { display: none; }
+}
+
+/* Popup aside: share card fixed width, follow grid single column */
+.cf__share-aside .cf__share-card {
+  flex-shrink: 0;
+  width: 290px;
+  max-width: 290px;
+}
+
+.cf__share-aside .cf__follow-grid {
+  grid-template-columns: 1fr;
+  width: 260px;
+  max-width: 260px;
+  align-self: center;
+}
+
+/* ---- Share Card ---- */
+.cf__share-card {
+  background: #fff;
+  border-radius: 28px;
+  padding: 36px 32px 32px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow:
+    0 24px 64px rgba(99, 102, 241, 0.18),
+    0 4px 20px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient top bar */
+.cf__share-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+}
+
+/* Background blobs */
+.cf__share-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.cf__share-blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.07;
+  animation: cf-blob-drift 8s ease-in-out infinite alternate;
+}
+
+.cf__share-blob--1 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, #6366f1, transparent);
+  top: -60px; right: -60px;
+  animation-delay: 0s;
+}
+
+.cf__share-blob--2 {
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, #a855f7, transparent);
+  bottom: -50px; left: -50px;
+  animation-delay: 4s;
+}
+
+@keyframes cf-blob-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(20px, -20px) scale(1.1); }
+}
+
+/* Share icon */
+.cf__share-icon {
+  position: relative;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.12));
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #6366f1;
+  margin: 0 auto 18px;
+  animation: cf-icon-pulse 3s ease-in-out infinite;
+}
+
+/* Reset button element for share icon */
+button.cf__share-icon {
+  background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(168,85,247,0.12));
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  cursor: pointer;
+  padding: 0;
+}
+
+@keyframes cf-icon-pulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(99,102,241,0.3); }
+  50%       { box-shadow: 0 0 0 12px rgba(99,102,241,0);   }
+}
+
+/* Card title */
+.cf__share-title {
+  position: relative;
+  z-index: 1;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.cf__share-title span {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card description */
+.cf__share-desc {
+  position: relative;
+  z-index: 1;
+  font-size: 0.84rem;
+  color: #64748b;
+  line-height: 1.65;
+  margin: 0 0 26px;
+}
+
+/* Social icons grid */
+.cf__social-grid {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cf__social-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  background: var(--sb, #f1f5f9);
+  color: var(--sc, #475569);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.22s ease,
+              background 0.18s ease;
+  opacity: 0;
+  animation: cf-btn-pop 0.4s ease forwards;
+}
+
+.cf__social-btn:hover {
+  transform: translateY(-4px) scale(1.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+  background: var(--sc, #475569) !important;
+  color: #fff !important;
+}
+
+.cf__social-btn--copied {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+}
+
+@keyframes cf-btn-pop {
+  from { opacity: 0; transform: scale(0.5) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* URL strip */
+.cf__share-url {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #f8faff;
+  border: 1px solid #e2e8f0;
+  border-radius: 50px;
+  padding: 7px 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6366f1;
+}
+
+.cf__share-url i { font-size: 0.7rem; }
+
+/* ================================================================
+   INLINE SHARE (inside panel — mobile only)
+   ================================================================ */
+.cf__share-inline {
+  display: none;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.cf__share-inline-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cf__share-inline-title i { color: #6366f1; font-size: 0.75rem; }
+
+.cf__share-inline .cf__social-grid { gap: 8px; margin-bottom: 0; }
+
+.cf__share-inline .cf__social-btn {
+  width: 40px;
+  height: 40px;
+  font-size: 0.88rem;
+  animation: none;
+  opacity: 1;
+}
+
+/* Show inline share only on mobile/tablet */
+@media (max-width: 1024px) {
+  .cf__share-inline { display: block; }
+}
+
+/* ================================================================
+   FOLLOW CARDS (YouTube / Instagram / Facebook / TikTok)
+   ================================================================ */
+.cf__follow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+  opacity: 0;
+  animation: cf-section-aside-in 0.55s ease 0.4s forwards;
+}
+
+.cf__share-aside-section .cf__follow-grid,
+.cf__share-aside .cf__follow-grid {
+  max-width: 100%;
+}
+
+.cf__follow-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 11px 12px;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  border: 1px solid rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+}
+
+.cf__follow-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--fc, #6366f1);
+  border-radius: 3px 0 0 3px;
+}
+
+.cf__follow-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+}
+
+.cf__follow-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.cf__follow-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.cf__follow-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e1b4b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cf__follow-sub {
+  font-size: 0.68rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cf__follow-btn {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--fc, #6366f1);
+  background: var(--fb, #eef2ff);
+  border-radius: 20px;
+  padding: 4px 9px;
+  flex-shrink: 0;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+
+.cf__follow-card:hover .cf__follow-btn {
+  background: var(--fc, #6366f1);
+  color: #fff;
+}
+
+/* Hide Follow button on desktop — shown only on mobile */
+@media (min-width: 1025px) {
+  .cf__follow-btn { display: none; }
+}
+
+/* Vertical layout on mobile */
+@media (max-width: 600px) {
+  .cf__follow-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

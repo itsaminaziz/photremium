@@ -96,7 +96,7 @@ const Footer = () => {
             <LanguageSwitcher variant="footer" />
           </div>
           <div className="footer__bottom-links">
-            <Link to={localePath('/')}>{t('footer.privacyPolicy')}</Link>
+            <Link to={localePath('/privacy-policy')}>{t('footer.privacyPolicy')}</Link>
             <Link to={localePath('/')}>{t('footer.termsOfService')}</Link>
           </div>
         </div>

@@ -3,7 +3,7 @@
   position: relative;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-repeat: no-repeat;
 }
 
@@ -64,15 +64,15 @@
   padding: 28px 22px 24px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
+  transition: all 0.2s ease;
 }
 
 .hero-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 14px 40px rgba(79, 70, 229, 0.07);
   border-color: #c7d2fe;
+  transform: scale(1.025);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.413);
 }
 
 

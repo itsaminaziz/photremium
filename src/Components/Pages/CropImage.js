@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
 import { useLanguage } from '../../context/LanguageContext';
@@ -72,6 +73,7 @@ const TEMPLATES = [
 /* ============================================= */
 const CropImage = () => {
   const { t } = useLanguage();
+  const location = useLocation();
   const [images, setImages] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [dragOver, setDragOver] = useState(false);
@@ -96,6 +98,7 @@ const CropImage = () => {
   const addFileInputRef = useRef(null);
   const imgRef = useRef(null);
   const canvasRef = useRef(null);
+  const didPrefillFromStateRef = useRef(false);
 
   const selected = images.find((i) => i.id === selectedId) || null;
   const totalSize = images.reduce((s, i) => s + i.file.size, 0);
@@ -136,6 +139,15 @@ const CropImage = () => {
       return merged;
     });
   }, []);
+
+  /* --- prefill from Home paste popup --- */
+  useEffect(() => {
+    if (didPrefillFromStateRef.current) return;
+    const incoming = location.state?.pastedImages;
+    if (!Array.isArray(incoming) || incoming.length === 0) return;
+    didPrefillFromStateRef.current = true;
+    addFiles(incoming);
+  }, [location.state, addFiles]);
 
   /* --- Ctrl+V paste --- */
   useEffect(() => {
@@ -584,7 +596,7 @@ const CropImage = () => {
         <button
           className="crp-settings-toggle"
           onClick={() => setMobileToolsOpen((p) => !p)}
-          aria-label="Toggle tools panel"
+          aria-label={t('common.toggleToolsPanel') || 'Toggle tools panel'}
         >
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
         </button>

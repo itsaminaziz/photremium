@@ -15,6 +15,22 @@ const LANGUAGES = [
   { code: 'hi',      name: 'हिन्दी',                  countryCode: 'in' },
   { code: 'ur',      name: 'اردو',                   countryCode: 'pk' },
   { code: 'ar',      name: 'العربية',                countryCode: 'sa' },
+  { code: 'id',      name: 'Bahasa Indonesia',        countryCode: 'id' },
+  { code: 'ru',      name: 'Русский',               countryCode: 'ru' },
+  { code: 'ja',      name: '日本語',                  countryCode: 'jp' },
+  { code: 'zh',      name: '中文（简体）',              countryCode: 'cn' },
+  { code: 'it',    name: 'Italiano',              countryCode: 'it' },
+  { code: 'ko',    name: '한국어',                  countryCode: 'kr' },
+  { code: 'zh-tw', name: '中文（繁體）',              countryCode: 'tw' },
+  { code: 'ms',    name: 'Bahasa Melayu',          countryCode: 'my' },
+  { code: 'tr',    name: 'Türkçe',                countryCode: 'tr' },
+  { code: 'vi',    name: 'Tiếng Việt',             countryCode: 'vn' },
+  { code: 'pl',    name: 'Polski',                countryCode: 'pl' },
+  { code: 'nl',    name: 'Nederlands',             countryCode: 'nl' },
+  { code: 'th',    name: 'ภาษาไทย',                 countryCode: 'th' },
+  { code: 'uk',    name: 'Українська',             countryCode: 'ua' },
+  { code: 'sv',    name: 'Svenska',                countryCode: 'se' },
+  { code: 'bg',    name: 'Български',              countryCode: 'bg' },
 ];
 
 export default LANGUAGES;

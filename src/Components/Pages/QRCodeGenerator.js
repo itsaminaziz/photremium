@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
 import { useLanguage } from '../../context/LanguageContext';
@@ -693,7 +693,7 @@ const drawFinderEye = (ctx, px, py, cellSize, outerShape, innerShape, fg, bg) =>
 };
 
 /* Draw frame decoration on canvas */
-const drawFrame = (ctx, fid, w, h, margin, qrPxSize) => {
+const drawFrame = (ctx, fid, w, h, margin, qrPxSize, labels = {}) => {
   const qx = margin;
   const qy = margin;
   const qs = qrPxSize;
@@ -751,7 +751,7 @@ const drawFrame = (ctx, fid, w, h, margin, qrPxSize) => {
       ctx.fillStyle = '#1e1b4b';
       ctx.font = '600 24px Inter, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('QR Code', qx + qs / 2, qy + qs + 46);
+      ctx.fillText(labels.qrCode || 'QR Code', qx + qs / 2, qy + qs + 46);
       break;
     case 'stamp': {
       ctx.strokeStyle = '#000';
@@ -790,7 +790,7 @@ const drawFrame = (ctx, fid, w, h, margin, qrPxSize) => {
       ctx.fillStyle = '#4f46e5';
       ctx.font = '700 22px Inter, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('SCAN ME', qx + qs / 2, qy + qs + 28);
+      ctx.fillText(labels.scanMe || 'SCAN ME', qx + qs / 2, qy + qs + 28);
       break;
     case 'scan-here':
       ctx.strokeStyle = '#000';
@@ -799,7 +799,7 @@ const drawFrame = (ctx, fid, w, h, margin, qrPxSize) => {
       ctx.fillStyle = '#000';
       ctx.font = '600 18px Inter, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('↑ SCAN HERE ↑', qx + qs / 2, qy + qs + 28);
+      ctx.fillText(labels.scanHere || '↑ SCAN HERE ↑', qx + qs / 2, qy + qs + 28);
       break;
     case 'brackets': {
       const bLen = 40;
@@ -924,6 +924,7 @@ const drawFrame = (ctx, fid, w, h, margin, qrPxSize) => {
 
 const QRCodeGenerator = () => {
   const { t, localePath } = useLanguage();
+  const location = useLocation();
 
   /* ---- phase ---- */
   const [phase, setPhase] = useState('input'); // 'input' | 'customize'
@@ -983,6 +984,7 @@ const QRCodeGenerator = () => {
   const mapContainerRef = useRef(null);
   const markerRef = useRef(null);
   const customLogoInputRef = useRef(null);
+  const didPrefillFromStateRef = useRef(false);
 
   /* ---- Leaflet for maps ---- */
   const loadLeaflet = useCallback(async () => {
@@ -1109,9 +1111,7 @@ const QRCodeGenerator = () => {
     }
   }, [inputTab, urlValue, textValue, wifiSSID, wifiPass, wifiEnc, wifiHidden, contactName, contactPhone, emailTo, emailSubject, emailBody, mapLat, mapLng]);
 
-  /* ---- generate QR code ---- */
-  const handleGenerate = async () => {
-    const data = buildQRString();
+  const generateQrFromData = useCallback(async (data) => {
     if (!data) return;
     try {
       await loadQRLib();
@@ -1126,7 +1126,39 @@ const QRCodeGenerator = () => {
     } catch (err) {
       console.error('QR generation error:', err);
     }
+  }, []);
+
+  /* ---- generate QR code ---- */
+  const handleGenerate = async () => {
+    const data = buildQRString();
+    if (!data) return;
+    await generateQrFromData(data);
   };
+
+  /* ---- prefill from Home paste popup ---- */
+  useEffect(() => {
+    if (didPrefillFromStateRef.current) return;
+    const incomingText = location.state?.pastedText;
+    if (typeof incomingText !== 'string' || !incomingText.trim()) return;
+
+    didPrefillFromStateRef.current = true;
+    const trimmed = incomingText.trim();
+    const isUrl = /^https?:\/\//i.test(trimmed);
+
+    if (isUrl) {
+      setInputTab('url');
+      setUrlValue(trimmed);
+      setTextValue('');
+    } else {
+      setInputTab('text');
+      setTextValue(trimmed);
+      setUrlValue('');
+    }
+
+    if (location.state?.autoGenerate) {
+      generateQrFromData(trimmed);
+    }
+  }, [location.state, generateQrFromData]);
 
   /* ---- render QR to canvas ---- */
   const renderQR = useCallback(async () => {
@@ -1154,7 +1186,7 @@ const QRCodeGenerator = () => {
 
     /* Draw frame background-layer parts (shadow etc.) */
     if (selectedFrame === 'shadow' || selectedFrame === 'polaroid') {
-      drawFrame(ctx, selectedFrame, totalW, totalH, marginPx, qrPxSize);
+      drawFrame(ctx, selectedFrame, totalW, totalH, marginPx, qrPxSize, { qrCode: t('qrGenerator.qrCode'), scanMe: t('qrGenerator.scanMe'), scanHere: t('qrGenerator.scanHere') });
     }
 
     /* Build fill style */
@@ -1245,14 +1277,14 @@ const QRCodeGenerator = () => {
 
     /* Draw frame foreground (on top) */
     if (selectedFrame !== 'none' && selectedFrame !== 'shadow' && selectedFrame !== 'polaroid') {
-      drawFrame(ctx, selectedFrame, totalW, totalH, marginPx, qrPxSize);
+      drawFrame(ctx, selectedFrame, totalW, totalH, marginPx, qrPxSize, { qrCode: t('qrGenerator.qrCode'), scanMe: t('qrGenerator.scanMe'), scanHere: t('qrGenerator.scanHere') });
     }
     /* Re-draw polaroid/scan frames on top */
     if (selectedFrame === 'polaroid') {
       /* Already drawn in background layer */
     }
     if (selectedFrame === 'scan-me' || selectedFrame === 'scan-here') {
-      drawFrame(ctx, selectedFrame, totalW, totalH, marginPx, qrPxSize);
+      drawFrame(ctx, selectedFrame, totalW, totalH, marginPx, qrPxSize, { qrCode: t('qrGenerator.qrCode'), scanMe: t('qrGenerator.scanMe'), scanHere: t('qrGenerator.scanHere') });
     }
   }, [qrData, dotShape, cornerOuter, cornerInner, fgColor, bgColor, gradientOn, gradColor1, gradColor2, gradType, gradAngle, selectedFrame, selectedLogo, customLogoImg]);
 
@@ -1590,7 +1622,7 @@ const QRCodeGenerator = () => {
 
       <section className="qr-workspace">
         {/* Mobile toggle */}
-        <button className="qr-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label="Toggle tools panel">
+        <button className="qr-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label={t('common.toggleToolsPanel') || 'Toggle tools panel'}>
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
         </button>
         {mobileToolsOpen && <div className="qr-overlay" onClick={() => setMobileToolsOpen(false)} />}

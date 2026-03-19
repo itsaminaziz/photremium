@@ -1,13 +1,13 @@
 /* ================================================================
-   ToolsShowcase — scroll-driven tool animation section
+   ToolsShowcase — minimal / crash-safe CSS
+   All animations, shadows, gradients, will-change removed.
    ================================================================ */
-
-/* ── Outer container height is set inline (350vh) ── */
 
 /* ── Sticky viewport ── */
 .tsc-sticky {
+  position: -webkit-sticky;
   position: sticky;
-  top: 64px;                      /* sit below the fixed navbar */
+  top: 64px;
   height: calc(100vh - 64px);
   background-size: cover;
   background-position: center;
@@ -19,8 +19,8 @@
 .tsc-sticky::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.865);
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(0,0,0,0.82);
   z-index: 1;
   pointer-events: none;
 }
@@ -41,9 +41,8 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  transition: background 0.2s, color 0.2s;
 }
-.tsc-skip:hover { background: rgba(255,255,255,0.24); color: #fff; }
+.tsc-skip:hover { background: rgba(255,255,255,0.22); color: #fff; }
 
 /* ─────────────────────────────────────────────
    Vertical progress bar (left edge)
@@ -62,8 +61,7 @@
   top: 0; left: 0;
   width: 100%;
   height: 0;
-  background: linear-gradient(180deg, #fff 0%, #e9d5ff 55%, #fde68a 100%);
-  transition: height 0.02s linear;
+  background: #c4b5fd;
 }
 .tsc-vdot {
   position: absolute;
@@ -73,13 +71,11 @@
   border-radius: 50%;
   background: rgba(255,255,255,0.25);
   border: 2px solid rgba(255,255,255,0.4);
-  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
   overflow: visible;
 }
 .tsc-vdot--on {
   background: #fff;
   border-color: #fff;
-  box-shadow: 0 0 8px rgba(255,255,255,0.7);
 }
 .tsc-vdot__lbl {
   position: absolute;
@@ -99,12 +95,11 @@
 ───────────────────────────────────────────── */
 .tsc-screen {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 14px 16px 12px 28px; /* left: clears progress bar */
-  will-change: opacity, transform;
+  padding: 14px 16px 12px 28px;
   z-index: 2;
 }
 
@@ -120,8 +115,6 @@
   align-items: center;
   gap: 9px;
   margin-bottom: 10px;
-  will-change: opacity;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
 }
 .tsc-tool-hdr i { color: #fde68a; }
 
@@ -139,22 +132,18 @@
 ───────────────────────────────────────────── */
 .tsc-imgwrap {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   overflow: hidden;
-  border-radius: 16px;
 }
 
-/* Images fill container, maintain natural proportions */
 .tsc-img {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
-  border-radius: 16px;
 }
-.tsc-abs { will-change: opacity, transform; }
 
 /* ── BG compare divider line ── */
 .tsc-line {
@@ -165,7 +154,6 @@
   transform: translateX(-50%);
   z-index: 4;
   pointer-events: none;
-  will-change: left;
 }
 .tsc-handle {
   position: absolute;
@@ -177,19 +165,16 @@
   display: flex; align-items: center; justify-content: center;
   color: #4c1d95;
   font-size: 0.8rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
 }
 
-/* BG clip overlay */
 .tsc-bgclip {
   position: absolute;
-  inset: 0;
-  will-change: clip-path;
+  top: 0; right: 0; bottom: 0; left: 0;
   z-index: 2;
 }
 .tsc-bgclip img {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -214,7 +199,7 @@
 /* ── Crop SVG overlay ── */
 .tsc-svg {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   width: 100%;
   height: 100%;
   z-index: 3;
@@ -234,15 +219,12 @@
   font-weight: 600;
   font-size: 0.72rem;
   padding: 5px 12px;
-  background: rgba(255,255,255,0.13);
+  background: rgba(30,20,60,0.72);
   color: #fff;
   border: 1px solid rgba(255,255,255,0.22);
   border-radius: 20px;
   z-index: 20;
-  will-change: opacity, transform;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.28);
   pointer-events: none;
-  backdrop-filter: blur(6px);
 }
 .tsc-badge i { opacity: 0.85; }
 
@@ -261,7 +243,6 @@
   color: #fff;
   text-align: center;
   margin: 0 0 10px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.25);
   letter-spacing: -0.01em;
 }
 .tsc-wcu-sub {
@@ -282,17 +263,12 @@
 }
 .tsc-entry-ring {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   border-radius: 50%;
   border: 2px solid rgba(255,255,255,0.35);
-  animation: tsc-ring-pulse 2.4s ease-out infinite;
 }
-.tsc-entry-ring--2 { animation-delay: 0.7s; }
-.tsc-entry-ring--3 { animation-delay: 1.4s; }
-@keyframes tsc-ring-pulse {
-  0%   { transform: scale(1);   opacity: 0.7; }
-  100% { transform: scale(2.6); opacity: 0;   }
-}
+.tsc-entry-ring--2 { opacity: 0.6; }
+.tsc-entry-ring--3 { opacity: 0.3; }
 .tsc-entry-core {
   position: relative; z-index: 2;
   width: 58px; height: 58px;
@@ -302,15 +278,9 @@
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 2px; color: #fff;
-  animation: tsc-core-bob 1.6s ease-in-out infinite;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
 }
 .tsc-entry-core i { font-size: 1.1rem; }
 .tsc-entry-core span { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.08em; }
-@keyframes tsc-core-bob {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(7px); }
-}
 
 .tsc-wcu-pills {
   display: flex; gap: 8px; flex-wrap: wrap;
@@ -331,12 +301,12 @@
    Compressor UI overlay
 ───────────────────────────────────────────── */
 .tsc-comp-ui {
-  position: absolute; inset: 0;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
   display: flex; flex-direction: column; justify-content: flex-end;
   padding: 16px 18px;
-  background: linear-gradient(to top, rgba(40,0,80,0.85) 0%, transparent 60%);
+  background: rgba(40,0,80,0.6);
   z-index: 2;
-  will-change: opacity;
 }
 .tsc-comp-row {
   display: flex; align-items: center; justify-content: space-between;
@@ -352,33 +322,33 @@
 }
 .tsc-comp-fill {
   height: 100%; border-radius: 3px;
-  background: linear-gradient(90deg, #a78bfa, #fde68a);
+  background: #a78bfa;
 }
 .tsc-comp-thumb {
   position: absolute; top: 50%;
   transform: translate(-50%, -50%);
   width: 14px; height: 14px; border-radius: 50%;
   background: #fff;
-  box-shadow: 0 0 6px rgba(167,139,250,0.8);
 }
 .tsc-comp-sizes { margin-bottom: 0; }
 .tsc-green { color: #6ee7b7; }
 
 .tsc-comp-overlay {
-  position: absolute; inset: 0;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
   background: rgba(0,0,0,0.3);
   z-index: 3;
-  will-change: opacity;
 }
 .tsc-comp-done {
-  position: absolute; inset: 0; z-index: 4;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 4;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 10px; color: #fff;
-  will-change: opacity, transform;
 }
-.tsc-comp-done i { font-size: 3rem; color: #6ee7b7; filter: drop-shadow(0 2px 8px rgba(110,231,183,0.5)); }
-.tsc-comp-done span { font-size: 1.2rem; font-weight: 700; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+.tsc-comp-done i { font-size: 3rem; color: #6ee7b7; }
+.tsc-comp-done span { font-size: 1.2rem; font-weight: 700; }
 
 /* ─────────────────────────────────────────────
    Scroll hint
@@ -387,32 +357,19 @@
   position: absolute; bottom: 20px; left: 50%;
   transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 7px;
-  animation: tsc-hint-fade 0.4s ease-out;
   pointer-events: none; z-index: 20;
 }
-@keyframes tsc-hint-fade {
-  from { opacity:0; transform:translateX(-50%) translateY(10px); }
-  to   { opacity:1; transform:translateX(-50%) translateY(0); }
-}
-.tsc-hint span { color: rgba(255,255,255,0.6); font-size: 0.72rem; letter-spacing: 0.06em; }
+.tsc-hint span { color: rgba(255,255,255,0.6); font-size: 0.72rem; }
 .tsc-hint__mouse {
   width: 22px; height: 34px;
   border: 2px solid rgba(255,255,255,0.4);
   border-radius: 11px;
   display: flex; justify-content: center; padding-top: 5px;
-  animation: tsc-hint-bob 1.4s ease-in-out infinite;
 }
-@keyframes tsc-hint-bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(5px); } }
 .tsc-hint__wheel {
   width: 4px; height: 7px;
   background: rgba(255,255,255,0.55);
   border-radius: 2px;
-  animation: tsc-wheel-roll 1.4s ease-in-out infinite;
-}
-@keyframes tsc-wheel-roll {
-  0% { opacity:1; transform:translateY(0); }
-  70% { opacity:0; transform:translateY(6px); }
-  100% { opacity:0; transform:translateY(0); }
 }
 
 /* ─────────────────────────────────────────────
@@ -438,22 +395,21 @@
   /* imgwrap starts below badge zone */
   .tsc-imgwrap { top: 80px; }
 
-  /* Reposition all badges into the top zone */
   .tsc-stage > .tsc-badge:nth-child(1) {
-    top: 2px !important; left: 4px !important; right: auto !important;
+    top: 2px;  left: 4px;  right: auto;
   }
   .tsc-stage > .tsc-badge:nth-child(2) {
-    top: 2px !important; right: 4px !important; left: auto !important;
+    top: 2px;  right: 4px; left: auto;
   }
   .tsc-stage > .tsc-badge:nth-child(3) {
-    top: 38px !important; left: 4px !important; right: auto !important;
+    top: 38px; left: 4px;  right: auto;
   }
   .tsc-stage > .tsc-badge:nth-child(4) {
-    top: 38px !important; right: 4px !important; left: auto !important;
+    top: 38px; right: 4px; left: auto;
   }
   .tsc-stage > .tsc-badge:nth-child(5) {
-    top: 60px !important; left: 50% !important; right: auto !important;
-    transform: translateX(-50%) !important;
+    top: 60px; left: 50%; right: auto;
+    transform: translateX(-50%);
   }
 
   .tsc-vprog { width: 8px; }

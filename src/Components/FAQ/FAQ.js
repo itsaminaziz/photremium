@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
+import { useContact } from '../../context/ContactContext';
 import './FAQ.css';
 
 const FAQ = ({ faqs, faqKey }) => {
   const [openIndex, setOpenIndex] = useState(null);
-  const { t, localePath } = useLanguage();
+  const { t } = useLanguage();
+  const { openContact } = useContact();
 
   /* Use translated FAQ data when faqKey is provided, otherwise fall back to raw faqs prop */
   const items = faqKey ? (t(`faqData.${faqKey}`) || []) : (faqs || []);
@@ -79,10 +80,10 @@ const FAQ = ({ faqs, faqKey }) => {
         <p className="faq-contact__text">
           {t('faq.stillHaveQuestions')}
         </p>
-        <Link to={localePath('/')} className="faq-contact__btn">
+        <button className="faq-contact__btn" onClick={openContact}>
           <i className="fa-solid fa-headset"></i>
           <span>{t('faq.reachOut')}</span>
-        </Link>
+        </button>
       </div>
     </section>
   );

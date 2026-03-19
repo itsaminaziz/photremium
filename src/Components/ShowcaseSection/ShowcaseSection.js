@@ -23,31 +23,59 @@ const TOTAL        = TOOLS.length * ITEM_H; // one full cycle
 
 const ShowcaseSection = () => {
   const { t, localePath } = useLanguage();
-  const trackRef  = useRef(null);
-  const clipRef   = useRef(null);
-  const posRef    = useRef(0);
-  const rafRef    = useRef(null);
-  const pausedRef = useRef(false);
+  const trackRef      = useRef(null);
+  const clipRef       = useRef(null);
+  const sectionRef    = useRef(null);
+  const posRef        = useRef(0);
+  const rafRef        = useRef(null);
+  const pausedRef     = useRef(false);
+  const visibleRef    = useRef(false);
+  const containerHRef = useRef(220); // cached clip height — updated by ResizeObserver only
+  const prevValsRef   = useRef([]);  // last written scale/opacity per item — skip unchanged
 
   useEffect(() => {
+    /* ── Cache clip height once, update only on resize ── */
+    if (clipRef.current) {
+      containerHRef.current = clipRef.current.clientHeight || 220;
+    }
+    const resizeObs = new ResizeObserver(() => {
+      if (clipRef.current) {
+        containerHRef.current = clipRef.current.clientHeight || 220;
+      }
+    });
+    if (clipRef.current) resizeObs.observe(clipRef.current);
+
+    /* ── Visibility observer — pause RAF when off-screen ── */
+    const visObs = new IntersectionObserver(
+      ([entry]) => { visibleRef.current = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    if (sectionRef.current) visObs.observe(sectionRef.current);
+
     const tick = () => {
-      if (!pausedRef.current && trackRef.current && clipRef.current) {
+      if (visibleRef.current && !pausedRef.current && trackRef.current) {
         posRef.current += SPEED;
         if (posRef.current >= TOTAL) posRef.current -= TOTAL;
 
-        trackRef.current.style.transform = `translateY(-${posRef.current}px)`;
+        /* Single style write for the whole track — one compositor layer */
+        trackRef.current.style.transform = `translateY(-${posRef.current.toFixed(2)}px)`;
 
-        // Scale + opacity based on distance from clip centre
-        const containerH = clipRef.current.clientHeight;
+        /* Per-item scale/opacity — only write when value actually changed */
+        const containerH = containerHRef.current;
         const centerY    = containerH / 2;
         const items      = trackRef.current.children;
+        const prev       = prevValsRef.current;
 
         for (let i = 0; i < items.length; i++) {
           const itemCenterY = i * ITEM_H + ITEM_H / 2 - posRef.current;
           const dist        = Math.abs(itemCenterY - centerY);
           const norm        = Math.min(1, dist / (containerH * 0.44));
-          const scale       = (1 - 0.32 * norm).toFixed(3);
-          const opacity     = (1 - 0.70 * norm).toFixed(3);
+          const scale       = +(1 - 0.32 * norm).toFixed(3);
+          const opacity     = +(1 - 0.70 * norm).toFixed(3);
+
+          /* Skip DOM write if values haven't changed — avoids 40 style mutations/frame */
+          if (prev[i] && prev[i].scale === scale && prev[i].opacity === opacity) continue;
+          prev[i] = { scale, opacity };
           items[i].style.transform = `scale(${scale})`;
           items[i].style.opacity   = opacity;
         }
@@ -56,11 +84,15 @@ const ShowcaseSection = () => {
     };
 
     rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      resizeObs.disconnect();
+      visObs.disconnect();
+    };
   }, []);
 
   return (
-    <section className="sc-section">
+    <section className="sc-section" ref={sectionRef}>
       <div className="sc-card">
 
         {/* ══ LEFT — vertical carousel ══ */}

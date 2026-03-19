@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
 import { useLanguage } from '../../context/LanguageContext';
@@ -94,6 +95,7 @@ const RESIZE_MODES = [
 /* ============================================= */
 const ResizeImage = () => {
   const { t } = useLanguage();
+  const location = useLocation();
   const [images, setImages] = useState([]);
   const [dragOver, setDragOver] = useState(false);
   const [resizing, setResizing] = useState(false);
@@ -115,6 +117,7 @@ const ResizeImage = () => {
 
   const fileInputRef = useRef(null);
   const addFileInputRef = useRef(null);
+  const didPrefillFromStateRef = useRef(false);
 
   /* --- warn before reload --- */
   useEffect(() => {
@@ -157,6 +160,15 @@ const ResizeImage = () => {
       return merged;
     });
   }, [resizeMode]);
+
+  /* --- prefill from Home paste popup --- */
+  useEffect(() => {
+    if (didPrefillFromStateRef.current) return;
+    const incoming = location.state?.pastedImages;
+    if (!Array.isArray(incoming) || incoming.length === 0) return;
+    didPrefillFromStateRef.current = true;
+    addFiles(incoming);
+  }, [location.state, addFiles]);
 
   /* --- Ctrl+V paste --- */
   useEffect(() => {
@@ -441,7 +453,7 @@ const ResizeImage = () => {
         <button
           className="rsz-settings-toggle"
           onClick={() => setMobileToolsOpen((prev) => !prev)}
-          aria-label="Toggle tools panel"
+          aria-label={t('common.toggleToolsPanel') || 'Toggle tools panel'}
         >
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>
         </button>
