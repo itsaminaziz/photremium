@@ -34,7 +34,7 @@ const id = {
   whyChoose: {
     label: 'Mengapa Memilih Kami',
     heading: 'Cara Lebih Cerdas Mengedit Gambar',
-    subheading: 'Dipercaya oleh ribuan kreator, desainer, dan pengembang di seluruh dunia. Inilah mengapa favIMG menjadi tujuan utama pengeditan gambar.',
+    subheading: 'Dipercaya oleh ribuan kreator, desainer, dan pengembang di seluruh dunia. Inilah mengapa photremium.com menjadi tujuan utama pengeditan gambar.',
     reasons: {
       fast: { title: 'Sangat Cepat', desc: 'Semua pemrosesan terjadi langsung di browser Anda. Tidak ada upload file ke server eksternal — hasilnya muncul dalam milidetik.' },
       private: { title: '100% Privat & Aman', desc: 'File Anda tidak pernah meninggalkan perangkat Anda. Kami tidak menyimpan, berbagi, atau mengakses gambar Anda. Privasi lengkap dijamin.' },
@@ -99,7 +99,7 @@ const id = {
     heading: 'Dibangun untuk Kreator, oleh Kreator',
     subheading: 'Kami percaya alat gambar yang powerful harus gratis, cepat, dan dapat diakses oleh semua orang.',
     missionTitle: 'Misi Kami',
-    missionText: 'favIMG diciptakan dengan tujuan sederhana: memberikan pengalaman pengeditan gambar yang paling intuitif, tercepat, dan paling privat di web. Kami memproses semuanya langsung di browser Anda — file Anda tidak pernah meninggalkan perangkat Anda. Tidak ada akun, tidak ada batasan, tidak ada kompromi.',
+    missionText: 'photremium.com diciptakan dengan tujuan sederhana: memberikan pengalaman pengeditan gambar yang paling intuitif, tercepat, dan paling privat di web. Kami memproses semuanya langsung di browser Anda — file Anda tidak pernah meninggalkan perangkat Anda. Tidak ada akun, tidak ada batasan, tidak ada kompromi.',
     privacyTitle: 'Privasi Pertama',
     privacyText: 'Kami tidak pernah mengunggah, menyimpan, atau memproses gambar Anda di server jarak jauh. Semuanya tetap ada di perangkat Anda.',
     techTitle: 'Teknologi Modern',
@@ -110,12 +110,12 @@ const id = {
     globalText: 'Digunakan oleh kreator di lebih dari 120 negara. Tersedia dalam berbagai bahasa dengan pengiriman CDN yang sangat cepat.',
   },
   seo: {
-    homeTitle: 'favIMG — Konverter, Kompresor & Editor Gambar Online Gratis',
+    homeTitle: 'photremium.com — Konverter, Kompresor & Editor Gambar Online Gratis',
     homeDesc: 'Konversi, kompres, ubah ukuran, potong, dan edit gambar secara online gratis. Cepat, privat, dan aman — semua pemrosesan terjadi di browser Anda.',
     homeKeywords: 'konverter gambar, kompresor gambar, ubah ukuran gambar, potong gambar, editor foto, alat gambar online, alat gambar gratis',
-    aboutTitle: 'Tentang favIMG — Misi & Cerita Kami',
-    aboutDesc: 'Pelajari tentang favIMG, toolkit gambar online gratis yang dipercaya jutaan orang. Misi kami adalah membuat pengeditan gambar profesional dapat diakses semua orang.',
-    aboutKeywords: 'tentang favimg, perusahaan alat gambar, editor gambar gratis, tentang kami',
+    aboutTitle: 'Tentang photremium.com — Misi & Cerita Kami',
+    aboutDesc: 'Pelajari tentang photremium.com, toolkit gambar online gratis yang dipercaya jutaan orang. Misi kami adalah membuat pengeditan gambar profesional dapat diakses semua orang.',
+    aboutKeywords: 'tentang photremium.com, perusahaan alat gambar, editor gambar gratis, tentang kami',
   },
   common: {
     new: 'Baru!',
@@ -170,10 +170,10 @@ const id = {
   },
   compressor: {
     seo: {
-      uploadTitle: 'Kompresor Gambar — Kompres JPG, PNG, SVG, GIF Online Gratis | favIMG',
+      uploadTitle: 'Kompresor Gambar — Kompres JPG, PNG, SVG, GIF Online Gratis | photremium.com',
       uploadDesc: 'Kompres gambar JPG, PNG, SVG, dan GIF secara online gratis. Kurangi ukuran file hingga 80% sambil mempertahankan kualitas visual. Tidak diperlukan pendaftaran.',
       uploadKeywords: 'kompresor gambar, kompres jpg, kompres png, kurangi ukuran gambar, optimasi gambar, kompres foto online gratis',
-      workspaceTitle: 'Mengompres Gambar — Kompresor Gambar favIMG',
+      workspaceTitle: 'Mengompres Gambar — Kompresor Gambar photremium.com',
       workspaceDesc: 'Sesuaikan tingkat kompresi dan unduh gambar yang telah dioptimalkan. Pratinjau langsung dan estimasi ukuran.',
       workspaceKeywords: 'kompres gambar, slider kompresi gambar, kompres gambar massal, alat optimasi gambar',
     },
@@ -192,7 +192,7 @@ const id = {
   },
   converter: {
     seo: {
-      uploadTitle: 'Konverter Gambar — Konversi PNG, JPG, WEBP, GIF, SVG Online Gratis | favIMG',
+      uploadTitle: 'Konverter Gambar — Konversi PNG, JPG, WEBP, GIF, SVG Online Gratis | photremium.com',
       uploadDesc: 'Konversi gambar antara JPG, PNG, WEBP, GIF, SVG, TIFF, BMP dan lainnya. Konverter format gambar online gratis — cepat, privat, tidak diperlukan pendaftaran.',
       uploadKeywords: 'konverter gambar, konversi png ke jpg, jpg ke png, konverter webp, konverter format gambar, konverter gambar online gratis',
       workspaceKeywords: 'konversi gambar, konverter format gambar, konversi gambar massal',
@@ -269,10 +269,10 @@ const id = {
   },
   resizer: {
     seo: {
-      uploadTitle: 'Ubah Ukuran Gambar Online — Ubah Ukuran JPG, PNG, SVG, GIF Gratis | favIMG',
+      uploadTitle: 'Ubah Ukuran Gambar Online — Ubah Ukuran JPG, PNG, SVG, GIF Gratis | photremium.com',
       uploadDesc: 'Ubah ukuran gambar secara online gratis dengan piksel atau persentase. Ubah ukuran gambar JPG, PNG, SVG, dan GIF sambil menjaga kualitas. Tidak diperlukan pendaftaran.',
       uploadKeywords: 'ubah ukuran gambar, pengubah ukuran gambar, ubah ukuran jpg, ubah ukuran png, ubah dimensi gambar, ubah ukuran foto online gratis',
-      workspaceTitle: 'Mengubah Ukuran Gambar — Pengubah Ukuran Gambar favIMG',
+      workspaceTitle: 'Mengubah Ukuran Gambar — Pengubah Ukuran Gambar photremium.com',
       workspaceDesc: 'Ubah ukuran gambar secara online gratis dengan piksel atau persentase. Tidak diperlukan pendaftaran.',
       workspaceKeywords: 'ubah ukuran gambar, pengubah ukuran gambar, ubah ukuran jpg, ubah ukuran png',
     },
@@ -294,10 +294,10 @@ const id = {
   },
   cropper: {
     seo: {
-      uploadTitle: 'Potong Gambar Online — Potong JPG, PNG, GIF Gratis | favIMG',
+      uploadTitle: 'Potong Gambar Online — Potong JPG, PNG, GIF Gratis | photremium.com',
       uploadDesc: 'Potong gambar JPG, PNG, dan GIF secara online dengan mudah. Pilih piksel untuk menentukan area potong atau gunakan editor visual kami. Gratis, cepat, dan privat.',
       uploadKeywords: 'potong gambar, pemotong gambar, potong jpg, potong png, potong foto online gratis, alat potong gambar',
-      workspaceTitle: 'Memotong Gambar — Pemotong Gambar favIMG',
+      workspaceTitle: 'Memotong Gambar — Pemotong Gambar photremium.com',
       workspaceDesc: 'Potong gambar secara online gratis. Editor potong visual dengan rasio preset. Tidak diperlukan pendaftaran.',
       workspaceKeywords: 'potong gambar, pemotong gambar, potong jpg, potong png',
     },
@@ -323,7 +323,7 @@ const id = {
   },
   photoEditor: {
     seo: {
-      title: 'Editor Foto Online — Edit Gambar Gratis dengan Teks, Efek & Bingkai | favIMG',
+      title: 'Editor Foto Online — Edit Gambar Gratis dengan Teks, Efek & Bingkai | photremium.com',
       desc: 'Edit foto secara online gratis — tambahkan teks, efek, bingkai, stiker, dan lainnya. Alat pengeditan gambar yang sederhana namun powerful langsung di browser Anda.',
       keywords: 'editor foto, editor foto online, edit foto online gratis, tambah teks ke gambar, efek gambar, bingkai foto',
     },
@@ -339,10 +339,10 @@ const id = {
   },
   removeBg: {
     seo: {
-      uploadTitle: 'Hapus Latar Belakang Gambar Online Gratis | favIMG',
+      uploadTitle: 'Hapus Latar Belakang Gambar Online Gratis | photremium.com',
       uploadDesc: 'Hapus latar belakang gambar dengan akurasi tinggi secara cepat. Penghapus latar belakang online gratis — berjalan sepenuhnya di browser Anda.',
       uploadKeywords: 'hapus latar belakang, penghapus latar belakang, hapus latar belakang gambar, latar belakang transparan, potong latar belakang gratis',
-      workspaceTitle: 'Menghapus Latar Belakang — Penghapus Latar Belakang favIMG',
+      workspaceTitle: 'Menghapus Latar Belakang — Penghapus Latar Belakang photremium.com',
       workspaceDesc: 'Hapus latar belakang gambar secara online gratis. Tidak diperlukan pendaftaran.',
       workspaceKeywords: 'hapus latar belakang, penghapus latar belakang, latar belakang transparan',
     },
@@ -371,10 +371,10 @@ const id = {
   },
   watermark: {
     seo: {
-      uploadTitle: 'Tanda Air Gambar Online — Tambah Tanda Air Teks & Logo Gratis | favIMG',
+      uploadTitle: 'Tanda Air Gambar Online — Tambah Tanda Air Teks & Logo Gratis | photremium.com',
       uploadDesc: 'Tambahkan tanda air teks atau gambar ke foto Anda dalam hitungan detik. Gratis, cepat, dan privat.',
       uploadKeywords: 'tanda air gambar, tambah tanda air, tanda air teks, tanda air logo, alat tanda air gambar gratis',
-      workspaceTitle: 'Menambahkan Tanda Air — Alat Tanda Air favIMG',
+      workspaceTitle: 'Menambahkan Tanda Air — Alat Tanda Air photremium.com',
       workspaceDesc: 'Tambahkan tanda air ke gambar secara online gratis. Tidak diperlukan pendaftaran.',
       workspaceKeywords: 'tanda air gambar, tambah tanda air, tanda air teks, tanda air logo',
     },
@@ -443,10 +443,10 @@ const id = {
   },
   qrGenerator: {
     seo: {
-      inputTitle: 'Generator Kode QR — Buat & Sesuaikan Gratis | favIMG',
+      inputTitle: 'Generator Kode QR — Buat & Sesuaikan Gratis | photremium.com',
       inputDesc: 'Buat kode QR khusus untuk URL, teks, WiFi, kontak, email, dan lokasi Google Maps. Sesuaikan warna, bentuk, bingkai, logo, dan unduh dalam berbagai format.',
       inputKeywords: 'generator kode qr, buat kode qr, kode qr khusus, pembuat kode qr, kode qr gratis',
-      customizeTitle: 'Sesuaikan Kode QR — Generator Kode QR favIMG',
+      customizeTitle: 'Sesuaikan Kode QR — Generator Kode QR photremium.com',
       customizeDesc: 'Sesuaikan gaya, warna, bingkai, dan logo kode QR Anda. Unduh dalam PNG, JPG, SVG, WEBP, atau PDF.',
       customizeKeywords: 'sesuaikan kode qr, gaya kode qr, warna kode qr, logo kode qr',
     },
@@ -534,7 +534,7 @@ const id = {
   },
   qrScanner: {
     seo: {
-      title: 'Pemindai Kode QR — Pindai Kode QR dari Kamera atau Gambar | favIMG',
+      title: 'Pemindai Kode QR — Pindai Kode QR dari Kamera atau Gambar | photremium.com',
       desc: 'Pindai kode QR secara instan menggunakan kamera atau dengan mengunggah gambar. Deteksi URL, teks, WiFi, kontak, dan lainnya. Gratis, cepat, privat.',
       keywords: 'pemindai kode qr, pindai kode qr, pembaca qr, pembaca kode qr online, pindai qr dari gambar, pemindai qr kamera',
     },
@@ -592,10 +592,10 @@ const id = {
   },
   faceBlur: {
     seo: {
-      uploadTitle: 'Alat Blur Wajah — Blur Wajah dalam Gambar Online | favIMG',
+      uploadTitle: 'Alat Blur Wajah — Blur Wajah dalam Gambar Online | photremium.com',
       uploadDesc: 'Blur wajah dalam gambar Anda secara otomatis dengan deteksi wajah AI. Pilih intensitas blur, bentuk, atau overlay emoji. 100% gratis, cepat & privat.',
       uploadKeywords: 'blur wajah, blur wajah, deteksi wajah, alat privasi, blur wajah online gratis',
-      workspaceTitle: 'Alat Blur Wajah — Blur Wajah dalam Gambar Online | favIMG',
+      workspaceTitle: 'Alat Blur Wajah — Blur Wajah dalam Gambar Online | photremium.com',
       workspaceDesc: 'Blur wajah dalam gambar Anda secara otomatis. 100% gratis, cepat & privat.',
       workspaceKeywords: 'blur wajah, blur wajah, deteksi wajah',
     },

@@ -104,7 +104,7 @@ const it = {
     heading: 'Creato per Creatori, da Creatori',
     subheading: 'Crediamo che gli strumenti potenti per le immagini debbano essere gratuiti, veloci e accessibili a tutti.',
     missionTitle: 'La Nostra Missione',
-    missionText: 'favIMG è stato creato con un obiettivo semplice: offrire l\'esperienza di editing delle immagini più intuitiva, veloce e privata sul web.',
+    missionText: 'photremium.com è stato creato con un obiettivo semplice: offrire l\'esperienza di editing delle immagini più intuitiva, veloce e privata sul web.',
     privacyTitle: 'Privacy Prima di Tutto',
     privacyText: 'Non carichiamo, archiviamo né elaboriamo le tue immagini su server remoti. Tutto rimane sul tuo dispositivo.',
     techTitle: 'Tecnologia Moderna',
@@ -116,12 +116,12 @@ const it = {
   },
 
   seo: {
-    homeTitle: 'favIMG — Convertitore, Compressore ed Editor di Immagini Online Gratuito',
+    homeTitle: 'photremium.com — Convertitore, Compressore ed Editor di Immagini Online Gratuito',
     homeDesc: 'Converti, comprimi, ridimensiona, ritaglia e modifica immagini online gratuitamente. Veloce, privato e sicuro.',
     homeKeywords: 'convertitore immagini, compressore immagini, ridimensiona immagine, ritaglia immagine, editor foto, strumenti immagine online',
-    aboutTitle: 'Chi Siamo — favIMG: La Nostra Missione',
-    aboutDesc: 'Scopri favIMG, il kit di strumenti per immagini online gratuito. La nostra missione è rendere il fotoritocco professionale accessibile a tutti.',
-    aboutKeywords: 'chi siamo favimg, strumenti immagine, editor immagini gratuito',
+    aboutTitle: 'Chi Siamo — photremium.com: La Nostra Missione',
+    aboutDesc: 'Scopri photremium.com, il kit di strumenti per immagini online gratuito. La nostra missione è rendere il fotoritocco professionale accessibile a tutti.',
+    aboutKeywords: 'chi siamo photremium.com, strumenti immagine, editor immagini gratuito',
   },
 
   common: {
@@ -178,10 +178,10 @@ const it = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Compressore Immagini — Comprimi JPG, PNG, SVG, GIF Online Gratis | favIMG',
+      uploadTitle: 'Compressore Immagini — Comprimi JPG, PNG, SVG, GIF Online Gratis | photremium.com',
       uploadDesc: 'Comprimi JPG, PNG, SVG e GIF online gratuitamente. Riduci le dimensioni fino all\'80% mantenendo la qualità visiva.',
       uploadKeywords: 'compressore immagini, comprimi jpg, comprimi png, riduci dimensioni immagine',
-      workspaceTitle: 'Compressione in Corso — favIMG Compressore Immagini',
+      workspaceTitle: 'Compressione in Corso — photremium.com Compressore Immagini',
       workspaceDesc: 'Regola il livello di compressione e scarica le immagini ottimizzate.',
       workspaceKeywords: 'comprimi immagini, compressione immagini, ottimizzazione immagini',
     },
@@ -201,7 +201,7 @@ const it = {
 
   converter: {
     seo: {
-      uploadTitle: 'Convertitore Immagini — Converti PNG, JPG, WEBP, GIF, SVG Online Gratis | favIMG',
+      uploadTitle: 'Convertitore Immagini — Converti PNG, JPG, WEBP, GIF, SVG Online Gratis | photremium.com',
       uploadDesc: 'Converti immagini tra JPG, PNG, WEBP, GIF, SVG, TIFF, BMP e altri. Convertitore online gratuito.',
       uploadKeywords: 'convertitore immagini, converti png in jpg, jpg in png, convertitore webp',
       workspaceKeywords: 'converti immagini, convertitore formato immagine',
@@ -279,10 +279,10 @@ const it = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Ridimensiona Immagine Online — Ridimensiona JPG, PNG Gratis | favIMG',
+      uploadTitle: 'Ridimensiona Immagine Online — Ridimensiona JPG, PNG Gratis | photremium.com',
       uploadDesc: 'Ridimensiona immagini online gratuitamente in pixel o percentuale. JPG, PNG, SVG e GIF.',
       uploadKeywords: 'ridimensiona immagine, ridimensionatore immagini, ridimensiona jpg, ridimensiona png',
-      workspaceTitle: 'Ridimensionamento in Corso — favIMG Ridimensionatore',
+      workspaceTitle: 'Ridimensionamento in Corso — photremium.com Ridimensionatore',
       workspaceDesc: 'Ridimensiona immagini online gratuitamente. Nessuna registrazione richiesta.',
       workspaceKeywords: 'ridimensiona immagine, ridimensionatore immagini',
     },
@@ -305,10 +305,10 @@ const it = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Ritaglia Immagine Online — Ritaglia JPG, PNG, GIF Gratis | favIMG',
+      uploadTitle: 'Ritaglia Immagine Online — Ritaglia JPG, PNG, GIF Gratis | photremium.com',
       uploadDesc: 'Ritaglia JPG, PNG e GIF online facilmente. Scegli i pixel o usa l\'editor visuale.',
       uploadKeywords: 'ritaglia immagine, ritagliatore immagini, ritaglia jpg, ritaglia png',
-      workspaceTitle: 'Ritaglio in Corso — favIMG Ritagliatore',
+      workspaceTitle: 'Ritaglio in Corso — photremium.com Ritagliatore',
       workspaceDesc: 'Ritaglia immagini online gratuitamente con editor visuale.',
       workspaceKeywords: 'ritaglia immagine, ritagliatore immagini',
     },
@@ -335,7 +335,7 @@ const it = {
 
   photoEditor: {
     seo: {
-      title: 'Editor Foto Online — Modifica Immagini Gratis con Testo, Effetti e Cornici | favIMG',
+      title: 'Editor Foto Online — Modifica Immagini Gratis con Testo, Effetti e Cornici | photremium.com',
       desc: 'Modifica foto online gratuitamente — aggiungi testo, effetti, cornici e adesivi. Tutto nel tuo browser.',
       keywords: 'editor foto, editor foto online, modifica foto online gratis, aggiungi testo all\'immagine',
     },
@@ -352,10 +352,10 @@ const it = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Rimuovi Sfondo da Immagine Online Gratis | favIMG',
+      uploadTitle: 'Rimuovi Sfondo da Immagine Online Gratis | photremium.com',
       uploadDesc: 'Rimuovi rapidamente gli sfondi con alta precisione. Rimozione sfondo online gratuita — nel tuo browser.',
       uploadKeywords: 'rimuovi sfondo, rimozione sfondo, rimuovi sfondo immagine, sfondo trasparente',
-      workspaceTitle: 'Rimozione Sfondo — favIMG Rimozione Sfondo',
+      workspaceTitle: 'Rimozione Sfondo — photremium.com Rimozione Sfondo',
       workspaceDesc: 'Rimuovi sfondi dalle immagini online gratuitamente.',
       workspaceKeywords: 'rimuovi sfondo, sfondo trasparente',
     },
@@ -385,10 +385,10 @@ const it = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Filigrana Immagine Online — Aggiungi Testo e Logo Gratis | favIMG',
+      uploadTitle: 'Filigrana Immagine Online — Aggiungi Testo e Logo Gratis | photremium.com',
       uploadDesc: 'Aggiungi filigrane di testo o immagine alle tue foto in secondi. Gratuito, veloce e privato.',
       uploadKeywords: 'filigrana immagine, aggiungi filigrana, filigrana testo, filigrana logo',
-      workspaceTitle: 'Filigranatura Immagini — favIMG Strumento Filigrana',
+      workspaceTitle: 'Filigranatura Immagini — photremium.com Strumento Filigrana',
       workspaceDesc: 'Aggiungi filigrane alle immagini online gratuitamente.',
       workspaceKeywords: 'filigrana immagine, aggiungi filigrana',
     },
@@ -454,10 +454,10 @@ const it = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'Generatore QR Code — Crea e Personalizza Gratis | favIMG',
+      inputTitle: 'Generatore QR Code — Crea e Personalizza Gratis | photremium.com',
       inputDesc: 'Genera QR code personalizzati per URL, testo, WiFi, contatti, email e Google Maps. Personalizza colori, forme, cornici e logo.',
       inputKeywords: 'generatore qr code, crea qr code, qr code personalizzato',
-      customizeTitle: 'Personalizza QR Code — favIMG Generatore QR Code',
+      customizeTitle: 'Personalizza QR Code — photremium.com Generatore QR Code',
       customizeDesc: 'Personalizza stile, colore, cornice e logo del QR code. Scarica in PNG, JPG, SVG, WEBP o PDF.',
       customizeKeywords: 'personalizza qr code, stile qr code, colori qr code',
     },
@@ -527,7 +527,7 @@ const it = {
 
   qrScanner: {
     seo: {
-      title: 'Scanner QR Code — Scansiona QR Code da Fotocamera o Immagine | favIMG',
+      title: 'Scanner QR Code — Scansiona QR Code da Fotocamera o Immagine | photremium.com',
       desc: 'Scansiona QR code con la fotocamera o caricando un\'immagine. Rileva URL, testo, WiFi e altro.',
       keywords: 'scanner qr code, scansiona qr code, lettore qr, lettore qr code online',
     },
@@ -570,10 +570,10 @@ const it = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Sfoca Volti — Sfoca Volti nelle Immagini Online | favIMG',
+      uploadTitle: 'Sfoca Volti — Sfoca Volti nelle Immagini Online | photremium.com',
       uploadDesc: 'Sfoca automaticamente i volti nelle immagini con rilevamento AI. Scegli intensità, forma o emoji.',
       uploadKeywords: 'sfoca volti, sfocatura viso, rilevamento viso, privacy immagini',
-      workspaceTitle: 'Sfocatura Volti — favIMG Strumento Sfocatura',
+      workspaceTitle: 'Sfocatura Volti — photremium.com Strumento Sfocatura',
       workspaceDesc: 'Sfoca automaticamente i volti nelle immagini. 100% gratuito.',
       workspaceKeywords: 'sfoca volti, sfocatura viso',
     },

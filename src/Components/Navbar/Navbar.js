@@ -10,20 +10,35 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [langCloseSignal, setLangCloseSignal] = useState(0);
+  const [sharePanelOpen, setSharePanelOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef(null);
   const dropdownHoverTimer = useRef(null);
+  const copiedTimerRef = useRef(null);
   const isTouchDevice = useRef(false);
   const { t, localePath } = useLanguage();
   const { openContact } = useContact();
   const shareLabelRaw = t('common.share');
   const shareLabel = !shareLabelRaw || shareLabelRaw === 'common.share' ? 'Share' : shareLabelRaw;
+  const shareTitle = document.title || 'photremium.com';
+  const shareText = t('hero.heading') || 'photremium.com';
+  const shareUrl = window.location.href;
 
-  const handleShare = async () => {
+  const handleOpenSharePanel = () => {
+    setCopied(false);
+    setSharePanelOpen(true);
+  };
+
+  const closeSharePanel = () => {
+    setSharePanelOpen(false);
+  };
+
+  const handleNativeShare = async () => {
     const shareData = {
-      title: document.title || 'favIMG',
-      text: t('hero.heading') || 'favIMG',
-      url: window.location.href,
+      title: shareTitle,
+      text: shareText,
+      url: shareUrl,
     };
 
     try {
@@ -36,6 +51,9 @@ const Navbar = () => {
 
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(shareData.url);
+        setCopied(true);
+        clearTimeout(copiedTimerRef.current);
+        copiedTimerRef.current = setTimeout(() => setCopied(false), 1600);
         return;
       }
 
@@ -45,6 +63,41 @@ const Navbar = () => {
         console.error('Share failed:', error);
       }
     }
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(shareUrl);
+      } else {
+        window.prompt('Copy this link:', shareUrl);
+      }
+      setCopied(true);
+      clearTimeout(copiedTimerRef.current);
+      copiedTimerRef.current = setTimeout(() => setCopied(false), 1600);
+    } catch (error) {
+      console.error('Copy failed:', error);
+    }
+  };
+
+  const handleSocialShare = (platform) => {
+    const encodedUrl = encodeURIComponent(shareUrl);
+    const encodedTitle = encodeURIComponent(shareTitle);
+    const encodedText = encodeURIComponent(shareText);
+    const targets = {
+      whatsapp: `https://wa.me/?text=${encodedText}%20${encodedUrl}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      x: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`,
+      email: `mailto:?subject=${encodedTitle}&body=${encodedText}%0A${encodedUrl}`,
+      reddit: `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
+      pinterest: `https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodedText}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+    };
+
+    const url = targets[platform];
+    if (!url) return;
+
+    window.open(url, '_blank', 'noopener,noreferrer,width=720,height=650');
   };
 
   // Detect touch so we skip hover handlers on mobile/tablet touch screens
@@ -77,6 +130,25 @@ const Navbar = () => {
   }, [location]);
 
   useEffect(() => {
+    const onEsc = (e) => {
+      if (e.key === 'Escape') {
+        setSharePanelOpen(false);
+      }
+    };
+    document.addEventListener('keydown', onEsc);
+    return () => document.removeEventListener('keydown', onEsc);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = sharePanelOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [sharePanelOpen]);
+
+  useEffect(() => () => clearTimeout(copiedTimerRef.current), []);
+
+  useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setDropdownOpen(false);
@@ -91,7 +163,7 @@ const Navbar = () => {
       <div className="navbar__container">
         {/* Logo */}
         <Link to={localePath('/')} className="navbar__logo">
-          <img src={`${process.env.PUBLIC_URL}/Images/nav-logo.png`} alt="favIMG" className="navbar__logo-img" />
+          <img src={`${process.env.PUBLIC_URL}/Images/nav-logo.png`} alt="photremium.com" className="navbar__logo-img" />
         </Link>
 
         {/* Hamburger */}
@@ -181,11 +253,6 @@ const Navbar = () => {
                   <i className="fa-solid fa-face-dizzy"></i> {t('nav.faceBlur')}
                 </Link>
               </li>
-              <li>
-                <Link to={localePath('/about')}>
-                  <i className="fa-solid fa-circle-info"></i> {t('nav.aboutUs')}
-                </Link>
-              </li>
             </ul>
           </li>
           {/* Mobile: Contact Us button */}
@@ -195,7 +262,7 @@ const Navbar = () => {
             </button>
           </li>
           <li className="navbar__share-mobile">
-            <button className="navbar__share-btn navbar__share-btn--mobile" onClick={() => { setMobileOpen(false); handleShare(); }}>
+            <button className="navbar__share-btn navbar__share-btn--mobile" onClick={() => { setMobileOpen(false); handleOpenSharePanel(); }}>
               <i className="fa-solid fa-share-nodes"></i> {shareLabel}
             </button>
           </li>
@@ -210,13 +277,53 @@ const Navbar = () => {
         </button>
         <button
           className="navbar__share-btn navbar__share-btn--desktop"
-          onClick={handleShare}
+          onClick={handleOpenSharePanel}
           aria-label={shareLabel}
           title={shareLabel}
         >
           <i className="fa-solid fa-share-nodes"></i>
         </button>
       </div>
+      {sharePanelOpen && (
+        <div className="share-panel" role="dialog" aria-modal="true" aria-label="Share this page">
+          <button className="share-panel__backdrop" aria-label="Close share panel" onClick={closeSharePanel}></button>
+          <div className="share-panel__card">
+            <button className="share-panel__close" aria-label="Close" onClick={closeSharePanel}>
+              <span></span>
+              <span></span>
+            </button>
+
+            <h3 className="share-panel__title">Share this page</h3>
+            <p className="share-panel__subtitle">Choose a platform or copy the link below.</p>
+
+            <div className="share-panel__icons">
+              <button onClick={() => handleSocialShare('whatsapp')} className="share-icon share-icon--whatsapp" aria-label="Share on WhatsApp"><i className="fa-brands fa-whatsapp"></i><span>WhatsApp</span></button>
+              <button onClick={() => handleSocialShare('facebook')} className="share-icon share-icon--facebook" aria-label="Share on Facebook"><i className="fa-brands fa-facebook-f"></i><span>Facebook</span></button>
+              <button onClick={() => handleSocialShare('x')} className="share-icon share-icon--x" aria-label="Share on X"><i className="fa-brands fa-x-twitter"></i><span>X</span></button>
+              <button onClick={() => handleSocialShare('email')} className="share-icon share-icon--email" aria-label="Share via Email"><i className="fa-solid fa-envelope"></i><span>Email</span></button>
+              <button onClick={() => handleSocialShare('reddit')} className="share-icon share-icon--reddit" aria-label="Share on Reddit"><i className="fa-brands fa-reddit-alien"></i><span>Reddit</span></button>
+              <button onClick={() => handleSocialShare('pinterest')} className="share-icon share-icon--pinterest" aria-label="Share on Pinterest"><i className="fa-brands fa-pinterest-p"></i><span>Pinterest</span></button>
+              <button onClick={() => handleSocialShare('linkedin')} className="share-icon share-icon--linkedin" aria-label="Share on LinkedIn"><i className="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></button>
+            </div>
+
+            <div className="share-panel__linkbox">
+              <input className="share-panel__input" value={shareUrl} readOnly aria-label="Page link" />
+              <button
+                className={`share-panel__copy ${copied ? 'share-panel__copy--done' : ''}`}
+                onClick={handleCopyLink}
+                aria-label={copied ? 'Copied' : 'Copy link'}
+              >
+                {copied ? <i className="fa-solid fa-check"></i> : <i className="fa-regular fa-copy"></i>}
+                <span>{copied ? 'Copied' : 'Copy'}</span>
+              </button>
+            </div>
+
+            <button className="share-panel__native" onClick={handleNativeShare}>
+              <i className="fa-solid fa-share-nodes"></i> Share now
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

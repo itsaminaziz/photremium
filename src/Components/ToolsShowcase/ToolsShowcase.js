@@ -341,7 +341,7 @@ export default function ToolsShowcase() {
         {/* ══ Entry (seg 0) ══ */}
         <div className="tsc-screen" style={{ opacity: 0 }}>
           <h2 className="tsc-wcu">Why Choose Us</h2>
-          <p className="tsc-wcu-sub">Scroll to explore what makes favIMG the smartest choice</p>
+          <p className="tsc-wcu-sub">Scroll to explore what makes photremium.com the smartest choice</p>
           <div className="tsc-entry-cta">
             <div className="tsc-entry-ring tsc-entry-ring--3"/>
             <div className="tsc-entry-ring tsc-entry-ring--2"/>

@@ -340,7 +340,7 @@ const ImageConverter = () => {
 
   /* --- SEO data --- */
   const seoTitle = routeInfo
-    ? `${routeInfo.title} — Free Online | favIMG`
+    ? `${routeInfo.title} — Free Online | photremium.com`
     : t('converter.seo.uploadTitle');
   const seoDesc = routeInfo
     ? routeInfo.desc
@@ -424,7 +424,7 @@ const ImageConverter = () => {
   /* =========================== WORKSPACE VIEW =========================== */
   return (
     <>
-      <SEO title={`${t('converter.convertingTo')} ${currentFormatLabel} — favIMG ${t('converter.title')}`} description={seoDesc} keywords={seoKeywords} />
+      <SEO title={`${t('converter.convertingTo')} ${currentFormatLabel} — photremium.com ${t('converter.title')}`} description={seoDesc} keywords={seoKeywords} />
 
       <section className="conv-workspace">
         {/* Mobile settings toggle */}

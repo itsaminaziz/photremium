@@ -79,17 +79,17 @@ const ptBr = {
 
   about: {
     label: 'Sobre Nós', heading: 'Feito para Criadores, por Criadores', subheading: 'Acreditamos que ferramentas de imagem poderosas devem ser gratuitas, rápidas e acessíveis a todos.',
-    missionTitle: 'Nossa Missão', missionText: 'favIMG foi criado com um objetivo simples: oferecer a experiência de edição de imagens mais intuitiva, rápida e privada na web.',
+    missionTitle: 'Nossa Missão', missionText: 'photremium.com foi criado com um objetivo simples: oferecer a experiência de edição de imagens mais intuitiva, rápida e privada na web.',
     privacyTitle: 'Privacidade em Primeiro Lugar', privacyText: 'Nunca fazemos upload, armazenamos ou processamos suas imagens em servidores remotos.',
     techTitle: 'Tecnologia Moderna', techText: 'Construído com tecnologias web de ponta incluindo WebAssembly, Canvas API e React moderno.',
     communityTitle: 'Guiado pela Comunidade', communityText: 'Cada recurso que construímos é inspirado pelo feedback real dos usuários.',
     globalTitle: 'Alcance Global', globalText: 'Usado por criadores em mais de 120 países.',
   },
   seo: {
-    homeTitle: 'favIMG — Conversor, Compressor e Editor de Imagens Grátis', homeDesc: 'Converta, comprima, redimensione, corte e edite imagens online grátis.',
+    homeTitle: 'photremium.com — Conversor, Compressor e Editor de Imagens Grátis', homeDesc: 'Converta, comprima, redimensione, corte e edite imagens online grátis.',
     homeKeywords: 'conversor de imagens, compressor de imagens, redimensionar imagem, editor de fotos',
-    aboutTitle: 'Sobre favIMG — Nossa Missão e História', aboutDesc: 'Conheça o favIMG, o kit de ferramentas de imagem online gratuito.',
-    aboutKeywords: 'sobre favimg, ferramentas de imagem, editor de imagem grátis',
+    aboutTitle: 'Sobre photremium.com — Nossa Missão e História', aboutDesc: 'Conheça o photremium.com, o kit de ferramentas de imagem online gratuito.',
+    aboutKeywords: 'sobre photremium.com, ferramentas de imagem, editor de imagem grátis',
   },
   common: {
     new: 'Novo!', download: 'Baixar', downloadAll: 'Baixar Tudo', upload: 'Enviar', dragDrop: 'Arraste e solte imagens aqui, ou clique para procurar',
@@ -125,10 +125,10 @@ const ptBr = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Compressor de Imagens — Comprimir JPG, PNG, SVG, GIF Grátis | favIMG',
+      uploadTitle: 'Compressor de Imagens — Comprimir JPG, PNG, SVG, GIF Grátis | photremium.com',
       uploadDesc: 'Comprima imagens JPG, PNG, SVG e GIF online grátis. Reduza o tamanho do arquivo em até 80% mantendo a qualidade visual. Sem cadastro necessário.',
       uploadKeywords: 'compressor de imagens, comprimir jpg, comprimir png, reduzir tamanho imagem, otimização de imagens',
-      workspaceTitle: 'Comprimindo Imagens — favIMG Compressor de Imagens',
+      workspaceTitle: 'Comprimindo Imagens — photremium.com Compressor de Imagens',
       workspaceDesc: 'Ajuste o nível de compressão e baixe imagens otimizadas. Pré-visualização em tempo real.',
       workspaceKeywords: 'comprimir imagens, compressão de imagens, otimizar imagens em lote',
     },
@@ -148,7 +148,7 @@ const ptBr = {
 
   converter: {
     seo: {
-      uploadTitle: 'Conversor de Imagens — Converter PNG, JPG, WEBP, GIF, SVG Grátis | favIMG',
+      uploadTitle: 'Conversor de Imagens — Converter PNG, JPG, WEBP, GIF, SVG Grátis | photremium.com',
       uploadDesc: 'Converta imagens entre JPG, PNG, WEBP, GIF, SVG, TIFF, BMP e mais. Conversor de imagens online grátis — rápido, privado, sem cadastro necessário.',
       uploadKeywords: 'conversor de imagens, png para jpg, jpg para png, conversor webp, conversor de formato de imagem, conversor de imagens grátis',
       workspaceKeywords: 'converter imagens, conversor de formato de imagem, converter imagens em lote',
@@ -226,10 +226,10 @@ const ptBr = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Redimensionar Imagem Online — Redimensionar JPG, PNG, SVG, GIF Grátis | favIMG',
+      uploadTitle: 'Redimensionar Imagem Online — Redimensionar JPG, PNG, SVG, GIF Grátis | photremium.com',
       uploadDesc: 'Redimensione imagens online grátis por pixels ou porcentagem. Redimensione JPG, PNG, SVG e GIF preservando a qualidade. Sem cadastro necessário.',
       uploadKeywords: 'redimensionar imagem, redimensionador de imagens, redimensionar jpg, redimensionar png, mudar dimensões imagem, redimensionar foto online grátis',
-      workspaceTitle: 'Redimensionando Imagens — favIMG Redimensionador de Imagens',
+      workspaceTitle: 'Redimensionando Imagens — photremium.com Redimensionador de Imagens',
       workspaceDesc: 'Redimensione imagens online grátis por pixels ou porcentagem. Sem cadastro necessário.',
       workspaceKeywords: 'redimensionar imagem, redimensionador de imagens, redimensionar jpg, redimensionar png',
     },
@@ -252,10 +252,10 @@ const ptBr = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Cortar Imagem Online — Cortar JPG, PNG, GIF Grátis | favIMG',
+      uploadTitle: 'Cortar Imagem Online — Cortar JPG, PNG, GIF Grátis | photremium.com',
       uploadDesc: 'Corte imagens JPG, PNG e GIF online com facilidade. Escolha pixels para definir a área de corte ou use nosso editor visual. Grátis, rápido e privado.',
       uploadKeywords: 'cortar imagem, ferramenta de corte, recortar jpg, recortar png, recortar foto online grátis, ferramenta de corte de imagem',
-      workspaceTitle: 'Cortando Imagens — favIMG Ferramenta de Corte',
+      workspaceTitle: 'Cortando Imagens — photremium.com Ferramenta de Corte',
       workspaceDesc: 'Corte imagens online grátis. Editor visual com proporções predefinidas. Sem cadastro necessário.',
       workspaceKeywords: 'cortar imagem, ferramenta de corte, recortar jpg, recortar png',
     },
@@ -282,7 +282,7 @@ const ptBr = {
 
   photoEditor: {
     seo: {
-      title: 'Editor de Fotos Online — Editar Imagens Grátis com Texto, Efeitos e Molduras | favIMG',
+      title: 'Editor de Fotos Online — Editar Imagens Grátis com Texto, Efeitos e Molduras | photremium.com',
       desc: 'Edite fotos online grátis — adicione texto, efeitos, molduras, adesivos e muito mais. Ferramentas simples mas poderosas de edição de imagens no seu navegador.',
       keywords: 'editor de fotos, editor de fotos online, editar foto online grátis, adicionar texto à imagem, efeitos de imagem, molduras de fotos',
     },
@@ -293,10 +293,10 @@ const ptBr = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Remover Fundo de Imagem Online Grátis | favIMG',
+      uploadTitle: 'Remover Fundo de Imagem Online Grátis | photremium.com',
       uploadDesc: 'Remova fundos de imagens com alta precisão rapidamente. Removedor de fundo online gratuito — funciona inteiramente no seu navegador.',
       uploadKeywords: 'remover fundo, removedor de fundo, remover fundo de imagem, fundo transparente, remover fundo grátis',
-      workspaceTitle: 'Removendo Fundos — favIMG Removedor de Fundo',
+      workspaceTitle: 'Removendo Fundos — photremium.com Removedor de Fundo',
       workspaceDesc: 'Remova fundos de imagens online grátis. Sem cadastro necessário.',
       workspaceKeywords: 'remover fundo, removedor de fundo, fundo transparente',
     },
@@ -326,10 +326,10 @@ const ptBr = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Marca d\'Água em Imagens — Adicionar Marcas d\'Água de Texto e Logotipo Grátis | favIMG',
+      uploadTitle: 'Marca d\'Água em Imagens — Adicionar Marcas d\'Água de Texto e Logotipo Grátis | photremium.com',
       uploadDesc: 'Adicione marcas d\'água de texto ou imagem às suas fotos em segundos. Grátis, rápido e privado.',
       uploadKeywords: 'marca d\'água, adicionar marca d\'água, marca d\'água de texto, marca d\'água de logo, ferramenta de marca d\'água grátis',
-      workspaceTitle: 'Adicionando Marca d\'Água — favIMG Ferramenta de Marca d\'Água',
+      workspaceTitle: 'Adicionando Marca d\'Água — photremium.com Ferramenta de Marca d\'Água',
       workspaceDesc: 'Adicione marcas d\'água em imagens online grátis. Sem cadastro necessário.',
       workspaceKeywords: 'marca d\'água, adicionar marca d\'água, marca d\'água de texto, marca d\'água de logo',
     },
@@ -361,10 +361,10 @@ const ptBr = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'Gerador de QR Code — Criar e Personalizar Grátis | favIMG',
+      inputTitle: 'Gerador de QR Code — Criar e Personalizar Grátis | photremium.com',
       inputDesc: 'Gere QR codes personalizados para URLs, texto, WiFi, contatos, e-mail e localizações no Google Maps. Personalize cores, formas, molduras e logotipos.',
       inputKeywords: 'gerador de qr code, criar qr code, qr code personalizado, criador de qr code, qr code grátis',
-      customizeTitle: 'Personalizar QR Code — favIMG Gerador de QR Code',
+      customizeTitle: 'Personalizar QR Code — photremium.com Gerador de QR Code',
       customizeDesc: 'Personalize o estilo, cor, moldura e logotipo do seu QR code. Baixe em PNG, JPG, SVG, WEBP ou PDF.',
       customizeKeywords: 'personalizar qr code, estilo qr code, cores qr code, logotipo qr code',
     },
@@ -387,7 +387,7 @@ const ptBr = {
 
   qrScanner: {
     seo: {
-      title: 'Leitor de QR Code — Escanear QR Codes por Câmera ou Imagem | favIMG',
+      title: 'Leitor de QR Code — Escanear QR Codes por Câmera ou Imagem | photremium.com',
       desc: 'Escaneie QR codes instantaneamente com a câmera ou enviando uma imagem. Detecte URLs, texto, WiFi, contatos e mais. Grátis, rápido, privado.',
       keywords: 'leitor de qr code, escanear qr code, leitor qr, leitor de qr code online, ler qr de imagem, leitor qr de câmera',
     },
@@ -405,10 +405,10 @@ const ptBr = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Ferramenta Desfocar Rosto — Desfocar Rostos em Imagens Online | favIMG',
+      uploadTitle: 'Ferramenta Desfocar Rosto — Desfocar Rostos em Imagens Online | photremium.com',
       uploadDesc: 'Desfoque rostos nas suas imagens automaticamente com detecção de rostos por IA. Escolha a intensidade do desfoque, forma ou sobreposiciões de emoji. 100% gratuito, rápido e privado.',
       uploadKeywords: 'desfocar rosto, desfocar rostos, detecção de rosto, ferramenta de privacidade, desfocar rosto online grátis',
-      workspaceTitle: 'Ferramenta Desfocar Rosto — Desfocar Rostos em Imagens Online | favIMG',
+      workspaceTitle: 'Ferramenta Desfocar Rosto — Desfocar Rostos em Imagens Online | photremium.com',
       workspaceDesc: 'Desfoque rostos nas suas imagens automaticamente. 100% gratuito, rápido e privado.',
       workspaceKeywords: 'desfocar rosto, desfocar rostos, detecção de rosto',
     },

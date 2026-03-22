@@ -34,7 +34,7 @@ const ja = {
   whyChoose: {
     label: '選ばれる理由',
     heading: 'より賢い画像編集の方法',
-    subheading: '世界中の何千ものクリエイター、デザイナー、開発者に信頼されています。favIMGが画像編集の定番である理由をご紹介します。',
+    subheading: '世界中の何千ものクリエイター、デザイナー、開発者に信頼されています。photremium.comが画像編集の定番である理由をご紹介します。',
     reasons: {
       fast: { title: '超高速処理', desc: 'すべての処理はブラウザ内で直接行われます。外部サーバーへのアップロード不要 — 結果はミリ秒で表示されます。' },
       private: { title: '100%プライベート＆安全', desc: 'ファイルはデバイスから外に出ることはありません。画像を保存・共有・アクセスすることは一切ありません。完全なプライバシーを保証します。' },
@@ -99,7 +99,7 @@ const ja = {
     heading: 'クリエイターのために、クリエイターが作った',
     subheading: '強力な画像ツールは無料で、高速で、誰もが利用できるべきだと私たちは信じています。',
     missionTitle: '私たちのミッション',
-    missionText: 'favIMGはシンプルな目標で作られました：ウェブ上で最も直感的で、最速で、最もプライベートな画像編集体験を提供すること。すべてをブラウザ内で処理するため、ファイルはデバイスから出ることはありません。アカウント不要、制限なし、妥協なし。',
+    missionText: 'photremium.comはシンプルな目標で作られました：ウェブ上で最も直感的で、最速で、最もプライベートな画像編集体験を提供すること。すべてをブラウザ内で処理するため、ファイルはデバイスから出ることはありません。アカウント不要、制限なし、妥協なし。',
     privacyTitle: 'プライバシーファースト',
     privacyText: 'リモートサーバーで画像をアップロード・保存・処理することは一切ありません。すべてはデバイス上に留まります。',
     techTitle: '最新技術',
@@ -110,12 +110,12 @@ const ja = {
     globalText: '120以上の国のクリエイターに利用されています。超高速CDN配信で複数言語対応。',
   },
   seo: {
-    homeTitle: 'favIMG — 無料オンライン画像変換・圧縮・編集ツール',
+    homeTitle: 'photremium.com — 無料オンライン画像変換・圧縮・編集ツール',
     homeDesc: '画像をオンラインで無料に変換・圧縮・リサイズ・トリミング・編集。高速・プライベート・安全 — すべてブラウザで処理。',
     homeKeywords: '画像変換, 画像圧縮, リサイズ, トリミング, フォトエディタ, 無料画像ツール',
-    aboutTitle: 'favIMGについて — ミッションとストーリー',
-    aboutDesc: 'favIMGについてご紹介。数百万人に信頼される無料オンライン画像ツールキット。',
-    aboutKeywords: 'favimg について, 画像ツール, 無料画像エディタ',
+    aboutTitle: 'photremium.comについて — ミッションとストーリー',
+    aboutDesc: 'photremium.comについてご紹介。数百万人に信頼される無料オンライン画像ツールキット。',
+    aboutKeywords: 'photremium.com について, 画像ツール, 無料画像エディタ',
   },
   common: {
     new: '新着！',
@@ -170,10 +170,10 @@ const ja = {
   },
   compressor: {
     seo: {
-      uploadTitle: '画像圧縮 — JPG、PNG、SVG、GIFを無料で圧縮 | favIMG',
+      uploadTitle: '画像圧縮 — JPG、PNG、SVG、GIFを無料で圧縮 | photremium.com',
       uploadDesc: 'JPG、PNG、SVG、GIF画像をオンラインで無料圧縮。視覚的品質を維持しながらファイルサイズを最大80%削減。登録不要。',
       uploadKeywords: '画像圧縮, JPG圧縮, PNG圧縮, 画像サイズ削減, 画像最適化',
-      workspaceTitle: '画像を圧縮中 — favIMG画像圧縮',
+      workspaceTitle: '画像を圧縮中 — photremium.com画像圧縮',
       workspaceDesc: '圧縮レベルを調整して最適化された画像をダウンロード。',
       workspaceKeywords: '画像圧縮, バッチ圧縮',
     },
@@ -192,7 +192,7 @@ const ja = {
   },
   converter: {
     seo: {
-      uploadTitle: '画像変換 — PNG、JPG、WEBP、GIF、SVGを無料変換 | favIMG',
+      uploadTitle: '画像変換 — PNG、JPG、WEBP、GIF、SVGを無料変換 | photremium.com',
       uploadDesc: '画像をJPG、PNG、WEBP、GIF、SVG、TIFF、BMP間で変換。無料オンライン画像フォーマット変換 — 高速・プライベート・登録不要。',
       uploadKeywords: '画像変換, PNGをJPGに変換, JPGをPNGに, WEBP変換',
       workspaceKeywords: '画像変換, フォーマット変換, バッチ変換',
@@ -269,10 +269,10 @@ const ja = {
   },
   resizer: {
     seo: {
-      uploadTitle: '画像リサイズ — JPG、PNG、SVG、GIFを無料でサイズ変更 | favIMG',
+      uploadTitle: '画像リサイズ — JPG、PNG、SVG、GIFを無料でサイズ変更 | photremium.com',
       uploadDesc: 'ピクセルまたはパーセントでオンライン画像リサイズ。品質を維持しながらJPG、PNG、SVG、GIFをリサイズ。',
       uploadKeywords: '画像リサイズ, サイズ変更, JPGリサイズ, PNGリサイズ',
-      workspaceTitle: '画像をリサイズ中 — favIMG',
+      workspaceTitle: '画像をリサイズ中 — photremium.com',
       workspaceDesc: '画像をオンラインで無料リサイズ。',
       workspaceKeywords: '画像リサイズ',
     },
@@ -294,10 +294,10 @@ const ja = {
   },
   cropper: {
     seo: {
-      uploadTitle: '画像トリミング — JPG、PNG、GIFを無料でトリミング | favIMG',
+      uploadTitle: '画像トリミング — JPG、PNG、GIFを無料でトリミング | photremium.com',
       uploadDesc: 'JPG、PNG、GIF画像をオンラインで簡単にトリミング。ビジュアルエディタでプリセット比率または自由トリミング。',
       uploadKeywords: '画像トリミング, JPGトリミング, PNGトリミング',
-      workspaceTitle: '画像をトリミング中 — favIMG',
+      workspaceTitle: '画像をトリミング中 — photremium.com',
       workspaceDesc: '画像をオンラインで無料トリミング。',
       workspaceKeywords: '画像トリミング',
     },
@@ -323,7 +323,7 @@ const ja = {
   },
   photoEditor: {
     seo: {
-      title: 'オンラインフォトエディタ — テキスト・エフェクト・フレームで無料編集 | favIMG',
+      title: 'オンラインフォトエディタ — テキスト・エフェクト・フレームで無料編集 | photremium.com',
       desc: '写真をオンラインで無料編集 — テキスト、エフェクト、フレーム、ステッカーなどを追加。ブラウザで動作するシンプルな画像編集ツール。',
       keywords: 'フォトエディタ, オンライン写真編集, 無料写真編集, 画像テキスト追加',
     },
@@ -339,10 +339,10 @@ const ja = {
   },
   removeBg: {
     seo: {
-      uploadTitle: '画像背景除去 — オンラインで無料 | favIMG',
+      uploadTitle: '画像背景除去 — オンラインで無料 | photremium.com',
       uploadDesc: '高精度で画像の背景を素早く除去。無料オンライン背景リムーバー — ブラウザ内で完全動作。',
       uploadKeywords: '背景除去, 背景リムーバー, 透明背景, 切り抜き',
-      workspaceTitle: '背景除去中 — favIMG背景リムーバー',
+      workspaceTitle: '背景除去中 — photremium.com背景リムーバー',
       workspaceDesc: '画像の背景をオンラインで無料除去。',
       workspaceKeywords: '背景除去',
     },
@@ -371,10 +371,10 @@ const ja = {
   },
   watermark: {
     seo: {
-      uploadTitle: '透かし追加 — テキスト・ロゴ透かしを無料追加 | favIMG',
+      uploadTitle: '透かし追加 — テキスト・ロゴ透かしを無料追加 | photremium.com',
       uploadDesc: '数秒で写真にテキストまたは画像透かしを追加。無料・高速・プライベート。',
       uploadKeywords: '透かし追加, テキスト透かし, ロゴ透かし',
-      workspaceTitle: '透かし追加中 — favIMG透かしツール',
+      workspaceTitle: '透かし追加中 — photremium.com透かしツール',
       workspaceDesc: '画像に透かしをオンラインで無料追加。',
       workspaceKeywords: '透かし追加',
     },
@@ -443,10 +443,10 @@ const ja = {
   },
   qrGenerator: {
     seo: {
-      inputTitle: 'QRコードジェネレーター — 無料で作成＆カスタマイズ | favIMG',
+      inputTitle: 'QRコードジェネレーター — 無料で作成＆カスタマイズ | photremium.com',
       inputDesc: 'URL、テキスト、WiFi、連絡先、メール、Google MapsのカスタムQRコードを生成。色・形・フレーム・ロゴをカスタマイズし、複数フォーマットでダウンロード。',
       inputKeywords: 'QRコードジェネレーター, QRコード作成, カスタムQRコード',
-      customizeTitle: 'QRコードカスタマイズ — favIMG',
+      customizeTitle: 'QRコードカスタマイズ — photremium.com',
       customizeDesc: 'QRコードのスタイル、色、フレーム、ロゴをカスタマイズ。PNG、JPG、SVG、WEBP、PDFでダウンロード。',
       customizeKeywords: 'QRコードカスタマイズ, QRコードスタイル',
     },
@@ -534,7 +534,7 @@ const ja = {
   },
   qrScanner: {
     seo: {
-      title: 'QRコードスキャナー — カメラや画像でQRコードをスキャン | favIMG',
+      title: 'QRコードスキャナー — カメラや画像でQRコードをスキャン | photremium.com',
       desc: 'カメラや画像アップロードでQRコードを即座にスキャン。URL、テキスト、WiFi、連絡先などを検出。無料・高速・プライベート。',
       keywords: 'QRコードスキャナー, QRコードスキャン, QRリーダー',
     },
@@ -592,10 +592,10 @@ const ja = {
   },
   faceBlur: {
     seo: {
-      uploadTitle: '顔ぼかしツール — 画像の顔をオンラインでぼかす | favIMG',
+      uploadTitle: '顔ぼかしツール — 画像の顔をオンラインでぼかす | photremium.com',
       uploadDesc: 'AI顔検出で画像の顔を自動的にぼかします。ぼかし強度・形状・絵文字オーバーレイを選択。100%無料・高速・プライベート。',
       uploadKeywords: '顔ぼかし, 顔を隠す, 顔検出, プライバシーツール',
-      workspaceTitle: '顔ぼかしツール — favIMG',
+      workspaceTitle: '顔ぼかしツール — photremium.com',
       workspaceDesc: '画像の顔を自動的にぼかします。100%無料・高速・プライベート。',
       workspaceKeywords: '顔ぼかし',
     },

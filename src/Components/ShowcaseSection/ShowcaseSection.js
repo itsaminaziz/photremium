@@ -154,7 +154,7 @@ const ShowcaseSection = () => {
           </ul>
 
           <div className="sc-stats">
-            <div className="sc-stat"><strong>5M+</strong><span>Images Processed</span></div>
+            <div className="sc-stat"><strong>25+</strong><span>Languages</span></div>
             <div className="sc-stat"><strong>120+</strong><span>Countries</span></div>
             <div className="sc-stat"><strong>10+</strong><span>Free Tools</span></div>
           </div>
@@ -168,7 +168,7 @@ const ShowcaseSection = () => {
         <div className="sc-right">
           <img
             src={`${process.env.PUBLIC_URL}/Images/home-infograph.png`}
-            alt="favIMG platform overview"
+            alt="photremium.com platform overview"
             className="sc-infograph"
             draggable={false}
           />

@@ -7,7 +7,7 @@
       <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>XML Sitemap | favIMG</title>
+        <title>XML Sitemap | photremium.com</title>
         <style>
           :root {
             --bg-1: #f8fafc;
@@ -25,7 +25,6 @@
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.5;
-            background: radial-gradient(circle at 15% 10%, var(--bg-2) 0%, var(--bg-1) 45%, #f8fafc 100%);
             color: var(--text);
           }
 

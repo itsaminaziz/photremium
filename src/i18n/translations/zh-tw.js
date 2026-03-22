@@ -104,7 +104,7 @@ const zhTw = {
     heading: '為創作者而建，由創作者建立',
     subheading: '我們相信強大的圖片工具應該是免費的、快速的，對每個人都可以訪問的。',
     missionTitle: '我們的使命',
-    missionText: 'favIMG 的創建源於一個簡單的目標：提供網路上最直觀、最快速、最私密的圖片編輯體驗。',
+    missionText: 'photremium.com 的創建源於一個簡單的目標：提供網路上最直觀、最快速、最私密的圖片編輯體驗。',
     privacyTitle: '隱私優先',
     privacyText: '我們不會上傳、存儲或遠端處理您的圖片。一切都留在您的設備上。',
     techTitle: '現代技術',
@@ -116,12 +116,12 @@ const zhTw = {
   },
 
   seo: {
-    homeTitle: 'favIMG — 免費線上圖片轉換器、壓縮器和編輯器',
+    homeTitle: 'photremium.com — 免費線上圖片轉換器、壓縮器和編輯器',
     homeDesc: '免費線上轉換、壓縮、調整大小、裁剪和編輯圖片。',
     homeKeywords: '圖片轉換器, 圖片壓縮器, 調整圖片大小, 裁剪圖片, 照片編輯器',
-    aboutTitle: '關於 favIMG — 我們的使命',
-    aboutDesc: '了解 favIMG，受數百萬人信賴的免費線上圖片工具包。',
-    aboutKeywords: 'favimg 關於, 圖片工具, 免費圖片編輯器',
+    aboutTitle: '關於 photremium.com — 我們的使命',
+    aboutDesc: '了解 photremium.com，受數百萬人信賴的免費線上圖片工具包。',
+    aboutKeywords: 'photremium.com 關於, 圖片工具, 免費圖片編輯器',
   },
 
   common: {
@@ -178,10 +178,10 @@ const zhTw = {
 
   compressor: {
     seo: {
-      uploadTitle: '圖片壓縮器 — 免費壓縮 JPG、PNG、SVG、GIF | favIMG',
+      uploadTitle: '圖片壓縮器 — 免費壓縮 JPG、PNG、SVG、GIF | photremium.com',
       uploadDesc: '免費線上壓縮 JPG、PNG、SVG 和 GIF 圖片。在保持品質的同時將文件大小縮小多達 80%。',
       uploadKeywords: '圖片壓縮器, jpg 壓縮, png 壓縮, 縮小圖片大小',
-      workspaceTitle: '壓縮圖片中 — favIMG 圖片壓縮器',
+      workspaceTitle: '壓縮圖片中 — photremium.com 圖片壓縮器',
       workspaceDesc: '調整壓縮級別並下載優化後的圖片。',
       workspaceKeywords: '圖片壓縮, 圖片優化',
     },
@@ -201,7 +201,7 @@ const zhTw = {
 
   converter: {
     seo: {
-      uploadTitle: '圖片轉換器 — 免費轉換 PNG、JPG、WEBP、GIF、SVG | favIMG',
+      uploadTitle: '圖片轉換器 — 免費轉換 PNG、JPG、WEBP、GIF、SVG | photremium.com',
       uploadDesc: '在 JPG、PNG、WEBP、GIF、SVG、TIFF 和 BMP 之間轉換圖片。免費線上圖片格式轉換器。',
       uploadKeywords: '圖片轉換器, png 轉 jpg, jpg 轉 png, webp 轉換器',
       workspaceKeywords: '圖片轉換, 圖片格式轉換器',
@@ -279,10 +279,10 @@ const zhTw = {
 
   resizer: {
     seo: {
-      uploadTitle: '調整圖片大小 — 免費線上調整 JPG 和 PNG 大小 | favIMG',
+      uploadTitle: '調整圖片大小 — 免費線上調整 JPG 和 PNG 大小 | photremium.com',
       uploadDesc: '免費線上按像素或百分比調整圖片大小。',
       uploadKeywords: '調整圖片大小, 圖片調整器, 調整 jpg 大小, 調整 png 大小',
-      workspaceTitle: '調整圖片大小中 — favIMG',
+      workspaceTitle: '調整圖片大小中 — photremium.com',
       workspaceDesc: '免費線上調整圖片大小。',
       workspaceKeywords: '調整圖片大小, 調整器',
     },
@@ -305,10 +305,10 @@ const zhTw = {
 
   cropper: {
     seo: {
-      uploadTitle: '裁剪圖片 — 免費線上裁剪 JPG、PNG 和 GIF | favIMG',
+      uploadTitle: '裁剪圖片 — 免費線上裁剪 JPG、PNG 和 GIF | photremium.com',
       uploadDesc: '免費輕鬆線上裁剪 JPG、PNG 和 GIF 圖片。',
       uploadKeywords: '裁剪圖片, 圖片裁剪器, 裁剪 jpg, 裁剪 png',
-      workspaceTitle: '裁剪圖片中 — favIMG',
+      workspaceTitle: '裁剪圖片中 — photremium.com',
       workspaceDesc: '免費線上裁剪圖片。',
       workspaceKeywords: '裁剪圖片, 裁剪器',
     },
@@ -335,7 +335,7 @@ const zhTw = {
 
   photoEditor: {
     seo: {
-      title: '線上照片編輯器 — 免費添加文字、效果和邊框 | favIMG',
+      title: '線上照片編輯器 — 免費添加文字、效果和邊框 | photremium.com',
       desc: '免費線上編輯照片 — 添加文字、效果、邊框和貼圖。在瀏覽器中執行。',
       keywords: '照片編輯器, 線上照片編輯器, 免費線上照片編輯',
     },
@@ -352,10 +352,10 @@ const zhTw = {
 
   removeBg: {
     seo: {
-      uploadTitle: '免費移除圖片背景 | favIMG',
+      uploadTitle: '免費移除圖片背景 | photremium.com',
       uploadDesc: '以高精度快速移除圖片背景。免費線上背景移除器。',
       uploadKeywords: '移除背景, 背景移除器, 移除圖片背景, 透明背景',
-      workspaceTitle: '移除背景中 — favIMG',
+      workspaceTitle: '移除背景中 — photremium.com',
       workspaceDesc: '免費線上移除圖片背景。',
       workspaceKeywords: '移除背景, 透明背景',
     },
@@ -385,10 +385,10 @@ const zhTw = {
 
   watermark: {
     seo: {
-      uploadTitle: '圖片浮水印 — 免費添加文字和圖示浮水印 | favIMG',
+      uploadTitle: '圖片浮水印 — 免費添加文字和圖示浮水印 | photremium.com',
       uploadDesc: '在幾秒鐘內為照片添加文字或圖片浮水印。免費、快速。',
       uploadKeywords: '浮水印圖片, 添加浮水印, 文字浮水印',
-      workspaceTitle: '圖片浮水印 — favIMG',
+      workspaceTitle: '圖片浮水印 — photremium.com',
       workspaceDesc: '免費線上為圖片添加浮水印。',
       workspaceKeywords: '浮水印圖片, 添加浮水印',
     },
@@ -452,10 +452,10 @@ const zhTw = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'QR 碼生成器 — 免費生成和自訂 | favIMG',
+      inputTitle: 'QR 碼生成器 — 免費生成和自訂 | photremium.com',
       inputDesc: '為 URL、文字、WiFi、聯絡人、電子郵件和 Google Maps 生成自訂 QR 碼。',
       inputKeywords: 'qr 碼生成器, 製作 qr 碼, 自訂 qr 碼',
-      customizeTitle: '自訂 QR 碼 — favIMG',
+      customizeTitle: '自訂 QR 碼 — photremium.com',
       customizeDesc: '自訂您的 QR 碼的樣式、顏色、邊框和圖示。以 PNG、JPG、SVG、WEBP 或 PDF 下載。',
       customizeKeywords: '自訂 qr 碼, qr 碼樣式',
     },
@@ -525,7 +525,7 @@ const zhTw = {
 
   qrScanner: {
     seo: {
-      title: 'QR 碼掃描器 — 從相機或圖片掃描 QR 碼 | favIMG',
+      title: 'QR 碼掃描器 — 從相機或圖片掃描 QR 碼 | photremium.com',
       desc: '通過相機或圖片上傳即時掃描 QR 碼。偵測 URL、文字、WiFi、聯絡人等。',
       keywords: 'qr 碼掃描器, 掃描 qr 碼, qr 閱讀器, 線上 qr 碼',
     },
@@ -568,10 +568,10 @@ const zhTw = {
 
   faceBlur: {
     seo: {
-      uploadTitle: '人臉模糊工具 — 線上模糊圖片中的人臉 | favIMG',
+      uploadTitle: '人臉模糊工具 — 線上模糊圖片中的人臉 | photremium.com',
       uploadDesc: '使用 AI 人臉偵測自動模糊圖片中的人臉。選擇模糊強度、形狀或表情符號。',
       uploadKeywords: '人臉模糊, 模糊人臉, 人臉偵測, 隱私工具',
-      workspaceTitle: '人臉模糊工具 — favIMG',
+      workspaceTitle: '人臉模糊工具 — photremium.com',
       workspaceDesc: '自動模糊圖片中的人臉。100% 免費。',
       workspaceKeywords: '人臉模糊, 人臉偵測',
     },

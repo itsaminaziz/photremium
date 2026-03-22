@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import './PrivacyPolicy.css';
@@ -60,8 +60,8 @@ const PrivacyPolicy = () => {
   const { t } = useTranslation();
   const lastUpdated   = 'March 11, 2026';
   const effectiveDate = 'January 1, 2025';
-  const siteURL       = 'https://favimg.com';
-  const contactEmail  = 'hello@favimg.com';
+  const siteURL       = 'https://photremium.com';
+  const contactEmail  = 'hello@photremium.com';
 
   const [activeId, setActiveId] = useState('overview');
 
@@ -99,10 +99,10 @@ const PrivacyPolicy = () => {
     <>
       {/* â”€â”€ SEO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <Helmet>
-        <title>Privacy Policy — favIMG | No Server Uploads, Zero Data Storage</title>
+        <title>Privacy Policy — photremium.com | No Server Uploads, Zero Data Storage</title>
         <meta
           name="description"
-          content="favIMG's Privacy Policy explains how we protect your privacy. All image processing happens 100% in your browser — no file uploads to any server, no personal data collected, no tracking."
+          content="photremium.com's Privacy Policy explains how we protect your privacy. All image processing happens 100% in your browser — no file uploads to any server, no personal data collected, no tracking."
         />
         <meta
           name="keywords"
@@ -112,21 +112,21 @@ const PrivacyPolicy = () => {
         <link rel="canonical" href={`${siteURL}/privacy-policy`} />
         <meta property="og:type"        content="website" />
         <meta property="og:url"         content={`${siteURL}/privacy-policy`} />
-        <meta property="og:title"       content="Privacy Policy — favIMG | No Uploads, Zero Storage" />
-        <meta property="og:description" content="Your files stay on your device. favIMG processes all images locally in your browser with no server contact, no data stored, and no tracking." />
+        <meta property="og:title"       content="Privacy Policy — photremium.com | No Uploads, Zero Storage" />
+        <meta property="og:description" content="Your files stay on your device. photremium.com processes all images locally in your browser with no server contact, no data stored, and no tracking." />
         <meta name="twitter:card"        content="summary_large_image" />
-        <meta name="twitter:title"       content="Privacy Policy — favIMG" />
+        <meta name="twitter:title"       content="Privacy Policy — photremium.com" />
         <meta name="twitter:description" content="100% browser-based image tools. No uploads, no storage, no tracking. Read our full privacy policy." />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebPage',
-          name: 'Privacy Policy â€“ favIMG',
+          name: 'Privacy Policy â€“ photremium.com',
           url: `${siteURL}/privacy-policy`,
-          description: 'favIMG Privacy Policy â€“ no server uploads, no data stored, 100% in-browser image processing.',
+          description: 'photremium.com Privacy Policy â€“ no server uploads, no data stored, 100% in-browser image processing.',
           inLanguage: 'en',
           publisher: {
             '@type': 'Organization',
-            name: 'favIMG',
+            name: 'photremium.com',
             url: siteURL,
             contactPoint: { '@type': 'ContactPoint', email: contactEmail, contactType: 'customer support' },
           },
@@ -145,7 +145,7 @@ const PrivacyPolicy = () => {
           </div>
           <h1>Your Privacy Is Our&nbsp;<span>Top&nbsp;Priority</span></h1>
           <p className="privacy-hero__sub">
-            favIMG is built on a simple principle — <strong>your files never leave your device</strong>.
+            photremium.com is built on a simple principle — <strong>your files never leave your device</strong>.
             Every image tool on this site runs entirely inside your browser. No uploads. No cloud. No compromise.
           </p>
           <div className="privacy-hero__meta">
@@ -221,12 +221,12 @@ const PrivacyPolicy = () => {
               </div>
               <div className="policy-block__body">
                 <p>
-                  This Privacy Policy describes how <strong>favIMG</strong> ("we", "us", or "our") handles — or more
+                  This Privacy Policy describes how <strong>photremium.com</strong> ("we", "us", or "our") handles — or more
                   accurately, <em>doesn't handle</em> — your personal information when you use our free online image
                   tools at <a href={siteURL} style={{ color: '#4f46e5' }}>{siteURL}</a>.
                 </p>
                 <p>
-                  Unlike traditional web applications that send files to remote servers for processing, favIMG uses
+                  Unlike traditional web applications that send files to remote servers for processing, photremium.com uses
                   modern browser APIs (Canvas API, WebAssembly, WebWorkers) to perform every operation locally on your
                   device. The result: no data transmission, no storage, no risk.
                 </p>
@@ -253,7 +253,7 @@ const PrivacyPolicy = () => {
               </div>
               <div className="policy-block__body">
                 <p>
-                  Every tool on favIMG — image converter, compressor, resizer, background remover, face blur,
+                  Every tool on photremium.com — image converter, compressor, resizer, background remover, face blur,
                   watermark, crop, and QR code tools — processes your files <strong>100% inside your web browser</strong>
                   using client-side JavaScript and WebAssembly.
                 </p>
@@ -344,7 +344,7 @@ const PrivacyPolicy = () => {
                       <tr>
                         <td>Payment / financial data</td>
                         <td><span className="policy-badge policy-badge--green"><i className="fa-solid fa-xmark"></i> Never</span></td>
-                        <td>favIMG is completely free with no payments required</td>
+                        <td>photremium.com is completely free with no payments required</td>
                       </tr>
                     </tbody>
                   </table>
@@ -365,7 +365,7 @@ const PrivacyPolicy = () => {
               </div>
               <div className="policy-block__body">
                 <p>
-                  favIMG uses <strong>no advertising cookies</strong>, <strong>no cross-site tracking cookies</strong>,
+                  photremium.com uses <strong>no advertising cookies</strong>, <strong>no cross-site tracking cookies</strong>,
                   and <strong>no third-party cookies</strong>. The only browser storage we use is for essential
                   site functionality:
                 </p>
@@ -382,14 +382,14 @@ const PrivacyPolicy = () => {
                   </li>
                   <li>
                     <i className="fa-solid fa-shield-halved" style={{ color: '#16a34a' }}></i>
-                    <span><strong>No session cookies.</strong> favIMG has no login system, so no session ID
+                    <span><strong>No session cookies.</strong> photremium.com has no login system, so no session ID
                     cookies are ever written.</span>
                   </li>
                 </ul>
                 <div className="policy-callout policy-callout--amber">
                   <i className="fa-solid fa-triangle-exclamation"></i>
                   <span>
-                    You can clear all favIMG local storage at any time via your browser settings
+                    You can clear all photremium.com local storage at any time via your browser settings
                     (<em>Settings → Privacy → Clear browsing data → Cached data &amp; cookies</em>).
                     Doing so has no effect on your ability to use the tools.
                   </span>
@@ -410,7 +410,7 @@ const PrivacyPolicy = () => {
               </div>
               <div className="policy-block__body">
                 <p>
-                  favIMG uses a minimal set of trusted third-party services strictly for infrastructure and
+                  photremium.com uses a minimal set of trusted third-party services strictly for infrastructure and
                   performance. None of these services receive your images or any personally identifiable information.
                 </p>
                 <div className="policy-table-wrap">
@@ -509,7 +509,7 @@ const PrivacyPolicy = () => {
               </div>
               <div className="policy-block__body">
                 <p>
-                  favIMG does not knowingly collect any personal information from children under the age of 13
+                  photremium.com does not knowingly collect any personal information from children under the age of 13
                   (or 16 in the European Union under GDPR). Since we collect no personal data from any user,
                   there is nothing special to do for younger users — the site is equally safe for everyone.
                 </p>
@@ -535,7 +535,7 @@ const PrivacyPolicy = () => {
               </div>
               <div className="policy-block__body">
                 <p>
-                  Because favIMG collects no personally identifiable information, most data-subject rights apply
+                  Because photremium.com collects no personally identifiable information, most data-subject rights apply
                   trivially — there is no data about you to access, correct, or delete. Nevertheless, we fully
                   acknowledge and respect the following rights:
                 </p>
@@ -589,7 +589,7 @@ const PrivacyPolicy = () => {
               </div>
               <div className="policy-block__body">
                 <p>
-                  The most secure data is data that is never collected. favIMG's client-side architecture means
+                  The most secure data is data that is never collected. photremium.com's client-side architecture means
                   a server breach cannot expose your files because your files are never on our servers.
                   Additional security measures include:
                 </p>
@@ -651,7 +651,7 @@ const PrivacyPolicy = () => {
                   </li>
                 </ul>
                 <p>
-                  Continued use of favIMG after changes are published constitutes acceptance of the updated policy.
+                  Continued use of photremium.com after changes are published constitutes acceptance of the updated policy.
                   We encourage you to review this page periodically.
                 </p>
               </div>

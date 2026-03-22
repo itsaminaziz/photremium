@@ -34,7 +34,7 @@ const zh = {
   whyChoose: {
     label: '选择我们的理由',
     heading: '更智能的图片编辑方式',
-    subheading: '全球数千名创作者、设计师和开发者的信赖之选。以下是 favIMG 成为图片编辑首选的原因。',
+    subheading: '全球数千名创作者、设计师和开发者的信赖之选。以下是 photremium.com 成为图片编辑首选的原因。',
     reasons: {
       fast: { title: '超快处理', desc: '一切处理直接在您的浏览器中完成。无需上传到外部服务器——结果在毫秒内呈现。' },
       private: { title: '100% 私密安全', desc: '您的文件永远不会离开您的设备。我们从不存储、共享或访问您的图片。完全隐私保证。' },
@@ -99,7 +99,7 @@ const zh = {
     heading: '由创作者为创作者打造',
     subheading: '我们相信强大的图片工具应该是免费的、快速的，人人都能使用的。',
     missionTitle: '我们的使命',
-    missionText: 'favIMG 的构建目标简单明确：提供网络上最直观、最快速、最私密的图片编辑体验。由于一切在浏览器中处理，您的文件永远不会离开您的设备。无需账户、无限制、无妥协。',
+    missionText: 'photremium.com 的构建目标简单明确：提供网络上最直观、最快速、最私密的图片编辑体验。由于一切在浏览器中处理，您的文件永远不会离开您的设备。无需账户、无限制、无妥协。',
     privacyTitle: '隐私优先',
     privacyText: '我们从不在远程服务器上上传、存储或处理图片。一切都保留在您的设备上。',
     techTitle: '前沿技术',
@@ -110,12 +110,12 @@ const zh = {
     globalText: '被 120 多个国家的创作者使用。通过超快 CDN 交付，支持多语言。',
   },
   seo: {
-    homeTitle: 'favIMG — 免费在线图片转换、压缩和编辑工具',
+    homeTitle: 'photremium.com — 免费在线图片转换、压缩和编辑工具',
     homeDesc: '免费在线转换、压缩、调整、裁剪和编辑图片。快速、私密、安全——一切在浏览器中处理。',
     homeKeywords: '图片转换, 图片压缩, 调整尺寸, 裁剪, 照片编辑器, 免费图片工具',
-    aboutTitle: '关于 favIMG — 我们的使命与故事',
-    aboutDesc: '了解 favIMG——数百万人信赖的免费在线图片工具集。',
-    aboutKeywords: '关于 favimg, 图片工具, 免费图片编辑器',
+    aboutTitle: '关于 photremium.com — 我们的使命与故事',
+    aboutDesc: '了解 photremium.com——数百万人信赖的免费在线图片工具集。',
+    aboutKeywords: '关于 photremium.com, 图片工具, 免费图片编辑器',
   },
   common: {
     new: '新功能！',
@@ -170,10 +170,10 @@ const zh = {
   },
   compressor: {
     seo: {
-      uploadTitle: '图片压缩 — 免费在线压缩 JPG、PNG、SVG、GIF | favIMG',
+      uploadTitle: '图片压缩 — 免费在线压缩 JPG、PNG、SVG、GIF | photremium.com',
       uploadDesc: '免费在线压缩 JPG、PNG、SVG 和 GIF 图片。在保持视觉质量的同时减小高达 80% 的文件大小。无需注册。',
       uploadKeywords: '图片压缩, JPG 压缩, PNG 压缩, 减小图片大小, 图片优化',
-      workspaceTitle: '正在压缩图片 — favIMG 图片压缩器',
+      workspaceTitle: '正在压缩图片 — photremium.com 图片压缩器',
       workspaceDesc: '调整压缩级别并下载优化后的图片。',
       workspaceKeywords: '图片压缩, 批量压缩',
     },
@@ -192,7 +192,7 @@ const zh = {
   },
   converter: {
     seo: {
-      uploadTitle: '图片转换 — 免费在线转换 PNG、JPG、WEBP、GIF、SVG | favIMG',
+      uploadTitle: '图片转换 — 免费在线转换 PNG、JPG、WEBP、GIF、SVG | photremium.com',
       uploadDesc: '在 JPG、PNG、WEBP、GIF、SVG、TIFF、BMP 之间转换图片。免费在线图片格式转换——快速、私密、无需注册。',
       uploadKeywords: '图片转换, PNG 转 JPG, JPG 转 PNG, WEBP 转换',
       workspaceKeywords: '图片转换, 格式转换, 批量转换',
@@ -269,10 +269,10 @@ const zh = {
   },
   resizer: {
     seo: {
-      uploadTitle: '调整图片尺寸 — 免费在线调整 JPG、PNG、SVG、GIF | favIMG',
+      uploadTitle: '调整图片尺寸 — 免费在线调整 JPG、PNG、SVG、GIF | photremium.com',
       uploadDesc: '按像素或百分比在线调整图片大小。在保持质量的同时调整 JPG、PNG、SVG 和 GIF 图片尺寸。',
       uploadKeywords: '调整图片尺寸, 图片大小调整, JPG 调整, PNG 调整',
-      workspaceTitle: '正在调整图片尺寸 — favIMG',
+      workspaceTitle: '正在调整图片尺寸 — photremium.com',
       workspaceDesc: '免费在线调整图片大小。',
       workspaceKeywords: '调整图片尺寸',
     },
@@ -294,10 +294,10 @@ const zh = {
   },
   cropper: {
     seo: {
-      uploadTitle: '图片裁剪 — 免费在线裁剪 JPG、PNG、GIF | favIMG',
+      uploadTitle: '图片裁剪 — 免费在线裁剪 JPG、PNG、GIF | photremium.com',
       uploadDesc: '在线轻松裁剪 JPG、PNG 和 GIF 图片。使用可视编辑器进行预设比例或自由裁剪。',
       uploadKeywords: '图片裁剪, JPG 裁剪, PNG 裁剪',
-      workspaceTitle: '正在裁剪图片 — favIMG',
+      workspaceTitle: '正在裁剪图片 — photremium.com',
       workspaceDesc: '免费在线裁剪图片。',
       workspaceKeywords: '图片裁剪',
     },
@@ -323,7 +323,7 @@ const zh = {
   },
   photoEditor: {
     seo: {
-      title: '在线照片编辑器 — 免费添加文字、特效、相框 | favIMG',
+      title: '在线照片编辑器 — 免费添加文字、特效、相框 | photremium.com',
       desc: '免费在线编辑照片——添加文字、特效、相框、贴纸等。在浏览器中运行的简单图片编辑工具。',
       keywords: '照片编辑器, 在线图片编辑, 免费照片编辑, 图片添加文字',
     },
@@ -339,10 +339,10 @@ const zh = {
   },
   removeBg: {
     seo: {
-      uploadTitle: '去除图片背景 — 免费在线去除 | favIMG',
+      uploadTitle: '去除图片背景 — 免费在线去除 | photremium.com',
       uploadDesc: '高精度快速去除图片背景。免费在线背景去除工具——完全在浏览器中运行。',
       uploadKeywords: '背景去除, 去除背景, 透明背景, 抠图',
-      workspaceTitle: '正在去除背景 — favIMG 背景去除工具',
+      workspaceTitle: '正在去除背景 — photremium.com 背景去除工具',
       workspaceDesc: '免费在线去除图片背景。',
       workspaceKeywords: '背景去除',
     },
@@ -371,10 +371,10 @@ const zh = {
   },
   watermark: {
     seo: {
-      uploadTitle: '添加水印 — 免费添加文字或图片水印 | favIMG',
+      uploadTitle: '添加水印 — 免费添加文字或图片水印 | photremium.com',
       uploadDesc: '几秒内为照片添加文字或图片水印。免费、快速、私密。',
       uploadKeywords: '添加水印, 文字水印, Logo 水印',
-      workspaceTitle: '正在添加水印 — favIMG 水印工具',
+      workspaceTitle: '正在添加水印 — photremium.com 水印工具',
       workspaceDesc: '免费在线为图片添加水印。',
       workspaceKeywords: '添加水印',
     },
@@ -443,10 +443,10 @@ const zh = {
   },
   qrGenerator: {
     seo: {
-      inputTitle: '二维码生成器 — 免费创建与自定义 | favIMG',
+      inputTitle: '二维码生成器 — 免费创建与自定义 | photremium.com',
       inputDesc: '为 URL、文本、WiFi、联系人、邮件、Google 地图生成自定义二维码。自定义颜色、形状、相框和 Logo，以多种格式下载。',
       inputKeywords: '二维码生成器, 生成二维码, 自定义二维码',
-      customizeTitle: '二维码自定义 — favIMG',
+      customizeTitle: '二维码自定义 — photremium.com',
       customizeDesc: '自定义二维码样式、颜色、相框和 Logo。以 PNG、JPG、SVG、WEBP、PDF 下载。',
       customizeKeywords: '二维码自定义, 二维码样式',
     },
@@ -534,7 +534,7 @@ const zh = {
   },
   qrScanner: {
     seo: {
-      title: '二维码扫描器 — 通过摄像头或图片扫描二维码 | favIMG',
+      title: '二维码扫描器 — 通过摄像头或图片扫描二维码 | photremium.com',
       desc: '通过摄像头或上传图片即时扫描二维码。检测 URL、文本、WiFi、联系人等。免费、快速、私密。',
       keywords: '二维码扫描器, 扫描二维码, 二维码读取器',
     },
@@ -592,10 +592,10 @@ const zh = {
   },
   faceBlur: {
     seo: {
-      uploadTitle: '人脸模糊工具 — 在线模糊图片中的人脸 | favIMG',
+      uploadTitle: '人脸模糊工具 — 在线模糊图片中的人脸 | photremium.com',
       uploadDesc: '使用 AI 人脸检测自动模糊图片中的人脸。可选择模糊强度、形状和表情符号覆盖。100% 免费、快速、私密。',
       uploadKeywords: '人脸模糊, 遮盖人脸, 人脸检测, 隐私工具',
-      workspaceTitle: '人脸模糊工具 — favIMG',
+      workspaceTitle: '人脸模糊工具 — photremium.com',
       workspaceDesc: '自动模糊图片中的人脸。100% 免费、快速、私密。',
       workspaceKeywords: '人脸模糊',
     },

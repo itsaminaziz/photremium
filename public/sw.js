@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'favimg-images-v1';
+const CACHE_VERSION = 'photremium.com-images-v1';
 const CACHE_NAME = `${CACHE_VERSION}`;
 
 const IMAGES_TO_CACHE = [
@@ -30,7 +30,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) =>
       Promise.all(
         keys
-          .filter((key) => key.startsWith('favimg-images-') && key !== CACHE_NAME)
+          .filter((key) => key.startsWith('photremium.com-images-') && key !== CACHE_NAME)
           .map((key) => caches.delete(key))
       )
     ).then(() => self.clients.claim())

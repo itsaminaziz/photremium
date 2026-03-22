@@ -22,25 +22,28 @@ const Footer = () => {
           {/* Brand */}
           <div className="footer__brand">
             <Link to={localePath('/')} className="footer__logo">
-              <img src={`${process.env.PUBLIC_URL}/Images/nav-logo.png`} alt="favIMG" className="footer__logo-img" />
+              <img src={`${process.env.PUBLIC_URL}/Images/nav-logo.png`} alt="photremium.com" className="footer__logo-img" />
             </Link>
             <p className="footer__tagline">
               {t('footer.tagline')}
             </p>
             <div className="footer__socials">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <a href="https://www.facebook.com/share/1Stks4NQcS/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <i className="fa-brands fa-facebook-f"></i>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <a href="https://twitter.com/photremium" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <i className="fa-brands fa-x-twitter"></i>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://www.linkedin.com/in/photremium-pro-5103373b9 " target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+              <a href="https://instagram.com/photremium" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <i className="fa-brands fa-instagram"></i>
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <i className="fa-brands fa-github"></i>
+              <a href="https://tiktok.com/@photremium" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <i className="fa-brands fa-tiktok"></i>
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <a href="https://www.youtube.com/channel/UCad9bW8bwTHTwvBj2DxmMeg" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <i className="fa-brands fa-youtube"></i>
               </a>
             </div>
@@ -64,7 +67,7 @@ const Footer = () => {
               <li><Link to={localePath('/watermark-image')}><i className="fa-solid fa-stamp"></i> {t('nav.watermarkImage')}</Link></li>
               <li><Link to={localePath('/qr-code-generator')}><i className="fa-solid fa-qrcode"></i> {t('nav.qrCodeGenerator')}</Link></li>
               <li><Link to={localePath('/qr-code-scanner')}><i className="fa-solid fa-expand"></i> {t('nav.qrCodeScanner')}</Link></li>
-              <li><Link to={localePath('/face-blur')}><i className="fa-solid fa-face-viewfinder"></i> {t('nav.faceBlur')}</Link></li>
+              <li><Link to={localePath('/face-blur')}><i className="fa-solid fa-face-dizzy"></i> {t('nav.faceBlur')}</Link></li>
             </ul>
           </div>
 
@@ -73,6 +76,13 @@ const Footer = () => {
             <ul>
               <li><Link to={localePath('/about')}><i className="fa-solid fa-circle-info"></i> {t('nav.aboutUs')}</Link></li>
               <li><Link to={localePath('/')}><i className="fa-solid fa-house"></i> {t('nav.home')}</Link></li>
+            </ul>
+
+            <h4 style={{ marginTop: 24 }}>{t('footer.contact')}</h4>
+            <ul>
+              <li>
+                <a href="mailto:hello@photremium.com"><i className="fa-solid fa-envelope"></i> hello@photremium.com</a>
+              </li>
               <li>
                 <button className="footer__contact-btn" onClick={openContact}>
                   <i className="fa-solid fa-envelope"></i> Contact Us
@@ -80,18 +90,11 @@ const Footer = () => {
               </li>
             </ul>
 
-            <h4 style={{ marginTop: 24 }}>{t('footer.contact')}</h4>
-            <ul>
-              <li>
-                <a href="mailto:hello@favimg.com"><i className="fa-solid fa-envelope"></i> hello@favimg.com</a>
-              </li>
-            </ul>
-
           </div>
         </div>
 
         <div className="footer__bottom">
-          <p>&copy; {new Date().getFullYear()} favIMG. {t('footer.allRightsReserved')}</p>
+          <p>&copy; {new Date().getFullYear()} photremium.com. {t('footer.allRightsReserved')}</p>
           <div className="footer__bottom-lang">
             <LanguageSwitcher variant="footer" />
           </div>

@@ -99,7 +99,7 @@ const ar = {
     heading: 'صُنع للمبدعين، بواسطة المبدعين',
     subheading: 'نؤمن بأن أدوات الصور القوية يجب أن تكون مجانية وسريعة ومتاحة للجميع.',
     missionTitle: 'مهمتنا',
-    missionText: 'تم إنشاء favIMG بهدف بسيط: تقديم تجربة تحرير صور أكثر سهولة وسرعة وخصوصية على الويب.',
+    missionText: 'تم إنشاء photremium.com بهدف بسيط: تقديم تجربة تحرير صور أكثر سهولة وسرعة وخصوصية على الويب.',
     privacyTitle: 'الخصوصية أولاً',
     privacyText: 'لا نقوم أبداً بتحميل أو تخزين أو معالجة صورك على خوادم بعيدة.',
     techTitle: 'تقنية حديثة',
@@ -110,12 +110,12 @@ const ar = {
     globalText: 'يستخدمه المبدعون في أكثر من 120 دولة.',
   },
   seo: {
-    homeTitle: 'favIMG — محول وضاغط ومحرر صور مجاني عبر الإنترنت',
+    homeTitle: 'photremium.com — محول وضاغط ومحرر صور مجاني عبر الإنترنت',
     homeDesc: 'حول واضغط وغير حجم واقص وحرر الصور مجاناً عبر الإنترنت.',
     homeKeywords: 'محول صور، ضاغط صور، تغيير حجم صورة، محرر صور',
-    aboutTitle: 'عن favIMG — مهمتنا وقصتنا',
-    aboutDesc: 'تعرف على favIMG، مجموعة أدوات الصور المجانية الموثوقة من الملايين.',
-    aboutKeywords: 'عن favimg، أدوات صور، محرر صور مجاني',
+    aboutTitle: 'عن photremium.com — مهمتنا وقصتنا',
+    aboutDesc: 'تعرف على photremium.com، مجموعة أدوات الصور المجانية الموثوقة من الملايين.',
+    aboutKeywords: 'عن photremium.com، أدوات صور، محرر صور مجاني',
   },
   common: {
     new: 'جديد!',
@@ -171,10 +171,10 @@ const ar = {
 
   compressor: {
     seo: {
-      uploadTitle: 'ضاغط الصور — اضغط JPG وPNG وSVG وGIF مجاناً | favIMG',
+      uploadTitle: 'ضاغط الصور — اضغط JPG وPNG وSVG وGIF مجاناً | photremium.com',
       uploadDesc: 'اضغط صور JPG وPNG وSVG وGIF عبر الإنترنت مجاناً. قلل حجم الملف حتى 80% مع الحفاظ على الجودة البصرية. لا يلزم تسجيل.',
       uploadKeywords: 'ضاغط صور، ضغط jpg، ضغط png، تقليل حجم الصورة، تحسين الصور',
-      workspaceTitle: 'ضغط الصور — ضاغط صور favIMG',
+      workspaceTitle: 'ضغط الصور — ضاغط صور photremium.com',
       workspaceDesc: 'اضبط مستوى الضغط وحمّل صورك المحسّنة.',
       workspaceKeywords: 'ضغط الصور، شريط الضغط، ضغط الصور بالجملة',
     },
@@ -194,7 +194,7 @@ const ar = {
 
   converter: {
     seo: {
-      uploadTitle: 'محوّل الصور — تحويل PNG وJPG وWEBP وGIF وSVG مجاناً | favIMG',
+      uploadTitle: 'محوّل الصور — تحويل PNG وJPG وWEBP وGIF وSVG مجاناً | photremium.com',
       uploadDesc: 'حوّل الصور بين JPG وPNG وWEBP وGIF وSVG وTIFF وBMP والمزيد. محوّل صور مجاني — سريع وخاص.',
       uploadKeywords: 'محوّل صور، تحويل png إلى jpg، jpg إلى png، محوّل webp',
       workspaceKeywords: 'تحويل الصور، محوّل تنسيقات الصور',
@@ -272,10 +272,10 @@ const ar = {
 
   resizer: {
     seo: {
-      uploadTitle: 'تغيير حجم الصور — تغيير حجم JPG وPNG مجاناً | favIMG',
+      uploadTitle: 'تغيير حجم الصور — تغيير حجم JPG وPNG مجاناً | photremium.com',
       uploadDesc: 'غيّر حجم الصور عبر الإنترنت بالبكسل أو النسبة المئوية. مجاناً.',
       uploadKeywords: 'تغيير حجم الصورة، تغيير أبعاد الصورة',
-      workspaceTitle: 'تغيير حجم الصور — favIMG',
+      workspaceTitle: 'تغيير حجم الصور — photremium.com',
       workspaceDesc: 'غيّر حجم الصور عبر الإنترنت مجاناً.',
       workspaceKeywords: 'تغيير حجم الصورة',
     },
@@ -298,10 +298,10 @@ const ar = {
 
   cropper: {
     seo: {
-      uploadTitle: 'قص الصور — قص JPG وPNG مجاناً | favIMG',
+      uploadTitle: 'قص الصور — قص JPG وPNG مجاناً | photremium.com',
       uploadDesc: 'قص صور JPG وPNG وGIF عبر الإنترنت بسهولة. مجاناً وسريع وخاص.',
       uploadKeywords: 'قص الصورة، قص jpg، قص png',
-      workspaceTitle: 'قص الصور — favIMG',
+      workspaceTitle: 'قص الصور — photremium.com',
       workspaceDesc: 'قص الصور عبر الإنترنت مجاناً.',
       workspaceKeywords: 'قص الصورة',
     },
@@ -328,7 +328,7 @@ const ar = {
 
   photoEditor: {
     seo: {
-      title: 'محرر الصور — تحرير الصور مجاناً | favIMG',
+      title: 'محرر الصور — تحرير الصور مجاناً | photremium.com',
       desc: 'حرّر الصور عبر الإنترنت مجاناً — أضف نصاً وتأثيرات وإطارات والمزيد.',
       keywords: 'محرر الصور، تحرير الصور عبر الإنترنت',
     },
@@ -345,10 +345,10 @@ const ar = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'إزالة خلفية الصورة مجاناً | favIMG',
+      uploadTitle: 'إزالة خلفية الصورة مجاناً | photremium.com',
       uploadDesc: 'أزِل خلفيات الصور بدقة عالية. مجاناً — يعمل في متصفحك.',
       uploadKeywords: 'إزالة الخلفية، إزالة خلفية الصورة، خلفية شفافة',
-      workspaceTitle: 'إزالة الخلفيات — favIMG',
+      workspaceTitle: 'إزالة الخلفيات — photremium.com',
       workspaceDesc: 'إزالة خلفيات الصور مجاناً.',
       workspaceKeywords: 'إزالة الخلفية',
     },
@@ -378,10 +378,10 @@ const ar = {
 
   watermark: {
     seo: {
-      uploadTitle: 'إضافة علامة مائية للصور مجاناً | favIMG',
+      uploadTitle: 'إضافة علامة مائية للصور مجاناً | photremium.com',
       uploadDesc: 'أضف علامات مائية نصية أو صورية إلى صورك. مجاناً وسريع.',
       uploadKeywords: 'علامة مائية، إضافة علامة مائية',
-      workspaceTitle: 'إضافة علامة مائية — favIMG',
+      workspaceTitle: 'إضافة علامة مائية — photremium.com',
       workspaceDesc: 'إضافة علامات مائية للصور مجاناً.',
       workspaceKeywords: 'علامة مائية',
     },
@@ -451,10 +451,10 @@ const ar = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'مولّد رمز QR — إنشاء وتخصيص مجاناً | favIMG',
+      inputTitle: 'مولّد رمز QR — إنشاء وتخصيص مجاناً | photremium.com',
       inputDesc: 'أنشئ رموز QR مخصصة للروابط والنصوص وWiFi وجهات الاتصال والبريد الإلكتروني وخرائط Google.',
       inputKeywords: 'مولّد رمز qr، إنشاء رمز qr، رمز qr مخصص',
-      customizeTitle: 'تخصيص رمز QR — favIMG',
+      customizeTitle: 'تخصيص رمز QR — photremium.com',
       customizeDesc: 'خصّص نمط رمز QR ولونه وإطاره وشعاره.',
       customizeKeywords: 'تخصيص رمز qr، ألوان رمز qr',
     },
@@ -543,7 +543,7 @@ const ar = {
 
   qrScanner: {
     seo: {
-      title: 'ماسح رمز QR — مسح رموز QR من الكاميرا أو الصورة | favIMG',
+      title: 'ماسح رمز QR — مسح رموز QR من الكاميرا أو الصورة | photremium.com',
       desc: 'امسح رموز QR فوراً باستخدام كاميرتك أو برفع صورة. سريع وخاص وآمن.',
       keywords: 'ماسح رمز qr، مسح رمز qr، قارئ رمز qr',
     },
@@ -602,10 +602,10 @@ const ar = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'أداة تمويه الوجه — تمويه الوجوه في الصور | favIMG',
+      uploadTitle: 'أداة تمويه الوجه — تمويه الوجوه في الصور | photremium.com',
       uploadDesc: 'موّه الوجوه في صورك تلقائياً باستخدام الذكاء الاصطناعي. مجاناً وسريع وخاص.',
       uploadKeywords: 'تمويه الوجه، تمويه الوجوه، كشف الوجه',
-      workspaceTitle: 'أداة تمويه الوجه — favIMG',
+      workspaceTitle: 'أداة تمويه الوجه — photremium.com',
       workspaceDesc: 'تمويه الوجوه في صورك تلقائياً. 100% مجاناً وسريع وخاص.',
       workspaceKeywords: 'تمويه الوجه',
     },

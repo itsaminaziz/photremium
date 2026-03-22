@@ -99,7 +99,7 @@ const fr = {
     heading: 'Conçu pour les Créateurs, par des Créateurs',
     subheading: 'Nous croyons que les outils d\'image puissants doivent être gratuits, rapides et accessibles à tous.',
     missionTitle: 'Notre Mission',
-    missionText: 'favIMG a été créé avec un objectif simple : offrir l\'expérience d\'édition d\'images la plus intuitive, la plus rapide et la plus privée sur le web.',
+    missionText: 'photremium.com a été créé avec un objectif simple : offrir l\'expérience d\'édition d\'images la plus intuitive, la plus rapide et la plus privée sur le web.',
     privacyTitle: 'Confidentialité d\'Abord',
     privacyText: 'Nous ne téléchargeons, stockons ou traitons jamais vos images sur des serveurs distants.',
     techTitle: 'Technologie Moderne',
@@ -110,12 +110,12 @@ const fr = {
     globalText: 'Utilisé par des créateurs dans plus de 120 pays.',
   },
   seo: {
-    homeTitle: 'favIMG — Convertisseur, Compresseur et Éditeur d\'Images Gratuit',
+    homeTitle: 'photremium.com — Convertisseur, Compresseur et Éditeur d\'Images Gratuit',
     homeDesc: 'Convertissez, compressez, redimensionnez, recadrez et éditez des images en ligne gratuitement.',
     homeKeywords: 'convertisseur d\'images, compresseur d\'images, redimensionner image, éditeur photo',
-    aboutTitle: 'À Propos de favIMG — Notre Mission et Notre Histoire',
-    aboutDesc: 'Découvrez favIMG, la boîte à outils d\'image en ligne gratuite de confiance.',
-    aboutKeywords: 'à propos de favimg, outils d\'image, éditeur d\'image gratuit',
+    aboutTitle: 'À Propos de photremium.com — Notre Mission et Notre Histoire',
+    aboutDesc: 'Découvrez photremium.com, la boîte à outils d\'image en ligne gratuite de confiance.',
+    aboutKeywords: 'à propos de photremium.com, outils d\'image, éditeur d\'image gratuit',
   },
   common: {
     new: 'Nouveau !',
@@ -171,10 +171,10 @@ const fr = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Compresseur d\'Images — Compresser JPG, PNG, SVG, GIF gratuitement | favIMG',
+      uploadTitle: 'Compresseur d\'Images — Compresser JPG, PNG, SVG, GIF gratuitement | photremium.com',
       uploadDesc: 'Compressez des images JPG, PNG, SVG et GIF en ligne gratuitement. Fichiers jusqu\'à 80% plus petits.',
       uploadKeywords: 'compresseur d\'images, compresser jpg, compresser png, réduire taille image',
-      workspaceTitle: 'Compresser des Images — favIMG Compresseur d\'Images',
+      workspaceTitle: 'Compresser des Images — photremium.com Compresseur d\'Images',
       workspaceDesc: 'Ajustez le niveau de compression et téléchargez des images optimisées.',
       workspaceKeywords: 'compresser images, compression d\'images',
     },
@@ -194,7 +194,7 @@ const fr = {
 
   converter: {
     seo: {
-      uploadTitle: 'Convertisseur d\'Images — Convertir PNG, JPG, WEBP, GIF, SVG gratuitement | favIMG',
+      uploadTitle: 'Convertisseur d\'Images — Convertir PNG, JPG, WEBP, GIF, SVG gratuitement | photremium.com',
       uploadDesc: 'Convertissez des images entre JPG, PNG, WEBP, GIF, SVG, TIFF, BMP. Gratuit et privé.',
       uploadKeywords: 'convertisseur d\'images, png en jpg, jpg en png, convertisseur webp',
       workspaceKeywords: 'convertir images, convertisseur de format',
@@ -272,10 +272,10 @@ const fr = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Redimensionner Image — Mettre à l\'échelle JPG, PNG gratuitement | favIMG',
+      uploadTitle: 'Redimensionner Image — Mettre à l\'échelle JPG, PNG gratuitement | photremium.com',
       uploadDesc: 'Redimensionnez des images en ligne gratuitement par pixels ou pourcentage.',
       uploadKeywords: 'redimensionner image, changer taille image',
-      workspaceTitle: 'Redimensionner des Images — favIMG',
+      workspaceTitle: 'Redimensionner des Images — photremium.com',
       workspaceDesc: 'Changez la taille des images en ligne gratuitement.',
       workspaceKeywords: 'redimensionner image',
     },
@@ -298,10 +298,10 @@ const fr = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Recadrer Image — Couper JPG, PNG, GIF gratuitement | favIMG',
+      uploadTitle: 'Recadrer Image — Couper JPG, PNG, GIF gratuitement | photremium.com',
       uploadDesc: 'Recadrez des images JPG, PNG et GIF en ligne facilement.',
       uploadKeywords: 'recadrer image, couper jpg, couper png',
-      workspaceTitle: 'Recadrer des Images — favIMG',
+      workspaceTitle: 'Recadrer des Images — photremium.com',
       workspaceDesc: 'Recadrez des images en ligne gratuitement.',
       workspaceKeywords: 'recadrer image',
     },
@@ -328,7 +328,7 @@ const fr = {
 
   photoEditor: {
     seo: {
-      title: 'Éditeur de Photos — Modifier des photos gratuitement en ligne | favIMG',
+      title: 'Éditeur de Photos — Modifier des photos gratuitement en ligne | photremium.com',
       desc: 'Modifiez des photos en ligne gratuitement — ajoutez du texte, des effets, des cadres et plus.',
       keywords: 'éditeur de photos, modifier photos en ligne',
     },
@@ -345,10 +345,10 @@ const fr = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Supprimer l\'Arrière-plan de l\'Image gratuitement | favIMG',
+      uploadTitle: 'Supprimer l\'Arrière-plan de l\'Image gratuitement | photremium.com',
       uploadDesc: 'Supprimez les arrière-plans d\'images rapidement et précisément. Gratuit.',
       uploadKeywords: 'supprimer arrière-plan, enlever fond image, fond transparent',
-      workspaceTitle: 'Supprimer les Arrière-plans — favIMG',
+      workspaceTitle: 'Supprimer les Arrière-plans — photremium.com',
       workspaceDesc: 'Supprimez les arrière-plans d\'images gratuitement en ligne.',
       workspaceKeywords: 'supprimer arrière-plan',
     },
@@ -378,10 +378,10 @@ const fr = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Ajouter un Filigrane en ligne gratuitement | favIMG',
+      uploadTitle: 'Ajouter un Filigrane en ligne gratuitement | photremium.com',
       uploadDesc: 'Ajoutez des filigranes texte ou image aux photos. Gratuit et rapide.',
       uploadKeywords: 'filigrane, ajouter filigrane',
-      workspaceTitle: 'Ajouter un Filigrane — favIMG',
+      workspaceTitle: 'Ajouter un Filigrane — photremium.com',
       workspaceDesc: 'Ajoutez des filigranes gratuitement en ligne.',
       workspaceKeywords: 'filigrane',
     },
@@ -451,10 +451,10 @@ const fr = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'Générateur de QR Code — Créer et personnaliser gratuitement | favIMG',
+      inputTitle: 'Générateur de QR Code — Créer et personnaliser gratuitement | photremium.com',
       inputDesc: 'Créez des QR codes personnalisés pour des URLs, texte, WiFi, contacts, e-mail et Google Maps.',
       inputKeywords: 'générateur qr code, créer qr code',
-      customizeTitle: 'Personnaliser QR Code — favIMG',
+      customizeTitle: 'Personnaliser QR Code — photremium.com',
       customizeDesc: 'Personnalisez le style, la couleur, le cadre et le logo du QR code.',
       customizeKeywords: 'personnaliser qr code, couleurs qr code',
     },
@@ -543,7 +543,7 @@ const fr = {
 
   qrScanner: {
     seo: {
-      title: 'Scanner de QR Code — Scanner avec caméra ou image | favIMG',
+      title: 'Scanner de QR Code — Scanner avec caméra ou image | photremium.com',
       desc: 'Scannez des QR codes instantanément avec la caméra ou téléchargez une image. Rapide, privé et sécurisé.',
       keywords: 'scanner qr, scanner qr code, lecteur qr',
     },
@@ -602,10 +602,10 @@ const fr = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Flouter les Visages — Masquer les visages dans les images en ligne | favIMG',
+      uploadTitle: 'Flouter les Visages — Masquer les visages dans les images en ligne | photremium.com',
       uploadDesc: 'Floutez automatiquement les visages dans les images avec la reconnaissance faciale par IA. Gratuit, rapide et privé.',
       uploadKeywords: 'flouter visage, masquer visages, reconnaissance faciale',
-      workspaceTitle: 'Flouter les Visages — favIMG',
+      workspaceTitle: 'Flouter les Visages — photremium.com',
       workspaceDesc: 'Floutez automatiquement les visages dans les images. 100% gratuit, rapide et privé.',
       workspaceKeywords: 'flouter visage',
     },

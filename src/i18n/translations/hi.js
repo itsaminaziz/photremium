@@ -99,7 +99,7 @@ const hi = {
     heading: 'क्रिएटर्स के लिए, क्रिएटर्स द्वारा',
     subheading: 'हम मानते हैं कि शक्तिशाली इमेज टूल्स मुफ्त, तेज़ और सभी के लिए सुलभ होने चाहिए।',
     missionTitle: 'हमारा मिशन',
-    missionText: 'favIMG एक सरल लक्ष्य के साथ बनाया गया था: वेब पर सबसे सहज, तेज़ और सबसे निजी इमेज एडिटिंग अनुभव प्रदान करना।',
+    missionText: 'photremium.com एक सरल लक्ष्य के साथ बनाया गया था: वेब पर सबसे सहज, तेज़ और सबसे निजी इमेज एडिटिंग अनुभव प्रदान करना।',
     privacyTitle: 'गोपनीयता पहले',
     privacyText: 'हम कभी भी आपकी इमेज को रिमोट सर्वर पर अपलोड, स्टोर या प्रोसेस नहीं करते।',
     techTitle: 'आधुनिक तकनीक',
@@ -110,12 +110,12 @@ const hi = {
     globalText: '120 से अधिक देशों में क्रिएटर्स द्वारा उपयोग किया जाता है।',
   },
   seo: {
-    homeTitle: 'favIMG — मुफ्त ऑनलाइन इमेज कनवर्टर, कंप्रेसर और एडिटर',
+    homeTitle: 'photremium.com — मुफ्त ऑनलाइन इमेज कनवर्टर, कंप्रेसर और एडिटर',
     homeDesc: 'इमेज को मुफ्त ऑनलाइन कनवर्ट, कंप्रेस, रीसाइज़, क्रॉप और एडिट करें।',
     homeKeywords: 'इमेज कनवर्टर, इमेज कंप्रेसर, इमेज रीसाइज़, फोटो एडिटर',
-    aboutTitle: 'favIMG के बारे में — हमारा मिशन और कहानी',
-    aboutDesc: 'favIMG के बारे में जानें, लाखों लोगों द्वारा विश्वसनीय मुफ्त ऑनलाइन इमेज टूलकिट।',
-    aboutKeywords: 'favimg के बारे में, इमेज टूल्स, मुफ्त इमेज एडिटर',
+    aboutTitle: 'photremium.com के बारे में — हमारा मिशन और कहानी',
+    aboutDesc: 'photremium.com के बारे में जानें, लाखों लोगों द्वारा विश्वसनीय मुफ्त ऑनलाइन इमेज टूलकिट।',
+    aboutKeywords: 'photremium.com के बारे में, इमेज टूल्स, मुफ्त इमेज एडिटर',
   },
   common: {
     new: 'नया!',
@@ -171,10 +171,10 @@ const hi = {
 
   compressor: {
     seo: {
-      uploadTitle: 'इमेज कंप्रेसर — JPG, PNG, SVG, GIF मुफ्त में कंप्रेस करें | favIMG',
+      uploadTitle: 'इमेज कंप्रेसर — JPG, PNG, SVG, GIF मुफ्त में कंप्रेस करें | photremium.com',
       uploadDesc: 'JPG, PNG, SVG और GIF इमेज ऑनलाइन मुफ्त में कंप्रेस करें। फाइलें 80% तक छोटी।',
       uploadKeywords: 'इमेज कंप्रेसर, jpg कंप्रेस, png कंप्रेस, इमेज साइज कम करें',
-      workspaceTitle: 'इमेज कंप्रेस करें — favIMG इमेज कंप्रेसर',
+      workspaceTitle: 'इमेज कंप्रेस करें — photremium.com इमेज कंप्रेसर',
       workspaceDesc: 'कंप्रेशन स्तर समायोजित करें और अनुकूलित इमेज डाउनलोड करें।',
       workspaceKeywords: 'इमेज कंप्रेस करें, इमेज कंप्रेशन',
     },
@@ -194,7 +194,7 @@ const hi = {
 
   converter: {
     seo: {
-      uploadTitle: 'इमेज कन्वर्टर — PNG, JPG, WEBP, GIF, SVG मुफ्त में बदलें | favIMG',
+      uploadTitle: 'इमेज कन्वर्टर — PNG, JPG, WEBP, GIF, SVG मुफ्त में बदलें | photremium.com',
       uploadDesc: 'JPG, PNG, WEBP, GIF, SVG, TIFF, BMP के बीच इमेज बदलें। मुफ्त और निजी।',
       uploadKeywords: 'इमेज कन्वर्टर, png से jpg, jpg से png, webp कन्वर्टर',
       workspaceKeywords: 'इमेज बदलें, इमेज फॉर्मेट कन्वर्टर',
@@ -272,10 +272,10 @@ const hi = {
 
   resizer: {
     seo: {
-      uploadTitle: 'इमेज रिसाइज़ — JPG, PNG मुफ्त में स्केल करें | favIMG',
+      uploadTitle: 'इमेज रिसाइज़ — JPG, PNG मुफ्त में स्केल करें | photremium.com',
       uploadDesc: 'इमेज को ऑनलाइन मुफ्त में पिक्सेल या प्रतिशत से रिसाइज़ करें।',
       uploadKeywords: 'इमेज रिसाइज़, इमेज साइज़ बदलें',
-      workspaceTitle: 'इमेज रिसाइज़ करें — favIMG',
+      workspaceTitle: 'इमेज रिसाइज़ करें — photremium.com',
       workspaceDesc: 'इमेज साइज़ ऑनलाइन मुफ्त में बदलें।',
       workspaceKeywords: 'इमेज रिसाइज़',
     },
@@ -298,10 +298,10 @@ const hi = {
 
   cropper: {
     seo: {
-      uploadTitle: 'इमेज क्रॉप — JPG, PNG, GIF मुफ्त में काटें | favIMG',
+      uploadTitle: 'इमेज क्रॉप — JPG, PNG, GIF मुफ्त में काटें | photremium.com',
       uploadDesc: 'JPG, PNG और GIF इमेज आसानी से ऑनलाइन क्रॉप करें।',
       uploadKeywords: 'इमेज क्रॉप, jpg काटना, png काटना',
-      workspaceTitle: 'इमेज क्रॉप करें — favIMG',
+      workspaceTitle: 'इमेज क्रॉप करें — photremium.com',
       workspaceDesc: 'इमेज ऑनलाइन मुफ्त में क्रॉप करें।',
       workspaceKeywords: 'इमेज क्रॉप',
     },
@@ -328,7 +328,7 @@ const hi = {
 
   photoEditor: {
     seo: {
-      title: 'फोटो एडिटर — फोटो ऑनलाइन मुफ्त में एडिट करें | favIMG',
+      title: 'फोटो एडिटर — फोटो ऑनलाइन मुफ्त में एडिट करें | photremium.com',
       desc: 'फोटो ऑनलाइन मुफ्त में एडिट करें — टेक्स्ट, इफेक्ट, फ्रेम और अधिक जोड़ें।',
       keywords: 'फोटो एडिटर, फोटो ऑनलाइन एडिट करें',
     },
@@ -345,10 +345,10 @@ const hi = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'इमेज का बैकग्राउंड मुफ्त में हटाएं | favIMG',
+      uploadTitle: 'इमेज का बैकग्राउंड मुफ्त में हटाएं | photremium.com',
       uploadDesc: 'इमेज बैकग्राउंड तेज़ी से और सटीक रूप से हटाएं। मुफ्त।',
       uploadKeywords: 'बैकग्राउंड हटाएं, इमेज बैकग्राउंड हटाएं, पारदर्शी बैकग्राउंड',
-      workspaceTitle: 'बैकग्राउंड हटाएं — favIMG',
+      workspaceTitle: 'बैकग्राउंड हटाएं — photremium.com',
       workspaceDesc: 'इमेज बैकग्राउंड ऑनलाइन मुफ्त में हटाएं।',
       workspaceKeywords: 'बैकग्राउंड हटाएं',
     },
@@ -378,10 +378,10 @@ const hi = {
 
   watermark: {
     seo: {
-      uploadTitle: 'वॉटरमार्क ऑनलाइन मुफ्त में जोड़ें | favIMG',
+      uploadTitle: 'वॉटरमार्क ऑनलाइन मुफ्त में जोड़ें | photremium.com',
       uploadDesc: 'फोटो में टेक्स्ट या इमेज वॉटरमार्क जोड़ें। मुफ्त और तेज़।',
       uploadKeywords: 'वॉटरमार्क, वॉटरमार्क जोड़ें',
-      workspaceTitle: 'वॉटरमार्क जोड़ें — favIMG',
+      workspaceTitle: 'वॉटरमार्क जोड़ें — photremium.com',
       workspaceDesc: 'वॉटरमार्क ऑनलाइन मुफ्त में जोड़ें।',
       workspaceKeywords: 'वॉटरमार्क',
     },
@@ -451,10 +451,10 @@ const hi = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'QR कोड जनरेटर — मुफ्त में बनाएं और कस्टमाइज़ करें | favIMG',
+      inputTitle: 'QR कोड जनरेटर — मुफ्त में बनाएं और कस्टमाइज़ करें | photremium.com',
       inputDesc: 'URL, टेक्स्ट, WiFi, संपर्क, ईमेल और Google Maps के लिए कस्टम QR कोड बनाएं।',
       inputKeywords: 'qr कोड जनरेटर, qr कोड बनाएं',
-      customizeTitle: 'QR कोड कस्टमाइज़ करें — favIMG',
+      customizeTitle: 'QR कोड कस्टमाइज़ करें — photremium.com',
       customizeDesc: 'QR कोड का स्टाइल, रंग, फ्रेम और लोगो कस्टमाइज़ करें।',
       customizeKeywords: 'qr कोड कस्टमाइज़, qr कोड रंग',
     },
@@ -543,7 +543,7 @@ const hi = {
 
   qrScanner: {
     seo: {
-      title: 'QR कोड स्कैनर — कैमरा या इमेज से QR कोड स्कैन करें | favIMG',
+      title: 'QR कोड स्कैनर — कैमरा या इमेज से QR कोड स्कैन करें | photremium.com',
       desc: 'कैमरा से या इमेज अपलोड करके QR कोड तुरंत स्कैन करें। तेज़, निजी और सुरक्षित।',
       keywords: 'qr स्कैनर, qr कोड स्कैन, qr रीडर',
     },
@@ -602,10 +602,10 @@ const hi = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'चेहरा धुंधला करें — इमेज में चेहरे ऑनलाइन छुपाएं | favIMG',
+      uploadTitle: 'चेहरा धुंधला करें — इमेज में चेहरे ऑनलाइन छुपाएं | photremium.com',
       uploadDesc: 'AI फेस डिटेक्शन से इमेज में चेहरे अपने आप धुंधले करें। मुफ्त, तेज़ और निजी।',
       uploadKeywords: 'चेहरा धुंधला, चेहरे छुपाएं, फेस डिटेक्शन',
-      workspaceTitle: 'चेहरा धुंधला करें — favIMG',
+      workspaceTitle: 'चेहरा धुंधला करें — photremium.com',
       workspaceDesc: 'इमेज में चेहरे अपने आप धुंधले करें। 100% मुफ्त, तेज़ और निजी।',
       workspaceKeywords: 'चेहरा धुंधला',
     },

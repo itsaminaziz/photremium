@@ -104,7 +104,7 @@ const ko = {
     heading: '크리에이터를 위한, 크리에이터에 의한',
     subheading: '강력한 이미지 도구는 무료이고 빠르며 모든 사람에게 접근 가능해야 한다고 믿습니다.',
     missionTitle: '우리의 미션',
-    missionText: 'favIMG는 단순한 목표로 만들어졌습니다: 웹에서 가장 직관적이고 빠르며 안전한 이미지 편집 경험을 제공하는 것.',
+    missionText: 'photremium.com는 단순한 목표로 만들어졌습니다: 웹에서 가장 직관적이고 빠르며 안전한 이미지 편집 경험을 제공하는 것.',
     privacyTitle: '개인정보 우선',
     privacyText: '이미지를 원격 서버에 업로드, 저장하거나 처리하지 않습니다. 모든 것이 기기에 남아 있습니다.',
     techTitle: '최신 기술',
@@ -116,12 +116,12 @@ const ko = {
   },
 
   seo: {
-    homeTitle: 'favIMG — 무료 온라인 이미지 변환기, 압축기 및 편집기',
+    homeTitle: 'photremium.com — 무료 온라인 이미지 변환기, 압축기 및 편집기',
     homeDesc: '무료로 온라인에서 이미지를 변환, 압축, 크기 조정, 자르기, 편집합니다.',
     homeKeywords: '이미지 변환기, 이미지 압축기, 이미지 크기 조정, 이미지 자르기, 사진 편집기',
-    aboutTitle: 'favIMG 소개 — 우리의 미션',
-    aboutDesc: 'favIMG에 대해 알아보세요. 수백만 명이 신뢰하는 무료 온라인 이미지 도구킷.',
-    aboutKeywords: 'favimg 소개, 이미지 도구, 무료 이미지 편집기',
+    aboutTitle: 'photremium.com 소개 — 우리의 미션',
+    aboutDesc: 'photremium.com에 대해 알아보세요. 수백만 명이 신뢰하는 무료 온라인 이미지 도구킷.',
+    aboutKeywords: 'photremium.com 소개, 이미지 도구, 무료 이미지 편집기',
   },
 
   common: {
@@ -178,10 +178,10 @@ const ko = {
 
   compressor: {
     seo: {
-      uploadTitle: '이미지 압축기 — JPG, PNG, SVG, GIF 무료 압축 | favIMG',
+      uploadTitle: '이미지 압축기 — JPG, PNG, SVG, GIF 무료 압축 | photremium.com',
       uploadDesc: 'JPG, PNG, SVG, GIF 이미지를 무료로 온라인 압축. 품질을 유지하면서 파일 크기를 최대 80%까지 축소.',
       uploadKeywords: '이미지 압축기, jpg 압축, png 압축, 이미지 크기 줄이기',
-      workspaceTitle: '이미지 압축 중 — favIMG 이미지 압축기',
+      workspaceTitle: '이미지 압축 중 — photremium.com 이미지 압축기',
       workspaceDesc: '압축 수준을 조정하고 최적화된 이미지를 다운로드하세요.',
       workspaceKeywords: '이미지 압축, 이미지 최적화',
     },
@@ -201,7 +201,7 @@ const ko = {
 
   converter: {
     seo: {
-      uploadTitle: '이미지 변환기 — PNG, JPG, WEBP, GIF, SVG 무료 변환 | favIMG',
+      uploadTitle: '이미지 변환기 — PNG, JPG, WEBP, GIF, SVG 무료 변환 | photremium.com',
       uploadDesc: 'JPG, PNG, WEBP, GIF, SVG, TIFF, BMP 등 간의 이미지 변환. 무료 온라인 이미지 형식 변환기.',
       uploadKeywords: '이미지 변환기, png를 jpg로, jpg를 png로, webp 변환기',
       workspaceKeywords: '이미지 변환, 이미지 형식 변환기',
@@ -279,10 +279,10 @@ const ko = {
 
   resizer: {
     seo: {
-      uploadTitle: '이미지 크기 조정 — JPG, PNG 무료 크기 조정 | favIMG',
+      uploadTitle: '이미지 크기 조정 — JPG, PNG 무료 크기 조정 | photremium.com',
       uploadDesc: '픽셀이나 퍼센트로 이미지 크기를 무료로 온라인 조정.',
       uploadKeywords: '이미지 크기 조정, 이미지 리사이저, jpg 크기 조정, png 크기 조정',
-      workspaceTitle: '이미지 크기 조정 중 — favIMG',
+      workspaceTitle: '이미지 크기 조정 중 — photremium.com',
       workspaceDesc: '이미지 크기를 무료로 온라인 조정.',
       workspaceKeywords: '이미지 크기 조정, 리사이저',
     },
@@ -305,10 +305,10 @@ const ko = {
 
   cropper: {
     seo: {
-      uploadTitle: '이미지 자르기 — JPG, PNG, GIF 무료 자르기 | favIMG',
+      uploadTitle: '이미지 자르기 — JPG, PNG, GIF 무료 자르기 | photremium.com',
       uploadDesc: 'JPG, PNG, GIF 이미지를 무료로 쉽게 자르기.',
       uploadKeywords: '이미지 자르기, 이미지 크로퍼, jpg 자르기, png 자르기',
-      workspaceTitle: '이미지 자르기 중 — favIMG',
+      workspaceTitle: '이미지 자르기 중 — photremium.com',
       workspaceDesc: '이미지를 무료로 온라인 자르기.',
       workspaceKeywords: '이미지 자르기, 크로퍼',
     },
@@ -335,7 +335,7 @@ const ko = {
 
   photoEditor: {
     seo: {
-      title: '온라인 사진 편집기 — 텍스트, 효과, 프레임으로 무료 편집 | favIMG',
+      title: '온라인 사진 편집기 — 텍스트, 효과, 프레임으로 무료 편집 | photremium.com',
       desc: '온라인에서 무료로 사진 편집 — 텍스트, 효과, 프레임, 스티커 추가. 브라우저에서 실행.',
       keywords: '사진 편집기, 온라인 사진 편집기, 사진 편집 온라인 무료',
     },
@@ -352,10 +352,10 @@ const ko = {
 
   removeBg: {
     seo: {
-      uploadTitle: '이미지 배경 무료 제거 | favIMG',
+      uploadTitle: '이미지 배경 무료 제거 | photremium.com',
       uploadDesc: '높은 정확도로 이미지 배경을 빠르게 제거. 무료 온라인 배경 제거기.',
       uploadKeywords: '배경 제거, 배경 제거기, 이미지 배경 제거, 투명 배경',
-      workspaceTitle: '배경 제거 중 — favIMG',
+      workspaceTitle: '배경 제거 중 — photremium.com',
       workspaceDesc: '무료로 온라인에서 이미지 배경 제거.',
       workspaceKeywords: '배경 제거, 투명 배경',
     },
@@ -385,10 +385,10 @@ const ko = {
 
   watermark: {
     seo: {
-      uploadTitle: '이미지 워터마크 — 텍스트 및 로고 워터마크 무료 추가 | favIMG',
+      uploadTitle: '이미지 워터마크 — 텍스트 및 로고 워터마크 무료 추가 | photremium.com',
       uploadDesc: '몇 초 만에 사진에 텍스트 또는 이미지 워터마크를 추가. 무료, 빠름.',
       uploadKeywords: '워터마크 이미지, 워터마크 추가, 텍스트 워터마크',
-      workspaceTitle: '이미지 워터마크 — favIMG',
+      workspaceTitle: '이미지 워터마크 — photremium.com',
       workspaceDesc: '무료로 온라인에서 이미지에 워터마크 추가.',
       workspaceKeywords: '워터마크 이미지, 워터마크 추가',
     },
@@ -454,10 +454,10 @@ const ko = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'QR 코드 생성기 — 무료 생성 및 사용자 정의 | favIMG',
+      inputTitle: 'QR 코드 생성기 — 무료 생성 및 사용자 정의 | photremium.com',
       inputDesc: 'URL, 텍스트, WiFi, 연락처, 이메일, Google Maps를 위한 맞춤형 QR 코드 생성.',
       inputKeywords: 'qr 코드 생성기, qr 코드 만들기, 맞춤형 qr 코드',
-      customizeTitle: 'QR 코드 사용자 정의 — favIMG',
+      customizeTitle: 'QR 코드 사용자 정의 — photremium.com',
       customizeDesc: 'QR 코드의 스타일, 색상, 프레임, 로고를 사용자 정의. PNG, JPG, SVG, WEBP 또는 PDF로 다운로드.',
       customizeKeywords: 'qr 코드 사용자 정의, qr 코드 스타일',
     },
@@ -527,7 +527,7 @@ const ko = {
 
   qrScanner: {
     seo: {
-      title: 'QR 코드 스캐너 — 카메라 또는 이미지에서 QR 코드 스캔 | favIMG',
+      title: 'QR 코드 스캐너 — 카메라 또는 이미지에서 QR 코드 스캔 | photremium.com',
       desc: '카메라나 이미지 업로드로 QR 코드를 즉시 스캔. URL, 텍스트, WiFi, 연락처 등 감지.',
       keywords: 'qr 코드 스캐너, qr 코드 스캔, qr 리더, qr 코드 온라인',
     },
@@ -570,10 +570,10 @@ const ko = {
 
   faceBlur: {
     seo: {
-      uploadTitle: '얼굴 블러 도구 — 온라인에서 이미지의 얼굴 블러 처리 | favIMG',
+      uploadTitle: '얼굴 블러 도구 — 온라인에서 이미지의 얼굴 블러 처리 | photremium.com',
       uploadDesc: 'AI 얼굴 감지로 이미지의 얼굴을 자동으로 블러 처리. 블러 강도, 모양 또는 이모지 선택.',
       uploadKeywords: '얼굴 블러, 얼굴 블러 처리, 얼굴 감지, 개인정보 도구',
-      workspaceTitle: '얼굴 블러 도구 — favIMG',
+      workspaceTitle: '얼굴 블러 도구 — photremium.com',
       workspaceDesc: '이미지의 얼굴을 자동으로 블러 처리. 100% 무료.',
       workspaceKeywords: '얼굴 블러, 얼굴 감지',
     },

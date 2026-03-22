@@ -1,6 +1,6 @@
 export const toolBlogContent = {
   imageCompressor: {
-    badge: 'Tool Guide',
+    // badge: 'Tool Guide',
     title: 'Image Compressor Blog',
     intro:
       'Learn how compression works, when to use each level, and how to keep image quality high while making files much smaller for web, email, and sharing.',

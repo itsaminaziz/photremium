@@ -99,7 +99,7 @@ const de = {
     heading: 'Für Kreative, von Kreativen',
     subheading: 'Wir glauben, dass leistungsstarke Bildtools kostenlos, schnell und für alle zugänglich sein sollten.',
     missionTitle: 'Unsere Mission',
-    missionText: 'favIMG wurde mit einem einfachen Ziel erstellt: die intuitivste, schnellste und privateste Bildbearbeitungserfahrung im Web zu bieten.',
+    missionText: 'photremium.com wurde mit einem einfachen Ziel erstellt: die intuitivste, schnellste und privateste Bildbearbeitungserfahrung im Web zu bieten.',
     privacyTitle: 'Datenschutz zuerst',
     privacyText: 'Wir laden, speichern oder verarbeiten Ihre Bilder niemals auf Remote-Servern.',
     techTitle: 'Moderne Technologie',
@@ -110,12 +110,12 @@ const de = {
     globalText: 'Von Kreativen in über 120 Ländern genutzt.',
   },
   seo: {
-    homeTitle: 'favIMG — Kostenloser Online-Bildkonverter, Kompressor & Editor',
+    homeTitle: 'photremium.com — Kostenloser Online-Bildkonverter, Kompressor & Editor',
     homeDesc: 'Bilder online kostenlos konvertieren, komprimieren, skalieren, zuschneiden und bearbeiten.',
     homeKeywords: 'Bildkonverter, Bildkompressor, Bild skalieren, Fotoeditor',
-    aboutTitle: 'Über favIMG — Unsere Mission & Geschichte',
-    aboutDesc: 'Erfahren Sie mehr über favIMG, das kostenlose Online-Bildtoolkit.',
-    aboutKeywords: 'über favimg, Bildtools, kostenloser Bildeditor',
+    aboutTitle: 'Über photremium.com — Unsere Mission & Geschichte',
+    aboutDesc: 'Erfahren Sie mehr über photremium.com, das kostenlose Online-Bildtoolkit.',
+    aboutKeywords: 'über photremium.com, Bildtools, kostenloser Bildeditor',
   },
   common: {
     new: 'Neu!',
@@ -171,10 +171,10 @@ const de = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Bildkompressor — JPG, PNG, SVG, GIF kostenlos komprimieren | favIMG',
+      uploadTitle: 'Bildkompressor — JPG, PNG, SVG, GIF kostenlos komprimieren | photremium.com',
       uploadDesc: 'Komprimieren Sie JPG-, PNG-, SVG- und GIF-Bilder online kostenlos. Bis zu 80% kleinere Dateien.',
       uploadKeywords: 'bildkompressor, jpg komprimieren, png komprimieren, bildgröße reduzieren',
-      workspaceTitle: 'Bilder komprimieren — favIMG Bildkompressor',
+      workspaceTitle: 'Bilder komprimieren — photremium.com Bildkompressor',
       workspaceDesc: 'Kompressionsstufe anpassen und optimierte Bilder herunterladen.',
       workspaceKeywords: 'bilder komprimieren, bildkompression',
     },
@@ -194,7 +194,7 @@ const de = {
 
   converter: {
     seo: {
-      uploadTitle: 'Bildkonverter — PNG, JPG, WEBP, GIF, SVG kostenlos konvertieren | favIMG',
+      uploadTitle: 'Bildkonverter — PNG, JPG, WEBP, GIF, SVG kostenlos konvertieren | photremium.com',
       uploadDesc: 'Bilder zwischen JPG, PNG, WEBP, GIF, SVG, TIFF, BMP konvertieren. Kostenlos und privat.',
       uploadKeywords: 'bildkonverter, png in jpg, jpg in png, webp konverter',
       workspaceKeywords: 'bilder konvertieren, bildformat konverter',
@@ -272,10 +272,10 @@ const de = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Bild Größe ändern — JPG, PNG kostenlos skalieren | favIMG',
+      uploadTitle: 'Bild Größe ändern — JPG, PNG kostenlos skalieren | photremium.com',
       uploadDesc: 'Bildgröße online kostenlos nach Pixel oder Prozent ändern.',
       uploadKeywords: 'bild skalieren, bildgröße ändern',
-      workspaceTitle: 'Bilder skalieren — favIMG',
+      workspaceTitle: 'Bilder skalieren — photremium.com',
       workspaceDesc: 'Bildgröße online kostenlos ändern.',
       workspaceKeywords: 'bild skalieren',
     },
@@ -298,10 +298,10 @@ const de = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Bild zuschneiden — JPG, PNG, GIF kostenlos schneiden | favIMG',
+      uploadTitle: 'Bild zuschneiden — JPG, PNG, GIF kostenlos schneiden | photremium.com',
       uploadDesc: 'JPG-, PNG- und GIF-Bilder online einfach zuschneiden.',
       uploadKeywords: 'bild zuschneiden, jpg schneiden, png schneiden',
-      workspaceTitle: 'Bilder zuschneiden — favIMG',
+      workspaceTitle: 'Bilder zuschneiden — photremium.com',
       workspaceDesc: 'Bilder online kostenlos zuschneiden.',
       workspaceKeywords: 'bild zuschneiden',
     },
@@ -328,7 +328,7 @@ const de = {
 
   photoEditor: {
     seo: {
-      title: 'Foto-Editor — Fotos kostenlos online bearbeiten | favIMG',
+      title: 'Foto-Editor — Fotos kostenlos online bearbeiten | photremium.com',
       desc: 'Fotos online kostenlos bearbeiten — Text, Effekte, Rahmen und mehr hinzufügen.',
       keywords: 'foto-editor, fotos online bearbeiten',
     },
@@ -345,10 +345,10 @@ const de = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Bildhintergrund kostenlos entfernen | favIMG',
+      uploadTitle: 'Bildhintergrund kostenlos entfernen | photremium.com',
       uploadDesc: 'Bildhintergründe schnell und präzise entfernen. Kostenlos — läuft in Ihrem Browser.',
       uploadKeywords: 'hintergrund entfernen, bild hintergrund entfernen, transparenter hintergrund',
-      workspaceTitle: 'Hintergründe entfernen — favIMG',
+      workspaceTitle: 'Hintergründe entfernen — photremium.com',
       workspaceDesc: 'Bildhintergründe kostenlos online entfernen.',
       workspaceKeywords: 'hintergrund entfernen',
     },
@@ -378,10 +378,10 @@ const de = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Wasserzeichen online hinzufügen kostenlos | favIMG',
+      uploadTitle: 'Wasserzeichen online hinzufügen kostenlos | photremium.com',
       uploadDesc: 'Text- oder Bildwasserzeichen zu Fotos hinzufügen. Kostenlos und schnell.',
       uploadKeywords: 'wasserzeichen, wasserzeichen hinzufügen',
-      workspaceTitle: 'Wasserzeichen hinzufügen — favIMG',
+      workspaceTitle: 'Wasserzeichen hinzufügen — photremium.com',
       workspaceDesc: 'Wasserzeichen kostenlos online hinzufügen.',
       workspaceKeywords: 'wasserzeichen',
     },
@@ -451,10 +451,10 @@ const de = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'QR-Code Generator — Kostenlos erstellen & anpassen | favIMG',
+      inputTitle: 'QR-Code Generator — Kostenlos erstellen & anpassen | photremium.com',
       inputDesc: 'Benutzerdefinierte QR-Codes für URLs, Text, WLAN, Kontakte, E-Mail und Google Maps erstellen.',
       inputKeywords: 'qr-code generator, qr-code erstellen',
-      customizeTitle: 'QR-Code anpassen — favIMG',
+      customizeTitle: 'QR-Code anpassen — photremium.com',
       customizeDesc: 'Stil, Farbe, Rahmen und Logo des QR-Codes anpassen.',
       customizeKeywords: 'qr-code anpassen, qr-code farben',
     },
@@ -543,7 +543,7 @@ const de = {
 
   qrScanner: {
     seo: {
-      title: 'QR-Code Scanner — QR-Codes mit Kamera oder Bild scannen | favIMG',
+      title: 'QR-Code Scanner — QR-Codes mit Kamera oder Bild scannen | photremium.com',
       desc: 'QR-Codes sofort mit der Kamera scannen oder ein Bild hochladen. Schnell, privat und sicher.',
       keywords: 'qr-code scanner, qr-code scannen, qr-leser',
     },
@@ -602,10 +602,10 @@ const de = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Gesicht unscharf machen — Gesichter in Bildern online verbergen | favIMG',
+      uploadTitle: 'Gesicht unscharf machen — Gesichter in Bildern online verbergen | photremium.com',
       uploadDesc: 'Gesichter in Bildern automatisch mit KI-Gesichtserkennung unscharf machen. Kostenlos, schnell & privat.',
       uploadKeywords: 'gesicht unscharf machen, gesichter verbergen, gesichtserkennung',
-      workspaceTitle: 'Gesicht unscharf machen — favIMG',
+      workspaceTitle: 'Gesicht unscharf machen — photremium.com',
       workspaceDesc: 'Gesichter in Bildern automatisch unscharf machen. 100% kostenlos, schnell & privat.',
       workspaceKeywords: 'gesicht unscharf machen',
     },

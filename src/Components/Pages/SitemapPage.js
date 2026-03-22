@@ -29,7 +29,7 @@ const STATIC_ROUTES = [
   '/sitemap',
 ];
 
-const BASE_URL = 'https://favimg.com';
+const BASE_URL = 'https://photremium.com';
 
 const SitemapPage = () => {
   const { localePath } = useLanguage();
@@ -62,9 +62,9 @@ const SitemapPage = () => {
   return (
     <>
       <SEO
-        title="Sitemap | favIMG"
-        description="Browse all favIMG URLs by language. Access XML sitemap for Google Search Console."
-        keywords="sitemap, favimg sitemap, image tools sitemap, multilingual sitemap"
+        title="Sitemap | photremium.com"
+        description="Browse all photremium.com URLs by language. Access XML sitemap for Google Search Console."
+        keywords="sitemap, photremium.com sitemap, image tools sitemap, multilingual sitemap"
       />
 
       <section className="sitemap-page">

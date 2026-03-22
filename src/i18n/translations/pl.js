@@ -104,7 +104,7 @@ const pl = {
     heading: 'Stworzone dla Twórców, przez Twórców',
     subheading: 'Wierzymy, że potężne narzędzia do obrazów powinny być darmowe, szybkie i dostępne dla każdego.',
     missionTitle: 'Nasza Misja',
-    missionText: 'favIMG powstało z prostym celem: zapewnić najbardziej intuicyjne, najszybsze i najbardziej prywatne doświadczenie edycji obrazów w sieci.',
+    missionText: 'photremium.com powstało z prostym celem: zapewnić najbardziej intuicyjne, najszybsze i najbardziej prywatne doświadczenie edycji obrazów w sieci.',
     privacyTitle: 'Prywatność na Pierwszym Miejscu',
     privacyText: 'Nie przesyłamy, nie przechowujemy ani nie przetwarzamy zdalnie Twoich obrazów. Wszystko pozostaje na Twoim urządzeniu.',
     techTitle: 'Nowoczesna Technologia',
@@ -116,12 +116,12 @@ const pl = {
   },
 
   seo: {
-    homeTitle: 'favIMG — Darmowy Konwerter, Kompresor i Edytor Obrazów Online',
+    homeTitle: 'photremium.com — Darmowy Konwerter, Kompresor i Edytor Obrazów Online',
     homeDesc: 'Konwertuj, kompresuj, zmieniaj rozmiar, przycinaj i edytuj obrazy za darmo online.',
     homeKeywords: 'konwerter obrazów, kompresor obrazów, zmień rozmiar obrazu, przytnij obraz, edytor zdjęć',
-    aboutTitle: 'O favIMG — Nasza Misja',
-    aboutDesc: 'Dowiedz się o favIMG, darmowym zestawie narzędzi do obrazów online, któremu ufa miliony.',
-    aboutKeywords: 'o favimg, narzędzia obrazów, darmowy edytor obrazów',
+    aboutTitle: 'O photremium.com — Nasza Misja',
+    aboutDesc: 'Dowiedz się o photremium.com, darmowym zestawie narzędzi do obrazów online, któremu ufa miliony.',
+    aboutKeywords: 'o photremium.com, narzędzia obrazów, darmowy edytor obrazów',
   },
 
   common: {
@@ -178,10 +178,10 @@ const pl = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Kompresor Obrazów — Kompresuj JPG, PNG, SVG, GIF za Darmo | favIMG',
+      uploadTitle: 'Kompresor Obrazów — Kompresuj JPG, PNG, SVG, GIF za Darmo | photremium.com',
       uploadDesc: 'Kompresuj obrazy JPG, PNG, SVG i GIF za darmo online. Zmniejsz rozmiar pliku do 80% zachowując jakość.',
       uploadKeywords: 'kompresor obrazów, kompresja jpg, kompresja png, zmniejsz rozmiar obrazu',
-      workspaceTitle: 'Kompresowanie Obrazów — Kompresor Obrazów favIMG',
+      workspaceTitle: 'Kompresowanie Obrazów — Kompresor Obrazów photremium.com',
       workspaceDesc: 'Dostosuj poziom kompresji i pobierz zoptymalizowane obrazy.',
       workspaceKeywords: 'kompresja obrazów, optymalizacja obrazów',
     },
@@ -201,7 +201,7 @@ const pl = {
 
   converter: {
     seo: {
-      uploadTitle: 'Konwerter Obrazów — Konwertuj PNG, JPG, WEBP, GIF, SVG za Darmo | favIMG',
+      uploadTitle: 'Konwerter Obrazów — Konwertuj PNG, JPG, WEBP, GIF, SVG za Darmo | photremium.com',
       uploadDesc: 'Konwertuj obrazy między JPG, PNG, WEBP, GIF, SVG, TIFF i BMP. Darmowy konwerter formatów obrazów online.',
       uploadKeywords: 'konwerter obrazów, png do jpg, jpg do png, konwerter webp',
       workspaceKeywords: 'konwersja obrazów, konwerter formatów obrazów',
@@ -279,10 +279,10 @@ const pl = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Zmień Rozmiar Obrazu — Zmień Rozmiar JPG, PNG za Darmo | favIMG',
+      uploadTitle: 'Zmień Rozmiar Obrazu — Zmień Rozmiar JPG, PNG za Darmo | photremium.com',
       uploadDesc: 'Zmieniaj rozmiar obrazów w pikselach lub procentach za darmo online.',
       uploadKeywords: 'zmień rozmiar obrazu, narzędzie do zmiany rozmiaru, zmień rozmiar jpg, zmień rozmiar png',
-      workspaceTitle: 'Zmiana Rozmiaru Obrazu — favIMG',
+      workspaceTitle: 'Zmiana Rozmiaru Obrazu — photremium.com',
       workspaceDesc: 'Zmieniaj rozmiar obrazów za darmo online.',
       workspaceKeywords: 'zmień rozmiar obrazu, narzędzie do zmiany rozmiaru',
     },
@@ -305,10 +305,10 @@ const pl = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Przytnij Obraz — Przytnij JPG, PNG, GIF za Darmo | favIMG',
+      uploadTitle: 'Przytnij Obraz — Przytnij JPG, PNG, GIF za Darmo | photremium.com',
       uploadDesc: 'Łatwo przycinaj obrazy JPG, PNG i GIF za darmo online.',
       uploadKeywords: 'przytnij obraz, narzędzie do przycinania, przytnij jpg, przytnij png',
-      workspaceTitle: 'Przycinanie Obrazu — favIMG',
+      workspaceTitle: 'Przycinanie Obrazu — photremium.com',
       workspaceDesc: 'Przycinaj obrazy za darmo online.',
       workspaceKeywords: 'przytnij obraz, narzędzie do przycinania',
     },
@@ -335,7 +335,7 @@ const pl = {
 
   photoEditor: {
     seo: {
-      title: 'Edytor Zdjęć Online — Bezpłatna Edycja z Tekstem, Efektami, Ramkami | favIMG',
+      title: 'Edytor Zdjęć Online — Bezpłatna Edycja z Tekstem, Efektami, Ramkami | photremium.com',
       desc: 'Edytuj zdjęcia online za darmo — dodawaj tekst, efekty, ramki, naklejki. Działa w przeglądarce.',
       keywords: 'edytor zdjęć, edytor zdjęć online, edycja zdjęć online za darmo',
     },
@@ -352,10 +352,10 @@ const pl = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Darmowe Usuwanie Tła Obrazu | favIMG',
+      uploadTitle: 'Darmowe Usuwanie Tła Obrazu | photremium.com',
       uploadDesc: 'Szybko usuwaj tło obrazu z wysoką precyzją. Darmowe narzędzie do usuwania tła online.',
       uploadKeywords: 'usuń tło, usuwanie tła, usuń tło obrazu, przezroczyste tło',
-      workspaceTitle: 'Usuwanie Tła — favIMG',
+      workspaceTitle: 'Usuwanie Tła — photremium.com',
       workspaceDesc: 'Usuń tło obrazu za darmo online.',
       workspaceKeywords: 'usuń tło, przezroczyste tło',
     },
@@ -385,10 +385,10 @@ const pl = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Znak Wodny na Obrazie — Dodaj Tekstowy i Logo Znak Wodny za Darmo | favIMG',
+      uploadTitle: 'Znak Wodny na Obrazie — Dodaj Tekstowy i Logo Znak Wodny za Darmo | photremium.com',
       uploadDesc: 'Dodawaj tekstowe lub graficzne znaki wodne do zdjęć w kilka sekund. Bezpłatnie, szybko.',
       uploadKeywords: 'znak wodny na obrazie, dodaj znak wodny, tekstowy znak wodny',
-      workspaceTitle: 'Znak Wodny na Obrazie — favIMG',
+      workspaceTitle: 'Znak Wodny na Obrazie — photremium.com',
       workspaceDesc: 'Dodawaj znaki wodne do obrazów za darmo online.',
       workspaceKeywords: 'znak wodny na obrazie, dodaj znak wodny',
     },
@@ -454,10 +454,10 @@ const pl = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'Generator Kodów QR — Generuj i Dostosuj za Darmo | favIMG',
+      inputTitle: 'Generator Kodów QR — Generuj i Dostosuj za Darmo | photremium.com',
       inputDesc: 'Generuj niestandardowe kody QR dla URL, tekstu, WiFi, kontaktów, e-maila i Google Maps.',
       inputKeywords: 'generator kodów qr, stwórz kod qr, niestandardowy kod qr',
-      customizeTitle: 'Dostosuj Kod QR — favIMG',
+      customizeTitle: 'Dostosuj Kod QR — photremium.com',
       customizeDesc: 'Dostosuj styl, kolory, ramkę i logo swojego kodu QR. Pobierz jako PNG, JPG, SVG, WEBP lub PDF.',
       customizeKeywords: 'dostosuj kod qr, styl kodu qr',
     },
@@ -527,7 +527,7 @@ const pl = {
 
   qrScanner: {
     seo: {
-      title: 'Skaner Kodów QR — Skanuj Kody QR z Kamery lub Obrazu | favIMG',
+      title: 'Skaner Kodów QR — Skanuj Kody QR z Kamery lub Obrazu | photremium.com',
       desc: 'Natychmiast skanuj kody QR kamerą lub przesyłając obraz. Wykrywa URL, tekst, WiFi, kontakty i więcej.',
       keywords: 'skaner kodów qr, skanuj kod qr, czytnik qr, kod qr online',
     },
@@ -570,10 +570,10 @@ const pl = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Narzędzie do Rozmycia Twarzy — Rozmyj Twarze na Obrazach Online | favIMG',
+      uploadTitle: 'Narzędzie do Rozmycia Twarzy — Rozmyj Twarze na Obrazach Online | photremium.com',
       uploadDesc: 'Automatycznie rozmywaj twarze na obrazach przy użyciu AI. Wybierz intensywność, kształt lub emoji.',
       uploadKeywords: 'rozmycie twarzy, rozmyj twarz, wykrywanie twarzy, narzędzie prywatności',
-      workspaceTitle: 'Narzędzie do Rozmycia Twarzy — favIMG',
+      workspaceTitle: 'Narzędzie do Rozmycia Twarzy — photremium.com',
       workspaceDesc: 'Automatycznie rozmywaj twarze na obrazach. 100% bezpłatne.',
       workspaceKeywords: 'rozmycie twarzy, wykrywanie twarzy',
     },

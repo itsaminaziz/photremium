@@ -104,7 +104,7 @@ const tr = {
     heading: 'Yaratıcılar İçin, Yaratıcılar Tarafından',
     subheading: 'Güçlü görüntü araçlarının ücretsiz, hızlı ve herkes tarafından erişilebilir olması gerektiğine inanıyoruz.',
     missionTitle: 'Misyonumuz',
-    missionText: 'favIMG, basit bir hedefle oluşturuldu: web\'de en sezgisel, en hızlı ve en gizli görüntü düzenleme deneyimini sunmak.',
+    missionText: 'photremium.com, basit bir hedefle oluşturuldu: web\'de en sezgisel, en hızlı ve en gizli görüntü düzenleme deneyimini sunmak.',
     privacyTitle: 'Önce Gizlilik',
     privacyText: 'Görüntülerinizi uzaktan yüklemez, depolamaz veya işlemez. Her şey cihazınızda kalır.',
     techTitle: 'Modern Teknoloji',
@@ -116,12 +116,12 @@ const tr = {
   },
 
   seo: {
-    homeTitle: 'favIMG — Ücretsiz Çevrimiçi Görüntü Dönüştürücü, Sıkıştırıcı ve Editör',
+    homeTitle: 'photremium.com — Ücretsiz Çevrimiçi Görüntü Dönüştürücü, Sıkıştırıcı ve Editör',
     homeDesc: 'Görüntüleri ücretsiz çevrimiçi dönüştürün, sıkıştırın, boyutlandırın, kırpın ve düzenleyin.',
     homeKeywords: 'görüntü dönüştürücü, görüntü sıkıştırıcı, görüntü boyutlandır, görüntü kırp, fotoğraf editörü',
-    aboutTitle: 'favIMG Hakkında — Misyonumuz',
-    aboutDesc: 'Milyonlarca kişi tarafından güvenilen ücretsiz çevrimiçi görüntü araç seti favIMG hakkında bilgi edinin.',
-    aboutKeywords: 'favimg hakkında, görüntü araçları, ücretsiz görüntü editörü',
+    aboutTitle: 'photremium.com Hakkında — Misyonumuz',
+    aboutDesc: 'Milyonlarca kişi tarafından güvenilen ücretsiz çevrimiçi görüntü araç seti photremium.com hakkında bilgi edinin.',
+    aboutKeywords: 'photremium.com hakkında, görüntü araçları, ücretsiz görüntü editörü',
   },
 
   common: {
@@ -178,10 +178,10 @@ const tr = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Görüntü Sıkıştırıcı — JPG, PNG, SVG, GIF Ücretsiz Sıkıştır | favIMG',
+      uploadTitle: 'Görüntü Sıkıştırıcı — JPG, PNG, SVG, GIF Ücretsiz Sıkıştır | photremium.com',
       uploadDesc: 'JPG, PNG, SVG ve GIF görüntülerini çevrimiçi ücretsiz sıkıştırın. Kaliteyi koruyarak dosya boyutunu %80\'e kadar küçültün.',
       uploadKeywords: 'görüntü sıkıştırıcı, jpg sıkıştır, png sıkıştır, görüntü boyutunu küçült',
-      workspaceTitle: 'Görüntü Sıkıştırılıyor — favIMG Görüntü Sıkıştırıcı',
+      workspaceTitle: 'Görüntü Sıkıştırılıyor — photremium.com Görüntü Sıkıştırıcı',
       workspaceDesc: 'Sıkıştırma seviyesini ayarlayın ve optimize edilmiş görüntüleri indirin.',
       workspaceKeywords: 'görüntü sıkıştırma, görüntü optimizasyonu',
     },
@@ -201,7 +201,7 @@ const tr = {
 
   converter: {
     seo: {
-      uploadTitle: 'Görüntü Dönüştürücü — PNG, JPG, WEBP, GIF, SVG Ücretsiz Dönüştür | favIMG',
+      uploadTitle: 'Görüntü Dönüştürücü — PNG, JPG, WEBP, GIF, SVG Ücretsiz Dönüştür | photremium.com',
       uploadDesc: 'JPG, PNG, WEBP, GIF, SVG, TIFF ve BMP arasında görüntü dönüştürün. Ücretsiz çevrimiçi görüntü format dönüştürücü.',
       uploadKeywords: 'görüntü dönüştürücü, png\'yi jpg\'ye, jpg\'yi png\'ye, webp dönüştürücü',
       workspaceKeywords: 'görüntü dönüştürme, görüntü format dönüştürücü',
@@ -279,10 +279,10 @@ const tr = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Görüntü Boyutlandır — JPG, PNG Ücretsiz Boyutlandır | favIMG',
+      uploadTitle: 'Görüntü Boyutlandır — JPG, PNG Ücretsiz Boyutlandır | photremium.com',
       uploadDesc: 'Görüntüleri çevrimiçi ücretsiz piksel veya yüzde olarak boyutlandırın.',
       uploadKeywords: 'görüntü boyutlandır, görüntü boyutlandırıcı, jpg boyutlandır, png boyutlandır',
-      workspaceTitle: 'Görüntü Boyutlandırılıyor — favIMG',
+      workspaceTitle: 'Görüntü Boyutlandırılıyor — photremium.com',
       workspaceDesc: 'Görüntüleri çevrimiçi ücretsiz boyutlandırın.',
       workspaceKeywords: 'görüntü boyutlandır, boyutlandırıcı',
     },
@@ -305,10 +305,10 @@ const tr = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Görüntü Kırp — JPG, PNG, GIF Ücretsiz Kırp | favIMG',
+      uploadTitle: 'Görüntü Kırp — JPG, PNG, GIF Ücretsiz Kırp | photremium.com',
       uploadDesc: 'JPG, PNG ve GIF görüntülerini çevrimiçi ücretsiz kolayca kırpın.',
       uploadKeywords: 'görüntü kırp, görüntü kırpıcı, jpg kırp, png kırp',
-      workspaceTitle: 'Görüntü Kırpılıyor — favIMG',
+      workspaceTitle: 'Görüntü Kırpılıyor — photremium.com',
       workspaceDesc: 'Görüntüleri çevrimiçi ücretsiz kırpın.',
       workspaceKeywords: 'görüntü kırp, kırpıcı',
     },
@@ -335,7 +335,7 @@ const tr = {
 
   photoEditor: {
     seo: {
-      title: 'Çevrimiçi Fotoğraf Editörü — Metin, Efektler, Çerçevelerle Ücretsiz Düzenle | favIMG',
+      title: 'Çevrimiçi Fotoğraf Editörü — Metin, Efektler, Çerçevelerle Ücretsiz Düzenle | photremium.com',
       desc: 'Fotoğrafları çevrimiçi ücretsiz düzenleyin — metin, efektler, çerçeveler, çıkartmalar ekleyin. Tarayıcıda çalışır.',
       keywords: 'fotoğraf editörü, çevrimiçi fotoğraf editörü, fotoğraf düzenle çevrimiçi ücretsiz',
     },
@@ -352,10 +352,10 @@ const tr = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Görüntü Arka Planını Ücretsiz Kaldır | favIMG',
+      uploadTitle: 'Görüntü Arka Planını Ücretsiz Kaldır | photremium.com',
       uploadDesc: 'Görüntü arka planlarını yüksek doğrulukla hızla kaldırın. Ücretsiz çevrimiçi arka plan kaldırıcı.',
       uploadKeywords: 'arka plan kaldır, arka plan kaldırıcı, görüntü arka planını kaldır, şeffaf arka plan',
-      workspaceTitle: 'Arka Plan Kaldırılıyor — favIMG',
+      workspaceTitle: 'Arka Plan Kaldırılıyor — photremium.com',
       workspaceDesc: 'Görüntü arka planını çevrimiçi ücretsiz kaldırın.',
       workspaceKeywords: 'arka plan kaldır, şeffaf arka plan',
     },
@@ -385,10 +385,10 @@ const tr = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Görüntü Filigranı — Metin ve Logo Filigramı Ücretsiz Ekle | favIMG',
+      uploadTitle: 'Görüntü Filigranı — Metin ve Logo Filigramı Ücretsiz Ekle | photremium.com',
       uploadDesc: 'Saniyeler içinde fotoğraflara metin veya görüntü filigranı ekleyin. Ücretsiz, hızlı.',
       uploadKeywords: 'görüntü filigranı, filigran ekle, metin filigranı',
-      workspaceTitle: 'Görüntü Filigranı — favIMG',
+      workspaceTitle: 'Görüntü Filigranı — photremium.com',
       workspaceDesc: 'Görüntülere çevrimiçi ücretsiz filigran ekleyin.',
       workspaceKeywords: 'görüntü filigranı, filigran ekle',
     },
@@ -453,10 +453,10 @@ const tr = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'QR Kod Oluşturucu — Ücretsiz Oluştur ve Özelleştir | favIMG',
+      inputTitle: 'QR Kod Oluşturucu — Ücretsiz Oluştur ve Özelleştir | photremium.com',
       inputDesc: 'URL, metin, WiFi, kişiler, e-posta ve Google Maps için özel QR kodları oluşturun.',
       inputKeywords: 'qr kod oluşturucu, qr kod yap, özel qr kod',
-      customizeTitle: 'QR Kodu Özelleştir — favIMG',
+      customizeTitle: 'QR Kodu Özelleştir — photremium.com',
       customizeDesc: 'QR kodunuzun stilini, renklerini, çerçevesini ve logosunu özelleştirin. PNG, JPG, SVG, WEBP veya PDF olarak indirin.',
       customizeKeywords: 'qr kod özelleştir, qr kod stili',
     },
@@ -526,7 +526,7 @@ const tr = {
 
   qrScanner: {
     seo: {
-      title: 'QR Kod Tarayıcı — Kamera veya Görüntüden QR Kodu Tara | favIMG',
+      title: 'QR Kod Tarayıcı — Kamera veya Görüntüden QR Kodu Tara | photremium.com',
       desc: 'Kamera veya görüntü yükleyerek QR kodlarını anında tarayın. URL, metin, WiFi, kişiler ve diğerlerini algılayın.',
       keywords: 'qr kod tarayıcı, qr kod tara, qr okuyucu, çevrimiçi qr kod',
     },
@@ -569,10 +569,10 @@ const tr = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Yüz Bulanıklaştırma Aracı — Görüntülerdeki Yüzleri Çevrimiçi Bulanıklaştır | favIMG',
+      uploadTitle: 'Yüz Bulanıklaştırma Aracı — Görüntülerdeki Yüzleri Çevrimiçi Bulanıklaştır | photremium.com',
       uploadDesc: 'AI yüz algılama ile görüntülerdeki yüzleri otomatik olarak bulanıklaştırın. Bulanıklık yoğunluğunu, şeklini veya emojiyi seçin.',
       uploadKeywords: 'yüz bulanıklaştır, yüzü bulanıklaştır, yüz algılama, gizlilik aracı',
-      workspaceTitle: 'Yüz Bulanıklaştırma Aracı — favIMG',
+      workspaceTitle: 'Yüz Bulanıklaştırma Aracı — photremium.com',
       workspaceDesc: 'Görüntülerdeki yüzleri otomatik olarak bulanıklaştırın. %100 ücretsiz.',
       workspaceKeywords: 'yüz bulanıklaştır, yüz algılama',
     },

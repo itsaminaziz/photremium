@@ -104,7 +104,7 @@ const nl = {
     heading: 'Gebouwd voor Makers, door Makers',
     subheading: 'Wij geloven dat krachtige afbeeldingstools gratis, snel en voor iedereen toegankelijk moeten zijn.',
     missionTitle: 'Onze Missie',
-    missionText: 'favIMG is opgericht met één eenvoudig doel: de meest intuïtieve, snelste en meest privacyvriendelijke afbeeldingsbewerkingservaring op het web bieden.',
+    missionText: 'photremium.com is opgericht met één eenvoudig doel: de meest intuïtieve, snelste en meest privacyvriendelijke afbeeldingsbewerkingservaring op het web bieden.',
     privacyTitle: 'Privacy Voorop',
     privacyText: 'Wij uploaden, opslaan of verwerken uw afbeeldingen op afstand niet. Alles blijft op uw apparaat.',
     techTitle: 'Moderne Technologie',
@@ -116,12 +116,12 @@ const nl = {
   },
 
   seo: {
-    homeTitle: 'favIMG — Gratis Online Afbeeldingsconverter, Compressor en Bewerker',
+    homeTitle: 'photremium.com — Gratis Online Afbeeldingsconverter, Compressor en Bewerker',
     homeDesc: 'Converteer, comprimeer, verander formaat, snijd bij en bewerk afbeeldingen gratis online.',
     homeKeywords: 'afbeeldingsconverter, afbeeldingscompressor, formaat wijzigen, afbeelding bijsnijden, fotobewerker',
-    aboutTitle: 'Over favIMG — Onze Missie',
-    aboutDesc: 'Leer meer over favIMG, de gratis online afbeeldingstoolkit vertrouwd door miljoenen.',
-    aboutKeywords: 'over favimg, afbeeldingstools, gratis afbeeldingsbewerker',
+    aboutTitle: 'Over photremium.com — Onze Missie',
+    aboutDesc: 'Leer meer over photremium.com, de gratis online afbeeldingstoolkit vertrouwd door miljoenen.',
+    aboutKeywords: 'over photremium.com, afbeeldingstools, gratis afbeeldingsbewerker',
   },
 
   common: {
@@ -178,10 +178,10 @@ const nl = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Afbeeldingscompressor — Comprimeer JPG, PNG, SVG, GIF Gratis | favIMG',
+      uploadTitle: 'Afbeeldingscompressor — Comprimeer JPG, PNG, SVG, GIF Gratis | photremium.com',
       uploadDesc: 'Comprimeer JPG, PNG, SVG en GIF gratis online. Verklein bestandsgrootte tot 80% met behoud van kwaliteit.',
       uploadKeywords: 'afbeeldingscompressor, jpg comprimeren, png comprimeren, afbeeldingsgrootte verkleinen',
-      workspaceTitle: 'Afbeeldingen Comprimeren — favIMG Afbeeldingscompressor',
+      workspaceTitle: 'Afbeeldingen Comprimeren — photremium.com Afbeeldingscompressor',
       workspaceDesc: 'Pas het compressieniveau aan en download geoptimaliseerde afbeeldingen.',
       workspaceKeywords: 'afbeeldingen comprimeren, afbeeldingen optimaliseren',
     },
@@ -201,7 +201,7 @@ const nl = {
 
   converter: {
     seo: {
-      uploadTitle: 'Afbeeldingsconverter — Converteer PNG, JPG, WEBP, GIF, SVG Gratis | favIMG',
+      uploadTitle: 'Afbeeldingsconverter — Converteer PNG, JPG, WEBP, GIF, SVG Gratis | photremium.com',
       uploadDesc: 'Converteer afbeeldingen tussen JPG, PNG, WEBP, GIF, SVG, TIFF en BMP. Gratis online afbeeldingsformaatconverter.',
       uploadKeywords: 'afbeeldingsconverter, png naar jpg, jpg naar png, webp converter',
       workspaceKeywords: 'afbeeldingen converteren, afbeeldingsformaatconverter',
@@ -279,10 +279,10 @@ const nl = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Formaat Afbeelding Wijzigen — JPG, PNG Gratis Vergroten/Verkleinen | favIMG',
+      uploadTitle: 'Formaat Afbeelding Wijzigen — JPG, PNG Gratis Vergroten/Verkleinen | photremium.com',
       uploadDesc: 'Verander afbeeldingsformaat in pixels of procenten gratis online.',
       uploadKeywords: 'formaat afbeelding wijzigen, formaat wijzigen tool, jpg formaat wijzigen, png formaat wijzigen',
-      workspaceTitle: 'Afbeeldingsformaat Wijzigen — favIMG',
+      workspaceTitle: 'Afbeeldingsformaat Wijzigen — photremium.com',
       workspaceDesc: 'Verander afbeeldingsformaat gratis online.',
       workspaceKeywords: 'formaat afbeelding wijzigen, formaat wijzigen tool',
     },
@@ -305,10 +305,10 @@ const nl = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Afbeelding Bijsnijden — JPG, PNG, GIF Gratis Bijsnijden | favIMG',
+      uploadTitle: 'Afbeelding Bijsnijden — JPG, PNG, GIF Gratis Bijsnijden | photremium.com',
       uploadDesc: 'Snijd eenvoudig JPG, PNG en GIF afbeeldingen gratis online bij.',
       uploadKeywords: 'afbeelding bijsnijden, bijsnijden tool, jpg bijsnijden, png bijsnijden',
-      workspaceTitle: 'Afbeelding Bijsnijden — favIMG',
+      workspaceTitle: 'Afbeelding Bijsnijden — photremium.com',
       workspaceDesc: 'Snijd afbeeldingen gratis online bij.',
       workspaceKeywords: 'afbeelding bijsnijden, bijsnijden tool',
     },
@@ -335,7 +335,7 @@ const nl = {
 
   photoEditor: {
     seo: {
-      title: 'Online Fotobewerker — Gratis Bewerken met Tekst, Effecten, Frames | favIMG',
+      title: 'Online Fotobewerker — Gratis Bewerken met Tekst, Effecten, Frames | photremium.com',
       desc: 'Bewerk foto\'s online gratis — voeg tekst, effecten, frames, stickers toe. Werkt in de browser.',
       keywords: 'fotobewerker, online fotobewerker, foto\'s online gratis bewerken',
     },
@@ -352,10 +352,10 @@ const nl = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Gratis Afbeeldingsachtergrond Verwijderen | favIMG',
+      uploadTitle: 'Gratis Afbeeldingsachtergrond Verwijderen | photremium.com',
       uploadDesc: 'Verwijder afbeeldingsachtergronden snel met hoge nauwkeurigheid. Gratis online tool.',
       uploadKeywords: 'achtergrond verwijderen, achtergrondverwijdering, afbeelding achtergrond verwijderen, transparante achtergrond',
-      workspaceTitle: 'Achtergrond Verwijderen — favIMG',
+      workspaceTitle: 'Achtergrond Verwijderen — photremium.com',
       workspaceDesc: 'Verwijder afbeeldingsachtergrond gratis online.',
       workspaceKeywords: 'achtergrond verwijderen, transparante achtergrond',
     },
@@ -385,10 +385,10 @@ const nl = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Afbeelding Watermerken — Tekst- en Logo Watermerk Gratis Toevoegen | favIMG',
+      uploadTitle: 'Afbeelding Watermerken — Tekst- en Logo Watermerk Gratis Toevoegen | photremium.com',
       uploadDesc: 'Voeg tekst- of afbeeldingswatermerken toe aan foto\'s in seconden. Gratis, snel.',
       uploadKeywords: 'afbeelding watermerken, watermerk toevoegen, tekst watermerk',
-      workspaceTitle: 'Afbeelding Watermerken — favIMG',
+      workspaceTitle: 'Afbeelding Watermerken — photremium.com',
       workspaceDesc: 'Voeg watermerken toe aan afbeeldingen gratis online.',
       workspaceKeywords: 'afbeelding watermerken, watermerk toevoegen',
     },
@@ -454,10 +454,10 @@ const nl = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'QR-code Generator — Gratis Genereren en Aanpassen | favIMG',
+      inputTitle: 'QR-code Generator — Gratis Genereren en Aanpassen | photremium.com',
       inputDesc: 'Genereer aangepaste QR-codes voor URL, tekst, WiFi, contacten, e-mail en Google Maps.',
       inputKeywords: 'qr code generator, qr code maken, aangepaste qr code',
-      customizeTitle: 'QR-code Aanpassen — favIMG',
+      customizeTitle: 'QR-code Aanpassen — photremium.com',
       customizeDesc: 'Pas de stijl, kleuren, frame en logo van uw QR-code aan. Downloaden als PNG, JPG, SVG, WEBP of PDF.',
       customizeKeywords: 'qr code aanpassen, qr code stijl',
     },
@@ -527,7 +527,7 @@ const nl = {
 
   qrScanner: {
     seo: {
-      title: 'QR-code Scanner — Scan QR-codes van Camera of Afbeelding | favIMG',
+      title: 'QR-code Scanner — Scan QR-codes van Camera of Afbeelding | photremium.com',
       desc: 'Direct QR-codes scannen met camera of uploaden van afbeelding. Detecteert URL, tekst, WiFi, contacten en meer.',
       keywords: 'qr code scanner, qr code scannen, qr lezer, qr code online',
     },
@@ -570,10 +570,10 @@ const nl = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Gezicht Vervagen Tool — Vervag Gezichten op Afbeeldingen Online | favIMG',
+      uploadTitle: 'Gezicht Vervagen Tool — Vervag Gezichten op Afbeeldingen Online | photremium.com',
       uploadDesc: 'Automatisch gezichten vervagen op afbeeldingen met AI. Kies intensiteit, vorm of emoji.',
       uploadKeywords: 'gezicht vervagen, gezicht vervaagd, gezichtsdetectie, privacy tool',
-      workspaceTitle: 'Gezicht Vervagen Tool — favIMG',
+      workspaceTitle: 'Gezicht Vervagen Tool — photremium.com',
       workspaceDesc: 'Automatisch gezichten vervagen op afbeeldingen. 100% gratis.',
       workspaceKeywords: 'gezicht vervagen, gezichtsdetectie',
     },

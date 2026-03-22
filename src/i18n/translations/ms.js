@@ -104,7 +104,7 @@ const ms = {
     heading: 'Dibina untuk Pencipta, oleh Pencipta',
     subheading: 'Kami percaya alat imej yang berkuasa seharusnya percuma, pantas dan boleh diakses oleh semua orang.',
     missionTitle: 'Misi Kami',
-    missionText: 'favIMG dibina dengan matlamat mudah: menyediakan pengalaman pengeditan imej yang paling intuitif, pantas dan peribadi di web.',
+    missionText: 'photremium.com dibina dengan matlamat mudah: menyediakan pengalaman pengeditan imej yang paling intuitif, pantas dan peribadi di web.',
     privacyTitle: 'Privasi Dahulu',
     privacyText: 'Kami tidak memuat naik, menyimpan atau memproses imej anda dari jauh. Semua kekal pada peranti anda.',
     techTitle: 'Teknologi Moden',
@@ -116,12 +116,12 @@ const ms = {
   },
 
   seo: {
-    homeTitle: 'favIMG — Penukar, Pemampat dan Editor Imej Dalam Talian Percuma',
+    homeTitle: 'photremium.com — Penukar, Pemampat dan Editor Imej Dalam Talian Percuma',
     homeDesc: 'Tukar, mampatkan, ubah saiz, potong dan edit imej secara percuma dalam talian.',
     homeKeywords: 'penukar imej, pemampat imej, ubah saiz imej, potong imej, editor foto',
-    aboutTitle: 'Tentang favIMG — Misi Kami',
-    aboutDesc: 'Ketahui tentang favIMG, kit alat imej dalam talian percuma yang dipercayai oleh jutaan orang.',
-    aboutKeywords: 'tentang favimg, alat imej, editor imej percuma',
+    aboutTitle: 'Tentang photremium.com — Misi Kami',
+    aboutDesc: 'Ketahui tentang photremium.com, kit alat imej dalam talian percuma yang dipercayai oleh jutaan orang.',
+    aboutKeywords: 'tentang photremium.com, alat imej, editor imej percuma',
   },
 
   common: {
@@ -178,10 +178,10 @@ const ms = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Pemampat Imej — Mampatkan JPG, PNG, SVG, GIF Percuma | favIMG',
+      uploadTitle: 'Pemampat Imej — Mampatkan JPG, PNG, SVG, GIF Percuma | photremium.com',
       uploadDesc: 'Mampatkan imej JPG, PNG, SVG dan GIF secara percuma dalam talian. Kurangkan saiz fail sehingga 80% sambil mengekalkan kualiti.',
       uploadKeywords: 'pemampat imej, mampatkan jpg, mampatkan png, kurangkan saiz imej',
-      workspaceTitle: 'Memampatkan Imej — Pemampat Imej favIMG',
+      workspaceTitle: 'Memampatkan Imej — Pemampat Imej photremium.com',
       workspaceDesc: 'Laraskan tahap pemampatan dan muat turun imej yang dioptimumkan.',
       workspaceKeywords: 'pemampatan imej, pengoptimuman imej',
     },
@@ -201,7 +201,7 @@ const ms = {
 
   converter: {
     seo: {
-      uploadTitle: 'Penukar Imej — Tukar PNG, JPG, WEBP, GIF, SVG Percuma | favIMG',
+      uploadTitle: 'Penukar Imej — Tukar PNG, JPG, WEBP, GIF, SVG Percuma | photremium.com',
       uploadDesc: 'Tukar imej antara JPG, PNG, WEBP, GIF, SVG, TIFF dan BMP. Penukar format imej dalam talian percuma.',
       uploadKeywords: 'penukar imej, png ke jpg, jpg ke png, penukar webp',
       workspaceKeywords: 'penukaran imej, penukar format imej',
@@ -279,10 +279,10 @@ const ms = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Ubah Saiz Imej — Ubah Saiz JPG, PNG Percuma Dalam Talian | favIMG',
+      uploadTitle: 'Ubah Saiz Imej — Ubah Saiz JPG, PNG Percuma Dalam Talian | photremium.com',
       uploadDesc: 'Ubah saiz imej mengikut piksel atau peratusan secara percuma dalam talian.',
       uploadKeywords: 'ubah saiz imej, pengubah saiz imej, ubah saiz jpg, ubah saiz png',
-      workspaceTitle: 'Mengubah Saiz Imej — favIMG',
+      workspaceTitle: 'Mengubah Saiz Imej — photremium.com',
       workspaceDesc: 'Ubah saiz imej secara percuma dalam talian.',
       workspaceKeywords: 'ubah saiz imej, pengubah saiz',
     },
@@ -305,10 +305,10 @@ const ms = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Potong Imej — Potong JPG, PNG, GIF Percuma Dalam Talian | favIMG',
+      uploadTitle: 'Potong Imej — Potong JPG, PNG, GIF Percuma Dalam Talian | photremium.com',
       uploadDesc: 'Potong imej JPG, PNG dan GIF dengan mudah secara percuma dalam talian.',
       uploadKeywords: 'potong imej, pemotong imej, potong jpg, potong png',
-      workspaceTitle: 'Memotong Imej — favIMG',
+      workspaceTitle: 'Memotong Imej — photremium.com',
       workspaceDesc: 'Potong imej secara percuma dalam talian.',
       workspaceKeywords: 'potong imej, pemotong',
     },
@@ -335,7 +335,7 @@ const ms = {
 
   photoEditor: {
     seo: {
-      title: 'Editor Foto Dalam Talian — Edit Percuma dengan Teks, Kesan, Bingkai | favIMG',
+      title: 'Editor Foto Dalam Talian — Edit Percuma dengan Teks, Kesan, Bingkai | photremium.com',
       desc: 'Edit foto dalam talian secara percuma — tambah teks, kesan, bingkai, pelekat. Berjalan dalam pelayar.',
       keywords: 'editor foto, editor foto dalam talian, edit foto dalam talian percuma',
     },
@@ -352,10 +352,10 @@ const ms = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Buang Latar Belakang Imej Percuma | favIMG',
+      uploadTitle: 'Buang Latar Belakang Imej Percuma | photremium.com',
       uploadDesc: 'Buang latar belakang imej dengan cepat dan ketepatan tinggi. Pembuang latar belakang dalam talian percuma.',
       uploadKeywords: 'buang latar belakang, pembuang latar belakang, buang latar belakang imej, latar belakang telus',
-      workspaceTitle: 'Membuang Latar Belakang — favIMG',
+      workspaceTitle: 'Membuang Latar Belakang — photremium.com',
       workspaceDesc: 'Buang latar belakang imej secara percuma dalam talian.',
       workspaceKeywords: 'buang latar belakang, latar belakang telus',
     },
@@ -385,10 +385,10 @@ const ms = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Tera Air Imej — Tambah Tera Air Teks dan Logo Percuma | favIMG',
+      uploadTitle: 'Tera Air Imej — Tambah Tera Air Teks dan Logo Percuma | photremium.com',
       uploadDesc: 'Tambah tera air teks atau imej pada foto dalam beberapa saat. Percuma, pantas.',
       uploadKeywords: 'tera air imej, tambah tera air, tera air teks',
-      workspaceTitle: 'Tera Air Imej — favIMG',
+      workspaceTitle: 'Tera Air Imej — photremium.com',
       workspaceDesc: 'Tambah tera air pada imej secara percuma dalam talian.',
       workspaceKeywords: 'tera air imej, tambah tera air',
     },
@@ -454,10 +454,10 @@ const ms = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'Penjana Kod QR — Jana dan Sesuaikan Percuma | favIMG',
+      inputTitle: 'Penjana Kod QR — Jana dan Sesuaikan Percuma | photremium.com',
       inputDesc: 'Jana kod QR tersuai untuk URL, teks, WiFi, kenalan, e-mel dan Google Maps.',
       inputKeywords: 'penjana kod qr, buat kod qr, kod qr tersuai',
-      customizeTitle: 'Sesuaikan Kod QR — favIMG',
+      customizeTitle: 'Sesuaikan Kod QR — photremium.com',
       customizeDesc: 'Sesuaikan gaya, warna, bingkai dan logo kod QR anda. Muat turun sebagai PNG, JPG, SVG, WEBP atau PDF.',
       customizeKeywords: 'sesuaikan kod qr, gaya kod qr',
     },
@@ -527,7 +527,7 @@ const ms = {
 
   qrScanner: {
     seo: {
-      title: 'Pengimbas Kod QR — Imbas Kod QR dari Kamera atau Imej | favIMG',
+      title: 'Pengimbas Kod QR — Imbas Kod QR dari Kamera atau Imej | photremium.com',
       desc: 'Imbas kod QR seketika menggunakan kamera atau muat naik imej. Kesan URL, teks, WiFi, kenalan dan lain-lain.',
       keywords: 'pengimbas kod qr, imbas kod qr, pembaca qr, kod qr dalam talian',
     },
@@ -570,10 +570,10 @@ const ms = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Alat Kabur Wajah — Kaburkan Wajah dalam Imej Dalam Talian | favIMG',
+      uploadTitle: 'Alat Kabur Wajah — Kaburkan Wajah dalam Imej Dalam Talian | photremium.com',
       uploadDesc: 'Kaburkan wajah dalam imej secara automatik menggunakan pengesanan wajah AI. Pilih keamatan kabur, bentuk atau emoji.',
       uploadKeywords: 'kabur wajah, kaburkan wajah, pengesanan wajah, alat privasi',
-      workspaceTitle: 'Alat Kabur Wajah — favIMG',
+      workspaceTitle: 'Alat Kabur Wajah — photremium.com',
       workspaceDesc: 'Kaburkan wajah dalam imej secara automatik. 100% percuma.',
       workspaceKeywords: 'kabur wajah, pengesanan wajah',
     },

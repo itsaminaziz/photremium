@@ -104,7 +104,7 @@ const sv = {
     heading: 'Skapad för Kreatörer, av Kreatörer',
     subheading: 'Vi anser att kraftfulla bildverktyg bör vara gratis, snabba och tillgängliga för alla.',
     missionTitle: 'Vårt Uppdrag',
-    missionText: 'favIMG skapades med ett enkelt mål: att ge den mest intuitiva, snabbaste och mest integritetsvänliga bildupplevelsen på webben.',
+    missionText: 'photremium.com skapades med ett enkelt mål: att ge den mest intuitiva, snabbaste och mest integritetsvänliga bildupplevelsen på webben.',
     privacyTitle: 'Integritet Först',
     privacyText: 'Vi laddar inte upp, lagrar eller bearbetar dina bilder på distans. Allt stannar på din enhet.',
     techTitle: 'Modern Teknik',
@@ -116,12 +116,12 @@ const sv = {
   },
 
   seo: {
-    homeTitle: 'favIMG — Gratis Online Bildkonverterare, Kompressor och Redigerare',
+    homeTitle: 'photremium.com — Gratis Online Bildkonverterare, Kompressor och Redigerare',
     homeDesc: 'Konvertera, komprimera, ändra storlek, beskär och redigera bilder gratis online.',
     homeKeywords: 'bildkonverterare, bildkompressor, ändra bildstorlek, beskär bild, fotoredigerare',
-    aboutTitle: 'Om favIMG — Vårt Uppdrag',
-    aboutDesc: 'Lär dig om favIMG, det gratis online-bildverktyget som miljoner litar på.',
-    aboutKeywords: 'om favimg, bildverktyg, gratis bildredigerare',
+    aboutTitle: 'Om photremium.com — Vårt Uppdrag',
+    aboutDesc: 'Lär dig om photremium.com, det gratis online-bildverktyget som miljoner litar på.',
+    aboutKeywords: 'om photremium.com, bildverktyg, gratis bildredigerare',
   },
 
   common: {
@@ -178,10 +178,10 @@ const sv = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Bildkompressor — Komprimera JPG, PNG, SVG, GIF Gratis | favIMG',
+      uploadTitle: 'Bildkompressor — Komprimera JPG, PNG, SVG, GIF Gratis | photremium.com',
       uploadDesc: 'Komprimera JPG, PNG, SVG och GIF gratis online. Minska filstorleken med upp till 80% med bibehållen kvalitet.',
       uploadKeywords: 'bildkompressor, komprimera jpg, komprimera png, minska bildstorlek',
-      workspaceTitle: 'Komprimerar Bilder — favIMG Bildkompressor',
+      workspaceTitle: 'Komprimerar Bilder — photremium.com Bildkompressor',
       workspaceDesc: 'Justera komprimeringsnivå och ladda ner optimerade bilder.',
       workspaceKeywords: 'komprimera bilder, optimera bilder',
     },
@@ -201,7 +201,7 @@ const sv = {
 
   converter: {
     seo: {
-      uploadTitle: 'Bildkonverterare — Konvertera PNG, JPG, WEBP, GIF, SVG Gratis | favIMG',
+      uploadTitle: 'Bildkonverterare — Konvertera PNG, JPG, WEBP, GIF, SVG Gratis | photremium.com',
       uploadDesc: 'Konvertera bilder mellan JPG, PNG, WEBP, GIF, SVG, TIFF och BMP. Gratis online bildformatkonverterare.',
       uploadKeywords: 'bildkonverterare, png till jpg, jpg till png, webp konverterare',
       workspaceKeywords: 'konvertera bilder, bildformatkonverterare',
@@ -279,10 +279,10 @@ const sv = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Ändra Bildstorlek — JPG, PNG Gratis | favIMG',
+      uploadTitle: 'Ändra Bildstorlek — JPG, PNG Gratis | photremium.com',
       uploadDesc: 'Ändra bildstorleken i pixlar eller procent gratis online.',
       uploadKeywords: 'ändra bildstorlek, storleksändring, jpg storlek, png storlek',
-      workspaceTitle: 'Ändrar Bildstorlek — favIMG',
+      workspaceTitle: 'Ändrar Bildstorlek — photremium.com',
       workspaceDesc: 'Ändra bildstorleken gratis online.',
       workspaceKeywords: 'ändra bildstorlek, storleksändring',
     },
@@ -305,10 +305,10 @@ const sv = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Beskär Bild — JPG, PNG, GIF Gratis | favIMG',
+      uploadTitle: 'Beskär Bild — JPG, PNG, GIF Gratis | photremium.com',
       uploadDesc: 'Beskär enkelt JPG, PNG och GIF bilder gratis online.',
       uploadKeywords: 'beskär bild, beskärningsverktyg, beskär jpg, beskär png',
-      workspaceTitle: 'Beskär Bild — favIMG',
+      workspaceTitle: 'Beskär Bild — photremium.com',
       workspaceDesc: 'Beskär bilder gratis online.',
       workspaceKeywords: 'beskär bild, beskärning',
     },
@@ -335,7 +335,7 @@ const sv = {
 
   photoEditor: {
     seo: {
-      title: 'Online Fotoredigerare — Gratis Redigering med Text, Effekter, Ramar | favIMG',
+      title: 'Online Fotoredigerare — Gratis Redigering med Text, Effekter, Ramar | photremium.com',
       desc: 'Redigera foton online gratis — lägg till text, effekter, ramar, klistermärken. Fungerar i webbläsaren.',
       keywords: 'fotoredigerare, online fotoredigerare, redigera foton online gratis',
     },
@@ -352,10 +352,10 @@ const sv = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Gratis Ta Bort Bildbakgrund | favIMG',
+      uploadTitle: 'Gratis Ta Bort Bildbakgrund | photremium.com',
       uploadDesc: 'Ta snabbt bort bildbakgrunder med hög precision. Gratis onlineverktyg.',
       uploadKeywords: 'ta bort bakgrund, bakgrundsborttagning, transparent bakgrund',
-      workspaceTitle: 'Ta Bort Bakgrund — favIMG',
+      workspaceTitle: 'Ta Bort Bakgrund — photremium.com',
       workspaceDesc: 'Ta bort bildbakgrund gratis online.',
       workspaceKeywords: 'ta bort bakgrund, transparent bakgrund',
     },
@@ -385,10 +385,10 @@ const sv = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Vattenstämpla Bild — Lägg till Text och Logotyp Gratis | favIMG',
+      uploadTitle: 'Vattenstämpla Bild — Lägg till Text och Logotyp Gratis | photremium.com',
       uploadDesc: 'Lägg till text- eller bildvattenstämplar på foton på några sekunder. Gratis, snabbt.',
       uploadKeywords: 'vattenstämpla bild, lägg till vattenstämpel, textvattenstämpel',
-      workspaceTitle: 'Vattenstämpla Bild — favIMG',
+      workspaceTitle: 'Vattenstämpla Bild — photremium.com',
       workspaceDesc: 'Lägg till vattenstämplar på bilder gratis online.',
       workspaceKeywords: 'vattenstämpla bild, lägg till vattenstämpel',
     },
@@ -453,10 +453,10 @@ const sv = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'QR-kodsgenerator — Generera och Anpassa Gratis | favIMG',
+      inputTitle: 'QR-kodsgenerator — Generera och Anpassa Gratis | photremium.com',
       inputDesc: 'Generera anpassade QR-koder för URL, text, WiFi, kontakter, e-post och Google Maps.',
       inputKeywords: 'qr kodsgenerator, skapa qr kod, anpassad qr kod',
-      customizeTitle: 'Anpassa QR-kod — favIMG',
+      customizeTitle: 'Anpassa QR-kod — photremium.com',
       customizeDesc: 'Anpassa stil, färger, ram och logotyp för din QR-kod. Ladda ner som PNG, JPG, SVG, WEBP eller PDF.',
       customizeKeywords: 'anpassa qr kod, qr kod stil',
     },
@@ -526,7 +526,7 @@ const sv = {
 
   qrScanner: {
     seo: {
-      title: 'QR-kodsläsare — Skanna QR-koder med Kamera eller Bild | favIMG',
+      title: 'QR-kodsläsare — Skanna QR-koder med Kamera eller Bild | photremium.com',
       desc: 'Skanna QR-koder direkt med kamera eller ladda upp bild. Identifierar URL, text, WiFi, kontakter med mera.',
       keywords: 'qr kodsläsare, skanna qr kod, qr läsare, qr kod online',
     },
@@ -569,10 +569,10 @@ const sv = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Ansiktsoskärpa Verktyg — Sudda Ansikten i Bilder Online | favIMG',
+      uploadTitle: 'Ansiktsoskärpa Verktyg — Sudda Ansikten i Bilder Online | photremium.com',
       uploadDesc: 'Identifiera och sudda automatiskt ansikten i bilder med AI. Välj intensitet, form eller emoji.',
       uploadKeywords: 'ansiktsoskärpa, sudda ansikte, ansiktsigenkänning, integritetsverktyg',
-      workspaceTitle: 'Ansiktsoskärpa Verktyg — favIMG',
+      workspaceTitle: 'Ansiktsoskärpa Verktyg — photremium.com',
       workspaceDesc: 'Sudda automatiskt ansikten i bilder. 100% gratis.',
       workspaceKeywords: 'ansiktsoskärpa, ansiktsidentifiering',
     },

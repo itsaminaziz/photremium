@@ -51,7 +51,7 @@ const en = {
   whyChoose: {
     label: 'Why Choose Us',
     heading: 'The Smarter Way to Edit Images',
-    subheading: 'Trusted by thousands of creators, designers, and developers worldwide. Here\'s why favIMG is the go-to destination for image editing.',
+    subheading: 'Trusted by thousands of creators, designers, and developers worldwide. Here\'s why photremium.com is the go-to destination for image editing.',
     reasons: {
       fast: { title: 'Lightning Fast', desc: 'All processing happens directly in your browser. No file uploads to external servers — results appear in milliseconds.' },
       private: { title: '100% Private & Secure', desc: 'Your files never leave your device. We don\'t store, share, or access your images. Complete privacy guaranteed.' },
@@ -122,7 +122,7 @@ const en = {
     heading: 'Built for Creators, by Creators',
     subheading: 'We believe powerful image tools should be free, fast, and accessible to everyone.',
     missionTitle: 'Our Mission',
-    missionText: 'favIMG was created with a simple goal: to provide the most intuitive, fastest, and most private image editing experience on the web. We process everything directly in your browser — your files never leave your device. No accounts, no limits, no compromises.',
+    missionText: 'photremium.com was created with a simple goal: to provide the most intuitive, fastest, and most private image editing experience on the web. We process everything directly in your browser — your files never leave your device. No accounts, no limits, no compromises.',
     privacyTitle: 'Privacy First',
     privacyText: 'We never upload, store, or process your images on remote servers. Everything stays on your device.',
     techTitle: 'Modern Technology',
@@ -135,12 +135,12 @@ const en = {
 
   /* ————— SEO (meta titles & descriptions) ————— */
   seo: {
-    homeTitle: 'favIMG — Free Online Image Converter, Compressor & Editor',
+    homeTitle: 'photremium.com — Free Online Image Converter, Compressor & Editor',
     homeDesc: 'Convert, compress, resize, crop and edit images online for free. Fast, private and secure — all processing happens in your browser.',
     homeKeywords: 'image converter, image compressor, resize image, crop image, photo editor, online image tools, free image tools',
-    aboutTitle: 'About favIMG — Our Mission & Story',
-    aboutDesc: 'Learn about favIMG, the free online image toolkit trusted by millions. Our mission is to make professional image editing accessible to everyone.',
-    aboutKeywords: 'about favimg, image tools company, free image editor, about us',
+    aboutTitle: 'About photremium.com — Our Mission & Story',
+    aboutDesc: 'Learn about photremium.com, the free online image toolkit trusted by millions. Our mission is to make professional image editing accessible to everyone.',
+    aboutKeywords: 'about photremium.com, image tools company, free image editor, about us',
   },
 
   /* ————— Common / shared UI strings ————— */
@@ -199,10 +199,10 @@ const en = {
   /* ————— Image Compressor ————— */
   compressor: {
     seo: {
-      uploadTitle: 'Image Compressor — Compress JPG, PNG, SVG, GIF Online Free | favIMG',
+      uploadTitle: 'Image Compressor — Compress JPG, PNG, SVG, GIF Online Free | photremium.com',
       uploadDesc: 'Compress JPG, PNG, SVG and GIF images online for free. Reduce file size by up to 80% while maintaining visual quality. No signup required.',
       uploadKeywords: 'image compressor, compress jpg, compress png, reduce image size, image optimization, compress photos online free',
-      workspaceTitle: 'Compressing Images — favIMG Image Compressor',
+      workspaceTitle: 'Compressing Images — photremium.com Image Compressor',
       workspaceDesc: 'Adjust compression level and download your optimized images. Real-time preview and size estimation.',
       workspaceKeywords: 'compress images, image compression slider, bulk compress images, image optimization tool',
     },
@@ -223,7 +223,7 @@ const en = {
   /* ————— Image Converter ————— */
   converter: {
     seo: {
-      uploadTitle: 'Image Converter — Convert PNG, JPG, WEBP, GIF, SVG Online Free | favIMG',
+      uploadTitle: 'Image Converter — Convert PNG, JPG, WEBP, GIF, SVG Online Free | photremium.com',
       uploadDesc: 'Convert images between JPG, PNG, WEBP, GIF, SVG, TIFF, BMP and more. Free online image format converter — fast, private, no signup required.',
       uploadKeywords: 'image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
       workspaceKeywords: 'convert images, image format converter, bulk convert images',
@@ -302,10 +302,10 @@ const en = {
   /* ————— Resize Image ————— */
   resizer: {
     seo: {
-      uploadTitle: 'Resize Image Online — Resize JPG, PNG, SVG, GIF Free | favIMG',
+      uploadTitle: 'Resize Image Online — Resize JPG, PNG, SVG, GIF Free | photremium.com',
       uploadDesc: 'Resize images online for free by pixel or percentage. Resize JPG, PNG, SVG and GIF images while preserving quality. No signup required.',
       uploadKeywords: 'resize image, image resizer, resize jpg, resize png, change image dimensions, resize photo online free',
-      workspaceTitle: 'Resizing Images — favIMG Image Resizer',
+      workspaceTitle: 'Resizing Images — photremium.com Image Resizer',
       workspaceDesc: 'Resize images online for free by pixel or percentage. No signup required.',
       workspaceKeywords: 'resize image, image resizer, resize jpg, resize png',
     },
@@ -329,10 +329,10 @@ const en = {
   /* ————— Crop Image ————— */
   cropper: {
     seo: {
-      uploadTitle: 'Crop Image Online — Crop JPG, PNG, GIF Free | favIMG',
+      uploadTitle: 'Crop Image Online — Crop JPG, PNG, GIF Free | photremium.com',
       uploadDesc: 'Crop JPG, PNG and GIF images online with ease. Choose pixels to define your crop area or use our visual editor. Free, fast and private.',
       uploadKeywords: 'crop image, image cropper, crop jpg, crop png, crop photo online free, image crop tool',
-      workspaceTitle: 'Cropping Images — favIMG Image Cropper',
+      workspaceTitle: 'Cropping Images — photremium.com Image Cropper',
       workspaceDesc: 'Crop images online for free. Visual crop editor with preset ratios. No signup required.',
       workspaceKeywords: 'crop image, image cropper, crop jpg, crop png',
     },
@@ -360,7 +360,7 @@ const en = {
   /* ————— Photo Editor (placeholder) ————— */
   photoEditor: {
     seo: {
-      title: 'Photo Editor Online — Edit Images Free with Text, Effects & Frames | favIMG',
+      title: 'Photo Editor Online — Edit Images Free with Text, Effects & Frames | photremium.com',
       desc: 'Edit photos online for free — add text, effects, frames, stickers and more. Simple yet powerful image editing tools right in your browser.',
       keywords: 'photo editor, online photo editor, edit photo online free, add text to image, image effects, photo frames',
     },
@@ -378,10 +378,10 @@ const en = {
   /* ————— Remove Background ————— */
   removeBg: {
     seo: {
-      uploadTitle: 'Remove Background from Image Online Free | favIMG',
+      uploadTitle: 'Remove Background from Image Online Free | photremium.com',
       uploadDesc: 'Quickly remove image backgrounds with high accuracy. Free online background remover — runs entirely in your browser.',
       uploadKeywords: 'remove background, background remover, remove image background, transparent background, cut out background free',
-      workspaceTitle: 'Removing Backgrounds — favIMG Background Remover',
+      workspaceTitle: 'Removing Backgrounds — photremium.com Background Remover',
       workspaceDesc: 'Remove image backgrounds online for free. No signup required.',
       workspaceKeywords: 'remove background, background remover, transparent background',
     },
@@ -412,10 +412,10 @@ const en = {
   /* ————— Watermark Image ————— */
   watermark: {
     seo: {
-      uploadTitle: 'Watermark Image Online — Add Text & Logo Watermarks Free | favIMG',
+      uploadTitle: 'Watermark Image Online — Add Text & Logo Watermarks Free | photremium.com',
       uploadDesc: 'Add text or image watermarks to your photos in seconds. Free, fast and private.',
       uploadKeywords: 'watermark image, add watermark, text watermark, logo watermark, image watermark tool free',
-      workspaceTitle: 'Watermarking Images — favIMG Watermark Tool',
+      workspaceTitle: 'Watermarking Images — photremium.com Watermark Tool',
       workspaceDesc: 'Add watermarks to images online for free. No signup required.',
       workspaceKeywords: 'watermark image, add watermark, text watermark, logo watermark',
     },
@@ -486,10 +486,10 @@ const en = {
   /* ————— QR Code Generator ————— */
   qrGenerator: {
     seo: {
-      inputTitle: 'QR Code Generator — Create & Customize Free | favIMG',
+      inputTitle: 'QR Code Generator — Create & Customize Free | photremium.com',
       inputDesc: 'Generate custom QR codes for URLs, text, WiFi, contacts, email and Google Maps locations. Customize colors, shapes, frames, logos and download in multiple formats.',
       inputKeywords: 'qr code generator, create qr code, custom qr code, qr code maker, qr code free',
-      customizeTitle: 'Customize QR Code — favIMG QR Code Generator',
+      customizeTitle: 'Customize QR Code — photremium.com QR Code Generator',
       customizeDesc: "Customize your QR code's style, color, frame and logo. Download in PNG, JPG, SVG, WEBP or PDF.",
       customizeKeywords: 'customize qr code, qr code style, qr code colors, qr code logo',
     },
@@ -579,7 +579,7 @@ const en = {
   /* ————— QR Code Scanner ————— */
   qrScanner: {
     seo: {
-      title: 'QR Code Scanner — Scan QR Codes from Camera or Image | favIMG',
+      title: 'QR Code Scanner — Scan QR Codes from Camera or Image | photremium.com',
       desc: 'Scan QR codes instantly using your camera or by uploading an image. Detect URLs, text, WiFi, contacts and more. Free, fast, private.',
       keywords: 'qr code scanner, scan qr code, qr reader, qr code reader online, scan qr from image, camera qr scanner',
     },
@@ -639,10 +639,10 @@ const en = {
   /* ————— Face Blur ————— */
   faceBlur: {
     seo: {
-      uploadTitle: 'Face Blur Tool — Blur Faces in Images Online | favIMG',
+      uploadTitle: 'Face Blur Tool — Blur Faces in Images Online | photremium.com',
       uploadDesc: 'Blur faces in your images automatically with AI face detection. Choose blur intensity, shape, or emoji overlays. 100% free, fast & private.',
       uploadKeywords: 'face blur, blur faces, face detection, privacy tool, blur face online free',
-      workspaceTitle: 'Face Blur Tool — Blur Faces in Images Online | favIMG',
+      workspaceTitle: 'Face Blur Tool — Blur Faces in Images Online | photremium.com',
       workspaceDesc: 'Blur faces in your images automatically. 100% free, fast & private.',
       workspaceKeywords: 'face blur, blur faces, face detection',
     },

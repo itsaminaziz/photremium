@@ -102,7 +102,7 @@ const vi = {
     heading: 'Xây Dựng Cho Nhà Sáng Tạo, Bởi Nhà Sáng Tạo',
     subheading: 'Chúng tôi tin rằng công cụ ảnh mạnh mẽ phải miễn phí, nhanh chóng và có thể truy cập bởi tất cả mọi người.',
     missionTitle: 'Sứ Mệnh Của Chúng Tôi',
-    missionText: 'favIMG được xây dựng với mục tiêu đơn giản: cung cấp trải nghiệm chỉnh sửa ảnh trực quan, nhanh nhất và riêng tư nhất trên web.',
+    missionText: 'photremium.com được xây dựng với mục tiêu đơn giản: cung cấp trải nghiệm chỉnh sửa ảnh trực quan, nhanh nhất và riêng tư nhất trên web.',
     privacyTitle: 'Quyền Riêng Tư Trước Tiên',
     privacyText: 'Chúng tôi không tải lên, lưu trữ hay xử lý ảnh của bạn từ xa. Mọi thứ đều ở lại trên thiết bị của bạn.',
     techTitle: 'Công Nghệ Hiện Đại',
@@ -114,12 +114,12 @@ const vi = {
   },
 
   seo: {
-    homeTitle: 'favIMG — Công Cụ Chuyển Đổi, Nén và Chỉnh Sửa Ảnh Trực Tuyến Miễn Phí',
+    homeTitle: 'photremium.com — Công Cụ Chuyển Đổi, Nén và Chỉnh Sửa Ảnh Trực Tuyến Miễn Phí',
     homeDesc: 'Chuyển đổi, nén, thay đổi kích thước, cắt và chỉnh sửa ảnh miễn phí trực tuyến.',
     homeKeywords: 'chuyển đổi ảnh, nén ảnh, thay đổi kích thước ảnh, cắt ảnh, chỉnh sửa ảnh',
-    aboutTitle: 'Giới Thiệu favIMG — Sứ Mệnh Của Chúng Tôi',
-    aboutDesc: 'Tìm hiểu về favIMG, bộ công cụ ảnh trực tuyến miễn phí được hàng triệu người tin dùng.',
-    aboutKeywords: 'giới thiệu favimg, công cụ ảnh, chỉnh sửa ảnh miễn phí',
+    aboutTitle: 'Giới Thiệu photremium.com — Sứ Mệnh Của Chúng Tôi',
+    aboutDesc: 'Tìm hiểu về photremium.com, bộ công cụ ảnh trực tuyến miễn phí được hàng triệu người tin dùng.',
+    aboutKeywords: 'giới thiệu photremium.com, công cụ ảnh, chỉnh sửa ảnh miễn phí',
   },
 
   common: {
@@ -176,10 +176,10 @@ const vi = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Nén Ảnh — Nén JPG, PNG, SVG, GIF Miễn Phí | favIMG',
+      uploadTitle: 'Nén Ảnh — Nén JPG, PNG, SVG, GIF Miễn Phí | photremium.com',
       uploadDesc: 'Nén ảnh JPG, PNG, SVG và GIF miễn phí trực tuyến. Giảm kích thước file lên đến 80% trong khi vẫn giữ chất lượng.',
       uploadKeywords: 'nén ảnh, nén jpg, nén png, giảm kích thước ảnh',
-      workspaceTitle: 'Đang Nén Ảnh — Công Cụ Nén Ảnh favIMG',
+      workspaceTitle: 'Đang Nén Ảnh — Công Cụ Nén Ảnh photremium.com',
       workspaceDesc: 'Điều chỉnh mức độ nén và tải về ảnh đã tối ưu.',
       workspaceKeywords: 'nén ảnh, tối ưu ảnh',
     },
@@ -199,7 +199,7 @@ const vi = {
 
   converter: {
     seo: {
-      uploadTitle: 'Chuyển Đổi Ảnh — Chuyển PNG, JPG, WEBP, GIF, SVG Miễn Phí | favIMG',
+      uploadTitle: 'Chuyển Đổi Ảnh — Chuyển PNG, JPG, WEBP, GIF, SVG Miễn Phí | photremium.com',
       uploadDesc: 'Chuyển đổi ảnh giữa JPG, PNG, WEBP, GIF, SVG, TIFF và BMP. Công cụ chuyển đổi định dạng ảnh miễn phí.',
       uploadKeywords: 'chuyển đổi ảnh, png sang jpg, jpg sang png, chuyển đổi webp',
       workspaceKeywords: 'chuyển đổi ảnh, công cụ chuyển đổi định dạng',
@@ -277,10 +277,10 @@ const vi = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Thay Đổi Kích Thước Ảnh — Thay Đổi JPG, PNG Miễn Phí | favIMG',
+      uploadTitle: 'Thay Đổi Kích Thước Ảnh — Thay Đổi JPG, PNG Miễn Phí | photremium.com',
       uploadDesc: 'Thay đổi kích thước ảnh theo pixel hoặc phần trăm miễn phí trực tuyến.',
       uploadKeywords: 'thay đổi kích thước ảnh, công cụ thay đổi kích thước, thay đổi jpg, thay đổi png',
-      workspaceTitle: 'Đang Thay Đổi Kích Thước — favIMG',
+      workspaceTitle: 'Đang Thay Đổi Kích Thước — photremium.com',
       workspaceDesc: 'Thay đổi kích thước ảnh miễn phí trực tuyến.',
       workspaceKeywords: 'thay đổi kích thước ảnh, công cụ thay đổi kích thước',
     },
@@ -303,10 +303,10 @@ const vi = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Cắt Ảnh — Cắt JPG, PNG, GIF Miễn Phí | favIMG',
+      uploadTitle: 'Cắt Ảnh — Cắt JPG, PNG, GIF Miễn Phí | photremium.com',
       uploadDesc: 'Cắt ảnh JPG, PNG và GIF dễ dàng miễn phí trực tuyến.',
       uploadKeywords: 'cắt ảnh, công cụ cắt ảnh, cắt jpg, cắt png',
-      workspaceTitle: 'Đang Cắt Ảnh — favIMG',
+      workspaceTitle: 'Đang Cắt Ảnh — photremium.com',
       workspaceDesc: 'Cắt ảnh miễn phí trực tuyến.',
       workspaceKeywords: 'cắt ảnh, công cụ cắt',
     },
@@ -333,7 +333,7 @@ const vi = {
 
   photoEditor: {
     seo: {
-      title: 'Chỉnh Sửa Ảnh Trực Tuyến — Chỉnh Sửa Miễn Phí với Văn Bản, Hiệu Ứng, Khung | favIMG',
+      title: 'Chỉnh Sửa Ảnh Trực Tuyến — Chỉnh Sửa Miễn Phí với Văn Bản, Hiệu Ứng, Khung | photremium.com',
       desc: 'Chỉnh sửa ảnh trực tuyến miễn phí — thêm văn bản, hiệu ứng, khung, nhãn dán. Chạy trong trình duyệt.',
       keywords: 'chỉnh sửa ảnh, chỉnh sửa ảnh trực tuyến, chỉnh sửa ảnh miễn phí',
     },
@@ -350,10 +350,10 @@ const vi = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Xóa Nền Ảnh Miễn Phí | favIMG',
+      uploadTitle: 'Xóa Nền Ảnh Miễn Phí | photremium.com',
       uploadDesc: 'Xóa nền ảnh nhanh chóng với độ chính xác cao. Công cụ xóa nền miễn phí trực tuyến.',
       uploadKeywords: 'xóa nền, xóa nền ảnh, nền trong suốt',
-      workspaceTitle: 'Đang Xóa Nền — favIMG',
+      workspaceTitle: 'Đang Xóa Nền — photremium.com',
       workspaceDesc: 'Xóa nền ảnh miễn phí trực tuyến.',
       workspaceKeywords: 'xóa nền, nền trong suốt',
     },
@@ -383,10 +383,10 @@ const vi = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Thêm Hình Mờ — Thêm Văn Bản và Logo Miễn Phí | favIMG',
+      uploadTitle: 'Thêm Hình Mờ — Thêm Văn Bản và Logo Miễn Phí | photremium.com',
       uploadDesc: 'Thêm hình mờ văn bản hoặc ảnh vào ảnh trong vài giây. Miễn phí, nhanh chóng.',
       uploadKeywords: 'thêm hình mờ, hình mờ ảnh, hình mờ văn bản',
-      workspaceTitle: 'Thêm Hình Mờ Ảnh — favIMG',
+      workspaceTitle: 'Thêm Hình Mờ Ảnh — photremium.com',
       workspaceDesc: 'Thêm hình mờ vào ảnh miễn phí trực tuyến.',
       workspaceKeywords: 'thêm hình mờ, hình mờ ảnh',
     },
@@ -451,10 +451,10 @@ const vi = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'Tạo Mã QR — Tạo và Tùy Chỉnh Miễn Phí | favIMG',
+      inputTitle: 'Tạo Mã QR — Tạo và Tùy Chỉnh Miễn Phí | photremium.com',
       inputDesc: 'Tạo mã QR tùy chỉnh cho URL, văn bản, WiFi, danh bạ, email và Google Maps.',
       inputKeywords: 'tạo mã qr, tạo qr code, mã qr tùy chỉnh',
-      customizeTitle: 'Tùy Chỉnh Mã QR — favIMG',
+      customizeTitle: 'Tùy Chỉnh Mã QR — photremium.com',
       customizeDesc: 'Tùy chỉnh kiểu dáng, màu sắc, khung và logo của mã QR. Tải về dạng PNG, JPG, SVG, WEBP hoặc PDF.',
       customizeKeywords: 'tùy chỉnh mã qr, kiểu mã qr',
     },
@@ -524,7 +524,7 @@ const vi = {
 
   qrScanner: {
     seo: {
-      title: 'Quét Mã QR — Quét Mã QR Từ Camera hoặc Ảnh | favIMG',
+      title: 'Quét Mã QR — Quét Mã QR Từ Camera hoặc Ảnh | photremium.com',
       desc: 'Quét mã QR ngay lập tức bằng camera hoặc tải ảnh lên. Phát hiện URL, văn bản, WiFi, danh bạ và nhiều hơn nữa.',
       keywords: 'quét mã qr, đọc mã qr, scanner qr, mã qr trực tuyến',
     },
@@ -567,10 +567,10 @@ const vi = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Làm Mờ Khuôn Mặt — Làm Mờ Mặt Trong Ảnh Trực Tuyến | favIMG',
+      uploadTitle: 'Làm Mờ Khuôn Mặt — Làm Mờ Mặt Trong Ảnh Trực Tuyến | photremium.com',
       uploadDesc: 'Tự động phát hiện và làm mờ khuôn mặt trong ảnh bằng AI. Chọn cường độ, hình dạng hoặc emoji.',
       uploadKeywords: 'làm mờ mặt, làm mờ khuôn mặt, nhận diện khuôn mặt, công cụ bảo mật',
-      workspaceTitle: 'Công Cụ Làm Mờ Khuôn Mặt — favIMG',
+      workspaceTitle: 'Công Cụ Làm Mờ Khuôn Mặt — photremium.com',
       workspaceDesc: 'Tự động làm mờ khuôn mặt trong ảnh. 100% miễn phí.',
       workspaceKeywords: 'làm mờ mặt, nhận diện khuôn mặt',
     },

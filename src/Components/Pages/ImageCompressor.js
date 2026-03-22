@@ -38,6 +38,33 @@ const compressImage = (file, qualityRatio) =>
     img.src = url;
   });
 
+const getCompressionQualityMeta = (compression) => {
+  if (compression <= 40) {
+    return {
+      key: 'good',
+      text: 'Good quality',
+      icon: 'fa-solid fa-circle-check',
+      sliderClass: 'comp-slider--good',
+    };
+  }
+
+  if (compression <= 60) {
+    return {
+      key: 'normal',
+      text: 'Normal quality (recommended)',
+      icon: 'fa-solid fa-circle-exclamation',
+      sliderClass: 'comp-slider--normal',
+    };
+  }
+
+  return {
+    key: 'bad',
+    text: 'Bad quality',
+    icon: 'fa-solid fa-triangle-exclamation',
+    sliderClass: 'comp-slider--danger',
+  };
+};
+
 /* ============================================= */
 /*            IMAGE COMPRESSOR PAGE              */
 /* ============================================= */
@@ -295,7 +322,7 @@ const ImageCompressor = () => {
   const totalOriginal = images.reduce((s, i) => s + i.file.size, 0);
   const totalCompressed = images.reduce((s, i) => s + (i.compressedSize ?? i.file.size), 0);
   const allCompressed = images.length > 0 && images.every((i) => i.compressedBlob);
-  const isLowQualityCompression = globalCompression > 60;
+  const globalQualityMeta = getCompressionQualityMeta(globalCompression);
   const savedPercent =
     totalOriginal > 0 ? Math.max(0, Math.round(((totalOriginal - totalCompressed) / totalOriginal) * 100)) : 0;
 
@@ -392,14 +419,12 @@ const ImageCompressor = () => {
               onChange={(e) => handleGlobalCompressionDrag(e.target.value)}
               onMouseUp={(e) => handleGlobalCompressionCommit(e)}
               onTouchEnd={(e) => handleGlobalCompressionCommit(e)}
-              className={`comp-slider comp-slider--global ${isLowQualityCompression ? 'comp-slider--danger' : ''}`}
+              className={`comp-slider comp-slider--global ${globalQualityMeta.sliderClass}`}
             />
 
-            {isLowQualityCompression && (
-              <div className="comp-global-bar__warning">
-                <i className="fa-solid fa-triangle-exclamation"></i> {t('compressor.lowQualityWarning')}
-              </div>
-            )}
+            <div className={`comp-global-bar__warning comp-global-bar__warning--${globalQualityMeta.key}`}>
+              <i className={globalQualityMeta.icon}></i> {globalQualityMeta.text}
+            </div>
           </div>
 
           {/* Image cards */}
@@ -408,6 +433,7 @@ const ImageCompressor = () => {
               const actualSaved = img.compressedSize !== null
                 ? Math.max(0, Math.round(((img.file.size - img.compressedSize) / img.file.size) * 100))
                 : null;
+              const itemQualityMeta = getCompressionQualityMeta(img.compression);
 
               return (
                 <div className="comp-card" key={img.id}>
@@ -447,7 +473,7 @@ const ImageCompressor = () => {
                         onChange={(e) => handleCompressionDrag(img.id, e.target.value)}
                         onMouseUp={(e) => handleCompressionCommit(img.id, e.target.value)}
                         onTouchEnd={(e) => handleCompressionCommit(img.id, e.target.value)}
-                        className={`comp-slider ${img.compression > 60 ? 'comp-slider--danger' : ''}`}
+                        className={`comp-slider ${itemQualityMeta.sliderClass}`}
                       />
                     </div>
 

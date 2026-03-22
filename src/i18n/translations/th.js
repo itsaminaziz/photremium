@@ -104,7 +104,7 @@ const th = {
     heading: 'สร้างสำหรับผู้สร้าง โดยผู้สร้าง',
     subheading: 'เราเชื่อว่าเครื่องมือรูปภาพที่ทรงพลังควรฟรี รวดเร็ว และเข้าถึงได้สำหรับทุกคน',
     missionTitle: 'พันธกิจของเรา',
-    missionText: 'favIMG สร้างขึ้นด้วยเป้าหมายเดียว: มอบประสบการณ์การแก้ไขรูปภาพที่ใช้งานง่าย รวดเร็ว และเป็นส่วนตัวที่สุดบนเว็บ',
+    missionText: 'photremium.com สร้างขึ้นด้วยเป้าหมายเดียว: มอบประสบการณ์การแก้ไขรูปภาพที่ใช้งานง่าย รวดเร็ว และเป็นส่วนตัวที่สุดบนเว็บ',
     privacyTitle: 'ความเป็นส่วนตัวเป็นอันดับแรก',
     privacyText: 'เราไม่อัปโหลด จัดเก็บ หรือประมวลผลรูปภาพของคุณจากระยะไกล ทุกอย่างอยู่บนอุปกรณ์ของคุณ',
     techTitle: 'เทคโนโลยีทันสมัย',
@@ -116,12 +116,12 @@ const th = {
   },
 
   seo: {
-    homeTitle: 'favIMG — เครื่องมือแปลง บีบอัด และแก้ไขรูปภาพออนไลน์ฟรี',
+    homeTitle: 'photremium.com — เครื่องมือแปลง บีบอัด และแก้ไขรูปภาพออนไลน์ฟรี',
     homeDesc: 'แปลง บีบอัด ปรับขนาด ครอป และแก้ไขรูปภาพฟรีออนไลน์',
     homeKeywords: 'แปลงรูปภาพ, บีบอัดรูปภาพ, ปรับขนาดรูปภาพ, ครอปรูปภาพ, แก้ไขรูปภาพ',
-    aboutTitle: 'เกี่ยวกับ favIMG — พันธกิจของเรา',
-    aboutDesc: 'เรียนรู้เกี่ยวกับ favIMG เครื่องมือรูปภาพออนไลน์ฟรีที่ผู้คนนับล้านไว้วางใจ',
-    aboutKeywords: 'เกี่ยวกับ favimg, เครื่องมือรูปภาพ, แก้ไขรูปภาพฟรี',
+    aboutTitle: 'เกี่ยวกับ photremium.com — พันธกิจของเรา',
+    aboutDesc: 'เรียนรู้เกี่ยวกับ photremium.com เครื่องมือรูปภาพออนไลน์ฟรีที่ผู้คนนับล้านไว้วางใจ',
+    aboutKeywords: 'เกี่ยวกับ photremium.com, เครื่องมือรูปภาพ, แก้ไขรูปภาพฟรี',
   },
 
   common: {
@@ -178,10 +178,10 @@ const th = {
 
   compressor: {
     seo: {
-      uploadTitle: 'บีบอัดรูปภาพ — บีบอัด JPG, PNG, SVG, GIF ฟรี | favIMG',
+      uploadTitle: 'บีบอัดรูปภาพ — บีบอัด JPG, PNG, SVG, GIF ฟรี | photremium.com',
       uploadDesc: 'บีบอัดรูปภาพ JPG, PNG, SVG และ GIF ฟรีออนไลน์ ลดขนาดไฟล์ถึง 80% พร้อมรักษาคุณภาพ',
       uploadKeywords: 'บีบอัดรูปภาพ, บีบอัด jpg, บีบอัด png, ลดขนาดรูปภาพ',
-      workspaceTitle: 'กำลังบีบอัดรูปภาพ — favIMG',
+      workspaceTitle: 'กำลังบีบอัดรูปภาพ — photremium.com',
       workspaceDesc: 'ปรับระดับการบีบอัดและดาวน์โหลดรูปภาพที่ปรับให้เหมาะสม',
       workspaceKeywords: 'บีบอัดรูปภาพ, ปรับปรุงรูปภาพ',
     },
@@ -201,7 +201,7 @@ const th = {
 
   converter: {
     seo: {
-      uploadTitle: 'แปลงรูปภาพ — แปลง PNG, JPG, WEBP, GIF, SVG ฟรี | favIMG',
+      uploadTitle: 'แปลงรูปภาพ — แปลง PNG, JPG, WEBP, GIF, SVG ฟรี | photremium.com',
       uploadDesc: 'แปลงรูปภาพระหว่าง JPG, PNG, WEBP, GIF, SVG, TIFF และ BMP เครื่องมือแปลงรูปแบบออนไลน์ฟรี',
       uploadKeywords: 'แปลงรูปภาพ, png เป็น jpg, jpg เป็น png, แปลง webp',
       workspaceKeywords: 'แปลงรูปภาพ, แปลงรูปแบบรูปภาพ',
@@ -279,10 +279,10 @@ const th = {
 
   resizer: {
     seo: {
-      uploadTitle: 'ปรับขนาดรูปภาพ — ปรับขนาด JPG, PNG ฟรี | favIMG',
+      uploadTitle: 'ปรับขนาดรูปภาพ — ปรับขนาด JPG, PNG ฟรี | photremium.com',
       uploadDesc: 'ปรับขนาดรูปภาพเป็นพิกเซลหรือเปอร์เซ็นต์ฟรีออนไลน์',
       uploadKeywords: 'ปรับขนาดรูปภาพ, เครื่องมือปรับขนาด, ปรับขนาด jpg, ปรับขนาด png',
-      workspaceTitle: 'ปรับขนาดรูปภาพ — favIMG',
+      workspaceTitle: 'ปรับขนาดรูปภาพ — photremium.com',
       workspaceDesc: 'ปรับขนาดรูปภาพฟรีออนไลน์',
       workspaceKeywords: 'ปรับขนาดรูปภาพ, เครื่องมือปรับขนาด',
     },
@@ -305,10 +305,10 @@ const th = {
 
   cropper: {
     seo: {
-      uploadTitle: 'ครอปรูปภาพ — ครอป JPG, PNG, GIF ฟรี | favIMG',
+      uploadTitle: 'ครอปรูปภาพ — ครอป JPG, PNG, GIF ฟรี | photremium.com',
       uploadDesc: 'ครอปรูปภาพ JPG, PNG และ GIF ได้อย่างง่ายดายฟรีออนไลน์',
       uploadKeywords: 'ครอปรูปภาพ, เครื่องมือครอป, ครอป jpg, ครอป png',
-      workspaceTitle: 'ครอปรูปภาพ — favIMG',
+      workspaceTitle: 'ครอปรูปภาพ — photremium.com',
       workspaceDesc: 'ครอปรูปภาพฟรีออนไลน์',
       workspaceKeywords: 'ครอปรูปภาพ, เครื่องมือครอป',
     },
@@ -335,7 +335,7 @@ const th = {
 
   photoEditor: {
     seo: {
-      title: 'แก้ไขรูปภาพออนไลน์ — แก้ไขฟรีพร้อมข้อความ เอฟเฟกต์ กรอบ | favIMG',
+      title: 'แก้ไขรูปภาพออนไลน์ — แก้ไขฟรีพร้อมข้อความ เอฟเฟกต์ กรอบ | photremium.com',
       desc: 'แก้ไขรูปภาพออนไลน์ฟรี — เพิ่มข้อความ เอฟเฟกต์ กรอบ สติกเกอร์ ทำงานในเบราว์เซอร์',
       keywords: 'แก้ไขรูปภาพ, แก้ไขรูปภาพออนไลน์, แก้ไขรูปภาพออนไลน์ฟรี',
     },
@@ -352,10 +352,10 @@ const th = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'ลบพื้นหลังรูปภาพฟรี | favIMG',
+      uploadTitle: 'ลบพื้นหลังรูปภาพฟรี | photremium.com',
       uploadDesc: 'ลบพื้นหลังรูปภาพได้อย่างรวดเร็วและแม่นยำ เครื่องมือออนไลน์ฟรี',
       uploadKeywords: 'ลบพื้นหลัง, การลบพื้นหลัง, ลบพื้นหลังรูปภาพ, พื้นหลังโปร่งใส',
-      workspaceTitle: 'ลบพื้นหลัง — favIMG',
+      workspaceTitle: 'ลบพื้นหลัง — photremium.com',
       workspaceDesc: 'ลบพื้นหลังรูปภาพฟรีออนไลน์',
       workspaceKeywords: 'ลบพื้นหลัง, พื้นหลังโปร่งใส',
     },
@@ -385,10 +385,10 @@ const th = {
 
   watermark: {
     seo: {
-      uploadTitle: 'ใส่ลายน้ำ — เพิ่มลายน้ำข้อความและโลโก้ฟรี | favIMG',
+      uploadTitle: 'ใส่ลายน้ำ — เพิ่มลายน้ำข้อความและโลโก้ฟรี | photremium.com',
       uploadDesc: 'เพิ่มลายน้ำข้อความหรือรูปภาพบนรูปภาพในไม่กี่วินาที ฟรีและรวดเร็ว',
       uploadKeywords: 'ใส่ลายน้ำ, เพิ่มลายน้ำ, ลายน้ำข้อความ',
-      workspaceTitle: 'ใส่ลายน้ำ — favIMG',
+      workspaceTitle: 'ใส่ลายน้ำ — photremium.com',
       workspaceDesc: 'เพิ่มลายน้ำบนรูปภาพฟรีออนไลน์',
       workspaceKeywords: 'ใส่ลายน้ำ, เพิ่มลายน้ำ',
     },
@@ -454,10 +454,10 @@ const th = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'สร้าง QR Code — สร้างและปรับแต่งฟรี | favIMG',
+      inputTitle: 'สร้าง QR Code — สร้างและปรับแต่งฟรี | photremium.com',
       inputDesc: 'สร้าง QR Code แบบกำหนดเองสำหรับ URL, ข้อความ, WiFi, ผู้ติดต่อ, อีเมล และ Google Maps',
       inputKeywords: 'สร้าง qr code, สร้าง qr, qr code แบบกำหนดเอง',
-      customizeTitle: 'ปรับแต่ง QR Code — favIMG',
+      customizeTitle: 'ปรับแต่ง QR Code — photremium.com',
       customizeDesc: 'ปรับแต่งสไตล์ สี กรอบ และโลโก้ของ QR Code ดาวน์โหลดเป็น PNG, JPG, SVG, WEBP หรือ PDF',
       customizeKeywords: 'ปรับแต่ง qr code, สไตล์ qr code',
     },
@@ -527,7 +527,7 @@ const th = {
 
   qrScanner: {
     seo: {
-      title: 'สแกน QR Code — สแกน QR Code จากกล้องหรือรูปภาพ | favIMG',
+      title: 'สแกน QR Code — สแกน QR Code จากกล้องหรือรูปภาพ | photremium.com',
       desc: 'สแกน QR Code ทันทีด้วยกล้องหรืออัปโหลดรูปภาพ ตรวจจับ URL, ข้อความ, WiFi, ผู้ติดต่อ และอื่นๆ',
       keywords: 'สแกน qr code, สแกน qr, อ่าน qr, qr code ออนไลน์',
     },
@@ -570,10 +570,10 @@ const th = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'เครื่องมือเบลอใบหน้า — เบลอใบหน้าในรูปภาพออนไลน์ | favIMG',
+      uploadTitle: 'เครื่องมือเบลอใบหน้า — เบลอใบหน้าในรูปภาพออนไลน์ | photremium.com',
       uploadDesc: 'เบลอใบหน้าในรูปภาพอัตโนมัติด้วย AI เลือกความเข้ม รูปร่าง หรืออีโมจิ',
       uploadKeywords: 'เบลอใบหน้า, เบลอหน้า, ตรวจจับใบหน้า, เครื่องมือความเป็นส่วนตัว',
-      workspaceTitle: 'เครื่องมือเบลอใบหน้า — favIMG',
+      workspaceTitle: 'เครื่องมือเบลอใบหน้า — photremium.com',
       workspaceDesc: 'เบลอใบหน้าในรูปภาพอัตโนมัติ ฟรี 100%',
       workspaceKeywords: 'เบลอใบหน้า, ตรวจจับใบหน้า',
     },

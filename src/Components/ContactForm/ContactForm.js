@@ -4,8 +4,8 @@ import { useContact } from '../../context/ContactContext';
 import { useLanguage } from '../../context/LanguageContext';
 import './ContactForm.css';
 
-const SHARE_URL  = 'https://favimg.com';
-const SHARE_TEXT = 'Check out favIMG – free online image tools: converter, compressor, crop, remove background & more!';
+const SHARE_URL  = 'https://photremium.com';
+const SHARE_TEXT = 'Check out photremium.com – free online image tools: converter, compressor, crop, remove background & more!';
 const SOCIAL = [
   { id: 'whatsapp',  icon: 'fa-brands fa-whatsapp',    label: 'WhatsApp',   color: '#25d366', bg: '#e7fdf0', href: `https://api.whatsapp.com/send?text=${encodeURIComponent(SHARE_TEXT + ' ' + SHARE_URL)}` },
   { id: 'facebook',  icon: 'fa-brands fa-facebook-f',  label: 'Facebook',   color: '#1877f2', bg: '#e7f0fd', href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SHARE_URL)}` },
@@ -18,17 +18,17 @@ const SOCIAL = [
 ];
 
 const FOLLOW_CARDS = [
-  { id: 'youtube',   icon: 'fa-brands fa-youtube',    label: 'YouTube',   handle: '@favIMG', subtext: 'Video tips & tutorials', color: '#ff0000', bg: 'rgba(255,0,0,0.08)',    href: 'https://www.youtube.com/' },
-  { id: 'instagram', icon: 'fa-brands fa-instagram',  label: 'Instagram', handle: '@favimg', subtext: 'Reels & design posts',   color: '#e1306c', bg: 'rgba(225,48,108,0.08)', href: 'https://www.instagram.com/' },
-  { id: 'facebook',  icon: 'fa-brands fa-facebook-f', label: 'Facebook',  handle: 'favIMG',  subtext: 'Updates & community',    color: '#1877f2', bg: 'rgba(24,119,242,0.08)', href: 'https://www.facebook.com/' },
-  { id: 'tiktok',    icon: 'fa-brands fa-tiktok',     label: 'TikTok',    handle: '@favimg', subtext: 'Short quick tips',        color: '#010101', bg: 'rgba(0,0,0,0.06)',      href: 'https://www.tiktok.com/' },
+  { id: 'youtube',   icon: 'fa-brands fa-youtube',    label: 'YouTube',   handle: '@photremium', subtext: 'Video tips & tutorials', color: '#ff0000', bg: 'rgba(255,0,0,0.08)',    href: 'https://www.youtube.com/channel/UCad9bW8bwTHTwvBj2DxmMeg' },
+  { id: 'instagram', icon: 'fa-brands fa-instagram',  label: 'Instagram', handle: '@photremium', subtext: 'Reels & design posts',   color: '#e1306c', bg: 'rgba(225,48,108,0.08)', href: 'https://www.instagram.com/photremium' },
+  { id: 'facebook',  icon: 'fa-brands fa-facebook-f', label: 'Facebook',  handle: 'photremium',  subtext: 'Updates & community',    color: '#1877f2', bg: 'rgba(24,119,242,0.08)', href: 'https://www.facebook.com/share/1Stks4NQcS/' },
+  { id: 'tiktok',    icon: 'fa-brands fa-tiktok',     label: 'TikTok',    handle: '@photremium', subtext: 'Short quick tips',        color: '#010101', bg: 'rgba(0,0,0,0.06)',      href: 'https://www.tiktok.com/@photremium' },
 ];
 
 const openShareWindow = (url) => {
   const w = 620, h = 520;
   const left = Math.round(window.screenX + (window.outerWidth  - w) / 2);
   const top  = Math.round(window.screenY + (window.outerHeight - h) / 2);
-  window.open(url, 'favimg_share', `width=${w},height=${h},left=${left},top=${top},toolbar=0,menubar=0,scrollbars=1,resizable=1`);
+  window.open(url, 'photremium.com_share', `width=${w},height=${h},left=${left},top=${top},toolbar=0,menubar=0,scrollbars=1,resizable=1`);
 };
 
 const SERVICE_ID  = 'service_esd9oub';
@@ -55,7 +55,7 @@ const ContactForm = ({ mode = 'popup' }) => {
 
   const handleNativeShare = useCallback(async () => {
     if (navigator.share) {
-      try { await navigator.share({ title: 'favIMG', text: SHARE_TEXT, url: SHARE_URL }); }
+      try { await navigator.share({ title: 'photremium.com', text: SHARE_TEXT, url: SHARE_URL }); }
       catch {} // user cancelled
     } else {
       handleCopy(); // fallback: copy link
@@ -248,7 +248,7 @@ const ContactForm = ({ mode = 'popup' }) => {
       {/* Inline share strip — visible only inside popup on mobile */}
       {mode === 'popup' && (
         <div className="cf__share-inline">
-          <p className="cf__share-inline-title"><i className="fa-solid fa-share-nodes"></i> Share favIMG</p>
+          <p className="cf__share-inline-title"><i className="fa-solid fa-share-nodes"></i> Share photremium.com</p>
           <div className="cf__social-grid">
             {SOCIAL.map((s, i) => s.href ? (
               <a
@@ -286,10 +286,10 @@ const ContactForm = ({ mode = 'popup' }) => {
         <div className="cf__share-blob cf__share-blob--1"></div>
         <div className="cf__share-blob cf__share-blob--2"></div>
       </div>
-      <button type="button" className="cf__share-icon" onClick={handleNativeShare} title="Tap to share favIMG">
+      <button type="button" className="cf__share-icon" onClick={handleNativeShare} title="Tap to share photremium.com">
         <i className="fa-solid fa-share-nodes"></i>
       </button>
-      <h3 className="cf__share-title">Love <span>favIMG</span>?</h3>
+      <h3 className="cf__share-title">Love <span>photremium.com</span>?</h3>
       <p className="cf__share-desc">Share it with your friends and help more people discover free image tools online.</p>
       <div className="cf__social-grid">
         {SOCIAL.map((s, i) => s.href ? (
@@ -316,7 +316,7 @@ const ContactForm = ({ mode = 'popup' }) => {
           </button>
         ))}
       </div>
-      <div className="cf__share-url"><i className="fa-solid fa-link"></i> favimg.com</div>
+      <div className="cf__share-url"><i className="fa-solid fa-link"></i> photremium.com</div>
     </div>
   );
 

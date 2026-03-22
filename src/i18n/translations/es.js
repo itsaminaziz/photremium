@@ -99,7 +99,7 @@ const es = {
     heading: 'Hecho para Creadores, por Creadores',
     subheading: 'Creemos que las herramientas de imagen poderosas deben ser gratuitas, rápidas y accesibles para todos.',
     missionTitle: 'Nuestra Misión',
-    missionText: 'favIMG fue creado con un objetivo simple: ofrecer la experiencia de edición de imágenes más intuitiva, rápida y privada en la web. Procesamos todo directamente en tu navegador — tus archivos nunca salen de tu dispositivo.',
+    missionText: 'photremium.com fue creado con un objetivo simple: ofrecer la experiencia de edición de imágenes más intuitiva, rápida y privada en la web. Procesamos todo directamente en tu navegador — tus archivos nunca salen de tu dispositivo.',
     privacyTitle: 'Privacidad Primero',
     privacyText: 'Nunca subimos, almacenamos ni procesamos tus imágenes en servidores remotos. Todo permanece en tu dispositivo.',
     techTitle: 'Tecnología Moderna',
@@ -110,12 +110,12 @@ const es = {
     globalText: 'Usado por creadores en más de 120 países. Disponible en múltiples idiomas con entrega CDN ultrarrápida.',
   },
   seo: {
-    homeTitle: 'favIMG — Convertidor, Compresor y Editor de Imágenes Gratis',
+    homeTitle: 'photremium.com — Convertidor, Compresor y Editor de Imágenes Gratis',
     homeDesc: 'Convierte, comprime, redimensiona, recorta y edita imágenes en línea gratis. Rápido, privado y seguro.',
     homeKeywords: 'convertidor de imágenes, compresor de imágenes, redimensionar imagen, recortar imagen, editor de fotos',
-    aboutTitle: 'Sobre favIMG — Nuestra Misión e Historia',
-    aboutDesc: 'Conoce favIMG, el kit de herramientas de imagen en línea gratuito en el que confían millones.',
-    aboutKeywords: 'sobre favimg, herramientas de imagen, editor de imagen gratis',
+    aboutTitle: 'Sobre photremium.com — Nuestra Misión e Historia',
+    aboutDesc: 'Conoce photremium.com, el kit de herramientas de imagen en línea gratuito en el que confían millones.',
+    aboutKeywords: 'sobre photremium.com, herramientas de imagen, editor de imagen gratis',
   },
   common: {
     new: '¡Nuevo!',
@@ -171,10 +171,10 @@ const es = {
 
   compressor: {
     seo: {
-      uploadTitle: 'Compresor de Imágenes — Comprimir JPG, PNG, SVG, GIF gratis | favIMG',
+      uploadTitle: 'Compresor de Imágenes — Comprimir JPG, PNG, SVG, GIF gratis | photremium.com',
       uploadDesc: 'Comprime imágenes JPG, PNG, SVG y GIF en línea de forma gratuita. Archivos hasta 80% más pequeños.',
       uploadKeywords: 'compresor de imágenes, comprimir jpg, comprimir png, reducir tamaño de imagen',
-      workspaceTitle: 'Comprimir Imágenes — favIMG Compresor de Imágenes',
+      workspaceTitle: 'Comprimir Imágenes — photremium.com Compresor de Imágenes',
       workspaceDesc: 'Ajusta el nivel de compresión y descarga imágenes optimizadas.',
       workspaceKeywords: 'comprimir imágenes, compresión de imágenes',
     },
@@ -194,7 +194,7 @@ const es = {
 
   converter: {
     seo: {
-      uploadTitle: 'Convertidor de Imágenes — Convertir PNG, JPG, WEBP, GIF, SVG gratis | favIMG',
+      uploadTitle: 'Convertidor de Imágenes — Convertir PNG, JPG, WEBP, GIF, SVG gratis | photremium.com',
       uploadDesc: 'Convierte imágenes entre JPG, PNG, WEBP, GIF, SVG, TIFF, BMP. Gratis y privado.',
       uploadKeywords: 'convertidor de imágenes, png a jpg, jpg a png, convertidor webp',
       workspaceKeywords: 'convertir imágenes, convertidor de formato',
@@ -272,10 +272,10 @@ const es = {
 
   resizer: {
     seo: {
-      uploadTitle: 'Redimensionar Imagen — Escalar JPG, PNG gratis | favIMG',
+      uploadTitle: 'Redimensionar Imagen — Escalar JPG, PNG gratis | photremium.com',
       uploadDesc: 'Redimensiona imágenes en línea gratis por píxeles o porcentaje.',
       uploadKeywords: 'redimensionar imagen, cambiar tamaño de imagen',
-      workspaceTitle: 'Redimensionar Imágenes — favIMG',
+      workspaceTitle: 'Redimensionar Imágenes — photremium.com',
       workspaceDesc: 'Cambia el tamaño de imágenes en línea gratis.',
       workspaceKeywords: 'redimensionar imagen',
     },
@@ -298,10 +298,10 @@ const es = {
 
   cropper: {
     seo: {
-      uploadTitle: 'Recortar Imagen — Cortar JPG, PNG, GIF gratis | favIMG',
+      uploadTitle: 'Recortar Imagen — Cortar JPG, PNG, GIF gratis | photremium.com',
       uploadDesc: 'Recorta imágenes JPG, PNG y GIF en línea fácilmente.',
       uploadKeywords: 'recortar imagen, cortar jpg, cortar png',
-      workspaceTitle: 'Recortar Imágenes — favIMG',
+      workspaceTitle: 'Recortar Imágenes — photremium.com',
       workspaceDesc: 'Recorta imágenes en línea gratis.',
       workspaceKeywords: 'recortar imagen',
     },
@@ -328,7 +328,7 @@ const es = {
 
   photoEditor: {
     seo: {
-      title: 'Editor de Fotos — Editar fotos gratis en línea | favIMG',
+      title: 'Editor de Fotos — Editar fotos gratis en línea | photremium.com',
       desc: 'Edita fotos en línea gratis — agrega texto, efectos, marcos y más.',
       keywords: 'editor de fotos, editar fotos en línea',
     },
@@ -345,10 +345,10 @@ const es = {
 
   removeBg: {
     seo: {
-      uploadTitle: 'Eliminar Fondo de Imagen gratis | favIMG',
+      uploadTitle: 'Eliminar Fondo de Imagen gratis | photremium.com',
       uploadDesc: 'Elimina fondos de imágenes de forma rápida y precisa. Gratis.',
       uploadKeywords: 'eliminar fondo, quitar fondo de imagen, fondo transparente',
-      workspaceTitle: 'Eliminar Fondos — favIMG',
+      workspaceTitle: 'Eliminar Fondos — photremium.com',
       workspaceDesc: 'Elimina fondos de imágenes gratis en línea.',
       workspaceKeywords: 'eliminar fondo',
     },
@@ -378,10 +378,10 @@ const es = {
 
   watermark: {
     seo: {
-      uploadTitle: 'Agregar Marca de Agua en línea gratis | favIMG',
+      uploadTitle: 'Agregar Marca de Agua en línea gratis | photremium.com',
       uploadDesc: 'Agrega marcas de agua de texto o imagen a las fotos. Gratis y rápido.',
       uploadKeywords: 'marca de agua, agregar marca de agua',
-      workspaceTitle: 'Agregar Marca de Agua — favIMG',
+      workspaceTitle: 'Agregar Marca de Agua — photremium.com',
       workspaceDesc: 'Agrega marcas de agua gratis en línea.',
       workspaceKeywords: 'marca de agua',
     },
@@ -451,10 +451,10 @@ const es = {
 
   qrGenerator: {
     seo: {
-      inputTitle: 'Generador de Código QR — Crear y personalizar gratis | favIMG',
+      inputTitle: 'Generador de Código QR — Crear y personalizar gratis | photremium.com',
       inputDesc: 'Crea códigos QR personalizados para URLs, texto, WiFi, contactos, correo y Google Maps.',
       inputKeywords: 'generador de código qr, crear código qr',
-      customizeTitle: 'Personalizar Código QR — favIMG',
+      customizeTitle: 'Personalizar Código QR — photremium.com',
       customizeDesc: 'Personaliza el estilo, color, marco y logotipo del código QR.',
       customizeKeywords: 'personalizar código qr, colores código qr',
     },
@@ -543,7 +543,7 @@ const es = {
 
   qrScanner: {
     seo: {
-      title: 'Escáner de Código QR — Escanear con cámara o imagen | favIMG',
+      title: 'Escáner de Código QR — Escanear con cámara o imagen | photremium.com',
       desc: 'Escanea códigos QR al instante con la cámara o sube una imagen. Rápido, privado y seguro.',
       keywords: 'escáner qr, escanear código qr, lector qr',
     },
@@ -602,10 +602,10 @@ const es = {
 
   faceBlur: {
     seo: {
-      uploadTitle: 'Difuminar Caras — Ocultar caras en imágenes en línea | favIMG',
+      uploadTitle: 'Difuminar Caras — Ocultar caras en imágenes en línea | photremium.com',
       uploadDesc: 'Difumina caras en imágenes automáticamente con reconocimiento facial por IA. Gratis, rápido y privado.',
       uploadKeywords: 'difuminar cara, ocultar caras, reconocimiento facial',
-      workspaceTitle: 'Difuminar Caras — favIMG',
+      workspaceTitle: 'Difuminar Caras — photremium.com',
       workspaceDesc: 'Difumina caras en imágenes automáticamente. 100% gratis, rápido y privado.',
       workspaceKeywords: 'difuminar cara',
     },

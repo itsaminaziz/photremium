@@ -275,23 +275,30 @@ const ResizeImage = () => {
     try {
       const results = await Promise.all(
         images.map(async (img) => {
-          if (img.resizedBlob) return null;
+          if (img.resizedBlob) {
+            return { id: img.id, blob: img.resizedBlob, size: img.resizedSize ?? img.resizedBlob.size };
+          }
           const dims = getFinalDims(img);
           const blob = await resizeImage(img.file, dims.w, dims.h);
           return { id: img.id, blob, size: blob.size };
         })
       );
-      setImages((prev) =>
-        prev.map((img) => {
-          const r = results.find((x) => x && x.id === img.id);
-          if (!r) return img;
-          return { ...img, resizedBlob: r.blob, resizedSize: r.size };
-        })
-      );
+
+      const resultMap = new Map(results.map((r) => [r.id, r]));
+      const nextImages = images.map((img) => {
+        const r = resultMap.get(img.id);
+        if (!r) return img;
+        return { ...img, resizedBlob: r.blob, resizedSize: r.size };
+      });
+
+      setImages(nextImages);
+      return nextImages.filter((img) => img.resizedBlob);
     } catch (err) {
       console.error('Resize error:', err);
+      return [];
+    } finally {
+      setResizing(false);
     }
-    setResizing(false);
   };
 
   /* --- remove image --- */
@@ -326,14 +333,14 @@ const ResizeImage = () => {
   };
 
   /* --- download separate --- */
-  const downloadSeparate = () => {
-    const ready = images.filter((i) => i.resizedBlob);
+  const downloadSeparate = (readyImages = null) => {
+    const ready = readyImages || images.filter((i) => i.resizedBlob);
     ready.forEach((img) => downloadSingle(img));
   };
 
   /* --- download zip --- */
-  const downloadZip = async () => {
-    const ready = images.filter((i) => i.resizedBlob);
+  const downloadZip = async (readyImages = null) => {
+    const ready = readyImages || images.filter((i) => i.resizedBlob);
     if (!ready.length) return;
     if (!window.JSZip) {
       const s = document.createElement('script');
@@ -356,12 +363,18 @@ const ResizeImage = () => {
   };
 
   /* --- download all (respects mode) --- */
-  const downloadAll = () => {
-    const ready = images.filter((i) => i.resizedBlob);
+  const downloadAll = async (readyImages = null) => {
+    const ready = readyImages || images.filter((i) => i.resizedBlob);
     if (!ready.length) return;
     if (ready.length === 1) { downloadSingle(ready[0]); return; }
-    if (downloadMode === 'zip') downloadZip();
-    else downloadSeparate();
+    if (downloadMode === 'zip') await downloadZip(ready);
+    else downloadSeparate(ready);
+  };
+
+  const handleResizeAndDownload = async () => {
+    const ready = await resizeAll();
+    if (!ready.length) return;
+    await downloadAll(ready);
   };
 
   /* --- start over --- */
@@ -383,8 +396,6 @@ const ResizeImage = () => {
 
   /* --- computed --- */
   const totalOriginal = images.reduce((s, i) => s + i.file.size, 0);
-  const allResized = images.length > 0 && images.every((i) => i.resizedBlob);
-
   /* Unit suffix for inputs */
   const unitSuffix = resizeMode === 'pixel' ? 'px' : resizeMode === 'percentage' ? '%' : resizeMode === 'cm' ? 'cm' : 'in';
   const inputStep = resizeMode === 'pixel' || resizeMode === 'percentage' ? 1 : 0.1;
@@ -496,11 +507,6 @@ const ResizeImage = () => {
                     </span>
                   </div>
 
-                  {img.resizedBlob && (
-                    <button className="rsz-card__dl" onClick={() => downloadSingle(img)}>
-                      <i className="fa-solid fa-download"></i> {t('common.download')}
-                    </button>
-                  )}
                 </div>
               </div>
             ))}
@@ -680,17 +686,13 @@ const ResizeImage = () => {
             <div className="rsz-right__actions">
               <button
                 className="rsz-right__download"
-                onClick={allResized ? downloadAll : resizeAll}
+                onClick={handleResizeAndDownload}
                 disabled={resizing || width === '' || height === ''}
               >
                 {resizing ? (
                   <>
                     <span className="rsz-download-spinner"></span>
                     {t('resizer.resizing')}
-                  </>
-                ) : allResized ? (
-                  <>
-                    <i className="fa-solid fa-download"></i> {t('common.download')} {images.length > 1 ? t('converter.all') : ''}
                   </>
                 ) : (
                   <>
