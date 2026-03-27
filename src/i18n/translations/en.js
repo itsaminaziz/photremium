@@ -135,11 +135,11 @@ const en = {
 
   /* ————— SEO (meta titles & descriptions) ————— */
   seo: {
-    homeTitle: 'photremium.com — Free Online Image Converter, Compressor & Editor',
+    homeTitle: 'Photremium — Free Online Image Converter, Compressor & Editor',
     homeDesc: 'Convert, compress, resize, crop and edit images online for free. Fast, private and secure — all processing happens in your browser.',
     homeKeywords: 'image converter, image compressor, resize image, crop image, photo editor, online image tools, free image tools',
-    aboutTitle: 'About photremium.com — Our Mission & Story',
-    aboutDesc: 'Learn about photremium.com, the free online image toolkit trusted by millions. Our mission is to make professional image editing accessible to everyone.',
+    aboutTitle: 'About Photremium — Our Mission & Story',
+    aboutDesc: 'Learn about Photremium, the free online image toolkit trusted by millions. Our mission is to make professional image editing accessible to everyone.',
     aboutKeywords: 'about photremium.com, image tools company, free image editor, about us',
   },
 
@@ -199,10 +199,10 @@ const en = {
   /* ————— Image Compressor ————— */
   compressor: {
     seo: {
-      uploadTitle: 'Image Compressor — Compress JPG, PNG, SVG, GIF Online Free | photremium.com',
+      uploadTitle: 'Image Compressor — Compress JPG, PNG, SVG, GIF Online Free | Photremium',
       uploadDesc: 'Compress JPG, PNG, SVG and GIF images online for free. Reduce file size by up to 80% while maintaining visual quality. No signup required.',
       uploadKeywords: 'image compressor, compress jpg, compress png, reduce image size, image optimization, compress photos online free',
-      workspaceTitle: 'Compressing Images — photremium.com Image Compressor',
+      workspaceTitle: 'Compressing Images — Photremium Image Compressor',
       workspaceDesc: 'Adjust compression level and download your optimized images. Real-time preview and size estimation.',
       workspaceKeywords: 'compress images, image compression slider, bulk compress images, image optimization tool',
     },
@@ -218,12 +218,105 @@ const en = {
     compressing: 'Compressing…',
     compressDownload: 'Compress & Download',
     lowQualityWarning: 'High compression may noticeably reduce image clarity.',
+    blog: {
+      tocTitle: 'Contents',
+      title: 'Image Compressor Blog',
+      formatsIntro: 'Our tool supports all the image formats. So, you can compress any image seamlessly. List of all the formats is given below:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. What is an image compressor?',
+          paragraphs: [
+            'An image compressor is a tool-software or online service that reduces the file size of image while maintaining its visual quality. However, compressing the image too much will significantly reduce its quality which can be visibly noticed.',
+          ],
+          listTitle: 'TYPES:',
+          bullets: [
+            'Lossy Compression: In this type of compression, the image size is reduced by removing some image data which reduces its quality but the reduction is not noticeable with the human eye.',
+            'Lossless Compression: It is just reducing the image size without affecting the visual quality of the image at all.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Why choose our tool?',
+          bullets: [
+            'Our AI powered image compressor tool works seamlessly on all devices to serve you the best possible results.',
+            'You can compress multiple images (even 100+ images) at a time just by a single click.',
+            'No need to upload your images to our servers. All the images will be compressed on your local browser.',
+            'Our image compressor tool is completely free forever. You can also share this tool with your friends.',
+            'You can select the compression percentage according to your preference.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Step by step guide',
+          steps: [
+            {
+              heading: '1. Select the image/s you want to compress.',
+              bullets: [
+                'Drag and drop the image/s to the drop box.',
+                'You can also copy the image/s and paste in the box via (Ctrl + V)',
+                'File explorer is also supported by clicking the choose button.',
+              ],
+            },
+            {
+              heading: '2. Then select compression percentage.',
+              bullets: [
+                'A horizontal slide bar offers you a comfortable experience for selecting the compression percentage. Follow these ranges to get the accurate results.',
+              ],
+              table: {
+                headers: ['Compression Percentage', 'Results'],
+                rows: [
+                  ['1%  to  40%', 'Best quality'],
+                  ['41%  to  60%', 'Normal quality(Recommended)'],
+                  ['61%  to  100%', 'Bad quality'],
+                ],
+              },
+            },
+            {
+              heading: '3. Inspect the memory you saved.',
+              paragraphs: [
+                'All the memory metrices are displayed at runtime. You can clearly see how much memory you saved out of total. So, you can adjust compression level to get the file size according to your requirement and preference.',
+              ],
+            },
+            {
+              heading: '4. Select the download option from toggle button.',
+              bullets: [
+                'ZIP: If you are compressing multiple images, you will see this option. Selecting ZIP option will archive all your compressed images in a zip file (Recommended for large number of images).',
+                'Separate: Selecting this option will download all your images separately NOT as a single ZIP file. (Recommended just for a smaller number of images; less than 10)',
+              ],
+            },
+            {
+              heading: '5. Compress & download the image.',
+              paragraphs: [
+                'This button will download all the compressed images automatically in your selected download option.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Benifits of image compressor.',
+          bullets: [
+            'Minimizes storage cost: Compressing the images will significantly reduce their storage costs as their size is now reduced.',
+            'Faster loading: Compressed images load faster which improves the user experience for the website or app.',
+            'Gmail limitation solution: As Gmail limits the users to attach files up to 25MB only, there is a need for image compression. Instead of attaching smaller number of larger files, compress the images to attach more files.',
+            'Faster Sharing and Transfer: Larger files can take more time to share or transfer. So, compressing the images will save the transfer time and data used to transfer those files. Also, some platforms restrict the users to share large files.',
+            'Presentation Optimization: A normal presentation with 20 uncompressed images takes up to 100MB file size causing too much lag. However, the similar presentation with same images compressed consists of around 10 to 15MB. Also, large files are hard to upload on academic or job portals.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Supported Formats.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   /* ————— Image Converter ————— */
   converter: {
     seo: {
-      uploadTitle: 'Image Converter — Convert PNG, JPG, WEBP, GIF, SVG Online Free | photremium.com',
+      uploadTitle: 'Image Converter — Convert PNG, JPG, WEBP, GIF, SVG Online Free | Photremium',
       uploadDesc: 'Convert images between JPG, PNG, WEBP, GIF, SVG, TIFF, BMP and more. Free online image format converter — fast, private, no signup required.',
       uploadKeywords: 'image converter, convert png to jpg, jpg to png, webp converter, image format converter, free image converter online',
       workspaceKeywords: 'convert images, image format converter, bulk convert images',
@@ -302,10 +395,10 @@ const en = {
   /* ————— Resize Image ————— */
   resizer: {
     seo: {
-      uploadTitle: 'Resize Image Online — Resize JPG, PNG, SVG, GIF Free | photremium.com',
+      uploadTitle: 'Resize Image Online — Resize JPG, PNG, SVG, GIF Free | Photremium',
       uploadDesc: 'Resize images online for free by pixel or percentage. Resize JPG, PNG, SVG and GIF images while preserving quality. No signup required.',
       uploadKeywords: 'resize image, image resizer, resize jpg, resize png, change image dimensions, resize photo online free',
-      workspaceTitle: 'Resizing Images — photremium.com Image Resizer',
+      workspaceTitle: 'Resizing Images — Photremium Image Resizer',
       workspaceDesc: 'Resize images online for free by pixel or percentage. No signup required.',
       workspaceKeywords: 'resize image, image resizer, resize jpg, resize png',
     },
@@ -324,15 +417,100 @@ const en = {
     dontEnlarge: "Don't enlarge if original is smaller",
     resizing: 'Resizing…',
     resizeDownload: 'Resize & Download',
+    blog: {
+      tocTitle: 'Contents',
+      title: 'Image Resizer Blog',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Why use image resizer?',
+          paragraphs: [
+            'An image resizer is a tool or software used to change the dimensions of image. It allows you to adjust the size of the desired image by changing either its height, width, or both. This tool is especially useful for social media platforms which have restriction of the size to upload or post images.',
+          ],
+          listTitle: 'For Example:',
+          bullets: [
+            'Instagram posts: 1080 x 1080px(Square)',
+            'Facebook post: 1200 x 630px',
+            'X (Former Twitter) post: 1200 x 675px',
+            'Instagram Story: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Why choose our Image Resizer tool?',
+          paragraphs: [
+            'Our AI powered image resizer makes the image resizing process accurate and extremely fast. You can navigate this tool on each device seamlessly. There is no need to install or download any app. All services are available online in the browser of your choice.',
+          ],
+          bullets: [
+            'You can resize multiple images (even 100+) at once with our resize-image tool. If you are having a high-performance device, you can conveniently resize 400 to 500 images within seconds.',
+            'All the processing will be done on your local browser. You don’t have to upload any of the images to over servers. Your images will never leave your device. So, you can resize your personal images without any privacy related risk.',
+            'Multiple units are supported for resizing the image.',
+            'You can also maintain the original aspect ratio of the image even after resizing it, just by selecting the checkbox.',
+            'If you are resizing multiple images, you have a choice to download the resized images as separate ones or as a ZIP file.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Step by step guide',
+          steps: [
+            {
+              heading: 'First of all, select the image or multiple images you want to resize. You have multiple ways to select the image.',
+              bullets: [
+                'You can just drag and drop image/s to resize them.',
+                '“Ctrl + V” shortcut is also supported to paste the image in the drop box.',
+                'Clicking the “Choose Files” button will lead to the file explorer. You can also select your desirable images for resizing.',
+              ],
+            },
+            {
+              heading: 'Then, you have an option to select one of the units to resize the image. Currently, we offer these units:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'After unit selection, adjust height and with to resize the image. You can also lock the aspect ratio by ticking the checkbox.',
+            },
+            {
+              heading: 'Then tick the “Don’t enlarge if original is smaller” checkbox if you want the resized image not to enlarge from its original size.',
+            },
+            {
+              heading: 'After it, select the download option.',
+              bullets: [
+                'Select ZIP if you want to resize multiple images and want to download all of them as a zip file.',
+                'Or select “separate” to download each resized image separately.',
+              ],
+            },
+            {
+              heading: 'Then tap the “Resize & Download” button to download your resized images according to your selected download option.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Benefits of image resizing tool: The most notable benefit of this tool is in the proper placement of images inside webpages and social media posts.',
+          tocLabel: '4. Benefits of image resizing tool',
+          bullets: [
+            'Boosting UX: Right size and proper placement of images enhance the UX greatly. Placing too large or too small images without proper adjustment leads to a bad user experience.',
+            'Social Media Support: Several social media apps have their own dimension limits for posting images. Our image resizer tool helps you resize your images according to those requisite dimensions.',
+            'Responsive Design: If you are a developer and trying to create a responsive design, you must resize the images in multiple dimensions to support multiple devices.',
+            'Best Choice: Instead of stretching or cropping the images which can result in changing their dimensions, image resizer is a best option.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Supported Formats: Our image resizer tool allows you to select image of any format to be resized. Here are the formats:',
+          tocLabel: '5. Supported Formats',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   /* ————— Crop Image ————— */
   cropper: {
     seo: {
-      uploadTitle: 'Crop Image Online — Crop JPG, PNG, GIF Free | photremium.com',
+      uploadTitle: 'Crop Image Online — Crop JPG, PNG, GIF Free | Photremium',
       uploadDesc: 'Crop JPG, PNG and GIF images online with ease. Choose pixels to define your crop area or use our visual editor. Free, fast and private.',
       uploadKeywords: 'crop image, image cropper, crop jpg, crop png, crop photo online free, image crop tool',
-      workspaceTitle: 'Cropping Images — photremium.com Image Cropper',
+      workspaceTitle: 'Cropping Images — Photremium Image Cropper',
       workspaceDesc: 'Crop images online for free. Visual crop editor with preset ratios. No signup required.',
       workspaceKeywords: 'crop image, image cropper, crop jpg, crop png',
     },
@@ -355,12 +533,100 @@ const en = {
     saveNext: 'Save & Next',
     croppedNofTotal: 'You have cropped {n} out of {total} images.',
     downloadN: 'Download {n}',
+    blog: {
+      tocTitle: 'Contents',
+      title: 'Image Cropper Blog',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Why use image cropper?',
+          paragraphs: [
+            'Image cropper is a software tool that is used to cut the image in desired shape. It is widely used to cut a required piece of image and remove unwanted outer part for any purpose. It provides a crop box which you can adjust in the position in which you want to crop.',
+          ],
+          listTitle: 'For Example:',
+          bullets: [
+            'Cutting out your own image from a group photo.',
+            'Cropping your name from a list.',
+            'Cropping the progress bar from the full screen snippet.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Why choose our image cropper?',
+          paragraphs: [
+            'Our image cropper tool allows you to crop images accurately and really fast. You just have to adjust size of crop box in the position you want to cut out from any image. Almost all image formats are supported for the selection of the image.',
+          ],
+          bullets: [
+            'You can crop as much number of images as your device supports. If you are having a best-performance device, you can crop even 100+ images at once without any lag or other issues.',
+            'Your images will be processed on your local browser. No need to upload any image to our servers, so no image leaves your device. You can crop your personal images without any insecurity or risk.',
+            'Many tools flag error of invalid image format. Our image cropper tool takes care of this issue by supporting almost all the image formats.',
+            'If you are cropping multiple images at once, our tool allows you to download the cropped images as a ZIP or as separate images according to your preference.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Step by step guide',
+          steps: [
+            {
+              heading: '1. First of all, select the image you want to crop. Selecting multiple images at once is also supported by our image cropper tool.',
+              bullets: [
+                'Drag and drop the image in the drop box to crop it.',
+                'You can also select the image via file explorer by clicking the choose files button placed in the crop box.',
+                'Ctrl + V shortcut is also supported to paste the images in the drop box.',
+              ],
+            },
+            {
+              heading: '2. Then, adjust the size and position of the crop box on the image to cut it.',
+            },
+            {
+              heading: '3. You can also adjust the crop box by entering the values of height, width, horizontal position, and vertical position manually.',
+            },
+            {
+              heading: '4. You can also use some premade templates:',
+              bullets: [
+                'Landscape(16:9)',
+                'Portrait(9:16)',
+                'Square(1:1)',
+              ],
+            },
+            {
+              heading: '5. Then you have to select one of the download options.',
+              bullets: [
+                'ZIP: Select this option if you are cropping multiple images and want to download all the cropped images as a single file.',
+                'Separate: If you want to download all the cropped images separately, then select this option from toggle button.',
+              ],
+            },
+            {
+              heading: '6. Then click on the Crop & Download button to download all your cropped images according to your preset dimensions.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Benefits of Image Cropper: Image cropper tool offers several benefits in the digital world. Some are described below:',
+          tocLabel: '4. Benefits of Image Cropper',
+          bullets: [
+            'Fitting of images in frames: Image cropper helps you fit images properly in frames. These frames could be either in a webpage or on any social media platform.',
+            'Boosting UX: As proper placing of images boosts user experience, image cropper helps boost the UX to a great extent.',
+            'Removing unwanted border: You can remove any unwanted borders from an image to refine it.',
+            'Separating desired object: You can also separate your image from a group photo.',
+            'Saving Storage: Cropping the image definitely saves storage as the raw area of the image is cut and just the desired part is saved.',
+            'Optimizing Presentation: Since a normal presentation with 10 uncropped images takes almost 30MB of the storage, the same presentation with images cropped can take almost 10MB of the storage.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Supported formats:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   /* ————— Photo Editor (placeholder) ————— */
   photoEditor: {
     seo: {
-      title: 'Photo Editor Online — Edit Images Free with Text, Effects & Frames | photremium.com',
+      title: 'Photo Editor Online — Edit Images Free with Text, Effects & Frames | Photremium',
       desc: 'Edit photos online for free — add text, effects, frames, stickers and more. Simple yet powerful image editing tools right in your browser.',
       keywords: 'photo editor, online photo editor, edit photo online free, add text to image, image effects, photo frames',
     },
@@ -378,10 +644,10 @@ const en = {
   /* ————— Remove Background ————— */
   removeBg: {
     seo: {
-      uploadTitle: 'Remove Background from Image Online Free | photremium.com',
+      uploadTitle: 'Remove Background from Image Online Free | Photremium',
       uploadDesc: 'Quickly remove image backgrounds with high accuracy. Free online background remover — runs entirely in your browser.',
       uploadKeywords: 'remove background, background remover, remove image background, transparent background, cut out background free',
-      workspaceTitle: 'Removing Backgrounds — photremium.com Background Remover',
+      workspaceTitle: 'Removing Backgrounds — Photremium Background Remover',
       workspaceDesc: 'Remove image backgrounds online for free. No signup required.',
       workspaceKeywords: 'remove background, background remover, transparent background',
     },
@@ -412,10 +678,10 @@ const en = {
   /* ————— Watermark Image ————— */
   watermark: {
     seo: {
-      uploadTitle: 'Watermark Image Online — Add Text & Logo Watermarks Free | photremium.com',
+      uploadTitle: 'Watermark Image Online — Add Text & Logo Watermarks Free | Photremium',
       uploadDesc: 'Add text or image watermarks to your photos in seconds. Free, fast and private.',
       uploadKeywords: 'watermark image, add watermark, text watermark, logo watermark, image watermark tool free',
-      workspaceTitle: 'Watermarking Images — photremium.com Watermark Tool',
+      workspaceTitle: 'Watermarking Images — Photremium Watermark Tool',
       workspaceDesc: 'Add watermarks to images online for free. No signup required.',
       workspaceKeywords: 'watermark image, add watermark, text watermark, logo watermark',
     },
@@ -486,10 +752,10 @@ const en = {
   /* ————— QR Code Generator ————— */
   qrGenerator: {
     seo: {
-      inputTitle: 'QR Code Generator — Create & Customize Free | photremium.com',
+      inputTitle: 'QR Code Generator — Create & Customize Free | Photremium',
       inputDesc: 'Generate custom QR codes for URLs, text, WiFi, contacts, email and Google Maps locations. Customize colors, shapes, frames, logos and download in multiple formats.',
       inputKeywords: 'qr code generator, create qr code, custom qr code, qr code maker, qr code free',
-      customizeTitle: 'Customize QR Code — photremium.com QR Code Generator',
+      customizeTitle: 'Customize QR Code — Photremium QR Code Generator',
       customizeDesc: "Customize your QR code's style, color, frame and logo. Download in PNG, JPG, SVG, WEBP or PDF.",
       customizeKeywords: 'customize qr code, qr code style, qr code colors, qr code logo',
     },
@@ -565,7 +831,7 @@ const en = {
     angle: 'Angle',
     downloadFormatBtn: 'Download {format}',
     pngDesc: 'Lossless, transparent support',
-    jpgDesc: 'Compressed, smaller file',
+    jpgDesc: 'Popular/universal file format',
     webpDesc: 'Modern format, best quality/size',
     svgDesc: 'Scalable vector graphic',
     pdfDesc: 'Print-ready document',
@@ -574,12 +840,179 @@ const en = {
     qrCode: 'QR Code',
     scanMe: 'SCAN ME',
     scanHere: 'SCAN HERE',
+    blog: {
+      card1: {
+        title: '1. What is a QR code?',
+        intro1: 'The full form of QR code is “Quick Response code.” Since the information stored in it is decoded lightning fast, it is called Quick Response (QR) code.',
+        intro2: 'QR code is a two-dimensional digital code readable by machines only. The data in it cannot be red by a human. It contains blocks to store information like text, contact numbers, links, and google map locations, etc.',
+        inventionTitle: 'How the QR code was invented:',
+        inventionText: 'QR code was invented in 1994. Masahiro Hara and his team were working in a Japanese company named Denso Wave, that made car parts for Toyota. They wanted a code that stores much more information than a typical barcode, then they invented QR code.',
+        keyFeaturesTitle: 'Key features of a QR code',
+        keyFeatures: [
+          {
+            title: 'How QR works',
+            text: 'You enter the text or link to generate a QR code of it. The QR generator makes square boxes according to the information. Each box represents a bit, and each bit stores a character.',
+          },
+          {
+            title: 'Structure of QR code',
+            text: 'A QR code contains three big square boxes to identify the orientation of the QR code, and a small square box to store the bits (information).',
+          },
+          {
+            title: 'Data Capacity of QR code',
+            text: 'Typically, a QR code stores more information than a bar code. QR code is simply an advanced version of bar code. It is basically a 2-dimensional bar code. A QR code stores almost 200 characters. It can also store 400 characters but may be hard to scan. Storing more than 400 characters may result in a very complex QR code which cannot be scanned mostly.',
+          },
+          {
+            title: 'Error Detection in QR codes',
+            text: 'A QR code can be still scannable if some of the information on it is scratched or some bits are flipped. QR code uses Reed-Solomon error detection technique to detect the errors, and resolves them after identification.',
+          },
+        ],
+        errorTitle: 'QR code’s error correction level:',
+        errorIntro: 'Different error detection and correction techniques are used in different cases as described below:',
+        errorHeaders: {
+          level: 'Level',
+          recovery: 'Recovery capacity',
+          bestUse: 'Best use case',
+        },
+        errorRows: [
+          {
+            level: 'Low(L)',
+            recovery: '~7%',
+            useCases: [
+              'This error correction technique is used when QR code is displayed on digital screens, websites, or in a clean environment.',
+              'When a QR code is generated for small information like Gmail, contact number, or small text.',
+            ],
+          },
+          {
+            level: 'Medium(M)',
+            recovery: '~15%',
+            useCases: [
+              'For flyers and posters that are installed in clean environment, and when damage risk is negligible.',
+            ],
+          },
+          {
+            level: 'Quartile(Q)',
+            recovery: '~25%',
+            useCases: [
+              'When QR code is to be installed in the harsh environment like in factory/outdoor.',
+              'Also, when a small logo is needed in the center, it covers some bits. So, this error correction technique is needed.',
+            ],
+          },
+          {
+            level: 'High(H)',
+            recovery: '~30%',
+            useCases: [
+              'Used when a heavy damage to the QR code is possible.',
+              'When large logos cover the center of QR code.',
+              'Also, when heavy styling is needed for QR code.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Why choose our QR code generator?',
+        intro: 'Our QR code generator makes QR code generation extremely fast, secure, and easy. You can customize your code to make it more advanced, professional, and matching with your business theme. All customizations from coloring the QR code to logo installation in the QR code are offered freely forever.',
+        strengths: [
+          {
+            title: 'Professional Customization:',
+            text: 'You can generate and customize as many QR codes as you need without any cost. All features are fully free. You can apply gradient colors, different shapes for square boxes, custom logos, and many other features.',
+          },
+          {
+            title: 'Multiple formats support:',
+            text: 'Our QR code generator offers multiple download formats for your ease. You just have to select your preferred format before downloading. Currently we offer these formats:',
+          },
+          {
+            title: 'Pre-made templates:',
+            text: 'You can use pre-made gradient colors and frames that make your QR code professional.',
+          },
+          {
+            title: 'Custom logo support:',
+            text: 'You can also upload your custom brand logo that fits automatically in the center of QR code. Also, you can select logo from in-built logo library where more than 30 logos are provided.',
+          },
+          {
+            title: 'Live Preview:',
+            text: 'While customizing, you can watch all the changes in a live preview panel. These changes in the preview panel are real-time that change dynamically.',
+          },
+          {
+            title: 'Scan Indicator:',
+            text: 'While choosing colors, proper warnings and indicators guide you if you select the colors that are hard to scan.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'Sr. No',
+          formats: 'Formats',
+          description: 'Description',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Lossless, transparent support' },
+          { no: '2', format: 'JPG', description: 'Popular, Universal file format' },
+          { no: '3', format: 'WEBP', description: 'Modern, Best quality/size' },
+          { no: '4', format: 'SVG', description: 'Scalable vector graphic' },
+          { no: '5', format: 'PDF', description: 'Print-ready document' },
+        ],
+      },
+      card3: {
+        title: '3. Step by step guide:',
+        step1Intro: 'First of all, select the category of the QR code you want to generate. Either you are generating QR code for contact, Map, link or text. Currently, our QR code generator offers these categories:',
+        categories: ['Link / URL', 'Text', 'WiFi', 'Contact', 'Gmail', 'Google Maps'],
+        step2: 'After selecting the category, paste your information in the text box accordingly.',
+        step3Intro: 'Then, click on Generate & Customize to open the customization panel. In the customization panel, you will see a sub navigation bar with the following options:',
+        options: [
+          {
+            title: 'Style & Shape:',
+            text: 'In this section, you can change the shapes of square boxes to multiple styles like rounded corners, dots, horizontal bars, vertical bars, small squares, and many others.',
+          },
+          {
+            title: 'Color:',
+            text: 'You can select your custom background and foreground colors in this section. To make your QR code in gradient colors, you have the option to enable gradient which lets you apply any gradient color from in-built library or make your own gradient color easily. You can also change the angle for linear gradient color. Radial gradient is also supported. You can add multiple colors to make a professional gradient effect.',
+          },
+          {
+            title: 'Frames:',
+            text: 'Here, you can select a perfect frame for your QR code. All frames automatically fit into your code automatically. You just have to select a frame from the inbuilt library.',
+          },
+          {
+            title: 'Logo:',
+            text: 'After frame selection, you can select a logo that is automatically adjusted in the center of QR code. Uploading of your custom brand logo is also supported.',
+          },
+          {
+            title: 'Templates:',
+            text: 'If you want not to select style, shape, color and frame separately, you can apply the premade templates on your QR code. Multiple premium templates are provided for your ease that are free forever.',
+          },
+          {
+            title: 'File Format:',
+            text: 'Finally, you have to select the file type in which you want to download the QR code. Several common formats are supported including PNG, WEBP, SVG, and PDF, etc.',
+          },
+          {
+            title: 'Edit QR Data:',
+            text: 'You can also edit your QR data without any loss in your selected customizations.',
+          },
+        ],
+        finalStep: 'Then, just click on the download button, and the QR code exactly according to your customizations and in the selected format will be downloaded instantly without any cost.',
+      },
+      card4: {
+        title: '4. Benefits:',
+        intro: 'QR code connects the physical world with the digital experience. It is the fastest way to share links, contact, or your location. You just have to scan that QR code to access the information instantly. So, it is very popular in businesses and digital world for being time-efficient and highly purposeful.',
+        benefits: [
+          {
+            title: 'Lifetime Support:',
+            text: 'QR codes work forever without any expiry. They give you the information stored instantly when you scan it. Since it stores hardcoded digital instructions, it never loses its information.',
+          },
+          {
+            title: 'Offline Support:',
+            text: 'You can scan the QR code even if you are offline. Your mobile camera decodes the patterns of the QR code and gives you the information stored in it.',
+          },
+          {
+            title: 'Zero cost:',
+            text: 'Since these codes do not require any server redirection or resources, it is free of cost forever.',
+          },
+        ],
+      },
+    },
   },
 
   /* ————— QR Code Scanner ————— */
   qrScanner: {
     seo: {
-      title: 'QR Code Scanner — Scan QR Codes from Camera or Image | photremium.com',
+      title: 'QR Code Scanner — Scan QR Codes from Camera or Image | Photremium',
       desc: 'Scan QR codes instantly using your camera or by uploading an image. Detect URLs, text, WiFi, contacts and more. Free, fast, private.',
       keywords: 'qr code scanner, scan qr code, qr reader, qr code reader online, scan qr from image, camera qr scanner',
     },
@@ -639,10 +1072,10 @@ const en = {
   /* ————— Face Blur ————— */
   faceBlur: {
     seo: {
-      uploadTitle: 'Face Blur Tool — Blur Faces in Images Online | photremium.com',
+      uploadTitle: 'Face Blur Tool — Blur Faces in Images Online | Photremium',
       uploadDesc: 'Blur faces in your images automatically with AI face detection. Choose blur intensity, shape, or emoji overlays. 100% free, fast & private.',
       uploadKeywords: 'face blur, blur faces, face detection, privacy tool, blur face online free',
-      workspaceTitle: 'Face Blur Tool — Blur Faces in Images Online | photremium.com',
+      workspaceTitle: 'Face Blur Tool — Blur Faces in Images Online | Photremium',
       workspaceDesc: 'Blur faces in your images automatically. 100% free, fast & private.',
       workspaceKeywords: 'face blur, blur faces, face detection',
     },
@@ -703,25 +1136,25 @@ const en = {
       { q: 'Can I convert transparent PNG images to JPG?', a: 'Yes. Since JPG does not support transparency, transparent areas will be filled with a white background by default, producing a clean result.' },
     ],
     imageCompressor: [
-      { q: 'How does image compression work?', a: "Our tool reduces file size by re-encoding the image at a lower quality level using your browser's built-in canvas API. You control the compression ratio so you can balance size and quality." },
-      { q: 'Will compression visibly reduce my image quality?', a: 'At moderate compression levels (20-40%), the difference is virtually unnoticeable to the human eye. Higher compression saves more space but may introduce slight artifacts.' },
-      { q: 'What image formats can I compress?', a: 'You can upload JPG, PNG, WEBP, BMP, and most other common raster formats. The output is saved as an optimized JPEG for maximum size reduction.' },
-      { q: 'Can I compress multiple images at once?', a: "Yes! Simply drag and drop or select several files. Each image's compression level can be adjusted individually, and you can download them all as a ZIP." },
-      { q: 'Do you store my compressed images on a server?', a: 'No. Everything runs locally in your browser. Your images are never uploaded anywhere, so your files remain completely private.' },
+      { q: 'Will compressing the image reduce its quality?', a: 'No, compressing the image doesn’t affect the image quality at all until and unless you compress it beyond prescribed limits. Proper indicators guide you about the quality: i. 1 to 40% compression: You will see a green indicator with “Good quality” message. ii. 41 to 60% compression: Yellow signal visible with “Normal quality” message. Compression within this range is recommended for great results. iii. 61 to 100% compression: The system flags a red warning showing a “Bad quality” message. This range may noticeably affect the quality of the image which can be clearly noticed by human eye.' },
+      { q: 'What image formats are supported for compression?', a: 'Our image compressor tools support all these listed formats:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Can I compress multiple images at once?', a: 'Absolutely, yes. You can compress multiple images (even 100+) at once if your system supports. As compressing the images will use your system resources, you need to have a high-performance laptop, pc, or a mobile to compress multiple images at once. If you have a low-end device, you can compress images in batches as this tool is free to use even if you compress many images in multiple batches.' },
+      { q: 'Do you store or upload our images to your servers?', a: 'No, we never upload or store your images to our servers. All the images are compressed locally on your browser. Your images never leave your device. So, you can compress your personal or private images stress-free.' },
+      { q: 'Is this image compressing tool free to use?', a: 'Yes, our image compressor tool is totally free to use forever. We will never ask you for any payment. There are no hidden charges. All feature including multiple image compressing are totally free.' },
     ],
     cropImage: [
-      { q: 'Can I crop images to a specific aspect ratio?', a: 'Yes. You can choose from preset ratios like 1:1, 4:3, 16:9, or enter a custom ratio. You can also crop freely without any ratio constraint.' },
-      { q: 'Does cropping reduce image quality?', a: 'No. Cropping simply removes pixels outside the selected area. The remaining pixels retain their original resolution and quality.' },
-      { q: 'Can I crop multiple images at once?', a: 'Absolutely. Upload multiple images, set crop areas for each, and download them all in one go — either as a ZIP or individually.' },
-      { q: 'What file formats are supported for cropping?', a: 'All common image formats are supported including JPG, PNG, WEBP, GIF, and BMP. The output preserves the original format.' },
-      { q: 'Are my images uploaded to a server for processing?', a: 'No. All cropping is performed locally in your browser using the HTML5 Canvas API. Your images never leave your device.' },
+      { q: 'Will cropping the image reduce its quality?', a: 'No, Cropping the image will never affect the visual quality of the image at all. Cropping the image just discards the unwanted bits. It never changes the pixels of the part of image to be cropped. So, you can crop your images in their original quality without any pixel damage.' },
+      { q: 'What image formats are supported for image cropper?', a: 'You can select any image of any format as our image cropper tool offers almost all the image formats. These are listed below:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Do my images upload to your server?', a: 'No, all the processing will be done on your local browser. Your images will never be uploaded to our server as they never leave you device. So, you can crop your personal images with our image cropper without any risk.' },
+      { q: 'Can I crop multiple images at once?', a: 'Yes, you can crop multiple images (even 100+) at once if your system supports. As cropping the images uses your system resources, so, if you have a high-performance laptop, PC, or a mobile, you can crop many images at once. If you are having a low-end device, you can crop images in batches as this tool is free to use even if you crop multiple images at once.' },
+      { q: 'Is this image cropper tool free to use?', a: 'Yes, this image cropping tool is totally free to use forever. You can access this tool anywhere, anytime, and using any device. You will not only experience a responsive design for all the devices but also never asked to pay for any premium feature. All features are totally free with no hidden charges.' },
     ],
     resizeImage: [
-      { q: 'Can I resize images to exact pixel dimensions?', a: 'Yes. Enter your desired width and height in pixels, inches, or centimeters. You can also lock the aspect ratio to prevent distortion.' },
-      { q: 'Will resizing make my image blurry?', a: 'Enlarging an image beyond its original resolution may introduce slight softening. Downsizing retains sharpness. We use high-quality bicubic interpolation for the best results.' },
-      { q: 'Can I resize in bulk?', a: 'Yes. Upload multiple images and apply the same target dimensions to all of them. Download individually or as a ZIP archive.' },
-      { q: 'What units can I use for dimensions?', a: 'You can specify dimensions in pixels, inches, centimeters, or as a percentage of the original size.' },
-      { q: 'Is any data sent to a server during resizing?', a: 'No. Resizing is performed entirely in your browser. Your images stay on your device and are never uploaded.' },
+      { q: 'Can I resize multiple images at once?', a: 'Absolutely, our image resize tool allows you to resize multiple images at once. You just upload as multiple images as your device supports, our AI powered engine will resize your all images at once. But if you have a low-end device, try resizing images in multiple batches to avoid any lag issue. Resizing the image takes device resources to prevent any server uploads to protect your image privacy.' },
+      { q: 'Is this image resizing tool free to use?', a: 'Yes, this tool is free to use forever. You will never be asked about any paid subscription to unlock any premium features. There are no hidden charges demanded to download your resized images.' },
+      { q: 'Will resizing the image reduce its quality?', a: '✅Decrease Size (downscale): Decreasing the size of image will never reduce the visual quality of the image. Rather, the resized image looks more sharper than the original. So, resizing the image to small dimensions than original will never reduce its quality.\n❌Increase Size (upscale): Increasing the size above the original size may affect the visual quality of the image. Severity depends up on the increased size of the image. Quality drops as much as you increase its size.' },
+      { q: 'Is this image resizing tool safe to use?', a: 'Yes, our image resizer tool is totally safe to use especially for your personal and private images as all of your images are processed locally. None of your data will leave your device in any way for any processing. So, you can resize your personal images without any risk.' },
+      { q: 'What image formats are supported?', a: 'All image formats are supported for our image resizer tool. You can select image in these formats:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'How does background removal work?', a: 'We use an advanced AI model that runs directly in your browser to detect the subject and separate it from the background, producing a transparent PNG.' },
@@ -738,11 +1171,12 @@ const en = {
       { q: 'Is any data uploaded to a server?', a: 'No. All watermarking is done locally in your browser. Your images and logos are never transmitted anywhere.' },
     ],
     qrCodeGenerator: [
-      { q: 'What types of data can I encode in a QR code?', a: 'You can encode URLs, plain text, Wi-Fi credentials, email addresses, phone numbers, SMS messages, vCards, and more.' },
-      { q: 'Can I customize the colors and style of my QR code?', a: 'Yes. Choose custom foreground and background colors, add a logo or icon in the center, and select from multiple dot/corner styles.' },
-      { q: 'What formats can I download the QR code in?', a: 'You can download your QR code as a PNG, SVG, or JPEG file, in a resolution of your choice.' },
-      { q: "Will adding a logo make the QR code unscannable?", a: "Our tool uses error correction to ensure the QR code remains scannable even with a centered logo, as long as the logo doesn't cover too much of the code." },
-      { q: 'Is the QR code generation done on a server?', a: 'No. QR codes are generated entirely in your browser. No data is sent to any server — your information stays private.' },
+      { q: 'Does this QR code expire?', a: 'No, these QR codes do not expire and guarantee a lifetime support. As they store hardcoded instructions in the form of bits inside square boxes, the information stored in them cannot be changed or removed. You can access the information in code just by scanning it with any camera even after years.' },
+      { q: 'Why is my QR code not scanning?', a: 'Yor QR code may fail to be scanned due to the following reasons: i. Low Contrast: If you select the similar background and foreground colors, it affects the visibility of the QR code and cause failure of scanning. But our tool guides you during customization about low contrast or any other scan related issue. ii. Large data: If you generate a QR code for very large text of data, it becomes very complex and causes trouble while scanning. A text length validator guides you about the optimal text length during QR code generation. iii. Blurry print: Make sure to download your QR code in a high-resolution format like PNG or SVG which are already supported by our tool.' },
+      { q: 'Can I add logo in the QR code?', a: 'Absolutely, you can add a custom logo or select one from the in-built logo library for you QR code. Your selected logo will be adjusted automatically in the center of QR code.' },
+      { q: 'How can I scan the QR code?', a: 'You can scan the QR code using your mobile camera. But for automatic redirection to the link and many more advanced features, you can visit our QR code scanner using the https://photremium.com/qr-code-scanner link for free.' },
+      { q: 'How many QR codes can I generate for free?', a: 'UNLIMITED! you can generate multiple QR codes for free. All features, customizations and templates are free forever for all. No need to subscribe for enjoying premium features.' },
+      { q: 'Do I need to login/signup to generate QR code?', a: 'No, just enter your text, generate QR code, and download after customization. There is no need to login or signup as all features can be accessed completely free of cost.' },
     ],
     qrCodeScanner: [
       { q: 'How do I scan a QR code?', a: 'You can use your device camera for live scanning, or upload an image containing a QR code. The result is displayed instantly.' },

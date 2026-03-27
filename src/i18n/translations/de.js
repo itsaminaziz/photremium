@@ -190,6 +190,99 @@ const de = {
     compressing: 'Wird komprimiert…',
     compressDownload: 'Komprimieren & Herunterladen',
     lowQualityWarning: 'Eine hohe Komprimierung kann die Bildschärfe deutlich verringern.',
+    blog: {
+      tocTitle: 'Inhalt',
+      title: 'Bildkompressor-Blog',
+      formatsIntro: 'Unser Tool unterstützt alle Bildformate. So können Sie jedes Bild problemlos komprimieren. Die vollständige Liste der Formate finden Sie unten:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. Was ist ein Bildkompressor?',
+          paragraphs: [
+            'Ein Bildkompressor ist ein Tool oder Online-Dienst, der die Dateigröße eines Bildes reduziert und dabei die visuelle Qualität möglichst erhält. Wird ein Bild jedoch zu stark komprimiert, kann die Qualitätsminderung sichtbar werden.',
+          ],
+          listTitle: 'TYPEN:',
+          bullets: [
+            'Verlustbehaftete Komprimierung: Dabei wird die Dateigröße reduziert, indem bestimmte Bilddaten entfernt werden. Die Qualität kann sinken, ist aber oft mit dem bloßen Auge kaum erkennbar.',
+            'Verlustfreie Komprimierung: Sie reduziert die Dateigröße, ohne die visuelle Bildqualität zu verändern.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Warum unser Tool wählen?',
+          bullets: [
+            'Unser KI-gestützter Bildkompressor funktioniert nahtlos auf allen Geräten und liefert bestmögliche Ergebnisse.',
+            'Sie können mehrere Bilder (sogar 100+) gleichzeitig mit nur einem Klick komprimieren.',
+            'Sie müssen keine Bilder auf unsere Server hochladen. Alles wird lokal in Ihrem Browser verarbeitet.',
+            'Unser Bildkompressor ist dauerhaft kostenlos. Sie können das Tool auch mit Freunden teilen.',
+            'Sie können den Komprimierungsgrad nach Ihren Wünschen festlegen.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Schritt-für-Schritt-Anleitung',
+          steps: [
+            {
+              heading: '1. Wählen Sie die Bilder aus, die Sie komprimieren möchten.',
+              bullets: [
+                'Ziehen Sie die Bilder per Drag-and-drop in das Upload-Feld.',
+                'Sie können Bilder auch mit (Ctrl + V) kopieren und einfügen.',
+                'Der Datei-Explorer wird ebenfalls unterstützt, wenn Sie auf die Schaltfläche zum Auswählen klicken.',
+              ],
+            },
+            {
+              heading: '2. Wählen Sie anschließend den Komprimierungsprozentsatz.',
+              bullets: [
+                'Ein horizontaler Schieberegler ermöglicht eine komfortable Auswahl des Komprimierungsgrads. Folgen Sie diesen Bereichen für präzise Ergebnisse.',
+              ],
+              table: {
+                headers: ['Komprimierungsprozentsatz', 'Ergebnisse'],
+                rows: [
+                  ['1%  bis  40%', 'Beste Qualität'],
+                  ['41%  bis  60%', 'Normale Qualität (empfohlen)'],
+                  ['61%  bis  100%', 'Schlechte Qualität'],
+                ],
+              },
+            },
+            {
+              heading: '3. Prüfen Sie den eingesparten Speicher.',
+              paragraphs: [
+                'Alle Speicherwerte werden in Echtzeit angezeigt. So sehen Sie klar, wie viel Sie insgesamt eingespart haben, und können den Komprimierungsgrad nach Bedarf anpassen.',
+              ],
+            },
+            {
+              heading: '4. Wählen Sie über den Umschalter die Download-Option.',
+              bullets: [
+                'ZIP: Wenn Sie mehrere Bilder komprimieren, sehen Sie diese Option. Bei Auswahl werden alle komprimierten Bilder in einer ZIP-Datei archiviert (empfohlen für viele Bilder).',
+                'Einzeln: Diese Option lädt alle Bilder einzeln herunter und nicht als eine ZIP-Datei (empfohlen bei kleiner Anzahl, unter 10).',
+              ],
+            },
+            {
+              heading: '5. Komprimieren und herunterladen.',
+              paragraphs: [
+                'Diese Schaltfläche lädt alle komprimierten Bilder automatisch gemäß der gewählten Download-Option herunter.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Vorteile eines Bildkompressors.',
+          bullets: [
+            'Geringere Speicherkosten: Komprimierte Bilder benötigen weniger Speicherplatz.',
+            'Schnelleres Laden: Komprimierte Bilder laden schneller und verbessern die Nutzererfahrung.',
+            'Lösung für Gmail-Limits: Da Gmail Anhänge auf 25MB begrenzt, können Sie durch Komprimierung mehr Dateien versenden.',
+            'Schnelleres Teilen und Übertragen: Große Dateien brauchen länger. Komprimierung spart Zeit und Daten und hilft bei Plattform-Limits.',
+            'Optimierte Präsentationen: Unkomprimierte Bilder können Präsentationen groß und träge machen; komprimierte Bilder halten Dateigrößen deutlich kleiner.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Unterstützte Formate.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   converter: {
@@ -294,6 +387,91 @@ const de = {
     dontEnlarge: 'Nicht vergrößern, wenn das Original kleiner ist',
     resizing: 'Wird skaliert…',
     resizeDownload: 'Skalieren & Herunterladen',
+    blog: {
+      tocTitle: 'Inhalt',
+      title: 'Blog zum Bild-Resizer',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Warum einen Bild-Resizer verwenden?',
+          paragraphs: [
+            'Ein Bild-Resizer ist ein Tool bzw. eine Software, mit der die Abmessungen eines Bildes geändert werden. Damit können Sie die Größe eines gewünschten Bildes anpassen, indem Sie Höhe, Breite oder beides ändern. Dieses Tool ist besonders nützlich für Social-Media-Plattformen, die Größenbeschränkungen für das Hochladen oder Posten von Bildern haben.',
+          ],
+          listTitle: 'Zum Beispiel:',
+          bullets: [
+            'Instagram-Posts: 1080 x 1080px (Quadrat)',
+            'Facebook-Post: 1200 x 630px',
+            'X (ehemals Twitter) Post: 1200 x 675px',
+            'Instagram-Story: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Warum unser Bild-Resizer-Tool wählen?',
+          paragraphs: [
+            'Unser KI-gestützter Bild-Resizer macht das Skalieren präzise und extrem schnell. Sie können dieses Tool auf jedem Gerät nahtlos nutzen. Sie müssen keine App installieren oder herunterladen. Alle Dienste sind online in Ihrem bevorzugten Browser verfügbar.',
+          ],
+          bullets: [
+            'Sie können mit unserem Resize-Tool mehrere Bilder (sogar 100+) gleichzeitig skalieren. Mit einem leistungsstarken Gerät lassen sich 400 bis 500 Bilder in wenigen Sekunden bequem skalieren.',
+            'Die gesamte Verarbeitung erfolgt in Ihrem lokalen Browser. Sie müssen keine Bilder auf unsere Server hochladen. Ihre Bilder verlassen Ihr Gerät nie. So können Sie persönliche Bilder ohne Datenschutzrisiko skalieren.',
+            'Mehrere Einheiten zum Skalieren werden unterstützt.',
+            'Sie können das ursprüngliche Seitenverhältnis auch nach dem Skalieren beibehalten, indem Sie einfach das Kontrollkästchen aktivieren.',
+            'Wenn Sie mehrere Bilder skalieren, können Sie die Ergebnisse einzeln oder als ZIP-Datei herunterladen.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Schritt-für-Schritt-Anleitung',
+          steps: [
+            {
+              heading: 'Wählen Sie zuerst das Bild oder mehrere Bilder aus, die Sie skalieren möchten. Sie haben mehrere Möglichkeiten, Bilder auszuwählen.',
+              bullets: [
+                'Sie können Bilder einfach per Drag-and-drop hineinziehen, um sie zu skalieren.',
+                'Die Tastenkombination „Ctrl + V“ wird ebenfalls unterstützt, um Bilder in das Feld einzufügen.',
+                'Ein Klick auf „Choose Files“ öffnet den Datei-Explorer. Dort können Sie ebenfalls die gewünschten Bilder auswählen.',
+              ],
+            },
+            {
+              heading: 'Dann können Sie eine Einheit für die Skalierung wählen. Aktuell bieten wir folgende Einheiten an:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'Nach der Einheitsauswahl passen Sie Höhe und Breite an, um das Bild zu skalieren. Sie können das Seitenverhältnis durch Aktivieren des Kontrollkästchens sperren.',
+            },
+            {
+              heading: 'Aktivieren Sie anschließend „Don’t enlarge if original is smaller“, wenn das Bild nicht über seine Originalgröße vergrößert werden soll.',
+            },
+            {
+              heading: 'Danach wählen Sie die Download-Option.',
+              bullets: [
+                'Wählen Sie ZIP, wenn Sie mehrere Bilder skalieren und alle als eine zip-Datei herunterladen möchten.',
+                'Oder wählen Sie „separate“, um jedes skalierte Bild separat herunterzuladen.',
+              ],
+            },
+            {
+              heading: 'Klicken Sie dann auf „Resize & Download“, um Ihre skalierten Bilder gemäß der gewählten Download-Option herunterzuladen.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Vorteile des Bild-Resizer-Tools: Der wichtigste Vorteil ist die korrekte Platzierung von Bildern in Webseiten und Social-Media-Posts.',
+          tocLabel: '4. Vorteile des Bild-Resizer-Tools',
+          bullets: [
+            'UX verbessern: Die richtige Größe und Platzierung von Bildern verbessert die Nutzererfahrung deutlich. Zu große oder zu kleine Bilder ohne Anpassung führen zu einer schlechten User Experience.',
+            'Social-Media-Unterstützung: Viele Social-Media-Apps haben eigene Größenlimits für Bild-Posts. Unser Bild-Resizer hilft, Bilder auf diese benötigten Maße anzupassen.',
+            'Responsive Design: Wenn Sie als Entwickler ein responsives Design erstellen, müssen Bilder in mehreren Größen vorliegen, um verschiedene Geräte zu unterstützen.',
+            'Beste Wahl: Statt Bilder zu strecken oder zu beschneiden, was die Abmessungen ungünstig verändern kann, ist ein Bild-Resizer die beste Option.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Unterstützte Formate: Unser Bild-Resizer-Tool erlaubt das Auswählen von Bildern in jedem Format zur Skalierung. Hier sind die Formate:',
+          tocLabel: '5. Unterstützte Formate',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   cropper: {
@@ -324,6 +502,94 @@ const de = {
     saveNext: 'Speichern & Weiter',
     croppedNofTotal: 'Sie haben {n} von {total} Bildern zugeschnitten.',
     downloadN: '{n} herunterladen',
+    blog: {
+      tocTitle: 'Inhalt',
+      title: 'Bild-Zuschneider-Blog',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Warum einen Bild-Zuschneider verwenden?',
+          paragraphs: [
+            'Ein Bild-Zuschneider ist ein Software-Tool, das verwendet wird, um das Bild in die gewünschte Form zu schneiden. Es wird häufig verwendet, um einen benötigten Teil des Bildes auszuschneiden und unerwünschte äußere Teile für jeden Zweck zu entfernen. Es bietet ein Zuschneidefeld, das Sie an die Position anpassen können, in der Sie zuschneiden möchten.',
+          ],
+          listTitle: 'Zum Beispiel:',
+          bullets: [
+            'Ihr eigenes Bild aus einem Gruppenfoto ausschneiden.',
+            'Ihren Namen aus einer Liste ausschneiden.',
+            'Die Fortschrittsleiste aus einem Vollbild-Screenshot ausschneiden.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Warum unseren Bild-Zuschneider wählen?',
+          paragraphs: [
+            'Unser Bild-Zuschneider-Tool ermöglicht es Ihnen, Bilder präzise und sehr schnell zuzuschneiden. Sie müssen nur die Größe des Zuschneidefeldes an die Position anpassen, die Sie aus einem beliebigen Bild ausschneiden möchten. Fast alle Bildformate werden bei der Auswahl des Bildes unterstützt.',
+          ],
+          bullets: [
+            'Sie können so viele Bilder zuschneiden, wie Ihr Gerät unterstützt. Wenn Sie ein leistungsstarkes Gerät haben, können Sie sogar mehr als 100 Bilder gleichzeitig ohne Verzögerung oder andere Probleme zuschneiden.',
+            'Ihre Bilder werden in Ihrem lokalen Browser verarbeitet. Es ist nicht nötig, Bilder auf unsere Server hochzuladen, daher verlässt kein Bild Ihr Gerät. Sie können Ihre persönlichen Bilder ohne Unsicherheit oder Risiko zuschneiden.',
+            'Viele Tools melden einen Fehler bei ungültigem Bildformat. Unser Bild-Zuschneider-Tool löst dieses Problem, indem es fast alle Bildformate unterstützt.',
+            'Wenn Sie mehrere Bilder gleichzeitig zuschneiden, erlaubt unser Tool Ihnen, die zugeschnittenen Bilder als ZIP oder als einzelne Bilder nach Ihrer Präferenz herunterzuladen.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Schritt-für-Schritt-Anleitung',
+          steps: [
+            {
+              heading: '1. Wählen Sie zunächst das Bild aus, das Sie zuschneiden möchten. Das gleichzeitige Auswählen mehrerer Bilder wird von unserem Bild-Zuschneider-Tool ebenfalls unterstützt.',
+              bullets: [
+                'Ziehen Sie das Bild per Drag-and-drop in das Feld, um es zuzuschneiden.',
+                'Sie können das Bild auch über den Datei-Explorer auswählen, indem Sie auf die Schaltfläche Dateien auswählen im Zuschneidefeld klicken.',
+                'Die Tastenkombination Ctrl + V wird ebenfalls unterstützt, um die Bilder in das Feld einzufügen.',
+              ],
+            },
+            {
+              heading: '2. Passen Sie dann die Größe und Position des Zuschneidefeldes auf dem Bild an, um es auszuschneiden.',
+            },
+            {
+              heading: '3. Sie können das Zuschneidefeld auch anpassen, indem Sie die Werte für Höhe, Breite, horizontale Position und vertikale Position manuell eingeben.',
+            },
+            {
+              heading: '4. Sie können auch einige vorgefertigte Vorlagen verwenden:',
+              bullets: [
+                'Querformat(16:9)',
+                'Hochformat(9:16)',
+                'Quadrat(1:1)',
+              ],
+            },
+            {
+              heading: '5. Dann müssen Sie eine der Download-Optionen auswählen.',
+              bullets: [
+                'ZIP: Wählen Sie diese Option, wenn Sie mehrere Bilder zuschneiden und alle zugeschnittenen Bilder als eine einzelne Datei herunterladen möchten.',
+                'Einzeln: Wenn Sie alle zugeschnittenen Bilder einzeln herunterladen möchten, wählen Sie diese Option über die Umschaltfläche.',
+              ],
+            },
+            {
+              heading: '6. Klicken Sie dann auf die Schaltfläche Zuschneiden & Herunterladen, um alle zugeschnittenen Bilder gemäß Ihren voreingestellten Abmessungen herunterzuladen.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Vorteile des Bild-Zuschneiders: Das Bild-Zuschneider-Tool bietet mehrere Vorteile in der digitalen Welt. Einige werden unten beschrieben:',
+          tocLabel: '4. Vorteile des Bild-Zuschneiders',
+          bullets: [
+            'Einpassen von Bildern in Rahmen: Der Bild-Zuschneider hilft Ihnen, Bilder korrekt in Rahmen einzupassen. Diese Rahmen können entweder auf einer Webseite oder auf einer Social-Media-Plattform sein.',
+            'Verbesserung der UX: Da die korrekte Platzierung von Bildern die Benutzererfahrung verbessert, hilft der Bild-Zuschneider dabei, die UX in hohem Maß zu verbessern.',
+            'Entfernen unerwünschter Ränder: Sie können unerwünschte Ränder von einem Bild entfernen, um es zu verfeinern.',
+            'Trennung des gewünschten Objekts: Sie können Ihr Bild auch aus einem Gruppenfoto trennen.',
+            'Speicher sparen: Das Zuschneiden des Bildes spart definitiv Speicher, da der rohe Bereich des Bildes abgeschnitten wird und nur der gewünschte Teil gespeichert wird.',
+            'Präsentation optimieren: Da eine normale Präsentation mit 10 unbeschnittenen Bildern fast 30MB Speicher benötigt, kann dieselbe Präsentation mit zugeschnittenen Bildern fast 10MB Speicher benötigen.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Unterstützte Formate:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   photoEditor: {
@@ -530,7 +796,7 @@ const de = {
     angle: 'Winkel',
     downloadFormatBtn: '{format} herunterladen',
     pngDesc: 'Verlustfrei, Transparenzunterstützung',
-    jpgDesc: 'Komprimiert, kleinere Datei',
+    jpgDesc: 'Beliebtes/universelles Dateiformat',
     webpDesc: 'Modernes Format, bestes Qualitäts-/Größenverhältnis',
     svgDesc: 'Skalierbare Vektorgrafik',
     pdfDesc: 'Druckfertiges Dokument',
@@ -539,6 +805,173 @@ const de = {
     qrCode: 'QR-Code',
     scanMe: 'SCANNEN',
     scanHere: 'HIER SCANNEN',
+    blog: {
+      card1: {
+        title: '1. Was ist ein QR-Code?',
+        intro1: 'QR steht für „Quick Response“. Die enthaltenen Informationen können sehr schnell von Geräten gelesen werden.',
+        intro2: 'Ein QR-Code ist ein zweidimensionaler Code für Maschinen. Er kann Texte, Kontaktdaten, Links, Kartenpositionen und weitere Daten speichern.',
+        inventionTitle: 'Wie der QR-Code erfunden wurde:',
+        inventionText: 'Der QR-Code wurde 1994 von Masahiro Hara und seinem Team bei Denso Wave in Japan entwickelt, um deutlich mehr Daten als ein klassischer Barcode zu erfassen.',
+        keyFeaturesTitle: 'Wichtige Merkmale eines QR-Codes',
+        keyFeatures: [
+          {
+            title: 'So funktioniert QR',
+            text: 'Sie geben Text oder einen Link ein, und daraus wird ein Muster aus Quadraten erzeugt. Jedes Modul steht für Datenbits.',
+          },
+          {
+            title: 'Aufbau des QR-Codes',
+            text: 'Drei große Eckmarken bestimmen die Ausrichtung; viele kleine Module enthalten die eigentlichen Informationen.',
+          },
+          {
+            title: 'Datenkapazität des QR-Codes',
+            text: 'QR-Codes speichern in der Regel mehr Daten als eindimensionale Barcodes. Bei sehr vielen Zeichen steigt die Komplexität und die Scanbarkeit kann sinken.',
+          },
+          {
+            title: 'Fehlererkennung bei QR-Codes',
+            text: 'Auch bei kleinen Beschädigungen kann ein QR-Code oft gelesen werden. Fehlerkorrektur hilft, fehlende Teile zu rekonstruieren.',
+          },
+        ],
+        errorTitle: 'Fehlerkorrekturstufen des QR-Codes:',
+        errorIntro: 'Je nach Einsatz werden unterschiedliche Korrekturstufen verwendet:',
+        errorHeaders: {
+          level: 'Stufe',
+          recovery: 'Wiederherstellung',
+          bestUse: 'Beste Verwendung',
+        },
+        errorRows: [
+          {
+            level: 'Niedrig (L)',
+            recovery: '~7%',
+            useCases: [
+              'Geeignet für digitale Anzeigen, Websites oder saubere Umgebungen mit geringem Risiko.',
+              'Ideal für kurze Inhalte wie E-Mail-Adresse, Telefonnummer oder kurzen Text.',
+            ],
+          },
+          {
+            level: 'Mittel (M)',
+            recovery: '~15%',
+            useCases: [
+              'Passend für Flyer und Poster in normalen Bedingungen.',
+            ],
+          },
+          {
+            level: 'Quartil (Q)',
+            recovery: '~25%',
+            useCases: [
+              'Empfohlen für Außenbereiche oder rauere Umgebungen.',
+              'Sinnvoll, wenn ein kleines Logo in der Mitte einen Teil der Module überdeckt.',
+            ],
+          },
+          {
+            level: 'Hoch (H)',
+            recovery: '~30%',
+            useCases: [
+              'Nützlich bei höherem Risiko für Beschädigungen.',
+              'Geeignet bei größeren Logos im Zentrum des Codes.',
+              'Empfohlen für stark gestaltete QR-Designs.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Warum unseren QR-Code-Generator wählen?',
+        intro: 'Unser Generator erstellt QR-Codes schnell, sicher und unkompliziert. Sie können Design und Stil kostenlos an Ihr Branding anpassen.',
+        strengths: [
+          {
+            title: 'Professionelle Anpassung:',
+            text: 'Erstellen und gestalten Sie beliebig viele QR-Codes ohne Kosten mit vielen Optionen für Formen, Farben und Verläufe.',
+          },
+          {
+            title: 'Unterstützung mehrerer Formate:',
+            text: 'Vor dem Download wählen Sie einfach das gewünschte Dateiformat aus.',
+          },
+          {
+            title: 'Vorgefertigte Vorlagen:',
+            text: 'Nutzen Sie fertige Farbverläufe und Rahmen für ein professionelles Erscheinungsbild.',
+          },
+          {
+            title: 'Eigene Logos:',
+            text: 'Laden Sie Ihr Markenlogo hoch oder wählen Sie ein Logo aus der integrierten Bibliothek.',
+          },
+          {
+            title: 'Live-Vorschau:',
+            text: 'Alle Änderungen werden in Echtzeit direkt in der Vorschau angezeigt.',
+          },
+          {
+            title: 'Scan-Hinweise:',
+            text: 'Warnungen helfen bei der Auswahl scanfreundlicher Farbkombinationen.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'Nr.',
+          formats: 'Formate',
+          description: 'Beschreibung',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Verlustfrei, mit Transparenz' },
+          { no: '2', format: 'JPG', description: 'Beliebtes, universelles Dateiformat' },
+          { no: '3', format: 'WEBP', description: 'Modernes Format mit starkem Qualitäts-/Größenverhältnis' },
+          { no: '4', format: 'SVG', description: 'Skalierbare Vektorgrafik' },
+          { no: '5', format: 'PDF', description: 'Druckfertiges Dokument' },
+        ],
+      },
+      card3: {
+        title: '3. Schritt-für-Schritt-Anleitung:',
+        step1Intro: 'Wählen Sie zuerst die gewünschte QR-Kategorie aus, zum Beispiel Link, Text, WLAN, Kontakt, E-Mail oder Karte.',
+        categories: ['Link / URL', 'Text', 'WiFi', 'Kontakt', 'Gmail', 'Google Maps'],
+        step2: 'Fügen Sie danach Ihre Daten in das entsprechende Eingabefeld ein.',
+        step3Intro: 'Klicken Sie auf Generate & Customize, um das Anpassungsfenster zu öffnen. Dort finden Sie folgende Optionen:',
+        options: [
+          {
+            title: 'Stil & Form:',
+            text: 'Passen Sie die Form der Module an, z. B. rund, punktförmig, horizontal, vertikal und weitere Varianten.',
+          },
+          {
+            title: 'Farbe:',
+            text: 'Wählen Sie Vorder- und Hintergrundfarben. Zusätzlich sind lineare und radiale Verläufe mit frei wählbaren Winkeln möglich.',
+          },
+          {
+            title: 'Rahmen:',
+            text: 'Wählen Sie einen Rahmen aus der Bibliothek, der automatisch passend angewendet wird.',
+          },
+          {
+            title: 'Logo:',
+            text: 'Fügen Sie ein Logo in der Mitte ein, entweder aus der Bibliothek oder als eigener Upload.',
+          },
+          {
+            title: 'Vorlagen:',
+            text: 'Verwenden Sie fertige Templates, um schnell ein stimmiges Design zu erhalten.',
+          },
+          {
+            title: 'Dateiformat:',
+            text: 'Wählen Sie das Download-Format wie PNG, WEBP, SVG oder PDF.',
+          },
+          {
+            title: 'QR-Daten bearbeiten:',
+            text: 'Ändern Sie den Inhalt des QR-Codes, ohne Ihre Design-Einstellungen zu verlieren.',
+          },
+        ],
+        finalStep: 'Zum Schluss klicken Sie auf Download. Der QR-Code wird sofort im gewählten Format und mit Ihren Einstellungen gespeichert.',
+      },
+      card4: {
+        title: '4. Vorteile:',
+        intro: 'QR-Codes verbinden die physische mit der digitalen Welt. Ein kurzer Scan reicht, um Links, Kontakte oder Standorte sofort zu öffnen.',
+        benefits: [
+          {
+            title: 'Langfristige Nutzung:',
+            text: 'QR-Codes haben keine feste Ablaufzeit und bleiben nutzbar, solange die hinterlegten Daten verfügbar sind.',
+          },
+          {
+            title: 'Offline-Scan möglich:',
+            text: 'Das Gerät kann das QR-Muster auch ohne Internet lesen und die enthaltenen Daten anzeigen.',
+          },
+          {
+            title: 'Kostenfrei:',
+            text: 'Die Erstellung grundlegender QR-Codes ist dauerhaft kostenlos.',
+          },
+        ],
+      },
+    },
   },
 
   qrScanner: {
@@ -665,25 +1098,25 @@ const de = {
       { q: 'Kann ich transparente PNG-Bilder in JPG konvertieren?', a: 'Ja. Da JPG keine Transparenz unterstützt, werden transparente Bereiche standardmäßig mit einem weißen Hintergrund gefüllt.' },
     ],
     imageCompressor: [
-      { q: 'Wie funktioniert die Bildkomprimierung?', a: 'Unser Tool reduziert die Dateigröße, indem es das Bild auf einem niedrigeren Qualitätsniveau mit der eingebauten Canvas-API des Browsers neu kodiert.' },
-      { q: 'Wird die Qualität durch die Komprimierung sichtbar verringert?', a: 'Bei moderaten Komprimierungsstufen (20-40 %) ist der Unterschied für das menschliche Auge praktisch nicht wahrnehmbar.' },
-      { q: 'Welche Bildformate kann ich komprimieren?', a: 'Sie können JPG, PNG, WEBP, BMP und die meisten anderen gängigen Rasterformate hochladen.' },
-      { q: 'Kann ich mehrere Bilder auf einmal komprimieren?', a: 'Ja! Ziehen Sie einfach mehrere Dateien per Drag-and-Drop. Sie können alle als ZIP herunterladen.' },
-      { q: 'Werden meine komprimierten Bilder auf einem Server gespeichert?', a: 'Nein. Alles läuft lokal in Ihrem Browser. Ihre Bilder werden nirgendwo hochgeladen.' },
+      { q: 'Verringert das Komprimieren eines Bildes die Qualität?', a: 'Nein, das Komprimieren eines Bildes beeinträchtigt die Qualität nicht, solange Sie in den empfohlenen Bereichen bleiben. Qualitätsindikatoren helfen dabei: i. 1 bis 40 % Komprimierung: grüner Hinweis mit „Gute Qualität“. ii. 41 bis 60 % Komprimierung: gelber Hinweis mit „Normale Qualität“. Dieser Bereich ist für gute Ergebnisse empfohlen. iii. 61 bis 100 % Komprimierung: rote Warnung mit „Schlechte Qualität“. In diesem Bereich kann der Qualitätsverlust deutlich sichtbar werden.' },
+      { q: 'Welche Bildformate werden für die Komprimierung unterstützt?', a: 'Unser Bildkompressor unterstützt alle folgenden Formate:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Kann ich mehrere Bilder gleichzeitig komprimieren?', a: 'Ja, absolut. Sie können mehrere Bilder (sogar 100+) gleichzeitig komprimieren, wenn Ihr Gerät es unterstützt. Da die Komprimierung Systemressourcen nutzt, funktionieren große Mengen besser auf leistungsstarken Geräten. Bei schwächeren Geräten können Sie in mehreren Durchgängen komprimieren – das Tool bleibt dennoch kostenlos und unbegrenzt nutzbar.' },
+      { q: 'Speichern oder laden Sie unsere Bilder auf Ihre Server hoch?', a: 'Nein. Wir laden Ihre Bilder niemals auf unsere Server hoch und speichern sie dort auch nicht. Alles wird lokal in Ihrem Browser komprimiert. Ihre Bilder verlassen Ihr Gerät nicht.' },
+      { q: 'Ist dieses Bildkomprimierungs-Tool kostenlos?', a: 'Ja. Unser Bildkompressor ist dauerhaft komplett kostenlos. Es gibt keine Zahlungen, keine versteckten Gebühren und alle Funktionen – einschließlich Mehrfachkomprimierung – sind gratis.' },
     ],
     cropImage: [
-      { q: 'Kann ich Bilder auf ein bestimmtes Seitenverhältnis zuschneiden?', a: 'Ja. Sie können aus voreingestellten Verhältnissen wie 1:1, 4:3, 16:9 wählen oder ein benutzerdefiniertes eingeben.' },
-      { q: 'Reduziert das Zuschneiden die Bildqualität?', a: 'Nein. Beim Zuschneiden werden lediglich Pixel außerhalb des gewählten Bereichs entfernt. Die verbleibenden Pixel behalten ihre ursprüngliche Qualität.' },
-      { q: 'Kann ich mehrere Bilder auf einmal zuschneiden?', a: 'Absolut. Laden Sie mehrere Bilder hoch, legen Sie die Zuschneidebereiche fest und laden Sie alle auf einmal herunter.' },
-      { q: 'Welche Dateiformate werden für das Zuschneiden unterstützt?', a: 'Alle gängigen Bildformate werden unterstützt, einschließlich JPG, PNG, WEBP, GIF und BMP.' },
-      { q: 'Werden meine Bilder zur Verarbeitung auf einen Server hochgeladen?', a: 'Nein. Alles wird lokal in Ihrem Browser mit der HTML5-Canvas-API durchgeführt.' },
+      { q: 'Wird durch das Zuschneiden die Bildqualität verringert?', a: 'Nein, das Zuschneiden des Bildes wird die visuelle Qualität des Bildes überhaupt nicht beeinträchtigen. Beim Zuschneiden werden nur die unerwünschten Teile verworfen. Es verändert niemals die Pixel des Teils des Bildes, der zugeschnitten werden soll. Daher können Sie Ihre Bilder in ihrer Originalqualität ohne jegliche Pixelbeschädigung zuschneiden.' },
+      { q: 'Welche Bildformate werden für den Bild-Zuschneider unterstützt?', a: 'Sie können ein Bild in jedem beliebigen Format auswählen, da unser Bild-Zuschneider-Tool fast alle Bildformate unterstützt. Diese sind unten aufgeführt:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Werden meine Bilder auf Ihren Server hochgeladen?', a: 'Nein, die gesamte Verarbeitung erfolgt in Ihrem lokalen Browser. Ihre Bilder werden niemals auf unseren Server hochgeladen, da sie Ihr Gerät niemals verlassen. Daher können Sie Ihre persönlichen Bilder mit unserem Bild-Zuschneider ohne Risiko zuschneiden.' },
+      { q: 'Kann ich mehrere Bilder gleichzeitig zuschneiden?', a: 'Ja, Sie können mehrere Bilder (sogar 100+) gleichzeitig zuschneiden, wenn Ihr System dies unterstützt. Da das Zuschneiden von Bildern Ihre Systemressourcen nutzt, können Sie mit einem leistungsstarken Laptop, PC oder Mobilgerät viele Bilder gleichzeitig zuschneiden. Wenn Sie ein Gerät mit niedriger Leistung haben, können Sie Bilder in Chargen zuschneiden, da dieses Tool kostenlos ist, auch wenn Sie mehrere Bilder gleichzeitig zuschneiden.' },
+      { q: 'Ist dieses Bild-Zuschneider-Tool kostenlos nutzbar?', a: 'Ja, dieses Bild-Zuschneider-Tool ist für immer völlig kostenlos nutzbar. Sie können dieses Tool überall, jederzeit und auf jedem Gerät verwenden. Sie erhalten nicht nur ein responsives Design für alle Geräte, sondern werden auch niemals aufgefordert, für eine Premium-Funktion zu zahlen. Alle Funktionen sind vollständig kostenlos ohne versteckte Gebühren.' },
     ],
     resizeImage: [
-      { q: 'Kann ich Bilder auf genaue Pixelabmessungen skalieren?', a: 'Ja. Geben Sie die gewünschte Breite und Höhe in Pixel, Zoll oder Zentimeter ein. Sie können auch das Seitenverhältnis sperren.' },
-      { q: 'Wird mein Bild durch das Skalieren unscharf?', a: 'Das Vergrößern über die ursprüngliche Auflösung hinaus kann eine leichte Weichzeichnung einführen. Das Verkleinern behält die Schärfe bei. Wir verwenden hochwertige bikubische Interpolation.' },
-      { q: 'Kann ich im Stapel skalieren?', a: 'Ja. Laden Sie mehrere Bilder hoch und wenden Sie dieselben Zielmaße auf alle an. Herunterladen einzeln oder als ZIP.' },
-      { q: 'Welche Einheiten kann ich für die Abmessungen verwenden?', a: 'Sie können in Pixel, Zoll, Zentimeter oder als Prozentsatz der Originalgröße angeben.' },
-      { q: 'Werden beim Skalieren Daten an einen Server gesendet?', a: 'Nein. Das Skalieren wird vollständig in Ihrem Browser durchgeführt.' },
+      { q: 'Kann ich mehrere Bilder gleichzeitig skalieren?', a: 'Absolut, unser Bild-Resizer erlaubt das Skalieren mehrerer Bilder auf einmal. Laden Sie einfach so viele Bilder hoch, wie Ihr Gerät unterstützt, und unsere KI-Engine skaliert alle Bilder in einem Durchgang. Wenn Ihr Gerät leistungsschwächer ist, skalieren Sie in mehreren Chargen, um Verzögerungen zu vermeiden. Das Skalieren nutzt Geräte-Ressourcen, damit keine Server-Uploads nötig sind und Ihre Privatsphäre geschützt bleibt.' },
+      { q: 'Ist dieses Bild-Skalierungs-Tool kostenlos nutzbar?', a: 'Ja, dieses Tool ist dauerhaft kostenlos nutzbar. Sie werden nie nach einem kostenpflichtigen Abo gefragt, um Premium-Funktionen freizuschalten. Beim Download Ihrer skalierten Bilder fallen keine versteckten Gebühren an.' },
+      { q: 'Verringert das Skalieren die Bildqualität?', a: '✅Decrease Size (downscale): Das Verkleinern eines Bildes reduziert die visuelle Qualität nicht. Im Gegenteil, das skalierte Bild wirkt oft sogar schärfer als das Original. Daher führt das Verkleinern auf kleinere Maße nicht zu Qualitätsverlust.\n❌Increase Size (upscale): Das Vergrößern über die Originalgröße kann die visuelle Qualität beeinflussen. Wie stark, hängt vom Ausmaß der Vergrößerung ab. Je stärker Sie vergrößern, desto stärker sinkt die Qualität.' },
+      { q: 'Ist dieses Bild-Skalierungs-Tool sicher?', a: 'Ja, unser Bild-Resizer ist vollständig sicher, insbesondere für persönliche und private Bilder, da alle Bilder lokal verarbeitet werden. Keine Ihrer Daten verlässt Ihr Gerät in irgendeiner Form während der Verarbeitung. Sie können persönliche Bilder daher risikofrei skalieren.' },
+      { q: 'Welche Bildformate werden unterstützt?', a: 'Alle Bildformate werden von unserem Bild-Resizer unterstützt. Sie können Bilder in diesen Formaten auswählen:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'Wie funktioniert die Hintergrundentfernung?', a: 'Wir verwenden ein fortschrittliches KI-Modell, das direkt in Ihrem Browser läuft, um das Motiv zu erkennen und vom Hintergrund zu trennen.' },
@@ -700,11 +1133,12 @@ const de = {
       { q: 'Werden Daten auf einen Server hochgeladen?', a: 'Nein. Alles wird lokal in Ihrem Browser durchgeführt.' },
     ],
     qrCodeGenerator: [
-      { q: 'Welche Datentypen kann ich in einem QR-Code kodieren?', a: 'Sie können URLs, einfachen Text, WLAN-Zugangsdaten, E-Mail-Adressen, Telefonnummern, SMS, vCards und mehr kodieren.' },
-      { q: 'Kann ich die Farben und den Stil meines QR-Codes anpassen?', a: 'Ja. Wählen Sie benutzerdefinierte Vordergrund- und Hintergrundfarben, fügen Sie ein Logo hinzu und wählen Sie aus mehreren Stilen.' },
-      { q: 'In welchen Formaten kann ich den QR-Code herunterladen?', a: 'Sie können als PNG, SVG oder JPEG herunterladen.' },
-      { q: 'Macht das Hinzufügen eines Logos den QR-Code unlesbar?', a: 'Unser Tool verwendet Fehlerkorrektur, damit der QR-Code weiterhin scannbar bleibt, solange das Logo nicht zu viel bedeckt.' },
-      { q: 'Wird die QR-Code-Generierung auf einem Server durchgeführt?', a: 'Nein. QR-Codes werden vollständig in Ihrem Browser generiert. Es werden keine Daten an einen Server gesendet.' },
+      { q: 'Läuft dieser QR-Code irgendwann ab?', a: 'Nein, diese QR-Codes laufen nicht ab und bieten lebenslange Nutzung. Da sie fest codierte Anweisungen in Form von Bits in quadratischen Modulen speichern, können die darin gespeicherten Informationen nicht geändert oder entfernt werden. Sie können die Informationen auch nach Jahren noch mit jeder Kamera durch einfaches Scannen abrufen.' },
+      { q: 'Warum lässt sich mein QR-Code nicht scannen?', a: 'Ihr QR-Code kann aus folgenden Gründen nicht scanbar sein: i. Geringer Kontrast: Wenn Vordergrund- und Hintergrundfarbe zu ähnlich sind, leidet die Sichtbarkeit und das Scannen kann fehlschlagen. Unser Tool warnt Sie während der Anpassung bei niedrigem Kontrast und ähnlichen Problemen. ii. Zu viele Daten: Wenn Sie sehr viel Text codieren, wird der QR-Code sehr komplex und schwer lesbar. Ein Textlängen-Hinweis hilft Ihnen bei der optimalen Länge. iii. Unscharfer Druck: Laden Sie den QR-Code in hoher Auflösung herunter, z. B. als PNG oder SVG, was von unserem Tool unterstützt wird.' },
+      { q: 'Kann ich ein Logo in den QR-Code einfügen?', a: 'Ja, natürlich. Sie können ein eigenes Logo hochladen oder eines aus der integrierten Logo-Bibliothek auswählen. Das gewählte Logo wird automatisch in der Mitte des QR-Codes platziert und angepasst.' },
+      { q: 'Wie kann ich den QR-Code scannen?', a: 'Sie können den QR-Code direkt mit der Kamera Ihres Smartphones scannen. Für automatische Link-Weiterleitung und weitere erweiterte Funktionen können Sie außerdem kostenlos unseren QR-Code-Scanner unter https://photremium.com/qr-code-scanner verwenden.' },
+      { q: 'Wie viele QR-Codes kann ich kostenlos erstellen?', a: 'UNBEGRENZT! Sie können beliebig viele QR-Codes kostenlos erstellen. Alle Funktionen, Anpassungen und Vorlagen sind dauerhaft kostenlos. Sie brauchen kein Abo, um Premium-Funktionen zu nutzen.' },
+      { q: 'Muss ich mich anmelden/registrieren, um einen QR-Code zu erstellen?', a: 'Nein. Geben Sie einfach Ihren Inhalt ein, erstellen Sie den QR-Code und laden Sie ihn nach der Anpassung herunter. Eine Anmeldung oder Registrierung ist nicht erforderlich, da alle Funktionen vollständig kostenlos zugänglich sind.' },
     ],
     qrCodeScanner: [
       { q: 'Wie scanne ich einen QR-Code?', a: 'Sie können die Kamera Ihres Geräts zum Live-Scannen verwenden oder ein Bild hochladen, das einen QR-Code enthält. Das Ergebnis wird sofort angezeigt.' },

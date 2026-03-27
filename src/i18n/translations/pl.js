@@ -197,6 +197,99 @@ const pl = {
     compressing: 'Kompresowanie…',
     compressDownload: 'Kompresuj i Pobierz',
     lowQualityWarning: 'Wysoka kompresja może wyraźnie obniżyć ostrość obrazu.',
+    blog: {
+      tocTitle: 'Spis treści',
+      title: 'Blog kompresora obrazów',
+      formatsIntro: 'Nasze narzędzie obsługuje wszystkie formaty obrazów, więc możesz bezproblemowo kompresować dowolny obraz. Pełna lista formatów znajduje się poniżej:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. Czym jest kompresor obrazów?',
+          paragraphs: [
+            'Kompresor obrazów to oprogramowanie lub usługa online, która zmniejsza rozmiar pliku obrazu przy zachowaniu jakości wizualnej. Zbyt duża kompresja może jednak zauważalnie pogorszyć jakość.',
+          ],
+          listTitle: 'TYPY:',
+          bullets: [
+            'Kompresja stratna: rozmiar obrazu jest zmniejszany przez usunięcie części danych. Jakość może spaść, ale często zmiana jest słabo widoczna gołym okiem.',
+            'Kompresja bezstratna: zmniejsza rozmiar pliku bez pogorszenia jakości wizualnej obrazu.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Dlaczego warto wybrać nasze narzędzie?',
+          bullets: [
+            'Nasz kompresor obrazów oparty na AI działa płynnie na wszystkich urządzeniach i zapewnia najlepsze możliwe wyniki.',
+            'Możesz kompresować wiele obrazów jednocześnie (nawet 100+) jednym kliknięciem.',
+            'Nie musisz przesyłać obrazów na serwer. Wszystko odbywa się lokalnie w przeglądarce.',
+            'Nasz kompresor obrazów jest całkowicie darmowy na zawsze. Możesz też udostępnić go znajomym.',
+            'Możesz wybrać poziom kompresji zgodnie ze swoimi potrzebami.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Instrukcja krok po kroku',
+          steps: [
+            {
+              heading: '1. Wybierz obraz(y), które chcesz skompresować.',
+              bullets: [
+                'Przeciągnij i upuść obraz(y) do pola przesyłania.',
+                'Możesz też skopiować obraz(y) i wkleić je do pola za pomocą (Ctrl + V).',
+                'Obsługiwany jest także eksplorator plików po kliknięciu przycisku wyboru.',
+              ],
+            },
+            {
+              heading: '2. Następnie wybierz procent kompresji.',
+              bullets: [
+                'Poziomy suwak pozwala wygodnie ustawić poziom kompresji. Korzystaj z poniższych zakresów, aby uzyskać dokładne wyniki.',
+              ],
+              table: {
+                headers: ['Procent kompresji', 'Wynik'],
+                rows: [
+                  ['1%  do  40%', 'Najlepsza jakość'],
+                  ['41%  do  60%', 'Normalna jakość (Zalecane)'],
+                  ['61%  do  100%', 'Niska jakość'],
+                ],
+              },
+            },
+            {
+              heading: '3. Sprawdź, ile miejsca zaoszczędziłeś.',
+              paragraphs: [
+                'Wszystkie metryki rozmiaru są wyświetlane w czasie rzeczywistym. Możesz wyraźnie zobaczyć, ile miejsca udało się zaoszczędzić, i dostosować poziom kompresji do swoich wymagań.',
+              ],
+            },
+            {
+              heading: '4. Wybierz opcję pobierania przełącznikiem.',
+              bullets: [
+                'ZIP: jeśli kompresujesz wiele obrazów, pojawi się ta opcja. Spakuje wszystkie skompresowane obrazy do jednego pliku ZIP (zalecane przy większej liczbie obrazów).',
+                'Oddzielnie: pobiera wszystkie obrazy osobno, a nie jako jeden ZIP (zalecane przy małej liczbie obrazów, mniej niż 10).',
+              ],
+            },
+            {
+              heading: '5. Skompresuj i pobierz obrazy.',
+              paragraphs: [
+                'Ten przycisk automatycznie pobierze wszystkie skompresowane obrazy zgodnie z wybraną opcją pobierania.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Korzyści z kompresora obrazów.',
+          bullets: [
+            'Mniejsze koszty przechowywania: kompresja obrazu znacząco zmniejsza zajmowane miejsce.',
+            'Szybsze ładowanie: skompresowane obrazy ładują się szybciej i poprawiają doświadczenie użytkownika.',
+            'Rozwiązanie limitu Gmail: Gmail ogranicza załączniki do 25MB, więc kompresja pozwala wysłać więcej plików.',
+            'Szybsze udostępnianie i przesyłanie: duże pliki wysyłają się dłużej; kompresja oszczędza czas i transfer.',
+            'Optymalizacja prezentacji: niekompresowane obrazy zwiększają wagę pliku, a kompresja znacząco ją obniża.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Obsługiwane formaty.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   converter: {
@@ -301,6 +394,91 @@ const pl = {
     dontEnlarge: 'Nie powiększaj, jeśli oryginał jest mniejszy',
     resizing: 'Zmiana rozmiaru…',
     resizeDownload: 'Zmień Rozmiar i Pobierz',
+    blog: {
+      tocTitle: 'Spis treści',
+      title: 'Blog o Zmianie Rozmiaru Obrazów',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Dlaczego warto używać narzędzia do zmiany rozmiaru obrazu?',
+          paragraphs: [
+            'Narzędzie do zmiany rozmiaru obrazu to oprogramowanie służące do zmiany wymiarów obrazu. Możesz dostosować wysokość, szerokość lub oba parametry, aby uzyskać potrzebny rozmiar. Jest szczególnie przydatne na platformach społecznościowych z limitami wymiarów przesyłanych obrazów.',
+          ],
+          listTitle: 'Na przykład:',
+          bullets: [
+            'Post na Instagramie: 1080 x 1080px (kwadrat)',
+            'Post na Facebooku: 1200 x 630px',
+            'Post na X (Twitter): 1200 x 675px',
+            'Relacja Instagram: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Dlaczego wybrać nasze narzędzie do zmiany rozmiaru?',
+          paragraphs: [
+            'Nasze narzędzie AI do zmiany rozmiaru obrazów pozwala skalować obrazy precyzyjnie i bardzo szybko. Działa płynnie na każdym urządzeniu i nie wymaga instalacji aplikacji. Wszystkie funkcje są dostępne online w przeglądarce.',
+          ],
+          bullets: [
+            'Możesz zmieniać rozmiar wielu obrazów jednocześnie (nawet 100+). Na wydajnym urządzeniu możliwe jest także przetworzenie 400–500 obrazów w kilka sekund.',
+            'Wszystko przetwarzane jest lokalnie w przeglądarce. Nie musisz wysyłać obrazów na serwer, więc pliki nie opuszczają urządzenia.',
+            'Obsługiwane są różne jednostki zmiany rozmiaru.',
+            'Możesz zachować proporcje obrazu za pomocą jednego pola wyboru.',
+            'Przy wielu obrazach możesz pobierać osobno albo jako ZIP.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Instrukcja krok po kroku',
+          steps: [
+            {
+              heading: 'Najpierw wybierz obrazy, których rozmiar chcesz zmienić (jeden lub wiele). Masz kilka sposobów wyboru.',
+              bullets: [
+                'Przeciągnij i upuść obrazy do pola drop.',
+                'Możesz też wkleić obrazy skrótem “Ctrl + V”.',
+                'Albo kliknij “Choose Files”, aby wybrać obrazy z eksploratora plików.',
+              ],
+            },
+            {
+              heading: 'Następnie wybierz jednostkę zmiany rozmiaru. Dostępne jednostki to:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'Po wybraniu jednostki ustaw wysokość i szerokość. Możesz też zablokować proporcje obrazu.',
+            },
+            {
+              heading: 'Jeśli nie chcesz powiększać ponad rozmiar oryginalny, zaznacz “Don’t enlarge if original is smaller”.',
+            },
+            {
+              heading: 'Następnie wybierz opcję pobierania.',
+              bullets: [
+                'Wybierz ZIP, jeśli chcesz pobrać wszystkie obrazy jako jeden plik zip.',
+                'Wybierz “separate”, jeśli chcesz pobierać każdy obraz osobno.',
+              ],
+            },
+            {
+              heading: 'Na końcu kliknij “Resize & Download”, aby pobrać obrazy zgodnie z wybraną opcją.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Korzyści z narzędzia do zmiany rozmiaru: największą zaletą jest prawidłowe dopasowanie obrazów na stronach internetowych i w postach social media.',
+          tocLabel: '4. Korzyści z narzędzia do zmiany rozmiaru',
+          bullets: [
+            'Lepszy UX: prawidłowy rozmiar i rozmieszczenie obrazów znacząco poprawiają doświadczenie użytkownika.',
+            'Wsparcie social media: wiele platform ma limity wymiarów i nasze narzędzie pomaga je spełnić.',
+            'Responsywny design: twórcy stron potrzebują wielu rozmiarów obrazów dla różnych urządzeń.',
+            'Lepszy wybór: zamiast rozciągać lub agresywnie kadrować obraz, zmiana rozmiaru zwykle daje lepszy efekt.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Obsługiwane formaty: nasze narzędzie obsługuje wybór obrazów we wszystkich formatach. Lista obsługiwanych formatów:',
+          tocLabel: '5. Obsługiwane formaty',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   cropper: {
@@ -331,6 +509,94 @@ const pl = {
     saveNext: 'Zapisz i Dalej',
     croppedNofTotal: 'Przycięto {n} z {total}.',
     downloadN: 'Pobierz {n}',
+    blog: {
+      tocTitle: 'Spis treści',
+      title: 'Blog o Przycinaniu Obrazów',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Dlaczego warto używać narzędzia do przycinania obrazów?',
+          paragraphs: [
+            'Narzędzie do przycinania obrazów to oprogramowanie służące do przycinania obrazu do pożądanego kształtu. Jest powszechnie używane do zachowania potrzebnej części obrazu i usunięcia zewnętrznych, niechcianych obszarów do dowolnego celu. Narzędzie udostępnia ramkę kadrowania, którą możesz dopasować w miejscu, które chcesz przyciąć.',
+          ],
+          listTitle: 'Na przykład:',
+          bullets: [
+            'Wycięcie siebie ze zdjęcia grupowego.',
+            'Wycięcie swojego imienia z listy.',
+            'Wycięcie paska postępu ze zrzutu ekranu pełnego ekranu.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Dlaczego wybrać nasze narzędzie do przycinania obrazów?',
+          paragraphs: [
+            'Nasze narzędzie do przycinania obrazów pozwala przycinać obrazy dokładnie i bardzo szybko. Wystarczy dopasować rozmiar ramki kadrowania w miejscu, które chcesz przyciąć na dowolnym obrazie. Przy wyborze obrazu obsługiwane są prawie wszystkie formaty obrazów.',
+          ],
+          bullets: [
+            'Możesz przyciąć tyle obrazów, ile obsługuje Twoje urządzenie. Jeśli masz wydajne urządzenie, możesz nawet przyciąć 100+ obrazów naraz bez lagów i innych problemów.',
+            'Twoje obrazy są przetwarzane lokalnie w przeglądarce. Nie trzeba wysyłać żadnych obrazów na nasz serwer, więc żaden obraz nie opuszcza urządzenia. Możesz przycinać prywatne obrazy bez ryzyka bezpieczeństwa.',
+            'Wiele narzędzi zgłasza błąd nieprawidłowego formatu obrazu. Nasze narzędzie rozwiązuje ten problem, obsługując prawie wszystkie formaty obrazów.',
+            'Jeśli przycinasz wiele obrazów jednocześnie, nasze narzędzie pozwala pobrać przycięte obrazy jako ZIP lub jako osobne pliki — zgodnie z Twoją preferencją.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Instrukcja krok po kroku',
+          steps: [
+            {
+              heading: '1. Najpierw wybierz obraz, który chcesz przyciąć. Nasze narzędzie obsługuje także wybór wielu obrazów jednocześnie.',
+              bullets: [
+                'Przeciągnij i upuść obrazy do pola upuszczania, aby je przyciąć.',
+                'Możesz też wybrać obrazy przez eksplorator plików, klikając przycisk choose files w polu kadrowania.',
+                'Obsługiwany jest również skrót Ctrl + V do wklejania obrazów do pola upuszczania.',
+              ],
+            },
+            {
+              heading: '2. Następnie dopasuj rozmiar i pozycję ramki kadrowania na obrazie.',
+            },
+            {
+              heading: '3. Możesz też ustawić ramkę kadrowania ręcznie, wpisując wysokość, szerokość, pozycję poziomą i pionową.',
+            },
+            {
+              heading: '4. Możesz również użyć kilku gotowych szablonów:',
+              bullets: [
+                'Landscape(16:9)',
+                'Portrait(9:16)',
+                'Square(1:1)',
+              ],
+            },
+            {
+              heading: '5. Następnie wybierz jedną z opcji pobierania.',
+              bullets: [
+                'ZIP: Wybierz tę opcję, jeśli przycinasz wiele obrazów i chcesz pobrać wszystkie przycięte obrazy jako jeden plik.',
+                'Separate: Jeśli chcesz pobrać wszystkie przycięte obrazy osobno, wybierz tę opcję przełącznikiem.',
+              ],
+            },
+            {
+              heading: '6. Następnie kliknij przycisk Crop & Download, aby pobrać wszystkie przycięte obrazy zgodnie z ustawionymi wymiarami.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Korzyści z przycinania obrazów: narzędzie do przycinania obrazów daje wiele korzyści w świecie cyfrowym. Część z nich opisano poniżej:',
+          tocLabel: '4. Korzyści z przycinania obrazów',
+          bullets: [
+            'Dopasowanie obrazu do ramki: Narzędzie do przycinania pomaga prawidłowo umieścić obraz w ramce. Taka ramka może znajdować się na stronie internetowej lub dowolnej platformie społecznościowej.',
+            'Poprawa UX: Ponieważ prawidłowe rozmieszczenie obrazów poprawia doświadczenie użytkownika, przycinanie obrazów znacząco poprawia UX.',
+            'Usuwanie niechcianych obramowań: Możesz usunąć niepotrzebne obramowania obrazu, aby go dopracować.',
+            'Wydzielenie pożądanego obiektu: Możesz także oddzielić siebie ze zdjęcia grupowego.',
+            'Oszczędność miejsca: Przycinanie obrazu oszczędza pamięć, bo usuwany jest zbędny obszar, a pozostaje tylko potrzebna część.',
+            'Optymalizacja prezentacji: Jeśli zwykła prezentacja z 10 nieprzyciętymi obrazami zajmuje około 30MB, ta sama prezentacja z obrazami przyciętymi może zajmować około 10MB.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Obsługiwane formaty:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   photoEditor: {
@@ -518,12 +784,182 @@ const pl = {
     downloadFormat: 'Format Pobierania',
     preview: 'Podgląd',
     downloadFormatBtn: 'Pobierz {format}',
+    pngDesc: 'Bezstratny, obsługa przezroczystości',
+    jpgDesc: 'Popularny/uniwersalny format pliku',
+    webpDesc: 'Nowoczesny format, najlepsza jakość/rozmiar',
+    svgDesc: 'Skalowalna grafika wektorowa',
+    pdfDesc: 'Dokument gotowy do druku',
     lat: 'Szerokość:',
     lng: 'Długość:',
     qrCode: 'Kod QR',
     scanMe: 'Zeskanuj Mnie',
-    scanHere: 'Skanuj Tutaj',
-  },
+    scanHere: 'Skanuj Tutaj',    blog: {
+      card1: {
+        title: '1. Czym jest kod QR?',
+        intro1: 'Pełna forma kodu QR to "Quick Response code" (kod szybkiej odpowiedzi). Ponieważ informacje w nim przechowywane są dekodowane bardzo szybko, nazywa się go kodem Quick Response (QR).',
+        intro2: 'Kod QR to dwuwymiarowy kod cyfrowy czytelny tylko dla maszyn. Dane w nim nie mogą być odczytane przez człowieka. Zawiera bloki do przechowywania informacji takich jak tekst, numery telefonów, linki i lokalizacje map Google itp.',
+        inventionTitle: 'Jak wynaleziono kod QR:',
+        inventionText: 'Kod QR został wynaleziony w 1994 roku. Masahiro Hara i jego zespół pracowali w japońskiej firmie o nazwie Denso Wave, która produkowała części samochodowe dla firmy Toyota. Chcieli kodu, który przechowuje znacznie więcej informacji niż zwykły kod kreskowy, i tak wynaleźli kod QR.',
+        keyFeaturesTitle: 'Kluczowe cechy kodu QR',
+        keyFeatures: [
+          {
+            title: 'Jak działa QR',
+            text: 'Wpisujesz tekst lub link, aby wygenerować kod QR. Generator QR tworzy kwadratowe pola zgodnie z informacją. Każde pole reprezentuje jeden bit, a każdy bit przechowuje jeden znak.',
+          },
+          {
+            title: 'Struktura kodu QR',
+            text: 'Kod QR zawiera trzy duże pola kwadratowe do identyfikacji orientacji kodu QR oraz jedno małe pole kwadratowe do przechowywania bitów (informacji).',
+          },
+          {
+            title: 'Pojemność danych kodu QR',
+            text: 'Zazwyczaj kod QR przechowuje więcej informacji niż kod kreskowy. Kod QR to po prostu zaawansowana wersja kodu kreskowego. To zasadniczo dwuwymiarowy kod kreskowy. Kod QR przechowuje prawie 200 znaków. Może również przechowywać 400 znaków, ale może być trudny do skanowania. Przechowywanie więcej niż 400 znaków może spowodować bardzo złożony kod QR, który prawie nie da się skanować.',
+          },
+          {
+            title: 'Wykrywanie błędów w kodach QR',
+            text: 'Kod QR może być wciąż skanowany, jeśli część informacji jest zarysowana lub pewne bity są zmienione. Kod QR wykorzystuje technikę wykrywania błędów Reed-Solomona w celu wykrycia błędów i ich skorygowania po identyfikacji.',
+          },
+        ],
+        errorTitle: 'Poziom korekcji błędów kodu QR:',
+        errorIntro: 'Różne techniki wykrywania i korekcji błędów są używane w różnych przypadkach, jak opisano poniżej:',
+        errorHeaders: {
+          level: 'Poziom',
+          recovery: 'Zdolność odzyskiwania',
+          bestUse: 'Najlepsze zastosowanie',
+        },
+        errorRows: [
+          {
+            level: 'Niski (L)',
+            recovery: '~7%',
+            useCases: [
+              'Ta technika korekcji błędów jest używana, gdy kod QR jest wyświetlany na ekranach cyfrowych, stronach internetowych lub w czystym środowisku.',
+              'Gdy kod QR jest generowany dla małych informacji, takich jak Gmail, numer kontaktu lub mały tekst.',
+            ],
+          },
+          {
+            level: 'Średni (M)',
+            recovery: '~15%',
+            useCases: [
+              'Do ulotek i plakatów zainstalowanych w czystym środowisku, gdy ryzyko uszkodzenia jest znikome.',
+            ],
+          },
+          {
+            level: 'Kwarcyl (Q)',
+            recovery: '~25%',
+            useCases: [
+              'Gdy kod QR ma być zainstalowany w surowym środowisku, takim jak fabryka/na zewnątrz.',
+              'Również, gdy małe logo jest potrzebne na środku, zasłania ono kilka bitów. Dlatego ta technika korekcji błędów jest potrzebna.',
+            ],
+          },
+          {
+            level: 'Wysoki (H)',
+            recovery: '~30%',
+            useCases: [
+              'Używane, gdy możliwe jest duże uszkodzenie kodu QR.',
+              'Gdy duże logo przykrywa środek kodu QR.',
+              'Również, gdy potrzebne jest zaawansowane stylizowanie kodu QR.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Dlaczego wybrać nasz generator kodów QR?',
+        intro: 'Nasz generator kodów QR sprawia, że generowanie kodów QR jest niezwykle szybkie, bezpieczne i łatwe. Możesz dostosować swój kod, aby był bardziej zaawansowany, profesjonalny i pasował do tematu Twojej firmy. Wszystkie dostosowania, od kolorowania kodu QR do instalacji logo w kodzie QR, oferowane są bezpłatnie na zawsze.',
+        strengths: [
+          {
+            title: 'Profesjonalne dostosowanie:',
+            text: 'Możesz generować i dostosowywać tyle kodów QR, ile potrzebujesz bez żadnych kosztów. Wszystkie funkcje są całkowicie bezpłatne. Możesz stosować kolory gradientowe, różne kształty pól kwadratowych, logo niestandardowe i wiele innych funkcji.',
+          },
+          {
+            title: 'Obsługa wielu formatów:',
+            text: 'Nasz generator kodów QR oferuje wiele formatów pobierania dla Twojej wygody. Wystarczy wybrać preferowany format przed pobraniem. Obecnie oferujemy te formaty:',
+          },
+          {
+            title: 'Gotowe szablony:',
+            text: 'Możesz używać gotowych kolorów gradientowych i ramek, które uczyniają Twój kod QR profesjonalnym.',
+          },
+          {
+            title: 'Obsługa logo niestandardowego:',
+            text: 'Możesz również przesłać logo marki niestandardowe, które automatycznie pasuje do środka kodu QR. Możesz również wybrać logo z wbudowanej biblioteki logo, w której dostępnych jest ponad 30 logo.',
+          },
+          {
+            title: 'Podgląd na żywo:',
+            text: 'Podczas dostosowywania możesz obserwować wszystkie zmiany w panelu podglądu na żywo. Te zmiany w panelu podglądu są w czasie rzeczywistym i zmieniają się dynamicznie.',
+          },
+          {
+            title: 'Wskaźnik skanowania:',
+            text: 'Podczas wybierania kolorów odpowiednie ostrzeżenia i wskaźniki Cię poprowadzą, jeśli wybierzesz kolory trudne do zeskanowania.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'Lp.',
+          formats: 'Formaty',
+          description: 'Opis',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Bezstratny, obsługa przezroczystości' },
+          { no: '2', format: 'JPG', description: 'Popularny, uniwersalny format pliku' },
+          { no: '3', format: 'WEBP', description: 'Nowoczesny, najlepsza jakość/rozmiar' },
+          { no: '4', format: 'SVG', description: 'Skalowalna grafika wektorowa' },
+          { no: '5', format: 'PDF', description: 'Dokument gotowy do druku' },
+        ],
+      },
+      card3: {
+        title: '3. Przewodnik krok po kroku:',
+        step1Intro: 'Przede wszystkim wybierz kategorię kodu QR, który chcesz wygenerować. Jeśli generujesz kod QR dla kontaktu, mapy, linku lub tekstu. Obecnie nasz generator kodów QR oferuje te kategorie:',
+        categories: ['Link / URL', 'Tekst', 'WiFi', 'Kontakt', 'Gmail', 'Mapy Google'],
+        step2: 'Po wybraniu kategorii wklej swoje informacje w polu tekstowym.',
+        step3Intro: 'Następnie kliknij na Generuj i dostosuj, aby otworzyć panel dostosowywania. W panelu dostosowywania zobaczysz pasek podnawigu z następującymi opcjami:',
+        options: [
+          {
+            title: 'Styl i kształt:',
+            text: 'W tej sekcji możesz zmienić kształty pól kwadratowych na wiele stylów, takich jak zaokrąglone narożniki, punkty, paski poziome, paski pionowe, małe kwadraty i wiele innych.',
+          },
+          {
+            title: 'Kolor:',
+            text: 'W tej sekcji możesz wybrać niestandardowe kolory tła i pierwszego planu. Aby utworzyć kod QR w kolorach gradientu, masz opcję włączenia gradientu, który pozwala Ci zastosować dowolny kolor gradientu z wbudowanej biblioteki lub łatwo utworzyć kolor gradientu. Możesz również zmienić kąt kolorów gradientu liniowego. Obsługiwany jest również gradient promieniowy. Możesz dodać wiele kolorów, aby utworzyć profesjonalny efekt gradientu.',
+          },
+          {
+            title: 'Ramki:',
+            text: 'Tutaj możesz wybrać idealną ramkę do swojego kodu QR. Wszystkie ramki automatycznie pasują do Twojego kodu. Wystarczy wybrać ramkę z wbudowanej biblioteki.',
+          },
+          {
+            title: 'Logo:',
+            text: 'Po wyborze ramki możesz wybrać logo, które zostanie automatycznie dostosowane do środka kodu QR. Obsługiwane jest również przesłanie niestandardowego logo marki.',
+          },
+          {
+            title: 'Szablony:',
+            text: 'Jeśli nie chcesz wybierać stylu, kształtu, koloru i ramki osobno, możesz zastosować wstępnie wykonane szablony do kodu QR. Wiele szablonów premium jest dostępnych dla Twojej wygody, które są bezpłatne na zawsze.',
+          },
+          {
+            title: 'Format pliku:',
+            text: 'Na koniec musisz wybrać typ pliku, w którym chcesz pobrać kod QR. Obsługiwanych jest kilka popularnych formatów, w tym PNG, WEBP, SVG i PDF itp.',
+          },
+          {
+            title: 'Edytuj dane QR:',
+            text: 'Możesz również edytować dane QR bez żadnej utraty wybranych dostosowań.',
+          },
+        ],
+        finalStep: 'Następnie wystarczy kliknąć przycisk pobierania, a kod QR dokładnie zgodnie z Twoimi dostosowaniami w wybranym formacie zostanie pobrany natychmiast bez żadnych kosztów.',
+      },
+      card4: {
+        title: '4. Korzyści:',
+        intro: 'Kod QR łączy świat fizyczny z doświadczeniem cyfrowym. To najszybszy sposób na udostępnianie linków, kontaktów lub Twojej lokalizacji. Wystarczy zeskanować kod QR, aby natychmiast uzyskać dostęp do informacji. Dlatego jest niezwykle popularne w biznesie i świecie cyfrowym, ponieważ jest oszczędne pod względem czasu i bardzo celowe.',
+        benefits: [
+          {
+            title: 'Wsparcie na całe życie:',
+            text: 'Kody QR funkcjonują na zawsze bez żadnej daty wygaśnięcia. Dają Ci przechowywane informacje natychmiast, gdy je zeskanujesz. Ponieważ zawiera zakodowane na stałe instrukcje cyfrowe, nigdy nie traci informacji.',
+          },
+          {
+            title: 'Obsługa offline:',
+            text: 'Możesz skanować kod QR nawet, gdy jesteś offline. Kamera Twojego telefonu komórkowego dekoduje wzory kodu QR i daje Ci przechowywane w nim informacje.',
+          },
+          {
+            title: 'Koszt zerowy:',
+            text: 'Ponieważ te kody nie wymagają żadnego przekierowania serwera ani zasobów, są bezpłatne na zawsze.',
+          },
+        ],
+      },
+    },  },
 
   qrScanner: {
     seo: {
@@ -633,25 +1069,25 @@ const pl = {
       { q: 'Czy mogę konwertować przezroczysty PNG do JPG?', a: 'Tak. Ponieważ JPG nie obsługuje przezroczystości, przezroczyste obszary są domyślnie wypełniane białym tłem.' },
     ],
     imageCompressor: [
-      { q: 'Jak działa kompresja obrazów?', a: 'Nasze narzędzie używa wbudowanego Canvas API przeglądarki do ponownego kodowania obrazów z niższym poziomem jakości.' },
-      { q: 'Czy kompresja wyraźnie obniża jakość obrazu?', a: 'Przy średnim poziomie kompresji (20-40%) różnica jest prawie niezauważalna.' },
-      { q: 'Jakie formaty obrazów można kompresować?', a: 'Możesz przesyłać JPG, PNG, WEBP, BMP i inne popularne formaty rastrowe.' },
-      { q: 'Czy mogę kompresować wiele obrazów naraz?', a: 'Tak! Wystarczy wybrać wiele plików. Możesz pobrać je wszystkie jako ZIP.' },
-      { q: 'Czy skompresowane obrazy są przechowywane na serwerze?', a: 'Nie. Wszystko działa lokalnie w przeglądarce.' },
+      { q: 'Czy kompresja obrazu obniży jego jakość?', a: 'Nie, kompresja nie wpływa zauważalnie na jakość, dopóki nie przekroczysz zalecanych zakresów. O jakości informują wskaźniki: i. Kompresja 1% do 40%: zielony wskaźnik z komunikatem „Dobra jakość”. ii. Kompresja 41% do 60%: żółty wskaźnik z komunikatem „Normalna jakość”. Ten zakres jest zwykle najbardziej zalecany. iii. Kompresja 61% do 100%: system pokazuje czerwone ostrzeżenie „Słaba jakość”, a spadek jakości może być wyraźnie widoczny.' },
+      { q: 'Jakie formaty obrazów są obsługiwane przy kompresji?', a: 'Nasz kompresor obrazów obsługuje wszystkie poniższe formaty:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Czy mogę kompresować wiele obrazów jednocześnie?', a: 'Tak, oczywiście. Możesz kompresować wiele obrazów naraz (nawet 100+), jeśli Twoje urządzenie na to pozwala. Ponieważ kompresja wykorzystuje zasoby urządzenia, wydajniejszy laptop, komputer lub telefon zapewni lepszą szybkość. Jeśli masz słabszy sprzęt, możesz kompresować partiami — narzędzie pozostaje darmowe także przy wielu partiach.' },
+      { q: 'Czy przechowujecie lub przesyłacie nasze obrazy na swoje serwery?', a: 'Nie, nigdy nie przesyłamy ani nie przechowujemy Twoich obrazów na naszych serwerach. Wszystkie obrazy są kompresowane lokalnie w przeglądarce. Pliki nigdy nie opuszczają Twojego urządzenia, więc możesz bez stresu kompresować także prywatne zdjęcia.' },
+      { q: 'Czy to narzędzie do kompresji obrazów jest darmowe?', a: 'Tak, nasz kompresor obrazów jest całkowicie darmowy na zawsze. Nigdy nie poprosimy o płatność. Nie ma ukrytych opłat. Wszystkie funkcje, w tym kompresja wielu obrazów, są bezpłatne.' },
     ],
     cropImage: [
-      { q: 'Czy mogę przycinać obrazy z określonymi proporcjami?', a: 'Tak. Możesz wybrać predefiniowane proporcje jak 1:1, 4:3, 16:9 lub wprowadzić własne.' },
-      { q: 'Czy przycinanie obniża jakość obrazu?', a: 'Nie. Przycinanie usuwa tylko piksele poza wybranym obszarem.' },
-      { q: 'Czy mogę przycinać wiele obrazów naraz?', a: 'Oczywiście. Prześlij wiele obrazów, ustaw obszar przycinania dla każdego, a następnie pobierz wszystkie naraz.' },
-      { q: 'Jakie formaty plików są obsługiwane do przycinania?', a: 'Wszystkie popularne formaty obrazów, w tym JPG, PNG, WEBP, GIF i BMP.' },
-      { q: 'Czy obrazy są przesyłane na serwer do przetworzenia?', a: 'Nie. Całe przycinanie odbywa się lokalnie w przeglądarce przy użyciu HTML5 Canvas API.' },
+      { q: 'Czy przycinanie obrazu obniża jego jakość?', a: 'Nie, przycinanie obrazu nie wpływa na jego jakość wizualną. Przycinanie usuwa tylko niechcianą część obrazu. Nigdy nie zmienia pikseli tej części, która zostaje po przycięciu. Dlatego możesz przycinać obrazy w oryginalnej jakości bez żadnych uszkodzeń pikseli.' },
+      { q: 'Jakie formaty obrazów obsługuje narzędzie do przycinania?', a: 'Możesz wybrać obraz w dowolnym formacie, ponieważ nasze narzędzie do przycinania obsługuje prawie wszystkie formaty obrazów. Lista poniżej:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Czy moje obrazy są przesyłane na wasz serwer?', a: 'Nie, całe przetwarzanie odbywa się w Twojej lokalnej przeglądarce. Twoje obrazy nigdy nie są przesyłane na nasz serwer, ponieważ nie opuszczają Twojego urządzenia. Dzięki temu możesz przycinać prywatne obrazy naszym narzędziem bez żadnego ryzyka.' },
+      { q: 'Czy mogę przycinać wiele obrazów jednocześnie?', a: 'Tak, możesz przycinać wiele obrazów (nawet 100+) jednocześnie, jeśli Twój system to obsługuje. Ponieważ przycinanie używa zasobów systemu, na wydajnym laptopie, komputerze lub telefonie możesz przycinać wiele obrazów naraz. Jeśli masz słabsze urządzenie, możesz przycinać obrazy partiami, bo narzędzie jest darmowe nawet przy dużej liczbie obrazów.' },
+      { q: 'Czy to narzędzie do przycinania obrazów jest darmowe?', a: 'Tak, to narzędzie do przycinania obrazów jest całkowicie darmowe na zawsze. Możesz korzystać z niego wszędzie, o każdej porze i na dowolnym urządzeniu. Otrzymasz responsywny interfejs dla wszystkich urządzeń i nigdy nie zobaczysz prośby o płatność za funkcje premium. Wszystkie funkcje są całkowicie darmowe, bez ukrytych opłat.' },
     ],
     resizeImage: [
-      { q: 'Czy mogę zmienić rozmiar obrazu do dokładnego rozmiaru w pikselach?', a: 'Tak. Wprowadź żądaną szerokość i wysokość w pikselach, calach lub centymetrach. Możesz też zablokować proporcje.' },
-      { q: 'Czy zmiana rozmiaru powoduje rozmycie obrazu?', a: 'Powiększanie powyżej oryginalnej rozdzielczości może nieznacznie zmiękczyć obraz. Używamy wysokiej jakości interpolacji bikubicznej.' },
-      { q: 'Czy dostępna jest zbiorcza zmiana rozmiaru?', a: 'Tak. Prześlij wiele obrazów i zastosuj ten sam docelowy rozmiar do wszystkich.' },
-      { q: 'Jakich jednostek rozmiaru można używać?', a: 'Możesz określić w pikselach, calach, centymetrach lub procentach oryginalnego rozmiaru.' },
-      { q: 'Czy dane są wysyłane na serwer podczas zmiany rozmiaru?', a: 'Nie. Odbywa się całkowicie w przeglądarce.' },
+      { q: 'Czy mogę zmieniać rozmiar wielu obrazów jednocześnie?', a: 'Oczywiście. Nasze narzędzie pozwala zmieniać rozmiar wielu obrazów naraz. Możesz przesłać tyle obrazów, ile obsługuje Twoje urządzenie, a silnik AI przetworzy je jednocześnie. Jeśli masz słabsze urządzenie, lepiej działać partiami, aby uniknąć opóźnień. Całość działa lokalnie bez wysyłania plików na serwer, więc prywatność jest zachowana.' },
+      { q: 'Czy to narzędzie do zmiany rozmiaru obrazów jest darmowe?', a: 'Tak, narzędzie jest całkowicie darmowe na zawsze. Nie ma płatnej subskrypcji wymaganej do funkcji premium. Nie ma też ukrytych opłat przy pobieraniu obrazów po zmianie rozmiaru.' },
+      { q: 'Czy zmiana rozmiaru obniża jakość obrazu?', a: '✅Decrease Size (downscale): Zmniejszanie obrazu nie obniża jakości wizualnej. Często obraz po zmniejszeniu może wyglądać nawet ostrzej niż oryginał. Dlatego zmniejszanie do mniejszego rozmiaru zazwyczaj nie powoduje utraty jakości.\n❌Increase Size (upscale): Powiększanie obrazu ponad oryginalny rozmiar może wpłynąć na jakość wizualną. Im większe powiększenie, tym większe ryzyko spadku jakości.' },
+      { q: 'Czy to narzędzie jest bezpieczne?', a: 'Tak, nasze narzędzie jest bezpieczne, szczególnie dla zdjęć prywatnych i wrażliwych. Wszystkie obrazy są przetwarzane lokalnie na Twoim urządzeniu i żadne dane go nie opuszczają. Możesz więc zmieniać rozmiar bez ryzyka prywatności.' },
+      { q: 'Jakie formaty obrazów są obsługiwane?', a: 'Nasz resizer obsługuje wszystkie formaty obrazów. Możesz wybrać obrazy w następujących formatach:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'Jak działa usuwanie tła?', a: 'Używamy zaawansowanych modeli AI działających bezpośrednio w przeglądarce, aby wykryć obiekt i oddzielić go od tła.' },
@@ -668,11 +1104,12 @@ const pl = {
       { q: 'Czy dane są przesyłane na serwer?', a: 'Nie. Całe przetwarzanie znaków wodnych odbywa się lokalnie w przeglądarce.' },
     ],
     qrCodeGenerator: [
-      { q: 'Jakie typy danych można zakodować w kodzie QR?', a: 'Możesz zakodować URL, zwykły tekst, dane WiFi, e-mail, numery telefonów, SMS, vCard i więcej.' },
-      { q: 'Czy mogę dostosować kolory i styl kodu QR?', a: 'Tak. Wybierz kolory pierwszego planu i tła, dodaj logo i wybierz spośród różnych stylów.' },
-      { q: 'W jakich formatach można pobrać kod QR?', a: 'Możesz pobrać jako plik PNG, SVG lub JPEG.' },
-      { q: 'Czy dodanie logo sprawia, że kod QR jest nieskanowalny?', a: 'Używamy korekcji błędów, aby kod QR pozostał skanowany, o ile logo nie zakrywa zbyt dużej jego części.' },
-      { q: 'Czy generowanie kodu QR odbywa się na serwerze?', a: 'Nie. Kody QR są generowane w pełni w Twojej przeglądarce.' },
+      { q: 'Czy ten kod QR wygasa?', a: 'Nie, te kody QR nie wygasają i gwarantują wsparcie na całe życie. Ponieważ przechowują zahardkodowane instrukcje w postaci bitów wewnątrz kwadratowych pól, informacje w nich przechowywane nie mogą być zmieniane ani usuwane. Możesz uzyskać dostęp do informacji w kodzie, po prostu skanując go dowolnym aparatem, nawet po latach.' },
+      { q: 'Dlaczego mój kod QR się nie skanuje?', a: 'Twój kod QR może nie być skanowany z następujących powodów: i. Niski kontrast: Jeśli wybierzesz podobne kolory tła i pierwszego planu, wpływa to na widoczność kodu QR i powoduje niepowodzenie skanowania. Ale nasze narzędzie przeprowadzi Cię przez dostosowanie dotyczące niskiego kontrastu lub jakichkolwiek innych problemów związanych ze skanowaniem. ii. Duże dane: Jeśli wygenerujesz kod QR dla bardzo dużego tekstu lub danych, staje się on bardzo złożony i powoduje problemy podczas skanowania. Walidator długości tekstu przeprowadzi Cię na temat optymalnej długości tekstu podczas generowania kodu QR. iii. Rozmyte drukowanie: Upewnij się, że pobrałeś kod QR w wysokiej rozdzielczości, takiej jak PNG lub SVG, które są już obsługiwane przez nasze narzędzie.' },
+      { q: 'Czy mogę dodać logo do kodu QR?', a: 'Oczywiście, możesz dodać niestandardowe logo lub wybrać jedno z wbudowanej biblioteki logo dla swojego kodu QR. Wybrane logo zostanie automatycznie dostosowane w środku kodu QR.' },
+      { q: 'Jak mogę skanować kod QR?', a: 'Możesz skanować kod QR, korzystając z aparatu telefonu komórkowego. Ale aby uzyskać automatyczne przekierowanie do linku i wiele innych zaawansowanych funkcji, możesz odwiedzić nasz skaner kodów QR, korzystając z linku https://photremium.com/qr-code-scanner bezpłatnie.' },
+      { q: 'Ile kodów QR mogę wygenerować za darmo?', a: 'NIEOGRANICZONY! możesz generować wiele kodów QR za darmo. Wszystkie funkcje, dostosowania i szablony są darmowe na zawsze dla wszystkich. Nie ma potrzeby subskrypcji, aby cieszyć się funkcjami premium.' },
+      { q: 'Czy muszę się zalogować/zarejestrować, aby wygenerować kod QR?', a: 'Nie, po prostu wpisz swój tekst, wygeneruj kod QR i pobierz go po dostosowaniu. Nie ma potrzeby logowania ani rejestracji, ponieważ wszystkie funkcje są dostępne całkowicie za darmo.' },
     ],
     qrCodeScanner: [
       { q: 'Jak skanować kod QR?', a: 'Możesz użyć kamery urządzenia do skanowania na żywo lub przesłać obraz zawierający kod QR.' },

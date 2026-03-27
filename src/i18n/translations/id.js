@@ -189,6 +189,99 @@ const id = {
     compressing: 'Mengompres…',
     compressDownload: 'Kompres & Unduh',
     lowQualityWarning: 'Kompresi tinggi dapat mengurangi kejernihan gambar secara signifikan.',
+    blog: {
+      tocTitle: 'Daftar Isi',
+      title: 'Blog Kompresor Gambar',
+      formatsIntro: 'Alat kami mendukung semua format gambar, jadi Anda bisa mengompres gambar apa pun dengan lancar. Daftar format lengkap ada di bawah ini:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. Apa itu kompresor gambar?',
+          paragraphs: [
+            'Kompresor gambar adalah perangkat lunak atau layanan online yang mengurangi ukuran file gambar sambil mempertahankan kualitas visualnya. Namun, jika gambar dikompres terlalu tinggi, kualitasnya bisa turun secara jelas.',
+          ],
+          listTitle: 'JENIS:',
+          bullets: [
+            'Kompresi lossy: ukuran gambar dikurangi dengan menghapus sebagian data gambar. Kualitas dapat menurun, tetapi sering kali tidak terlalu terlihat oleh mata manusia.',
+            'Kompresi lossless: hanya mengurangi ukuran file tanpa memengaruhi kualitas visual gambar.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Mengapa memilih alat kami?',
+          bullets: [
+            'Alat kompresor gambar berbasis AI kami bekerja mulus di semua perangkat untuk memberikan hasil terbaik.',
+            'Anda dapat mengompres banyak gambar (bahkan 100+ gambar) sekaligus hanya dengan satu klik.',
+            'Tidak perlu mengunggah gambar ke server kami. Semua gambar dikompres secara lokal di browser Anda.',
+            'Alat kompresor gambar kami sepenuhnya gratis selamanya. Anda juga bisa membagikannya ke teman-teman Anda.',
+            'Anda dapat memilih persentase kompresi sesuai kebutuhan.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Panduan langkah demi langkah',
+          steps: [
+            {
+              heading: '1. Pilih gambar yang ingin Anda kompres.',
+              bullets: [
+                'Seret dan lepas gambar ke kotak unggah.',
+                'Anda juga dapat menyalin gambar lalu menempelkannya ke kotak dengan (Ctrl + V).',
+                'Anda juga bisa menggunakan penjelajah file dengan klik tombol pilih.',
+              ],
+            },
+            {
+              heading: '2. Lalu pilih persentase kompresi.',
+              bullets: [
+                'Slider horizontal memberi pengalaman yang nyaman untuk memilih persentase kompresi. Ikuti rentang berikut untuk hasil yang lebih akurat.',
+              ],
+              table: {
+                headers: ['Persentase Kompresi', 'Hasil'],
+                rows: [
+                  ['1%  sampai  40%', 'Kualitas terbaik'],
+                  ['41%  sampai  60%', 'Kualitas normal (Disarankan)'],
+                  ['61%  sampai  100%', 'Kualitas rendah'],
+                ],
+              },
+            },
+            {
+              heading: '3. Periksa ruang yang Anda hemat.',
+              paragraphs: [
+                'Semua metrik ukuran ditampilkan secara real-time. Anda bisa melihat jelas berapa banyak ruang yang dihemat dari total ukuran, lalu menyesuaikan level kompresi sesuai kebutuhan.',
+              ],
+            },
+            {
+              heading: '4. Pilih opsi unduhan dari tombol toggle.',
+              bullets: [
+                'ZIP: Jika Anda mengompres banyak gambar, opsi ini akan muncul. Memilih ZIP akan mengarsipkan semua gambar terkompresi ke dalam satu file ZIP (disarankan untuk jumlah gambar besar).',
+                'Terpisah: Memilih opsi ini akan mengunduh semua gambar secara terpisah, bukan sebagai satu file ZIP (disarankan untuk jumlah gambar kecil, kurang dari 10).',
+              ],
+            },
+            {
+              heading: '5. Kompres & unduh gambar.',
+              paragraphs: [
+                'Tombol ini akan mengunduh semua gambar terkompresi secara otomatis sesuai opsi unduhan yang Anda pilih.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Manfaat kompresor gambar.',
+          bullets: [
+            'Mengurangi biaya penyimpanan: kompresi gambar secara signifikan menurunkan ukuran file sehingga menghemat ruang.',
+            'Mempercepat pemuatan: gambar terkompresi lebih cepat dimuat dan meningkatkan pengalaman pengguna situs atau aplikasi.',
+            'Solusi batas lampiran Gmail: karena Gmail membatasi lampiran hingga 25MB, kompresi membantu Anda mengirim lebih banyak file.',
+            'Berbagi dan transfer lebih cepat: file besar memerlukan waktu lebih lama untuk dikirim; kompresi menghemat waktu dan kuota data.',
+            'Optimasi presentasi: presentasi dengan gambar tak terkompresi bisa sangat berat, sedangkan gambar terkompresi membuat ukuran file jauh lebih kecil.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Format yang didukung.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
   converter: {
     seo: {
@@ -291,6 +384,91 @@ const id = {
     dontEnlarge: 'Jangan perbesar jika aslinya lebih kecil',
     resizing: 'Mengubah ukuran…',
     resizeDownload: 'Ubah Ukuran & Unduh',
+    blog: {
+      tocTitle: 'Daftar Isi',
+      title: 'Blog Pengubah Ukuran Gambar',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Mengapa menggunakan pengubah ukuran gambar?',
+          paragraphs: [
+            'Pengubah ukuran gambar adalah alat atau perangkat lunak yang digunakan untuk mengubah dimensi gambar. Alat ini memungkinkan Anda menyesuaikan ukuran gambar yang diinginkan dengan mengubah tinggi, lebar, atau keduanya. Alat ini sangat berguna untuk platform media sosial yang memiliki batasan ukuran saat mengunggah atau memposting gambar.',
+          ],
+          listTitle: 'Contoh:',
+          bullets: [
+            'Postingan Instagram: 1080 x 1080px (Persegi)',
+            'Postingan Facebook: 1200 x 630px',
+            'Postingan X (dulu Twitter): 1200 x 675px',
+            'Instagram Story: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Mengapa memilih alat Pengubah Ukuran Gambar kami?',
+          paragraphs: [
+            'Pengubah ukuran gambar bertenaga AI kami membuat proses resize menjadi akurat dan sangat cepat. Anda dapat menggunakan alat ini dengan lancar di setiap perangkat. Tidak perlu memasang atau mengunduh aplikasi apa pun. Semua layanan tersedia secara online di browser pilihan Anda.',
+          ],
+          bullets: [
+            'Anda dapat mengubah ukuran banyak gambar (bahkan 100+) sekaligus dengan alat kami. Jika Anda memiliki perangkat berperforma tinggi, Anda dapat dengan nyaman mengubah ukuran 400 hingga 500 gambar dalam hitungan detik.',
+            'Semua pemrosesan dilakukan di browser lokal Anda. Anda tidak perlu mengunggah gambar ke server kami. Gambar Anda tidak pernah meninggalkan perangkat Anda. Jadi, Anda bisa mengubah ukuran gambar pribadi tanpa risiko privasi.',
+            'Berbagai satuan didukung untuk pengubahan ukuran gambar.',
+            'Anda juga dapat mempertahankan rasio aspek asli gambar setelah resize cukup dengan mencentang kotak opsi.',
+            'Jika Anda mengubah ukuran banyak gambar, Anda bisa mengunduh hasilnya sebagai file terpisah atau sebagai file ZIP.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Panduan langkah demi langkah',
+          steps: [
+            {
+              heading: 'Pertama, pilih gambar atau beberapa gambar yang ingin Anda ubah ukurannya. Ada beberapa cara untuk memilih gambar.',
+              bullets: [
+                'Anda bisa langsung drag and drop gambar untuk mengubah ukurannya.',
+                'Shortcut “Ctrl + V” juga didukung untuk menempelkan gambar ke kotak drop.',
+                'Klik tombol “Choose Files” untuk membuka file explorer. Anda juga bisa memilih gambar yang diinginkan dari sana.',
+              ],
+            },
+            {
+              heading: 'Kemudian, Anda dapat memilih salah satu satuan untuk resize gambar. Saat ini kami menyediakan satuan berikut:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'Setelah memilih satuan, atur tinggi dan lebar untuk mengubah ukuran gambar. Anda juga bisa mengunci rasio aspek dengan mencentang kotak.',
+            },
+            {
+              heading: 'Lalu centang “Don’t enlarge if original is smaller” jika Anda tidak ingin gambar hasil resize diperbesar melebihi ukuran aslinya.',
+            },
+            {
+              heading: 'Setelah itu, pilih opsi unduhan.',
+              bullets: [
+                'Pilih ZIP jika Anda ingin mengubah ukuran banyak gambar dan mengunduh semuanya sebagai satu file zip.',
+                'Atau pilih “separate” untuk mengunduh setiap gambar hasil resize secara terpisah.',
+              ],
+            },
+            {
+              heading: 'Kemudian tekan tombol “Resize & Download” untuk mengunduh gambar hasil resize sesuai opsi unduhan yang Anda pilih.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Manfaat alat pengubah ukuran gambar: Manfaat paling menonjol dari alat ini adalah penempatan gambar yang tepat di halaman web dan posting media sosial.',
+          tocLabel: '4. Manfaat alat pengubah ukuran gambar',
+          bullets: [
+            'Meningkatkan UX: Ukuran yang tepat dan penempatan gambar yang benar sangat meningkatkan pengalaman pengguna. Menempatkan gambar terlalu besar atau terlalu kecil tanpa penyesuaian akan menghasilkan UX yang buruk.',
+            'Dukungan Media Sosial: Banyak aplikasi media sosial memiliki batas dimensi sendiri untuk posting gambar. Alat kami membantu Anda menyesuaikan gambar ke dimensi yang dibutuhkan tersebut.',
+            'Desain Responsif: Jika Anda seorang developer dan ingin membuat desain responsif, Anda harus mengubah ukuran gambar dalam berbagai dimensi untuk mendukung banyak perangkat.',
+            'Pilihan Terbaik: Daripada meregangkan atau memotong gambar yang dapat mengubah proporsi dimensinya, pengubah ukuran adalah pilihan terbaik.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Format yang didukung: Alat pengubah ukuran gambar kami memungkinkan Anda memilih gambar dalam format apa pun untuk diubah ukurannya. Berikut formatnya:',
+          tocLabel: '5. Format yang didukung',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
   cropper: {
     seo: {
@@ -320,6 +498,94 @@ const id = {
     saveNext: 'Simpan & Lanjut',
     croppedNofTotal: 'Anda telah memotong {n} dari {total} gambar.',
     downloadN: 'Unduh {n}',
+    blog: {
+      tocTitle: 'Daftar Isi',
+      title: 'Blog Pemotong Gambar',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Mengapa menggunakan pemotong gambar?',
+          paragraphs: [
+            'Pemotong gambar adalah alat perangkat lunak yang digunakan untuk memotong gambar ke bentuk yang diinginkan. Alat ini banyak digunakan untuk memotong bagian gambar yang diperlukan dan menghapus bagian luar yang tidak diinginkan untuk tujuan apa pun. Alat ini menyediakan kotak potong yang dapat Anda sesuaikan pada posisi yang ingin Anda potong.',
+          ],
+          listTitle: 'Sebagai Contoh:',
+          bullets: [
+            'Memotong gambar Anda sendiri dari foto grup.',
+            'Memotong nama Anda dari daftar.',
+            'Memotong bilah progres dari cuplikan layar penuh.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Mengapa memilih pemotong gambar kami?',
+          paragraphs: [
+            'Alat pemotong gambar kami memungkinkan Anda memotong gambar dengan akurat dan sangat cepat. Anda hanya perlu menyesuaikan ukuran kotak potong pada posisi yang ingin Anda potong dari gambar apa pun. Hampir semua format gambar didukung untuk pemilihan gambar.',
+          ],
+          bullets: [
+            'Anda dapat memotong sebanyak jumlah gambar yang didukung perangkat Anda. Jika Anda memiliki perangkat dengan performa terbaik, Anda bahkan dapat memotong 100+ gambar sekaligus tanpa lag atau masalah lainnya.',
+            'Gambar Anda akan diproses di browser lokal Anda. Tidak perlu mengunggah gambar apa pun ke server kami, sehingga tidak ada gambar yang meninggalkan perangkat Anda. Anda dapat memotong gambar pribadi Anda tanpa ketidakamanan atau risiko.',
+            'Banyak alat menandai kesalahan format gambar tidak valid. Alat pemotong gambar kami menangani masalah ini dengan mendukung hampir semua format gambar.',
+            'Jika Anda memotong banyak gambar sekaligus, alat kami memungkinkan Anda mengunduh gambar yang sudah dipotong sebagai ZIP atau sebagai gambar terpisah sesuai preferensi Anda.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Panduan langkah demi langkah',
+          steps: [
+            {
+              heading: '1. Pertama-tama, pilih gambar yang ingin Anda potong. Pemilihan beberapa gambar sekaligus juga didukung oleh alat pemotong gambar kami.',
+              bullets: [
+                'Seret dan lepas gambar ke kotak drop untuk memotongnya.',
+                'Anda juga dapat memilih gambar melalui penjelajah file dengan mengklik tombol choose files yang ditempatkan di kotak potong.',
+                'Shortcut Ctrl + V juga didukung untuk menempelkan gambar ke kotak drop.',
+              ],
+            },
+            {
+              heading: '2. Kemudian, sesuaikan ukuran dan posisi kotak potong pada gambar untuk memotongnya.',
+            },
+            {
+              heading: '3. Anda juga dapat menyesuaikan kotak potong dengan memasukkan nilai tinggi, lebar, posisi horizontal, dan posisi vertikal secara manual.',
+            },
+            {
+              heading: '4. Anda juga dapat menggunakan beberapa template siap pakai:',
+              bullets: [
+                'Landscape(16:9)',
+                'Portrait(9:16)',
+                'Square(1:1)',
+              ],
+            },
+            {
+              heading: '5. Kemudian Anda harus memilih salah satu opsi unduhan.',
+              bullets: [
+                'ZIP: Pilih opsi ini jika Anda memotong banyak gambar dan ingin mengunduh semua gambar yang sudah dipotong sebagai satu file.',
+                'Separate: Jika Anda ingin mengunduh semua gambar yang sudah dipotong secara terpisah, maka pilih opsi ini dari tombol toggle.',
+              ],
+            },
+            {
+              heading: '6. Kemudian klik tombol Crop & Download untuk mengunduh semua gambar Anda yang sudah dipotong sesuai dimensi preset Anda.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Manfaat Pemotong Gambar: Alat pemotong gambar menawarkan beberapa manfaat di dunia digital. Beberapa dijelaskan di bawah ini:',
+          tocLabel: '4. Manfaat Pemotong Gambar',
+          bullets: [
+            'Menyesuaikan gambar dalam frame: Pemotong gambar membantu Anda menempatkan gambar dengan benar dalam frame. Frame ini bisa berada di halaman web atau di platform media sosial apa pun.',
+            'Meningkatkan UX: Karena penempatan gambar yang tepat meningkatkan pengalaman pengguna, pemotong gambar membantu meningkatkan UX secara besar.',
+            'Menghapus batas yang tidak diinginkan: Anda dapat menghapus batas yang tidak diinginkan dari gambar untuk menyempurnakannya.',
+            'Memisahkan objek yang diinginkan: Anda juga dapat memisahkan gambar Anda dari foto grup.',
+            'Menghemat Penyimpanan: Memotong gambar pasti menghemat penyimpanan karena area mentah gambar dipotong dan hanya bagian yang diinginkan yang disimpan.',
+            'Mengoptimalkan Presentasi: Karena presentasi normal dengan 10 gambar yang belum dipotong memakan hampir 30MB penyimpanan, presentasi yang sama dengan gambar yang dipotong dapat memakan hampir 10MB penyimpanan.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Format yang didukung:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
   photoEditor: {
     seo: {
@@ -522,7 +788,7 @@ const id = {
     angle: 'Sudut',
     downloadFormatBtn: 'Unduh {format}',
     pngDesc: 'Tanpa kerugian, dukungan transparan',
-    jpgDesc: 'Terkompresi, file lebih kecil',
+    jpgDesc: 'Format file populer/universal',
     webpDesc: 'Format modern, kualitas/ukuran terbaik',
     svgDesc: 'Grafik vektor yang dapat diskalakan',
     pdfDesc: 'Dokumen siap cetak',
@@ -531,6 +797,173 @@ const id = {
     qrCode: 'Kode QR',
     scanMe: 'PINDAI SAYA',
     scanHere: 'PINDAI DI SINI',
+    blog: {
+      card1: {
+        title: '1. Apa itu kode QR?',
+        intro1: 'QR adalah singkatan dari “Quick Response”. Disebut demikian karena data di dalamnya dapat dibaca sangat cepat oleh pemindai.',
+        intro2: 'Kode QR adalah kode digital dua dimensi yang dibaca mesin. Kode ini dapat menyimpan teks, nomor kontak, tautan, lokasi peta, dan data lainnya.',
+        inventionTitle: 'Bagaimana kode QR ditemukan:',
+        inventionText: 'Kode QR ditemukan pada tahun 1994 oleh Masahiro Hara dan timnya di Denso Wave, Jepang, untuk kebutuhan pelacakan komponen otomotif yang membutuhkan kapasitas lebih besar daripada barcode biasa.',
+        keyFeaturesTitle: 'Fitur utama kode QR',
+        keyFeatures: [
+          {
+            title: 'Cara kerja QR',
+            text: 'Anda memasukkan teks atau tautan, lalu sistem mengubahnya menjadi pola kotak. Setiap pola mewakili bit data yang menyusun informasi.',
+          },
+          {
+            title: 'Struktur kode QR',
+            text: 'Kode QR memiliki tiga kotak penanda besar untuk orientasi serta banyak modul kecil untuk menyimpan data.',
+          },
+          {
+            title: 'Kapasitas data kode QR',
+            text: 'Kode QR umumnya menyimpan lebih banyak data daripada barcode satu dimensi. Semakin banyak karakter yang dimasukkan, semakin kompleks pola dan bisa lebih sulit dipindai.',
+          },
+          {
+            title: 'Deteksi kesalahan pada kode QR',
+            text: 'Kode QR tetap bisa dipindai meski sebagian rusak. Mekanisme koreksi kesalahan membantu memulihkan data saat ada gangguan kecil.',
+          },
+        ],
+        errorTitle: 'Tingkat koreksi kesalahan kode QR:',
+        errorIntro: 'Tingkat koreksi berikut digunakan sesuai kebutuhan penggunaan:',
+        errorHeaders: {
+          level: 'Level',
+          recovery: 'Kapasitas pemulihan',
+          bestUse: 'Penggunaan terbaik',
+        },
+        errorRows: [
+          {
+            level: 'Rendah (L)',
+            recovery: '~7%',
+            useCases: [
+              'Cocok untuk tampilan digital, situs web, atau lingkungan bersih dengan risiko kerusakan rendah.',
+              'Sesuai untuk data singkat seperti email, nomor kontak, atau teks pendek.',
+            ],
+          },
+          {
+            level: 'Sedang (M)',
+            recovery: '~15%',
+            useCases: [
+              'Baik untuk flyer atau poster dalam kondisi umum dengan risiko kerusakan ringan.',
+            ],
+          },
+          {
+            level: 'Kuartil (Q)',
+            recovery: '~25%',
+            useCases: [
+              'Disarankan untuk lingkungan luar ruang atau area kerja yang lebih keras.',
+              'Ideal saat menggunakan logo kecil di tengah yang menutupi sebagian modul.',
+            ],
+          },
+          {
+            level: 'Tinggi (H)',
+            recovery: '~30%',
+            useCases: [
+              'Dipakai ketika kemungkinan kerusakan fisik cukup tinggi.',
+              'Cocok saat logo besar ditempatkan di tengah kode QR.',
+              'Sesuai untuk desain kode QR yang sangat kustom.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Mengapa memilih generator kode QR kami?',
+        intro: 'Generator kode QR kami cepat, aman, dan mudah digunakan. Anda dapat menyesuaikan desain agar terlihat profesional dan selaras dengan identitas merek, tanpa biaya.',
+        strengths: [
+          {
+            title: 'Kustomisasi profesional:',
+            text: 'Buat dan sesuaikan sebanyak mungkin kode QR secara gratis dengan banyak opsi bentuk, warna, gradien, dan gaya.',
+          },
+          {
+            title: 'Dukungan banyak format:',
+            text: 'Anda dapat mengunduh kode QR dalam berbagai format. Pilih format sebelum mengunduh sesuai kebutuhan.',
+          },
+          {
+            title: 'Template siap pakai:',
+            text: 'Gunakan kombinasi warna gradien dan frame siap pakai agar hasil terlihat lebih profesional.',
+          },
+          {
+            title: 'Dukungan logo kustom:',
+            text: 'Unggah logo merek Anda sendiri atau pilih dari pustaka logo bawaan untuk ditempatkan otomatis di tengah kode QR.',
+          },
+          {
+            title: 'Pratinjau langsung:',
+            text: 'Semua perubahan desain terlihat secara real-time pada panel pratinjau saat Anda mengedit.',
+          },
+          {
+            title: 'Indikator pemindaian:',
+            text: 'Sistem memberi peringatan jika kombinasi warna berpotensi sulit dipindai.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'No',
+          formats: 'Format',
+          description: 'Deskripsi',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Tanpa kehilangan kualitas, mendukung transparansi' },
+          { no: '2', format: 'JPG', description: 'Format populer dan universal' },
+          { no: '3', format: 'WEBP', description: 'Format modern dengan rasio kualitas/ukuran terbaik' },
+          { no: '4', format: 'SVG', description: 'Grafik vektor yang dapat diskalakan' },
+          { no: '5', format: 'PDF', description: 'Dokumen siap cetak' },
+        ],
+      },
+      card3: {
+        title: '3. Panduan langkah demi langkah:',
+        step1Intro: 'Pertama, pilih kategori kode QR yang ingin dibuat, seperti tautan, teks, WiFi, kontak, email, atau peta.',
+        categories: ['Tautan / URL', 'Teks', 'WiFi', 'Kontak', 'Gmail', 'Google Maps'],
+        step2: 'Setelah memilih kategori, masukkan data Anda pada kotak input yang tersedia.',
+        step3Intro: 'Lalu klik Generate & Customize untuk membuka panel kustomisasi. Di sana tersedia opsi berikut:',
+        options: [
+          {
+            title: 'Gaya & Bentuk:',
+            text: 'Ubah bentuk modul QR menjadi berbagai gaya seperti sudut membulat, titik, batang horizontal, batang vertikal, dan lainnya.',
+          },
+          {
+            title: 'Warna:',
+            text: 'Pilih warna latar dan foreground, termasuk gradien linear atau radial. Anda juga dapat mengatur sudut gradien untuk hasil yang lebih rapi.',
+          },
+          {
+            title: 'Frame:',
+            text: 'Pilih bingkai dari pustaka bawaan agar kode QR terlihat lebih menarik tanpa mengganggu keterbacaan.',
+          },
+          {
+            title: 'Logo:',
+            text: 'Tambahkan logo ke tengah kode QR secara otomatis, termasuk dukungan unggah logo merek Anda sendiri.',
+          },
+          {
+            title: 'Template:',
+            text: 'Gunakan template siap pakai jika ingin hasil cepat tanpa mengatur setiap elemen secara manual.',
+          },
+          {
+            title: 'Format File:',
+            text: 'Pilih tipe file unduhan yang diinginkan seperti PNG, WEBP, SVG, atau PDF.',
+          },
+          {
+            title: 'Edit Data QR:',
+            text: 'Anda dapat mengubah isi data QR tanpa menghapus kustomisasi yang sudah dipilih.',
+          },
+        ],
+        finalStep: 'Terakhir, klik tombol unduh. Kode QR akan langsung diunduh sesuai pengaturan dan format yang Anda pilih, tanpa biaya.',
+      },
+      card4: {
+        title: '4. Manfaat:',
+        intro: 'Kode QR menghubungkan dunia fisik dan digital dengan cepat. Cukup satu pemindaian untuk membuka tautan, kontak, atau lokasi secara instan.',
+        benefits: [
+          {
+            title: 'Dukungan seumur hidup:',
+            text: 'Kode QR tidak memiliki masa kedaluwarsa bawaan dan dapat digunakan dalam jangka panjang selama datanya tetap valid.',
+          },
+          {
+            title: 'Dukungan offline:',
+            text: 'Pemindaian tetap dapat dilakukan tanpa internet; perangkat akan membaca pola QR terlebih dahulu lalu menampilkan datanya.',
+          },
+          {
+            title: 'Tanpa biaya:',
+            text: 'Pembuatan kode QR dasar tidak memerlukan biaya tambahan dan dapat digunakan kapan saja.',
+          },
+        ],
+      },
+    },
   },
   qrScanner: {
     seo: {
@@ -654,25 +1087,25 @@ const id = {
       { q: 'Bisakah saya mengonversi gambar PNG transparan ke JPG?', a: 'Ya. Karena JPG tidak mendukung transparansi, area transparan akan diisi dengan latar belakang putih secara default, menghasilkan hasil yang bersih.' },
     ],
     imageCompressor: [
-      { q: 'Bagaimana cara kerja kompresi gambar?', a: 'Alat kami mengurangi ukuran file dengan mengkodekan ulang gambar pada tingkat kualitas yang lebih rendah menggunakan Canvas API bawaan browser Anda. Anda mengontrol rasio kompresi sehingga bisa menyeimbangkan ukuran dan kualitas.' },
-      { q: 'Apakah kompresi akan mengurangi kualitas gambar secara terlihat?', a: 'Pada tingkat kompresi sedang (20-40%), perbedaannya hampir tidak terlihat oleh mata manusia. Kompresi lebih tinggi menghemat lebih banyak ruang tetapi mungkin menimbulkan sedikit artefak.' },
-      { q: 'Format gambar apa yang bisa saya kompres?', a: 'Anda dapat mengunggah JPG, PNG, WEBP, BMP, dan sebagian besar format raster umum lainnya. Output disimpan sebagai JPEG yang dioptimalkan untuk pengurangan ukuran maksimal.' },
-      { q: 'Bisakah saya mengompres beberapa gambar sekaligus?', a: 'Ya! Cukup seret dan lepas atau pilih beberapa file. Tingkat kompresi setiap gambar dapat disesuaikan secara individual, dan Anda dapat mengunduh semuanya sebagai ZIP.' },
-      { q: 'Apakah Anda menyimpan gambar terkompresi di server?', a: 'Tidak. Semuanya berjalan secara lokal di browser Anda. Gambar Anda tidak pernah diunggah ke mana pun, sehingga file Anda tetap sepenuhnya privat.' },
+      { q: 'Apakah mengompres gambar akan menurunkan kualitasnya?', a: 'Tidak, kompresi tidak akan memengaruhi kualitas gambar selama Anda tidak melampaui batas yang disarankan. Indikator kualitas membantu Anda: i. Kompresi 1% hingga 40%: indikator hijau dengan pesan “Kualitas baik”. ii. Kompresi 41% hingga 60%: indikator kuning dengan pesan “Kualitas normal”. Rentang ini paling direkomendasikan untuk hasil terbaik. iii. Kompresi 61% hingga 100%: sistem menampilkan peringatan merah dengan pesan “Kualitas buruk”. Pada rentang ini, penurunan kualitas bisa terlihat jelas.' },
+      { q: 'Format gambar apa saja yang didukung untuk kompresi?', a: 'Alat kompresor gambar kami mendukung semua format berikut:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Bisakah saya mengompres banyak gambar sekaligus?', a: 'Tentu bisa. Anda dapat mengompres banyak gambar sekaligus (bahkan 100+), tergantung kemampuan perangkat Anda. Karena proses kompresi menggunakan sumber daya perangkat, laptop/PC/ponsel dengan performa tinggi akan bekerja lebih cepat. Jika perangkat Anda berspesifikasi rendah, Anda tetap bisa mengompres secara bertahap karena alat ini gratis digunakan, termasuk untuk banyak batch.' },
+      { q: 'Apakah gambar saya disimpan atau diunggah ke server Anda?', a: 'Tidak. Kami tidak pernah mengunggah atau menyimpan gambar Anda di server kami. Semua proses kompresi dilakukan secara lokal di browser Anda. Gambar Anda tidak pernah meninggalkan perangkat, sehingga aman untuk gambar pribadi maupun sensitif.' },
+      { q: 'Apakah alat kompresi gambar ini gratis?', a: 'Ya, alat kompresor gambar kami sepenuhnya gratis selamanya. Kami tidak akan pernah meminta pembayaran apa pun. Tidak ada biaya tersembunyi. Semua fitur, termasuk kompresi banyak gambar, tersedia gratis.' },
     ],
     cropImage: [
-      { q: 'Bisakah saya memotong gambar ke rasio aspek tertentu?', a: 'Ya. Anda dapat memilih dari rasio preset seperti 1:1, 4:3, 16:9, atau memasukkan rasio khusus. Anda juga dapat memotong secara bebas tanpa batasan rasio apa pun.' },
-      { q: 'Apakah pemotongan mengurangi kualitas gambar?', a: 'Tidak. Pemotongan hanya menghapus piksel di luar area yang dipilih. Piksel yang tersisa mempertahankan resolusi dan kualitas aslinya.' },
-      { q: 'Bisakah saya memotong beberapa gambar sekaligus?', a: 'Tentu saja. Unggah beberapa gambar, atur area potong untuk masing-masing, dan unduh semuanya sekaligus — baik sebagai ZIP maupun individual.' },
-      { q: 'Format file apa yang didukung untuk pemotongan?', a: 'Semua format gambar umum didukung termasuk JPG, PNG, WEBP, GIF, dan BMP. Output mempertahankan format aslinya.' },
-      { q: 'Apakah gambar saya diunggah ke server untuk diproses?', a: 'Tidak. Semua pemotongan dilakukan secara lokal di browser Anda menggunakan HTML5 Canvas API. Gambar Anda tidak pernah meninggalkan perangkat Anda.' },
+      { q: 'Apakah memotong gambar akan menurunkan kualitasnya?', a: 'Tidak, memotong gambar tidak akan memengaruhi kualitas visual gambar sama sekali. Memotong gambar hanya membuang bagian yang tidak diinginkan. Itu tidak pernah mengubah piksel dari bagian gambar yang akan dipotong. Jadi, Anda dapat memotong gambar Anda dengan kualitas aslinya tanpa kerusakan piksel apa pun.' },
+      { q: 'Format gambar apa yang didukung untuk pemotong gambar?', a: 'Anda dapat memilih gambar dalam format apa pun karena alat pemotong gambar kami menawarkan hampir semua format gambar. Ini tercantum di bawah ini:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Apakah gambar saya diunggah ke server Anda?', a: 'Tidak, semua pemrosesan akan dilakukan di browser lokal Anda. Gambar Anda tidak akan pernah diunggah ke server kami karena gambar tidak pernah meninggalkan perangkat Anda. Jadi, Anda dapat memotong gambar pribadi Anda dengan pemotong gambar kami tanpa risiko apa pun.' },
+      { q: 'Bisakah saya memotong beberapa gambar sekaligus?', a: 'Ya, Anda dapat memotong beberapa gambar (bahkan 100+) sekaligus jika sistem Anda mendukung. Karena memotong gambar menggunakan sumber daya sistem Anda, jadi jika Anda memiliki laptop, PC, atau ponsel berperforma tinggi, Anda dapat memotong banyak gambar sekaligus. Jika Anda memiliki perangkat kelas bawah, Anda dapat memotong gambar dalam batch karena alat ini gratis digunakan bahkan jika Anda memotong banyak gambar sekaligus.' },
+      { q: 'Apakah alat pemotong gambar ini gratis untuk digunakan?', a: 'Ya, alat pemotong gambar ini sepenuhnya gratis untuk digunakan selamanya. Anda dapat mengakses alat ini di mana saja, kapan saja, dan menggunakan perangkat apa saja. Anda tidak hanya akan merasakan desain responsif untuk semua perangkat tetapi juga tidak akan pernah diminta membayar untuk fitur premium apa pun. Semua fitur sepenuhnya gratis tanpa biaya tersembunyi.' },
     ],
     resizeImage: [
-      { q: 'Bisakah saya mengubah ukuran gambar ke dimensi piksel yang tepat?', a: 'Ya. Masukkan lebar dan tinggi yang diinginkan dalam piksel, inci, atau sentimeter. Anda juga dapat mengunci rasio aspek untuk mencegah distorsi.' },
-      { q: 'Apakah pengubahan ukuran akan membuat gambar saya buram?', a: 'Memperbesar gambar melampaui resolusi aslinya mungkin menimbulkan sedikit kelembutan. Memperkecil mempertahankan ketajaman. Kami menggunakan interpolasi bicubic berkualitas tinggi untuk hasil terbaik.' },
-      { q: 'Bisakah saya mengubah ukuran secara massal?', a: 'Ya. Unggah beberapa gambar dan terapkan dimensi target yang sama ke semuanya. Unduh secara individual atau sebagai arsip ZIP.' },
-      { q: 'Satuan apa yang bisa saya gunakan untuk dimensi?', a: 'Anda dapat menentukan dimensi dalam piksel, inci, sentimeter, atau sebagai persentase dari ukuran aslinya.' },
-      { q: 'Apakah ada data yang dikirim ke server selama pengubahan ukuran?', a: 'Tidak. Pengubahan ukuran dilakukan sepenuhnya di browser Anda. Gambar Anda tetap ada di perangkat Anda dan tidak pernah diunggah.' },
+      { q: 'Bisakah saya mengubah ukuran beberapa gambar sekaligus?', a: 'Tentu, alat resize gambar kami memungkinkan Anda mengubah ukuran banyak gambar sekaligus. Anda cukup mengunggah sebanyak gambar yang didukung perangkat Anda, lalu mesin AI kami akan mengubah ukuran semuanya sekaligus. Namun jika Anda memiliki perangkat kelas bawah, coba lakukan resize dalam beberapa batch untuk menghindari lag. Proses resize memakai sumber daya perangkat agar tidak perlu upload ke server sehingga privasi gambar Anda tetap terjaga.' },
+      { q: 'Apakah alat resize gambar ini gratis digunakan?', a: 'Ya, alat ini gratis untuk digunakan selamanya. Anda tidak akan pernah diminta berlangganan berbayar untuk membuka fitur premium apa pun. Tidak ada biaya tersembunyi saat mengunduh gambar hasil resize Anda.' },
+      { q: 'Apakah mengubah ukuran gambar akan menurunkan kualitasnya?', a: '✅Decrease Size (downscale): Mengurangi ukuran gambar tidak akan menurunkan kualitas visual gambar. Bahkan, gambar hasil resize bisa terlihat lebih tajam daripada aslinya. Jadi, mengubah gambar ke dimensi yang lebih kecil tidak akan menurunkan kualitasnya.\n❌Increase Size (upscale): Meningkatkan ukuran di atas ukuran asli dapat memengaruhi kualitas visual gambar. Tingkat dampaknya bergantung pada seberapa besar peningkatan ukuran. Semakin besar Anda memperbesar, semakin turun kualitasnya.' },
+      { q: 'Apakah alat resize gambar ini aman digunakan?', a: 'Ya, alat resize gambar kami sepenuhnya aman digunakan, terutama untuk gambar pribadi dan privat Anda karena semua gambar diproses secara lokal. Tidak ada data Anda yang akan meninggalkan perangkat dalam bentuk apa pun saat pemrosesan. Jadi, Anda bisa mengubah ukuran gambar pribadi tanpa risiko.' },
+      { q: 'Format gambar apa saja yang didukung?', a: 'Semua format gambar didukung oleh alat resize gambar kami. Anda dapat memilih gambar dalam format berikut:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'Bagaimana cara kerja penghapusan latar belakang?', a: 'Kami menggunakan model AI canggih yang berjalan langsung di browser Anda untuk mendeteksi subjek dan memisahkannya dari latar belakang, menghasilkan PNG transparan.' },
@@ -689,11 +1122,12 @@ const id = {
       { q: 'Apakah ada data yang diunggah ke server?', a: 'Tidak. Semua penanda air dilakukan secara lokal di browser Anda. Gambar dan logo Anda tidak pernah ditransmisikan ke mana pun.' },
     ],
     qrCodeGenerator: [
-      { q: 'Jenis data apa yang bisa saya kodekan dalam kode QR?', a: 'Anda dapat mengkodekan URL, teks biasa, kredensial Wi-Fi, alamat email, nomor telepon, pesan SMS, vCard, dan lainnya.' },
-      { q: 'Bisakah saya menyesuaikan warna dan gaya kode QR saya?', a: 'Ya. Pilih warna depan dan latar belakang khusus, tambahkan logo atau ikon di tengah, dan pilih dari berbagai gaya titik/sudut.' },
-      { q: 'Dalam format apa saya bisa mengunduh kode QR?', a: 'Anda dapat mengunduh kode QR sebagai file PNG, SVG, atau JPEG, dalam resolusi pilihan Anda.' },
-      { q: 'Apakah menambahkan logo akan membuat kode QR tidak dapat dipindai?', a: 'Alat kami menggunakan koreksi kesalahan untuk memastikan kode QR tetap dapat dipindai bahkan dengan logo di tengah, selama logo tidak menutupi terlalu banyak kode.' },
-      { q: 'Apakah pembuatan kode QR dilakukan di server?', a: 'Tidak. Kode QR dibuat sepenuhnya di browser Anda. Tidak ada data yang dikirim ke server apa pun — informasi Anda tetap privat.' },
+      { q: 'Apakah kode QR ini kedaluwarsa?', a: 'Tidak, kode QR ini tidak memiliki masa kedaluwarsa dan dapat digunakan seumur hidup. Karena kode ini menyimpan instruksi yang dikodekan permanen dalam bentuk bit di dalam kotak-kotak, informasi di dalamnya tidak dapat diubah atau dihapus. Anda tetap dapat mengakses informasi tersebut hanya dengan memindainya menggunakan kamera apa pun, bahkan setelah bertahun-tahun.' },
+      { q: 'Mengapa kode QR saya tidak bisa dipindai?', a: 'Kode QR Anda mungkin gagal dipindai karena alasan berikut: i. Kontras rendah: Jika warna latar belakang dan warna depan terlalu mirip, visibilitas kode QR menurun dan pemindaian bisa gagal. Namun, alat kami akan memberi panduan saat kustomisasi jika terdeteksi kontras rendah atau masalah pemindaian lainnya. ii. Data terlalu besar: Jika Anda membuat kode QR untuk teks yang sangat panjang, kode menjadi sangat kompleks dan sulit dipindai. Validator panjang teks akan membantu Anda dengan panjang teks yang optimal. iii. Hasil cetak buram: Pastikan Anda mengunduh kode QR dalam format resolusi tinggi seperti PNG atau SVG yang sudah didukung alat kami.' },
+      { q: 'Bisakah saya menambahkan logo ke dalam kode QR?', a: 'Tentu saja, Anda dapat menambahkan logo kustom atau memilih logo dari pustaka logo bawaan untuk kode QR Anda. Logo yang dipilih akan disesuaikan secara otomatis di bagian tengah kode QR.' },
+      { q: 'Bagaimana cara memindai kode QR?', a: 'Anda dapat memindai kode QR menggunakan kamera ponsel Anda. Untuk pengalihan tautan otomatis dan fitur lanjutan lainnya, Anda juga bisa menggunakan pemindai kode QR kami secara gratis di https://photremium.com/qr-code-scanner.' },
+      { q: 'Berapa banyak kode QR yang bisa saya buat gratis?', a: 'TANPA BATAS! Anda dapat membuat banyak kode QR secara gratis. Semua fitur, kustomisasi, dan template gratis selamanya untuk semua pengguna. Tidak perlu berlangganan untuk menikmati fitur premium.' },
+      { q: 'Apakah saya perlu login/daftar untuk membuat kode QR?', a: 'Tidak. Cukup masukkan teks Anda, buat kode QR, lalu unduh setelah dikustomisasi. Tidak perlu login atau daftar karena semua fitur dapat diakses sepenuhnya gratis.' },
     ],
     qrCodeScanner: [
       { q: 'Bagaimana cara memindai kode QR?', a: 'Anda dapat menggunakan kamera perangkat Anda untuk pemindaian langsung, atau mengunggah gambar yang berisi kode QR. Hasilnya ditampilkan secara instan.' },

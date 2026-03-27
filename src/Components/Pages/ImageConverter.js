@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
+import MobileImportPopup from '../MobileImportPopup/MobileImportPopup';
 import { useLanguage } from '../../context/LanguageContext';
 import './ImageConverter.css';
 
@@ -152,6 +153,7 @@ const ImageConverter = () => {
   const fileInputRef = useRef(null);
   const addFileInputRef = useRef(null);
   const didPrefillFromStateRef = useRef(false);
+  const dragDepthRef = useRef(0);
 
   /* Update output format when route changes */
   useEffect(() => {
@@ -325,8 +327,33 @@ const ImageConverter = () => {
   };
 
   /* --- drag & drop --- */
-  const onDrop = (e) => {
+  const isFileDrag = (e) => Array.from(e.dataTransfer?.types || []).includes('Files');
+
+  const onDragEnter = (e) => {
+    if (!isFileDrag(e)) return;
     e.preventDefault();
+    dragDepthRef.current += 1;
+    setDragOver(true);
+  };
+
+  const onDragOver = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    if (!dragOver) setDragOver(true);
+  };
+
+  const onDragLeave = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
+    if (dragDepthRef.current === 0) setDragOver(false);
+  };
+
+  const onDrop = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = 0;
     setDragOver(false);
     addFiles(e.dataTransfer.files);
   };
@@ -337,10 +364,26 @@ const ImageConverter = () => {
   const currentFormatLabel = OUTPUT_FORMATS.find((f) => f.value === outputFormat)?.label || 'JPG';
   /* Collect unique detected source formats */
   const detectedFormats = [...new Set(images.map((i) => i.sourceFormat))];
+  const sourceFormatsSet = new Set(detectedFormats);
+  const hasSingleSourceFormat = sourceFormatsSet.size === 1;
+  const availableOutputFormats = OUTPUT_FORMATS.filter((fmt) => {
+    if (!images.length) return true;
+    if (!hasSingleSourceFormat) return true;
+    return !sourceFormatsSet.has(fmt.label);
+  });
+
+  useEffect(() => {
+    if (!images.length) return;
+    if (!availableOutputFormats.length) return;
+    const isCurrentAvailable = availableOutputFormats.some((fmt) => fmt.value === outputFormat);
+    if (!isCurrentAvailable) {
+      setOutputFormat(availableOutputFormats[0].value);
+    }
+  }, [images.length, outputFormat, availableOutputFormats]);
 
   /* --- SEO data --- */
   const seoTitle = routeInfo
-    ? `${routeInfo.title} — Free Online | photremium.com`
+    ? `${routeInfo.title} — Free Online | Photremium`
     : t('converter.seo.uploadTitle');
   const seoDesc = routeInfo
     ? routeInfo.desc
@@ -377,8 +420,9 @@ const ImageConverter = () => {
 
             <div
               className={`conv-dropzone ${dragOver ? 'conv-dropzone--active' : ''}`}
-              onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-              onDragLeave={() => setDragOver(false)}
+              onDragEnter={onDragEnter}
+              onDragOver={onDragOver}
+              onDragLeave={onDragLeave}
               onDrop={onDrop}
             >
               <div className="conv-dropzone__cloud">
@@ -389,9 +433,12 @@ const ImageConverter = () => {
               <p className="conv-dropzone__hint">
                 <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
-              <button className="conv-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
-              </button>
+              <div style={{ marginTop: 20, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+                <button className="conv-dropzone__btn" onClick={() => fileInputRef.current?.click()} style={{ marginTop: 0 }}>
+                  <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
+                </button>
+                <MobileImportPopup onImportFiles={addFiles} />
+              </div>
               <input
                 ref={fileInputRef}
                 type="file"
@@ -406,7 +453,7 @@ const ImageConverter = () => {
             <div className="conv-quick-links">
               <h3>{t('converter.popularConversions')}</h3>
               <div className="conv-quick-links__grid">
-                {Object.entries(CONVERSION_ROUTES).slice(0, 12).map(([slug, info]) => (
+                {Object.entries(CONVERSION_ROUTES).map(([slug, info]) => (
                   <Link key={slug} to={localePath(`/convert/${slug}`)} className="conv-quick-link">
                     <i className="fa-solid fa-right-left"></i> {info.title.replace(' Converter', '')}
                   </Link>
@@ -424,9 +471,15 @@ const ImageConverter = () => {
   /* =========================== WORKSPACE VIEW =========================== */
   return (
     <>
-      <SEO title={`${t('converter.convertingTo')} ${currentFormatLabel} — photremium.com ${t('converter.title')}`} description={seoDesc} keywords={seoKeywords} />
+      <SEO title={`${t('converter.convertingTo')} ${currentFormatLabel} — Photremium ${t('converter.title')}`} description={seoDesc} keywords={seoKeywords} />
 
-      <section className="conv-workspace">
+      <section
+        className={`conv-workspace ${dragOver ? 'conv-workspace--dragover' : ''}`}
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        onDrop={onDrop}
+      >
         {/* Mobile settings toggle */}
         <button
           className="conv-settings-toggle"
@@ -513,7 +566,7 @@ const ImageConverter = () => {
             <div className="conv-right__format">
               <label>{t('converter.convertTo')}:</label>
               <div className="conv-format-grid">
-                {OUTPUT_FORMATS.map((fmt) => (
+                {availableOutputFormats.map((fmt) => (
                   <button
                     key={fmt.value}
                     className={`conv-format-btn ${outputFormat === fmt.value ? 'active' : ''}`}

@@ -175,6 +175,28 @@
   display: flex;
   min-height: calc(100vh - 64px);
   background: #f1f5f9;
+  position: relative;
+}
+
+.fb-workspace--dragover {
+  box-shadow: inset 0 0 0 3px rgba(79, 70, 229, 0.26);
+}
+
+.fb-workspace--dragover::after {
+  content: 'Drop images to add for face blur';
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  transform: translateX(-50%);
+  background: rgba(79, 70, 229, 0.94);
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  z-index: 30;
+  pointer-events: none;
+  box-shadow: 0 8px 22px rgba(79, 70, 229, 0.28);
 }
 
 /* ---- Preview Panel (left 15%) ---- */
@@ -489,7 +511,16 @@
   display: none;
 }
 
+/* Header actions (lang + close) */
+.fb-right__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
+.fb-right__header-actions .lang-switch {
+  display: none;
+}
 
 /* Stats */
 .fb-right__stats {
@@ -1350,7 +1381,9 @@ body.fb-workspace-active .main-content {
     color: #ef4444;
   }
 
-
+  .fb-right__header-actions .lang-switch {
+    display: block;
+  }
 
   .fb-right__actions {
     position: static;

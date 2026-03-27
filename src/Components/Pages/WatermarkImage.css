@@ -167,6 +167,27 @@
   position: relative;
 }
 
+.wm-workspace--dragover {
+  box-shadow: inset 0 0 0 3px rgba(79, 70, 229, 0.26);
+}
+
+.wm-workspace--dragover::after {
+  content: 'Drop images to add for watermarking';
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  transform: translateX(-50%);
+  background: rgba(79, 70, 229, 0.94);
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: 0 8px 22px rgba(79, 70, 229, 0.28);
+}
+
 /* ---- Preview Panel (15%, multi-image only) ---- */
 .wm-preview {
   width: 15%;

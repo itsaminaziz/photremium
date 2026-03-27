@@ -197,6 +197,99 @@ const ms = {
     compressing: 'Memampatkan…',
     compressDownload: 'Mampatkan & Muat Turun',
     lowQualityWarning: 'Pemampatan tinggi boleh mengurangkan kejelasan imej dengan ketara.',
+    blog: {
+      tocTitle: 'Kandungan',
+      title: 'Blog Pemampat Imej',
+      formatsIntro: 'Alat kami menyokong semua format imej, jadi anda boleh memampatkan mana-mana imej dengan lancar. Senarai penuh format diberikan di bawah:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. Apakah pemampat imej?',
+          paragraphs: [
+            'Pemampat imej ialah perisian atau perkhidmatan dalam talian yang mengurangkan saiz fail imej sambil mengekalkan kualiti visual. Namun, pemampatan berlebihan boleh menjejaskan kualiti dengan ketara.',
+          ],
+          listTitle: 'JENIS:',
+          bullets: [
+            'Pemampatan lossy: saiz imej dikurangkan dengan membuang sebahagian data imej. Kualiti mungkin menurun tetapi selalunya sukar disedari oleh mata manusia.',
+            'Pemampatan lossless: mengurangkan saiz fail tanpa menjejaskan kualiti visual imej.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Mengapa pilih alat kami?',
+          bullets: [
+            'Alat pemampat imej berasaskan AI kami berfungsi lancar pada semua peranti untuk hasil terbaik.',
+            'Anda boleh memampatkan banyak imej serentak (malah 100+) dengan satu klik sahaja.',
+            'Tidak perlu memuat naik imej ke pelayan kami. Semua pemprosesan berlaku secara setempat dalam pelayar anda.',
+            'Alat pemampat imej kami percuma sepenuhnya selama-lamanya, dan boleh dikongsi dengan rakan-rakan anda.',
+            'Anda boleh memilih peratus pemampatan mengikut keperluan.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Panduan langkah demi langkah',
+          steps: [
+            {
+              heading: '1. Pilih imej yang anda mahu mampatkan.',
+              bullets: [
+                'Seret dan lepaskan imej ke kotak muat naik.',
+                'Anda juga boleh salin imej dan tampal dalam kotak menggunakan (Ctrl + V).',
+                'Penjelajah fail juga disokong melalui butang pilih.',
+              ],
+            },
+            {
+              heading: '2. Kemudian pilih peratus pemampatan.',
+              bullets: [
+                'Peluncur mendatar memberi pengalaman mudah untuk memilih tahap pemampatan. Ikuti julat di bawah untuk hasil yang tepat.',
+              ],
+              table: {
+                headers: ['Peratus Pemampatan', 'Hasil'],
+                rows: [
+                  ['1%  hingga  40%', 'Kualiti terbaik'],
+                  ['41%  hingga  60%', 'Kualiti normal (Disyorkan)'],
+                  ['61%  hingga  100%', 'Kualiti rendah'],
+                ],
+              },
+            },
+            {
+              heading: '3. Semak ruang yang anda jimat.',
+              paragraphs: [
+                'Semua metrik saiz dipaparkan secara masa nyata. Anda boleh melihat jumlah ruang yang dijimatkan dan melaras tahap pemampatan mengikut keperluan fail anda.',
+              ],
+            },
+            {
+              heading: '4. Pilih pilihan muat turun daripada butang togol.',
+              bullets: [
+                'ZIP: Jika anda memampatkan banyak imej, pilihan ini akan dipaparkan. Ia akan mengarkibkan semua imej termampat ke dalam satu fail ZIP (disyorkan untuk jumlah imej yang besar).',
+                'Berasingan: Pilihan ini memuat turun setiap imej secara berasingan, bukan dalam satu ZIP (disyorkan untuk jumlah kecil, kurang daripada 10).',
+              ],
+            },
+            {
+              heading: '5. Mampatkan dan muat turun imej.',
+              paragraphs: [
+                'Butang ini akan memuat turun semua imej termampat secara automatik berdasarkan pilihan muat turun anda.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Kelebihan pemampat imej.',
+          bullets: [
+            'Mengurangkan kos storan: pemampatan mengurangkan saiz fail imej dengan ketara.',
+            'Muat lebih pantas: imej termampat dimuatkan lebih cepat dan meningkatkan pengalaman pengguna.',
+            'Penyelesaian had Gmail: had lampiran Gmail 25MB menjadikan pemampatan penting untuk menghantar lebih banyak fail.',
+            'Perkongsian dan pemindahan lebih cepat: fail besar mengambil masa lebih lama untuk dihantar; pemampatan menjimatkan masa dan data.',
+            'Pengoptimuman pembentangan: imej tidak termampat boleh menyebabkan fail pembentangan terlalu besar, manakala imej termampat menjadikannya jauh lebih ringan.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Format yang disokong.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   converter: {
@@ -301,6 +394,91 @@ const ms = {
     dontEnlarge: 'Jangan besarkan jika asal lebih kecil',
     resizing: 'Mengubah saiz…',
     resizeDownload: 'Ubah Saiz & Muat Turun',
+    blog: {
+      tocTitle: 'Kandungan',
+      title: 'Blog Pengubah Saiz Imej',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Mengapa menggunakan pengubah saiz imej?',
+          paragraphs: [
+            'Pengubah saiz imej ialah alat/perisian yang digunakan untuk mengubah dimensi imej. Anda boleh melaras tinggi, lebar atau kedua-duanya untuk mendapatkan saiz yang diperlukan. Ia sangat berguna untuk platform media sosial yang mempunyai had saiz muat naik/siaran.',
+          ],
+          listTitle: 'Contohnya:',
+          bullets: [
+            'Siaran Instagram: 1080 x 1080px (segi empat sama)',
+            'Siaran Facebook: 1200 x 630px',
+            'Siaran X (Twitter): 1200 x 675px',
+            'Story Instagram: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Mengapa memilih alat pengubah saiz imej kami?',
+          paragraphs: [
+            'Alat pengubah saiz imej berasaskan AI kami membolehkan anda mengubah saiz imej dengan tepat dan sangat pantas. Ia berfungsi lancar pada mana-mana peranti dan tidak memerlukan pemasangan aplikasi. Semua ciri tersedia terus dalam pelayar anda.',
+          ],
+          bullets: [
+            'Anda boleh mengubah saiz berbilang imej serentak (malah 100+). Jika peranti anda berprestasi tinggi, 400–500 imej juga boleh diproses dalam beberapa saat.',
+            'Semua imej diproses dalam pelayar setempat. Tiada muat naik ke pelayan kami dan imej tidak meninggalkan peranti anda, jadi ia selamat untuk imej peribadi.',
+            'Unit pengubah saiz berbilang disokong.',
+            'Nisbah aspek boleh dikekalkan selepas pengubahan saiz dengan hanya menanda kotak pilihan.',
+            'Untuk berbilang imej, anda boleh memuat turun secara berasingan atau sebagai fail ZIP.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Panduan langkah demi langkah',
+          steps: [
+            {
+              heading: 'Mula-mula, pilih imej (satu atau lebih) yang ingin anda ubah saiz. Terdapat beberapa cara untuk memilih imej.',
+              bullets: [
+                'Anda boleh seret dan lepas imej ke kotak drop untuk diubah saiz.',
+                'Anda juga boleh tampal imej dengan pintasan “Ctrl + V”.',
+                'Atau klik butang “Choose Files” untuk memilih imej melalui peneroka fail.',
+              ],
+            },
+            {
+              heading: 'Seterusnya, pilih unit pengubah saiz. Unit yang tersedia buat masa ini ialah:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'Selepas memilih unit, laraskan tinggi dan lebar untuk mengubah saiz imej. Anda juga boleh mengekalkan nisbah aspek menggunakan kotak pilihan.',
+            },
+            {
+              heading: 'Jika anda tidak mahu membesarkan imej melebihi saiz asal, tandakan “Don’t enlarge if original is smaller”.',
+            },
+            {
+              heading: 'Kemudian pilih salah satu pilihan muat turun.',
+              bullets: [
+                'Pilih ZIP jika anda mahu semua imej hasil ubah saiz dalam satu fail zip.',
+                'Pilih “separate” jika anda mahu setiap imej dimuat turun secara berasingan.',
+              ],
+            },
+            {
+              heading: 'Akhir sekali, klik butang “Resize & Download” untuk memuat turun imej mengikut pilihan anda.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Faedah alat pengubah saiz imej: manfaat utama alat ini ialah ia membantu imej dipadankan dengan baik pada halaman web dan siaran media sosial.',
+          tocLabel: '4. Faedah alat pengubah saiz imej',
+          bullets: [
+            'Meningkatkan UX: saiz imej yang betul dan peletakan yang kemas meningkatkan pengalaman pengguna dengan ketara.',
+            'Sokongan media sosial: banyak platform mempunyai had dimensi untuk muat naik imej, dan alat ini membantu menyesuaikannya.',
+            'Reka bentuk responsif: pembangun web memerlukan pelbagai dimensi imej untuk menyokong pelbagai peranti.',
+            'Pilihan terbaik: berbanding meregang atau memotong imej yang boleh menjejaskan rupa, pengubahan saiz biasanya pilihan yang lebih baik.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Format yang disokong: pengubah saiz imej kami menyokong pemilihan imej dalam apa jua format. Format yang disokong disenaraikan di bawah:',
+          tocLabel: '5. Format yang disokong',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   cropper: {
@@ -331,6 +509,94 @@ const ms = {
     saveNext: 'Simpan & Seterusnya',
     croppedNofTotal: 'Dipotong {n} daripada {total}.',
     downloadN: 'Muat Turun {n}',
+    blog: {
+      tocTitle: 'Kandungan',
+      title: 'Blog Pemotong Imej',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Mengapa menggunakan alat pemotong imej?',
+          paragraphs: [
+            'Pemotong imej ialah alat perisian yang digunakan untuk memotong imej kepada bentuk yang dikehendaki. Ia digunakan secara meluas untuk mengekalkan bahagian imej yang diperlukan dan membuang kawasan luar yang tidak diingini bagi apa jua tujuan. Alat ini menyediakan kotak crop yang boleh anda laraskan pada kedudukan yang anda mahu potong.',
+          ],
+          listTitle: 'Sebagai Contoh:',
+          bullets: [
+            'Memotong diri anda daripada foto berkumpulan.',
+            'Memotong nama anda daripada senarai.',
+            'Memotong bar kemajuan daripada tangkapan skrin penuh.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Mengapa memilih pemotong imej kami?',
+          paragraphs: [
+            'Alat pemotong imej kami membolehkan anda memotong imej dengan tepat dan sangat pantas. Anda hanya perlu melaraskan saiz kotak crop pada kedudukan yang anda mahu potong daripada mana-mana imej. Hampir semua format imej disokong semasa pemilihan imej.',
+          ],
+          bullets: [
+            'Anda boleh memotong sebanyak mana imej yang disokong oleh peranti anda. Jika peranti anda berprestasi tinggi, anda boleh memotong 100+ imej serentak tanpa lag atau isu lain.',
+            'Imej anda diproses dalam pelayar setempat anda. Tiada keperluan untuk memuat naik imej ke pelayan kami, jadi tiada imej yang meninggalkan peranti anda. Anda boleh memotong imej peribadi tanpa kebimbangan keselamatan.',
+            'Banyak alat memaparkan ralat format imej tidak sah. Pemotong imej kami menyelesaikan isu ini dengan menyokong hampir semua format imej.',
+            'Jika anda memotong banyak imej serentak, alat kami membolehkan anda memuat turun imej yang telah dipotong sebagai ZIP atau secara berasingan mengikut pilihan anda.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Panduan langkah demi langkah',
+          steps: [
+            {
+              heading: '1. Mula-mula, pilih imej yang anda mahu potong. Alat pemotong imej kami juga menyokong pemilihan banyak imej serentak.',
+              bullets: [
+                'Seret dan lepas imej ke dalam kotak drop untuk dipotong.',
+                'Anda juga boleh memilih imej melalui peneroka fail dengan mengklik butang choose files pada kotak crop.',
+                'Pintasan Ctrl + V juga disokong untuk menampal imej ke dalam kotak drop.',
+              ],
+            },
+            {
+              heading: '2. Kemudian, laraskan saiz dan kedudukan kotak crop pada imej untuk memotongnya.',
+            },
+            {
+              heading: '3. Anda juga boleh melaraskan kotak crop dengan memasukkan nilai tinggi, lebar, kedudukan mendatar dan kedudukan menegak secara manual.',
+            },
+            {
+              heading: '4. Anda juga boleh menggunakan beberapa templat sedia ada:',
+              bullets: [
+                'Landscape(16:9)',
+                'Portrait(9:16)',
+                'Square(1:1)',
+              ],
+            },
+            {
+              heading: '5. Kemudian anda perlu memilih salah satu pilihan muat turun.',
+              bullets: [
+                'ZIP: Pilih pilihan ini jika anda memotong banyak imej dan mahu memuat turun semua imej yang dipotong sebagai satu fail.',
+                'Separate: Jika anda mahu memuat turun semua imej yang dipotong secara berasingan, pilih pilihan ini pada butang togol.',
+              ],
+            },
+            {
+              heading: '6. Kemudian klik butang Crop & Download untuk memuat turun semua imej yang telah dipotong mengikut dimensi pratetap anda.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Kelebihan Pemotong Imej: alat pemotong imej menawarkan beberapa kelebihan dalam dunia digital. Sebahagiannya diterangkan di bawah:',
+          tocLabel: '4. Kelebihan Pemotong Imej',
+          bullets: [
+            'Melaraskan imej dalam bingkai: Pemotong imej membantu anda meletakkan imej dengan betul dalam bingkai. Bingkai ini boleh berada pada halaman web atau mana-mana platform media sosial.',
+            'Meningkatkan UX: Oleh sebab penempatan imej yang baik meningkatkan pengalaman pengguna, pemotong imej membantu meningkatkan UX dengan ketara.',
+            'Membuang sempadan tidak diingini: Anda boleh membuang sempadan yang tidak diperlukan daripada imej untuk memperhalusinya.',
+            'Mengasingkan objek yang dikehendaki: Anda juga boleh mengasingkan diri anda daripada foto berkumpulan.',
+            'Menjimatkan storan: Memotong imej sememangnya menjimatkan storan kerana kawasan mentah imej dibuang dan hanya bahagian yang diperlukan disimpan.',
+            'Mengoptimumkan pembentangan: Jika pembentangan biasa dengan 10 imej tidak dipotong menggunakan kira-kira 30MB storan, pembentangan yang sama dengan imej dipotong boleh menggunakan kira-kira 10MB storan.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Format yang disokong:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   photoEditor: {
@@ -518,11 +784,183 @@ const ms = {
     downloadFormat: 'Format Muat Turun',
     preview: 'Pratonton',
     downloadFormatBtn: 'Muat Turun {format}',
+    pngDesc: 'Tanpa kehilangan, sokongan ketelusan',
+    jpgDesc: 'Format fail popular/universal',
+    webpDesc: 'Format moden, kualiti/saiz terbaik',
+    svgDesc: 'Grafik vektor boleh skala',
+    pdfDesc: 'Dokumen sedia cetak',
     lat: 'Latitud:',
     lng: 'Longitud:',
     qrCode: 'Kod QR',
     scanMe: 'Imbas Saya',
     scanHere: 'Imbas Di Sini',
+    blog: {
+      card1: {
+        title: '1. Apakah itu kod QR?',
+        intro1: 'Bentuk lengkap kod QR adalah "Quick Response code" (kod sambutan pantas). Kerana maklumat yang disimpan dalam ia didekod dengan sangat pantas, ia dipanggil kod Quick Response (QR).',
+        intro2: 'Kod QR ialah kod digital dua dimensi yang hanya boleh dibaca oleh mesin. Data di dalamnya tidak boleh dibaca oleh manusia. Ia mengandungi blok untuk menyimpan maklumat seperti teks, nombor telefon, pautan dan lokasi peta Google, dll.',
+        inventionTitle: 'Bagaimana kod QR dimulai:',
+        inventionText: 'Kod QR diciptakan pada tahun 1994. Masahiro Hara dan pasukannya bekerja di sebuah syarikat Jepun bernama Denso Wave, yang membuat bahagian kereta untuk Toyota. Mereka mahukan kod yang menyimpan lebih banyak maklumat daripada barcode biasa, kemudian mereka mencipta kod QR.',
+        keyFeaturesTitle: 'Ciri-ciri utama kod QR',
+        keyFeatures: [
+          {
+            title: 'Bagaimana QR berfungsi',
+            text: 'Anda memasukkan teks atau pautan untuk menjana kod QR. Penjana QR membuat kotak segi empat mengikut maklumat. Setiap kotak mewakili satu bit, dan setiap bit menyimpan satu aksara.',
+          },
+          {
+            title: 'Struktur kod QR',
+            text: 'Kod QR mengandungi tiga kotak segi empat besar untuk mengenal pasti orientasi kod QR, dan satu kotak segi empat kecil untuk menyimpan bit (maklumat).',
+          },
+          {
+            title: 'Kapasiti Data kod QR',
+            text: 'Biasanya, kod QR menyimpan lebih banyak maklumat daripada barcode. Kod QR hanyalah versi canggih barcode. Ia pada dasarnya adalah barcode dua dimensi. Kod QR menyimpan hampir 200 aksara. Ia juga boleh menyimpan 400 aksara tetapi sukar diimbas. Menyimpan lebih daripada 400 aksara mungkin menghasilkan kod QR yang sangat kompleks yang hampir tidak boleh diimbas.',
+          },
+          {
+            title: 'Pengesanan Ralat dalam Kod QR',
+            text: 'Kod QR masih boleh diimbas jika beberapa maklumat padanya tercanit atau beberapa bit dibalikkan. Kod QR menggunakan teknik pengesanan ralat Reed-Solomon untuk mengesan ralat, dan menyelesaikannya selepas pengenalan.',
+          },
+        ],
+        errorTitle: 'Tahap pembetulan ralat kod QR:',
+        errorIntro: 'Teknik pengesanan dan pembetulan ralat yang berbeza digunakan dalam kes yang berbeza seperti yang dijelaskan di bawah:',
+        errorHeaders: {
+          level: 'Tahap',
+          recovery: 'Kapasiti pemulihan',
+          bestUse: 'Kes penggunaan terbaik',
+        },
+        errorRows: [
+          {
+            level: 'Rendah (L)',
+            recovery: '~7%',
+            useCases: [
+              'Teknik pembetulan ralat ini digunakan apabila kod QR dipaparkan pada skrin digital, laman web, atau dalam persekitaran yang bersih.',
+              'Apabila kod QR dijana untuk maklumat kecil seperti Gmail, nombor kenalan, atau teks kecil.',
+            ],
+          },
+          {
+            level: 'Sederhana (M)',
+            recovery: '~15%',
+            useCases: [
+              'Untuk risalah dan poster yang dipasang dalam persekitaran bersih, dan ketika risiko kerosakan boleh diabaikan.',
+            ],
+          },
+          {
+            level: 'Kuartil (Q)',
+            recovery: '~25%',
+            useCases: [
+              'Apabila kod QR perlu dipasang dalam persekitaran yang keras seperti di kilang/luar.',
+              'Juga, apabila logo kecil diperlukan di tengah, ia meliputi beberapa bit. Jadi, teknik pembetulan ralat ini diperlukan.',
+            ],
+          },
+          {
+            level: 'Tinggi (H)',
+            recovery: '~30%',
+            useCases: [
+              'Digunakan apabila kerosakan berat pada kod QR mungkin berlaku.',
+              'Apabila logo besar meliputi pusat kod QR.',
+              'Juga, apabila penggayaan berat diperlukan untuk kod QR.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Mengapa memilih penjana kod QR kami?',
+        intro: 'Penjana kod QR kami menjadikan penjanaan kod QR sangat pantas, selamat, dan mudah. Anda boleh menyesuaikan kod anda untuk menjadikannya lebih canggih, profesional, dan sesuai dengan tema perniagaan anda. Semua penyesuaian dari pewarnaan kod QR hingga pemasangan logo dalam kod QR ditawarkan secara percuma selamanya.',
+        strengths: [
+          {
+            title: 'Penyesuaian Profesional:',
+            text: 'Anda boleh menjana dan menyesuaikan seberapa banyak kod QR seperti yang anda perlukan tanpa sebarang kos. Semua ciri sepenuhnya percuma. Anda boleh menggunakan warna kecerunan, bentuk berbeza untuk kotak segi empat, logo tersuai, dan banyak ciri lain.',
+          },
+          {
+            title: 'Sokongan format berbilang:',
+            text: 'Penjana kod QR kami menawarkan berbilang format muat turun untuk kemudahan anda. Anda hanya perlu memilih format pilihan anda sebelum memuat turun. Pada masa ini kami menawarkan format ini:',
+          },
+          {
+            title: 'Templat pra-siap:',
+            text: 'Anda boleh menggunakan warna kecerunan pra-siap dan bingkai yang menjadikan kod QR anda profesional.',
+          },
+          {
+            title: 'Sokongan logo tersuai:',
+            text: 'Anda juga boleh memuat naik logo jenama tersuai anda yang sesuai secara automatik di tengah kod QR. Anda juga boleh memilih logo dari perpustakaan logo terbina di mana lebih daripada 30 logo disediakan.',
+          },
+          {
+            title: 'Pratonton Langsung:',
+            text: 'Semasa menyesuaikan, anda boleh menonton semua perubahan dalam panel pratonton langsung. Perubahan ini dalam panel pratonton adalah masa nyata yang berubah secara dinamik.',
+          },
+          {
+            title: 'Penunjuk Imbasan:',
+            text: 'Semasa memilih warna, amaran dan penunjuk yang sesuai membimbing anda jika anda memilih warna yang sukar diimbas.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'Bil.',
+          formats: 'Format',
+          description: 'Perihalan',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Tanpa kehilangan, sokongan ketelusan' },
+          { no: '2', format: 'JPG', description: 'Popular, format fail universal' },
+          { no: '3', format: 'WEBP', description: 'Moden, kualiti/saiz terbaik' },
+          { no: '4', format: 'SVG', description: 'Grafik vektor boleh skala' },
+          { no: '5', format: 'PDF', description: 'Dokumen sedia cetak' },
+        ],
+      },
+      card3: {
+        title: '3. Panduan langkah demi langkah:',
+        step1Intro: 'Pertama sekali, pilih kategori kod QR yang anda ingin jana. Sama ada anda menjana kod QR untuk kenalan, Peta, pautan atau teks. Pada masa ini, penjana kod QR kami menawarkan kategori ini:',
+        categories: ['Pautan / URL', 'Teks', 'WiFi', 'Kenalan', 'Gmail', 'Google Maps'],
+        step2: 'Selepas memilih kategori, tampal maklumat anda dalam kotak teks mengikutnya.',
+        step3Intro: 'Kemudian, klik pada Jana & Sesuaikan untuk membuka panel penyesuaian. Dalam panel penyesuaian, anda akan melihat bar navigasi sub dengan pilihan berikut:',
+        options: [
+          {
+            title: 'Gaya & Bentuk:',
+            text: 'Dalam bahagian ini, anda boleh menukar bentuk kotak segi empat kepada pelbagai gaya seperti sudut bulat, titik, bar mendatar, bar menegak, kotak kecil, dan banyak yang lain.',
+          },
+          {
+            title: 'Warna:',
+            text: 'Anda boleh memilih warna latar dan hadapan tersuai dalam bahagian ini. Untuk menjadikan kod QR anda dalam warna kecerunan, anda mempunyai pilihan untuk membolehkan kecerunan yang membenarkan anda menggunakan sebarang warna kecerunan dari perpustakaan terbina atau membuat warna kecerunan anda sendiri dengan mudah. Anda juga boleh menukar sudut untuk warna kecerunan linear. Kecerunan radial juga disokong. Anda boleh menambah berbilang warna untuk membuat kesan kecerunan profesional.',
+          },
+          {
+            title: 'Bingkai:',
+            text: 'Di sini, anda boleh memilih bingkai sempurna untuk kod QR anda. Semua bingkai secara automatik sesuai dengan kod anda secara automatik. Anda hanya perlu memilih bingkai dari perpustakaan terbina.',
+          },
+          {
+            title: 'Logo:',
+            text: 'Selepas pemilihan bingkai, anda boleh memilih logo yang secara automatik diselaraskan di tengah kod QR. Memuat naik logo jenama tersuai anda juga disokong.',
+          },
+          {
+            title: 'Templat:',
+            text: 'Jika anda tidak ingin memilih gaya, bentuk, warna dan bingkai secara berasingan, anda boleh menggunakan templat pra-siap pada kod QR anda. Berbilang templat premium disediakan untuk kemudahan anda yang percuma selamanya.',
+          },
+          {
+            title: 'Format Fail:',
+            text: 'Akhir sekali, anda perlu memilih jenis fail yang anda ingin muat turun kod QR. Beberapa format biasa disokong termasuk PNG, WEBP, SVG, dan PDF, dll.',
+          },
+          {
+            title: 'Edit Data QR:',
+            text: 'Anda juga boleh mengedit data QR anda tanpa sebarang kehilangan dalam penyesuaian anda yang dipilih.',
+          },
+        ],
+        finalStep: 'Kemudian, hanya klik pada butang muat turun, dan kod QR tepat mengikut penyesuaian anda dan dalam format yang dipilih akan dimuat turun serta-merta tanpa sebarang kos.',
+      },
+      card4: {
+        title: '4. Faedah:',
+        intro: 'Kod QR menyambungkan dunia fizikal dengan pengalaman digital. Ia adalah cara paling pantas untuk berkongsi pautan, kenalan, atau lokasi anda. Anda hanya perlu mengimbas kod QR tersebut untuk mengakses maklumat dengan serta-merta. Jadi, ia sangat popular dalam perniagaan dan dunia digital kerana cekap masa dan sangat berpurposa.',
+        benefits: [
+          {
+            title: 'Sokongan Seumur Hidup:',
+            text: 'Kod QR berfungsi selamanya tanpa sebarang tamat tempoh. Mereka memberikan anda maklumat yang disimpan dengan serta-merta apabila anda mengimbasnya. Kerana ia menyimpan arahan digital berkod keras, ia tidak pernah kehilangan maklumatnya.',
+          },
+          {
+            title: 'Sokongan Luar Talian:',
+            text: 'Anda boleh mengimbas kod QR walaupun anda berada dalam talian. Kamera mudah alih anda mentafsir corak kod QR dan memberikan anda maklumat yang disimpan di dalamnya.',
+          },
+          {
+            title: 'Kos Sifar:',
+            text: 'Kerana kod ini tidak memerlukan sebarang pengalihan pelayan atau sumber, ia bebas kos selamanya.',
+          },
+        ],
+      },
+    },
   },
 
   qrScanner: {
@@ -633,25 +1071,25 @@ const ms = {
       { q: 'Bolehkah saya menukar imej PNG telus ke JPG?', a: 'Ya. Oleh kerana JPG tidak menyokong ketelusan, kawasan telus akan diisi dengan latar belakang putih secara lalai.' },
     ],
     imageCompressor: [
-      { q: 'Bagaimana pemampatan imej berfungsi?', a: 'Alat kami menggunakan Canvas API terbina dalam pelayar untuk mengekod semula imej pada tahap kualiti yang lebih rendah.' },
-      { q: 'Adakah pemampatan menurunkan kualiti imej dengan ketara?', a: 'Pada tahap pemampatan sederhana (20-40%), perbezaannya hampir tidak ketara.' },
-      { q: 'Format imej apa yang boleh dimampatkan?', a: 'Anda boleh memuat naik JPG, PNG, WEBP, BMP dan format raster biasa lain.' },
-      { q: 'Bolehkah saya memampatkan beberapa imej sekaligus?', a: 'Ya! Pilih sahaja beberapa fail. Anda boleh memuat turun semuanya sebagai ZIP.' },
-      { q: 'Adakah imej yang dimampatkan disimpan di pelayan?', a: 'Tidak. Semua berjalan secara tempatan dalam pelayar.' },
+      { q: 'Adakah pemampatan imej akan mengurangkan kualiti?', a: 'Tidak, pemampatan imej tidak menjejaskan kualiti selagi anda tidak melebihi had yang disyorkan. Penunjuk membantu anda menilai kualiti: i. Pemampatan 1% hingga 40%: penunjuk hijau dengan mesej “Kualiti Baik”. ii. Pemampatan 41% hingga 60%: penunjuk kuning dengan mesej “Kualiti Normal”. Julat ini biasanya paling disyorkan. iii. Pemampatan 61% hingga 100%: sistem memaparkan amaran merah “Kualiti Rendah”, dan penurunan kualiti mungkin ketara.' },
+      { q: 'Format imej apa yang disokong untuk pemampatan?', a: 'Alat pemampat imej kami menyokong semua format berikut:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Bolehkah saya memampatkan banyak imej serentak?', a: 'Ya, sudah tentu. Anda boleh memampatkan banyak imej serentak (malah 100+) jika peranti anda menyokongnya. Oleh sebab proses ini menggunakan sumber sistem, laptop, PC atau telefon berprestasi tinggi akan memberi hasil lebih baik. Jika peranti anda rendah spesifikasi, anda masih boleh memampatkan secara berkelompok kerana alat ini kekal percuma walaupun digunakan dalam banyak batch.' },
+      { q: 'Adakah anda menyimpan atau memuat naik imej kami ke pelayan anda?', a: 'Tidak, kami tidak memuat naik atau menyimpan imej anda pada pelayan kami. Semua imej dimampatkan secara setempat dalam pelayar anda. Imej anda tidak pernah meninggalkan peranti, jadi anda boleh memampatkan imej peribadi atau sulit dengan tenang.' },
+      { q: 'Adakah alat pemampat imej ini percuma?', a: 'Ya, alat pemampat imej kami adalah percuma sepenuhnya untuk selama-lamanya. Kami tidak akan meminta sebarang bayaran. Tiada caj tersembunyi. Semua ciri, termasuk pemampatan berbilang imej, adalah percuma.' },
     ],
     cropImage: [
-      { q: 'Bolehkah saya memotong imej dengan nisbah aspek tertentu?', a: 'Ya. Anda boleh memilih dari nisbah pratetap seperti 1:1, 4:3, 16:9, atau memasukkan nisbah tersuai.' },
-      { q: 'Adakah pemotongan mengurangkan kualiti imej?', a: 'Tidak. Pemotongan hanya membuang piksel di luar kawasan yang dipilih.' },
-      { q: 'Bolehkah saya memotong beberapa imej sekaligus?', a: 'Sudah tentu. Muat naik beberapa imej, tetapkan kawasan potong untuk setiap satu, kemudian muat turun semuanya sekaligus.' },
-      { q: 'Format fail apa yang disokong untuk pemotongan?', a: 'Semua format imej biasa disokong termasuk JPG, PNG, WEBP, GIF dan BMP.' },
-      { q: 'Adakah imej dimuat naik ke pelayan untuk diproses?', a: 'Tidak. Semua pemotongan dilakukan secara tempatan dalam pelayar menggunakan HTML5 Canvas API.' },
+      { q: 'Adakah memotong imej akan mengurangkan kualitinya?', a: 'Tidak, memotong imej tidak akan menjejaskan kualiti visual imej langsung. Pemotongan hanya membuang bahagian yang tidak diperlukan. Ia tidak mengubah piksel pada bahagian imej yang kekal selepas dipotong. Jadi anda boleh memotong imej dengan kualiti asal tanpa sebarang kerosakan piksel.' },
+      { q: 'Apakah format imej yang disokong oleh pemotong imej?', a: 'Anda boleh memilih imej dalam apa-apa format kerana alat pemotong imej kami menyokong hampir semua format imej. Ia disenaraikan di bawah:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Adakah imej saya dimuat naik ke pelayan anda?', a: 'Tidak, semua pemprosesan dilakukan dalam pelayar setempat anda. Imej anda tidak akan dimuat naik ke pelayan kami kerana imej tidak pernah meninggalkan peranti anda. Jadi anda boleh memotong imej peribadi dengan pemotong imej kami tanpa sebarang risiko.' },
+      { q: 'Bolehkah saya memotong beberapa imej serentak?', a: 'Ya, anda boleh memotong beberapa imej (malah 100+) serentak jika sistem anda menyokongnya. Oleh sebab pemotongan menggunakan sumber sistem, jika anda mempunyai laptop, PC atau telefon berprestasi tinggi, anda boleh memotong banyak imej sekaligus. Jika peranti anda berprestasi rendah, anda boleh memotong imej secara kelompok kerana alat ini percuma digunakan walaupun anda memotong banyak imej.' },
+      { q: 'Adakah alat pemotong imej ini percuma untuk digunakan?', a: 'Ya, alat pemotong imej ini adalah percuma sepenuhnya untuk selama-lamanya. Anda boleh mengaksesnya di mana-mana, pada bila-bila masa dan menggunakan mana-mana peranti. Anda bukan sahaja akan mendapat reka bentuk responsif untuk semua peranti, malah anda juga tidak akan diminta membayar sebarang ciri premium. Semua ciri adalah percuma sepenuhnya tanpa caj tersembunyi.' },
     ],
     resizeImage: [
-      { q: 'Bolehkah saya mengubah saiz imej ke saiz piksel yang tepat?', a: 'Ya. Masukkan lebar dan tinggi yang dikehendaki dalam piksel, inci atau sentimeter. Anda juga boleh mengunci nisbah aspek.' },
-      { q: 'Adakah pengubahan saiz menjadikan imej kabur?', a: 'Membesarkan melebihi resolusi asal mungkin sedikit melembutkan. Kami menggunakan interpolasi bikubik berkualiti tinggi.' },
-      { q: 'Adakah pengubahan saiz pukal tersedia?', a: 'Ya. Muat naik beberapa imej dan gunakan saiz sasaran yang sama kepada semua.' },
-      { q: 'Unit saiz apa yang boleh digunakan?', a: 'Anda boleh menentukan dalam piksel, inci, sentimeter atau peratusan daripada saiz asal.' },
-      { q: 'Adakah data dihantar ke pelayan semasa pengubahan saiz?', a: 'Tidak. Dilakukan sepenuhnya dalam pelayar.' },
+      { q: 'Bolehkah saya mengubah saiz berbilang imej serentak?', a: 'Sudah tentu. Alat pengubah saiz imej kami menyokong pengubahan saiz berbilang imej pada masa yang sama. Anda boleh memuat naik sebanyak imej yang disokong peranti anda dan enjin AI kami akan memproses semuanya serentak. Namun, jika peranti anda berprestasi rendah, lebih baik proses dalam batch untuk elak lag. Semua pemprosesan berlaku secara setempat tanpa muat naik pelayan, jadi privasi imej anda kekal terpelihara.' },
+      { q: 'Adakah alat pengubah saiz imej ini percuma?', a: 'Ya, alat ini percuma sepenuhnya untuk selama-lamanya. Tiada langganan berbayar diperlukan untuk ciri premium. Tiada caj tersembunyi semasa memuat turun imej yang telah diubah saiz.' },
+      { q: 'Adakah pengubahan saiz imej menurunkan kualiti?', a: '✅Decrease Size (downscale): Mengurangkan saiz imej tidak menurunkan kualiti visual. Malah, imej yang dikecilkan boleh kelihatan lebih tajam berbanding imej asal. Jadi, mengecilkan imej ke saiz lebih kecil biasanya tidak menyebabkan kehilangan kualiti.\n❌Increase Size (upscale): Membesarkan imej melebihi saiz asal boleh menjejaskan kualiti visual. Kesan bergantung pada sejauh mana imej dibesarkan. Jika dibesarkan secara berlebihan, penurunan kualiti akan lebih ketara.' },
+      { q: 'Adakah alat pengubah saiz imej ini selamat?', a: 'Ya, alat kami selamat digunakan, terutamanya untuk imej peribadi atau sensitif. Semua imej diproses setempat pada peranti anda dan tiada data meninggalkan peranti. Anda boleh mengubah saiz imej peribadi tanpa sebarang risiko privasi.' },
+      { q: 'Format imej apa yang disokong?', a: 'Pengubah saiz imej kami menyokong semua format imej. Anda boleh memilih imej dalam mana-mana format berikut:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'Bagaimana pembuangan latar belakang berfungsi?', a: 'Kami menggunakan model AI lanjutan yang berjalan terus dalam pelayar untuk mengesan subjek dan memisahkannya dari latar belakang.' },
@@ -668,11 +1106,12 @@ const ms = {
       { q: 'Adakah data dimuat naik ke pelayan?', a: 'Tidak. Semua pemprosesan tera air dilakukan secara tempatan dalam pelayar.' },
     ],
     qrCodeGenerator: [
-      { q: 'Jenis data apa yang boleh dikodkan dalam kod QR?', a: 'Anda boleh mengkodkan URL, teks biasa, kelayakan WiFi, e-mel, nombor telefon, SMS, vCard dan lain-lain.' },
-      { q: 'Bolehkah saya menyesuaikan warna dan gaya kod QR?', a: 'Ya. Pilih warna hadapan dan latar belakang, tambah logo dan pilih dari pelbagai gaya.' },
-      { q: 'Dalam format apa kod QR boleh dimuat turun?', a: 'Anda boleh memuat turun sebagai fail PNG, SVG atau JPEG.' },
-      { q: 'Adakah menambah logo menjadikan kod QR tidak boleh diimbas?', a: 'Kami menggunakan pembetulan ralat untuk mengekalkan kod QR boleh diimbas selagi logo tidak menutup terlalu banyak.' },
-      { q: 'Adakah penjanaan kod QR berlaku di pelayan?', a: 'Tidak. Kod QR dijana sepenuhnya dalam pelayar anda.' },
+      { q: 'Adakah kod QR ini akan luput?', a: 'Tidak, kod-kod QR ini tidak akan luput dan menjamin sokongan seumur hidup. Kerana ia menyimpan arahan berkod dalam bentuk bit di dalam kotak segi empat, maklumat yang disimpan di dalamnya tidak boleh diubah atau dibuang. Anda boleh mengakses maklumat dalam kod hanya dengan mengimbas ia dengan mana-mana kamera walaupun selepas bertahun-tahun.' },
+      { q: 'Mengapa kod QR saya tidak dapat diimbas?', a: 'Kod QR anda mungkin gagal diimbas kerana sebab-sebab berikut: i. Kontras Rendah: Jika anda memilih warna latar belakang dan latar depan yang serupa, ia mempengaruhi keterlihatan kod QR dan menyebabkan kegagalan pengimbasan. Tetapi alat kami membimbing anda semasa penyesuaian tentang kontras rendah atau sebarang isu berkaitan pengimbasan lain. ii. Data Besar: Jika anda menjana kod QR untuk teks atau data yang sangat besar, ia menjadi sangat kompleks dan menyebabkan masalah semasa mengimba. Pengesah panjang teks membimbing anda tentang panjang teks yang optimum semasa penjanaan kod QR. iii. Cetakan Kabur: Pastikan anda memuat turun kod QR anda dalam format resolusi tinggi seperti PNG atau SVG yang telah disokong oleh alat kami.' },
+      { q: 'Bolehkah saya menambah logo dalam kod QR?', a: 'Sudah tentu, anda boleh menambah logo tersuai atau memilih satu daripada perpustakaan logo dalam kod QR anda. Logo pilihan anda akan diselaraskan secara automatik di tengah kod QR.' },
+      { q: 'Bagaimanakah saya boleh mengimba kod QR?', a: 'Anda boleh mengimba kod QR menggunakan kamera mudah alih anda. Tetapi untuk pengalihan automatik ke pautan dan banyak lagi ciri-ciri canggih, anda boleh melawati pengimba kod QR kami menggunakan pautan https://photremium.com/qr-code-scanner secara percuma.' },
+      { q: 'Berapa banyak kod QR yang boleh saya janakan secara percuma?', a: 'TIDAK TERBATAS! anda boleh menjana pelbagai kod QR secara percuma. Semua ciri, penyesuaian dan templat adalah percuma selamanya untuk semua. Tidak perlu melanggan untuk menikmati ciri premium.' },
+      { q: 'Adakah saya perlu log masuk/daftar untuk menjana kod QR?', a: 'Tidak, hanya masukkan teks anda, janakan kod QR dan muat turun selepas penyesuaian. Tidak perlu log masuk atau daftar kerana semua ciri boleh diakses sepenuhnya tanpa kos.' },
     ],
     qrCodeScanner: [
       { q: 'Bagaimana saya mengimbas kod QR?', a: 'Anda boleh menggunakan kamera peranti untuk pengimbasan langsung, atau memuat naik imej yang mengandungi kod QR.' },

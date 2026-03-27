@@ -32,15 +32,18 @@
 
 /* ---- Upload View ---- */
 .rsz-upload {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 20px 24px 60px;
-  text-align: center;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #f8fafc;
+  padding: 40px 20px;
 }
 
 .rsz-upload__inner {
-  max-width: 580px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1240px;
+  text-align: center;
 }
 
 .rsz-upload__title {
@@ -48,6 +51,9 @@
   font-weight: 800;
   color: #1e1b4b;
   letter-spacing: -0.5px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 10px;
 }
 
@@ -55,6 +61,9 @@
   color: #64748b;
   font-size: 1rem;
   line-height: 1.7;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 32px;
 }
 
@@ -66,6 +75,8 @@
   padding: 40px 28px 32px;
   transition: all 0.25s ease;
   cursor: default;
+  max-width: 560px;
+  margin: 0 auto;
 }
 
 .rsz-dropzone--active,
@@ -165,6 +176,27 @@
   max-width: 100%;
   background: #f1f5f9;
   position: relative;
+}
+
+.rsz-workspace--dragover {
+  box-shadow: inset 0 0 0 3px rgba(79, 70, 229, 0.26);
+}
+
+.rsz-workspace--dragover::after {
+  content: 'Drop images to add for resizing';
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  transform: translateX(-50%);
+  background: rgba(79, 70, 229, 0.94);
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: 0 8px 22px rgba(79, 70, 229, 0.28);
 }
 
 /* ---- Left panel (75%) ---- */
@@ -829,10 +861,330 @@
   display: none;
 }
 
+.rsz-blog-layout {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 256px 1fr;
+  gap: 28px;
+  align-items: start;
+  text-align: left;
+}
+
+.rsz-blog-layout--rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rsz-blog-layout--rtl .rsz-blog-toc__list a:hover {
+  padding-left: 10px;
+  padding-right: 14px;
+}
+
+.rsz-blog-layout--rtl .rsz-blog-toc__list a.toc-active {
+  border-left: none;
+  border-right: 3px solid #6366f1;
+  padding-left: 10px;
+  padding-right: 11px;
+}
+
+.rsz-blog-layout--rtl .rsz-blog__card {
+  border-left-width: 2px;
+  border-right-width: 4px;
+}
+
+.rsz-blog-layout--rtl .rsz-blog__card:nth-child(1) { border-right-color: #6366f1; border-left-color: rgb(216, 214, 214); }
+.rsz-blog-layout--rtl .rsz-blog__card:nth-child(2) { border-right-color: #2563eb; border-left-color: rgb(216, 214, 214); }
+.rsz-blog-layout--rtl .rsz-blog__card:nth-child(3) { border-right-color: #16a34a; border-left-color: rgb(216, 214, 214); }
+.rsz-blog-layout--rtl .rsz-blog__card:nth-child(4) { border-right-color: #ea580c; border-left-color: rgb(216, 214, 214); }
+.rsz-blog-layout--rtl .rsz-blog__card:nth-child(5) { border-right-color: #0ea5e9; border-left-color: rgb(216, 214, 214); }
+
+.rsz-blog-layout--rtl .faq-header,
+.rsz-blog-layout--rtl .faq-header__title,
+.rsz-blog-layout--rtl .faq-header__subtitle,
+.rsz-blog-layout--rtl .faq-table__q-text,
+.rsz-blog-layout--rtl .faq-table__expand-content,
+.rsz-blog-layout--rtl .faq-contact__text {
+  text-align: right;
+}
+
+.rsz-blog-toc {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 88px;
+  background: #fff;
+  border: 1px solid #c8d0da;
+  border-radius: 20px;
+  padding: 20px 16px;
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.07);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.rsz-blog-toc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+  margin: 0;
+}
+
+.rsz-blog-toc__title {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.rsz-blog-toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rsz-blog-toc__list li {
+  margin-bottom: 2px;
+}
+
+.rsz-blog-toc__list a {
+  display: block;
+  font-size: 0.8rem;
+  color: #64748b;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 9px;
+  transition: all 0.18s ease;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.rsz-blog-toc__list a:hover {
+  background: #f5f3ff;
+  color: #4f46e5;
+  padding-left: 14px;
+}
+
+.rsz-blog-toc__list a.toc-active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.08));
+  color: #4f46e5;
+  font-weight: 700;
+  border-left: 3px solid #6366f1;
+  padding-left: 11px;
+}
+
+.rsz-blog-toc--mobile {
+  display: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 4px 0 14px;
+  margin-top: 24px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.rsz-blog-toc--mobile--rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.rsz-blog-toc--mobile--rtl a {
+  margin-right: 0;
+  margin-left: 6px;
+}
+
+.rsz-blog-toc--mobile::-webkit-scrollbar {
+  display: none;
+}
+
+.rsz-blog-toc--mobile a {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 50px;
+  padding: 7px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  margin-right: 6px;
+}
+
+.rsz-blog-toc--mobile a:hover,
+.rsz-blog-toc--mobile a.toc-active {
+  background: #6366f1;
+  color: #fff;
+  border-color: #6366f1;
+}
+
+.rsz-blog {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.rsz-blog__card {
+  border-radius: 20px;
+  border: 2px solid rgb(216, 214, 214);
+  overflow: hidden;
+  border-left: 4px solid transparent;
+  padding: 18px 20px;
+  scroll-margin-top: 120px;
+  scroll-snap-margin-top: 120px;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.rsz-blog__card:hover {
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.07);
+  transform: translateY(-1px);
+}
+
+.rsz-blog__card:nth-child(1) {
+  background: #fafbff;
+  border-left-color: #6366f1;
+}
+
+.rsz-blog__card:nth-child(2) {
+  background: #f8fbff;
+  border-left-color: #2563eb;
+}
+
+.rsz-blog__card:nth-child(3) {
+  background: #f7fdf9;
+  border-left-color: #16a34a;
+}
+
+.rsz-blog__card:nth-child(4) {
+  background: #fffaf6;
+  border-left-color: #ea580c;
+}
+
+.rsz-blog__card:nth-child(5) {
+  background: #f8fbff;
+  border-left-color: #0ea5e9;
+}
+
+.rsz-blog__card h2 {
+  margin: 0 0 10px;
+  font-size: 1.12rem;
+  color: #1e1b4b;
+}
+
+.rsz-blog__card h3 {
+  margin: 0 0 8px;
+  font-size: 0.92rem;
+  color: #1e1b4b;
+}
+
+.rsz-blog__card p,
+.rsz-blog__card li {
+  margin: 0;
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.rsz-blog__card p,
+.rsz-blog__card li {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.rsz-blog__list,
+.rsz-blog__ordered,
+.rsz-blog__ordered-sub {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rsz-blog__chips {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rsz-blog__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #c7d2fe;
+  background: #eef2ff;
+  color: #4338ca;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.rsz-blog__faq-section {
+  scroll-margin-top: 120px;
+  scroll-snap-margin-top: 120px;
+}
+
+.rsz-upload .faq-section {
+  max-width: 100%;
+  margin: 24px 0 0;
+  padding: 0;
+  text-align: left;
+}
+
+.rsz-upload .faq-header {
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.rsz-upload .faq-table__cell,
+.rsz-upload .faq-table__q-text,
+.rsz-upload .faq-table__expand-content,
+.rsz-upload .faq-contact__text {
+  text-align: left;
+}
+
+.rsz-upload .faq-table__expand-content,
+.rsz-upload .faq-table__answer-text,
+.rsz-upload .faq-table__answer-list li {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.rsz-upload .faq-table__answer-text {
+  white-space: pre-line;
+}
+
 /* ================================================================
    RESPONSIVE
    ================================================================ */
 @media (max-width: 900px) {
+  .rsz-blog-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .rsz-upload {
+    padding: 24px 16px;
+  }
+
+  .rsz-blog-toc {
+    display: none;
+  }
+
+  .rsz-blog-toc--mobile {
+    display: block;
+  }
+
   .rsz-workspace {
     flex-direction: column;
   }

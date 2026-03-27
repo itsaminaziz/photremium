@@ -197,6 +197,99 @@ const nl = {
     compressing: 'Comprimeren…',
     compressDownload: 'Comprimeren en Downloaden',
     lowQualityWarning: 'Hoge compressie kan de beeldscherpte merkbaar verminderen.',
+    blog: {
+      tocTitle: 'Inhoud',
+      title: 'Afbeeldingscompressor Blog',
+      formatsIntro: 'Onze tool ondersteunt alle afbeeldingsformaten, zodat je elke afbeelding naadloos kunt comprimeren. De volledige lijst met formaten staat hieronder:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. Wat is een afbeeldingscompressor?',
+          paragraphs: [
+            'Een afbeeldingscompressor is software of een online dienst die de bestandsgrootte van een afbeelding verkleint terwijl de visuele kwaliteit behouden blijft. Te veel comprimeren kan de kwaliteit echter zichtbaar verminderen.',
+          ],
+          listTitle: 'TYPEN:',
+          bullets: [
+            'Lossy compressie: de afbeeldingsgrootte wordt verkleind door een deel van de gegevens te verwijderen. De kwaliteit kan dalen, maar vaak is dit niet direct met het blote oog te zien.',
+            'Lossless compressie: verkleint de bestandsgrootte zonder de visuele kwaliteit van de afbeelding aan te tasten.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Waarom kiezen voor onze tool?',
+          bullets: [
+            'Onze AI-aangedreven afbeeldingscompressor werkt soepel op alle apparaten en levert de best mogelijke resultaten.',
+            'Je kunt meerdere afbeeldingen tegelijk comprimeren (zelfs 100+) met slechts één klik.',
+            'Je hoeft je afbeeldingen niet naar onze servers te uploaden. Alles wordt lokaal in je browser verwerkt.',
+            'Onze afbeeldingscompressor is volledig gratis voor altijd. Je kunt deze tool ook delen met je vrienden.',
+            'Je kunt het compressiepercentage kiezen op basis van je voorkeur.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Stapsgewijze handleiding',
+          steps: [
+            {
+              heading: '1. Selecteer de afbeelding(en) die je wilt comprimeren.',
+              bullets: [
+                'Sleep de afbeelding(en) naar het uploadvak.',
+                'Je kunt ook afbeeldingen kopiëren en plakken in het vak via (Ctrl + V).',
+                'Bestandsverkenner wordt ook ondersteund via de kiesknop.',
+              ],
+            },
+            {
+              heading: '2. Kies daarna het compressiepercentage.',
+              bullets: [
+                'Met de horizontale schuifbalk kun je comfortabel het compressiepercentage kiezen. Volg deze bereiken voor nauwkeurige resultaten.',
+              ],
+              table: {
+                headers: ['Compressiepercentage', 'Resultaat'],
+                rows: [
+                  ['1%  tot  40%', 'Beste kwaliteit'],
+                  ['41%  tot  60%', 'Normale kwaliteit (Aanbevolen)'],
+                  ['61%  tot  100%', 'Lage kwaliteit'],
+                ],
+              },
+            },
+            {
+              heading: '3. Bekijk hoeveel opslagruimte je hebt bespaard.',
+              paragraphs: [
+                'Alle grootte-indicatoren worden in real-time weergegeven. Zo zie je duidelijk hoeveel ruimte je hebt bespaard en kun je het compressieniveau aanpassen aan je gewenste bestandsgrootte.',
+              ],
+            },
+            {
+              heading: '4. Kies de downloadoptie via de schakelknop.',
+              bullets: [
+                'ZIP: als je meerdere afbeeldingen comprimeert, zie je deze optie. Hiermee worden alle gecomprimeerde afbeeldingen in één ZIP-bestand gezet (aanbevolen voor veel afbeeldingen).',
+                'Apart: met deze optie worden alle afbeeldingen afzonderlijk gedownload en niet als één ZIP-bestand (aanbevolen voor kleine aantallen, minder dan 10).',
+              ],
+            },
+            {
+              heading: '5. Comprimeer en download de afbeelding.',
+              paragraphs: [
+                'Deze knop downloadt automatisch alle gecomprimeerde afbeeldingen volgens de door jou gekozen downloadoptie.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Voordelen van een afbeeldingscompressor.',
+          bullets: [
+            'Lagere opslagkosten: gecomprimeerde afbeeldingen nemen aanzienlijk minder ruimte in.',
+            'Snellere laadtijd: gecomprimeerde afbeeldingen laden sneller en verbeteren de gebruikerservaring.',
+            'Oplossing voor Gmail-limiet: omdat Gmail bijlagen beperkt tot 25MB, helpt compressie om meer bestanden te verzenden.',
+            'Sneller delen en overdragen: grote bestanden kosten meer tijd om te versturen; compressie bespaart tijd en data.',
+            'Presentatie-optimalisatie: ongecomprimeerde afbeeldingen maken presentaties zwaar, terwijl gecomprimeerde afbeeldingen de totale bestandsgrootte sterk verlagen.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Ondersteunde formaten.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   converter: {
@@ -301,6 +394,91 @@ const nl = {
     dontEnlarge: 'Niet vergroten als origineel kleiner is',
     resizing: 'Formaat wijzigen…',
     resizeDownload: 'Formaat Wijzigen en Downloaden',
+    blog: {
+      tocTitle: 'Inhoudsopgave',
+      title: 'Blog over Afbeelding Formaat Wijzigen',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Waarom een afbeelding-resizer gebruiken?',
+          paragraphs: [
+            'Een afbeelding-resizer is een tool/software om de afmetingen van een afbeelding te wijzigen. U kunt hoogte, breedte of beide aanpassen om de gewenste grootte te krijgen. Dit is vooral handig voor socialmediaplatforms met upload-/postlimieten voor afbeeldingen.',
+          ],
+          listTitle: 'Bijvoorbeeld:',
+          bullets: [
+            'Instagram-post: 1080 x 1080px (vierkant)',
+            'Facebook-post: 1200 x 630px',
+            'X (Twitter)-post: 1200 x 675px',
+            'Instagram Story: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Waarom kiezen voor onze afbeelding-resizer?',
+          paragraphs: [
+            'Onze AI-afbeelding-resizer laat u afbeeldingen zeer nauwkeurig en snel schalen. De tool werkt soepel op elk apparaat en vereist geen installatie. Alle functies zijn online beschikbaar in uw browser.',
+          ],
+          bullets: [
+            'U kunt meerdere afbeeldingen tegelijk schalen (zelfs 100+). Met een krachtig apparaat kunt u zelfs 400–500 afbeeldingen in enkele seconden verwerken.',
+            'Alles wordt lokaal in uw browser verwerkt. U hoeft niets naar onze server te uploaden, dus uw afbeeldingen verlaten uw apparaat niet.',
+            'Meerdere resize-eenheden worden ondersteund.',
+            'U kunt de beeldverhouding behouden met één selectievakje.',
+            'Bij meerdere afbeeldingen kunt u afzonderlijk downloaden of als ZIP-bestand.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Stapsgewijze handleiding',
+          steps: [
+            {
+              heading: 'Selecteer eerst de afbeelding(en) die u wilt schalen. Er zijn meerdere manieren om te selecteren.',
+              bullets: [
+                'Sleep afbeeldingen naar het dropvak om ze te schalen.',
+                'U kunt ook plakken met de sneltoets “Ctrl + V”.',
+                'Of klik op “Choose Files” om afbeeldingen via Verkenner te selecteren.',
+              ],
+            },
+            {
+              heading: 'Kies daarna een resize-eenheid. Beschikbare eenheden zijn:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'Pas vervolgens hoogte en breedte aan. U kunt de beeldverhouding ook vergrendelen via het selectievakje.',
+            },
+            {
+              heading: 'Als u niet wilt vergroten boven de originele grootte, vink dan “Don’t enlarge if original is smaller” aan.',
+            },
+            {
+              heading: 'Kies daarna een downloadoptie.',
+              bullets: [
+                'Kies ZIP als u alle geschaalde afbeeldingen in één zipbestand wilt.',
+                'Kies “separate” als u elke afbeelding apart wilt downloaden.',
+              ],
+            },
+            {
+              heading: 'Klik tenslotte op “Resize & Download” om te downloaden volgens de gekozen optie.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Voordelen van een afbeelding-resizer: het grootste voordeel is dat afbeeldingen correct passen op webpagina’s en socialmediaposts.',
+          tocLabel: '4. Voordelen van een afbeelding-resizer',
+          bullets: [
+            'Betere UX: juiste afmetingen en plaatsing verbeteren de gebruikerservaring sterk.',
+            'Socialmedia-compatibel: veel platforms hebben vaste afbeeldingsmaten; onze tool helpt daarbij.',
+            'Responsief ontwerp: ontwikkelaars hebben meerdere afbeeldingsmaten nodig voor verschillende apparaten.',
+            'Beste keuze: in plaats van uitrekken of hard croppen (wat de verhouding kan breken) is resizen vaak beter.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Ondersteunde formaten: onze afbeelding-resizer ondersteunt selectie van afbeeldingen in elk formaat. Ondersteunde formaten:',
+          tocLabel: '5. Ondersteunde formaten',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   cropper: {
@@ -331,6 +509,94 @@ const nl = {
     saveNext: 'Opslaan en Volgende',
     croppedNofTotal: '{n} van {total} bijgesneden.',
     downloadN: '{n} Downloaden',
+    blog: {
+      tocTitle: 'Inhoudsopgave',
+      title: 'Blog over Afbeeldingen Bijsnijden',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Waarom een afbeelding-bijsnijder gebruiken?',
+          paragraphs: [
+            'Een afbeelding-bijsnijder is een softwaretool die wordt gebruikt om een afbeelding in de gewenste vorm bij te snijden. Deze wordt veel gebruikt om het benodigde deel van de afbeelding te behouden en ongewenste buitenranden te verwijderen voor elk doel. De tool biedt een bijsnijkader dat u kunt aanpassen op de positie die u wilt bijsnijden.',
+          ],
+          listTitle: 'Bijvoorbeeld:',
+          bullets: [
+            'Uzelf uit een groepsfoto bijsnijden.',
+            'Uw naam uit een lijst bijsnijden.',
+            'De voortgangsbalk uit een volledige schermafbeelding bijsnijden.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Waarom kiezen voor onze afbeelding-bijsnijder?',
+          paragraphs: [
+            'Met onze afbeelding-bijsnijder kunt u afbeeldingen zeer nauwkeurig en snel bijsnijden. U hoeft alleen de grootte van het bijsnijkader aan te passen op de positie die u wilt bijsnijden op elke afbeelding. Bij het selecteren van afbeeldingen worden vrijwel alle afbeeldingsformaten ondersteund.',
+          ],
+          bullets: [
+            'U kunt zoveel afbeeldingen bijsnijden als uw apparaat ondersteunt. Als u een krachtig apparaat heeft, kunt u zelfs 100+ afbeeldingen tegelijk bijsnijden zonder vertraging of andere problemen.',
+            'Uw afbeeldingen worden verwerkt in uw lokale browser. U hoeft geen afbeeldingen naar onze server te uploaden, dus geen enkele afbeelding verlaat uw apparaat. U kunt persoonlijke afbeeldingen bijsnijden zonder beveiligingsrisico’s.',
+            'Veel tools geven de fout “ongeldig afbeeldingsformaat”. Onze bijsnijtool lost dit op door vrijwel alle afbeeldingsformaten te ondersteunen.',
+            'Als u veel afbeeldingen tegelijk bijsnijdt, kunt u met onze tool de bijgesneden afbeeldingen als ZIP of afzonderlijk downloaden, afhankelijk van uw voorkeur.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Stapsgewijze handleiding',
+          steps: [
+            {
+              heading: '1. Selecteer eerst de afbeelding die u wilt bijsnijden. Onze bijsnijtool ondersteunt ook het selecteren van meerdere afbeeldingen tegelijk.',
+              bullets: [
+                'Sleep afbeeldingen naar het dropvak om ze bij te snijden.',
+                'U kunt ook afbeeldingen selecteren via de bestandsverkenner door op de knop choose files in het bijsnijkader te klikken.',
+                'Sneltoets Ctrl + V wordt ook ondersteund om afbeeldingen in het dropvak te plakken.',
+              ],
+            },
+            {
+              heading: '2. Pas daarna de grootte en positie van het bijsnijkader op de afbeelding aan.',
+            },
+            {
+              heading: '3. U kunt het bijsnijkader ook handmatig aanpassen door hoogte, breedte, horizontale positie en verticale positie in te voeren.',
+            },
+            {
+              heading: '4. U kunt ook enkele kant-en-klare sjablonen gebruiken:',
+              bullets: [
+                'Landscape(16:9)',
+                'Portrait(9:16)',
+                'Square(1:1)',
+              ],
+            },
+            {
+              heading: '5. Kies daarna een van de downloadopties.',
+              bullets: [
+                'ZIP: kies deze optie als u veel afbeeldingen bijsnijdt en alle bijgesneden afbeeldingen als één bestand wilt downloaden.',
+                'Separate: als u alle bijgesneden afbeeldingen afzonderlijk wilt downloaden, kiest u deze optie via de schakelknop.',
+              ],
+            },
+            {
+              heading: '6. Klik daarna op de knop Crop & Download om al uw bijgesneden afbeeldingen te downloaden volgens uw vooraf ingestelde afmetingen.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Voordelen van afbeeldingen bijsnijden: een afbeelding-bijsnijder biedt verschillende voordelen in de digitale wereld. Enkele daarvan staan hieronder:',
+          tocLabel: '4. Voordelen van afbeeldingen bijsnijden',
+          bullets: [
+            'Afbeeldingen in een kader passen: een bijsnijtool helpt u om een afbeelding correct in een kader te plaatsen. Dat kader kan op een webpagina of op een socialmediaplatform staan.',
+            'UX verbeteren: omdat juiste plaatsing van afbeeldingen de gebruikerservaring verbetert, helpt bijsnijden sterk bij het verbeteren van UX.',
+            'Ongewenste randen verwijderen: u kunt ongewenste randen uit een afbeelding verwijderen om deze netter te maken.',
+            'Gewenst object isoleren: u kunt uzelf ook uit een groepsfoto isoleren.',
+            'Opslag besparen: bijsnijden bespaart opslag omdat het overbodige deel van de afbeelding wordt verwijderd en alleen het gewenste deel overblijft.',
+            'Presentaties optimaliseren: een normale presentatie met 10 ongesneden afbeeldingen gebruikt ongeveer 30MB opslag; dezelfde presentatie met bijgesneden afbeeldingen kan ongeveer 10MB gebruiken.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Ondersteunde formaten:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   photoEditor: {
@@ -518,11 +784,183 @@ const nl = {
     downloadFormat: 'Downloadformaat',
     preview: 'Voorbeeld',
     downloadFormatBtn: '{format} Downloaden',
+    pngDesc: 'Verliesvrij, ondersteunt transparantie',
+    jpgDesc: 'Populair/universeel bestandsformaat',
+    webpDesc: 'Modern formaat, beste kwaliteit/grootte',
+    svgDesc: 'Schaalbare vectorafbeelding',
+    pdfDesc: 'Klaar-om-te-printen document',
     lat: 'Breedte:',
     lng: 'Lengte:',
     qrCode: 'QR-code',
     scanMe: 'Scan Mij',
     scanHere: 'Scan Hier',
+    blog: {
+      card1: {
+        title: '1. Wat is een QR-code?',
+        intro1: '"QR-code" staat voor "Quick Response code". Omdat de informatie erin zeer snel wordt gedecodeerd, wordt het Quick Response (QR) code genoemd.',
+        intro2: 'Een QR-code is een tweedimensionale digitale code die alleen door machines kan worden gelezen. De gegevens erin kunnen niet door mensen worden gelezen. Het bevat blokken om informatie op te slaan, zoals tekst, telefoonnummers, links en Google Maps-locaties, enz.',
+        inventionTitle: 'Hoe de QR-code is uitgevonden:',
+        inventionText: 'De QR-code werd in 1994 uitgevonden. Masahiro Hara en zijn team werkten in een Japans bedrijf genaamd Denso Wave, dat onderdelen voor auto\'s van Toyota maakte. Ze wilden een code die veel meer informatie opslaat dan een normale barcode, en zo uitvonden ze de QR-code.',
+        keyFeaturesTitle: 'Belangrijkste kenmerken van een QR-code',
+        keyFeatures: [
+          {
+            title: 'Hoe QR werkt',
+            text: 'Je voert de tekst of link in om er een QR-code van te genereren. De QR-generator maakt vierkante vakken volgens de informatie. Elk vakje vertegenwoordigt een bit, en elke bit slaat een karakter op.',
+          },
+          {
+            title: 'Structuur van QR-code',
+            text: 'Een QR-code bevat drie grote vierkante vakken om de oriëntatie van de QR-code te identificeren, en een klein vierkant vakje om de bits (informatie) op te slaan.',
+          },
+          {
+            title: 'Gegevenskapaciteit van QR-code',
+            text: 'Meestal slaat een QR-code meer informatie op dan een barcode. Een QR-code is eenvoudig een geavanceerde versie van een barcode. Het is in feite een tweedimensionale barcode. Een QR-code slaat bijna 200 tekens op. Het kan ook 400 tekens opslaan, maar kan moeilijk te scannen zijn. Het opslaan van meer dan 400 tekens kan resulteren in een zeer complexe QR-code die zelden kan worden gescand.',
+          },
+          {
+            title: 'Foutdetectie in QR-codes',
+            text: 'Een QR-code kan nog steeds worden gescand als er gegevens beschadigd zijn of bits worden gewijzigd. QR-code gebruikt Reed-Solomon-foutdetectietechniek om fouten op te sporen en deze na identificatie op te lossen.',
+          },
+        ],
+        errorTitle: 'Foutcorrectieniveau QR-code:',
+        errorIntro: 'Verschillende foutdetectie- en correctietechnieken worden in verschillende gevallen gebruikt, zoals hieronder beschreven:',
+        errorHeaders: {
+          level: 'Niveau',
+          recovery: 'Herstelcapaciteit',
+          bestUse: 'Best gebruik',
+        },
+        errorRows: [
+          {
+            level: 'Laag (L)',
+            recovery: '~7%',
+            useCases: [
+              'Deze foutcorrectietechniek wordt gebruikt wanneer QR-code op digitale schermen, websites of in een schone omgeving wordt weergegeven.',
+              'Wanneer een QR-code wordt gegenereerd voor kleine informatie, zoals Gmail, contactnummer of kleine tekst.',
+            ],
+          },
+          {
+            level: 'Gemiddeld (M)',
+            recovery: '~15%',
+            useCases: [
+              'Voor folders en posters die in schone omgeving zijn geplaatst en waar het beschadigingsrisico verwaarloosbaar is.',
+            ],
+          },
+          {
+            level: 'Kwartiel (Q)',
+            recovery: '~25%',
+            useCases: [
+              'Wanneer QR-code in een ruige omgeving moet worden geplaatst, zoals in fabriek/buiten.',
+              'Ook wanneer een klein logo in het midden nodig is, bedekt het enkele bits. Dit foutcorrectieniveau is dus nodig.',
+            ],
+          },
+          {
+            level: 'Hoog (H)',
+            recovery: '~30%',
+            useCases: [
+              'Gebruikt wanneer zware beschadiging van de QR-code mogelijk is.',
+              'Wanneer grote logo\'s het midden van QR-code bedekken.',
+              'Ook wanneer zware styling voor QR-code nodig is.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Waarom onze QR-codegenerator kiezen?',
+        intro: 'Onze QR-codegenerator maakt QR-codegeneratie extreem snel, veilig en eenvoudig. Je kunt je code aanpassen om hem geavanceerder, professioneler en aansluitend op je zakenthema te maken. Alle aanpassingen, van het kleuren van de QR-code tot logoplaatsing in de QR-code, worden gratis aangeboden.',
+        strengths: [
+          {
+            title: 'Professionele aanpassing:',
+            text: 'Je kunt zoveel QR-codes genereren en aanpassen als je nodig hebt zonder kosten. Alle functies zijn volledig gratis. Je kunt gradiëntkleuren, verschillende vormen voor vierkante vakken, aangepaste logo\'s en veel meer functies toepassen.',
+          },
+          {
+            title: 'Ondersteuning voor meerdere formaten:',
+            text: 'Onze QR-codegenerator biedt meerdere downloadformaten voor je gemak. Je hoeft alleen je voorkeur selecteren voordat je downloadt. We bieden momenteel deze formaten:',
+          },
+          {
+            title: 'Voorgemaakte sjablonen:',
+            text: 'Je kunt voorgemaakte gradiëntkleuren en frames gebruiken die je QR-code professioneel maken.',
+          },
+          {
+            title: 'Aangepaste logo-ondersteuning:',
+            text: 'Je kunt ook je aangepaste merklogo uploaden dat automatisch in het midden van QR-code past. Je kunt ook een logo uit de ingebouwde logotheek selecteren waar meer dan 30 logo\'s beschikbaar zijn.',
+          },
+          {
+            title: 'Live-voorbeeld:',
+            text: 'Terwijl je aanpassingen maakt, kun je alle wijzigingen in het live-voorbeeldpaneel bekijken. Deze wijzigingen zijn realtime en veranderen dynamisch.',
+          },
+          {
+            title: 'Scan-indicator:',
+            text: 'Bij het kiezen van kleuren leiden juiste waarschuwingen en indicatoren je als je kleuren kiest die moeilijk te scannen zijn.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'Nr.',
+          formats: 'Formaten',
+          description: 'Beschrijving',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Verliesvrij, ondersteunt transparantie' },
+          { no: '2', format: 'JPG', description: 'Populair, algemeen bestandsformaat' },
+          { no: '3', format: 'WEBP', description: 'Modern, beste kwaliteit/grootte' },
+          { no: '4', format: 'SVG', description: 'Schaalbare vectorafbeelding' },
+          { no: '5', format: 'PDF', description: 'Afdrukgereed document' },
+        ],
+      },
+      card3: {
+        title: '3. Stap voor stap handleiding:',
+        step1Intro: 'Selecteer eerst de categorie van de QR-code die je wilt genereren. Of je genereert QR-code voor contactpersoon, kaart, link of tekst. Momenteel biedt onze QR-codegenerator deze categorieën:',
+        categories: ['Link / URL', 'Tekst', 'WiFi', 'Contactpersoon', 'Gmail', 'Google Maps'],
+        step2: 'Plak je informatie na het selecteren van de categorie in het tekstvak.',
+        step3Intro: 'Klik vervolgens op Genereren & Aanpassen om het aanpassingspaneel te openen. In het aanpassingspaneel zie je een subnavigatiebalk met de volgende opties:',
+        options: [
+          {
+            title: 'Stijl & Vorm:',
+            text: 'In dit gedeelte kunt u de vormen van vierkante vakken in meerdere stijlen wijzigen, zoals afgeronde hoeken, stippen, horizontale balken, verticale balken, kleine vierkanten en nog veel meer.',
+          },
+          {
+            title: 'Kleur:',
+            text: 'Je kunt aangepaste achtergrond- en voorgrondkleuren in dit gedeelte selecteren. Om je QR-code in gradiëntkleuren te maken, heb je de optie om gradiënt in te schakelen, waarmee je elk gradiëntkleur uit de ingebouwde bibliotheek kunt toepassen of eenvoudig je eigen gradiëntkleur kunt maken. Je kunt ook de hoek voor lineaire gradiëntkleur wijzigen. Radiële gradiënt wordt ook ondersteund. Je kunt meerdere kleuren toevoegen om een professioneel gradiënteffect te maken.',
+          },
+          {
+            title: 'Frames:',
+            text: 'Hier kunt u een perfect frame voor uw QR-code selecteren. Alle frames passen automatisch aan uw code aan. Je hoeft alleen maar een frame uit de ingebouwde bibliotheek te selecteren.',
+          },
+          {
+            title: 'Logo:',
+            text: 'Na frameelectie kunt u een logo selecteren dat automatisch in het midden van QR-code wordt aangepast. Upload van uw aangepaste merklogo wordt ook ondersteund.',
+          },
+          {
+            title: 'Sjablonen:',
+            text: 'Als je stijl, vorm, kleur en frame niet afzonderlijk wilt selecteren, kunt je voorgemaakte sjablonen op je QR-code toepassen. Meerdere premiumsjablonen zijn beschikbaar voor je gemak die gratis zijn.',
+          },
+          {
+            title: 'Bestandsformaat:',
+            text: 'Tenslotte moet u het bestandstype selecteren waarin u de QR-code wilt downloaden. Verschillende gangbare formaten worden ondersteund, inclusief PNG, WEBP, SVG en PDF, enz.',
+          },
+          {
+            title: 'QR-gegevens bewerken:',
+            text: 'U kunt uw QR-gegevens ook bewerken zonder verlies in uw geselecteerde aanpassingen.',
+          },
+        ],
+        finalStep: 'Klik vervolgens op de downloadknop, en de QR-code volgens uw aanpassingen in het geselecteerde formaat wordt direct zonder kosten gedownload.',
+      },
+      card4: {
+        title: '4. Voordelen:',
+        intro: 'QR-code verbindt de fysieke wereld met de digitale ervaring. Het is de snelste manier om links, contactgegevens of uw locatie te delen. Je hoeft alleen maar die QR-code te scannen om direct toegang tot de informatie te krijgen. Daarom is het erg populair in bedrijven en digitale wereld omdat het tijdefficiënt en zeer doelgericht is.',
+        benefits: [
+          {
+            title: 'Levenslange ondersteuning:',
+            text: 'QR-codes werken voor altijd zonder verloopdatum. Ze geven je direct de opgeslagen informatie wanneer je ze scant. Omdat het hardcoded digitale instructies opslaat, verliest het nooit zijn informatie.',
+          },
+          {
+            title: 'Offline ondersteuning:',
+            text: 'Je kunt de QR-code scannen zelfs als je offline bent. Je mobiele camera decodert de patronen van de QR-code en geeft je de erin opgeslagen informatie.',
+          },
+          {
+            title: 'Nul kosten:',
+            text: 'Omdat deze codes geen serveromleidingen of resources vereisen, is het voor altijd kosteloos.',
+          },
+        ],
+      },
+    },
   },
 
   qrScanner: {
@@ -633,25 +1071,25 @@ const nl = {
       { q: 'Kan ik transparante PNG naar JPG converteren?', a: 'Ja. Omdat JPG geen transparantie ondersteunt, worden transparante gebieden standaard gevuld met een witte achtergrond.' },
     ],
     imageCompressor: [
-      { q: 'Hoe werkt afbeeldingscompressie?', a: 'Onze tool gebruikt de ingebouwde Canvas API van de browser om afbeeldingen opnieuw te coderen met een lager kwaliteitsniveau.' },
-      { q: 'Verlaagt compressie de afbeeldingskwaliteit merkbaar?', a: 'Bij een gemiddeld compressieniveau (20-40%) is het verschil nauwelijks zichtbaar.' },
-      { q: 'Welke afbeeldingsformaten kunnen worden gecomprimeerd?', a: 'U kunt JPG, PNG, WEBP, BMP en andere populaire rasterformaten uploaden.' },
-      { q: 'Kan ik meerdere afbeeldingen tegelijk comprimeren?', a: 'Ja! Selecteer gewoon meerdere bestanden. U kunt ze allemaal downloaden als ZIP.' },
-      { q: 'Worden gecomprimeerde afbeeldingen opgeslagen op een server?', a: 'Nee. Alles werkt lokaal in de browser.' },
+      { q: 'Zal het comprimeren van een afbeelding de kwaliteit verlagen?', a: 'Nee, het comprimeren van een afbeelding verlaagt de kwaliteit niet merkbaar zolang u binnen de aanbevolen grenzen blijft. De indicatoren helpen u bij de kwaliteit: i. Compressie 1% tot 40%: groene indicator met bericht “Goede kwaliteit”. ii. Compressie 41% tot 60%: gele indicator met bericht “Normale kwaliteit”. Dit bereik wordt meestal aanbevolen. iii. Compressie 61% tot 100%: het systeem toont een rode waarschuwing “Slechte kwaliteit”; in dit bereik kan kwaliteitsverlies duidelijk zichtbaar worden.' },
+      { q: 'Welke afbeeldingsformaten worden ondersteund voor compressie?', a: 'Onze afbeeldingscompressor ondersteunt alle onderstaande formaten:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Kan ik meerdere afbeeldingen tegelijk comprimeren?', a: 'Ja, zeker. U kunt meerdere afbeeldingen tegelijk comprimeren (zelfs 100+) als uw systeem dat ondersteunt. Omdat compressie apparaatbronnen gebruikt, presteert een krachtige laptop, pc of telefoon beter. Heeft u een minder krachtig apparaat, dan kunt u in batches comprimeren; de tool blijft ook dan gratis te gebruiken.' },
+      { q: 'Slaan jullie onze afbeeldingen op of uploaden jullie ze naar jullie servers?', a: 'Nee, wij uploaden of bewaren uw afbeeldingen nooit op onze servers. Alle afbeeldingen worden lokaal in uw browser gecomprimeerd. Uw bestanden verlaten uw apparaat nooit, dus u kunt persoonlijke of privéafbeeldingen zonder zorgen comprimeren.' },
+      { q: 'Is deze afbeeldingscompressietool gratis te gebruiken?', a: 'Ja, onze afbeeldingscompressor is volledig gratis en blijft dat ook. We vragen nooit om betaling. Er zijn geen verborgen kosten. Alle functies, inclusief het comprimeren van meerdere afbeeldingen, zijn gratis.' },
     ],
     cropImage: [
-      { q: 'Kan ik afbeeldingen bijsnijden met specifieke beeldverhoudingen?', a: 'Ja. U kunt vooraf ingestelde verhoudingen kiezen zoals 1:1, 4:3, 16:9 of uw eigen waarden invoeren.' },
-      { q: 'Verlaagt bijsnijden de afbeeldingskwaliteit?', a: 'Nee. Bijsnijden verwijdert alleen pixels buiten het geselecteerde gebied.' },
-      { q: 'Kan ik meerdere afbeeldingen tegelijk bijsnijden?', a: 'Zeker. Upload meerdere afbeeldingen, stel het bijsnijgebied in voor elk en download ze allemaal tegelijk.' },
-      { q: 'Welke bestandsformaten worden ondersteund voor bijsnijden?', a: 'Alle populaire afbeeldingsformaten, waaronder JPG, PNG, WEBP, GIF en BMP.' },
-      { q: 'Worden afbeeldingen naar een server gestuurd voor verwerking?', a: 'Nee. Al het bijsnijden vindt lokaal in de browser plaats met de HTML5 Canvas API.' },
+      { q: 'Verlaagt het bijsnijden van een afbeelding de kwaliteit?', a: 'Nee, het bijsnijden van een afbeelding heeft geen invloed op de visuele kwaliteit van de afbeelding. Bijsnijden verwijdert alleen het ongewenste deel. Het verandert nooit de pixels van het deel dat overblijft na het bijsnijden. U kunt uw afbeeldingen dus in originele kwaliteit bijsnijden zonder pixelbeschadiging.' },
+      { q: 'Welke afbeeldingsformaten ondersteunt de afbeelding-bijsnijder?', a: 'U kunt afbeeldingen in elk formaat kiezen, omdat onze afbeelding-bijsnijder vrijwel alle afbeeldingsformaten ondersteunt. Hieronder vindt u de lijst:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Worden mijn afbeeldingen naar jullie server geüpload?', a: 'Nee, alle verwerking gebeurt in uw lokale browser. Uw afbeeldingen worden nooit naar onze server geüpload, omdat ze uw apparaat niet verlaten. U kunt dus persoonlijke afbeeldingen zonder risico bijsnijden met onze afbeelding-bijsnijder.' },
+      { q: 'Kan ik meerdere afbeeldingen tegelijk bijsnijden?', a: 'Ja, u kunt meerdere afbeeldingen (zelfs 100+) tegelijk bijsnijden als uw systeem dit ondersteunt. Omdat bijsnijden systeembronnen gebruikt, kunt u met een krachtige laptop, pc of telefoon veel afbeeldingen in één keer bijsnijden. Heeft u een minder krachtig apparaat, dan kunt u in batches bijsnijden; de tool blijft gratis, ook bij veel afbeeldingen tegelijk.' },
+      { q: 'Is deze afbeelding-bijsnijder gratis te gebruiken?', a: 'Ja, deze afbeelding-bijsnijder is volledig gratis voor altijd. U kunt de tool overal, altijd en op elk apparaat gebruiken. U krijgt een responsief ontwerp voor alle apparaten en u wordt nooit gevraagd te betalen voor premiumfuncties. Alle functies zijn volledig gratis, zonder verborgen kosten.' },
     ],
     resizeImage: [
-      { q: 'Kan ik een afbeelding vergroten/verkleinen tot een exacte pixelgrootte?', a: 'Ja. Voer de gewenste breedte en hoogte in pixels, inches of centimeters in. U kunt ook de beeldverhouding vergrendelen.' },
-      { q: 'Maakt formaat wijzigen de afbeelding wazig?', a: 'Vergroten boven de originele resolutie kan de afbeelding iets zachter maken. We gebruiken hoogwaardige bicubische interpolatie.' },
-      { q: 'Is batchformaat wijzigen beschikbaar?', a: 'Ja. Upload meerdere afbeeldingen en pas dezelfde doelgrootte toe op alle.' },
-      { q: 'Welke grootte-eenheden kunnen worden gebruikt?', a: 'U kunt opgeven in pixels, inches, centimeters of procenten van de originele grootte.' },
-      { q: 'Worden gegevens naar een server verzonden tijdens formaat wijzigen?', a: 'Nee. Het vindt volledig in de browser plaats.' },
+      { q: 'Kan ik meerdere afbeeldingen tegelijk van formaat wijzigen?', a: 'Jazeker. Onze afbeelding-resizer ondersteunt het tegelijk schalen van meerdere afbeeldingen. U kunt zoveel afbeeldingen uploaden als uw apparaat aankan; de AI-engine verwerkt ze tegelijk. Op tragere apparaten is verwerken in batches aan te raden om vertraging te voorkomen. Alles gebeurt lokaal zonder serverupload, dus uw privacy blijft beschermd.' },
+      { q: 'Is deze afbeelding-resizer gratis?', a: 'Ja, deze tool is volledig gratis voor altijd. Er is geen betaald abonnement nodig voor premiumfuncties. Er zijn ook geen verborgen kosten bij het downloaden van geschaalde afbeeldingen.' },
+      { q: 'Verliest een afbeelding kwaliteit bij formaat wijzigen?', a: '✅Decrease Size (downscale): Het verkleinen van een afbeelding verlaagt de visuele kwaliteit niet. In veel gevallen kan de verkleinde afbeelding zelfs scherper lijken. Verkleinen naar een kleinere maat veroorzaakt dus meestal geen kwaliteitsverlies.\n❌Increase Size (upscale): Vergroten boven de originele grootte kan de visuele kwaliteit wel beïnvloeden. Hoe sterker u vergroot, hoe groter de kans op kwaliteitsverlies.' },
+      { q: 'Is deze afbeelding-resizer veilig?', a: 'Ja, onze tool is veilig, ook voor persoonlijke of gevoelige afbeeldingen. Alle verwerking gebeurt lokaal op uw apparaat en geen data verlaat uw systeem. U kunt dus zonder privacyrisico schalen.' },
+      { q: 'Welke afbeeldingsformaten worden ondersteund?', a: 'Onze afbeelding-resizer ondersteunt alle afbeeldingsformaten. U kunt afbeeldingen in de volgende formaten kiezen:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'Hoe werkt achtergrondverwijdering?', a: 'We gebruiken geavanceerde AI-modellen die direct in de browser draaien om het onderwerp te detecteren en te scheiden van de achtergrond.' },
@@ -668,11 +1106,12 @@ const nl = {
       { q: 'Worden gegevens naar een server gestuurd?', a: 'Nee. Alle watermerking vindt lokaal in de browser plaats.' },
     ],
     qrCodeGenerator: [
-      { q: 'Welke soorten gegevens kunnen in een QR-code worden gecodeerd?', a: 'U kunt URL, gewone tekst, WiFi-gegevens, e-mail, telefoonnummers, SMS, vCard en meer coderen.' },
-      { q: 'Kan ik de kleuren en stijl van de QR-code aanpassen?', a: 'Ja. Kies voor- en achtergrondkleuren, voeg een logo toe en kies uit verschillende stijlen.' },
-      { q: 'In welke formaten kan de QR-code worden gedownload?', a: 'U kunt downloaden als PNG-, SVG- of JPEG-bestand.' },
-      { q: 'Maakt het toevoegen van een logo de QR-code onleesbaar?', a: 'We gebruiken foutcorrectie om de QR-code scanbaar te houden, zolang het logo niet te veel van de code bedekt.' },
-      { q: 'Vindt het genereren van QR-codes server-side plaats?', a: 'Nee. QR-codes worden volledig in uw browser gegenereerd.' },
+      { q: 'Verloopt deze QR-code?', a: 'Nee, deze QR-codes vervallen niet en garanderen ondersteuning voor het leven. Omdat zij gehardcodeerde instructies opslaan in de vorm van bits in vierkante vaken, kan de informatie erin niet worden gewijzigd of verwijderd. U kunt de informatie in de code gewoon openen door deze met elke camera te scannen, zelfs na jaren.' },
+      { q: 'Waarom wordt mijn QR-code niet gescand?', a: 'Uw QR-code kan om de volgende redenen niet worden gescand: i. Laag contrast: Als u gelijke achtergrond- en voorgrondkleuren selecteert, heeft dit invloed op de zichtbaarheid van de QR-code en zorgt dit voor scanfouten. Maar ons gereedschap begeleidt u tijdens het aanpassen over laag contrast of een ander scangerelateerd probleem. ii. Grote gegevens: Als u een QR-code genereert voor zeer grote tekst of gegevens, wordt deze erg complex en veroorzaakt problemen bij het scannen. Een tekstlengteverificatie begeleidt u over de optimale tekstlengte bij het genereren van QR-codes. iii. Wazig afdrukken: Zorg ervoor dat u uw QR-code downloadt in een hoge resolutie-indeling zoals PNG of SVG, die al door ons gereedschap worden ondersteund.' },
+      { q: 'Kan ik een logo aan de QR-code toevoegen?', a: 'Absoluut, u kunt een aangepast logo toevoegen of er een kiezen uit de ingebouwde logotheek voor uw QR-code. Het logo dat u hebt geselecteerd, wordt automatisch in het midden van de QR-code geplaatst.' },
+      { q: 'Hoe kan ik de QR-code scannen?', a: 'U kunt de QR-code scannen met uw mobiele camera. Maar voor automatische omleiding naar de koppeling en veel meer geavanceerde functies, kunt u onze QR-code-scanner gratis bezoeken met behulp van de koppeling https://photremium.com/qr-code-scanner.' },
+      { q: 'Hoeveel QR-codes kan ik gratis genereren?', a: 'ONBEPERKT! u kunt meerdere QR-codes gratis genereren. Alle functies, aanpassingen en sjablonen zijn voor altijd gratis voor iedereen. U hoeft zich niet in te schrijven om te genieten van premiumfuncties.' },
+      { q: 'Moet ik inloggen/inschrijven om een QR-code te genereren?', a: 'Nee, voer uw tekst in, genereer de QR-code en download deze na het aanpassen. U hoeft niet in te loggen of in te schrijven, omdat alle functies volledig gratis toegankelijk zijn.' },
     ],
     qrCodeScanner: [
       { q: 'Hoe scan ik een QR-code?', a: 'U kunt de camera van uw apparaat gebruiken voor live scannen of een afbeelding met een QR-code uploaden.' },

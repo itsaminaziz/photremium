@@ -197,6 +197,99 @@ const sv = {
     compressing: 'Komprimerar…',
     compressDownload: 'Komprimera och Ladda ner',
     lowQualityWarning: 'Hög komprimering kan märkbart minska bildens skärpa.',
+    blog: {
+      tocTitle: 'Innehåll',
+      title: 'Blogg om bildkomprimering',
+      formatsIntro: 'Vårt verktyg stöder alla bildformat, så du kan komprimera vilken bild som helst smidigt. En fullständig lista över format finns nedan:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. Vad är en bildkomprimerare?',
+          paragraphs: [
+            'En bildkomprimerare är ett verktyg eller en onlinetjänst som minskar filstorleken på en bild samtidigt som den visuella kvaliteten bevaras. För hög komprimering kan dock ge tydlig kvalitetsförlust.',
+          ],
+          listTitle: 'TYPER:',
+          bullets: [
+            'Förstörande komprimering: minskar storleken genom att ta bort viss bilddata. Kvaliteten kan minska, men skillnaden är ofta svår att se med blotta ögat vid måttlig nivå.',
+            'Oförstörande komprimering: minskar filstorleken utan att påverka bildens visuella kvalitet.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Varför välja vårt verktyg?',
+          bullets: [
+            'Vårt AI-drivna bildkomprimeringsverktyg fungerar smidigt på alla enheter och ger bästa möjliga resultat.',
+            'Du kan komprimera flera bilder samtidigt (även 100+) med ett enda klick.',
+            'Du behöver inte ladda upp bilder till våra servrar. Allt behandlas lokalt i din webbläsare.',
+            'Vårt verktyg är helt gratis för alltid och du kan dela det med dina vänner.',
+            'Du kan välja komprimeringsnivå efter dina egna behov.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Steg-för-steg-guide',
+          steps: [
+            {
+              heading: '1. Välj bilden/bilderna du vill komprimera.',
+              bullets: [
+                'Dra och släpp bilden/bilderna i uppladdningsrutan.',
+                'Du kan också kopiera bilden/bilderna och klistra in i rutan med (Ctrl + V).',
+                'Filutforskaren stöds också via välj-knappen.',
+              ],
+            },
+            {
+              heading: '2. Välj sedan komprimeringsprocent.',
+              bullets: [
+                'Ett horisontellt reglage gör det enkelt att välja komprimeringsnivå. Följ intervallen nedan för bästa resultat.',
+              ],
+              table: {
+                headers: ['Komprimeringsprocent', 'Resultat'],
+                rows: [
+                  ['1%  till  40%', 'Bästa kvalitet'],
+                  ['41%  till  60%', 'Normal kvalitet (Rekommenderad)'],
+                  ['61%  till  100%', 'Låg kvalitet'],
+                ],
+              },
+            },
+            {
+              heading: '3. Kontrollera hur mycket utrymme du sparat.',
+              paragraphs: [
+                'Alla storleksmätvärden visas i realtid. Du ser tydligt hur mycket utrymme du sparat och kan justera komprimeringsnivån efter önskad filstorlek.',
+              ],
+            },
+            {
+              heading: '4. Välj nedladdningsalternativ via växlingsknappen.',
+              bullets: [
+                'ZIP: om du komprimerar flera bilder visas detta alternativ. Det samlar alla komprimerade bilder i en ZIP-fil (rekommenderas för många bilder).',
+                'Separat: laddar ner alla bilder separat i stället för som en ZIP-fil (rekommenderas för färre bilder, under 10).',
+              ],
+            },
+            {
+              heading: '5. Komprimera och ladda ner bilden.',
+              paragraphs: [
+                'Den här knappen laddar automatiskt ner alla komprimerade bilder enligt ditt valda nedladdningsalternativ.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Fördelar med bildkomprimering.',
+          bullets: [
+            'Minskade lagringskostnader: komprimerade bilder tar mindre plats.',
+            'Snabbare laddning: komprimerade bilder laddas snabbare och förbättrar användarupplevelsen.',
+            'Lösning för Gmail-gränsen: eftersom Gmail begränsar bilagor till 25MB hjälper komprimering dig att skicka fler filer.',
+            'Snabbare delning och överföring: stora filer tar längre tid att skicka; komprimering sparar tid och data.',
+            'Optimerade presentationer: okomprimerade bilder gör filer tunga, medan komprimerade bilder minskar storleken avsevärt.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Format som stöds.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   converter: {
@@ -301,6 +394,91 @@ const sv = {
     dontEnlarge: 'Förstora inte om originalet är mindre',
     resizing: 'Ändrar storlek…',
     resizeDownload: 'Ändra Storlek och Ladda ner',
+    blog: {
+      tocTitle: 'Innehåll',
+      title: 'Blogg om bildstorleksändring',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Varför använda ett bildstorleksverktyg?',
+          paragraphs: [
+            'Ett bildstorleksverktyg är ett verktyg/program som används för att ändra bildens dimensioner. Du kan justera höjd, bredd eller båda för att få den storlek du behöver. Det är särskilt användbart för sociala medieplattformar som har storleksgränser för uppladdning/publicering av bilder.',
+          ],
+          listTitle: 'Till exempel:',
+          bullets: [
+            'Instagram-inlägg: 1080 x 1080px (kvadrat)',
+            'Facebook-inlägg: 1200 x 630px',
+            'X (Twitter)-inlägg: 1200 x 675px',
+            'Instagram Story: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Varför välja vårt bildstorleksverktyg?',
+          paragraphs: [
+            'Vårt AI-baserade bildstorleksverktyg låter dig ändra storlek med hög precision och mycket hög hastighet. Verktyget fungerar smidigt på alla enheter och kräver ingen appinstallation. Alla funktioner finns online i din webbläsare.',
+          ],
+          bullets: [
+            'Du kan ändra storlek på flera bilder samtidigt (även 100+). På kraftfulla enheter kan även 400–500 bilder bearbetas på några sekunder.',
+            'All bearbetning sker lokalt i webbläsaren. Du behöver inte ladda upp bilder till vår server, så bilderna lämnar aldrig din enhet.',
+            'Flera enheter för storleksändring stöds.',
+            'Du kan behålla bildförhållandet med en enkel kryssruta.',
+            'När du ändrar storlek på många bilder kan du ladda ner separat eller som ZIP.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Steg-för-steg-guide',
+          steps: [
+            {
+              heading: 'Börja med att välja den/de bilder du vill ändra storlek på. Det finns flera sätt att välja.',
+              bullets: [
+                'Dra och släpp bilder i uppladdningsrutan.',
+                'Du kan också klistra in bilder med genvägen “Ctrl + V”.',
+                'Eller klicka på “Choose Files” för att välja via filutforskaren.',
+              ],
+            },
+            {
+              heading: 'Välj därefter en enhet för storleksändring. Tillgängliga enheter är:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'Efter val av enhet justerar du höjd och bredd. Du kan även låsa bildförhållandet via kryssrutan.',
+            },
+            {
+              heading: 'Om du inte vill förstora över originalstorleken, markera “Don’t enlarge if original is smaller”.',
+            },
+            {
+              heading: 'Välj sedan ett nedladdningsalternativ.',
+              bullets: [
+                'Välj ZIP om du vill ladda ner alla ändrade bilder i en enda zip-fil.',
+                'Välj “separate” om du vill ladda ner varje bild separat.',
+              ],
+            },
+            {
+              heading: 'Slutligen klickar du på “Resize & Download” för att ladda ner enligt ditt val.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Fördelar med bildstorleksverktyg: den största fördelen är att bilder passar korrekt på webbsidor och i sociala medier-inlägg.',
+          tocLabel: '4. Fördelar med bildstorleksverktyg',
+          bullets: [
+            'Bättre UX: rätt storlek och placering av bilder förbättrar användarupplevelsen avsevärt.',
+            'Stöd för sociala medier: många plattformar har begränsningar för bildstorlek, och verktyget hjälper dig att uppfylla dem.',
+            'Responsiv design: utvecklare behöver flera bilddimensioner för olika enheter.',
+            'Bättre val: istället för att sträcka eller hårt beskära en bild är storleksändring ofta det bättre alternativet.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Format som stöds: vårt bildstorleksverktyg stödjer val av bilder i alla format. Stödda format listas nedan:',
+          tocLabel: '5. Format som stöds',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   cropper: {
@@ -331,6 +509,94 @@ const sv = {
     saveNext: 'Spara och Nästa',
     croppedNofTotal: 'Beskuren {n} av {total}.',
     downloadN: 'Ladda ner {n}',
+    blog: {
+      tocTitle: 'Innehåll',
+      title: 'Blogg om Bildbeskärning',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Varför använda ett bildbeskärningsverktyg?',
+          paragraphs: [
+            'Ett bildbeskärningsverktyg är ett programverktyg som används för att beskära en bild till önskad form. Det används ofta för att behålla den del av bilden som behövs och ta bort yttre, oönskade delar för olika ändamål. Verktyget ger en beskärningsruta som du kan justera där du vill beskära.',
+          ],
+          listTitle: 'Till exempel:',
+          bullets: [
+            'Beskära ut dig själv från ett gruppfoto.',
+            'Beskära ut ditt namn från en lista.',
+            'Beskära ut en förloppsindikator från en helskärmsbild.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Varför välja vårt bildbeskärningsverktyg?',
+          paragraphs: [
+            'Vårt bildbeskärningsverktyg låter dig beskära bilder exakt och mycket snabbt. Du behöver bara justera beskärningsrutans storlek till den position du vill beskära på vilken bild som helst. Nästan alla bildformat stöds vid bildval.',
+          ],
+          bullets: [
+            'Du kan beskära så många bilder som din enhet klarar. Har du en högpresterande enhet kan du till och med beskära 100+ bilder samtidigt utan lagg eller andra problem.',
+            'Dina bilder bearbetas i din lokala webbläsare. Du behöver inte ladda upp några bilder till vår server, så inga bilder lämnar din enhet. Du kan beskära privata bilder utan säkerhetsrisker.',
+            'Många verktyg visar fel om ogiltigt bildformat. Vårt verktyg löser detta genom att stödja nästan alla bildformat.',
+            'Om du beskär många bilder samtidigt kan du med vårt verktyg ladda ner de beskurna bilderna som ZIP eller som separata filer enligt din preferens.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Steg-för-steg-guide',
+          steps: [
+            {
+              heading: '1. Välj först bilden du vill beskära. Vårt verktyg stöder även val av flera bilder samtidigt.',
+              bullets: [
+                'Dra och släpp bilder i släppzonen för att beskära dem.',
+                'Du kan också välja bilder via filutforskaren genom att klicka på knappen choose files i beskärningsrutan.',
+                'Kortkommandot Ctrl + V stöds också för att klistra in bilder i släppzonen.',
+              ],
+            },
+            {
+              heading: '2. Justera sedan storlek och position för beskärningsrutan på bilden.',
+            },
+            {
+              heading: '3. Du kan även justera beskärningsrutan manuellt genom att ange höjd, bredd, horisontell position och vertikal position.',
+            },
+            {
+              heading: '4. Du kan också använda några färdiga mallar:',
+              bullets: [
+                'Landscape(16:9)',
+                'Portrait(9:16)',
+                'Square(1:1)',
+              ],
+            },
+            {
+              heading: '5. Därefter väljer du ett av nedladdningsalternativen.',
+              bullets: [
+                'ZIP: Välj detta om du beskär många bilder och vill ladda ner alla beskurna bilder som en fil.',
+                'Separate: Om du vill ladda ner alla beskurna bilder separat väljer du detta i växlingsknappen.',
+              ],
+            },
+            {
+              heading: '6. Klicka sedan på knappen Crop & Download för att ladda ner alla dina beskurna bilder enligt dina förinställda mått.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Fördelar med bildbeskärning: ett bildbeskärningsverktyg ger flera fördelar i den digitala världen. Några beskrivs nedan:',
+          tocLabel: '4. Fördelar med bildbeskärning',
+          bullets: [
+            'Anpassa bilder i ramar: bildbeskärning hjälper dig att placera bilden korrekt i en ram. Den ramen kan finnas på en webbsida eller i sociala medier.',
+            'Förbättra UX: eftersom korrekt bildplacering förbättrar användarupplevelsen hjälper bildbeskärning starkt till att förbättra UX.',
+            'Ta bort oönskade kanter: du kan ta bort oönskade kanter från bilden för att förfina den.',
+            'Isolera önskat objekt: du kan också isolera dig själv från ett gruppfoto.',
+            'Spara lagringsutrymme: beskärning sparar lagring eftersom den råa bildytan tas bort och bara den nödvändiga delen sparas.',
+            'Optimera presentationer: om en vanlig presentation med 10 obeskurna bilder tar cirka 30MB, kan samma presentation med beskurna bilder ta cirka 10MB.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Stödda format:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   photoEditor: {
@@ -517,11 +783,183 @@ const sv = {
     downloadFormat: 'Nedladdningsformat',
     preview: 'Förhandsgranskning',
     downloadFormatBtn: 'Ladda ner {format}',
+    pngDesc: 'Förlustfri, stöd för transparens',
+    jpgDesc: 'Populärt/universellt filformat',
+    webpDesc: 'Modernt format, bäst kvalitet/storlek',
+    svgDesc: 'Skalbar vektorgrafik',
+    pdfDesc: 'Utskriftsklart dokument',
     lat: 'Latitud:',
     lng: 'Longitud:',
     qrCode: 'QR-kod',
     scanMe: 'Skanna Mig',
     scanHere: 'Skanna Här',
+    blog: {
+      card1: {
+        title: '1. Vad är en QR-kod?',
+        intro1: 'Fullformen av QR-kod är "Quick Response code" (snabbresponskod). Eftersom informationen i den avkodas mycket snabbt kallas den Quick Response (QR)-kod.',
+        intro2: 'QR-kod är en tvådimensionell digital kod som endast kan läsas av maskiner. Data i den kan inte läsas av människor. Den innehåller block för att lagra information som text, telefonnummer, länkar och Google Maps-platser etc.',
+        inventionTitle: 'Hur QR-koden uppfanns:',
+        inventionText: 'QR-koden uppfanns 1994. Masahiro Hara och hans team arbetade på ett japanskt företag kallat Denso Wave, som tillverkade bildelar för Toyota. De ville ha en kod som lagrar mycket mer information än en vanlig streckkod, och så uppfann de QR-koden.',
+        keyFeaturesTitle: 'Viktiga egenskaper hos en QR-kod',
+        keyFeatures: [
+          {
+            title: 'Hur QR fungerar',
+            text: 'Du matar in texten eller länken för att generera en QR-kod för den. QR-generatorn skapar fyrkantig boxare enligt informationen. Varje låda representerar en bit, och varje bit lagrar ett tecken.',
+          },
+          {
+            title: 'Struktur av QR-kod',
+            text: 'En QR-kod innehåller tre stora fyrkantiga rutor för att identifiera orienteringen av QR-koden och en liten fyrkantig ruta för att lagra bitarna (informationen).',
+          },
+          {
+            title: 'Datakapacitet för QR-kod',
+            text: 'Vanligtvis lagrar en QR-kod mer information än en streckkod. QR-kod är helt enkelt en avancerad version av streckkod. Det är i grunden en tvådimensionell streckkod. En QR-kod lagrar närmare 200 tecken. Den kan också lagra 400 tecken men kan vara svår att skanna. Om du lagrar mer än 400 tecken kan det resultera i en mycket komplex QR-kod som inte kan skannas för det mesta.',
+          },
+          {
+            title: 'Feldetektering i QR-koder',
+            text: 'En QR-kod kan fortfarande skannas om en del av informationen är skrapad eller några bitar vänds om. QR-kod använder Reed-Solomon-felteknikmetod för att detektera fel och lösa dem efter identifiering.',
+          },
+        ],
+        errorTitle: 'QR-kodens felkorrigeringsnivå:',
+        errorIntro: 'Olika felteknik- och korrigeringsmetoder används i olika fall enligt beskrivningen nedan:',
+        errorHeaders: {
+          level: 'Nivå',
+          recovery: 'Återställningskapacitet',
+          bestUse: 'Bästa användningsfall',
+        },
+        errorRows: [
+          {
+            level: 'Låg (L)',
+            recovery: '~7%',
+            useCases: [
+              'Denna felteknik används när QR-kod visas på digitala skärmar, webbplatser eller i en ren miljö.',
+              'När en QR-kod genereras för liten information som Gmail, kontaktnummer eller liten text.',
+            ],
+          },
+          {
+            level: 'Medel (M)',
+            recovery: '~15%',
+            useCases: [
+              'För broschyrer och affischer som är installerade i ren miljö och när skaderisk är försumbar.',
+            ],
+          },
+          {
+            level: 'Kvartil (Q)',
+            recovery: '~25%',
+            useCases: [
+              'När QR-kod ska installeras i hård miljö som i fabrik/utomhus.',
+              'Även när en liten logotyp behövs i mitten, täcker den vissa bitar. Så denna felteknik är nödvändig.',
+            ],
+          },
+          {
+            level: 'Hög (H)',
+            recovery: '~30%',
+            useCases: [
+              'Används när allvarlig skada på QR-koden är möjlig.',
+              'När stora logotyper täcker mitten av QR-koden.',
+              'Även när tung styling behövs för QR-koden.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Varför välja vår QR-kodgenerator?',
+        intro: 'Vår QR-kodgenerator gör QR-kodgenerering extremt snabb, säker och enkel. Du kan anpassa din kod för att göra den mer avancerad, professionell och matchande med ditt företagstema. Alla anpassningar från färgning av QR-kod till logotypinstallation i QR-kod erbjuds gratis för alltid.',
+        strengths: [
+          {
+            title: 'Professionell anpassning:',
+            text: 'Du kan generera och anpassa så många QR-koder som du behöver utan kostnad. Alla funktioner är helt gratis. Du kan använda gradientfärger, olika former för fyrkantiga rutor, anpassade logotyper och många andra funktioner.',
+          },
+          {
+            title: 'Stöd för flera format:',
+            text: 'Vår QR-kodgenerator erbjuder flera nedladdningsformat för din bekvämlighet. Du behöver bara välja ditt föredragna format innan du laddar ner. För närvarande erbjuder vi dessa format:',
+          },
+          {
+            title: 'Färdiga mallar:',
+            text: 'Du kan använda färdiga gradientfärger och ramar som gör din QR-kod professionell.',
+          },
+          {
+            title: 'Stöd för anpassad logotyp:',
+            text: 'Du kan också ladda upp din anpassade varumärkeslogotyp som passar automatiskt i mitten av QR-koden. Du kan också välja logotyp från inbyggt logotypbibliotek där mer än 30 logotyper tillhandahålls.',
+          },
+          {
+            title: 'Live-förhandsgranskning:',
+            text: 'Medan du anpassar kan du titta på alla ändringar i live-förhandsgranskningspanelen. Dessa ändringar i förhandsgranskningspanelen är i realtid och ändras dynamiskt.',
+          },
+          {
+            title: 'Skanningsindikator:',
+            text: 'Vid val av färger vägleder korrekta varningar och indikatorer dig om du väljer färger som är svåra att skanna.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'Nr.',
+          formats: 'Format',
+          description: 'Beskrivning',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Förlustfritt, stöd för transparens' },
+          { no: '2', format: 'JPG', description: 'Populärt, universellt filformat' },
+          { no: '3', format: 'WEBP', description: 'Modernt, bästa kvalitet/storlek' },
+          { no: '4', format: 'SVG', description: 'Skalbar vektorgrafik' },
+          { no: '5', format: 'PDF', description: 'Utskriftsklart dokument' },
+        ],
+      },
+      card3: {
+        title: '3. Steg för steg guide:',
+        step1Intro: 'Välj först kategorin för den QR-kod du vill generera. Oavsett om du genererar QR-kod för kontakt, karta, länk eller text. För närvarande erbjuder vår QR-kodgenerator dessa kategorier:',
+        categories: ['Länk / URL', 'Text', 'WiFi', 'Kontakt', 'Gmail', 'Google Maps'],
+        step2: 'Efter att ha valt kategorin klister du din information i textrutan därefter.',
+        step3Intro: 'Klicka sedan på Generera och anpassa för att öppna anpassningspanelen. I anpassningspanelen ser du ett undernavigationsfält med följande alternativ:',
+        options: [
+          {
+            title: 'Stil och form:',
+            text: 'I det här avsnittet kan du ändra formerna på fyrkantiga rutor till flera stilar som avrundade hörn, punkter, horisontella staplar, vertikala staplar, små kvadrater och många andra.',
+          },
+          {
+            title: 'Färg:',
+            text: 'Du kan välja anpassade bakgrunds- och förgrundsfärger i det här avsnittet. För att göra din QR-kod i gradientfärger har du möjligheten att aktivera gradient som låter dig använda valfri gradientfärg från inbyggt bibliotek eller skapa din egen gradientfärg enkelt. Du kan också ändra vinkeln för linjär gradientfärg. Radialgradient stöds också. Du kan lägga till flera färger för att skapa en professionell gradienteffekt.',
+          },
+          {
+            title: 'Ramar:',
+            text: 'Här kan du välja en perfekt ram för din QR-kod. Alla ramar passar automatiskt in i din kod automatiskt. Du behöver bara välja en ram från det inbyggda biblioteket.',
+          },
+          {
+            title: 'Logotyp:',
+            text: 'Efter ramval kan du välja en logotyp som automatiskt justeras i mitten av QR-koden. Det går också att ladda upp din anpassade varumärkeslogotyp.',
+          },
+          {
+            title: 'Mallar:',
+            text: 'Om du inte vill välja stil, form, färg och ram separat kan du tillämpa färdiga mallar på din QR-kod. Flera premiummallar tillhandahålls för din bekvämlighet som är gratis för alltid.',
+          },
+          {
+            title: 'Filformat:',
+            text: 'Slutligen måste du välja den filtyp som du vill ladda ner QR-koden i. Flera vanliga format stöds inklusive PNG, WEBP, SVG och PDF etc.',
+          },
+          {
+            title: 'Redigera QR-data:',
+            text: 'Du kan också redigera dina QR-data utan någon förlust i dina valda anpassningar.',
+          },
+        ],
+        finalStep: 'Klicka sedan på nedladdningsknappen och QR-koden enligt dina anpassningar i det valda formatet laddas ner omedelbar utan kostnad.',
+      },
+      card4: {
+        title: '4. Fördelar:',
+        intro: 'QR-kod förbinder den fysiska världen med den digitala upplevelsen. Det är det snabbaste sättet att dela länkar, kontakt eller din plats. Du behöver bara skanna den QR-koden för att få omedelbar tillgång till informationen. Därför är det mycket populärt inom företag och digital värld för att vara tidseffektivt och mycket målstyrt.',
+        benefits: [
+          {
+            title: 'Stöd för möjligheter:',
+            text: 'QR-koder fungerar för alltid utan utgångsdatum. De ger dig den lagrade informationen omedelbar när du skannar den. Eftersom den lagrar hårdkodad digital instruktion förlorar den aldrig sin information.',
+          },
+          {
+            title: 'Offline-stöd:',
+            text: 'Du kan skanna QR-koden även om du är offline. Din mobilkamera avkodar QR-kodmönstren och ger dig informationen som lagras i den.',
+          },
+          {
+            title: 'Ingen kostnad:',
+            text: 'Eftersom dessa koder inte kräver någon serveromdirigering eller resurser är det gratis för alltid.',
+          },
+        ],
+      },
+    },
   },
 
   qrScanner: {
@@ -632,25 +1070,25 @@ const sv = {
       { q: 'Kan jag konvertera transparent PNG till JPG?', a: 'Ja. Eftersom JPG inte stöder transparens fylls transparenta områden som standard med en vit bakgrund.' },
     ],
     imageCompressor: [
-      { q: 'Hur fungerar bildkomprimering?', a: 'Vårt verktyg använder webbläsarens inbyggda Canvas API för att koda om bilder med lägre kvalitetsnivå.' },
-      { q: 'Minskar komprimering bildkvaliteten märkbart?', a: 'Vid måttlig komprimeringsnivå (20-40%) är skillnaden knappt märkbar.' },
-      { q: 'Vilka bildformat kan komprimeras?', a: 'Du kan ladda upp JPG, PNG, WEBP, BMP och andra populära rasterformat.' },
-      { q: 'Kan jag komprimera flera bilder åt gången?', a: 'Ja! Välj bara flera filer. Du kan ladda ner dem alla som ZIP.' },
-      { q: 'Lagras komprimerade bilder på en server?', a: 'Nej. Allt fungerar lokalt i webbläsaren.' },
+      { q: 'Minskar komprimering bildens kvalitet?', a: 'Nej, komprimering påverkar normalt inte bildkvaliteten så länge du håller dig inom rekommenderade nivåer. Indikatorerna visar kvaliteten: i. Komprimering 1% till 40%: grön indikator med meddelandet “Bra kvalitet”. ii. Komprimering 41% till 60%: gul indikator med meddelandet “Normal kvalitet”. Detta intervall är vanligtvis mest rekommenderat. iii. Komprimering 61% till 100%: systemet visar en röd varning “Dålig kvalitet”, och kvalitetsförlusten kan bli tydlig.' },
+      { q: 'Vilka bildformat stöds för komprimering?', a: 'Vårt bildkomprimeringsverktyg stöder alla följande format:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Kan jag komprimera flera bilder samtidigt?', a: 'Ja, absolut. Du kan komprimera flera bilder samtidigt (även 100+) om din enhet klarar det. Eftersom komprimering använder enhetens resurser får du bättre prestanda med en kraftfull laptop, PC eller mobil. Om din enhet är svagare kan du komprimera i omgångar; verktyget är fortfarande gratis även då.' },
+      { q: 'Lagrar eller laddar ni upp våra bilder till era servrar?', a: 'Nej, vi laddar aldrig upp eller lagrar dina bilder på våra servrar. Alla bilder komprimeras lokalt i din webbläsare. Dina filer lämnar aldrig din enhet, så du kan tryggt komprimera personliga eller privata bilder.' },
+      { q: 'Är det här bildkomprimeringsverktyget gratis att använda?', a: 'Ja, vårt bildkomprimeringsverktyg är helt gratis för alltid. Vi kommer aldrig att kräva betalning. Det finns inga dolda avgifter. Alla funktioner, inklusive komprimering av flera bilder, är gratis.' },
     ],
     cropImage: [
-      { q: 'Kan jag beskära bilder med specifika bildförhållanden?', a: 'Ja. Du kan välja förinställda förhållanden som 1:1, 4:3, 16:9 eller ange dina egna värden.' },
-      { q: 'Minskar beskärning bildkvaliteten?', a: 'Nej. Beskärning tar bara bort pixlar utanför det valda området.' },
-      { q: 'Kan jag beskära flera bilder åt gången?', a: 'Absolut. Ladda upp flera bilder, ange beskärningsområdet för varje och ladda ner dem alla på en gång.' },
-      { q: 'Vilka filformat stöds för beskärning?', a: 'Alla populära bildformat, inklusive JPG, PNG, WEBP, GIF och BMP.' },
-      { q: 'Skickas bilder till en server för bearbetning?', a: 'Nej. All beskärning sker lokalt i webbläsaren med HTML5 Canvas API.' },
+      { q: 'Försämras bildkvaliteten när man beskär en bild?', a: 'Nej, att beskära en bild påverkar inte bildens visuella kvalitet alls. Beskärning tar bara bort den oönskade delen. Den ändrar aldrig pixlarna i den del som blir kvar efter beskärning. Därför kan du beskära dina bilder i originalkvalitet utan någon pixel­skada.' },
+      { q: 'Vilka bildformat stöds av bildbeskärningsverktyget?', a: 'Du kan välja bild i vilket format som helst eftersom vårt bildbeskärningsverktyg stöder nästan alla bildformat. De listas nedan:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Laddas mina bilder upp till er server?', a: 'Nej, all bearbetning sker i din lokala webbläsare. Dina bilder laddas aldrig upp till vår server eftersom de aldrig lämnar din enhet. Därför kan du beskära privata bilder med vårt verktyg utan någon risk.' },
+      { q: 'Kan jag beskära flera bilder samtidigt?', a: 'Ja, du kan beskära flera bilder (även 100+) samtidigt om ditt system stöder det. Eftersom beskärning använder systemresurser kan du med en högpresterande laptop, PC eller mobil beskära många bilder på en gång. Om du har en enklare enhet kan du beskära i omgångar, eftersom verktyget är gratis även vid stora mängder bilder.' },
+      { q: 'Är det här bildbeskärningsverktyget gratis att använda?', a: 'Ja, det här bildbeskärningsverktyget är helt gratis för alltid. Du kan använda det var som helst, när som helst och på vilken enhet som helst. Du får en responsiv upplevelse för alla enheter och du kommer aldrig att bli ombedd att betala för premiumfunktioner. Alla funktioner är helt gratis utan dolda avgifter.' },
     ],
     resizeImage: [
-      { q: 'Kan jag ändra storlek på en bild till en exakt pixelstorlek?', a: 'Ja. Ange önskad bredd och höjd i pixlar, tum eller centimeter. Du kan också låsa bildförhållandet.' },
-      { q: 'Gör storleksändring bilden suddig?', a: 'Förstoring utöver original upplösning kan mjuka upp bilden något. Vi använder högkvalitativ bikubisk interpolering.' },
-      { q: 'Finns det batchstorleksändring tillgänglig?', a: 'Ja. Ladda upp flera bilder och tillämpa samma målstorlek på alla.' },
-      { q: 'Vilka storleksenheter kan användas?', a: 'Du kan ange i pixlar, tum, centimeter eller procent av originalstorleken.' },
-      { q: 'Skickas data till en server vid storleksändring?', a: 'Nej. Det sker helt i webbläsaren.' },
+      { q: 'Kan jag ändra storlek på flera bilder samtidigt?', a: 'Absolut. Vårt verktyg stöder samtidig storleksändring av flera bilder. Du kan ladda upp så många bilder som din enhet klarar, och AI-motorn bearbetar dem samtidigt. På svagare enheter är det bättre att köra i batchar för att undvika seghet. Allt sker lokalt utan serveruppladdning, vilket skyddar din integritet.' },
+      { q: 'Är detta verktyg gratis?', a: 'Ja, verktyget är helt gratis för alltid. Du behöver ingen betald prenumeration för premiumfunktioner. Det finns heller inga dolda avgifter när du laddar ner storleksändrade bilder.' },
+      { q: 'Förlorar bilden kvalitet när jag ändrar storlek?', a: '✅Decrease Size (downscale): Att minska bildstorleken försämrar inte den visuella kvaliteten. I många fall kan den nedskalade bilden till och med upplevas skarpare. Att minska storleken orsakar därför normalt ingen kvalitetsförlust.\n❌Increase Size (upscale): Att förstora en bild över originalstorleken kan påverka den visuella kvaliteten. Ju mer du förstorar, desto större risk för kvalitetsförlust.' },
+      { q: 'Är verktyget säkert?', a: 'Ja, verktyget är säkert, särskilt för personliga och känsliga bilder. All bearbetning sker lokalt på din enhet och ingen data lämnar den. Du kan ändra storlek utan integritetsrisk.' },
+      { q: 'Vilka bildformat stöds?', a: 'Vårt storleksverktyg stöder alla bildformat. Du kan välja bilder i följande format:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'Hur fungerar bakgrundsborttagning?', a: 'Vi använder avancerade AI-modeller som körs direkt i webbläsaren för att identifiera motivet och separera det från bakgrunden.' },
@@ -667,11 +1105,12 @@ const sv = {
       { q: 'Skickas data till en server?', a: 'Nej. All vattenstämpelhantering sker lokalt i webbläsaren.' },
     ],
     qrCodeGenerator: [
-      { q: 'Vilka typer av data kan kodas i en QR-kod?', a: 'Du kan koda URL, vanlig text, WiFi-data, e-post, telefonnummer, SMS, vCard med mera.' },
-      { q: 'Kan jag anpassa QR-kodens färger och stil?', a: 'Ja. Välj förgrunds- och bakgrundsfärger, lägg till en logotyp och välj bland olika stilar.' },
-      { q: 'I vilka format kan QR-koden laddas ner?', a: 'Du kan ladda ner som PNG-, SVG- eller JPEG-fil.' },
-      { q: 'Gör tillägg av logotyp QR-koden oskannerbar?', a: 'Vi använder felkorrigering för att hålla QR-koden skannerbar, så länge logotypen inte täcker för stor del av koden.' },
-      { q: 'Sker QR-kodsgenerering på servern?', a: 'Nej. QR-koder genereras helt i din webbläsare.' },
+      { q: 'Förfaller denna QR-kod?', a: 'Nej, dessa QR-koder förfaller inte och garanterar livslång support. Eftersom de lagrar hårdkodade instruktioner i form av bitar i kvadratiska rutor, kan informationen som lagras i dem inte ändras eller tas bort. Du kan komma åt information i koden bara genom att skanna den med valfri kamera, även efter år.' },
+      { q: 'Varför kan min QR-kod inte skannas?', a: 'Din QR-kod kanske inte kan skannas av följande skäl: i. Låg kontrast: Om du väljer liknande bakgrunds- och förgrundsfärger, påverkar det QR-kodens synlighet och orsakar skanningsfel. Men vårt verktyg guidar dig under anpassningen om låg kontrast eller något annat skanningsrelaterat problem. ii. Stora data: Om du genererar en QR-kod för mycket stor text eller data, blir den mycket komplex och orsakar problem vid skanningen. En textlängsvalidator guidar dig om den optimala textlängden under QR-kodgenerering. iii. Suddig utskrift: Se till att du laddar ner din QR-kod i höga upplösningsformat som PNG eller SVG, som redan stöds av vårt verktyg.' },
+      { q: 'Kan jag lägga till logotyp i QR-koden?', a: 'Absolut, du kan lägga till en anpassad logotyp eller välja en från det inbyggda logotypbiblioteket för din QR-kod. Din valda logotyp justeras automatiskt i mitten av QR-koden.' },
+      { q: 'Hur kan jag skanna QR-koden?', a: 'Du kan skanna QR-koden med din mobilkamera. Men för automatisk omdirigering till länken och många fler avancerade funktioner kan du besöka vår QR-kodskanner gratis med länken https://photremium.com/qr-code-scanner.' },
+      { q: 'Hur många QR-koder kan jag generera gratis?', a: 'OBEGRÄNSAD! du kan generera flera QR-koder gratis. Alla funktioner, anpassningar och mallar är gratis för alltid för alla. Du behöver inte prenumerera för att njuta av premiumfunktioner.' },
+      { q: 'Behöver jag logga in/registrera mig för att generera QR-kod?', a: 'Nej, bara ange din text, generera QR-koden och ladda ner efter anpassning. Det finns ingen anledning att logga in eller registrera dig eftersom alla funktioner kan nås helt gratis.' },
     ],
     qrCodeScanner: [
       { q: 'Hur skannar jag en QR-kod?', a: 'Du kan använda enhetens kamera för liveskanning eller ladda upp en bild som innehåller en QR-kod.' },

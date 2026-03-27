@@ -84,6 +84,99 @@ const pt = {
     compressing: 'A comprimir…',
     compressDownload: 'Comprimir e Transferir',
     lowQualityWarning: 'Uma compressão elevada pode reduzir significativamente a nitidez da imagem.',
+    blog: {
+      tocTitle: 'Conteúdo',
+      title: 'Blog do Compressor de Imagens',
+      formatsIntro: 'A nossa ferramenta suporta todos os formatos de imagem. Assim, pode comprimir qualquer imagem sem dificuldade. A lista de todos os formatos está abaixo:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. O que é um compressor de imagens?',
+          paragraphs: [
+            'Um compressor de imagens é uma ferramenta ou serviço online que reduz o tamanho do ficheiro da imagem mantendo a sua qualidade visual. No entanto, uma compressão excessiva pode reduzir a qualidade de forma visível.',
+          ],
+          listTitle: 'TIPOS:',
+          bullets: [
+            'Compressão com perdas: neste tipo de compressão, o tamanho da imagem é reduzido removendo parte dos dados. A qualidade pode diminuir, mas a diferença normalmente não é notória a olho nu.',
+            'Compressão sem perdas: reduz o tamanho do ficheiro sem afetar a qualidade visual da imagem.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Porque escolher a nossa ferramenta?',
+          bullets: [
+            'A nossa ferramenta de compressão com IA funciona perfeitamente em todos os dispositivos para oferecer os melhores resultados possíveis.',
+            'Pode comprimir várias imagens (até 100+) de uma só vez com um único clique.',
+            'Não precisa de enviar as suas imagens para os nossos servidores. Tudo é comprimido localmente no seu navegador.',
+            'O nosso compressor de imagens é totalmente gratuito para sempre. Também pode partilhar esta ferramenta com os seus amigos.',
+            'Pode selecionar a percentagem de compressão de acordo com a sua preferência.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Guia passo a passo',
+          steps: [
+            {
+              heading: '1. Selecione a(s) imagem(ns) que pretende comprimir.',
+              bullets: [
+                'Arraste e largue a(s) imagem(ns) na caixa de envio.',
+                'Também pode copiar e colar a(s) imagem(ns) na caixa com (Ctrl + V).',
+                'O explorador de ficheiros também é suportado ao clicar no botão de seleção.',
+              ],
+            },
+            {
+              heading: '2. Depois, selecione a percentagem de compressão.',
+              bullets: [
+                'Um controlo deslizante horizontal oferece uma experiência confortável para selecionar a compressão. Siga estes intervalos para obter resultados mais precisos.',
+              ],
+              table: {
+                headers: ['Percentagem de compressão', 'Resultados'],
+                rows: [
+                  ['1%  a  40%', 'Melhor qualidade'],
+                  ['41%  a  60%', 'Qualidade normal (recomendado)'],
+                  ['61%  a  100%', 'Má qualidade'],
+                ],
+              },
+            },
+            {
+              heading: '3. Verifique a memória que poupou.',
+              paragraphs: [
+                'Todas as métricas de memória são mostradas em tempo real. Pode ver claramente quanto espaço poupou e ajustar o nível de compressão conforme a sua necessidade.',
+              ],
+            },
+            {
+              heading: '4. Selecione a opção de transferência no botão de alternância.',
+              bullets: [
+                'ZIP: se estiver a comprimir várias imagens, verá esta opção. Ao selecionar ZIP, todas as imagens comprimidas serão arquivadas num ficheiro zip (recomendado para muitas imagens).',
+                'Separado: esta opção transfere todas as imagens separadamente e não num único ZIP (recomendado para poucas imagens, menos de 10).',
+              ],
+            },
+            {
+              heading: '5. Comprima e transfira a imagem.',
+              paragraphs: [
+                'Este botão transfere automaticamente todas as imagens comprimidas na opção de transferência selecionada.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Benefícios do compressor de imagens.',
+          bullets: [
+            'Reduz custos de armazenamento: ao comprimir imagens, o tamanho diminui e é necessário menos espaço.',
+            'Carregamento mais rápido: imagens comprimidas carregam mais depressa e melhoram a experiência do utilizador.',
+            'Solução para o limite do Gmail: como o Gmail limita anexos a 25MB, comprimir imagens ajuda a enviar mais ficheiros.',
+            'Partilha e transferência mais rápidas: ficheiros grandes demoram mais; a compressão poupa tempo e dados e ajuda em plataformas com limites.',
+            'Otimização de apresentações: apresentações com imagens não comprimidas podem ficar pesadas e lentas; com imagens comprimidas, ficam mais leves e fáceis de enviar.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Formatos suportados.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   converter: {
@@ -188,6 +281,91 @@ const pt = {
     dontEnlarge: 'Não ampliar se o original for mais pequeno',
     resizing: 'A redimensionar…',
     resizeDownload: 'Redimensionar e Transferir',
+    blog: {
+      tocTitle: 'Conteúdo',
+      title: 'Blog de Redimensionamento de Imagens',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Porque usar um redimensionador de imagens?',
+          paragraphs: [
+            'Um redimensionador de imagens é uma ferramenta/software usada para alterar as dimensões de uma imagem. Pode ajustar altura, largura ou ambas para obter o tamanho necessário. Isto é especialmente útil em plataformas de redes sociais que têm limites de tamanho para upload/publicação de imagens.',
+          ],
+          listTitle: 'Por exemplo:',
+          bullets: [
+            'Publicação do Instagram: 1080 x 1080px (quadrado)',
+            'Publicação do Facebook: 1200 x 630px',
+            'Publicação no X (Twitter): 1200 x 675px',
+            'Story do Instagram: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Porque escolher o nosso redimensionador de imagens?',
+          paragraphs: [
+            'O nosso redimensionador com IA permite ajustar imagens com precisão e grande velocidade. A ferramenta funciona de forma fluida em qualquer dispositivo e não requer instalação de aplicação. Todas as funcionalidades estão disponíveis online no navegador.',
+          ],
+          bullets: [
+            'Pode redimensionar várias imagens ao mesmo tempo (até 100+). Em dispositivos mais potentes, também é possível processar 400–500 imagens em poucos segundos.',
+            'Tudo é processado localmente no navegador. Não precisa de enviar imagens para os nossos servidores, por isso os ficheiros não saem do seu dispositivo.',
+            'Suporta várias unidades de redimensionamento.',
+            'Pode manter a proporção da imagem com apenas uma caixa de seleção.',
+            'Ao redimensionar múltiplas imagens, pode transferir separadamente ou em ZIP.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Guia passo a passo',
+          steps: [
+            {
+              heading: 'Primeiro, selecione as imagens (uma ou várias) que pretende redimensionar. Existem várias formas de seleção.',
+              bullets: [
+                'Pode arrastar e largar imagens na caixa de envio.',
+                'Também pode colar imagens com o atalho “Ctrl + V”.',
+                'Ou clicar em “Choose Files” para selecionar no explorador de ficheiros.',
+              ],
+            },
+            {
+              heading: 'De seguida, escolha a unidade de redimensionamento. As unidades disponíveis são:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'Depois, ajuste altura e largura para redimensionar. Pode também manter a proporção ativando a opção.',
+            },
+            {
+              heading: 'Se não quiser ampliar além do tamanho original, ative “Don’t enlarge if original is smaller”.',
+            },
+            {
+              heading: 'Depois, selecione uma opção de transferência.',
+              bullets: [
+                'Escolha ZIP se quiser transferir todas as imagens redimensionadas num único ficheiro zip.',
+                'Escolha “separate” se quiser transferir cada imagem separadamente.',
+              ],
+            },
+            {
+              heading: 'Por fim, clique em “Resize & Download” para transferir conforme a opção escolhida.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Benefícios da ferramenta de redimensionamento: o principal benefício é encaixar corretamente imagens em páginas web e publicações de redes sociais.',
+          tocLabel: '4. Benefícios da ferramenta de redimensionamento',
+          bullets: [
+            'Melhoria de UX: tamanho e posicionamento corretos das imagens melhoram muito a experiência do utilizador.',
+            'Compatibilidade com redes sociais: muitas plataformas têm limites de dimensão, e a ferramenta ajuda a cumpri-los.',
+            'Design responsivo: programadores precisam de várias dimensões para diferentes dispositivos.',
+            'Melhor escolha: em vez de esticar ou recortar agressivamente a imagem, redimensionar costuma preservar melhor o resultado.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Formatos suportados: o nosso redimensionador permite selecionar imagens de qualquer formato. Formatos suportados:',
+          tocLabel: '5. Formatos suportados',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   cropper: {
@@ -218,6 +396,94 @@ const pt = {
     saveNext: 'Guardar e Seguinte',
     croppedNofTotal: 'Recortou {n} de {total} imagens.',
     downloadN: 'Transferir {n}',
+    blog: {
+      tocTitle: 'Conteúdo',
+      title: 'Blog do Recortador de Imagens',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Porque usar um recortador de imagens?',
+          paragraphs: [
+            'O recortador de imagens é uma ferramenta de software usada para cortar a imagem no formato desejado. É amplamente usado para cortar uma parte necessária da imagem e remover a parte exterior indesejada para qualquer finalidade. Fornece uma caixa de recorte que pode ajustar na posição em que pretende recortar.',
+          ],
+          listTitle: 'Por exemplo:',
+          bullets: [
+            'Recortar a sua própria imagem de uma foto de grupo.',
+            'Recortar o seu nome de uma lista.',
+            'Recortar a barra de progresso de uma captura de ecrã completa.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Porque escolher o nosso recortador de imagens?',
+          paragraphs: [
+            'A nossa ferramenta de recorte de imagens permite-lhe recortar imagens com precisão e muito rapidamente. Só precisa de ajustar o tamanho da caixa de recorte na posição que quer cortar em qualquer imagem. Quase todos os formatos de imagem são suportados para seleção da imagem.',
+          ],
+          bullets: [
+            'Pode recortar tantas imagens quantas o seu dispositivo suportar. Se tiver um dispositivo de melhor desempenho, pode recortar até mais de 100 imagens de uma vez sem atrasos nem outros problemas.',
+            'As suas imagens serão processadas no seu navegador local. Não precisa de enviar nenhuma imagem para os nossos servidores, por isso nenhuma imagem sai do seu dispositivo. Pode recortar as suas imagens pessoais sem qualquer insegurança ou risco.',
+            'Muitas ferramentas assinalam erro de formato de imagem inválido. A nossa ferramenta de recorte de imagens trata deste problema ao suportar quase todos os formatos de imagem.',
+            'Se estiver a recortar várias imagens de uma vez, a nossa ferramenta permite-lhe transferir as imagens recortadas como ZIP ou como imagens separadas de acordo com a sua preferência.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Guia passo a passo',
+          steps: [
+            {
+              heading: '1. Antes de mais, selecione a imagem que quer recortar. A seleção de várias imagens de uma vez também é suportada pela nossa ferramenta de recorte de imagens.',
+              bullets: [
+                'Arraste e largue a imagem na caixa para a recortar.',
+                'Também pode selecionar a imagem através do explorador de ficheiros clicando no botão escolher ficheiros colocado na caixa de recorte.',
+                'O atalho Ctrl + V também é suportado para colar as imagens na caixa.',
+              ],
+            },
+            {
+              heading: '2. Depois, ajuste o tamanho e a posição da caixa de recorte na imagem para a cortar.',
+            },
+            {
+              heading: '3. Também pode ajustar a caixa de recorte introduzindo manualmente os valores de altura, largura, posição horizontal e posição vertical.',
+            },
+            {
+              heading: '4. Também pode usar alguns modelos pré-feitos:',
+              bullets: [
+                'Paisagem(16:9)',
+                'Retrato(9:16)',
+                'Quadrado(1:1)',
+              ],
+            },
+            {
+              heading: '5. Depois tem de selecionar uma das opções de transferência.',
+              bullets: [
+                'ZIP: Selecione esta opção se estiver a recortar várias imagens e quiser transferir todas as imagens recortadas como um único ficheiro.',
+                'Separado: Se quiser transferir todas as imagens recortadas separadamente, selecione esta opção no botão de alternância.',
+              ],
+            },
+            {
+              heading: '6. Depois clique no botão Recortar e Transferir para transferir todas as suas imagens recortadas de acordo com as dimensões predefinidas.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Benefícios do Recortador de Imagens: A ferramenta de recorte de imagens oferece vários benefícios no mundo digital. Alguns são descritos abaixo:',
+          tocLabel: '4. Benefícios do Recortador de Imagens',
+          bullets: [
+            'Ajuste de imagens em molduras: O recortador de imagens ajuda-o a ajustar corretamente as imagens em molduras. Estas molduras podem estar numa página web ou em qualquer plataforma de redes sociais.',
+            'Melhoria da UX: Como a colocação correta de imagens melhora a experiência do utilizador, o recortador de imagens ajuda a melhorar a UX em grande medida.',
+            'Remoção de borda indesejada: Pode remover quaisquer bordas indesejadas de uma imagem para a refinar.',
+            'Separação do objeto desejado: Também pode separar a sua imagem de uma foto de grupo.',
+            'Poupança de armazenamento: Recortar a imagem poupa definitivamente armazenamento, pois a área bruta da imagem é cortada e apenas a parte desejada é guardada.',
+            'Otimização de apresentação: Como uma apresentação normal com 10 imagens não recortadas ocupa quase 30MB de armazenamento, a mesma apresentação com imagens recortadas pode ocupar quase 10MB de armazenamento.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Formatos suportados:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   photoEditor: {
@@ -318,11 +584,184 @@ const pt = {
     tabEmail: 'Gmail',
     tabMaps: 'Google Maps',
     generateCustomize: 'Gerar e Personalizar',
+    downloadFormatBtn: 'Transferir {format}',
+    pngDesc: 'Sem perdas, suporta transparência',
+    jpgDesc: 'Formato de ficheiro popular/universal',
+    webpDesc: 'Formato moderno, melhor qualidade/tamanho',
+    svgDesc: 'Gráfico vetorial escalável',
+    pdfDesc: 'Documento pronto para impressão',
     lat: 'Latitude:',
     lng: 'Longitude:',
     qrCode: 'Código QR',
     scanMe: 'DIGITALIZE',
     scanHere: 'DIGITALIZAR AQUI',
+    blog: {
+      card1: {
+        title: '1. O que é um código QR?',
+        intro1: 'A designação completa de QR é “Quick Response code”. Como a informação armazenada é descodificada de forma muito rápida, chama-se código de resposta rápida (QR).',
+        intro2: 'O código QR é um código digital bidimensional legível apenas por máquinas. Os dados nele contidos não podem ser lidos diretamente por humanos. Contém blocos para armazenar informação como texto, números de contacto, links e localizações do Google Maps, etc.',
+        inventionTitle: 'Como o código QR foi inventado:',
+        inventionText: 'O código QR foi inventado em 1994. Masahiro Hara e a sua equipa trabalhavam numa empresa japonesa chamada Denso Wave, que fabricava peças automóveis para a Toyota. Queriam um código que armazenasse muito mais informação do que um código de barras típico, e assim inventaram o código QR.',
+        keyFeaturesTitle: 'Principais características de um código QR',
+        keyFeatures: [
+          {
+            title: 'Como o QR funciona',
+            text: 'Introduz o texto ou link para gerar o respetivo código QR. O gerador cria quadrados de acordo com a informação. Cada quadrado representa um bit, e cada bit armazena um carácter.',
+          },
+          {
+            title: 'Estrutura do código QR',
+            text: 'Um código QR contém três quadrados grandes para identificar a orientação do código e quadrados pequenos para armazenar os bits (informação).',
+          },
+          {
+            title: 'Capacidade de dados do código QR',
+            text: 'Tipicamente, um código QR armazena mais informação do que um código de barras. O código QR é simplesmente uma versão avançada do código de barras, em duas dimensões. Um código QR armazena cerca de 200 caracteres. Também pode armazenar 400 caracteres, mas pode tornar-se difícil de digitalizar. Armazenar mais de 400 caracteres pode resultar num código QR muito complexo, que na maioria dos casos não será lido.',
+          },
+          {
+            title: 'Deteção de erros em códigos QR',
+            text: 'Um código QR pode continuar legível mesmo que parte da informação esteja riscada ou alguns bits sejam alterados. O código QR utiliza a técnica Reed-Solomon para detetar e corrigir erros após a sua identificação.',
+          },
+        ],
+        errorTitle: 'Nível de correção de erros do código QR:',
+        errorIntro: 'São usadas diferentes técnicas de deteção e correção de erros em diferentes casos, como descrito abaixo:',
+        errorHeaders: {
+          level: 'Nível',
+          recovery: 'Capacidade de recuperação',
+          bestUse: 'Melhor caso de utilização',
+        },
+        errorRows: [
+          {
+            level: 'Baixo (L)',
+            recovery: '~7%',
+            useCases: [
+              'Esta técnica é utilizada quando o código QR é apresentado em ecrãs digitais, websites ou em ambiente limpo.',
+              'Quando o código QR é gerado para informação pequena como Gmail, número de contacto ou texto curto.',
+            ],
+          },
+          {
+            level: 'Médio (M)',
+            recovery: '~15%',
+            useCases: [
+              'Para folhetos e cartazes instalados em ambiente limpo, quando o risco de dano é reduzido.',
+            ],
+          },
+          {
+            level: 'Quartil (Q)',
+            recovery: '~25%',
+            useCases: [
+              'Quando o código QR será instalado em ambiente mais agressivo, como fábrica/exterior.',
+              'Também quando é necessário um logótipo pequeno no centro, pois cobre alguns bits. Nesse caso, esta correção é necessária.',
+            ],
+          },
+          {
+            level: 'Alto (H)',
+            recovery: '~30%',
+            useCases: [
+              'Utilizado quando é possível ocorrer dano elevado no código QR.',
+              'Quando logótipos grandes cobrem o centro do código QR.',
+              'Também quando é necessário muito estilo visual no código QR.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Porque escolher o nosso gerador de códigos QR?',
+        intro: 'O nosso gerador de códigos QR torna a criação extremamente rápida, segura e simples. Pode personalizar o seu código para o tornar mais avançado, profissional e alinhado com o tema do seu negócio. Todas as personalizações, desde a cor até à colocação de logótipo no QR, são oferecidas gratuitamente para sempre.',
+        strengths: [
+          {
+            title: 'Personalização profissional:',
+            text: 'Pode gerar e personalizar quantos códigos QR precisar, sem qualquer custo. Todas as funcionalidades são totalmente gratuitas. Pode aplicar cores em gradiente, diferentes formas de módulos, logótipos personalizados e muitos outros recursos.',
+          },
+          {
+            title: 'Suporte para múltiplos formatos:',
+            text: 'O nosso gerador oferece vários formatos de transferência para sua conveniência. Só tem de selecionar o formato antes de transferir. Atualmente, oferecemos estes formatos:',
+          },
+          {
+            title: 'Modelos pré-feitos:',
+            text: 'Pode usar gradientes e molduras pré-feitos que tornam o seu código QR mais profissional.',
+          },
+          {
+            title: 'Suporte para logótipo personalizado:',
+            text: 'Também pode carregar o logótipo da sua marca, que se ajusta automaticamente ao centro do código QR. Além disso, pode selecionar um logótipo na biblioteca integrada, onde existem mais de 30 opções.',
+          },
+          {
+            title: 'Pré-visualização em tempo real:',
+            text: 'Durante a personalização, pode ver todas as alterações num painel de pré-visualização em tempo real.',
+          },
+          {
+            title: 'Indicador de leitura:',
+            text: 'Ao escolher cores, alertas e indicadores orientam-no caso selecione combinações que dificultem a leitura.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'N.º',
+          formats: 'Formatos',
+          description: 'Descrição',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Sem perdas, suporte de transparência' },
+          { no: '2', format: 'JPG', description: 'Formato de ficheiro popular e universal' },
+          { no: '3', format: 'WEBP', description: 'Formato moderno, melhor qualidade/tamanho' },
+          { no: '4', format: 'SVG', description: 'Gráfico vetorial escalável' },
+          { no: '5', format: 'PDF', description: 'Documento pronto para impressão' },
+        ],
+      },
+      card3: {
+        title: '3. Guia passo a passo:',
+        step1Intro: 'Antes de mais, selecione a categoria do código QR que pretende gerar. Quer esteja a gerar para contacto, mapa, link ou texto. Atualmente, o nosso gerador oferece estas categorias:',
+        categories: ['Ligação / URL', 'Texto', 'WiFi', 'Contacto', 'Gmail', 'Google Maps'],
+        step2: 'Depois de selecionar a categoria, cole a sua informação na caixa de texto correspondente.',
+        step3Intro: 'Em seguida, clique em Gerar e Personalizar para abrir o painel de personalização. Nesse painel, verá uma subnavegação com as opções seguintes:',
+        options: [
+          {
+            title: 'Estilo e forma:',
+            text: 'Nesta secção, pode alterar as formas dos módulos para vários estilos como cantos arredondados, pontos, barras horizontais, barras verticais, quadrados pequenos e muitos outros.',
+          },
+          {
+            title: 'Cor:',
+            text: 'Pode selecionar as cores de fundo e de primeiro plano nesta secção. Para criar um código QR com gradiente, pode ativar a opção de gradiente, que permite aplicar qualquer gradiente da biblioteca integrada ou criar o seu facilmente. Também pode alterar o ângulo do gradiente linear. O gradiente radial também é suportado. Pode adicionar várias cores para criar um efeito profissional.',
+          },
+          {
+            title: 'Molduras:',
+            text: 'Aqui, pode selecionar uma moldura ideal para o seu código QR. Todas as molduras ajustam-se automaticamente ao código. Só precisa de escolher uma da biblioteca integrada.',
+          },
+          {
+            title: 'Logótipo:',
+            text: 'Depois de selecionar a moldura, pode escolher um logótipo que será ajustado automaticamente no centro do código QR. O carregamento do seu logótipo de marca também é suportado.',
+          },
+          {
+            title: 'Modelos:',
+            text: 'Se não quiser selecionar estilo, forma, cor e moldura separadamente, pode aplicar modelos pré-feitos no seu código QR. São disponibilizados vários modelos premium para sua conveniência, gratuitos para sempre.',
+          },
+          {
+            title: 'Formato de ficheiro:',
+            text: 'Por fim, deve selecionar o tipo de ficheiro em que quer transferir o código QR. São suportados vários formatos comuns, incluindo PNG, WEBP, SVG e PDF, etc.',
+          },
+          {
+            title: 'Editar dados QR:',
+            text: 'Também pode editar os dados do seu QR sem qualquer perda nas personalizações escolhidas.',
+          },
+        ],
+        finalStep: 'Depois, basta clicar no botão de transferência e o código QR, exatamente de acordo com as suas personalizações e no formato selecionado, será descarregado instantaneamente sem qualquer custo.',
+      },
+      card4: {
+        title: '4. Benefícios:',
+        intro: 'O código QR liga o mundo físico à experiência digital. É a forma mais rápida de partilhar links, contacto ou localização. Só precisa de digitalizar esse código QR para aceder à informação instantaneamente. Por isso, é muito popular em negócios e no mundo digital por ser eficiente em tempo e altamente útil.',
+        benefits: [
+          {
+            title: 'Suporte vitalício:',
+            text: 'Os códigos QR funcionam para sempre sem expiração. Fornecem instantaneamente a informação armazenada quando são digitalizados. Como armazenam instruções digitais fixas, nunca perdem a informação.',
+          },
+          {
+            title: 'Suporte offline:',
+            text: 'Pode digitalizar o código QR mesmo sem internet. A câmara do seu telemóvel descodifica os padrões do código QR e fornece a informação armazenada.',
+          },
+          {
+            title: 'Custo zero:',
+            text: 'Como estes códigos não requerem redirecionamento por servidor nem recursos adicionais, são gratuitos para sempre.',
+          },
+        ],
+      },
+    },
   },
 
   qrScanner: {
@@ -382,25 +821,25 @@ const pt = {
       { q: 'Posso converter imagens PNG transparentes para JPG?', a: 'Sim. Como o JPG não suporta transparência, as áreas transparentes serão preenchidas com fundo branco por defeito.' },
     ],
     imageCompressor: [
-      { q: 'Como funciona a compressão de imagens?', a: 'A nossa ferramenta reduz o tamanho do ficheiro recodificando a imagem a um nível de qualidade inferior utilizando a API Canvas integrada do navegador.' },
-      { q: 'A compressão vai reduzir visivelmente a qualidade?', a: 'A níveis de compressão moderados (20-40%), a diferença é praticamente imperceptível.' },
-      { q: 'Que formatos posso comprimir?', a: 'Pode carregar JPG, PNG, WEBP, BMP e a maioria dos formatos raster comuns.' },
-      { q: 'Posso comprimir várias imagens de uma vez?', a: 'Sim! Basta arrastar e largar vários ficheiros. Pode transferi-los todos como ZIP.' },
-      { q: 'As minhas imagens comprimidas são guardadas num servidor?', a: 'Não. Tudo funciona localmente no seu navegador. As suas imagens nunca são enviadas para lado algum.' },
+      { q: 'Comprimir a imagem reduz a qualidade?', a: 'Não, a compressão da imagem não afeta a qualidade até ultrapassar os limites recomendados. Os indicadores de qualidade orientam assim: i. Compressão de 1 a 40%: aparece indicador verde com a mensagem “Boa qualidade”. ii. Compressão de 41 a 60%: aparece sinal amarelo com “Qualidade normal”. Este intervalo é recomendado para bons resultados. iii. Compressão de 61 a 100%: o sistema mostra aviso vermelho com “Má qualidade”. Neste intervalo, a perda de qualidade pode tornar-se visível.' },
+      { q: 'Que formatos de imagem são suportados para compressão?', a: 'A nossa ferramenta suporta todos estes formatos:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Posso comprimir várias imagens ao mesmo tempo?', a: 'Sim, absolutamente. Pode comprimir várias imagens (até 100+) de uma vez, se o seu dispositivo suportar. Como a compressão usa recursos do sistema, lotes grandes funcionam melhor em equipamentos mais potentes. Em dispositivos de entrada, pode comprimir em etapas — a ferramenta continua gratuita sem limites de utilização.' },
+      { q: 'Guardam ou enviam as nossas imagens para os vossos servidores?', a: 'Não. Nunca carregamos nem guardamos as suas imagens nos nossos servidores. Tudo é comprimido localmente no seu navegador. As imagens nunca saem do seu dispositivo.' },
+      { q: 'Esta ferramenta de compressão de imagens é gratuita?', a: 'Sim. O nosso compressor de imagens é totalmente gratuito para sempre. Nunca pediremos qualquer pagamento, não há custos ocultos e todas as funcionalidades — incluindo compressão múltipla — são gratuitas.' },
     ],
     cropImage: [
-      { q: 'Posso cortar imagens com uma proporção específica?', a: 'Sim. Pode escolher entre proporções predefinidas como 1:1, 4:3, 16:9 ou introduzir uma personalizada.' },
-      { q: 'O corte reduz a qualidade da imagem?', a: 'Não. O corte limita-se a remover os píxeis fora da área selecionada. Os píxeis restantes mantêm a sua resolução e qualidade originais.' },
-      { q: 'Posso cortar várias imagens de uma vez?', a: 'Certamente. Carregue várias imagens, defina as áreas de corte e transfira-as todas de uma vez.' },
-      { q: 'Que formatos de ficheiro são suportados para cortar?', a: 'Todos os formatos comuns, incluindo JPG, PNG, WEBP, GIF e BMP.' },
-      { q: 'As minhas imagens são enviadas para um servidor?', a: 'Não. Todo o corte é realizado localmente no seu navegador com a API Canvas do HTML5.' },
+      { q: 'Recortar a imagem reduzirá a sua qualidade?', a: 'Não, recortar a imagem nunca afetará a qualidade visual da imagem de forma alguma. Recortar a imagem apenas descarta as partes indesejadas. Nunca altera os píxeis da parte da imagem a recortar. Assim, pode recortar as suas imagens na qualidade original sem qualquer dano de píxeis.' },
+      { q: 'Que formatos de imagem são suportados para o recortador de imagens?', a: 'Pode selecionar qualquer imagem de qualquer formato, pois a nossa ferramenta de recorte de imagens oferece quase todos os formatos de imagem. Estes estão listados abaixo:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'As minhas imagens são carregadas para o vosso servidor?', a: 'Não, todo o processamento será feito no seu navegador local. As suas imagens nunca serão carregadas para o nosso servidor, pois nunca saem do seu dispositivo. Assim, pode recortar as suas imagens pessoais com o nosso recortador de imagens sem qualquer risco.' },
+      { q: 'Posso recortar várias imagens de uma vez?', a: 'Sim, pode recortar várias imagens (até 100+) de uma vez se o seu sistema suportar. Como o recorte de imagens usa os recursos do seu sistema, se tiver um portátil, PC ou telemóvel de alto desempenho, pode recortar muitas imagens de uma vez. Se tiver um dispositivo de baixo desempenho, pode recortar imagens em lotes, pois esta ferramenta é gratuita mesmo que recorte várias imagens de uma vez.' },
+      { q: 'Esta ferramenta de recorte de imagens é gratuita?', a: 'Sim, esta ferramenta de recorte de imagens é totalmente gratuita para sempre. Pode aceder a esta ferramenta em qualquer lugar, a qualquer hora e usando qualquer dispositivo. Não só terá um design responsivo para todos os dispositivos, como também nunca lhe será pedido para pagar por qualquer funcionalidade premium. Todas as funcionalidades são totalmente gratuitas, sem custos ocultos.' },
     ],
     resizeImage: [
-      { q: 'Posso redimensionar imagens para dimensões exatas em píxeis?', a: 'Sim. Introduza a largura e altura desejadas em píxeis, polégadas ou centímetros. Também pode bloquear a proporção.' },
-      { q: 'O redimensionamento vai tornar a minha imagem desfocada?', a: 'Ampliar além da resolução original pode introduzir um ligeiro suavizamento. Reduzir mantém a nitidez. Utilizamos interpolação bicúbica de alta qualidade.' },
-      { q: 'Posso redimensionar em lote?', a: 'Sim. Carregue várias imagens e aplique as mesmas dimensões a todas. Transfira individualmente ou como ZIP.' },
-      { q: 'Que unidades posso usar para as dimensões?', a: 'Pode especificar em píxeis, polégadas, centímetros ou como percentagem do tamanho original.' },
-      { q: 'São enviados dados para um servidor durante o redimensionamento?', a: 'Não. O redimensionamento é realizado inteiramente no seu navegador.' },
+      { q: 'Posso redimensionar várias imagens de uma vez?', a: 'Claro. O nosso redimensionador suporta o processamento de várias imagens em simultâneo. Pode carregar tantas imagens quantas o seu dispositivo suportar e o motor de IA processa-as ao mesmo tempo. Em dispositivos menos potentes, recomenda-se processar por lotes para evitar lentidão. Tudo acontece localmente, sem envio para servidor, mantendo a privacidade.' },
+      { q: 'Esta ferramenta de redimensionamento é gratuita?', a: 'Sim, esta ferramenta é totalmente gratuita para sempre. Não existe subscrição paga para funcionalidades premium. Também não há custos ocultos ao transferir imagens redimensionadas.' },
+      { q: 'Redimensionar imagem reduz a qualidade?', a: '✅Decrease Size (downscale): Reduzir o tamanho da imagem não diminui a qualidade visual. Em muitos casos, a imagem redimensionada pode até parecer mais nítida. Portanto, reduzir para tamanhos menores normalmente não causa perda de qualidade.\n❌Increase Size (upscale): Aumentar a imagem acima do tamanho original pode afetar a qualidade visual. Quanto maior o aumento, maior a probabilidade de perda de qualidade.' },
+      { q: 'Esta ferramenta é segura?', a: 'Sim, a nossa ferramenta é segura, especialmente para imagens pessoais e sensíveis. Todo o processamento é feito localmente no seu dispositivo e nenhum dado sai dele. Pode redimensionar sem risco para a privacidade.' },
+      { q: 'Que formatos de imagem são suportados?', a: 'O nosso redimensionador suporta todos os formatos de imagem. Pode selecionar imagens nos seguintes formatos:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'Como funciona a remoção de fundo?', a: 'Utilizamos um modelo de IA avançado que corre diretamente no seu navegador para detetar o objeto e separá-lo do fundo, produzindo um PNG transparente.' },
@@ -417,11 +856,12 @@ const pt = {
       { q: 'São enviados dados para um servidor?', a: 'Não. Todo o processo de marca de água é feito localmente no seu navegador.' },
     ],
     qrCodeGenerator: [
-      { q: 'Que tipos de dados posso codificar num código QR?', a: 'Pode codificar URLs, texto, credenciais Wi-Fi, e-mails, números de telefone, SMS, vCards e muito mais.' },
-      { q: 'Posso personalizar as cores e o estilo do meu código QR?', a: 'Sim. Escolha cores personalizadas, adicione um logotipo e selecione entre vários estilos.' },
-      { q: 'Em que formatos posso transferir o código QR?', a: 'Pode transferir como PNG, SVG ou JPEG.' },
-      { q: 'Adicionar um logotipo vai tornar o QR ilegível?', a: 'A nossa ferramenta utiliza correção de erros para que o QR continue legível, desde que o logotipo não cubra demasiado.' },
-      { q: 'A geração de código QR é feita num servidor?', a: 'Não. Os códigos QR são gerados inteiramente no seu navegador.' },
+      { q: 'Este código QR expira?', a: 'Não, estes códigos QR não expiram e garantem suporte vitalício. Como armazenam instruções codificadas em forma de bits dentro de módulos quadrados, a informação neles guardada não pode ser removida. Pode aceder à informação apenas digitalizando com qualquer câmara, mesmo após anos.' },
+      { q: 'Porque é que o meu código QR não está a ser lido?', a: 'O seu código QR pode falhar por estas razões: i. Baixo contraste: se escolher cores de fundo e primeiro plano muito semelhantes, isso afeta a visibilidade do código QR e pode causar falha na leitura. A nossa ferramenta orienta-o durante a personalização sobre baixo contraste e outros problemas de leitura. ii. Dados demasiado grandes: se gerar um código QR para um texto muito extenso, ele torna-se muito complexo e pode causar dificuldades no scan. Um validador de comprimento de texto orienta sobre o tamanho ótimo durante a geração do QR. iii. Impressão desfocada: certifique-se de descarregar o código QR em alta resolução, como PNG ou SVG, formatos já suportados pela nossa ferramenta.' },
+      { q: 'Posso adicionar um logótipo no código QR?', a: 'Com certeza, pode adicionar um logótipo personalizado ou selecionar um da biblioteca de logótipos integrada para o seu código QR. O logótipo selecionado será ajustado automaticamente ao centro do código QR.' },
+      { q: 'Como posso digitalizar o código QR?', a: 'Pode digitalizar o código QR com a câmara do seu telemóvel. Mas, para redirecionamento automático de links e muitos recursos avançados, pode usar gratuitamente o nosso scanner em https://photremium.com/qr-code-scanner.' },
+      { q: 'Quantos códigos QR posso gerar gratuitamente?', a: 'ILIMITADOS! Pode gerar vários códigos QR gratuitamente. Todas as funcionalidades, personalizações e modelos são grátis para sempre. Não precisa de subscrição para usufruir de funcionalidades premium.' },
+      { q: 'Preciso de iniciar sessão/registar-me para gerar um código QR?', a: 'Não. Basta inserir o seu texto, gerar o código QR e descarregar após personalizar. Não é necessário iniciar sessão nem registo, pois todas as funcionalidades podem ser acedidas de forma totalmente gratuita.' },
     ],
     qrCodeScanner: [
       { q: 'Como faço para ler um código QR?', a: 'Pode usar a câmara do seu dispositivo para ler em tempo real ou carregar uma imagem que contenha um código QR. O resultado é exibido instantaneamente.' },

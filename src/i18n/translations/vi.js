@@ -195,6 +195,99 @@ const vi = {
     compressing: 'Đang nén…',
     compressDownload: 'Nén & Tải Về',
     lowQualityWarning: 'Mức nén cao có thể làm giảm độ rõ nét của ảnh đáng kể.',
+    blog: {
+      tocTitle: 'Mục lục',
+      title: 'Blog Nén Ảnh',
+      formatsIntro: 'Công cụ của chúng tôi hỗ trợ tất cả định dạng ảnh, vì vậy bạn có thể nén mọi ảnh một cách mượt mà. Danh sách đầy đủ định dạng ở bên dưới:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. Công cụ nén ảnh là gì?',
+          paragraphs: [
+            'Công cụ nén ảnh là phần mềm hoặc dịch vụ trực tuyến giúp giảm dung lượng tệp ảnh trong khi vẫn giữ chất lượng hiển thị. Tuy nhiên, nén quá mạnh có thể làm giảm chất lượng rõ rệt.',
+          ],
+          listTitle: 'LOẠI:',
+          bullets: [
+            'Nén mất dữ liệu: giảm dung lượng bằng cách loại bỏ một phần dữ liệu ảnh. Chất lượng có thể giảm, nhưng ở mức vừa phải thường khó nhận thấy bằng mắt thường.',
+            'Nén không mất dữ liệu: giảm dung lượng tệp mà không ảnh hưởng đến chất lượng hiển thị của ảnh.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Vì sao chọn công cụ của chúng tôi?',
+          bullets: [
+            'Công cụ nén ảnh dùng AI của chúng tôi hoạt động mượt trên mọi thiết bị và cho kết quả tốt nhất có thể.',
+            'Bạn có thể nén nhiều ảnh cùng lúc (thậm chí hơn 100 ảnh) chỉ với một lần bấm.',
+            'Không cần tải ảnh lên máy chủ. Tất cả xử lý diễn ra cục bộ ngay trong trình duyệt của bạn.',
+            'Công cụ nén ảnh của chúng tôi hoàn toàn miễn phí vĩnh viễn, và bạn có thể chia sẻ cho bạn bè.',
+            'Bạn có thể chọn tỷ lệ nén theo nhu cầu của mình.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Hướng dẫn từng bước',
+          steps: [
+            {
+              heading: '1. Chọn ảnh bạn muốn nén.',
+              bullets: [
+                'Kéo và thả ảnh vào ô tải lên.',
+                'Bạn cũng có thể sao chép ảnh và dán vào ô bằng (Ctrl + V).',
+                'Bạn cũng có thể chọn ảnh qua trình quản lý tệp bằng nút chọn.',
+              ],
+            },
+            {
+              heading: '2. Sau đó chọn phần trăm nén.',
+              bullets: [
+                'Thanh trượt ngang giúp bạn chọn mức nén thuận tiện. Hãy tham khảo các khoảng sau để có kết quả chính xác hơn.',
+              ],
+              table: {
+                headers: ['Phần trăm nén', 'Kết quả'],
+                rows: [
+                  ['1%  đến  40%', 'Chất lượng tốt nhất'],
+                  ['41%  đến  60%', 'Chất lượng bình thường (Khuyến nghị)'],
+                  ['61%  đến  100%', 'Chất lượng thấp'],
+                ],
+              },
+            },
+            {
+              heading: '3. Kiểm tra dung lượng bạn đã tiết kiệm.',
+              paragraphs: [
+                'Tất cả chỉ số dung lượng được hiển thị theo thời gian thực. Bạn có thể thấy rõ đã tiết kiệm được bao nhiêu và điều chỉnh mức nén để đạt kích thước mong muốn.',
+              ],
+            },
+            {
+              heading: '4. Chọn cách tải xuống bằng nút chuyển.',
+              bullets: [
+                'ZIP: nếu bạn nén nhiều ảnh, tùy chọn này sẽ xuất hiện. Chọn ZIP để gom tất cả ảnh đã nén vào một tệp ZIP (khuyến nghị khi có nhiều ảnh).',
+                'Tách riêng: tùy chọn này tải từng ảnh riêng lẻ thay vì một tệp ZIP duy nhất (khuyến nghị với số lượng ít, dưới 10 ảnh).',
+              ],
+            },
+            {
+              heading: '5. Nén và tải ảnh.',
+              paragraphs: [
+                'Nút này sẽ tự động tải xuống tất cả ảnh đã nén theo tùy chọn tải xuống bạn đã chọn.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Lợi ích của công cụ nén ảnh.',
+          bullets: [
+            'Giảm chi phí lưu trữ: nén ảnh giúp giảm đáng kể dung lượng tệp.',
+            'Tải nhanh hơn: ảnh đã nén tải nhanh hơn, cải thiện trải nghiệm người dùng trên web/app.',
+            'Giải pháp giới hạn Gmail: Gmail giới hạn tệp đính kèm 25MB, nén ảnh giúp gửi được nhiều tệp hơn.',
+            'Chia sẻ và truyền tải nhanh hơn: tệp lớn mất nhiều thời gian truyền; nén ảnh giúp tiết kiệm thời gian và dữ liệu.',
+            'Tối ưu bài thuyết trình: ảnh chưa nén khiến tệp trình chiếu nặng, còn ảnh đã nén giúp giảm kích thước đáng kể.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Định dạng được hỗ trợ.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   converter: {
@@ -299,6 +392,91 @@ const vi = {
     dontEnlarge: 'Không phóng to nếu ảnh gốc nhỏ hơn',
     resizing: 'Đang thay đổi kích thước…',
     resizeDownload: 'Thay Đổi & Tải Về',
+    blog: {
+      tocTitle: 'Mục lục',
+      title: 'Blog thay đổi kích thước ảnh',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Vì sao nên dùng công cụ thay đổi kích thước ảnh?',
+          paragraphs: [
+            'Công cụ thay đổi kích thước ảnh là phần mềm/công cụ dùng để thay đổi kích thước ảnh. Bạn có thể chỉnh chiều cao, chiều rộng hoặc cả hai để đạt kích thước mong muốn. Điều này đặc biệt hữu ích cho các nền tảng mạng xã hội có giới hạn kích thước khi đăng/tải ảnh.',
+          ],
+          listTitle: 'Ví dụ:',
+          bullets: [
+            'Bài đăng Instagram: 1080 x 1080px (vuông)',
+            'Bài đăng Facebook: 1200 x 630px',
+            'Bài đăng X (Twitter): 1200 x 675px',
+            'Instagram Story: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Vì sao chọn công cụ thay đổi kích thước của chúng tôi?',
+          paragraphs: [
+            'Công cụ thay đổi kích thước ảnh bằng AI của chúng tôi cho phép bạn chỉnh ảnh chính xác và rất nhanh. Công cụ hoạt động mượt trên mọi thiết bị và không cần cài ứng dụng. Tất cả tính năng đều dùng trực tuyến ngay trên trình duyệt.',
+          ],
+          bullets: [
+            'Bạn có thể đổi kích thước nhiều ảnh cùng lúc (thậm chí 100+). Với thiết bị mạnh, có thể xử lý 400–500 ảnh chỉ trong vài giây.',
+            'Mọi xử lý diễn ra cục bộ trong trình duyệt. Không cần tải ảnh lên máy chủ nên ảnh không rời khỏi thiết bị của bạn.',
+            'Hỗ trợ nhiều đơn vị thay đổi kích thước.',
+            'Bạn có thể giữ đúng tỷ lệ ảnh chỉ với một ô chọn.',
+            'Khi xử lý nhiều ảnh, bạn có thể tải từng ảnh riêng hoặc tải gói ZIP.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Hướng dẫn từng bước',
+          steps: [
+            {
+              heading: 'Trước tiên, chọn ảnh (một hoặc nhiều ảnh) bạn muốn thay đổi kích thước. Có nhiều cách để chọn.',
+              bullets: [
+                'Kéo và thả ảnh vào vùng tải lên.',
+                'Bạn cũng có thể dán ảnh bằng phím tắt “Ctrl + V”.',
+                'Hoặc bấm “Choose Files” để chọn ảnh từ trình quản lý tệp.',
+              ],
+            },
+            {
+              heading: 'Sau đó, chọn đơn vị thay đổi kích thước. Các đơn vị hiện có gồm:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'Tiếp theo, đặt chiều cao và chiều rộng để đổi kích thước. Bạn cũng có thể giữ tỷ lệ ảnh bằng ô chọn.',
+            },
+            {
+              heading: 'Nếu không muốn phóng to vượt quá kích thước gốc, hãy bật “Don’t enlarge if original is smaller”.',
+            },
+            {
+              heading: 'Tiếp theo, chọn phương thức tải về.',
+              bullets: [
+                'Chọn ZIP nếu bạn muốn tải tất cả ảnh đã đổi kích thước trong một tệp zip.',
+                'Chọn “separate” nếu bạn muốn tải từng ảnh riêng lẻ.',
+              ],
+            },
+            {
+              heading: 'Cuối cùng, bấm “Resize & Download” để tải xuống theo lựa chọn của bạn.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Lợi ích của công cụ thay đổi kích thước: lợi ích lớn nhất là giúp ảnh hiển thị đúng trên trang web và bài đăng mạng xã hội.',
+          tocLabel: '4. Lợi ích của công cụ thay đổi kích thước',
+          bullets: [
+            'Nâng cao UX: kích thước và vị trí ảnh phù hợp giúp cải thiện trải nghiệm người dùng rõ rệt.',
+            'Tương thích mạng xã hội: nhiều nền tảng có giới hạn kích thước ảnh, công cụ giúp bạn đáp ứng đúng chuẩn.',
+            'Hỗ trợ thiết kế responsive: nhà phát triển cần nhiều kích thước ảnh khác nhau cho các thiết bị khác nhau.',
+            'Lựa chọn tốt hơn: thay vì kéo giãn hoặc cắt quá mạnh làm méo ảnh, đổi kích thước thường cho kết quả tốt hơn.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Định dạng được hỗ trợ: công cụ của chúng tôi hỗ trợ chọn ảnh ở mọi định dạng. Danh sách định dạng hỗ trợ như sau:',
+          tocLabel: '5. Định dạng được hỗ trợ',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   cropper: {
@@ -329,6 +507,94 @@ const vi = {
     saveNext: 'Lưu & Tiếp Theo',
     croppedNofTotal: 'Đã cắt {n} trong {total} ảnh.',
     downloadN: 'Tải {n} Ảnh',
+    blog: {
+      tocTitle: 'Mục lục',
+      title: 'Blog Công Cụ Cắt Ảnh',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Tại sao nên dùng công cụ cắt ảnh?',
+          paragraphs: [
+            'Công cụ cắt ảnh là một công cụ phần mềm dùng để cắt ảnh theo hình dạng mong muốn. Nó được dùng rộng rãi để giữ lại phần ảnh cần thiết và loại bỏ phần bên ngoài không mong muốn cho bất kỳ mục đích nào. Công cụ cung cấp một khung cắt mà bạn có thể điều chỉnh tại vị trí muốn cắt.',
+          ],
+          listTitle: 'Ví dụ:',
+          bullets: [
+            'Cắt riêng bạn ra khỏi ảnh nhóm.',
+            'Cắt tên của bạn ra khỏi danh sách.',
+            'Cắt thanh tiến trình từ ảnh chụp màn hình toàn màn hình.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Vì sao chọn công cụ cắt ảnh của chúng tôi?',
+          paragraphs: [
+            'Công cụ cắt ảnh của chúng tôi cho phép bạn cắt ảnh chính xác và rất nhanh. Bạn chỉ cần điều chỉnh kích thước khung cắt tại vị trí muốn cắt trên bất kỳ ảnh nào. Gần như mọi định dạng ảnh đều được hỗ trợ khi chọn ảnh.',
+          ],
+          bullets: [
+            'Bạn có thể cắt số lượng ảnh theo khả năng thiết bị của mình. Nếu thiết bị hiệu năng cao, bạn thậm chí có thể cắt 100+ ảnh cùng lúc mà không giật lag hay vấn đề khác.',
+            'Ảnh của bạn được xử lý ngay trên trình duyệt cục bộ. Không cần tải ảnh lên máy chủ của chúng tôi, nên không có ảnh nào rời khỏi thiết bị. Bạn có thể cắt ảnh cá nhân mà không lo rủi ro bảo mật.',
+            'Nhiều công cụ báo lỗi định dạng ảnh không hợp lệ. Công cụ cắt ảnh của chúng tôi xử lý vấn đề này bằng cách hỗ trợ gần như mọi định dạng ảnh.',
+            'Nếu bạn cắt nhiều ảnh cùng lúc, công cụ của chúng tôi cho phép tải ảnh đã cắt dưới dạng ZIP hoặc từng ảnh riêng theo lựa chọn của bạn.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Hướng dẫn từng bước',
+          steps: [
+            {
+              heading: '1. Trước hết, chọn ảnh bạn muốn cắt. Công cụ cắt ảnh của chúng tôi cũng hỗ trợ chọn nhiều ảnh cùng lúc.',
+              bullets: [
+                'Kéo và thả ảnh vào khung thả để cắt.',
+                'Bạn cũng có thể chọn ảnh qua trình quản lý tệp bằng cách bấm nút choose files trong khung cắt.',
+                'Phím tắt Ctrl + V cũng được hỗ trợ để dán ảnh vào khung thả.',
+              ],
+            },
+            {
+              heading: '2. Sau đó, điều chỉnh kích thước và vị trí khung cắt trên ảnh để cắt.',
+            },
+            {
+              heading: '3. Bạn cũng có thể điều chỉnh khung cắt bằng cách nhập thủ công chiều cao, chiều rộng, vị trí ngang và vị trí dọc.',
+            },
+            {
+              heading: '4. Bạn cũng có thể dùng một số mẫu có sẵn:',
+              bullets: [
+                'Landscape(16:9)',
+                'Portrait(9:16)',
+                'Square(1:1)',
+              ],
+            },
+            {
+              heading: '5. Tiếp theo bạn cần chọn một tùy chọn tải xuống.',
+              bullets: [
+                'ZIP: Chọn tùy chọn này nếu bạn cắt nhiều ảnh và muốn tải tất cả ảnh đã cắt dưới dạng một tệp.',
+                'Separate: Nếu bạn muốn tải tất cả ảnh đã cắt riêng lẻ, hãy chọn tùy chọn này ở nút chuyển.',
+              ],
+            },
+            {
+              heading: '6. Sau đó bấm nút Crop & Download để tải tất cả ảnh đã cắt theo kích thước đặt sẵn của bạn.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Lợi ích của công cụ cắt ảnh: công cụ cắt ảnh mang lại nhiều lợi ích trong thế giới số. Một số lợi ích được nêu dưới đây:',
+          tocLabel: '4. Lợi ích của công cụ cắt ảnh',
+          bullets: [
+            'Đưa ảnh vào khung chuẩn: Công cụ cắt ảnh giúp bạn đặt ảnh đúng trong khung. Khung này có thể nằm trên trang web hoặc trên bất kỳ nền tảng mạng xã hội nào.',
+            'Nâng cao UX: Vì việc đặt ảnh đúng cách giúp tăng trải nghiệm người dùng, công cụ cắt ảnh góp phần cải thiện UX đáng kể.',
+            'Loại bỏ viền không mong muốn: Bạn có thể loại bỏ các viền không cần thiết của ảnh để làm ảnh gọn hơn.',
+            'Tách đối tượng mong muốn: Bạn cũng có thể tách riêng bản thân khỏi ảnh nhóm.',
+            'Tiết kiệm dung lượng: Cắt ảnh giúp tiết kiệm lưu trữ vì vùng thừa bị loại bỏ và chỉ phần cần thiết được giữ lại.',
+            'Tối ưu bài thuyết trình: Nếu một bài thuyết trình thông thường với 10 ảnh chưa cắt chiếm khoảng 30MB, thì bài thuyết trình tương tự với ảnh đã cắt có thể chỉ còn khoảng 10MB.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Định dạng được hỗ trợ:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   photoEditor: {
@@ -515,11 +781,183 @@ const vi = {
     downloadFormat: 'Định Dạng Tải Về',
     preview: 'Xem Trước',
     downloadFormatBtn: 'Tải {format}',
+    pngDesc: 'Không mất dữ liệu, hỗ trợ nền trong suốt',
+    jpgDesc: 'Định dạng tệp phổ biến/toàn dụng',
+    webpDesc: 'Định dạng hiện đại, chất lượng/kích thước tốt nhất',
+    svgDesc: 'Đồ họa vector có thể mở rộng',
+    pdfDesc: 'Tài liệu sẵn sàng để in',
     lat: 'Vĩ Độ:',
     lng: 'Kinh Độ:',
     qrCode: 'Mã QR',
     scanMe: 'Quét Tôi',
     scanHere: 'Quét Tại Đây',
+    blog: {
+      card1: {
+        title: '1. Mã QR là gì?',
+        intro1: 'Hình thức đầy đủ của mã QR là "Quick Response code" (mã phản ứng nhanh). Vì thông tin được lưu trữ trong đó được giải mã rất nhanh, nên gọi nó là mã Quick Response (QR).',
+        intro2: 'Mã QR là một mã số hai chiều chỉ có thể đọc bằng máy. Dữ liệu trong nó không thể được con người đọc được. Nó chứa các ô để lưu trữ thông tin như văn bản, số điện thoại, liên kết và vị trí bản đồ Google, v.v.',
+        inventionTitle: 'Mã QR được phát minh như thế nào:',
+        inventionText: 'Mã QR được phát minh vào năm 1994. Masahiro Hara và nhóm của ông làm việc tại một công ty Nhật Bản tên là Denso Wave, công ty này sản xuất các bộ phận ô tô cho Toyota. Họ muốn một mã có thể lưu trữ nhiều thông tin hơn so với mã vạch thông thường, và như vậy họ đã phát minh ra mã QR.',
+        keyFeaturesTitle: 'Các tính năng chính của mã QR',
+        keyFeatures: [
+          {
+            title: 'Mã QR hoạt động như thế nào',
+            text: 'Bạn nhập văn bản hoặc liên kết để tạo mã QR. Trình tạo QR tạo các ô vuông theo thông tin. Mỗi ô đại diện cho một bit, và mỗi bit lưu trữ một ký tự.',
+          },
+          {
+            title: 'Cấu trúc của mã QR',
+            text: 'Mã QR chứa ba ô vuông lớn để xác định hướng của mã QR và một ô vuông nhỏ để lưu trữ các bit (thông tin).',
+          },
+          {
+            title: 'Dung lượng dữ liệu của mã QR',
+            text: 'Thường thì mã QR lưu trữ nhiều thông tin hơn mã vạch. Mã QR về cơ bản là phiên bản nâng cao của mã vạch. Nó về cơ bản là mã vạch hai chiều. Mã QR lưu trữ gần 200 ký tự. Nó cũng có thể lưu trữ 400 ký tự, nhưng có thể khó quét được. Lưu trữ hơn 400 ký tự có thể khiến mã QR trở nên rất phức tạp, gần như không thể quét được.',
+          },
+          {
+            title: 'Phát hiện lỗi trong các mã QR',
+            text: 'Mã QR vẫn có thể được quét nếu một phần thông tin bị xước hoặc một số bit bị thay đổi. Mã QR sử dụng kỹ thuật phát hiện lỗi Reed-Solomon để phát hiện các lỗi và sửa chúng sau khi được xác định.',
+          },
+        ],
+        errorTitle: 'Mức sửa lỗi của mã QR:',
+        errorIntro: 'Các kỹ thuật phát hiện lỗi và sửa lỗi khác nhau được sử dụng trong các trường hợp khác nhau, như mô tả dưới đây:',
+        errorHeaders: {
+          level: 'Mức Độ',
+          recovery: 'Khả năng khôi phục',
+          bestUse: 'Trường hợp sử dụng tốt nhất',
+        },
+        errorRows: [
+          {
+            level: 'Thấp (L)',
+            recovery: '~7%',
+            useCases: [
+              'Kỹ thuật sửa lỗi này được sử dụng khi mã QR được hiển thị trên màn hình kỹ thuật số, các trang web hoặc trong môi trường sạch.',
+              'Khi mã QR được tạo cho thông tin nhỏ, chẳng hạn như Gmail, số liên hệ hoặc văn bản nhỏ.',
+            ],
+          },
+          {
+            level: 'Trung Bình (M)',
+            recovery: '~15%',
+            useCases: [
+              'Dành cho tờ rơi và áp phích được cài đặt trong môi trường sạch khi rủi ro hư hại là tối thiểu.',
+            ],
+          },
+          {
+            level: 'Tứ phân vị (Q)',
+            recovery: '~25%',
+            useCases: [
+              'Khi mã QR sẽ được cài đặt trong môi trường khắc nghiệt, chẳng hạn như nhà máy/ngoài trời.',
+              'Ngoài ra, khi cần một logo nhỏ ở giữa, nó che phủ một vài bit. Do đó, kỹ thuật sửa lỗi này là cần thiết.',
+            ],
+          },
+          {
+            level: 'Cao (H)',
+            recovery: '~30%',
+            useCases: [
+              'Được sử dụng khi có khả năng hư hại lớn cho mã QR.',
+              'Khi logo lớn che phủ tâm của mã QR.',
+              'Ngoài ra, khi cần kiểu dáng nâng cao cho mã QR.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Tại sao chọn trình tạo mã QR của chúng tôi?',
+        intro: 'Trình tạo mã QR của chúng tôi giúp tạo mã QR cực kỳ nhanh chóng, an toàn và dễ dàng. Bạn có thể tùy chỉnh mã của mình để làm cho nó nâng cao, chuyên nghiệp và phù hợp với chủ đề của công ty bạn. Tất cả các tùy chỉnh, từ tô màu mã QR đến cài đặt logo trong mã QR, đều được cung cấp miễn phí mãi mãi.',
+        strengths: [
+          {
+            title: 'Tùy chỉnh chuyên nghiệp:',
+            text: 'Bạn có thể tạo và tùy chỉnh bao nhiêu mã QR tùy thích mà không có bất kỳ chi phí nào. Tất cả các tính năng hoàn toàn miễn phí. Bạn có thể áp dụng màu gradien, các hình dạng khác nhau cho các ô vuông, logo tùy chỉnh và nhiều tính năng khác.',
+          },
+          {
+            title: 'Hỗ trợ nhiều định dạng:',
+            text: 'Trình tạo mã QR của chúng tôi cung cấp nhiều định dạng tải xuống để tiện lợi của bạn. Chỉ cần chọn định dạng ưa thích của bạn trước khi tải xuống. Hiện tại chúng tôi cung cấp các định dạng này:',
+          },
+          {
+            title: 'Mẫu có sẵn:',
+            text: 'Bạn có thể sử dụng các màu gradien có sẵn và khung, giúp mã QR của bạn trở nên chuyên nghiệp.',
+          },
+          {
+            title: 'Hỗ trợ logo tùy chỉnh:',
+            text: 'Bạn cũng có thể tải lên logo thương hiệu tùy chỉnh, tự động khớp với tâm của mã QR. Bạn cũng có thể chọn logo từ thư viện logo tích hợp, nơi có hơn 30 logo dostupne.',
+          },
+          {
+            title: 'Xem trước trực tiếp:',
+            text: 'Trong khi tùy chỉnh, bạn có thể quan sát tất cả các thay đổi trong bảng xem trước trực tiếp. Các thay đổi này trong bảng xem trước là thời gian thực và thay đổi động.',
+          },
+          {
+            title: 'Chỉ báo quét:',
+            text: 'Trong khi chọn màu, các cảnh báo và chỉ báo thích hợp sẽ hướng dẫn bạn nếu bạn chọn màu khó quét.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'Số',
+          formats: 'Định dạng',
+          description: 'Mô tả',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Không mất dữ liệu, hỗ trợ trong suốt' },
+          { no: '2', format: 'JPG', description: 'Phổ biến, định dạng tệp phổ quát' },
+          { no: '3', format: 'WEBP', description: 'Hiện đại, chất lượng/kích thước tốt nhất' },
+          { no: '4', format: 'SVG', description: 'Đồ họa vector có thể mở rộng' },
+          { no: '5', format: 'PDF', description: 'Tài liệu sẵn sàng để in' },
+        ],
+      },
+      card3: {
+        title: '3. Hướng dẫn từng bước:',
+        step1Intro: 'Trước tiên, chọn danh mục mã QR mà bạn muốn tạo. Nếu bạn tạo mã QR cho liên hệ, bản đồ, liên kết hoặc văn bản. Hiện tại, trình tạo mã QR của chúng tôi cung cấp các danh mục này:',
+        categories: ['Liên Kết / URL', 'Văn Bản', 'WiFi', 'Liên Hệ', 'Gmail', 'Google Maps'],
+        step2: 'Sau khi chọn danh mục, dán thông tin của bạn vào trường văn bản.',
+        step3Intro: 'Sau đó, bấm vào Tạo & Tùy chỉnh để mở bảng tùy chỉnh. Trong bảng tùy chỉnh, bạn sẽ thấy thanh dưới điều hướng với các tùy chọn sau:',
+        options: [
+          {
+            title: 'Kiểu dáng & Hình dạng:',
+            text: 'Trong phần này, bạn có thể thay đổi hình dạng của các ô vuông thành nhiều kiểu khác nhau, chẳng hạn như các góc tròn, dấu chấm, thanh ngang, thanh dọc, hình vuông nhỏ và nhiều hơn nữa.',
+          },
+          {
+            title: 'Màu sắc:',
+            text: 'Trong phần này, bạn có thể chọn màu nền và nền trước tùy chỉnh. Để tạo mã QR với màu gradien, bạn có tùy chọn để bật gradien, cho phép bạn áp dụng bất kỳ màu gradien nào từ thư viện tích hợp hoặc dễ dàng tạo màu gradien. Bạn cũng có thể thay đổi góc của màu gradien tuyến tính. Gradient xuyên tâm cũng được hỗ trợ. Bạn có thể thêm nhiều màu để tạo hiệu ứng gradien chuyên nghiệp.',
+          },
+          {
+            title: 'Khung:',
+            text: 'Tại đây, bạn có thể chọn khung hoàn hảo cho mã QR của bạn. Tất cả các khung tự động khớp với mã của bạn. Chỉ cần chọn một khung từ thư viện tích hợp.',
+          },
+          {
+            title: 'Logo:',
+            text: 'Sau khi chọn khung, bạn có thể chọn logo, sẽ tự động điều chỉnh với tâm của mã QR. Tải lên logo thương hiệu tùy chỉnh cũng được hỗ trợ.',
+          },
+          {
+            title: 'Mẫu:',
+            text: 'Nếu bạn không muốn chọn kiểu dáng, hình dạng, màu sắc và khung riêng lẻ, bạn có thể áp dụng các mẫu được thực hiện sẵn cho mã QR. Nhiều mẫu cao cấp có sẵn cho tiện lợi của bạn, miễn phí mãi mãi.',
+          },
+          {
+            title: 'Định dạng tệp:',
+            text: 'Cuối cùng, bạn phải chọn loại tệp mà bạn muốn tải xuống mã QR. Hỗ trợ nhiều định dạng phổ biến, bao gồm PNG, WEBP, SVG và PDF, v.v.',
+          },
+          {
+            title: 'Chỉnh sửa Dữ liệu QR:',
+            text: 'Bạn cũng có thể chỉnh sửa dữ liệu QR mà không mất bất kỳ tùy chỉnh nào được chọn.',
+          },
+        ],
+        finalStep: 'Sau đó, chỉ cần bấm nút tải xuống và mã QR chính xác theo tùy chỉnh của bạn ở định dạng đã chọn sẽ được tải xuống ngay lập tức mà không có bất kỳ chi phí nào.',
+      },
+      card4: {
+        title: '4. Lợi ích:',
+        intro: 'Mã QR kết nối thế giới vật lý với trải nghiệm kỹ thuật số. Đây là cách nhanh nhất để chia sẻ liên kết, danh bạ hoặc vị trí của bạn. Chỉ cần quét mã QR để ngay lập tức truy cập thông tin. Đó là lý do tại sao nó cực kỳ phổ biến trong kinh doanh và thế giới kỹ thuật số, vì nó tiết kiệm thời gian và rất có mục đích.',
+        benefits: [
+          {
+            title: 'Hỗ trợ Trọn đời:',
+            text: 'Các mã QR hoạt động mãi mãi mà không có ngày hết hạn. Chúng cung cấp cho bạn thông tin được lưu trữ ngay lập tức khi bạn quét chúng. Vì nó chứa các hướng dẫn kỹ thuật số được mã hóa cố định, nó không bao giờ mất thông tin.',
+          },
+          {
+            title: 'Hỗ trợ offline:',
+            text: 'Bạn có thể quét mã QR ngay cả khi bạn ngoại tuyến. Máy ảnh điện thoại di động của bạn giải mã các mẫu mã QR và cung cấp cho bạn thông tin được lưu trữ trong đó.',
+          },
+          {
+            title: 'Chi phí bằng không:',
+            text: 'Vì những mã này không yêu cầu bất kỳ chuyển hướng máy chủ hoặc tài nguyên nào, chúng miễn phí mãi mãi.',
+          },
+        ],
+      },
+    },
   },
 
   qrScanner: {
@@ -630,25 +1068,25 @@ const vi = {
       { q: 'Tôi có thể chuyển đổi ảnh PNG trong suốt sang JPG không?', a: 'Có. Vì JPG không hỗ trợ độ trong suốt, các vùng trong suốt sẽ được điền bằng nền trắng theo mặc định.' },
     ],
     imageCompressor: [
-      { q: 'Nén ảnh hoạt động như thế nào?', a: 'Công cụ của chúng tôi sử dụng Canvas API tích hợp sẵn của trình duyệt để mã hóa lại ảnh với mức chất lượng thấp hơn.' },
-      { q: 'Nén có làm giảm chất lượng ảnh rõ rệt không?', a: 'Ở mức nén vừa phải (20-40%), sự khác biệt gần như không nhận ra được.' },
-      { q: 'Có thể nén những định dạng ảnh nào?', a: 'Bạn có thể tải lên JPG, PNG, WEBP, BMP và các định dạng raster phổ biến khác.' },
-      { q: 'Tôi có thể nén nhiều ảnh cùng lúc không?', a: 'Có! Chỉ cần chọn nhiều file. Bạn có thể tải tất cả về dạng ZIP.' },
-      { q: 'Ảnh đã nén có được lưu trên máy chủ không?', a: 'Không. Tất cả chạy cục bộ trong trình duyệt.' },
+      { q: 'Nén ảnh có làm giảm chất lượng không?', a: 'Không, việc nén ảnh sẽ không làm giảm chất lượng nếu bạn không vượt quá mức nén khuyến nghị. Hệ thống có chỉ báo để bạn theo dõi: i. Nén 1% đến 40%: hiển thị màu xanh với thông báo “Chất lượng tốt”. ii. Nén 41% đến 60%: hiển thị màu vàng với thông báo “Chất lượng bình thường”; đây là khoảng được khuyến nghị. iii. Nén 61% đến 100%: hệ thống cảnh báo đỏ với thông báo “Chất lượng kém”; trong khoảng này chất lượng có thể giảm thấy rõ.' },
+      { q: 'Công cụ hỗ trợ nén những định dạng ảnh nào?', a: 'Công cụ nén ảnh của chúng tôi hỗ trợ đầy đủ các định dạng sau:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Tôi có thể nén nhiều ảnh cùng lúc không?', a: 'Có, hoàn toàn được. Bạn có thể nén nhiều ảnh cùng lúc (thậm chí 100+) nếu thiết bị của bạn đáp ứng được. Vì quá trình nén dùng tài nguyên máy, laptop/PC/điện thoại cấu hình cao sẽ xử lý tốt hơn. Nếu thiết bị yếu hơn, bạn vẫn có thể nén theo từng đợt vì công cụ này miễn phí kể cả khi dùng nhiều batch.' },
+      { q: 'Các bạn có lưu hoặc tải ảnh của tôi lên máy chủ không?', a: 'Không. Chúng tôi không tải lên hay lưu ảnh của bạn trên máy chủ. Tất cả ảnh được nén cục bộ trong trình duyệt. Ảnh của bạn không bao giờ rời khỏi thiết bị, vì vậy bạn có thể yên tâm nén ảnh cá nhân hoặc riêng tư.' },
+      { q: 'Công cụ nén ảnh này có miễn phí không?', a: 'Có, công cụ nén ảnh của chúng tôi hoàn toàn miễn phí vĩnh viễn. Chúng tôi không yêu cầu bất kỳ khoản thanh toán nào. Không có phí ẩn. Tất cả tính năng, bao gồm nén nhiều ảnh, đều miễn phí.' },
     ],
     cropImage: [
-      { q: 'Tôi có thể cắt ảnh theo tỷ lệ cụ thể không?', a: 'Có. Bạn có thể chọn từ các tỷ lệ đặt sẵn như 1:1, 4:3, 16:9 hoặc nhập tỷ lệ tùy chỉnh.' },
-      { q: 'Cắt ảnh có làm giảm chất lượng không?', a: 'Không. Cắt chỉ xóa các pixel bên ngoài vùng đã chọn.' },
-      { q: 'Tôi có thể cắt nhiều ảnh cùng lúc không?', a: 'Chắc chắn rồi. Tải nhiều ảnh, đặt vùng cắt cho từng ảnh, sau đó tải tất cả về cùng lúc.' },
-      { q: 'Định dạng file nào được hỗ trợ để cắt?', a: 'Tất cả định dạng ảnh phổ biến được hỗ trợ bao gồm JPG, PNG, WEBP, GIF và BMP.' },
-      { q: 'Ảnh có được tải lên máy chủ để xử lý không?', a: 'Không. Tất cả việc cắt được thực hiện cục bộ trong trình duyệt bằng HTML5 Canvas API.' },
+      { q: 'Cắt ảnh có làm giảm chất lượng không?', a: 'Không, cắt ảnh không ảnh hưởng đến chất lượng hiển thị của ảnh. Cắt ảnh chỉ loại bỏ phần không mong muốn. Nó không bao giờ thay đổi các pixel của phần ảnh được giữ lại sau khi cắt. Vì vậy, bạn có thể cắt ảnh với chất lượng gốc mà không có bất kỳ hư hại pixel nào.' },
+      { q: 'Công cụ cắt ảnh hỗ trợ những định dạng nào?', a: 'Bạn có thể chọn ảnh ở bất kỳ định dạng nào vì công cụ cắt ảnh của chúng tôi hỗ trợ gần như mọi định dạng ảnh. Danh sách như sau:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Ảnh của tôi có được tải lên máy chủ của bạn không?', a: 'Không, mọi xử lý đều diễn ra trong trình duyệt cục bộ của bạn. Ảnh của bạn không bao giờ được tải lên máy chủ của chúng tôi vì ảnh không rời khỏi thiết bị của bạn. Vì vậy, bạn có thể cắt ảnh cá nhân bằng công cụ cắt ảnh của chúng tôi mà không có bất kỳ rủi ro nào.' },
+      { q: 'Tôi có thể cắt nhiều ảnh cùng lúc không?', a: 'Có, bạn có thể cắt nhiều ảnh (thậm chí 100+) cùng lúc nếu hệ thống của bạn hỗ trợ. Vì việc cắt ảnh dùng tài nguyên hệ thống, nên nếu bạn có laptop, PC hoặc điện thoại hiệu năng cao, bạn có thể cắt nhiều ảnh một lúc. Nếu thiết bị cấu hình thấp, bạn có thể cắt theo từng đợt vì công cụ vẫn miễn phí ngay cả khi bạn cắt nhiều ảnh cùng lúc.' },
+      { q: 'Công cụ cắt ảnh này có miễn phí không?', a: 'Có, công cụ cắt ảnh này hoàn toàn miễn phí vĩnh viễn. Bạn có thể truy cập ở mọi nơi, bất kỳ lúc nào và trên mọi thiết bị. Bạn không chỉ có trải nghiệm giao diện đáp ứng cho mọi thiết bị mà còn không bao giờ bị yêu cầu trả phí cho bất kỳ tính năng cao cấp nào. Tất cả tính năng đều miễn phí hoàn toàn, không có phí ẩn.' },
     ],
     resizeImage: [
-      { q: 'Tôi có thể thay đổi kích thước ảnh sang kích thước pixel chính xác không?', a: 'Có. Nhập chiều rộng và chiều cao mong muốn bằng pixel, inch hoặc cm. Bạn cũng có thể khóa tỷ lệ.' },
-      { q: 'Thay đổi kích thước có làm ảnh bị mờ không?', a: 'Phóng to vượt quá độ phân giải gốc có thể làm ảnh hơi mềm hơn. Chúng tôi sử dụng nội suy bicubic chất lượng cao.' },
-      { q: 'Có thể thay đổi kích thước hàng loạt không?', a: 'Có. Tải nhiều ảnh và áp dụng kích thước đích giống nhau cho tất cả.' },
-      { q: 'Có thể sử dụng đơn vị kích thước nào?', a: 'Bạn có thể chỉ định bằng pixel, inch, cm hoặc phần trăm của kích thước gốc.' },
-      { q: 'Dữ liệu có được gửi đến máy chủ khi thay đổi kích thước không?', a: 'Không. Được thực hiện hoàn toàn trong trình duyệt.' },
+      { q: 'Tôi có thể thay đổi kích thước nhiều ảnh cùng lúc không?', a: 'Có, chắc chắn. Công cụ của chúng tôi hỗ trợ đổi kích thước nhiều ảnh cùng lúc. Bạn có thể tải lên số lượng ảnh theo khả năng thiết bị và AI engine sẽ xử lý đồng thời. Nếu thiết bị yếu, nên chia theo từng batch để tránh giật lag. Toàn bộ xử lý diễn ra cục bộ, không tải lên máy chủ, nên quyền riêng tư luôn được bảo vệ.' },
+      { q: 'Công cụ thay đổi kích thước này có miễn phí không?', a: 'Có, công cụ này hoàn toàn miễn phí vĩnh viễn. Không cần đăng ký trả phí để dùng tính năng nâng cao. Cũng không có bất kỳ phí ẩn nào khi tải ảnh đã đổi kích thước.' },
+      { q: 'Đổi kích thước ảnh có làm giảm chất lượng không?', a: '✅Decrease Size (downscale): Việc giảm kích thước ảnh không làm giảm chất lượng hiển thị. Trong nhiều trường hợp, ảnh sau khi giảm còn có thể nhìn sắc nét hơn. Vì vậy, giảm xuống kích thước nhỏ hơn thường không gây mất chất lượng.\n❌Increase Size (upscale): Phóng to ảnh vượt kích thước gốc có thể ảnh hưởng chất lượng hiển thị. Mức phóng càng lớn thì khả năng giảm chất lượng càng cao.' },
+      { q: 'Công cụ này có an toàn không?', a: 'Có, công cụ của chúng tôi an toàn, đặc biệt với ảnh cá nhân hoặc nhạy cảm. Mọi xử lý đều diễn ra trên thiết bị của bạn và không có dữ liệu nào rời khỏi máy. Bạn có thể đổi kích thước ảnh mà không lo rủi ro quyền riêng tư.' },
+      { q: 'Công cụ hỗ trợ những định dạng ảnh nào?', a: 'Công cụ của chúng tôi hỗ trợ mọi định dạng ảnh. Bạn có thể chọn ảnh ở các định dạng sau:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'Xóa nền hoạt động như thế nào?', a: 'Chúng tôi sử dụng mô hình AI tiên tiến chạy trực tiếp trong trình duyệt để phát hiện chủ thể và tách khỏi nền.' },
@@ -665,11 +1103,12 @@ const vi = {
       { q: 'Dữ liệu có được tải lên máy chủ không?', a: 'Không. Tất cả xử lý hình mờ được thực hiện cục bộ trong trình duyệt.' },
     ],
     qrCodeGenerator: [
-      { q: 'Có thể mã hóa những loại dữ liệu nào trong mã QR?', a: 'Bạn có thể mã hóa URL, văn bản thuần, thông tin WiFi, email, số điện thoại, SMS, vCard và nhiều hơn nữa.' },
-      { q: 'Tôi có thể tùy chỉnh màu sắc và kiểu dáng của mã QR không?', a: 'Có. Chọn màu nền trước và nền, thêm logo và chọn từ nhiều kiểu dáng.' },
-      { q: 'Mã QR có thể tải về ở định dạng nào?', a: 'Bạn có thể tải về dạng file PNG, SVG hoặc JPEG.' },
-      { q: 'Thêm logo có làm mã QR không thể quét không?', a: 'Chúng tôi sử dụng sửa lỗi để giữ mã QR có thể quét được miễn là logo không che quá nhiều.' },
-      { q: 'Việc tạo mã QR có diễn ra trên máy chủ không?', a: 'Không. Mã QR được tạo hoàn toàn trong trình duyệt của bạn.' },
+      { q: 'Mã QR này có hết hạn không?', a: 'Không, những mã QR này không hết hạn và đảm bảo hỗ trợ suốt đời. Vì chúng lưu trữ các hướng dẫn được mã hóa dưới dạng các bit bên trong hộp vuông, thông tin được lưu trữ trong đó không thể được thay đổi hoặc xóa. Bạn có thể truy cập thông tin trong mã chỉ bằng cách quét nó bằng bất kỳ camera nào ngay cả sau nhiều năm.' },
+      { q: 'Tại sao mã QR của tôi không quét được?', a: 'Mã QR của bạn có thể không quét được do những lý do sau: i. Độ tương phản thấp: Nếu bạn chọn các màu nền và tiền cảnh tương tự, nó sẽ ảnh hưởng đến khả năng nhìn thấy mã QR và gây ra lỗi quét. Nhưng công cụ của chúng tôi sẽ hướng dẫn bạn trong quá trình tùy chỉnh về độ tương phản thấp hoặc bất kỳ vấn đề liên quan đến quét nào khác. ii. Dữ liệu lớn: Nếu bạn tạo mã QR cho một lượng văn bản hoặc dữ liệu rất lớn, nó sẽ trở nên rất phức tạp và gây ra rắc rối khi quét. Trình xác thực độ dài văn bản sẽ hướng dẫn bạn về độ dài văn bản tối ưu trong quá trình tạo mã QR. iii. In mờ: Hãy chắc chắn tải xuống mã QR của bạn ở định dạng độ phân giải cao như PNG hoặc SVG đã được công cụ của chúng tôi hỗ trợ.' },
+      { q: 'Tôi có thể thêm logo vào mã QR không?', a: 'Hoàn toàn có thể, bạn có thể thêm logo tùy chỉnh hoặc chọn một từ thư viện logo có sẵn cho mã QR của bạn. Logo được chọn của bạn sẽ được điều chỉnh tự động ở trung tâm mã QR.' },
+      { q: 'Làm cách nào để quét mã QR?', a: 'Bạn có thể quét mã QR bằng camera điện thoại di động. Nhưng để chuyển hướng tự động đến liên kết và nhiều tính năng cao cấp khác, bạn có thể truy cập trình quét mã QR của chúng tôi bằng cách sử dụng liên kết https://photremium.com/qr-code-scanner miễn phí.' },
+      { q: 'Tôi có thể tạo bao nhiêu mã QR miễn phí?', a: 'KHÔNG GIỚI HẠN! bạn có thể tạo nhiều mã QR miễn phí. Tất cả các tính năng, tùy chỉnh và mẫu đều miễn phí mãi mãi cho tất cả mọi người. Không cần đăng ký để tận hưởng các tính năng cao cấp.' },
+      { q: 'Tôi có cần đăng nhập/đăng ký để tạo mã QR không?', a: 'Không, chỉ cần nhập văn bản của bạn, tạo mã QR và tải xuống sau khi tùy chỉnh. Không cần đăng nhập hoặc đăng ký vì tất cả các tính năng đều có thể truy cập hoàn toàn miễn phí.' },
     ],
     qrCodeScanner: [
       { q: 'Làm thế nào để quét mã QR?', a: 'Bạn có thể sử dụng camera thiết bị để quét trực tiếp, hoặc tải ảnh chứa mã QR lên.' },

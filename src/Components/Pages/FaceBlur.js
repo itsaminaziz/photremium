@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
+import MobileImportPopup from '../MobileImportPopup/MobileImportPopup';
 import { useLanguage } from '../../context/LanguageContext';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import './FaceBlur.css';
@@ -133,6 +134,7 @@ const FaceBlur = () => {
   const canvasRef = useRef(null);
   const srcCanvasRef = useRef(null); // offscreen: holds original pixels
   const imgCacheRef = useRef({}); // { imgId: HTMLImageElement }
+  const dragDepthRef = useRef(0);
 
   const selected = images.find((i) => i.id === selectedImgId) || null;
   const totalSize = images.reduce((s, i) => s + i.file.size, 0);
@@ -619,9 +621,32 @@ const FaceBlur = () => {
   };
 
   /* ---- Drop handlers ---- */
-  const onDrop = (e) => { e.preventDefault(); setDragOver(false); addFiles(e.dataTransfer.files); };
-  const onDragOver = (e) => { e.preventDefault(); setDragOver(true); };
-  const onDragLeave = () => setDragOver(false);
+  const isFileDrag = (e) => Array.from(e.dataTransfer?.types || []).includes('Files');
+  const onDrop = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = 0;
+    setDragOver(false);
+    addFiles(e.dataTransfer.files);
+  };
+  const onDragEnter = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current += 1;
+    setDragOver(true);
+  };
+  const onDragOver = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    if (!dragOver) setDragOver(true);
+  };
+  const onDragLeave = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
+    if (dragDepthRef.current === 0) setDragOver(false);
+  };
 
   /* ---- Draw rect/circle helper for manual mode ---- */
   const getDrawRect = () => {
@@ -663,6 +688,7 @@ const FaceBlur = () => {
 
           <div
             className={`fb-dropzone ${dragOver ? 'fb-dropzone--active' : ''}`}
+            onDragEnter={onDragEnter}
             onDrop={onDrop}
             onDragOver={onDragOver}
             onDragLeave={onDragLeave}
@@ -675,9 +701,12 @@ const FaceBlur = () => {
             <p className="fb-dropzone__hint">
               <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
             </p>
-            <button className="fb-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-              <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
-            </button>
+            <div style={{ marginTop: 20, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+              <button className="fb-dropzone__btn" onClick={() => fileInputRef.current?.click()} style={{ marginTop: 0 }}>
+                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
+              </button>
+              <MobileImportPopup onImportFiles={addFiles} />
+            </div>
             <input
               ref={fileInputRef}
               type="file"
@@ -721,7 +750,13 @@ const FaceBlur = () => {
         keywords={t('faceBlur.seo.workspaceKeywords')}
       />
 
-      <section className="fb-workspace">
+      <section
+        className={`fb-workspace ${dragOver ? 'fb-workspace--dragover' : ''}`}
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        onDrop={onDrop}
+      >
         {/* Mobile toggle */}
         <button className="fb-settings-toggle" onClick={() => setMobileToolsOpen((p) => !p)} aria-label={t('common.toggleToolsPanel') || 'Toggle tools panel'}>
           <i className={mobileToolsOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-gear'}></i>

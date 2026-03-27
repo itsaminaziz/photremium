@@ -5,14 +5,14 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: linear-gradient(135deg, rgb(44, 13, 71), rgb(226, 119, 231), rgba(148, 99, 227, 0.78));
+  background: linear-gradient(135deg, rgb(44, 13, 71), rgb(226, 119, 231), rgb(148, 99, 227));
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(139, 92, 246, 0.10);
   transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .navbar--scrolled {
-  background: linear-gradient(135deg, rgb(7, 6, 24), rgb(226, 119, 231), rgba(148, 99, 227, 0.78));
+  background: linear-gradient(135deg, rgb(7, 6, 24), rgb(226, 119, 231), rgb(148, 99, 227));
   box-shadow: 0 2px 20px rgba(139, 92, 246, 0.10);
 }
 
@@ -558,11 +558,11 @@
 @media (max-width: 868px) {
 
   .navbar {
-  background: linear-gradient(135deg, rgb(9, 1, 16), rgb(98, 12, 102), rgba(37, 11, 78, 0.78));
+  background: linear-gradient(135deg, rgb(9, 1, 16), rgb(98, 12, 102), rgb(37, 11, 78));
 }
 
 .navbar--scrolled {
-  background: linear-gradient(135deg, rgb(9, 1, 16), rgb(98, 12, 102), rgba(37, 11, 78, 0.78));
+  background: linear-gradient(135deg, rgb(9, 1, 16), rgb(98, 12, 102), rgb(37, 11, 78));
 }
 
   .navbar__hamburger {

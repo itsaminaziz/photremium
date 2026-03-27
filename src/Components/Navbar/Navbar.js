@@ -34,6 +34,29 @@ const Navbar = () => {
     setSharePanelOpen(false);
   };
 
+  const normalizePath = (path) => {
+    if (!path) return '/';
+    const normalized = path.replace(/\/+$/, '');
+    return normalized || '/';
+  };
+
+  const handleHomeOrLogoClick = (e) => {
+    const currentPath = normalizePath(location.pathname);
+    const localeHomePath = normalizePath(localePath('/'));
+    const isOnHome = currentPath === '/' || currentPath === localeHomePath;
+
+    if (isOnHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (mobileOpen) {
+      setLangCloseSignal((prev) => prev + 1);
+    }
+    setMobileOpen(false);
+    setDropdownOpen(false);
+  };
+
   const handleNativeShare = async () => {
     const shareData = {
       title: shareTitle,
@@ -162,7 +185,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__container">
         {/* Logo */}
-        <Link to={localePath('/')} className="navbar__logo">
+        <Link to={localePath('/')} className="navbar__logo" onClick={handleHomeOrLogoClick}>
           <img src={`${process.env.PUBLIC_URL}/Images/nav-logo.png`} alt="photremium.com" className="navbar__logo-img" />
         </Link>
 
@@ -190,7 +213,11 @@ const Navbar = () => {
             <LanguageSwitcher forceClose={langCloseSignal} />
           </li>
           <li>
-            <Link to={localePath('/')} className={location.pathname === '/' || location.pathname === localePath('/') ? 'active' : ''}>
+            <Link
+              to={localePath('/')}
+              className={location.pathname === '/' || location.pathname === localePath('/') ? 'active' : ''}
+              onClick={handleHomeOrLogoClick}
+            >
               <i className="fa-solid fa-house"></i> {t('nav.home')}
             </Link>
           </li>

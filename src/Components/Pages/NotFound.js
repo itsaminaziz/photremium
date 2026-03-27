@@ -20,7 +20,7 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>404 – Page Not Found | photremium.com</title>
+        <title>404 – Page Not Found | Photremium</title>
         <meta name="keywords" content={t('seo.homeKeywords')} />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>

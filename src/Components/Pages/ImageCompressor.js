@@ -1,9 +1,11 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
+import QRCode from 'qrcode';
+import { deleteDoc, doc, getDoc, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
-import ToolBlogSection from '../ToolBlog/ToolBlogSection';
 import { useLanguage } from '../../context/LanguageContext';
+import { db, hasFirebaseConfig } from '../../lib/firebase';
 import './ImageCompressor.css';
 
 /* ---- helpers ---- */
@@ -65,11 +67,131 @@ const getCompressionQualityMeta = (compression) => {
   };
 };
 
+const MOBILE_IMPORT_COLLECTION = 'mobileImports';
+const MOBILE_IMPORT_TOOL = 'image-compressor';
+const MOBILE_IMPORT_TTL_MS = 15 * 60 * 1000;
+const MOBILE_IMPORT_MAX_FILES = 10;
+const MOBILE_IMPORT_MAX_TOTAL_BYTES = 900000;
+
+const generateMobileSessionId = () => {
+  if (window.crypto?.randomUUID) {
+    return window.crypto.randomUUID().replace(/-/g, '').slice(0, 16);
+  }
+
+  return `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`.slice(0, 16);
+};
+
+const mapFirebaseErrorMessage = (error, fallbackMessage) => {
+  const code = error?.code || '';
+
+  if (code === 'permission-denied') {
+    return 'Firestore denied write access. Update Firestore rules to allow mobileImports create/update.';
+  }
+
+  if (code === 'failed-precondition' || code === 'unavailable') {
+    return 'Cloud Firestore is not ready for this project. Enable Firestore in Firebase console and try again.';
+  }
+
+  if (code === 'unauthenticated') {
+    return 'Firestore requires authentication for this action. Adjust rules or sign in first.';
+  }
+
+  if (error?.message) {
+    return `${fallbackMessage} ${error.message}`;
+  }
+
+  return fallbackMessage;
+};
+
+const dataUrlToFile = (dataUrl, fileName, mimeType = 'image/jpeg') => {
+  const parts = dataUrl.split(',');
+  const base64 = parts[1] || '';
+  const binary = atob(base64);
+  const len = binary.length;
+  const bytes = new Uint8Array(len);
+  for (let index = 0; index < len; index += 1) {
+    bytes[index] = binary.charCodeAt(index);
+  }
+  return new File([bytes], fileName, { type: mimeType });
+};
+
+const blobToDataUrl = (blob) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error('Failed to convert blob to data URL'));
+    reader.readAsDataURL(blob);
+  });
+
+const fileToSharePayload = async (file) => {
+  const originalUrl = URL.createObjectURL(file);
+
+  try {
+    const image = await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = () => reject(new Error('Image decode failed'));
+      img.src = originalUrl;
+    });
+
+    const maxEdge = 1400;
+    const scale = Math.min(1, maxEdge / Math.max(image.width, image.height));
+    const targetWidth = Math.max(1, Math.round(image.width * scale));
+    const targetHeight = Math.max(1, Math.round(image.height * scale));
+
+    const canvas = document.createElement('canvas');
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(image, 0, 0, targetWidth, targetHeight);
+
+    const encodeJpeg = (targetQuality) =>
+      new Promise((resolve) => {
+        canvas.toBlob((result) => resolve(result), 'image/jpeg', targetQuality);
+      });
+
+    let quality = 0.82;
+    let blob = await encodeJpeg(quality);
+
+    while (blob && blob.size > 250000 && quality > 0.45) {
+      quality = Math.max(0.45, quality - 0.07);
+      blob = await encodeJpeg(quality);
+    }
+
+    if (!blob) {
+      throw new Error('Image encode failed');
+    }
+
+    const dataUrl = await blobToDataUrl(blob);
+
+    return {
+      name: file.name.replace(/\.[^.]+$/, '') + '.jpg',
+      type: 'image/jpeg',
+      size: blob.size,
+      dataUrl,
+    };
+  } finally {
+    URL.revokeObjectURL(originalUrl);
+  }
+};
+
 /* ============================================= */
 /*            IMAGE COMPRESSOR PAGE              */
 /* ============================================= */
 const ImageCompressor = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isBlogRtl = lang === 'ur' || lang === 'ar';
+  const blog = t('compressor.blog');
+  const blogSections = useMemo(() => (Array.isArray(blog?.sections) ? blog.sections : []), [blog]);
+  const blogFaqId = 'imgcomp-blog-faq';
+  const blogToc = useMemo(
+    () => [
+      ...blogSections.map((section) => ({ id: section.id || section.title, label: section.title })),
+      { id: blogFaqId, label: t('faq.heading') },
+    ],
+    [blogSections, blogFaqId, t]
+  );
+  const [activeBlogId, setActiveBlogId] = useState(blogSections[0]?.id || blogSections[0]?.title || '');
   const location = useLocation();
   /*
    * "compression" = how much smaller the file should become.
@@ -80,9 +202,33 @@ const ImageCompressor = () => {
   const [downloadMode, setDownloadMode] = useState('zip');
   const [dragOver, setDragOver] = useState(false);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
+  const [mobileImportModalOpen, setMobileImportModalOpen] = useState(false);
+  const [mobileSessionStarting, setMobileSessionStarting] = useState(false);
+  const [mobileSessionId, setMobileSessionId] = useState('');
+  const [mobileShareUrl, setMobileShareUrl] = useState('');
+  const [mobileQrUrl, setMobileQrUrl] = useState('');
+  const [mobileImportState, setMobileImportState] = useState('idle');
+  const [mobileImportMessage, setMobileImportMessage] = useState('');
+  const [copyLinkSuccess, setCopyLinkSuccess] = useState(false);
+  const [mobilePendingFiles, setMobilePendingFiles] = useState([]);
+  const [mobileUploadBusy, setMobileUploadBusy] = useState(false);
+  const [mobileUploadProgress, setMobileUploadProgress] = useState(0);
+  const [mobileUploadSuccess, setMobileUploadSuccess] = useState(false);
+  const [mobileSelectionOverflow, setMobileSelectionOverflow] = useState(null);
+  const [mobilePreviewIndex, setMobilePreviewIndex] = useState(0);
   const fileInputRef = useRef(null);
   const addFileInputRef = useRef(null);
+  const mobilePickerInputRef = useRef(null);
+  const mobilePreviewTrackRef = useRef(null);
   const didPrefillFromStateRef = useRef(false);
+  const dragDepthRef = useRef(0);
+  const mobileSessionUnsubRef = useRef(null);
+  const copyLinkTimerRef = useRef(null);
+  const lastHandledMobileUploadTokenRef = useRef('');
+
+  const query = useMemo(() => new URLSearchParams(location.search), [location.search]);
+  const isMobileImportMode = query.get('mobileImport') === '1' && query.get('tool') === MOBILE_IMPORT_TOOL;
+  const mobileImportSessionFromQuery = query.get('session') || '';
 
   /* --- warn before reload when images exist --- */
   useEffect(() => {
@@ -123,6 +269,346 @@ const ImageCompressor = () => {
     addFiles(incoming);
   }, [location.state, addFiles]);
 
+  const stopMobileSessionListener = useCallback(() => {
+    if (mobileSessionUnsubRef.current) {
+      mobileSessionUnsubRef.current();
+      mobileSessionUnsubRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => () => stopMobileSessionListener(), [stopMobileSessionListener]);
+
+  const attachDesktopSessionListener = useCallback(
+    (sessionId) => {
+      if (!db || !sessionId) return;
+      stopMobileSessionListener();
+
+      const sessionRef = doc(db, MOBILE_IMPORT_COLLECTION, sessionId);
+      mobileSessionUnsubRef.current = onSnapshot(sessionRef, async (snapshot) => {
+        if (!snapshot.exists()) {
+          setMobileImportState('error');
+          setMobileImportMessage('Import session not found.');
+          return;
+        }
+
+        const payload = snapshot.data();
+        if (payload?.status === 'uploaded' && Array.isArray(payload.images) && payload.images.length) {
+          const uploadToken = payload?.uploadToken || '';
+          if (uploadToken && uploadToken === lastHandledMobileUploadTokenRef.current) {
+            return;
+          }
+
+          lastHandledMobileUploadTokenRef.current = uploadToken;
+          const files = payload.images.map((item, index) =>
+            dataUrlToFile(item.dataUrl, item.name || `mobile-import-${index + 1}.jpg`, item.type || 'image/jpeg')
+          );
+
+          addFiles(files);
+          setMobileImportState('done');
+          setMobileImportMessage(`Imported ${files.length} image${files.length > 1 ? 's' : ''} from mobile.`);
+
+          await updateDoc(sessionRef, {
+            status: 'waiting',
+            consumedAt: serverTimestamp(),
+            images: [],
+          });
+        }
+
+        if (payload?.status === 'failed' && payload?.errorMessage) {
+          setMobileImportState('error');
+          setMobileImportMessage(payload.errorMessage);
+        }
+      });
+    },
+    [addFiles, stopMobileSessionListener]
+  );
+
+  const startMobileImportSession = useCallback(async (replaceCurrent = false) => {
+    if (mobileSessionStarting) return;
+
+    if (!hasFirebaseConfig || !db) {
+      setMobileImportState('error');
+      setMobileImportMessage('Firebase config missing. Add REACT_APP_FIREBASE_* values in your .env file.');
+      return;
+    }
+
+    try {
+      setMobileSessionStarting(true);
+      setMobileQrUrl('');
+
+      stopMobileSessionListener();
+      if (replaceCurrent && db && mobileSessionId) {
+        try {
+          await deleteDoc(doc(db, MOBILE_IMPORT_COLLECTION, mobileSessionId));
+        } catch {
+          // ignore cleanup failure
+        }
+      }
+
+      const sessionId = generateMobileSessionId();
+      const shareUrl = `${window.location.origin}${window.location.pathname}?mobileImport=1&tool=${MOBILE_IMPORT_TOOL}&session=${sessionId}`;
+      lastHandledMobileUploadTokenRef.current = '';
+
+      await setDoc(doc(db, MOBILE_IMPORT_COLLECTION, sessionId), {
+        tool: MOBILE_IMPORT_TOOL,
+        status: 'waiting',
+        createdAt: serverTimestamp(),
+        expiresAt: Date.now() + MOBILE_IMPORT_TTL_MS,
+      });
+
+      const qr = await QRCode.toDataURL(shareUrl, {
+        width: 240,
+        margin: 1,
+      });
+
+      setMobileSessionId(sessionId);
+      setMobileShareUrl(shareUrl);
+      setMobileQrUrl(qr);
+      setMobileImportState('waiting');
+      setMobileImportMessage('');
+
+      attachDesktopSessionListener(sessionId);
+    } catch (error) {
+      setMobileImportState('error');
+      setMobileImportMessage(mapFirebaseErrorMessage(error, 'Unable to create mobile import session.'));
+    } finally {
+      setMobileSessionStarting(false);
+    }
+  }, [attachDesktopSessionListener, mobileSessionId, mobileSessionStarting, stopMobileSessionListener]);
+
+  const openMobileImportModal = useCallback(() => {
+    setMobileImportModalOpen(true);
+    if (!mobileSessionId && !mobileSessionStarting) {
+      startMobileImportSession();
+    }
+  }, [mobileSessionId, mobileSessionStarting, startMobileImportSession]);
+
+  const copyMobileImportLink = useCallback(async () => {
+    if (!mobileShareUrl) return;
+    try {
+      await navigator.clipboard.writeText(mobileShareUrl);
+      setCopyLinkSuccess(true);
+      if (copyLinkTimerRef.current) {
+        clearTimeout(copyLinkTimerRef.current);
+      }
+      copyLinkTimerRef.current = setTimeout(() => {
+        setCopyLinkSuccess(false);
+      }, 1200);
+    } catch {
+      setMobileImportState('error');
+      setMobileImportMessage('Could not copy link. Please copy it manually.');
+    }
+  }, [mobileShareUrl]);
+
+  const closeMobileImportModal = useCallback(async () => {
+    stopMobileSessionListener();
+
+    if (db && mobileSessionId) {
+      try {
+        await deleteDoc(doc(db, MOBILE_IMPORT_COLLECTION, mobileSessionId));
+      } catch {
+        // ignore cleanup failure
+      }
+    }
+
+    setMobileSessionId('');
+    setMobileShareUrl('');
+    setMobileQrUrl('');
+    lastHandledMobileUploadTokenRef.current = '';
+    setMobileImportState('idle');
+    setMobileImportMessage('');
+    setMobileImportModalOpen(false);
+  }, [mobileSessionId, stopMobileSessionListener]);
+
+  const statusConfig = (() => {
+    if (mobileImportState === 'error') return { label: 'Error', className: 'comp-info-card--status-error' };
+    if (mobileImportState === 'done') return { label: 'Completed', className: 'comp-info-card--status-done' };
+    if (mobileSessionId) return { label: 'Active', className: 'comp-info-card--status-active' };
+    return { label: 'Initializing', className: 'comp-info-card--status-idle' };
+  })();
+
+  const uploadFromMobile = useCallback(async () => {
+    if (!db || !mobileImportSessionFromQuery) return;
+
+    if (!mobilePendingFiles.length) {
+      setMobileImportMessage('Please select at least one image to upload.');
+      return;
+    }
+
+    setMobileUploadBusy(true);
+    setMobileUploadSuccess(false);
+    setMobileUploadProgress(0);
+    setMobileImportMessage('Preparing files...');
+
+    try {
+      const sessionRef = doc(db, MOBILE_IMPORT_COLLECTION, mobileImportSessionFromQuery);
+      const sessionSnap = await getDoc(sessionRef);
+      if (!sessionSnap.exists()) {
+        throw new Error('This import session is no longer available.');
+      }
+
+      const sessionData = sessionSnap.data();
+      if (sessionData?.expiresAt && Date.now() > sessionData.expiresAt) {
+        throw new Error('This import session has expired. Please create a new one on desktop.');
+      }
+
+      const files = mobilePendingFiles.slice(0, MOBILE_IMPORT_MAX_FILES);
+      const payloads = [];
+      for (let index = 0; index < files.length; index += 1) {
+        const file = files[index];
+        setMobileImportMessage(`Preparing ${index + 1}/${files.length}...`);
+        payloads.push(await fileToSharePayload(file));
+        setMobileUploadProgress(Math.min(90, Math.round(((index + 1) / files.length) * 90)));
+      }
+
+      const totalBytes = payloads.reduce((sum, item) => sum + (item.size || 0), 0);
+      if (totalBytes > MOBILE_IMPORT_MAX_TOTAL_BYTES) {
+        throw new Error('Selected images are too large for Firestore transfer. Please choose fewer/smaller images.');
+      }
+
+      const uploadToken = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+      await updateDoc(sessionRef, {
+        status: 'uploaded',
+        uploadedAt: serverTimestamp(),
+        uploadToken,
+        images: payloads,
+      });
+
+      setMobileUploadProgress(100);
+      setMobileImportMessage('');
+      setMobilePendingFiles([]);
+      setMobileSelectionOverflow(null);
+      setMobilePreviewIndex(0);
+      setMobileUploadSuccess(true);
+    } catch (error) {
+      setMobileImportMessage(mapFirebaseErrorMessage(error, 'Upload failed. Please try again.'));
+      if (db && mobileImportSessionFromQuery) {
+        try {
+          await updateDoc(doc(db, MOBILE_IMPORT_COLLECTION, mobileImportSessionFromQuery), {
+            status: 'failed',
+            errorMessage: mapFirebaseErrorMessage(error, 'Upload failed'),
+          });
+        } catch {
+          // ignore
+        }
+      }
+    } finally {
+      setMobileUploadBusy(false);
+    }
+  }, [mobileImportSessionFromQuery, mobilePendingFiles]);
+
+  const handleMobileFilesPicked = useCallback((fileList) => {
+    const picked = Array.from(fileList || []).filter((file) => file.type.startsWith('image/'));
+    if (!picked.length) return;
+
+    const combined = [...mobilePendingFiles, ...picked];
+    if (combined.length > MOBILE_IMPORT_MAX_FILES) {
+      setMobileSelectionOverflow({
+        nextFiles: combined.slice(0, MOBILE_IMPORT_MAX_FILES),
+      });
+      setMobileUploadSuccess(false);
+      setMobileUploadProgress(0);
+      return;
+    }
+
+    setMobilePendingFiles(combined);
+    setMobileSelectionOverflow(null);
+    setMobileImportMessage('');
+
+    setMobileUploadSuccess(false);
+    setMobileUploadProgress(0);
+  }, [mobilePendingFiles]);
+
+  const acceptMobileFileLimit = useCallback(() => {
+    if (!mobileSelectionOverflow?.nextFiles) return;
+    setMobilePendingFiles(mobileSelectionOverflow.nextFiles);
+    setMobileSelectionOverflow(null);
+    setMobileImportMessage('');
+    setMobileUploadSuccess(false);
+    setMobileUploadProgress(0);
+  }, [mobileSelectionOverflow]);
+
+  const handleMobilePickerChange = useCallback((e) => {
+    handleMobileFilesPicked(e.target.files);
+    e.target.value = '';
+  }, [handleMobileFilesPicked]);
+
+  const scrollMobilePreview = useCallback((direction) => {
+    const track = mobilePreviewTrackRef.current;
+    if (!track) return;
+
+    const distance = Math.max(220, Math.round(track.clientWidth * 0.85));
+    track.scrollBy({ left: distance * direction, behavior: 'smooth' });
+  }, []);
+
+  const onMobilePreviewScroll = useCallback(() => {
+    const track = mobilePreviewTrackRef.current;
+    if (!track) return;
+
+    const cardWidth = track.clientWidth || 1;
+    const index = Math.max(0, Math.min(mobilePendingFiles.length - 1, Math.round(track.scrollLeft / cardWidth)));
+    setMobilePreviewIndex(index);
+  }, [mobilePendingFiles.length]);
+
+  useEffect(() => {
+    setMobilePreviewIndex((prev) => {
+      if (!mobilePendingFiles.length) return 0;
+      return Math.min(prev, mobilePendingFiles.length - 1);
+    });
+  }, [mobilePendingFiles.length]);
+
+  const mobilePreviewItems = useMemo(
+    () => mobilePendingFiles.map((file) => ({
+      id: `${file.name}-${file.size}-${file.lastModified}`,
+      src: URL.createObjectURL(file),
+      name: file.name,
+    })),
+    [mobilePendingFiles]
+  );
+
+  useEffect(
+    () => () => {
+      mobilePreviewItems.forEach((item) => URL.revokeObjectURL(item.src));
+    },
+    [mobilePreviewItems]
+  );
+
+  useEffect(() => {
+    if (!isMobileImportMode) return;
+
+    if (!hasFirebaseConfig || !db) {
+      setMobileImportMessage('Firebase config missing. Add REACT_APP_FIREBASE_* values in your .env file.');
+      return;
+    }
+
+    if (!mobileImportSessionFromQuery) {
+      setMobileImportMessage('Invalid import link. Missing session id.');
+      return;
+    }
+
+    setMobileImportMessage('Select images and tap “Send to Desktop”.');
+  }, [isMobileImportMode, mobileImportSessionFromQuery]);
+
+  useEffect(
+    () => () => {
+      if (copyLinkTimerRef.current) {
+        clearTimeout(copyLinkTimerRef.current);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (!mobileImportModalOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [mobileImportModalOpen]);
+
   /* --- Ctrl+V paste --- */
   useEffect(() => {
     const handler = (e) => {
@@ -152,6 +638,41 @@ const ImageCompressor = () => {
     .filter((i) => !i.compressedBlob)
     .map((i) => `${i.id}:${i.compression}`)
     .join(',');
+
+  const handleBlogTocClick = useCallback((e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 110;
+    window.scrollTo({ top, behavior: 'smooth' });
+    setActiveBlogId(id);
+  }, []);
+
+  useEffect(() => {
+    const newActive = blogSections[0]?.id || blogSections[0]?.title || '';
+    setActiveBlogId(newActive);
+  }, [blogSections]);
+
+  useEffect(() => {
+    if (!blogSections.length || images.length > 0) return;
+    const observers = [];
+    blogToc.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (!element) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveBlogId(item.id);
+          }
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+      observer.observe(element);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((observer) => observer.disconnect());
+  }, [blogToc, blogSections.length, images.length]);
 
   useEffect(() => {
     const pending = images.filter((img) => img.compressedBlob === null);
@@ -312,8 +833,33 @@ const ImageCompressor = () => {
   };
 
   /* --- drag & drop --- */
-  const onDrop = (e) => {
+  const isFileDrag = (e) => Array.from(e.dataTransfer?.types || []).includes('Files');
+
+  const onDragEnter = (e) => {
+    if (!isFileDrag(e)) return;
     e.preventDefault();
+    dragDepthRef.current += 1;
+    setDragOver(true);
+  };
+
+  const onDragOver = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    if (!dragOver) setDragOver(true);
+  };
+
+  const onDragLeave = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
+    if (dragDepthRef.current === 0) setDragOver(false);
+  };
+
+  const onDrop = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = 0;
     setDragOver(false);
     addFiles(e.dataTransfer.files);
   };
@@ -336,44 +882,402 @@ const ImageCompressor = () => {
           keywords={t('compressor.seo.uploadKeywords')}
         />
 
-        <section className="comp-upload">
+        <section className={`comp-upload ${isMobileImportMode ? 'comp-upload--mobile-mode' : ''}`}>
           <div className="comp-upload__inner">
-            <h1 className="comp-upload__title">{t('compressor.title')}</h1>
-            <p className="comp-upload__desc">
-              {t('compressor.desc')}
-            </p>
+            {!isMobileImportMode ? (
+              <>
+                <h1 className="comp-upload__title">{t('compressor.title')}</h1>
+                <p className="comp-upload__desc">
+                  {t('compressor.desc')}
+                </p>
 
-            <div
-              className={`comp-dropzone ${dragOver ? 'comp-dropzone--active' : ''}`}
-              onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-              onDragLeave={() => setDragOver(false)}
-              onDrop={onDrop}
-            >
-              <div className="comp-dropzone__cloud">
-                <i className="fa-solid fa-cloud-arrow-up"></i>
+                <div
+                  className={`comp-dropzone ${dragOver ? 'comp-dropzone--active' : ''}`}
+                  onDragEnter={onDragEnter}
+                  onDragOver={onDragOver}
+                  onDragLeave={onDragLeave}
+                  onDrop={onDrop}
+                >
+                  <div className="comp-dropzone__cloud">
+                    <i className="fa-solid fa-cloud-arrow-up"></i>
+                  </div>
+                  <h3>{t('common.dropHere')}</h3>
+                  <p>{t('common.or')} <span className="comp-dropzone__browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('compressor.toCompress')}</p>
+                  <p className="comp-dropzone__hint">
+                    <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
+                  </p>
+                  <div style={{ marginTop: 20, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+                    <button className="comp-dropzone__btn" onClick={() => fileInputRef.current?.click()} style={{ marginTop: 0 }}>
+                      <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
+                    </button>
+                    <button
+                      className="comp-mobile-import__open"
+                      onClick={openMobileImportModal}
+                      data-tooltip="Import from mobile"
+                      aria-label="Import from mobile"
+                    >
+                      <i className="fa-solid fa-mobile-screen-button"></i>
+                    </button>
+                  </div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    hidden
+                    onChange={(e) => addFiles(e.target.files)}
+                  />
+                </div>
+
+                {mobileImportModalOpen ? (
+                  <div className="comp-mobile-import-modal" role="dialog" aria-modal="true" aria-label="Scan with mobile">
+                    <div className="comp-mobile-import-modal__backdrop" onClick={() => closeMobileImportModal()}></div>
+                    <div className="comp-mobile-import-modal__dialog">
+                      <button className="comp-mobile-import-modal__close" onClick={() => closeMobileImportModal()} aria-label="Close">
+                        <i className="fa-solid fa-xmark"></i>
+                      </button>
+
+                      <div className="comp-mobile-import">
+                        <div className="comp-mobile-import__head">
+                          <h3><i className="fa-solid fa-mobile-screen-button"></i> Scan with mobile</h3>
+                        </div>
+
+                        <div className="comp-mobile-import__content">
+                          <div className="comp-mobile-import__left">
+                            {mobileQrUrl ? (
+                              <button
+                                className="comp-mobile-import__qr-wrap comp-mobile-import__qr-reload"
+                                data-tooltip="Refresh QR code"
+                                onClick={() => startMobileImportSession(true)}
+                                disabled={mobileSessionStarting}
+                              >
+                                <img src={mobileQrUrl} alt="Mobile import QR" className="comp-mobile-import__qr" />
+                              </button>
+                            ) : (
+                              <div className="comp-mobile-import__qr-wrap comp-mobile-import__qr-wrap--placeholder">
+                                {mobileSessionStarting ? <span className="comp-skeleton comp-skeleton--qr"></span> : <i className="fa-solid fa-qrcode"></i>}
+                                <span>{mobileSessionStarting ? 'Loading QR code...' : 'Waiting for QR code...'}</span>
+                              </div>
+                            )}
+                          </div>
+
+                          <div className="comp-mobile-import__right">
+                            {!mobileSessionId && mobileSessionStarting ? (
+                              <div className="comp-mobile-import__skeleton">
+                                <div className="comp-info-card comp-info-card--skeleton">
+                                  <div className="comp-skeleton-row">
+                                    <span className="comp-skeleton comp-skeleton--dot"></span>
+                                    <span className="comp-skeleton comp-skeleton--label"></span>
+                                  </div>
+                                  <span className="comp-skeleton comp-skeleton--value short"></span>
+                                </div>
+
+                                <div className="comp-info-card comp-info-card--skeleton">
+                                  <span className="comp-skeleton comp-skeleton--label"></span>
+                                  <span className="comp-skeleton comp-skeleton--value"></span>
+                                </div>
+
+                                <div className="comp-info-card comp-info-card--skeleton">
+                                  <span className="comp-skeleton comp-skeleton--label long"></span>
+                                  <span className="comp-skeleton comp-skeleton--value"></span>
+                                  <span className="comp-skeleton comp-skeleton--button"></span>
+                                </div>
+                              </div>
+                            ) : !mobileSessionId ? (
+                              <button className="comp-mobile-import__start" onClick={() => startMobileImportSession(false)} disabled={mobileSessionStarting}>
+                                <><i className="fa-solid fa-link"></i> Start Mobile Import</>
+                              </button>
+                            ) : (
+                              <>
+                                <div className={`comp-info-card comp-info-card--status ${statusConfig.className}`}>
+                                  <div className="comp-info-card__status-row">
+                                    <span className="comp-status-dot"></span>
+                                    <span className="comp-info-card__label">Status</span>
+                                  </div>
+                                  <strong className="comp-info-card__value">{statusConfig.label}</strong>
+                                </div>
+
+                                <div className="comp-info-card comp-info-card--session">
+                                  <span className="comp-info-card__label">Session ID</span>
+                                  <strong className="comp-info-card__value">{mobileSessionId}</strong>
+                                </div>
+
+                                <div className="comp-info-card comp-info-card--link">
+                                  <span className="comp-info-card__label">Scan QR code or open this link in mobile</span>
+                                  <span className="comp-info-card__link" title={mobileShareUrl}>{mobileShareUrl}</span>
+                                  <button className={`comp-mobile-import__btn ${copyLinkSuccess ? 'comp-mobile-import__btn--success' : ''}`} onClick={copyMobileImportLink}>
+                                    {copyLinkSuccess ? <i className="fa-solid fa-check"></i> : <><i className="fa-regular fa-copy"></i> Copy Link</>}
+                                  </button>
+                                </div>
+                              </>
+                            )}
+
+                            {mobileImportMessage ? (
+                              <p className={`comp-mobile-import__status comp-mobile-import__status--${mobileImportState}`}>
+                                {mobileImportMessage}
+                              </p>
+                            ) : null}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+              </>
+            ) : (
+              <div className="comp-mobile-receiver comp-mobile-receiver--fullscreen">
+                <div className="comp-mobile-receiver__screen">
+                  <div className="comp-mobile-receiver__top">
+                    <div className="comp-mobile-receiver__meta-row">
+                      <span className="comp-mobile-receiver__session">Session: {mobileImportSessionFromQuery || 'N/A'}</span>
+                    </div>
+                  </div>
+
+                  {mobileSelectionOverflow ? (
+                    <div className="comp-mobile-receiver__limit-card" role="alert" aria-live="assertive">
+                      <p>Only 10 images supported at a time, First 10 will be selected.</p>
+                      <button type="button" onClick={acceptMobileFileLimit}>OK</button>
+                    </div>
+                  ) : null}
+
+                  <input
+                    ref={mobilePickerInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    hidden
+                    onChange={handleMobilePickerChange}
+                  />
+
+                  <button
+                    className="comp-mobile-receiver__add-card"
+                    onClick={() => mobilePickerInputRef.current?.click()}
+                    disabled={mobileUploadBusy}
+                    type="button"
+                  >
+                    <span className="comp-mobile-receiver__add-plus">+</span>
+                    <span className="comp-mobile-receiver__add-title">Add Images</span>
+                    <span className="comp-mobile-receiver__add-sub">Choose up to {MOBILE_IMPORT_MAX_FILES} images</span>
+                  </button>
+
+                  <div className="comp-mobile-receiver__preview-card">
+                    <div className="comp-mobile-receiver__preview-head">
+                      <strong>Preview</strong>
+                      {mobilePendingFiles.length ? (
+                        <span>{mobilePreviewIndex + 1}/{mobilePendingFiles.length}</span>
+                      ) : (
+                        <span>0/0</span>
+                      )}
+                    </div>
+
+                    {mobilePreviewItems.length ? (
+                      <>
+                        <div className="comp-mobile-receiver__preview-track-wrap">
+                          <button
+                            className="comp-mobile-receiver__nav"
+                            type="button"
+                            onClick={() => scrollMobilePreview(-1)}
+                            aria-label="Previous image"
+                          >
+                            <i className="fa-solid fa-chevron-left"></i>
+                          </button>
+
+                          <div
+                            className="comp-mobile-receiver__preview-track"
+                            ref={mobilePreviewTrackRef}
+                            onScroll={onMobilePreviewScroll}
+                          >
+                            {mobilePreviewItems.map((item) => (
+                              <div key={item.id} className="comp-mobile-receiver__preview-item">
+                                <img src={item.src} alt={item.name} loading="lazy" />
+                              </div>
+                            ))}
+                          </div>
+
+                          <button
+                            className="comp-mobile-receiver__nav"
+                            type="button"
+                            onClick={() => scrollMobilePreview(1)}
+                            aria-label="Next image"
+                          >
+                            <i className="fa-solid fa-chevron-right"></i>
+                          </button>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="comp-mobile-receiver__empty">No images selected yet.</div>
+                    )}
+                  </div>
+
+                  <div className="comp-mobile-receiver__actions">
+                    <button
+                      className="comp-dropzone__btn"
+                      disabled={mobileUploadBusy || !mobilePendingFiles.length}
+                      onClick={uploadFromMobile}
+                    >
+                      {mobileUploadBusy ? (
+                        <><span className="comp-download-spinner"></span> Sending...</>
+                      ) : (
+                        <><i className="fa-solid fa-paper-plane"></i> Send to Desktop</>
+                      )}
+                    </button>
+
+                    {mobileUploadSuccess ? (
+                      <button
+                        className="comp-mobile-receiver__send-more"
+                        type="button"
+                        onClick={() => mobilePickerInputRef.current?.click()}
+                      >
+                        <i className="fa-solid fa-plus"></i> Send more
+                      </button>
+                    ) : null}
+                  </div>
+
+                  {(mobileUploadBusy || mobileUploadProgress > 0) ? (
+                    <div className="comp-mobile-receiver__progress-wrap" aria-live="polite">
+                      <div className="comp-mobile-receiver__progress-label">
+                        <span>Sending images</span>
+                        <span>{mobileUploadProgress}%</span>
+                      </div>
+                      <div className="comp-mobile-receiver__progress-track">
+                        <span className="comp-mobile-receiver__progress-bar" style={{ width: `${mobileUploadProgress}%` }}></span>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {mobileUploadSuccess ? (
+                    <div className="comp-mobile-receiver__success" role="status" aria-live="polite">
+                      <span className="comp-mobile-receiver__success-icon"><i className="fa-solid fa-check"></i></span>
+                      <span>Sent successfully</span>
+                    </div>
+                  ) : null}
+
+                  {mobileImportMessage ? <p className="comp-mobile-receiver__status">{mobileImportMessage}</p> : null}
+                </div>
               </div>
-              <h3>{t('common.dropHere')}</h3>
-              <p>{t('common.or')} <span className="comp-dropzone__browse" onClick={() => fileInputRef.current?.click()}>{t('common.browseFiles')}</span> {t('compressor.toCompress')}</p>
-              <p className="comp-dropzone__hint">
-                <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
-              </p>
-              <button className="comp-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
-              </button>
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                multiple
-                hidden
-                onChange={(e) => addFiles(e.target.files)}
-              />
-            </div>
+            )}
           </div>
         </section>
 
-        <ToolBlogSection toolKey="imageCompressor" />
-        <FAQ faqKey="imageCompressor" />
+        {!isMobileImportMode && blogSections.length ? (
+          <>
+            <nav className={`comp-blog-toc--mobile ${isBlogRtl ? 'comp-blog-toc--mobile--rtl' : ''}`} aria-label="Image compressor blog sections">
+              {blogToc.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={activeBlogId === item.id ? 'toc-active' : ''}
+                  onClick={(e) => handleBlogTocClick(e, item.id)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className={`comp-blog-layout ${isBlogRtl ? 'comp-blog-layout--rtl' : ''}`}>
+              <aside className="comp-blog-toc" aria-label="Image compressor blog TOC">
+                <p className="comp-blog-toc__title">{blog.tocTitle || 'Contents'}</p>
+                <ul className="comp-blog-toc__list">
+                  {blogToc.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href={`#${item.id}`}
+                        className={activeBlogId === item.id ? 'toc-active' : ''}
+                        onClick={(e) => handleBlogTocClick(e, item.id)}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+
+              <section className="comp-blog">
+                {blogSections.map((section) => (
+                  <article className="comp-blog__card" id={section.id || section.title} key={section.id || section.title}>
+                    <h2>{section.title}</h2>
+
+                    {Array.isArray(section.paragraphs)
+                      ? section.paragraphs.map((p, idx) => <p key={`p-${idx}`}>{p}</p>)
+                      : null}
+
+                    {section.listTitle ? <h3>{section.listTitle}</h3> : null}
+
+                    {Array.isArray(section.bullets) ? (
+                      <ul className="comp-blog__list">
+                        {section.bullets.map((bullet, idx) => (
+                          <li key={`b-${idx}`}>{bullet}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+
+                    {Array.isArray(section.steps) ? (
+                      <div className="comp-blog__steps">
+                        {section.steps.map((step, idx) => (
+                          <div className="comp-blog__step" key={`step-${idx}`}>
+                            <div className="comp-blog__step-title">{step.heading}</div>
+
+                            {Array.isArray(step.paragraphs)
+                              ? step.paragraphs.map((p, pIdx) => <p key={`sp-${pIdx}`}>{p}</p>)
+                              : null}
+
+                            {Array.isArray(step.bullets) ? (
+                              <ul className="comp-blog__list comp-blog__list--nested">
+                                {step.bullets.map((bullet, bIdx) => (
+                                  <li key={`sb-${bIdx}`}>{bullet}</li>
+                                ))}
+                              </ul>
+                            ) : null}
+
+                            {step.table ? (
+                              <div className="comp-blog__table" role="table" aria-label={step.table.caption || step.heading}>
+                                <div className="comp-blog__table-row comp-blog__table-row--head" role="row">
+                                  {step.table.headers.map((header, hIdx) => (
+                                    <div className="comp-blog__table-cell" role="columnheader" key={`h-${hIdx}`}>
+                                      {header}
+                                    </div>
+                                  ))}
+                                </div>
+                                {step.table.rows.map((row, rIdx) => (
+                                  <div className="comp-blog__table-row" role="row" key={`r-${rIdx}`}>
+                                    {row.map((cell, cIdx) => (
+                                      <div className="comp-blog__table-cell" role="cell" key={`c-${cIdx}`}>
+                                        {cell}
+                                      </div>
+                                    ))}
+                                  </div>
+                                ))}
+                              </div>
+                            ) : null}
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+
+                    {Array.isArray(section.formats) ? (
+                      <>
+                        <p className="comp-blog__formats-intro">
+                          {section.formatsIntro || t('compressor.blog.formatsIntro') || 'Our tool supports all the image formats. So, you can compress any image seamlessly. List of all the formats is given below:'}
+                        </p>
+                        <div className="comp-blog__chips" aria-label="Supported formats">
+                          {section.formats.map((fmt, fIdx) => (
+                            <span className="comp-blog__chip" key={`f-${fIdx}`}>
+                              {fmt}
+                            </span>
+                          ))}
+                        </div>
+                      </>
+                    ) : null}
+                  </article>
+                ))}
+
+                <section className="comp-blog__faq-section" id={blogFaqId}>
+                  <FAQ faqKey="imageCompressor" />
+                </section>
+              </section>
+            </div>
+          </>
+        ) : null}
       </>
     );
   }
@@ -387,7 +1291,13 @@ const ImageCompressor = () => {
         keywords={t('compressor.seo.workspaceKeywords')}
       />
 
-      <section className="comp-workspace">
+      <section
+        className={`comp-workspace ${dragOver ? 'comp-workspace--dragover' : ''}`}
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        onDrop={onDrop}
+      >
         {/* ---------- MOBILE SETTINGS TOGGLE ---------- */}
         <button
           className="comp-settings-toggle"

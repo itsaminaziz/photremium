@@ -472,6 +472,11 @@
   animation: qrscanFadeIn 0.2s ease;
 }
 
+.qrscan-cam-overlay--screenlight {
+  background: #ffffff;
+  backdrop-filter: none;
+}
+
 .qrscan-cam-popup {
   background: #0f172a;
   border-radius: 24px;
@@ -483,6 +488,11 @@
   display: flex;
   flex-direction: column;
   max-height: 85vh;
+}
+
+.qrscan-cam-popup--screenlight {
+  background: #0f172a;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.22);
 }
 
 .qrscan-cam-popup__header {
@@ -542,6 +552,14 @@
   overflow: hidden;
 }
 
+.qrscan-cam-popup__body--screenlight {
+  background: #ffffff;
+}
+
+.qrscan-cam-popup__body--screenlight .qrscan-video-wrapper {
+  filter: brightness(1.9) saturate(1.05);
+}
+
 .qrscan-cam-popup__body .qrscan-camera-placeholder {
   padding: 48px 24px;
 }
@@ -587,6 +605,17 @@
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.3);
   transform: scale(1.08);
+}
+
+.qrscan-cam-popup__controls .qrscan-ctrl-btn--active {
+  background: #f59e0b;
+  border-color: #d97706;
+  color: #fff;
+}
+
+.qrscan-cam-popup__controls .qrscan-ctrl-btn--active:hover {
+  background: #d97706;
+  border-color: #b45309;
 }
 
 .qrscan-cam-popup__controls .qrscan-ctrl-btn--stop {

@@ -62,8 +62,8 @@ const SitemapPage = () => {
   return (
     <>
       <SEO
-        title="Sitemap | photremium.com"
-        description="Browse all photremium.com URLs by language. Access XML sitemap for Google Search Console."
+        title="Sitemap | Photremium"
+        description="Browse all Photremium URLs by language. Access XML sitemap for Google Search Console."
         keywords="sitemap, photremium.com sitemap, image tools sitemap, multilingual sitemap"
       />
 

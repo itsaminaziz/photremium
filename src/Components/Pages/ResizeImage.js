@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
+import MobileImportPopup from '../MobileImportPopup/MobileImportPopup';
 import { useLanguage } from '../../context/LanguageContext';
 import './ResizeImage.css';
 
@@ -94,7 +95,19 @@ const RESIZE_MODES = [
 /*             IMAGE RESIZER PAGE                */
 /* ============================================= */
 const ResizeImage = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isBlogRtl = lang === 'ur' || lang === 'ar';
+  const blog = t('resizer.blog');
+  const blogSections = useMemo(() => (Array.isArray(blog?.sections) ? blog.sections : []), [blog]);
+  const blogFaqId = 'imgresize-blog-faq';
+  const blogToc = useMemo(
+    () => [
+      ...blogSections.map((section) => ({ id: section.id || section.title, label: section.tocLabel || section.title })),
+      { id: blogFaqId, label: t('faq.heading') },
+    ],
+    [blogSections, t]
+  );
+  const [activeBlogId, setActiveBlogId] = useState(blogSections[0]?.id || blogSections[0]?.title || '');
   const location = useLocation();
   const [images, setImages] = useState([]);
   const [dragOver, setDragOver] = useState(false);
@@ -118,6 +131,7 @@ const ResizeImage = () => {
   const fileInputRef = useRef(null);
   const addFileInputRef = useRef(null);
   const didPrefillFromStateRef = useRef(false);
+  const dragDepthRef = useRef(0);
 
   /* --- warn before reload --- */
   useEffect(() => {
@@ -388,11 +402,68 @@ const ResizeImage = () => {
   };
 
   /* --- drag & drop --- */
-  const onDrop = (e) => {
+  const isFileDrag = (e) => Array.from(e.dataTransfer?.types || []).includes('Files');
+
+  const onDragEnter = (e) => {
+    if (!isFileDrag(e)) return;
     e.preventDefault();
+    dragDepthRef.current += 1;
+    setDragOver(true);
+  };
+
+  const onDragOver = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    if (!dragOver) setDragOver(true);
+  };
+
+  const onDragLeave = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
+    if (dragDepthRef.current === 0) setDragOver(false);
+  };
+
+  const onDrop = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = 0;
     setDragOver(false);
     addFiles(e.dataTransfer.files);
   };
+
+  const handleBlogTocClick = useCallback((e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 110;
+    window.scrollTo({ top, behavior: 'smooth' });
+    setActiveBlogId(id);
+  }, []);
+
+  useEffect(() => {
+    const newActive = blogSections[0]?.id || blogSections[0]?.title || '';
+    setActiveBlogId(newActive);
+  }, [blogSections]);
+
+  useEffect(() => {
+    if (!blogSections.length || images.length > 0) return;
+    const observers = [];
+    blogToc.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (!element) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveBlogId(item.id);
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+      observer.observe(element);
+      observers.push(observer);
+    });
+    return () => observers.forEach((observer) => observer.disconnect());
+  }, [blogToc, blogSections.length, images.length]);
 
   /* --- computed --- */
   const totalOriginal = images.reduce((s, i) => s + i.file.size, 0);
@@ -418,8 +489,9 @@ const ResizeImage = () => {
 
             <div
               className={`rsz-dropzone ${dragOver ? 'rsz-dropzone--active' : ''}`}
-              onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-              onDragLeave={() => setDragOver(false)}
+              onDragEnter={onDragEnter}
+              onDragOver={onDragOver}
+              onDragLeave={onDragLeave}
               onDrop={onDrop}
             >
               <div className="rsz-dropzone__cloud">
@@ -430,9 +502,12 @@ const ResizeImage = () => {
               <p className="rsz-dropzone__hint">
                 <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
-              <button className="rsz-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
-              </button>
+              <div style={{ marginTop: 20, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+                <button className="rsz-dropzone__btn" onClick={() => fileInputRef.current?.click()} style={{ marginTop: 0 }}>
+                  <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
+                </button>
+                <MobileImportPopup onImportFiles={addFiles} />
+              </div>
               <input
                 ref={fileInputRef}
                 type="file"
@@ -442,10 +517,97 @@ const ResizeImage = () => {
                 onChange={(e) => addFiles(e.target.files)}
               />
             </div>
+
+            {blogSections.length ? (
+              <>
+            <nav className={`rsz-blog-toc--mobile ${isBlogRtl ? 'rsz-blog-toc--mobile--rtl' : ''}`} aria-label="Image resizer blog sections">
+              {blogToc.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={activeBlogId === item.id ? 'toc-active' : ''}
+                  onClick={(e) => handleBlogTocClick(e, item.id)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className={`rsz-blog-layout ${isBlogRtl ? 'rsz-blog-layout--rtl' : ''}`}>
+              <aside className="rsz-blog-toc" aria-label="Image resizer blog table of contents">
+                <p className="rsz-blog-toc__title">{blog.tocTitle || 'Contents'}</p>
+                <ul className="rsz-blog-toc__list">
+                  {blogToc.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href={`#${item.id}`}
+                        className={activeBlogId === item.id ? 'toc-active' : ''}
+                        onClick={(e) => handleBlogTocClick(e, item.id)}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+
+              <section className="rsz-blog">
+                {blogSections.map((section) => (
+                  <article className="rsz-blog__card" id={section.id || section.title} key={section.id || section.title}>
+                    <h2>{section.title}</h2>
+
+                    {Array.isArray(section.paragraphs)
+                      ? section.paragraphs.map((paragraph, idx) => <p key={`p-${idx}`}>{paragraph}</p>)
+                      : null}
+
+                    {section.listTitle ? <h3>{section.listTitle}</h3> : null}
+
+                    {Array.isArray(section.bullets) ? (
+                      <ul className="rsz-blog__list">
+                        {section.bullets.map((bullet, idx) => (
+                          <li key={`b-${idx}`}>{bullet}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+
+                    {Array.isArray(section.steps) ? (
+                      <ol className="rsz-blog__ordered">
+                        {section.steps.map((step, idx) => (
+                          <li key={`step-${idx}`}>
+                            <p>{step.heading}</p>
+                            {Array.isArray(step.bullets) ? (
+                              <ul className="rsz-blog__ordered-sub">
+                                {step.bullets.map((bullet, bIdx) => (
+                                  <li key={`sb-${bIdx}`}>{bullet}</li>
+                                ))}
+                              </ul>
+                            ) : null}
+                          </li>
+                        ))}
+                      </ol>
+                    ) : null}
+
+                    {Array.isArray(section.formats) ? (
+                      <div className="rsz-blog__chips" aria-label="Supported formats">
+                        {section.formats.map((fmt, fIdx) => (
+                          <span className="rsz-blog__chip" key={`f-${fIdx}`}>
+                            {fmt}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </article>
+                ))}
+
+                <section className="rsz-blog__faq-section" id={blogFaqId}>
+                  <FAQ faqKey="resizeImage" />
+                </section>
+              </section>
+            </div>
+              </>
+            ) : null}
           </div>
         </section>
-
-        <FAQ faqKey="resizeImage" />
       </>
     );
   }
@@ -459,7 +621,13 @@ const ResizeImage = () => {
         keywords={t('resizer.seo.workspaceKeywords')}
       />
 
-      <section className="rsz-workspace">
+      <section
+        className={`rsz-workspace ${dragOver ? 'rsz-workspace--dragover' : ''}`}
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        onDrop={onDrop}
+      >
         {/* Mobile settings toggle */}
         <button
           className="rsz-settings-toggle"

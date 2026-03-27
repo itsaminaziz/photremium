@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
@@ -74,12 +74,64 @@ const CORNER_INNER = [
 ];
 
 const GRADIENT_SUGGESTIONS = [
-  { label: 'Ocean Blue', c1: '#0052D4', c2: '#65C7F7' },
-  { label: 'Sunset', c1: '#f12711', c2: '#f5af19' },
-  { label: 'Purple Haze', c1: '#7B1FA2', c2: '#E040FB' },
-  { label: 'Emerald', c1: '#11998e', c2: '#38ef7d' },
-  { label: 'Dark Elegance', c1: '#232526', c2: '#414345' },
+  { label: 'Ocean Blue', colors: ['#0052D4', '#65C7F7'] },
+  { label: 'Sunset', colors: ['#f12711', '#f5af19'] },
+  { label: 'Purple Haze', colors: ['#7B1FA2', '#E040FB'] },
+  { label: 'Emerald', colors: ['#11998e', '#38ef7d'] },
+  { label: 'Dark Elegance', colors: ['#232526', '#414345'] },
+  { label: 'Cherry Pop', colors: ['#ff416c', '#ff4b2b'] },
+  { label: 'Aqua Mint', colors: ['#00c6ff', '#0072ff'] },
+  { label: 'Deep Space', colors: ['#0f2027', '#203a43'] },
+  { label: 'Royal Rose', colors: ['#7f00ff', '#e100ff'] },
+  { label: 'Citrus Punch', colors: ['#f7971e', '#ffd200'] },
+  { label: 'Soft Peach', colors: ['#f6d365', '#fda085'] },
+  { label: 'Skyline', colors: ['#1d976c', '#93f9b9'] },
+  { label: 'Neon Cyan', colors: ['#00f5ff', '#00d4ff'] },
+  { label: 'Coral Reef', colors: ['#ff9966', '#ff5e62'] },
+  { label: 'Lavender Dream', colors: ['#8e2de2', '#c471ed'] },
+  { label: 'Cloud Gray', colors: ['#bdc3c7', '#2c3e50'] },
+  { label: 'Midnight Blue', colors: ['#232526', '#1e3c72'] },
+  { label: 'Candy Pink', colors: ['#fc466b', '#3f5efb'] },
+  { label: 'Lime Blast', colors: ['#56ab2f', '#a8e063'] },
+  { label: 'Warm Sand', colors: ['#d1913c', '#ffd194'] },
+  { label: 'Sapphire', colors: ['#0f0c29', '#302b63', '#24243e'] },
+  { label: 'Northern Lights', colors: ['#00c9ff', '#92fe9d', '#4facfe'] },
+  { label: 'Berry Mix', colors: ['#4b1248', '#7f1d7a', '#f953c6'] },
+  { label: 'Tropical Sky', colors: ['#fcb045', '#fd1d1d', '#833ab4'] },
+  { label: 'Cool Mint', colors: ['#4ecdc4', '#44a08d', '#093637'] },
+  { label: 'Candy Violet', colors: ['#c471f5', '#fa71cd', '#fcb045'] },
+  { label: 'Arctic Wave', colors: ['#1cb5e0', '#000851', '#0f2027'] },
+  { label: 'Sunrise Glow', colors: ['#ff512f', '#f09819', '#ffefba'] },
+  { label: 'Moss Forest', colors: ['#134e5e', '#71b280', '#a8e063'] },
+  { label: 'Twilight Pop', colors: ['#ee0979', '#ff6a00', '#fcb045'] },
+  { label: 'Prism', colors: ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1'] },
+  { label: 'Galaxy Dust', colors: ['#2b5876', '#4e4376', '#6a11cb', '#2575fc'] },
+  { label: 'Autumn Fire', colors: ['#7f0000', '#b22222', '#ff7f50', '#ffd194'] },
+  { label: 'Sea Foam', colors: ['#136a8a', '#267871', '#6dd5ed', '#2193b0'] },
+  { label: 'Vintage Fade', colors: ['#ba8b02', '#181818', '#f4e2d8', '#c9d6ff'] },
+  { label: 'Soft Rainbow', colors: ['#ff9a9e', '#fecfef', '#fcb69f', '#a1c4fd'] },
+  { label: 'Candy Ice', colors: ['#74ebd5', '#acb6e5', '#d299c2', '#fef9d7'] },
+  { label: 'Cyber Grid', colors: ['#141e30', '#243b55', '#00c6ff', '#0072ff'] },
+  { label: 'Velvet Plum', colors: ['#3a1c71', '#6a0572', '#d76d77', '#ffaf7b'] },
+  { label: 'Pastel Flow', colors: ['#a18cd1', '#fbc2eb', '#fad0c4', '#f6d365'] },
+  { label: 'Festival', colors: ['#f7971e', '#ffd200', '#fc4a1a', '#f7b733', '#4facfe'] },
+  { label: 'Electric Night', colors: ['#0f0c29', '#302b63', '#24243e', '#7f00ff', '#e100ff'] },
+  { label: 'Green Pulse', colors: ['#11998e', '#38ef7d', '#56ab2f', '#a8e063', '#d4fc79'] },
+  { label: 'Coral Bloom', colors: ['#ff9a8b', '#ff6a88', '#ff99ac', '#fcb69f', '#ffecd2'] },
+  { label: 'Blue Depth', colors: ['#1e3c72', '#2a5298', '#00c6ff', '#0072ff', '#003973'] },
+  { label: 'Plasma', colors: ['#cc2b5e', '#753a88', '#3f5efb', '#fc466b', '#fcb045'] },
+  { label: 'Inferno', colors: ['#0f0c29', '#302b63', '#ff512f', '#dd2476', '#f09819'] },
+  { label: 'Aurora Borealis', colors: ['#00c9ff', '#92fe9d', '#4facfe', '#43e97b', '#38f9d7'] },
+  { label: 'Candy Layers', colors: ['#f953c6', '#b91d73', '#ff6a00', '#ffd200', '#fcb045'] },
+  { label: 'Sunbeam', colors: ['#f6d365', '#fda085', '#fbc2eb', '#a1c4fd', '#c2e9fb'] },
+  { label: 'Prismatic Sea', colors: ['#1cb5e0', '#000851', '#00c9ff', '#92fe9d', '#4facfe'] },
+  { label: 'Spectrum Wave', colors: ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#5f27cd', '#ee5253'] },
+  { label: 'Holi Colors', colors: ['#ff0080', '#ff8c00', '#ffe600', '#00d084', '#00a2ff', '#8a2be2'] },
+  { label: 'Aurora 6', colors: ['#00c9ff', '#92fe9d', '#4facfe', '#43e97b', '#38f9d7', '#7f00ff'] },
+  { label: 'Neon Spectrum', colors: ['#00f5ff', '#00d4ff', '#7f00ff', '#e100ff', '#ff2d95', '#ff7a00'] },
 ];
+
+const MAX_GRADIENT_STOPS = 10;
 
 const QR_TEMPLATES = [
   { id: 't1', name: 'Classic', dotShape: 'square', cornerOuter: 'square', cornerInner: 'square', fgColor: '#000000', bgColor: '#ffffff', gradientOn: false, gradColor1: '#000', gradColor2: '#000', frame: 'none' },
@@ -923,8 +975,18 @@ const drawFrame = (ctx, fid, w, h, margin, qrPxSize, labels = {}) => {
    ================================================================ */
 
 const QRCodeGenerator = () => {
-  const { t, localePath } = useLanguage();
+  const { t, localePath, lang } = useLanguage();
+  const isBlogRtl = lang === 'ur' || lang === 'ar';
+  const blog = t('qrGenerator.blog');
+  const blogToc = useMemo(() => [
+    { id: 'qr-blog-card-1', label: blog.card1.title },
+    { id: 'qr-blog-card-2', label: blog.card2.title },
+    { id: 'qr-blog-card-3', label: blog.card3.title },
+    { id: 'qr-blog-card-4', label: blog.card4.title },
+    { id: 'qr-blog-faq', label: t('faq.heading') },
+  ], [blog.card1.title, blog.card2.title, blog.card3.title, blog.card4.title, t]);
   const location = useLocation();
+  const [activeBlogId, setActiveBlogId] = useState('qr-blog-card-1');
 
   /* ---- phase ---- */
   const [phase, setPhase] = useState('input'); // 'input' | 'customize'
@@ -958,8 +1020,7 @@ const QRCodeGenerator = () => {
   const [fgColor, setFgColor] = useState('#000000');
   const [bgColor, setBgColor] = useState('#ffffff');
   const [gradientOn, setGradientOn] = useState(false);
-  const [gradColor1, setGradColor1] = useState('#000000');
-  const [gradColor2, setGradColor2] = useState('#4f46e5');
+  const [gradStops, setGradStops] = useState(['#000000', '#4f46e5']);
   const [gradType, setGradType] = useState('linear'); // linear | radial
   const [gradAngle, setGradAngle] = useState(135);
   const [selectedFrame, setSelectedFrame] = useState('none');
@@ -985,6 +1046,56 @@ const QRCodeGenerator = () => {
   const markerRef = useRef(null);
   const customLogoInputRef = useRef(null);
   const didPrefillFromStateRef = useRef(false);
+  const toolNavRef = useRef(null);
+  const toolTabRefs = useRef({});
+
+  const scrollToolTabIntoView = useCallback((tabId) => {
+    const tabEl = toolTabRefs.current[tabId];
+    if (!tabEl) return;
+    tabEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }, []);
+
+  const updateToolNavIndicator = useCallback(() => {
+    const navEl = toolNavRef.current;
+    const activeTabEl = toolTabRefs.current[toolTab];
+    if (!navEl || !activeTabEl) return;
+
+    const navRect = navEl.getBoundingClientRect();
+    const activeRect = activeTabEl.getBoundingClientRect();
+    const left = activeRect.left - navRect.left + navEl.scrollLeft;
+    navEl.style.setProperty('--qr-tool-indicator-left', `${left}px`);
+    navEl.style.setProperty('--qr-tool-indicator-width', `${activeRect.width}px`);
+  }, [toolTab]);
+
+  useEffect(() => {
+    updateToolNavIndicator();
+    scrollToolTabIntoView(toolTab);
+  }, [toolTab, updateToolNavIndicator, scrollToolTabIntoView]);
+
+  useEffect(() => {
+    const navEl = toolNavRef.current;
+    if (!navEl) return;
+
+    const handleNavLayout = () => updateToolNavIndicator();
+
+    handleNavLayout();
+    window.addEventListener('resize', handleNavLayout);
+    navEl.addEventListener('scroll', handleNavLayout, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', handleNavLayout);
+      navEl.removeEventListener('scroll', handleNavLayout);
+    };
+  }, [updateToolNavIndicator]);
+
+  useEffect(() => {
+    if (phase !== 'customize') return;
+    const rafId = window.requestAnimationFrame(() => {
+      updateToolNavIndicator();
+      scrollToolTabIntoView(toolTab);
+    });
+    return () => window.cancelAnimationFrame(rafId);
+  }, [phase, mobileToolsOpen, toolTab, updateToolNavIndicator, scrollToolTabIntoView]);
 
   /* ---- Leaflet for maps ---- */
   const loadLeaflet = useCallback(async () => {
@@ -1135,6 +1246,36 @@ const QRCodeGenerator = () => {
     await generateQrFromData(data);
   };
 
+  const updateGradStop = (index, value) => {
+    setGradStops((prev) => prev.map((stop, i) => (i === index ? value : stop)));
+  };
+
+  const addGradStop = () => {
+    setGradStops((prev) => {
+      if (prev.length >= MAX_GRADIENT_STOPS) return prev;
+      return [...prev, prev[prev.length - 1] || '#ffffff'];
+    });
+  };
+
+  const removeGradStop = (index) => {
+    setGradStops((prev) => {
+      if (prev.length <= 2) return prev;
+      return prev.filter((_, i) => i !== index);
+    });
+  };
+
+  const applyGradientPalette = (colors) => {
+    const clean = Array.isArray(colors) && colors.length ? colors.slice(0, MAX_GRADIENT_STOPS) : ['#000000', '#4f46e5'];
+    setGradStops(clean.length === 1 ? [clean[0], clean[0]] : clean);
+  };
+
+  const handleToggleGradient = () => {
+    if (!gradientOn && gradStops.length < 2) {
+      setGradStops([fgColor, '#4f46e5']);
+    }
+    setGradientOn((prev) => !prev);
+  };
+
   /* ---- prefill from Home paste popup ---- */
   useEffect(() => {
     if (didPrefillFromStateRef.current) return;
@@ -1196,6 +1337,7 @@ const QRCodeGenerator = () => {
       const cx = marginPx + qrPxSize / 2;
       const cy = marginPx + qrPxSize / 2;
       const r = qrPxSize / 2;
+      const safeStops = gradStops.length ? gradStops : [fgColor, fgColor];
       if (gradType === 'linear') {
         const x1 = cx - r * Math.cos(angleRad);
         const y1 = cy - r * Math.sin(angleRad);
@@ -1205,8 +1347,10 @@ const QRCodeGenerator = () => {
       } else {
         fillStyle = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
       }
-      fillStyle.addColorStop(0, gradColor1);
-      fillStyle.addColorStop(1, gradColor2);
+      const last = Math.max(1, safeStops.length - 1);
+      safeStops.forEach((color, index) => {
+        fillStyle.addColorStop(index / last, color);
+      });
     } else {
       fillStyle = fgColor;
     }
@@ -1218,7 +1362,7 @@ const QRCodeGenerator = () => {
       [marginPx, marginPx + (moduleCount - 7) * cellSize],
     ];
     finderPositions.forEach(([fx, fy]) => {
-      drawFinderEye(ctx, fx, fy, cellSize, cornerOuter, cornerInner, typeof fillStyle === 'string' ? fillStyle : fgColor, bgColor);
+      drawFinderEye(ctx, fx, fy, cellSize, cornerOuter, cornerInner, fillStyle, bgColor);
     });
 
     /* Draw data modules (skip finder zones) */
@@ -1286,7 +1430,7 @@ const QRCodeGenerator = () => {
     if (selectedFrame === 'scan-me' || selectedFrame === 'scan-here') {
       drawFrame(ctx, selectedFrame, totalW, totalH, marginPx, qrPxSize, { qrCode: t('qrGenerator.qrCode'), scanMe: t('qrGenerator.scanMe'), scanHere: t('qrGenerator.scanHere') });
     }
-  }, [qrData, dotShape, cornerOuter, cornerInner, fgColor, bgColor, gradientOn, gradColor1, gradColor2, gradType, gradAngle, selectedFrame, selectedLogo, customLogoImg]);
+  }, [qrData, dotShape, cornerOuter, cornerInner, fgColor, bgColor, gradientOn, gradStops, gradType, gradAngle, selectedFrame, selectedLogo, customLogoImg]);
 
   /* Re-render QR whenever options change */
   useEffect(() => {
@@ -1312,6 +1456,7 @@ const QRCodeGenerator = () => {
     let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${total} ${total}" width="1024" height="1024">`;
     svg += `<rect width="${total}" height="${total}" fill="${bgColor}"/>`;
     if (gradientOn) {
+      const safeStops = gradStops.length ? gradStops : [fgColor, fgColor];
       svg += '<defs>';
       if (gradType === 'linear') {
         const a = gradAngle;
@@ -1323,8 +1468,11 @@ const QRCodeGenerator = () => {
       } else {
         svg += '<radialGradient id="g">';
       }
-      svg += `<stop offset="0%" stop-color="${gradColor1}"/>`;
-      svg += `<stop offset="100%" stop-color="${gradColor2}"/>`;
+      const last = Math.max(1, safeStops.length - 1);
+      safeStops.forEach((color, index) => {
+        const offset = Math.round((index / last) * 100);
+        svg += `<stop offset="${offset}%" stop-color="${color}"/>`;
+      });
       svg += gradType === 'linear' ? '</linearGradient>' : '</radialGradient>';
       svg += '</defs>';
     }
@@ -1351,7 +1499,7 @@ const QRCodeGenerator = () => {
     }
     svg += '</svg>';
     return svg;
-  }, [qrData, dotShape, bgColor, fgColor, gradientOn, gradType, gradAngle, gradColor1, gradColor2]);
+  }, [qrData, dotShape, bgColor, fgColor, gradientOn, gradType, gradAngle, gradStops]);
 
   /* ---- download ---- */
   const handleDownload = useCallback(async () => {
@@ -1428,6 +1576,36 @@ const QRCodeGenerator = () => {
     }
   })();
 
+  const handleBlogTocClick = useCallback((e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 110;
+    window.scrollTo({ top, behavior: 'smooth' });
+    setActiveBlogId(id);
+  }, []);
+
+  useEffect(() => {
+    if (phase !== 'input') return;
+    const observers = [];
+    blogToc.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (!element) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveBlogId(item.id);
+          }
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+      observer.observe(element);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((observer) => observer.disconnect());
+  }, [blogToc, phase]);
+
   /* ================================================================
      INPUT PHASE
      ================================================================ */
@@ -1456,24 +1634,20 @@ const QRCodeGenerator = () => {
               </Link>
             </div>
 
-            {/* Sub-navigation */}
-            <div className="qr-input-nav">
-              {INPUT_TABS.map((tab) => (
-                <button
-                  key={tab.id}
-                  className={`qr-input-nav__tab ${inputTab === tab.id ? 'active' : ''}`}
-                  onClick={() => setInputTab(tab.id)}
-                >
-                  <i className={tab.icon}></i>
-                  <span>{t('qrGenerator.' + tab.tKey)}</span>
-                </button>
-              ))}
-            </div>
-
             {/* Form area (styled similar to dropzone) */}
             <div className="qr-form-card">
-              <div className="qr-form-card__icon">
-                <i className="fa-solid fa-qrcode"></i>
+              {/* Sub-navigation */}
+              <div className="qr-input-nav">
+                {INPUT_TABS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    className={`qr-input-nav__tab ${inputTab === tab.id ? 'active' : ''}`}
+                    onClick={() => setInputTab(tab.id)}
+                  >
+                    <i className={tab.icon}></i>
+                    <span>{t('qrGenerator.' + tab.tKey)}</span>
+                  </button>
+                ))}
               </div>
 
               {/* URL */}
@@ -1601,10 +1775,176 @@ const QRCodeGenerator = () => {
                 <i className="fa-solid fa-wand-magic-sparkles"></i> {t('qrGenerator.generateCustomize')}
               </button>
             </div>
+
+            <nav className={`qr-blog-toc--mobile ${isBlogRtl ? 'qr-blog-toc--mobile--rtl' : ''}`} aria-label="QR blog sections">
+              {blogToc.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={activeBlogId === item.id ? 'toc-active' : ''}
+                  onClick={(e) => handleBlogTocClick(e, item.id)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className={`qr-blog-layout ${isBlogRtl ? 'qr-blog-layout--rtl' : ''}`}>
+              <aside className="qr-blog-toc" aria-label="QR blog table of contents">
+                <p className="qr-blog-toc__title">Contents</p>
+                <ul className="qr-blog-toc__list">
+                  {blogToc.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href={`#${item.id}`}
+                        className={activeBlogId === item.id ? 'toc-active' : ''}
+                        onClick={(e) => handleBlogTocClick(e, item.id)}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+
+              <section className="qr-blog">
+              <article className="qr-blog__card" id="qr-blog-card-1">
+                <h2>{blog.card1.title}</h2>
+                <p>{blog.card1.intro1}</p>
+                <p>{blog.card1.intro2}</p>
+
+                <div className="qr-blog__block">
+                  <h3>{blog.card1.inventionTitle}</h3>
+                  <p>{blog.card1.inventionText}</p>
+                </div>
+
+                <div className="qr-blog__block">
+                  <h3>{blog.card1.keyFeaturesTitle}</h3>
+                  <ul className="qr-blog__list">
+                    {blog.card1.keyFeatures.map((item, idx) => (
+                      <li key={`feature-${idx}`}>
+                        <strong>{item.title}</strong>
+                        <p>{item.text}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="qr-blog__block">
+                  <h3>{blog.card1.errorTitle}</h3>
+                  <p>{blog.card1.errorIntro}</p>
+                  <div className="qr-blog__table-wrap">
+                    <table className="qr-blog__table">
+                      <thead>
+                        <tr>
+                          <th>{blog.card1.errorHeaders.level}</th>
+                          <th>{blog.card1.errorHeaders.recovery}</th>
+                          <th>{blog.card1.errorHeaders.bestUse}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {blog.card1.errorRows.map((row, idx) => (
+                          <tr key={`error-row-${idx}`}>
+                            <td>{row.level}</td>
+                            <td>{row.recovery}</td>
+                            <td>
+                              <ul>
+                                {row.useCases.map((useCase, useCaseIdx) => (
+                                  <li key={`use-case-${idx}-${useCaseIdx}`}>{useCase}</li>
+                                ))}
+                              </ul>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </article>
+
+              <article className="qr-blog__card" id="qr-blog-card-2">
+                <h2>{blog.card2.title}</h2>
+                <p>{blog.card2.intro}</p>
+                <ul className="qr-blog__list">
+                  {blog.card2.strengths.map((item, idx) => (
+                    <li key={`strength-${idx}`}>
+                      <strong>{item.title}</strong>
+                      <p>{item.text}</p>
+                      {idx === 1 && (
+                        <div className="qr-blog__table-wrap">
+                          <table className="qr-blog__table">
+                            <thead>
+                              <tr>
+                                <th>{blog.card2.formatHeaders.srNo}</th>
+                                <th>{blog.card2.formatHeaders.formats}</th>
+                                <th>{blog.card2.formatHeaders.description}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {blog.card2.formatRows.map((row, rowIdx) => (
+                                <tr key={`format-row-${rowIdx}`}>
+                                  <td>{row.no}</td>
+                                  <td>{row.format}</td>
+                                  <td>{row.description}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="qr-blog__card" id="qr-blog-card-3">
+                <h2>{blog.card3.title}</h2>
+                <ol className="qr-blog__ordered">
+                  <li>
+                    <p>{blog.card3.step1Intro}</p>
+                    <ol type="i" className="qr-blog__ordered-sub">
+                      {blog.card3.categories.map((category, idx) => (
+                        <li key={`category-${idx}`}>{category}</li>
+                      ))}
+                    </ol>
+                  </li>
+                  <li>{blog.card3.step2}</li>
+                  <li>
+                    <p>{blog.card3.step3Intro}</p>
+                    <ol type="i" className="qr-blog__ordered-sub">
+                      {blog.card3.options.map((item, idx) => (
+                        <li key={`option-${idx}`}>
+                          <strong>{item.title}</strong> {item.text}
+                        </li>
+                      ))}
+                      <li>{blog.card3.finalStep}</li>
+                    </ol>
+                  </li>
+                </ol>
+              </article>
+
+              <article className="qr-blog__card" id="qr-blog-card-4">
+                <h2>{blog.card4.title}</h2>
+                <p>{blog.card4.intro}</p>
+                <ul className="qr-blog__list">
+                  {blog.card4.benefits.map((item, idx) => (
+                    <li key={`benefit-${idx}`}>
+                      <strong>{item.title}</strong>
+                      <p>{item.text}</p>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <section className="qr-blog__faq-section" id="qr-blog-faq">
+                <FAQ faqKey="qrCodeGenerator" />
+              </section>
+
+            </section>
+            </div>
           </div>
         </section>
 
-        <FAQ faqKey="qrCodeGenerator" />
       </>
     );
   }
@@ -1636,12 +1976,19 @@ const QRCodeGenerator = () => {
             </button>
 
             {/* Tool sub-nav */}
-            <div className="qr-tool-nav">
+            <div className="qr-tool-nav" ref={toolNavRef}>
+              <span className="qr-tool-nav__indicator" aria-hidden="true"></span>
               {TOOL_TABS.map((tab) => (
                 <button
                   key={tab.id}
+                  ref={(el) => {
+                    toolTabRefs.current[tab.id] = el;
+                  }}
                   className={`qr-tool-nav__tab ${toolTab === tab.id ? 'active' : ''}`}
-                  onClick={() => setToolTab(tab.id)}
+                  onClick={() => {
+                    setToolTab(tab.id);
+                    scrollToolTabIntoView(tab.id);
+                  }}
                 >
                   <i className={tab.icon}></i>
                   <span>{t('qrGenerator.' + tab.tKey)}</span>
@@ -1730,22 +2077,28 @@ const QRCodeGenerator = () => {
             {/* ---- COLOR ---- */}
             {toolTab === 'color' && (
               <div className="qr-tool-section">
-                <h4 className="qr-tool-section__title">{t('qrGenerator.fgColor')}</h4>
-                <div className="qr-color-row">
-                  <input type="color" value={gradientOn ? gradColor1 : fgColor} onChange={(e) => gradientOn ? setGradColor1(e.target.value) : setFgColor(e.target.value)} className="qr-color-picker" />
-                  <input type="text" value={gradientOn ? gradColor1 : fgColor} onChange={(e) => gradientOn ? setGradColor1(e.target.value) : setFgColor(e.target.value)} className="qr-color-text" />
+                <div className="qr-color-duo">
+                  <div className="qr-color-block">
+                    <h4 className="qr-tool-section__title">{t('qrGenerator.fgColor')}</h4>
+                    <div className="qr-color-row">
+                      <input type="color" value={fgColor} onChange={(e) => setFgColor(e.target.value)} className="qr-color-picker" />
+                      <input type="text" value={fgColor} onChange={(e) => setFgColor(e.target.value)} className="qr-color-text" />
+                    </div>
+                  </div>
+
+                  <div className="qr-color-block">
+                    <h4 className="qr-tool-section__title">{t('qrGenerator.bgColor')}</h4>
+                    <div className="qr-color-row">
+                      <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="qr-color-picker" />
+                      <input type="text" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="qr-color-text" />
+                    </div>
+                  </div>
                 </div>
 
-                <h4 className="qr-tool-section__title">{t('qrGenerator.bgColor')}</h4>
-                <div className="qr-color-row">
-                  <input type="color" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="qr-color-picker" />
-                  <input type="text" value={bgColor} onChange={(e) => setBgColor(e.target.value)} className="qr-color-text" />
-                </div>
-
-                <label className="qr-toggle-row">
-                  <span>{t('qrGenerator.enableGradient')}</span>
-                  <input type="checkbox" checked={gradientOn} onChange={(e) => setGradientOn(e.target.checked)} className="qr-toggle" />
-                </label>
+                <button type="button" className={`qr-gradient-toggle ${gradientOn ? 'active' : ''}`} onClick={handleToggleGradient}>
+                  <span className="qr-gradient-toggle__thumb"></span>
+                  <span className="qr-gradient-toggle__text">{t('qrGenerator.enableGradient')}</span>
+                </button>
 
                 {gradientOn && (
                   <>
@@ -1755,17 +2108,45 @@ const QRCodeGenerator = () => {
                       <button className={gradType === 'radial' ? 'active' : ''} onClick={() => setGradType('radial')}>{t('qrGenerator.radial')}</button>
                     </div>
 
-                    <h4 className="qr-tool-section__title">{t('qrGenerator.gradientColor1')}</h4>
-                    <div className="qr-color-row">
-                      <input type="color" value={gradColor1} onChange={(e) => setGradColor1(e.target.value)} className="qr-color-picker" />
-                      <input type="text" value={gradColor1} onChange={(e) => setGradColor1(e.target.value)} className="qr-color-text" />
+                    <h4 className="qr-tool-section__title">Gradient Colors ({gradStops.length}/{MAX_GRADIENT_STOPS})</h4>
+                    <div className="qr-gradient-stops">
+                      {gradStops.map((stop, index) => {
+                        const isInvalidStop = colorSimilarity(stop, bgColor) >= 0.80;
+                        return (
+                        <div
+                          className={`qr-gradient-stop ${isInvalidStop ? 'qr-gradient-stop--danger' : ''}`}
+                          key={`grad-stop-${index}`}
+                        >
+                          <span className="qr-gradient-stop__label">
+                            {isInvalidStop && <i className="fa-solid fa-triangle-exclamation qr-gradient-stop__warn-icon" aria-hidden="true"></i>}
+                            Color {index + 1}
+                          </span>
+                          <div className="qr-color-row">
+                            <input type="color" value={stop} onChange={(e) => updateGradStop(index, e.target.value)} className="qr-color-picker" />
+                            <input type="text" value={stop} onChange={(e) => updateGradStop(index, e.target.value)} className="qr-color-text" />
+                            <button
+                              type="button"
+                              className="qr-gradient-stop__remove"
+                              onClick={() => removeGradStop(index)}
+                              disabled={gradStops.length <= 2}
+                              aria-label={`Remove gradient color ${index + 1}`}
+                              title="Remove color"
+                            >
+                              <i className="fa-solid fa-minus"></i>
+                            </button>
+                          </div>
+                        </div>
+                      )})}
                     </div>
 
-                    <h4 className="qr-tool-section__title">{t('qrGenerator.gradientColor2')}</h4>
-                    <div className="qr-color-row">
-                      <input type="color" value={gradColor2} onChange={(e) => setGradColor2(e.target.value)} className="qr-color-picker" />
-                      <input type="text" value={gradColor2} onChange={(e) => setGradColor2(e.target.value)} className="qr-color-text" />
-                    </div>
+                    <button
+                      type="button"
+                      className="qr-gradient-add"
+                      onClick={addGradStop}
+                      disabled={gradStops.length >= MAX_GRADIENT_STOPS}
+                    >
+                      <i className="fa-solid fa-plus"></i> Add Color
+                    </button>
 
                     {gradType === 'linear' && (
                       <>
@@ -1781,8 +2162,8 @@ const QRCodeGenerator = () => {
                           key={idx}
                           className="qr-gradient-swatch"
                           title={g.label}
-                          style={{ background: `linear-gradient(135deg, ${g.c1}, ${g.c2})` }}
-                          onClick={() => { setGradColor1(g.c1); setGradColor2(g.c2); }}
+                          style={{ background: `linear-gradient(135deg, ${g.colors.join(', ')})` }}
+                          onClick={() => applyGradientPalette(g.colors)}
                         >
                           <span className="qr-gradient-swatch__label">{g.label}</span>
                         </button>
@@ -1867,19 +2248,18 @@ const QRCodeGenerator = () => {
                         setBgColor(t.bgColor);
                         setGradientOn(t.gradientOn);
                         if (t.gradientOn) {
-                          setGradColor1(t.gradColor1);
-                          setGradColor2(t.gradColor2);
+                          applyGradientPalette(t.gradColors || [t.gradColor1, t.gradColor2]);
                         }
                         setSelectedFrame(t.frame);
                       }}
                     >
                       <div className="qr-template-btn__preview" style={{
                         background: t.bgColor,
-                        color: t.gradientOn ? t.gradColor1 : t.fgColor,
+                        color: t.gradientOn ? (t.gradColors?.[0] || t.gradColor1) : t.fgColor,
                       }}>
                         <i className="fa-solid fa-qrcode" style={{
                           fontSize: '1.6rem',
-                          background: t.gradientOn ? `linear-gradient(135deg, ${t.gradColor1}, ${t.gradColor2})` : t.fgColor,
+                          background: t.gradientOn ? `linear-gradient(135deg, ${(t.gradColors || [t.gradColor1, t.gradColor2]).join(', ')})` : t.fgColor,
                           WebkitBackgroundClip: 'text',
                           WebkitTextFillColor: 'transparent',
                           backgroundClip: 'text',
@@ -1928,14 +2308,21 @@ const QRCodeGenerator = () => {
             </div>
 
             {(() => {
-              const activeFg = gradientOn ? gradColor1 : fgColor;
-              const sim = colorSimilarity(activeFg, bgColor);
-              if (sim >= 1) return (
+              const colorCandidates = gradientOn
+                ? (gradStops.length ? gradStops : [fgColor])
+                : [fgColor];
+
+              const maxSimilarity = colorCandidates.reduce(
+                (highest, candidate) => Math.max(highest, colorSimilarity(candidate, bgColor)),
+                0
+              );
+
+              if (maxSimilarity >= 1) return (
                 <div className="qr-char-warning qr-char-warning--red">
                   <i className="fa-solid fa-circle-exclamation"></i> {t('qrGenerator.fgBgIdentical')}
                 </div>
               );
-              if (sim >= 0.80) return (
+              if (maxSimilarity >= 0.80) return (
                 <div className="qr-char-warning qr-char-warning--yellow">
                   <i className="fa-solid fa-triangle-exclamation"></i> {t('qrGenerator.fgBgSimilar')}
                 </div>

@@ -55,7 +55,7 @@ export function LanguageProvider({ children }) {
   //   • Language switch → correct meta tags in the same render (no flash)
   const translations = getTranslationsSync(lang);
 
-  // Keep document.documentElement.lang in sync with lang state
+  // Keep document language in sync with active locale
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);

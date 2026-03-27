@@ -203,6 +203,26 @@
   animation: faqFadeIn 0.3s ease;
 }
 
+.faq-table__answer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.faq-table__answer-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 50px;
+  background: #eef2ff;
+  color: #4338ca;
+  font-weight: 700;
+  font-size: 0.82rem;
+  border: 1px solid #c7d2fe;
+  line-height: 1;
+}
+
 @keyframes faqFadeIn {
   from {
     opacity: 0;

@@ -61,7 +61,7 @@ const PrivacyPolicy = () => {
   const lastUpdated   = 'March 11, 2026';
   const effectiveDate = 'January 1, 2025';
   const siteURL       = 'https://photremium.com';
-  const contactEmail  = 'hello@photremium.com';
+  const contactEmail  = 'photremium@gmail.com';
 
   const [activeId, setActiveId] = useState('overview');
 
@@ -99,10 +99,10 @@ const PrivacyPolicy = () => {
     <>
       {/* â”€â”€ SEO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <Helmet>
-        <title>Privacy Policy — photremium.com | No Server Uploads, Zero Data Storage</title>
+        <title>Privacy Policy — Photremium | No Server Uploads, Zero Data Storage</title>
         <meta
           name="description"
-          content="photremium.com's Privacy Policy explains how we protect your privacy. All image processing happens 100% in your browser — no file uploads to any server, no personal data collected, no tracking."
+          content="Photremium's Privacy Policy explains how we protect your privacy. All image processing happens 100% in your browser — no file uploads to any server, no personal data collected, no tracking."
         />
         <meta
           name="keywords"
@@ -112,17 +112,17 @@ const PrivacyPolicy = () => {
         <link rel="canonical" href={`${siteURL}/privacy-policy`} />
         <meta property="og:type"        content="website" />
         <meta property="og:url"         content={`${siteURL}/privacy-policy`} />
-        <meta property="og:title"       content="Privacy Policy — photremium.com | No Uploads, Zero Storage" />
-        <meta property="og:description" content="Your files stay on your device. photremium.com processes all images locally in your browser with no server contact, no data stored, and no tracking." />
+        <meta property="og:title"       content="Privacy Policy — Photremium | No Uploads, Zero Storage" />
+        <meta property="og:description" content="Your files stay on your device. Photremium processes all images locally in your browser with no server contact, no data stored, and no tracking." />
         <meta name="twitter:card"        content="summary_large_image" />
-        <meta name="twitter:title"       content="Privacy Policy — photremium.com" />
+        <meta name="twitter:title"       content="Privacy Policy — Photremium" />
         <meta name="twitter:description" content="100% browser-based image tools. No uploads, no storage, no tracking. Read our full privacy policy." />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebPage',
-          name: 'Privacy Policy â€“ photremium.com',
+          name: 'Privacy Policy â€“ Photremium',
           url: `${siteURL}/privacy-policy`,
-          description: 'photremium.com Privacy Policy â€“ no server uploads, no data stored, 100% in-browser image processing.',
+          description: 'Photremium Privacy Policy â€“ no server uploads, no data stored, 100% in-browser image processing.',
           inLanguage: 'en',
           publisher: {
             '@type': 'Organization',

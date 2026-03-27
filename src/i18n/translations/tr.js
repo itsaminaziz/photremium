@@ -197,6 +197,99 @@ const tr = {
     compressing: 'Sıkıştırılıyor…',
     compressDownload: 'Sıkıştır ve İndir',
     lowQualityWarning: 'Yüksek sıkıştırma, görüntü netliğini belirgin şekilde azaltabilir.',
+    blog: {
+      tocTitle: 'İçindekiler',
+      title: 'Görüntü Sıkıştırıcı Blogu',
+      formatsIntro: 'Aracımız tüm görüntü formatlarını destekler; böylece istediğiniz görüntüyü sorunsuzca sıkıştırabilirsiniz. Tüm formatların listesi aşağıdadır:',
+      sections: [
+        {
+          id: 'imgcomp-card-1',
+          title: '1. Görüntü sıkıştırıcı nedir?',
+          paragraphs: [
+            'Görüntü sıkıştırıcı, görsel kaliteyi mümkün olduğunca korurken dosya boyutunu azaltan bir yazılım veya çevrimiçi hizmettir. Ancak aşırı sıkıştırma, görüntü kalitesini gözle fark edilecek düzeyde düşürebilir.',
+          ],
+          listTitle: 'TÜRLER:',
+          bullets: [
+            'Kayıplı sıkıştırma: Görüntü verisinin bir kısmı kaldırılarak dosya boyutu düşürülür. Kalite azalabilir ancak orta seviyede çoğu zaman çıplak gözle belirgin değildir.',
+            'Kayıpsız sıkıştırma: Görüntünün görsel kalitesini bozmadan dosya boyutunu azaltır.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-2',
+          title: '2. Neden aracımızı seçmelisiniz?',
+          bullets: [
+            'Yapay zekâ destekli görüntü sıkıştırıcı aracımız tüm cihazlarda sorunsuz çalışır ve en iyi sonuçları sunar.',
+            'Tek tıkla birden fazla görüntüyü aynı anda sıkıştırabilirsiniz (hatta 100+).',
+            'Görüntülerinizi sunucularımıza yüklemeniz gerekmez. Tüm işlemler tarayıcınızda yerel olarak yapılır.',
+            'Aracımız tamamen ücretsizdir ve sonsuza kadar ücretsiz kalır. İsterseniz arkadaşlarınızla da paylaşabilirsiniz.',
+            'Sıkıştırma yüzdesini ihtiyacınıza göre siz belirleyebilirsiniz.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-3',
+          title: '3. Adım adım rehber',
+          steps: [
+            {
+              heading: '1. Sıkıştırmak istediğiniz görüntü(leri) seçin.',
+              bullets: [
+                'Görüntüleri sürükleyip bırakma alanına bırakın.',
+                'Ayrıca görüntüleri kopyalayıp (Ctrl + V) ile kutuya yapıştırabilirsiniz.',
+                'Dosya gezgini ile seçim yapmak için seç butonunu da kullanabilirsiniz.',
+              ],
+            },
+            {
+              heading: '2. Ardından sıkıştırma yüzdesini seçin.',
+              bullets: [
+                'Yatay kaydırma çubuğu sıkıştırma seviyesini rahatça seçmenizi sağlar. Daha doğru sonuçlar için aşağıdaki aralıkları izleyin.',
+              ],
+              table: {
+                headers: ['Sıkıştırma Yüzdesi', 'Sonuç'],
+                rows: [
+                  ['1%  ile  40%', 'En iyi kalite'],
+                  ['41%  ile  60%', 'Normal kalite (Önerilen)'],
+                  ['61%  ile  100%', 'Düşük kalite'],
+                ],
+              },
+            },
+            {
+              heading: '3. Ne kadar alan tasarrufu sağladığınızı kontrol edin.',
+              paragraphs: [
+                'Tüm boyut metrikleri gerçek zamanlı gösterilir. Toplamdan ne kadar tasarruf ettiğinizi net şekilde görebilir ve sıkıştırma seviyesini ihtiyacınıza göre ayarlayabilirsiniz.',
+              ],
+            },
+            {
+              heading: '4. Anahtar düğmeden indirme seçeneğini belirleyin.',
+              bullets: [
+                'ZIP: Birden fazla görüntü sıkıştırıyorsanız bu seçenek görünür. Tüm sıkıştırılmış görüntüler tek ZIP dosyasında arşivlenir (çok sayıda görüntü için önerilir).',
+                'Ayrı: Bu seçenekle görüntüler tek ZIP yerine ayrı ayrı indirilir (az sayıda görüntü, 10’dan az için önerilir).',
+              ],
+            },
+            {
+              heading: '5. Görüntüyü sıkıştırın ve indirin.',
+              paragraphs: [
+                'Bu düğme, seçtiğiniz indirme seçeneğine göre tüm sıkıştırılmış görüntüleri otomatik olarak indirir.',
+              ],
+            },
+          ],
+        },
+        {
+          id: 'imgcomp-card-4',
+          title: '4. Görüntü sıkıştırmanın faydaları.',
+          bullets: [
+            'Depolama maliyetini azaltır: Sıkıştırma ile dosya boyutu küçülür ve depolama alanı tasarrufu sağlanır.',
+            'Daha hızlı yükleme: Sıkıştırılmış görüntüler daha hızlı açılır, web sitesi ve uygulama deneyimini iyileştirir.',
+            'Gmail sınırı için çözüm: Gmail ekleri 25MB ile sınırlı olduğundan, sıkıştırma daha fazla dosya göndermenizi sağlar.',
+            'Daha hızlı paylaşım ve aktarım: Büyük dosyalar daha uzun sürede aktarılır; sıkıştırma zaman ve veri tasarrufu sağlar.',
+            'Sunum optimizasyonu: Sıkıştırılmamış görseller sunumları ağırlaştırır, sıkıştırılmış görseller dosya boyutunu ciddi şekilde düşürür.',
+          ],
+        },
+        {
+          id: 'imgcomp-card-5',
+          title: '5. Desteklenen formatlar.',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   converter: {
@@ -301,6 +394,91 @@ const tr = {
     dontEnlarge: 'Orijinal daha küçükse büyütme',
     resizing: 'Boyutlandırılıyor…',
     resizeDownload: 'Boyutlandır ve İndir',
+    blog: {
+      tocTitle: 'İçindekiler',
+      title: 'Görüntü Boyutlandırma Blogu',
+      sections: [
+        {
+          id: 'imgresize-card-1',
+          title: '1. Neden görüntü boyutlandırıcı kullanılır?',
+          paragraphs: [
+            'Görüntü boyutlandırıcı, bir görüntünün boyutlarını değiştirmek için kullanılan bir araç/yazılımdır. Genişliği, yüksekliği veya her ikisini ayarlayarak gerekli boyutu elde edebilirsiniz. Bu, özellikle görsel yükleme/paylaşım boyutu sınırı olan sosyal medya platformlarında çok faydalıdır.',
+          ],
+          listTitle: 'Örneğin:',
+          bullets: [
+            'Instagram gönderisi: 1080 x 1080px (kare)',
+            'Facebook gönderisi: 1200 x 630px',
+            'X (Twitter) gönderisi: 1200 x 675px',
+            'Instagram Story: 1080 x 1920px',
+          ],
+        },
+        {
+          id: 'imgresize-card-2',
+          title: '2. Neden bizim görüntü boyutlandırma aracımızı seçmelisiniz?',
+          paragraphs: [
+            'AI destekli aracımız görüntüleri hassas ve çok hızlı biçimde boyutlandırmanızı sağlar. Her cihazda akıcı çalışır ve uygulama kurulumuna ihtiyaç duymaz. Tüm özellikler tarayıcı üzerinden çevrimiçi kullanılabilir.',
+          ],
+          bullets: [
+            'Aynı anda birden fazla görüntüyü (hatta 100+) boyutlandırabilirsiniz. Güçlü cihazlarda 400–500 görüntü birkaç saniyede işlenebilir.',
+            'Tüm işlem tarayıcıda yerel olarak yapılır. Görüntüleri sunucumuza yüklemeniz gerekmez; dosyalar cihazdan çıkmaz.',
+            'Birden çok boyutlandırma birimi desteklenir.',
+            'Tek bir onay kutusuyla en-boy oranını koruyabilirsiniz.',
+            'Birden çok görüntüde ayrı ayrı indirme veya ZIP indirme seçenekleri vardır.',
+          ],
+        },
+        {
+          id: 'imgresize-card-3',
+          title: '3. Adım adım rehber',
+          steps: [
+            {
+              heading: 'Önce boyutlandırmak istediğiniz görüntü(leri) seçin. Seçmek için birden fazla yol vardır.',
+              bullets: [
+                'Görüntüleri sürükleyip bırakma kutusuna bırakabilirsiniz.',
+                '“Ctrl + V” kısayoluyla görüntü yapıştırabilirsiniz.',
+                'Veya “Choose Files” düğmesiyle dosya gezgininden seçebilirsiniz.',
+              ],
+            },
+            {
+              heading: 'Sonra bir boyutlandırma birimi seçin. Şu birimler mevcuttur:',
+              bullets: ['Pixels', 'Percentage', 'Centimeters', 'Inches'],
+            },
+            {
+              heading: 'Birim seçtikten sonra genişlik ve yüksekliği ayarlayın. İsterseniz onay kutusuyla en-boy oranını koruyabilirsiniz.',
+            },
+            {
+              heading: 'Orijinal boyuttan daha büyük yapmamak için “Don’t enlarge if original is smaller” seçeneğini işaretleyin.',
+            },
+            {
+              heading: 'Ardından indirme seçeneklerinden birini seçin.',
+              bullets: [
+                'Tüm çıktı görüntülerini tek bir zip dosyası olarak almak için ZIP seçin.',
+                'Her görüntüyü ayrı indirmek için “separate” seçin.',
+              ],
+            },
+            {
+              heading: 'Son olarak “Resize & Download” düğmesine tıklayın ve seçtiğiniz seçeneğe göre indirin.',
+            },
+          ],
+        },
+        {
+          id: 'imgresize-card-4',
+          title: '4. Görüntü boyutlandırma aracının faydaları: en büyük fayda, görüntülerin web sayfaları ve sosyal medya gönderilerinde doğru şekilde yerleşmesini sağlamasıdır.',
+          tocLabel: '4. Görüntü boyutlandırma aracının faydaları',
+          bullets: [
+            'UX iyileştirme: doğru boyut ve doğru yerleşim kullanıcı deneyimini belirgin şekilde iyileştirir.',
+            'Sosyal medya uyumu: birçok platform görsel boyut sınırı uygular; araç bu sınırlara uyumu kolaylaştırır.',
+            'Responsive tasarım desteği: geliştiriciler farklı cihazlar için farklı görsel boyutlarına ihtiyaç duyar.',
+            'Daha iyi seçenek: görüntüyü esnetmek veya sert kırpmak yerine boyutlandırma genelde daha iyi sonuç verir.',
+          ],
+        },
+        {
+          id: 'imgresize-card-5',
+          title: '5. Desteklenen formatlar: görüntü boyutlandırma aracımız her tür formatta görüntü seçimini destekler. Desteklenen formatlar aşağıdadır:',
+          tocLabel: '5. Desteklenen formatlar',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   cropper: {
@@ -331,6 +509,94 @@ const tr = {
     saveNext: 'Kaydet ve Sonraki',
     croppedNofTotal: '{total} görüntüden {n} tanesi kırpıldı.',
     downloadN: '{n} Tane İndir',
+    blog: {
+      tocTitle: 'İçindekiler',
+      title: 'Görüntü Kırpıcı Blogu',
+      sections: [
+        {
+          id: 'imgcrop-card-1',
+          title: '1. Neden görüntü kırpıcı kullanılır?',
+          paragraphs: [
+            'Görüntü kırpıcı, bir görüntüyü istenen şekle kırpmak için kullanılan bir yazılım aracıdır. İstenilen bölümü bırakıp dıştaki istenmeyen alanları kaldırmak için yaygın olarak kullanılır. Bu araç, kırpmak istediğiniz konuma göre ayarlayabileceğiniz bir kırpma kutusu sunar.',
+          ],
+          listTitle: 'Örneğin:',
+          bullets: [
+            'Kendinizi grup fotoğrafından kırpmak.',
+            'Adınızı bir listeden kırpmak.',
+            'Tam ekran ekran görüntüsünden ilerleme çubuğunu kırpmak.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-2',
+          title: '2. Neden bizim görüntü kırpıcımızı seçmelisiniz?',
+          paragraphs: [
+            'Görüntü kırpma aracımız, görüntüleri hassas ve çok hızlı şekilde kırpmanıza olanak tanır. Sadece kırpmak istediğiniz konuma göre kırpma kutusunun boyutunu ayarlamanız yeterlidir. Görüntü seçimi için neredeyse tüm görüntü formatları desteklenir.',
+          ],
+          bullets: [
+            'Cihazınızın desteklediği kadar görüntüyü kırpabilirsiniz. Yüksek performanslı bir cihazınız varsa, 100+ görüntüyü aynı anda gecikme veya başka sorun olmadan bile kırpabilirsiniz.',
+            'Görüntüleriniz yerel tarayıcınızda işlenir. Görüntüleri sunucumuza yüklemeniz gerekmez, bu nedenle hiçbir görüntü cihazınızdan çıkmaz. Kişisel görüntülerinizi güvensizlik veya risk olmadan kırpabilirsiniz.',
+            'Birçok araç geçersiz görüntü formatı hatası verir. Görüntü kırpma aracımız neredeyse tüm görüntü formatlarını destekleyerek bu sorunu çözer.',
+            'Aynı anda çok sayıda görüntü kırpıyorsanız, aracımız kırpılan görüntüleri tercihinize göre ZIP olarak veya ayrı ayrı indirmenize olanak tanır.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-3',
+          title: '3. Adım adım rehber',
+          steps: [
+            {
+              heading: '1. Öncelikle kırpmak istediğiniz görüntüyü seçin. Görüntü kırpma aracımız aynı anda birden fazla görüntü seçimini de destekler.',
+              bullets: [
+                'Kırpmak için görüntüleri sürükleyip bırakma kutusuna bırakın.',
+                'Ayrıca kırpma kutusunda bulunan choose files düğmesine tıklayarak dosya gezgini üzerinden görüntü seçebilirsiniz.',
+                'Görüntüleri bırakma kutusuna yapıştırmak için Ctrl + V kısayolu da desteklenir.',
+              ],
+            },
+            {
+              heading: '2. Ardından, görüntü üzerinde kırpma kutusunun boyutunu ve konumunu ayarlayın.',
+            },
+            {
+              heading: '3. Yükseklik, genişlik, yatay konum ve dikey konum değerlerini elle girerek kırpma kutusunu da ayarlayabilirsiniz.',
+            },
+            {
+              heading: '4. Ayrıca bazı hazır şablonları da kullanabilirsiniz:',
+              bullets: [
+                'Landscape(16:9)',
+                'Portrait(9:16)',
+                'Square(1:1)',
+              ],
+            },
+            {
+              heading: '5. Sonra indirme seçeneklerinden birini seçmeniz gerekir.',
+              bullets: [
+                'ZIP: Aynı anda birçok görüntü kırpıyorsanız ve tüm kırpılmış görüntüleri tek dosya olarak indirmek istiyorsanız bu seçeneği seçin.',
+                'Separate: Tüm kırpılmış görüntüleri ayrı ayrı indirmek istiyorsanız geçiş düğmesinden bu seçeneği seçin.',
+              ],
+            },
+            {
+              heading: '6. Ardından Crop & Download düğmesine tıklayın; tüm kırpılmış görüntüleriniz ön ayarlı ölçülerinize göre indirilecektir.',
+            },
+          ],
+        },
+        {
+          id: 'imgcrop-card-4',
+          title: '4. Görüntü Kırpmanın Faydaları: görüntü kırpma aracı dijital dünyada birçok fayda sunar. Bazıları aşağıda açıklanmıştır:',
+          tocLabel: '4. Görüntü Kırpmanın Faydaları',
+          bullets: [
+            'Görüntüyü çerçeveye sığdırma: Görüntü kırpıcı, görüntüyü çerçeveye doğru şekilde yerleştirmenize yardımcı olur. Bu çerçeve bir web sayfasında veya herhangi bir sosyal medya platformunda olabilir.',
+            'UX iyileştirme: Görüntünün doğru yerleşimi kullanıcı deneyimini artırdığı için görüntü kırpıcı UX’i büyük ölçüde geliştirir.',
+            'İstenmeyen kenarlıkları kaldırma: Görüntüyü iyileştirmek için istenmeyen kenarlıkları kaldırabilirsiniz.',
+            'İstenen nesneyi ayırma: Grup fotoğrafından kendinizi de ayırabilirsiniz.',
+            'Depolama tasarrufu: Görüntü kırpma depolama tasarrufu sağlar; çünkü görüntünün ham alanı kesilir ve yalnızca gerekli kısım kalır.',
+            'Sunumları optimize etme: Kırpılmamış 10 görüntülü normal bir sunum yaklaşık 30MB depolama kullanırken, aynı sunum kırpılmış görüntülerle yaklaşık 10MB depolama kullanabilir.',
+          ],
+        },
+        {
+          id: 'imgcrop-card-5',
+          title: '5. Desteklenen formatlar:',
+          formats: ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.avif', '.heic', '.heif', '.jxl', '.bmp', '.ico', '.tiff', '.tif', '.jfif', '.jpe', '.pjpeg', '.pjp', '.apng', '.svgz', '.xbm'],
+        },
+      ],
+    },
   },
 
   photoEditor: {
@@ -517,11 +783,183 @@ const tr = {
     downloadFormat: 'İndirme Formatı',
     preview: 'Önizleme',
     downloadFormatBtn: '{format} İndir',
+    pngDesc: 'Kayıpsız, şeffaflık desteği',
+    jpgDesc: 'Popüler/evrensel dosya formatı',
+    webpDesc: 'Modern format, en iyi kalite/boyut',
+    svgDesc: 'Ölçeklenebilir vektör grafik',
+    pdfDesc: 'Yazdırmaya hazır belge',
     lat: 'Enlem:',
     lng: 'Boylam:',
     qrCode: 'QR Kod',
     scanMe: 'Tara',
     scanHere: 'Buradan Tara',
+    blog: {
+      card1: {
+        title: '1. QR Kod Nedir?',
+        intro1: 'QR kodunun tam biçimi "Quick Response code" (Hızlı Yanıt kodu) anlamına gelir. İçinde saklanan bilgiler çok hızlı şekilde çözüldüğü için Quick Response (QR) kodu olarak adlandırılır.',
+        intro2: 'QR kodu, yalnızca makineler tarafından okunabilen iki boyutlu bir dijital koddur. İçindeki veriler insan tarafından okunamaz. Metin, iletişim numaraları, bağlantılar ve Google Harita konumları vb. gibi bilgileri depolamak için bloklar içerir.',
+        inventionTitle: 'QR Kod Nasıl İcat Edildi:',
+        inventionText: 'QR kod 1994 yılında icat edilmiştir. Masahiro Hara ve ekibi, Toyota için otomobil parçaları üreten Denso Wave adlı bir Japon şirketinde çalışıyordu. Sıradan bir barkoddan çok daha fazla bilgi depolayan bir kod istiyorlardı ve böylece QR kodunu icat ettiler.',
+        keyFeaturesTitle: 'QR Kodun Temel Özellikleri',
+        keyFeatures: [
+          {
+            title: 'QR Nasıl Çalışır',
+            text: 'QR kodu oluşturmak için metni veya bağlantıyı girersiniz. QR oluşturucu bilgiye göre kare kutular oluşturur. Her kutu bir biti temsil eder ve her bit bir karakteri depolar.',
+          },
+          {
+            title: 'QR Kodunun Yapısı',
+            text: 'QR kodu, QR kodunun yönünü belirlemek için üç büyük kare kutu ve bitleri (bilgileri) depolamak için bir küçük kare kutu içerir.',
+          },
+          {
+            title: 'QR Kodunun Veri Kapasitesi',
+            text: 'Tipik olarak, QR kodu barkoddan daha fazla bilgi depolar. QR kodu basitçe barkodun geliştirilmiş bir sürümüdür. Temelde iki boyutlu bir barkodtur. QR kodu neredeyse 200 karakteri depolar. 400 karakteri de depolayabilir ancak taranması zor olabilir. 400 karakterden fazlasını depolamak, neredeyse tarananamayacak kadar karmaşık bir QR kodu oluşturabilir.',
+          },
+          {
+            title: 'QR Kodlarında Hata Algılama',
+            text: 'QR kodu, bazı bilgileri kazıırsa veya bazı bitler ters çevrilirse yine de taranaabilir. QR kodu hataları algılamak ve tanımlamadan sonra çözmek için Reed-Solomon hata algılama tekniğini kullanır.',
+          },
+        ],
+        errorTitle: 'QR Kodunun Hata Düzeltme Düzeyi:',
+        errorIntro: 'Çeşitli hata algılama ve düzeltme teknikleri aşağıda açıklandığı gibi farklı durumlar da kullanılır:',
+        errorHeaders: {
+          level: 'Seviye',
+          recovery: 'İyileştirme kapasitesi',
+          bestUse: 'En iyi kullanım durumu',
+        },
+        errorRows: [
+          {
+            level: 'Düşük (L)',
+            recovery: '~7%',
+            useCases: [
+              'Bu hata düzeltme tekniği, QR kodu dijital ekranlarda, web sitelerinde veya temiz bir ortamda görüntülendiğinde kullanılır.',
+              'QR kodu Gmail, iletişim numarası veya küçük metin gibi küçük bilgiler için oluşturulduğunda.',
+            ],
+          },
+          {
+            level: 'Orta (M)',
+            recovery: '~15%',
+            useCases: [
+              'Temiz bir ortama kurulu broşür ve posterler için ve hasar riski ihmal edilebilir olduğunda.',
+            ],
+          },
+          {
+            level: 'Çeyrek (Q)',
+            recovery: '~25%',
+            useCases: [
+              'QR kodunun fabrika/açık alan gibi sert ortamda kurulması gerektiğinde.',
+              'Ayrıca, ortada küçük bir logo gerektiğinde, bazı bitleri kapsar. Bu nedenle bu hata düzeltme tekniği gereklidir.',
+            ],
+          },
+          {
+            level: 'Yüksek (H)',
+            recovery: '~30%',
+            useCases: [
+              'QR koduna ağır hasar ihtimali olduğunda kullanılır.',
+              'Büyük logolar QR kodunun merkezini kapattığında.',
+              'Ayrıca QR koduna ağır stil gerektiğinde.',
+            ],
+          },
+        ],
+      },
+      card2: {
+        title: '2. Neden QR Kod Oluşturucumuzu Seçmelisiniz?',
+        intro: 'QR kod oluşturucumuz QR kod oluşturmayı son derece hızlı, güvenli ve kolay hale getirir. Kodunuzu daha gelişmiş, profesyonel ve iş temanızla eşleşecek şekilde özelleştirebilirsiniz. QR kodunu renklendirmekten QR koduna logo kurulumuna kadar tüm özelleştirmeler sonsuza dek ücretsiz olarak sunulur.',
+        strengths: [
+          {
+            title: 'Profesyonel Özelleştirme:',
+            text: 'İhtiyacınız kadar çok QR kodu herhangi bir maliyet olmaksızın oluşturabilir ve özelleştirebilirsiniz. Tüm özellikler tamamen ücretsizdir. Renk degradeleri, kare kutular için farklı şekiller, özel logolar ve diğer birçok özelliği uygulayabilirsiniz.',
+          },
+          {
+            title: 'Çoklu Format Desteği:',
+            text: 'QR kod oluşturucumuz sizin rahatlığınız için birden fazla indirme formatı sunar. İndirmeden önce tercih ettiğiniz formatı seçmeniz yeterlidir. Şu anda bu formatları sunuyoruz:',
+          },
+          {
+            title: 'Önceden Yapılmış Şablonlar:',
+            text: 'QR kodunuzu profesyonel hale getiren önceden yapılmış renk degradeleri ve çerçeveleri kullanabilirsiniz.',
+          },
+          {
+            title: 'Özel Logo Desteği:',
+            text: 'Ayrıca QR kodunun merkezine otomatik olarak uyan özel marka logonuzu yükleyebilirsiniz. 30\'dan fazla logonun sağlandığı yerleşik logo kitaplığından logo seçebilirsiniz.',
+          },
+          {
+            title: 'Canlı Önizleme:',
+            text: 'Özelleştirirken canlı önizleme panelinde tüm değişiklikleri izleyebilirsiniz. Önizleme panelindeki bu değişiklikler gerçek zamanlı ve dinamik olarak değişir.',
+          },
+          {
+            title: 'Tarama Göstergesi:',
+            text: 'Renk seçerken, taranması zor olan renkleri seçerseniz uygun uyarılar ve göstergeler sizi rehberlik eder.',
+          },
+        ],
+        formatHeaders: {
+          srNo: 'Sıra No',
+          formats: 'Formatlar',
+          description: 'Açıklama',
+        },
+        formatRows: [
+          { no: '1', format: 'PNG', description: 'Kayıpsız, şeffaflık desteği' },
+          { no: '2', format: 'JPG', description: 'Popüler, evrensel dosya formatı' },
+          { no: '3', format: 'WEBP', description: 'Modern, en iyi kalite/boyut' },
+          { no: '4', format: 'SVG', description: 'Ölçeklenebilir vektör grafik' },
+          { no: '5', format: 'PDF', description: 'Yazdırmaya hazır belge' },
+        ],
+      },
+      card3: {
+        title: '3. Adım Adım Kılavuz:',
+        step1Intro: 'Her şeyden önce, oluşturmak istediğiniz QR kodunun kategorisini seçin. İster kişi, harita, bağlantı veya metin için QR kodu oluşturun. Şu anda QR kod oluşturucumuz şu kategorileri sunmaktadır:',
+        categories: ['Bağlantı / URL', 'Metin', 'WiFi', 'Kişi', 'Gmail', 'Google Maps'],
+        step2: 'Kategoriyi seçtikten sonra bilgilerinizi metin kutusuna yapıştırın.',
+        step3Intro: 'Ardından, özelleştirme panelini açmak için "Oluştur ve Özelleştir" düğmesini tıklayın. Özelleştirme panelinde aşağıdaki seçeneklere sahip bir alt gezinti çubuğu göreceksiniz:',
+        options: [
+          {
+            title: 'Stil ve Şekil:',
+            text: 'Bu bölümde kare kutuların şekillerini yuvarlak köşeler, noktalar, yatay çubuklar, dikey çubuklar, küçük kareler ve diğer birçok stil gibi değiştirebilirsiniz.',
+          },
+          {
+            title: 'Renk:',
+            text: 'Bu bölümde özel arka plan ve ön plan renkleri seçebilirsiniz. QR kodunuzu renk degradelerine dönüştürmek için, yerleşik kitaplıktan herhangi bir renk degradesini uygulayabilir veya kolayca kendi renk degradesini oluşturabilecek bir seçeneğiniz vardır. Doğrusal renk degradesi açısını da değiştirebilirsiniz. Radyal renk gradesi de desteklenir. Profesyonel bir renk degradesi efekti oluşturmak için birden fazla renk ekleyebilirsiniz.',
+          },
+          {
+            title: 'Çerçeveler:',
+            text: 'Burada QR kodunuz için mükemmel bir çerçeve seçebilirsiniz. Tüm çerçeveler otomatik olarak kodunuzla uyum sağlar. Yerleşik kitaplıktan bir çerçeve seçmeniz yeterlidir.',
+          },
+          {
+            title: 'Logo:',
+            text: 'Çerçeve seçiminden sonra QR kodunun merkezine otomatik olarak ayarlanan bir logo seçebilirsiniz. Özel marka logonuzu yükleme de desteklenmektedir.',
+          },
+          {
+            title: 'Şablonlar:',
+            text: 'Stil, şekil, renk ve çerçeveyi ayrı ayrı seçmek istemiyorsanız, QR kodunuza önceden yapılmış şablonları uygulayabilirsiniz. Sizes kolaylık için ücretsiz olan birden fazla premium şablon mevcuttur.',
+          },
+          {
+            title: 'Dosya Biçimi:',
+            text: 'Sonunda, QR kodunu indirmek istediğiniz dosya türünü seçmeniz gerekir. PNG, WEBP, SVG ve PDF gibi birkaç ortak format desteklenir.',
+          },
+          {
+            title: 'QR Verilerini Düzenle:',
+            text: 'Ayrıca seçilen özelleştirmelerinizde herhangi bir kayıp olmaksızın QR verilerinizi düzenleyebilirsiniz.',
+          },
+        ],
+        finalStep: 'Ardından indirme düğmesini tıklayın ve QR kodu tam özelleştirmelerinize göre seçilen biçimde anında herhangi bir maliyet olmaksızın indirilecektir.',
+      },
+      card4: {
+        title: '4. Yararlar:',
+        intro: 'QR kodu, fiziksel dünyayı dijital deneyimle bağlantı kurar. Bağlantıları, kişileri veya konumunuzu paylaşmanın en hızlı yoludur. QR kodunu taramanız yeterlidir ve bilgiye anında erişir. Bu nedenle zaman açısından verimli ve çok amaçlı olduğu için operasyon ve dijital dünyada çok popülerdir.',
+        benefits: [
+          {
+            title: 'Ömür Boyu Destek:',
+            text: 'QR kodları son kullanma tarihi olmaksızın sonsuza dek çalışır. Taradıktan sonra size depolanan bilgileri anında sağlar. Kodlanmış dijital talimatları depolar yolunda, asla bilgisini kaybetmez.',
+          },
+          {
+            title: 'Çevrimdışı Destek:',
+            text: 'Çevrimdışı olsanız bile QR kodunu tarayabilirsiniz. Mobil kameranız QR kodunun desenlerini kodu çözer ve size içinde depolanan bilgileri verir.',
+          },
+          {
+            title: 'Sıfır Maliyet:',
+            text: 'Bu kodlar herhangi bir sunucu yönlendirmesi veya kaynağı gerektirmediğinden sonsuza dek ücretsizdir.',
+          },
+        ],
+      },
+    },
   },
 
   qrScanner: {
@@ -632,25 +1070,25 @@ const tr = {
       { q: 'Şeffaf PNG görüntüsünü JPG\'ye dönüştürebilir miyim?', a: 'Evet. JPG şeffaflığı desteklemediğinden, şeffaf alanlar varsayılan olarak beyaz arka planla doldurulur.' },
     ],
     imageCompressor: [
-      { q: 'Görüntü sıkıştırma nasıl çalışır?', a: 'Aracımız, görüntüleri daha düşük kalite seviyesinde yeniden kodlamak için tarayıcı\'nın yerleşik Canvas API\'sini kullanır.' },
-      { q: 'Sıkıştırma görüntü kalitesini belirgin şekilde düşürüyor mu?', a: 'Orta sıkıştırma seviyelerinde (%20-40) fark neredeyse fark edilmiyor.' },
-      { q: 'Hangi görüntü formatları sıkıştırılabilir?', a: 'JPG, PNG, WEBP, BMP ve diğer yaygın raster formatlarını yükleyebilirsiniz.' },
-      { q: 'Birden fazla görüntüyü aynı anda sıkıştırabilir miyim?', a: 'Evet! Birden fazla dosya seçmeniz yeterli. Hepsini ZIP olarak indirebilirsiniz.' },
-      { q: 'Sıkıştırılmış görüntüler sunucuda depolanıyor mu?', a: 'Hayır. Her şey tarayıcıda yerel olarak çalışır.' },
+      { q: 'Görüntüyü sıkıştırmak kaliteyi düşürür mü?', a: 'Hayır, önerilen sınırların dışına çıkmadığınız sürece sıkıştırma görüntü kalitesini belirgin şekilde düşürmez. Kaliteyi göstergelerden takip edebilirsiniz: i. %1 ile %40 sıkıştırma: “İyi kalite” mesajıyla yeşil gösterge. ii. %41 ile %60 sıkıştırma: “Normal kalite” mesajıyla sarı gösterge. Bu aralık genellikle en çok önerilir. iii. %61 ile %100 sıkıştırma: sistem kırmızı “Kötü kalite” uyarısı verir ve kalite kaybı gözle fark edilebilir hale gelebilir.' },
+      { q: 'Sıkıştırma için hangi görüntü formatları destekleniyor?', a: 'Görüntü sıkıştırma aracımız aşağıdaki tüm formatları destekler:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Aynı anda birden fazla görüntü sıkıştırabilir miyim?', a: 'Evet, kesinlikle. Sisteminiz desteklediği sürece birden fazla görüntüyü (hatta 100+) aynı anda sıkıştırabilirsiniz. Sıkıştırma işlemi cihaz kaynaklarını kullandığı için yüksek performanslı laptop, PC veya telefonlarda daha iyi sonuç alırsınız. Düşük donanımlı cihazlarda ise toplu işlemi partiler halinde yapabilirsiniz; araç bu şekilde kullanımda da ücretsizdir.' },
+      { q: 'Görüntülerimizi sunucularınıza yüklüyor veya saklıyor musunuz?', a: 'Hayır, görüntülerinizi sunucularımıza ne yüklüyor ne de saklıyoruz. Tüm sıkıştırma işlemleri tarayıcınızda yerel olarak yapılır. Görüntüleriniz cihazınızdan asla ayrılmaz; bu nedenle kişisel veya özel görüntüleri güvenle sıkıştırabilirsiniz.' },
+      { q: 'Bu görüntü sıkıştırma aracı ücretsiz mi?', a: 'Evet, görüntü sıkıştırma aracımız tamamen ve kalıcı olarak ücretsizdir. Sizden asla ödeme talep etmeyiz. Gizli ücret yoktur. Çoklu görüntü sıkıştırma dahil tüm özellikler ücretsizdir.' },
     ],
     cropImage: [
-      { q: 'Belirli bir en-boy oranıyla görüntü kırpabilir miyim?', a: 'Evet. 1:1, 4:3, 16:9 gibi önceden ayarlanmış oranlardan birini seçebilir veya özel bir oran girebilirsiniz.' },
-      { q: 'Kırpma görüntü kalitesini düşürüyor mu?', a: 'Hayır. Kırpma yalnızca seçilen alan dışındaki pikselleri kaldırır.' },
-      { q: 'Birden fazla görüntüyü aynı anda kırpabilir miyim?', a: 'Elbette. Birden fazla görüntü yükleyin, her biri için kırpma alanını ayarlayın, ardından hepsini aynı anda indirin.' },
-      { q: 'Kırpma için desteklenen dosya formatları neler?', a: 'JPG, PNG, WEBP, GIF ve BMP dahil tüm yaygın görüntü formatları desteklenir.' },
-      { q: 'Görüntüler işlenmek üzere sunucuya yükleniyor mu?', a: 'Hayır. Tüm kırpma işlemleri HTML5 Canvas API kullanılarak tarayıcıda yerel olarak yapılır.' },
+      { q: 'Görüntü kırpma kaliteyi düşürür mü?', a: 'Hayır, görüntü kırpma görüntünün görsel kalitesini hiç etkilemez. Kırpma yalnızca istenmeyen kısmı kaldırır. Kırpıldıktan sonra kalan bölümün piksellerini asla değiştirmez. Bu yüzden görüntülerinizi hiçbir piksel bozulması olmadan orijinal kalitede kırpabilirsiniz.' },
+      { q: 'Görüntü kırpıcı hangi görüntü formatlarını destekliyor?', a: 'Görüntü kırpma aracımız neredeyse tüm görüntü formatlarını sunduğu için görüntünüzü herhangi bir formatta seçebilirsiniz. Aşağıda listelenmiştir:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
+      { q: 'Görüntülerim sunucunuza yükleniyor mu?', a: 'Hayır, tüm işlem yerel tarayıcınızda yapılır. Görüntüleriniz cihazınızdan hiç ayrılmadığı için sunucumuza asla yüklenmez. Bu nedenle kişisel görüntülerinizi görüntü kırpıcımızla hiçbir risk olmadan kırpabilirsiniz.' },
+      { q: 'Aynı anda birden fazla görüntü kırpabilir miyim?', a: 'Evet, sisteminiz destekliyorsa aynı anda birden fazla görüntüyü (hatta 100+) kırpabilirsiniz. Görüntü kırpma sistem kaynaklarını kullandığı için yüksek performanslı bir laptop, PC veya telefonunuz varsa çok sayıda görüntüyü aynı anda kırpabilirsiniz. Düşük donanımlı bir cihazınız varsa görüntüleri partiler halinde kırpabilirsiniz; çünkü bu araç çok sayıda görüntüyü aynı anda kırpsanız bile ücretsizdir.' },
+      { q: 'Bu görüntü kırpma aracı ücretsiz mi?', a: 'Evet, bu görüntü kırpma aracı tamamen ve kalıcı olarak ücretsizdir. Her yerde, her zaman ve herhangi bir cihazda erişebilirsiniz. Tüm cihazlar için duyarlı tasarım deneyimi sunar ve sizden hiçbir premium özellik için ödeme istenmez. Tüm özellikler gizli ücret olmadan tamamen ücretsizdir.' },
     ],
     resizeImage: [
-      { q: 'Görüntüyü tam piksel boyutuna yeniden boyutlandırabilir miyim?', a: 'Evet. İstenen genişliği ve yüksekliği piksel, inç veya santimetre olarak girin. En-boy oranını da kilitleyebilirsiniz.' },
-      { q: 'Boyutlandırma görüntüyü bulanıklaştırıyor mu?', a: 'Orijinal çözünürlüğün ötesinde büyütme hafif yumuşamaya neden olabilir. Yüksek kaliteli biküp interpolasyon kullanırız.' },
-      { q: 'Toplu boyutlandırma mevcut mu?', a: 'Evet. Birden fazla görüntü yükleyin ve tümüne aynı hedef boyutu uygulayın.' },
-      { q: 'Hangi boyut birimleri kullanılabilir?', a: 'Piksel, inç, santimetre veya orijinal boyutun yüzdesi olarak belirtebilirsiniz.' },
-      { q: 'Boyutlandırma sırasında sunucuya veri gönderiliyor mu?', a: 'Hayır. Tamamen tarayıcıda gerçekleştirilir.' },
+      { q: 'Aynı anda birden fazla görüntüyü yeniden boyutlandırabilir miyim?', a: 'Kesinlikle. Aracımız aynı anda çoklu görüntü boyutlandırmayı destekler. Cihazınızın kaldırdığı kadar görüntü yükleyebilir ve AI motoruyla hepsini birlikte işleyebilirsiniz. Düşük donanımlı cihazlarda gecikmeyi önlemek için partiler halinde çalışmanız önerilir. Tüm işlem yerelde yapılır, sunucuya yükleme olmaz; gizlilik korunur.' },
+      { q: 'Bu görüntü boyutlandırma aracı ücretsiz mi?', a: 'Evet, bu araç tamamen ve kalıcı olarak ücretsizdir. Premium özellikler için ücretli abonelik gerekmez. Boyutlandırılmış görüntüleri indirirken de gizli ücret yoktur.' },
+      { q: 'Görüntüyü yeniden boyutlandırmak kaliteyi düşürür mü?', a: '✅Decrease Size (downscale): Görüntü boyutunu küçültmek görsel kaliteyi düşürmez. Hatta bazı durumlarda küçültülen görüntü daha keskin görünebilir. Bu nedenle daha küçük boyuta indirme genelde kalite kaybına neden olmaz.\n❌Increase Size (upscale): Görüntüyü orijinalden büyük yapmak görsel kaliteyi etkileyebilir. Ne kadar çok büyütürseniz kalite kaybı olasılığı o kadar artar.' },
+      { q: 'Bu araç güvenli mi?', a: 'Evet, aracımız özellikle kişisel ve hassas görüntüler için güvenlidir. Tüm işlem cihazınızda yerel olarak gerçekleşir ve hiçbir veri cihazı terk etmez. Böylece gizlilik riski olmadan boyutlandırma yapabilirsiniz.' },
+      { q: 'Hangi görüntü formatları destekleniyor?', a: 'Görüntü boyutlandırma aracımız tüm görüntü formatlarını destekler. Aşağıdaki formatlarda görüntü seçebilirsiniz:\n.jpg .jpeg .png .gif .webp .svg .avif .heic .heif .jxl .bmp .ico .tiff .tif .jfif .jpe .pjpeg .pjp .apng .svgz .xbm' },
     ],
     removeBackground: [
       { q: 'Arka plan kaldırma nasıl çalışır?', a: 'Tarayıcıda doğrudan çalışan gelişmiş AI modellerini kullanarak konuyu algılar ve arka plandan ayırırız.' },
@@ -667,11 +1105,12 @@ const tr = {
       { q: 'Veriler sunucuya yükleniyor mu?', a: 'Hayır. Tüm filigran işlemleri tarayıcıda yerel olarak yapılır.' },
     ],
     qrCodeGenerator: [
-      { q: 'QR koduna hangi tür veriler kodlanabilir?', a: 'URL, düz metin, WiFi kimlik bilgileri, e-posta, telefon numarası, SMS, vCard ve daha fazlasını kodlayabilirsiniz.' },
-      { q: 'QR kodunun renklerini ve stilini özelleştirebilir miyim?', a: 'Evet. Ön plan ve arka plan renklerini seçin, logo ekleyin ve çeşitli stiller arasından seçim yapın.' },
-      { q: 'QR kodu hangi formatlarda indirilebilir?', a: 'PNG, SVG veya JPEG dosyası olarak indirebilirsiniz.' },
-      { q: 'Logo eklemek QR kodunu taranamaz hale getirir mi?', a: 'Logo kodu çok fazla kaplamadığı sürece QR kodunu taranabilir tutmak için hata düzeltme kullanırız.' },
-      { q: 'QR kod oluşturma sunucuda mı gerçekleşiyor?', a: 'Hayır. QR kodları tamamen tarayıcınızda oluşturulur.' },
+      { q: 'Bu QR kodu sona erer mi?', a: 'Hayır, bu QR kodları sona ermez ve ömür boyu destek garantisindedir. Kare kutular içinde bit şeklinde kodlanmış talimatları sakladığı için, bunlarda saklanan bilgiler değiştirilemez veya silinir. Kod bilgilerine, hatta yıllar sonra bile herhangi bir kamerayla tarayarak erişebilirsiniz.' },
+      { q: 'QR kodum neden taranmıyor?', a: 'QR kodunuz şu nedenlerden dolayı taranmayabilir: i. Düşük Kontrast: Benzer arka plan ve ön plan renkleri seçerseniz, QR kodunun görünürlüğünü etkiler ve tarama hatasına neden olur. Ancak aracımız, özelleştirme sırasında düşük kontras veya diğer taramayla ilgili herhangi bir sorun hakkında sizi yönlendirir. ii. Büyük Veriler: Çok büyük metin veya veriler için bir QR kodu oluşturursanız, çok karmaşık hale gelir ve tarama sırasında sorun görür. Metin uzunluğu doğrulayıcı, QR kodu oluşturma sırasında optimal metin uzunluğu hakkında sizi yönlendirir. iii. Bulanık Baskı: QR kodunuzu PNG veya SVG gibi yüksek çözünürlüklü bir biçimde indirdiğinizden emin olun, bu zaten aracımız tarafından desteklenmektedir.' },
+      { q: 'QR koduna logo ekleyebilir miyim?', a: 'Elbette, QR kodunuza özel bir logo ekleyebilir veya yerleşik logo kitaplığından birini seçebilirsiniz. Seçtiğiniz logo, QR kodunun merkezine otomatik olarak ayarlanacaktır.' },
+      { q: 'QR kodunu nasıl tarayabilirim?', a: 'QR kodunu mobil kameranızı kullanarak tarayabilirsiniz. Ancak bağlantıya otomatik yönlendirme ve diğer birçok ileri özellik için, QR kodu tarayıcımızı https://photremium.com/qr-code-scanner bağlantısını kullanarak ücretsiz olarak ziyaret edebilirsiniz.' },
+      { q: 'Ücretsiz olarak kaç QR kodu oluşturabilirim?', a: 'SINIRSIZ! Ücretsiz olarak birden fazla QR kodu oluşturabilirsiniz. Tüm özellikler, özelleştirmeler ve şablonlar herkese sonsuza kadar ücretsiz. Premium özelliklerinden yararlanmak için abonelik gerekli değildir.' },
+      { q: 'QR kodu oluşturmak için giriş yapması veya kaydolması gerekli midir?', a: 'Hayır, metninizi girin, QR kodu oluşturun ve özelleştirmeden sonra indirin. Tüm özellikler tamamen ücretsiz olarak erişilebildiğinden giriş yapmanıza veya kaydolmanıza gerek yoktur.' },
     ],
     qrCodeScanner: [
       { q: 'QR kodu nasıl tararım?', a: 'Canlı tarama için cihaz kamerasını kullanabilir veya QR kodu içeren bir görüntü yükleyebilirsiniz.' },

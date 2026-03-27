@@ -9,7 +9,7 @@ const SEO = ({ title, description, keywords }) => {
   const { t } = useTranslation();
   const dir = LANGUAGES.find((l) => l.code === lang)?.dir || 'ltr';
   const fallbackKeywords = t('seo.homeKeywords');
-  const resolvedDescription = description || 'Free online image tools by photremium.com.';
+  const resolvedDescription = description || 'Free online image tools by Photremium.';
   const resolvedKeywords = (typeof keywords === 'string' && keywords.trim()) ? keywords : fallbackKeywords;
 
   // Direct DOM write as an instant fallback — react-helmet-async batches its

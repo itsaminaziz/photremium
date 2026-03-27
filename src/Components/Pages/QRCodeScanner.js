@@ -70,12 +70,28 @@ const QRCodeScanner = () => {
   const [dragOver, setDragOver] = useState(false);
   const [jsQRLoaded, setJsQRLoaded] = useState(false);
   const [facingMode, setFacingMode] = useState('environment');
+  const [torchSupported, setTorchSupported] = useState(false);
+  const [torchOn, setTorchOn] = useState(false);
+  const [screenLightOn, setScreenLightOn] = useState(false);
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const streamRef = useRef(null);
   const animRef = useRef(null);
   const fileInputRef = useRef(null);
+
+  const refreshTorchSupport = useCallback((stream) => {
+    const videoTrack = stream?.getVideoTracks?.()[0];
+    if (!videoTrack) {
+      setTorchSupported(false);
+      setTorchOn(false);
+      return;
+    }
+    const capabilities = videoTrack.getCapabilities?.();
+    const supported = Boolean(capabilities?.torch);
+    setTorchSupported(supported);
+    setTorchOn(false);
+  }, []);
 
   /* ---------- load jsQR on mount ---------- */
   useEffect(() => {
@@ -102,6 +118,9 @@ const QRCodeScanner = () => {
     if (videoRef.current) videoRef.current.srcObject = null;
     setScanning(false);
     setShowCamera(false);
+    setTorchOn(false);
+    setTorchSupported(false);
+    setScreenLightOn(false);
   }, []);
 
   /* cleanup on unmount */
@@ -129,7 +148,7 @@ const QRCodeScanner = () => {
     canvas.height = video.videoHeight;
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const code = window.jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: 'dontInvert' });
+    const code = window.jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: 'attemptBoth' });
     if (code && code.data) {
       handleResult(code.data);
       return;
@@ -164,6 +183,7 @@ const QRCodeScanner = () => {
         video: { facingMode, width: { ideal: 1280 }, height: { ideal: 720 } },
       });
       streamRef.current = stream;
+      refreshTorchSupport(stream);
       await attachStream(stream);
     } catch (err) {
       if (err.name === 'NotAllowedError') {
@@ -174,7 +194,7 @@ const QRCodeScanner = () => {
         setCameraError(t('qrScanner.cameraError'));
       }
     }
-  }, [facingMode, attachStream]);
+  }, [facingMode, attachStream, refreshTorchSupport]);
 
   /* ---------- switch camera ---------- */
   const switchCamera = useCallback(async () => {
@@ -185,6 +205,9 @@ const QRCodeScanner = () => {
       streamRef.current = null;
     }
     setScanning(false);
+    setTorchOn(false);
+    setTorchSupported(false);
+    setScreenLightOn(false);
     const newMode = facingMode === 'environment' ? 'user' : 'environment';
     setFacingMode(newMode);
     try {
@@ -192,11 +215,30 @@ const QRCodeScanner = () => {
         video: { facingMode: newMode, width: { ideal: 1280 }, height: { ideal: 720 } },
       });
       streamRef.current = stream;
+      refreshTorchSupport(stream);
       await attachStream(stream);
     } catch {
       setCameraError(t('qrScanner.switchError'));
     }
-  }, [facingMode, attachStream]);
+  }, [facingMode, attachStream, refreshTorchSupport]);
+
+  const toggleTorch = useCallback(async () => {
+    const videoTrack = streamRef.current?.getVideoTracks?.()[0];
+    if (torchSupported && videoTrack && videoTrack.applyConstraints) {
+      const nextState = !torchOn;
+      try {
+        await videoTrack.applyConstraints({ advanced: [{ torch: nextState }] });
+        setTorchOn(nextState);
+        setScreenLightOn(false);
+      } catch {
+        setTorchOn(false);
+      }
+      return;
+    }
+
+    setScreenLightOn((prev) => !prev);
+    setTorchOn(false);
+  }, [torchSupported, torchOn]);
 
   /* ---------- scan image file ---------- */
   const scanImage = useCallback(async (file) => {
@@ -443,8 +485,8 @@ const QRCodeScanner = () => {
 
       {/* ==================== CAMERA POPUP ==================== */}
       {showCamera && (
-        <div className="qrscan-cam-overlay">
-          <div className="qrscan-cam-popup">
+        <div className={`qrscan-cam-overlay ${screenLightOn ? 'qrscan-cam-overlay--screenlight' : ''}`}>
+          <div className={`qrscan-cam-popup ${screenLightOn ? 'qrscan-cam-popup--screenlight' : ''}`}>
             <div className="qrscan-cam-popup__header">
               <span><i className="fa-solid fa-video"></i> {t('qrScanner.cameraScanner')}</span>
               <button className="qrscan-cam-popup__close" onClick={stopCamera}>
@@ -452,7 +494,7 @@ const QRCodeScanner = () => {
               </button>
             </div>
 
-            <div className="qrscan-cam-popup__body">
+            <div className={`qrscan-cam-popup__body ${screenLightOn ? 'qrscan-cam-popup__body--screenlight' : ''}`}>
               {cameraError ? (
                 <div className="qrscan-camera-placeholder qrscan-camera-placeholder--error">
                   <div className="qrscan-camera-icon qrscan-camera-icon--error">
@@ -488,6 +530,14 @@ const QRCodeScanner = () => {
             {/* Controls outside body so they never get clipped */}
             {scanning && (
               <div className="qrscan-cam-popup__controls">
+                <button
+                  className={`qrscan-ctrl-btn ${(torchOn || screenLightOn) ? 'qrscan-ctrl-btn--active' : ''}`}
+                  onClick={toggleTorch}
+                  title={torchSupported ? (torchOn ? 'Turn Flashlight Off' : 'Turn Flashlight On') : (screenLightOn ? 'Turn Screen Light Off' : 'Turn Screen Light On')}
+                  aria-label={torchSupported ? (torchOn ? 'Turn Flashlight Off' : 'Turn Flashlight On') : (screenLightOn ? 'Turn Screen Light Off' : 'Turn Screen Light On')}
+                >
+                  <i className="fa-solid fa-lightbulb"></i>
+                </button>
                 <button className="qrscan-ctrl-btn" onClick={switchCamera} title={t('qrScanner.switchCamera')}>
                   <i className="fa-solid fa-camera-rotate"></i>
                 </button>

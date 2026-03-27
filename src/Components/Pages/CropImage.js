@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
+import MobileImportPopup from '../MobileImportPopup/MobileImportPopup';
 import { useLanguage } from '../../context/LanguageContext';
 import './CropImage.css';
 
@@ -72,7 +73,19 @@ const TEMPLATES = [
 /*             IMAGE CROPPER PAGE                */
 /* ============================================= */
 const CropImage = () => {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isBlogRtl = lang === 'ur' || lang === 'ar';
+  const blog = t('cropper.blog');
+  const blogSections = Array.isArray(blog?.sections) ? blog.sections : [];
+  const blogFaqId = 'crop-blog-faq';
+  const blogToc = useMemo(
+    () => [
+      ...blogSections.map((section) => ({ id: section.id || section.title, label: section.tocLabel || section.title })),
+      { id: blogFaqId, label: t('faq.heading') },
+    ],
+    [blogSections, blogFaqId, t]
+  );
+  const [activeBlogId, setActiveBlogId] = useState(blogSections[0]?.id || blogSections[0]?.title || '');
   const location = useLocation();
   const [images, setImages] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
@@ -99,6 +112,7 @@ const CropImage = () => {
   const imgRef = useRef(null);
   const canvasRef = useRef(null);
   const didPrefillFromStateRef = useRef(false);
+  const dragDepthRef = useRef(0);
 
   const selected = images.find((i) => i.id === selectedId) || null;
   const totalSize = images.reduce((s, i) => s + i.file.size, 0);
@@ -524,11 +538,71 @@ const CropImage = () => {
   };
 
   /* --- drag & drop --- */
-  const onDrop = (e) => {
+  const isFileDrag = (e) => Array.from(e.dataTransfer?.types || []).includes('Files');
+
+  const onDragEnter = (e) => {
+    if (!isFileDrag(e)) return;
     e.preventDefault();
+    dragDepthRef.current += 1;
+    setDragOver(true);
+  };
+
+  const onDragOver = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    if (!dragOver) setDragOver(true);
+  };
+
+  const onDragLeave = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
+    if (dragDepthRef.current === 0) setDragOver(false);
+  };
+
+  const onDrop = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = 0;
     setDragOver(false);
     addFiles(e.dataTransfer.files);
   };
+
+  const handleBlogTocClick = useCallback((e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - 110;
+    window.scrollTo({ top, behavior: 'smooth' });
+    setActiveBlogId(id);
+  }, []);
+
+  useEffect(() => {
+    const newActive = blogSections[0]?.id || blogSections[0]?.title || '';
+    setActiveBlogId(newActive);
+  }, [blogSections]);
+
+  useEffect(() => {
+    if (!blogSections.length || images.length > 0) return;
+    const observers = [];
+    blogToc.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (!element) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveBlogId(item.id);
+          }
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+      observer.observe(element);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((observer) => observer.disconnect());
+  }, [blogToc, blogSections.length, images.length]);
 
   /* =========================== UPLOAD VIEW =========================== */
   if (!images.length) {
@@ -548,8 +622,9 @@ const CropImage = () => {
 
             <div
               className={`crp-dropzone ${dragOver ? 'crp-dropzone--active' : ''}`}
-              onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-              onDragLeave={() => setDragOver(false)}
+              onDragEnter={onDragEnter}
+              onDragOver={onDragOver}
+              onDragLeave={onDragLeave}
               onDrop={onDrop}
             >
               <div className="crp-dropzone__cloud">
@@ -560,9 +635,12 @@ const CropImage = () => {
               <p className="crp-dropzone__hint">
                 <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
-              <button className="crp-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
-              </button>
+              <div style={{ marginTop: 20, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+                <button className="crp-dropzone__btn" onClick={() => fileInputRef.current?.click()} style={{ marginTop: 0 }}>
+                  <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
+                </button>
+                <MobileImportPopup onImportFiles={addFiles} />
+              </div>
               <input
                 ref={fileInputRef}
                 type="file"
@@ -572,10 +650,129 @@ const CropImage = () => {
                 onChange={(e) => addFiles(e.target.files)}
               />
             </div>
+
           </div>
         </section>
 
-        <FAQ faqKey="cropImage" />
+        {blogSections.length ? (
+          <>
+            <nav className={`crp-blog-toc--mobile ${isBlogRtl ? 'crp-blog-toc--mobile--rtl' : ''}`} aria-label="Image cropper blog sections">
+              {blogToc.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className={activeBlogId === item.id ? 'toc-active' : ''}
+                  onClick={(e) => handleBlogTocClick(e, item.id)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className={`crp-blog-layout ${isBlogRtl ? 'crp-blog-layout--rtl' : ''}`}>
+              <aside className="crp-blog-toc" aria-label="Image cropper blog TOC">
+                <p className="crp-blog-toc__title">{blog.tocTitle || 'Contents'}</p>
+                <ul className="crp-blog-toc__list">
+                  {blogToc.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href={`#${item.id}`}
+                        className={activeBlogId === item.id ? 'toc-active' : ''}
+                        onClick={(e) => handleBlogTocClick(e, item.id)}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+
+              <section className="crp-blog">
+                {blogSections.map((section) => (
+                  <article className="crp-blog__card" id={section.id || section.title} key={section.id || section.title}>
+                    <h2>{section.title}</h2>
+
+                    {Array.isArray(section.paragraphs)
+                      ? section.paragraphs.map((p, idx) => <p key={`p-${idx}`}>{p}</p>)
+                      : null}
+
+                    {section.listTitle ? <h3>{section.listTitle}</h3> : null}
+
+                    {Array.isArray(section.bullets) ? (
+                      <ul className="crp-blog__list">
+                        {section.bullets.map((bullet, idx) => (
+                          <li key={`b-${idx}`}>{bullet}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+
+                    {Array.isArray(section.steps) ? (
+                      <div className="crp-blog__steps">
+                        {section.steps.map((step, idx) => (
+                          <div className="crp-blog__step" key={`step-${idx}`}>
+                            <div className="crp-blog__step-title">{step.heading}</div>
+
+                            {Array.isArray(step.paragraphs)
+                              ? step.paragraphs.map((p, pIdx) => <p key={`sp-${pIdx}`}>{p}</p>)
+                              : null}
+
+                            {Array.isArray(step.bullets) ? (
+                              <ul className="crp-blog__list crp-blog__list--nested">
+                                {step.bullets.map((bullet, bIdx) => (
+                                  <li key={`sb-${bIdx}`}>{bullet}</li>
+                                ))}
+                              </ul>
+                            ) : null}
+
+                            {step.table ? (
+                              <div className="crp-blog__table" role="table" aria-label={step.table.caption || step.heading}>
+                                <div className="crp-blog__table-row crp-blog__table-row--head" role="row">
+                                  {step.table.headers.map((header, hIdx) => (
+                                    <div className="crp-blog__table-cell" role="columnheader" key={`h-${hIdx}`}>
+                                      {header}
+                                    </div>
+                                  ))}
+                                </div>
+                                {step.table.rows.map((row, rIdx) => (
+                                  <div className="crp-blog__table-row" role="row" key={`r-${rIdx}`}>
+                                    {row.map((cell, cIdx) => (
+                                      <div className="crp-blog__table-cell" role="cell" key={`c-${cIdx}`}>
+                                        {cell}
+                                      </div>
+                                    ))}
+                                  </div>
+                                ))}
+                              </div>
+                            ) : null}
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+
+                    {Array.isArray(section.formats) ? (
+                      <>
+                        {section.formatsIntro ? <p className="crp-blog__formats-intro">{section.formatsIntro}</p> : null}
+                        <div className="crp-blog__chips" aria-label="Supported formats">
+                          {section.formats.map((fmt, fIdx) => (
+                            <span className="crp-blog__chip" key={`f-${fIdx}`}>
+                              {fmt}
+                            </span>
+                          ))}
+                        </div>
+                      </>
+                    ) : null}
+                  </article>
+                ))}
+
+                <section className="crp-blog__faq-section" id={blogFaqId}>
+                  <FAQ faqKey="cropImage" />
+                </section>
+              </section>
+            </div>
+          </>
+        ) : (
+          <FAQ faqKey="cropImage" />
+        )}
       </>
     );
   }
@@ -591,7 +788,13 @@ const CropImage = () => {
         keywords={t('cropper.seo.workspaceKeywords')}
       />
 
-      <section className="crp-workspace">
+      <section
+        className={`crp-workspace ${dragOver ? 'crp-workspace--dragover' : ''}`}
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        onDrop={onDrop}
+      >
         {/* Mobile settings toggle */}
         <button
           className="crp-settings-toggle"

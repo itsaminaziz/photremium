@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
+import MobileImportPopup from '../MobileImportPopup/MobileImportPopup';
 import { useLanguage } from '../../context/LanguageContext';
 import './RemoveBackground.css';
 
@@ -375,6 +376,7 @@ const RemoveBackground = () => {
   const compareRef = useRef(null);
   const compareDragging = useRef(false);
   const didPrefillFromStateRef = useRef(false);
+  const dragDepthRef = useRef(0);
 
   const selected = images.find((i) => i.id === selectedId) || null;
   const totalSize = images.reduce((s, i) => s + i.file.size, 0);
@@ -606,8 +608,33 @@ const RemoveBackground = () => {
   };
 
   /* --- drag & drop --- */
-  const onDrop = (e) => {
+  const isFileDrag = (e) => Array.from(e.dataTransfer?.types || []).includes('Files');
+
+  const onDragEnter = (e) => {
+    if (!isFileDrag(e)) return;
     e.preventDefault();
+    dragDepthRef.current += 1;
+    setDragOver(true);
+  };
+
+  const onDragOver = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    if (!dragOver) setDragOver(true);
+  };
+
+  const onDragLeave = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = Math.max(0, dragDepthRef.current - 1);
+    if (dragDepthRef.current === 0) setDragOver(false);
+  };
+
+  const onDrop = (e) => {
+    if (!isFileDrag(e)) return;
+    e.preventDefault();
+    dragDepthRef.current = 0;
     setDragOver(false);
     addFiles(e.dataTransfer.files);
   };
@@ -638,8 +665,9 @@ const RemoveBackground = () => {
 
             <div
               className={`rbg-dropzone ${dragOver ? 'rbg-dropzone--active' : ''}`}
-              onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-              onDragLeave={() => setDragOver(false)}
+              onDragEnter={onDragEnter}
+              onDragOver={onDragOver}
+              onDragLeave={onDragLeave}
               onDrop={onDrop}
             >
               <div className="rbg-dropzone__cloud">
@@ -650,9 +678,12 @@ const RemoveBackground = () => {
               <p className="rbg-dropzone__hint">
                 <i className="fa-regular fa-keyboard"></i> {t('common.pasteHint')} <kbd>Ctrl</kbd> + <kbd>V</kbd>
               </p>
-              <button className="rbg-dropzone__btn" onClick={() => fileInputRef.current?.click()}>
-                <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
-              </button>
+              <div style={{ marginTop: 20, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+                <button className="rbg-dropzone__btn" onClick={() => fileInputRef.current?.click()} style={{ marginTop: 0 }}>
+                  <i className="fa-solid fa-folder-open"></i> {t('common.chooseFiles')}
+                </button>
+                <MobileImportPopup onImportFiles={addFiles} />
+              </div>
               <input
                 ref={fileInputRef}
                 type="file"
@@ -662,6 +693,7 @@ const RemoveBackground = () => {
                 onChange={(e) => addFiles(e.target.files)}
               />
             </div>
+
           </div>
         </section>
 
@@ -681,7 +713,13 @@ const RemoveBackground = () => {
         keywords={t('removeBg.seo.workspaceKeywords')}
       />
 
-      <section className="rbg-workspace">
+      <section
+        className={`rbg-workspace ${dragOver ? 'rbg-workspace--dragover' : ''}`}
+        onDragEnter={onDragEnter}
+        onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
+        onDrop={onDrop}
+      >
         {/* Mobile settings toggle */}
         <button
           className="rbg-settings-toggle"
