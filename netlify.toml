@@ -2,6 +2,14 @@
   command = "CI=false npm run build"
   publish = "build"
 
+[build.environment]
+  REACT_APP_FIREBASE_API_KEY = "AIzaSyD1_K50LSQkEB7OddXwKwvzHUDMsdnbBPg"
+  REACT_APP_FIREBASE_AUTH_DOMAIN = "myconverter-4318c.firebaseapp.com"
+  REACT_APP_FIREBASE_PROJECT_ID = "myconverter-4318c"
+  REACT_APP_FIREBASE_STORAGE_BUCKET = "myconverter-4318c.firebasestorage.app"
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID = "984772103172"
+  REACT_APP_FIREBASE_APP_ID = "1:984772103172:web:35b987b4c27b62e06e7951"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
