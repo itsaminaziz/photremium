@@ -982,10 +982,18 @@ const tr = {
     supportedFormats: 'JPG, PNG, GIF, WEBP desteklenir',
     ctrlVPaste: 'Ctrl+V ile yapıştır',
     scanFromGallery: 'Galeriden Tara',
+    instantScanning: 'Anında Tarama',
+    instantScanningDesc: 'Kameradan veya yüklenen görsellerden gerçek zamanlı QR kod algılama',
+    private100: '%100 Gizli',
+    private100Desc: 'Tüm işlemler tarayıcınızda gerçekleşir. Hiçbir şey yüklenmez',
+    multiFormat: 'Çoklu Format',
+    multiFormatDesc: 'URL, metin, WiFi, kişi, e-posta, telefon ve daha fazlasını algılar',
     accessingCamera: 'Kameraya erişiliyor…',
     cameraDenied: 'Kamera erişimi reddedildi. Lütfen kamera iznine izin verin ve tekrar deneyin.',
     noCamera: 'Bu cihazda kamera bulunamadı.',
     cameraError: 'Kameraya erişilemiyor. Lütfen tekrar deneyin.',
+    videoError: 'Video oynatma başlatılamadı.',
+    switchError: 'Kamera değiştirilemedi.',
     tryAgain: 'Tekrar Dene',
     switchCamera: 'Kamera Değiştir',
     stop: 'Durdur',
@@ -1003,6 +1011,100 @@ const tr = {
     password: 'Şifre',
     security: 'Güvenlik',
     unknown: 'Bilinmiyor',
+    typeText: 'Metin',
+    typeUrl: 'URL',
+    typeWifi: 'WiFi Ağı',
+    typeContact: 'Kişi Kartı',
+    typeEmail: 'E-posta',
+    typePhone: 'Telefon Numarası',
+    typeSms: 'SMS',
+    typeLocation: 'Konum',
+    blog: {
+      tocTitle: 'İçindekiler',
+      sections: [
+        {
+          id: 'why-use-qr-code-scanner',
+          title: '1. Neden QR kod tarayıcı kullanmalısınız?',
+          paragraphs: [
+            'QR kod tarayıcı, temel olarak QR kodunda saklanan bilgileri çözen bir mobil kameradır. Kamerayı QR koda yöneltmeniz yeterlidir; QR kodun yönü ne olursa olsun belirli desenleri okur, hataları algılar, gerekirse düzeltir ve içindeki bilgiyi gösterir.',
+          ],
+          listTitle: 'QR kod tarayıcı türleri:',
+          bullets: [
+            'Web Tabanlı QR kod tarayıcı: Tarayıcınızın desteklediği çevrim içi tarayıcılarla QR kod tarayabilirsiniz. Bilgiye kamera üzerinden veya görsel yükleyerek ulaşabilirsiniz. Otomatik yönlendirme ve diğer gelişmiş özellikler için https://photremium.com adresini ziyaret edebilirsiniz.',
+            'Mobil kameralar: Bazı modern telefonlarda kendi kamera uygulamalarında yerleşik QR kod tarayıcı bulunur. Bunlar, QR kodu normal kamerayla tarayarak bilgiyi alıp çözebilir.',
+            'Uygulamalar: QR kod taramak için özel geliştirilmiş bazı uygulamalar vardır. Ancak gelişmiş yönlendirme ve birçok özellik için uygulamayı bu bağlantıdan ücretsiz kurabilirsiniz: https://photremium.com.',
+            'Donanım cihazları: QR kod taramak için bazı donanım cihazları da üretilmiştir. Bu cihazlar büyük alışveriş merkezlerinde ürün faturalandırmasında yaygın olarak kullanılır.',
+          ],
+        },
+        {
+          id: 'why-choose-our-qr-code-scanner',
+          title: '2. Neden bizim QR kod tarayıcımızı seçmelisiniz?',
+          paragraphs: [
+            'QR koddan çözümlenen içeriği kopyalamaya kadar yönlendirme dahil birçok gelişmiş özelliği keşfedebilirsiniz. QR kod tarayıcımızdaki diğer ilgi çekici özellikler şunlardır:',
+          ],
+          bullets: [
+            'Yüksek Hız: QR kod tarayıcımız, QR kod çözümlemeyi son derece hızlı hale getirir. QR kodu taramanız yeterlidir; aracımız size bilgiyi anında verir ve metin/bağlantıyı kopyalama, bağlantı algılanırsa açma veya kişi algılanırsa otomatik kaydetme gibi gelişmiş seçenekler sunar.',
+            'Kurulum Gerekmez: QR kod tarayıcımıza erişmek için ayrı bir uygulama kurmanız gerekmez. Bu araca yerel tarayıcınızdan ücretsiz erişebilirsiniz.',
+            'Platformlar Arası Erişim: Herhangi bir cihazda erişebilirsiniz. İşletim sistemi sürümü veya başka bir gereksinim konusunda endişe etmeyin. Tüm sürümler ve tüm cihazlarda desteklenir.',
+            'Tüm Formatlar Desteklenir: Düz metin, WiFi, URL, kişi, Gmail ve Google Haritalar vb. dahil QR kodda saklanabilen tüm veri formatları aracımız tarafından desteklenir.',
+          ],
+        },
+        {
+          id: 'step-by-step-guide',
+          title: '3. Adım adım rehber:',
+          steps: [
+            {
+              heading: '1. Öncelikle QR kodu taramak için bir yöntem seçin. Bunu yapmak için aşağıdaki iki yöntem vardır:',
+              subSteps: [
+                {
+                  heading: 'i. Kamera yöntemi',
+                  paragraphs: [
+                    'Basit bir kamerayı destekleyen dizüstü bilgisayar, PC veya herhangi bir cihaz kullanıyor olsanız bile cihaz kameranızla QR kod tarayabilirsiniz. “Start Camera” düğmesine tıklayınca bir izin isteği açılır; bu sitenin QR tarama için kameranızı kullanmasına izin verin. Yanlışlıkla reddettiyseniz veya izin isteği görünmüyorsa aşağıdaki adımlarla kameraya manuel erişim verebilirsiniz:',
+                  ],
+                  notes: [
+                    '➔ Chrome için (Android / Masaüstü):',
+                    '1. Üç noktaya tıklayın',
+                    '2. Settings bölümüne gidin',
+                    '3. (Android için bu adımı atlayın) Privacy and Security',
+                    '4. Site Settings\'e tıklayın',
+                    '5. Ardından permissions bölümünde Camera\'ya tıklayın',
+                    '6. Sitemizin URL\'sini bulun: https://photremium.com/qr-code-scanner',
+                    '7. Açılır menüden kameraya izin verin.',
+                    '➔ Safari için (iPhone / iOS):',
+                    '1. Adres çubuğundaki AA veya Website Settings simgesine dokunun.',
+                    '2. Website Settings\'i seçin.',
+                    '3. Camera\'ya dokunun ve Allow seçin.',
+                    '4. Hâlâ engelliyse: iPhone Settings > Safari > Camera yoluna gidin ve Ask veya Allow olarak ayarlayın.',
+                  ],
+                },
+                {
+                  heading: 'ii. Galeri yöntemi',
+                  paragraphs: [
+                    'Bilgilere erişmek için QR kod görseli yükleyebilirsiniz. “Scan from Gallery” düğmesine tıklayın, dosya gezgini açılır. Ardından QR kod görselini seçin. jpg, .jpeg, .png, .gif, .webp, .svg, .avif, .heic, .heif, .jxl, .bmp, .ico, .tiff, .tif, .jfif, .jpe, .pjpeg, .pjp, .apng, .svgz ve .xbm vb. tüm görsel formatları desteklenir.',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: '2. QR kodu seçtiğinizde tüm bilgiler görüntülenir; algılanırsa kopyalamanıza, paylaşmanıza veya bağlantıyı açmanıza olanak tanır. İsterseniz tekrar tarayabilirsiniz.',
+            },
+          ],
+        },
+        {
+          id: 'benefits-of-qr-code-scanner',
+          title: 'QR kod tarayıcının faydaları:.',
+          paragraphs: [
+            'QR kod tarayıcı bu dijital dünyada birçok fayda sunar. Ödeme, doğrulama ve bilgiye erişimi çevrim dışı modda bile kolay ve hızlı hale getirir.',
+          ],
+          bullets: [
+            'Bilgiye anında erişim: QR kodu taramak bilgiyi milisaniyeler içinde sağlar. Desenleri çözer, hataları algılar ve çok hızlı şekilde giderir; kullanıcıya son derece hızlı bir deneyim sunar.',
+            'Kesintisiz İletişim: Bu gelişim çağında banka bilgileri ve ürün detayları gibi küçük bilgiler için hızlı ve güvenli iletişim büyük önem taşır. QR kod tarayıcı bu sorunu çözer çünkü ödemeler QR kod taranarak yapılır. Ayrıca Google, dizüstünde yeni hesap oluştururken telefonu QR ile doğrular.',
+            'E-Biletler: Otobüs terminallerinde, tren istasyonlarında veya havaalanlarında uzun kuyruklarda sıranızı beklemeden biletlerinizi kolayca doğrulayabilirsiniz. Ayrıca bekleme kuyruklarını azaltmak için havaalanlarının birçok noktasına QR kod tarayıcılar kurulur. Bu, çalışan ihtiyacını da azaltır ve böylece havayolu bütçesini otomatik olarak tasarruf ettirir.',
+            'Ürün Doğrulama: Gelişmiş ve üst segment markalar ürünlerine QR kod yerleştirir. Müşteri bu QR kodu tarayarak ürünün orijinal olup olmadığını kontrol edebilir.',
+          ],
+        },
+      ],
+    },
   },
 
   faceBlur: {
@@ -1113,11 +1215,11 @@ const tr = {
       { q: 'QR kodu oluşturmak için giriş yapması veya kaydolması gerekli midir?', a: 'Hayır, metninizi girin, QR kodu oluşturun ve özelleştirmeden sonra indirin. Tüm özellikler tamamen ücretsiz olarak erişilebildiğinden giriş yapmanıza veya kaydolmanıza gerek yoktur.' },
     ],
     qrCodeScanner: [
-      { q: 'QR kodu nasıl tararım?', a: 'Canlı tarama için cihaz kamerasını kullanabilir veya QR kodu içeren bir görüntü yükleyebilirsiniz.' },
-      { q: 'Hangi tür QR kodları okunabilir?', a: 'URL, metin, WiFi ve vCard dahil tüm standart QR kod formatlarını okuruz.' },
-      { q: 'Tarayıcı mobil cihazlarda çalışıyor mu?', a: 'Evet. Tarayıcı, tarayıcı üzerinden cihaz kameranızı kullanır ve Android ile iOS\'ta çalışır.' },
-      { q: 'Kamera görüntüm depolanıyor veya aktarılıyor mu?', a: 'Hayır. Kamera işleme yalnızca tarayıcınızda gerçekleşir.' },
-      { q: 'Ekran görüntüsü veya kaydedilmiş görüntüden QR kodu tarayabilir miyim?', a: 'Elbette. Yükleme seçeneğini kullanın.' },
+      { q: 'Kayıtlı görsellerden ve ekran görüntülerinden QR kod tarayabilir miyim?', a: '**Evet**, kayıtlı görsellerden veya ekran görüntülerinden QR kod tarayabilirsiniz. QR kod tarayıcımız https://photremium.com/qr-code-scanner galeriden QR kod taramanıza olanak tanır. Sadece görseli seçmeniz yeterli ve o QR koddan çözümlenen tüm bilgilere ulaşırsınız.' },
+      { q: 'QR kod tarayıcı için Uygulama yüklemem gerekir mi?', a: '**Hayır**, web tabanlı QR kod tarayıcımız herhangi bir uygulama yüklemeye gerek kalmadan QR kod taramanızı sağlar. Gelişmiş QR kod tarayıcımıza tüm cihazlarda ücretsiz erişebilirsiniz.' },
+      { q: 'Tarayıcı neden QR kodu tanımıyor?', a: 'QR kodunuz aşağıdaki nedenlerden biri nedeniyle taranmıyor olabilir: i. Yetersiz ışık: QR kodu loş ışıkta taramak sorun çıkarabilir. Herhangi bir ekrandan tarıyorsanız feneri açın ve parlaklığı artırın. ii. Mesafe: Uygun olmayan mesafeden taramak da sorunlara neden olur. QR kod taramak için ideal mesafe yaklaşık 10 inçtir (25cm). iii. Kirli kamera lensi: Kamera lensleri kirliyse QR kod da taranamayabilir. Taramadan önce lensleri temizleyin. “Tarayıcıda bir kutu ızgarası görüyor musunuz? Başarılı tarama için QR kodu bunun içine yerleştirin.”' },
+      { q: 'Bu araç ters veya renkli bir QR kodu tarar mı?', a: '**Evet**, QR kodunu herhangi bir renk veya yönde tarayabilirsiniz. Ancak arka plan ve ön plan renk kontrastı düşükse taramada zorluk yaşanabilir.' },
+      { q: 'Bu aracın kullanımı ücretsiz mi?', a: '**Evet**, bu araç tamamen ücretsizdir. Sınırsız QR kodu sonsuza kadar ücretsiz tarayabilirsiniz.' },
     ],
     faceBlur: [
       { q: 'Yüz algılama nasıl çalışır?', a: 'AI destekli yüz algılama modeli doğrudan tarayıcınızda çalışır. Görüntülerdeki yüzleri tanımlar.' },

@@ -780,6 +780,92 @@ const pt = {
     copy: 'Copiar',
     share: 'Partilhar',
     scanAgain: 'Digitalizar novamente',
+    blog: {
+      tocTitle: 'Conteúdos',
+      sections: [
+        {
+          id: 'why-use-qr-code-scanner',
+          title: '1. Porque utilizar um leitor de código QR?',
+          paragraphs: [
+            'Um leitor de código QR é basicamente uma câmara móvel que descodifica a informação armazenada no código QR. Só precisa de apontar a câmara para o código QR; independentemente da orientação, ele lê os padrões específicos, deteta erros, corrige-os se necessário e mostra a informação contida no código.',
+          ],
+          listTitle: 'Tipos de leitores de código QR:',
+          bullets: [
+            'Leitor de código QR baseado na web: Pode digitalizar o código QR com leitores online suportados pelo seu navegador. Pode aceder à informação pela câmara ou através do upload da imagem. Para redirecionamento automático e outras funcionalidades avançadas, pode visitar https://photremium.com.',
+            'Câmaras móveis: Alguns telemóveis modernos têm leitor de código QR integrado na app de câmara original. Estes conseguem obter e descodificar a informação apenas ao digitalizar o código QR com a câmara.',
+            'Apps: Existem apps criadas especificamente para digitalizar códigos QR. No entanto, para redirecionamento avançado e muitas outras funcionalidades, pode instalar a app através deste link gratuitamente: https://photremium.com.',
+            'Dispositivos de hardware: Alguns dispositivos físicos também foram feitos para digitalizar códigos QR. Estes dispositivos são amplamente usados em grandes centros comerciais para faturação de itens.',
+          ],
+        },
+        {
+          id: 'why-choose-our-qr-code-scanner',
+          title: '2. Porque escolher o nosso leitor de código QR?',
+          paragraphs: [
+            'Pode explorar várias funcionalidades avançadas, incluindo redirecionamento e cópia do conteúdo descodificado do código QR. Pode explorar muitas outras funcionalidades interessantes no nosso leitor de código QR, como:',
+          ],
+          bullets: [
+            'Velocidade rápida: O nosso leitor de código QR torna a descodificação extremamente rápida. Só precisa de digitalizar o código QR, e a nossa ferramenta fornece a informação instantaneamente com opção avançada para copiar o texto/link, abrir se um link for detetado, ou guardar automaticamente se for detetado um contacto.',
+            'Sem necessidade de instalação: Não precisa de instalar qualquer app separada para usar o nosso leitor de código QR. Pode aceder a esta ferramenta através do seu navegador local gratuitamente.',
+            'Acesso multiplataforma: Pode aceder em qualquer dispositivo. Não se preocupe com a versão do sistema operativo ou qualquer outro requisito. É suportado em todas as versões e em todos os dispositivos.',
+            'Todos os formatos suportados: Todos os formatos de dados que podem ser armazenados no código QR, incluindo texto simples, WiFi, URLs, contactos, Gmail e Google Maps, etc., são suportados pela nossa ferramenta.',
+          ],
+        },
+        {
+          id: 'step-by-step-guide',
+          title: '3. Guia passo a passo:',
+          steps: [
+            {
+              heading: '1. Antes de mais, escolha um método para digitalizar o código QR. Existem os seguintes dois métodos:',
+              subSteps: [
+                {
+                  heading: 'i. Método da câmara',
+                  paragraphs: [
+                    'Pode digitalizar o código QR usando a câmara do seu dispositivo, mesmo em portátil, PC ou qualquer dispositivo que suporte uma câmara simples. Ao clicar no botão “Iniciar câmara”, aparecerá um pedido de permissão; permita que este site use a sua câmara para digitalização de QR. Se recusou por engano ou o pedido não aparecer, pode conceder acesso manualmente seguindo estes passos:',
+                  ],
+                  notes: [
+                    '➔ Para Chrome (Android / Desktop):',
+                    '1. Clique nos três pontos',
+                    '2. Vá a Definições',
+                    '3. (Ignore este passo no Android) Privacidade e segurança',
+                    '4. Clique em Definições do site',
+                    '5. Depois, na secção de permissões, clique em Câmara',
+                    '6. Encontre a URL do nosso site: https://photremium.com/qr-code-scanner',
+                    '7. Permita a câmara na lista suspensa.',
+                    '➔ Para Safari (iPhone / iOS):',
+                    '1. Toque no ícone AA ou Definições do website na barra de endereço.',
+                    '2. Selecione Definições do Website.',
+                    '3. Toque em Câmara e escolha Permitir.',
+                    '4. Se continuar bloqueado: Vá a Definições do iPhone > Safari > Câmara e escolha Perguntar ou Permitir.',
+                  ],
+                },
+                {
+                  heading: 'ii. Método da galeria',
+                  paragraphs: [
+                    'Pode carregar a imagem de um código QR para aceder à informação. Clique no botão “Digitalizar da galeria”, e o explorador de ficheiros será aberto. Depois, selecione a imagem do código QR. Todos os formatos de imagem são suportados, como .jpg, .jpeg, .png, .gif, .webp, .svg, .avif, .heic, .heif, .jxl, .bmp, .ico, .tiff, .tif, .jfif, .jpe, .pjpeg, .pjp, .apng, .svgz e .xbm, etc.',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: '2. Quando selecionar o código QR, toda a informação é exibida; permitindo-lhe copiar, partilhar ou abrir o link se for detetado. Também pode digitalizar novamente, se quiser.',
+            },
+          ],
+        },
+        {
+          id: 'benefits-of-qr-code-scanner',
+          title: 'Benefícios do leitor de código QR:.',
+          paragraphs: [
+            'O leitor de código QR oferece vários benefícios neste mundo digital. Torna pagamentos, verificações e acesso à informação fáceis e rápidos, mesmo no modo offline.',
+          ],
+          bullets: [
+            'Acesso instantâneo à informação: Digitalizar o código QR fornece a informação em milissegundos. Descodifica padrões, deteta erros e remove-os muito rapidamente, proporcionando ao utilizador uma experiência extremamente rápida.',
+            'Comunicação fluida: Nesta era de avanço, existe uma necessidade urgente de comunicação rápida e segura para pequenas informações como dados bancários e detalhes de produtos, etc. O leitor de código QR resolve este problema, pois os pagamentos são feitos ao digitalizar um código QR. Além disso, a Google verifica o telemóvel por QR ao criar uma nova conta no portátil.',
+            'E-Tickets: Em estações de autocarro, estações ferroviárias ou aeroportos, pode verificar facilmente os seus bilhetes sem esperar a sua vez em filas longas. Além disso, leitores de QR são instalados em vários pontos dos aeroportos para evitar filas. Isto também minimiza a necessidade de funcionários, poupando automaticamente o orçamento da companhia aérea.',
+            'Autenticação de produto: Marcas avançadas e de alto nível colocam um código QR no produto. O cliente pode digitalizar esse código QR para verificar a autenticidade do produto, se é original ou não.',
+          ],
+        },
+      ],
+    },
   },
 
   faceBlur: {
@@ -864,11 +950,11 @@ const pt = {
       { q: 'Preciso de iniciar sessão/registar-me para gerar um código QR?', a: 'Não. Basta inserir o seu texto, gerar o código QR e descarregar após personalizar. Não é necessário iniciar sessão nem registo, pois todas as funcionalidades podem ser acedidas de forma totalmente gratuita.' },
     ],
     qrCodeScanner: [
-      { q: 'Como faço para ler um código QR?', a: 'Pode usar a câmara do seu dispositivo para ler em tempo real ou carregar uma imagem que contenha um código QR. O resultado é exibido instantaneamente.' },
-      { q: 'Que tipos de códigos QR podem ser lidos?', a: 'O nosso leitor lê todos os formatos QR padrão, incluindo URLs, texto, credenciais Wi-Fi e vCards.' },
-      { q: 'O leitor funciona em dispositivos móveis?', a: 'Sim. O leitor utiliza a câmara do dispositivo pelo navegador e funciona em Android e iOS.' },
-      { q: 'A imagem da minha câmara é guardada ou enviada para algum lado?', a: 'Não. O processamento da câmara ocorre inteiramente no seu navegador.' },
-      { q: 'Posso ler códigos QR de capturas de ecrã ou imagens guardadas?', a: 'Certamente. Utilize a opção de carregar para ler um código QR de qualquer imagem guardada no seu dispositivo.' },
+      { q: 'Posso digitalizar código QR a partir de imagens guardadas e capturas de ecrã?', a: '**Sim**, pode digitalizar um código QR a partir de imagens guardadas ou capturas de ecrã. O nosso leitor de código QR https://photremium.com/qr-code-scanner permite-lhe digitalizar o código QR a partir da galeria. Só precisa de selecionar a imagem e obterá toda a informação descodificada desse código QR.' },
+      { q: 'Preciso de instalar a app para usar o leitor de código QR?', a: '**Não**, o nosso leitor de código QR baseado na web permite-lhe digitalizar código QR sem necessidade de instalar qualquer app. Pode aceder gratuitamente ao nosso leitor avançado em qualquer dispositivo.' },
+      { q: 'Porque é que o leitor não está a reconhecer o código QR?', a: 'O seu código QR não está a ser digitalizado devido a uma das seguintes razões: i. Luz insuficiente: Digitalizar o código QR com pouca luz pode causar dificuldades. Ligue a lanterna e aumente o brilho se estiver a digitalizar a partir de um ecrã. ii. Distância: Digitalizar o código QR a uma distância inadequada também causará problemas. A distância ideal para digitalizar o código QR é de cerca de 10 polegadas (25 cm). iii. Lentes da câmara sujas: O código QR também pode falhar devido a lentes sujas. Limpe as lentes antes de digitalizar. “Vê uma grelha em caixa no leitor? Basta ajustar o código QR dentro dela para o digitalizar com sucesso.”' },
+      { q: 'Esta ferramenta digitaliza um código QR invertido ou colorido?', a: '**Sim**, pode digitalizar QR em qualquer cor ou orientação. No entanto, se o contraste entre as cores de fundo e primeiro plano for baixo, isso pode causar dificuldade na digitalização.' },
+      { q: 'Esta ferramenta é gratuita?', a: '**Sim**, esta ferramenta é totalmente gratuita. Pode digitalizar códigos QR ilimitados gratuitamente para sempre.' },
     ],
     faceBlur: [
       { q: 'Como funciona a deteção de rostos?', a: 'Utilizamos um modelo de deteção de rostos com IA que corre diretamente no seu navegador. Ele identifica rostos na imagem.' },

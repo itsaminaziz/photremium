@@ -982,10 +982,18 @@ const sv = {
     supportedFormats: 'Stöder JPG, PNG, GIF, WEBP',
     ctrlVPaste: 'Klistra in med Ctrl+V',
     scanFromGallery: 'Skanna från Galleri',
+    instantScanning: 'Omedelbar Skanning',
+    instantScanningDesc: 'QR-kodsdetektering i realtid från kamera eller uppladdade bilder',
+    private100: '100% Privat',
+    private100Desc: 'All bearbetning sker i din webbläsare. Ingenting laddas upp',
+    multiFormat: 'Flera Format',
+    multiFormatDesc: 'Identifiera URL:er, text, WiFi, kontakter, e-post, telefon och mer',
     accessingCamera: 'Åtkommer kamera…',
     cameraDenied: 'Kameraåtkomst nekad. Tillåt kamerabehörigheter och försök igen.',
     noCamera: 'Ingen kamera hittades på den här enheten.',
     cameraError: 'Kan inte komma åt kamera. Försök igen.',
+    videoError: 'Kunde inte starta videouppspelning.',
+    switchError: 'Kunde inte byta kamera.',
     tryAgain: 'Försök Igen',
     switchCamera: 'Byt Kamera',
     stop: 'Stoppa',
@@ -1003,6 +1011,100 @@ const sv = {
     password: 'Lösenord',
     security: 'Säkerhet',
     unknown: 'Okänd',
+    typeText: 'Text',
+    typeUrl: 'URL',
+    typeWifi: 'WiFi-nätverk',
+    typeContact: 'Kontaktkort',
+    typeEmail: 'E-post',
+    typePhone: 'Telefonnummer',
+    typeSms: 'SMS',
+    typeLocation: 'Plats',
+    blog: {
+      tocTitle: 'Innehåll',
+      sections: [
+        {
+          id: 'why-use-qr-code-scanner',
+          title: '1. Varför använda en QR-kodsläsare?',
+          paragraphs: [
+            'En QR-kodsläsare är i grunden en mobilkamera som avkodar informationen som lagras i en QR-kod. Du behöver bara rikta kameran mot QR-koden, och oavsett orientering läser den mönstren, upptäcker fel, korrigerar dem vid behov och visar informationen som finns i koden.',
+          ],
+          listTitle: 'Typer av QR-kodsläsare:',
+          bullets: [
+            'Webbaserad QR-kodsläsare: Du kan skanna QR-koder med online-läsare som stöds av din webbläsare. Du kan få information via kamera eller genom att ladda upp en bild. För automatisk omdirigering och fler avancerade funktioner kan du besöka https://photremium.com.',
+            'Mobilkameror: Vissa moderna mobiler har inbyggd QR-kodsläsning i den vanliga kameraappen. De kan hämta och avkoda information genom att bara skanna QR-koden med kameran.',
+            'Appar: Det finns appar som är särskilt byggda för att skanna QR-koder. För avancerad omdirigering och många andra funktioner kan du dock använda verktyget gratis via https://photremium.com.',
+            'Hårdvaruenheter: Vissa hårdvaruenheter är också gjorda för att skanna QR-koder. Dessa används ofta i stora köpcentrum för kassahantering.',
+          ],
+        },
+        {
+          id: 'why-choose-our-qr-code-scanner',
+          title: '2. Varför välja vår QR-kodsläsare?',
+          paragraphs: [
+            'Du får tillgång till flera avancerade funktioner, från omdirigering till kopiering av innehållet, dekodfierat från QR-koden. Du kan även utforska många andra smarta funktioner i vår QR-kodsläsare:',
+          ],
+          bullets: [
+            'Hög hastighet: Vår QR-kodsläsare gör avkodningen mycket snabb. Skanna bara koden och verktyget visar informationen direkt med alternativ för att kopiera text/länk, öppna länk om den upptäcks eller automatiskt spara om en kontakt upptäcks.',
+            'Ingen installation krävs: Du behöver inte installera någon separat app för att använda vår QR-kodsläsare. Verktyget fungerar gratis direkt i din webbläsare.',
+            'Plattformsoberoende: Du kan använda verktyget på vilken enhet som helst. Ingen oro för OS-version eller andra krav. Det stöds på alla versioner och enheter.',
+            'Alla format stöds: Alla datatyper som kan lagras i en QR-kod, inklusive vanlig text, WiFi, URL:er, kontakter, Gmail och Google Maps, stöds av vårt verktyg.',
+          ],
+        },
+        {
+          id: 'step-by-step-guide',
+          title: '3. Steg-för-steg-guide:',
+          steps: [
+            {
+              heading: '1. Välj först metod för att skanna QR-koden. Det finns två sätt:',
+              subSteps: [
+                {
+                  heading: 'i. Kamerametod',
+                  paragraphs: [
+                    'Du kan skanna QR-koden med enhetens kamera, oavsett om du använder laptop, PC eller annan enhet med kamera. När du klickar på knappen “Starta Kamera” visas en behörighetsförfrågan. Tillåt behörigheten för att ge webbplatsen kameratillgång för QR-skanning. Om du av misstag nekat eller inte ser förfrågan kan du ge kameratillgång manuellt:',
+                  ],
+                  notes: [
+                    '➔ För Chrome (Android / Desktop):',
+                    '1. Klicka på de tre prickarna',
+                    '2. Gå till Inställningar',
+                    '3. (Hoppa över detta steg på Android) Sekretess och säkerhet',
+                    '4. Klicka på Webbplatsinställningar',
+                    '5. Klicka sedan på Kamera under Behörigheter',
+                    '6. Hitta vår URL: https://photremium.com/qr-code-scanner',
+                    '7. Tillåt kamera i rullgardinsmenyn.',
+                    '➔ För Safari (iPhone / iOS):',
+                    '1. Tryck på AA-ikonen eller Webbplatsinställningar i adressfältet.',
+                    '2. Välj Webbplatsinställningar.',
+                    '3. Tryck på Kamera och välj Tillåt.',
+                    '4. Om det fortfarande är blockerat: gå till iPhone-inställningar > Safari > Kamera och välj Fråga eller Tillåt.',
+                  ],
+                },
+                {
+                  heading: 'ii. Gallerimetod',
+                  paragraphs: [
+                    'Du kan ladda upp en bild av en QR-kod för att hämta informationen. Klicka på knappen “Skanna från Galleri” för att öppna filutforskaren. Välj sedan QR-kodsbilden. Alla bildformat stöds, till exempel jpg, .jpeg, .png, .gif, .webp, .svg, .avif, .heic, .heif, .jxl, .bmp, .ico, .tiff, .tif, .jfif, .jpe, .pjpeg, .pjp, .apng, .svgz och .xbm.',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: '2. När du har valt QR-koden visas all information, så att du kan kopiera, dela eller öppna länken om den upptäcks. Du kan också skanna igen när du vill.',
+            },
+          ],
+        },
+        {
+          id: 'benefits-of-qr-code-scanner',
+          title: 'Fördelar med QR-kodsläsare:',
+          paragraphs: [
+            'QR-kodsläsare ger flera fördelar i den digitala världen. De gör betalningar, verifiering och åtkomst till information enkelt och snabbt, även offline.',
+          ],
+          bullets: [
+            'Omedelbar åtkomst till information: Skanning av en QR-kod ger information på några millisekunder. Den avkodar mönster, upptäcker fel och rättar dem snabbt, vilket ger en mycket snabb upplevelse.',
+            'Smidig kommunikation: I dagens utvecklade samhälle behövs snabb och säker kommunikation för små informationsmängder som bank- och produktuppgifter. QR-kodsläsare löser detta eftersom betalningar görs genom att skanna en QR-kod. Google verifierar också mobiltelefon via QR när ett nytt konto skapas på laptop.',
+            'E-biljetter: På busstationer, tågstationer och flygplatser kan du enkelt verifiera biljetter utan att vänta länge i kö. QR-skannrar installeras ofta på flera platser för att minska köer, vilket också minskar personalbehov och kostnader.',
+            'Produktautentisering: Avancerade varumärken placerar QR-koder på produkter. Kunder kan skanna koden för att kontrollera om produkten är äkta.',
+          ],
+        },
+      ],
+    },
   },
 
   faceBlur: {
@@ -1113,11 +1215,11 @@ const sv = {
       { q: 'Behöver jag logga in/registrera mig för att generera QR-kod?', a: 'Nej, bara ange din text, generera QR-koden och ladda ner efter anpassning. Det finns ingen anledning att logga in eller registrera dig eftersom alla funktioner kan nås helt gratis.' },
     ],
     qrCodeScanner: [
-      { q: 'Hur skannar jag en QR-kod?', a: 'Du kan använda enhetens kamera för liveskanning eller ladda upp en bild som innehåller en QR-kod.' },
-      { q: 'Vilka typer av QR-koder kan läsas?', a: 'Vi läser alla standard QR-kodformat, inklusive URL, text, WiFi och vCard.' },
-      { q: 'Fungerar skannern på mobila enheter?', a: 'Ja. Skannern använder enhetens kamera via webbläsaren och fungerar på Android och iOS.' },
-      { q: 'Sparas eller laddas kamerabilder upp?', a: 'Nej. Kamerabearbetning sker endast i din webbläsare.' },
-      { q: 'Kan jag skanna QR-koder från skärmdumpar eller sparade bilder?', a: 'Absolut. Använd uppladdningsalternativet.' },
+      { q: 'Kan jag skanna QR-koder från sparade bilder och skärmdumpar?', a: '**Ja**, du kan skanna en QR-kod från sparade bilder eller skärmdumpar. Vår QR-kodsläsare på https://photremium.com/qr-code-scanner låter dig skanna QR-koder från galleriet. Välj bara bilden så får du all information som finns i QR-koden.' },
+      { q: 'Behöver jag installera en app för QR-kodsläsaren?', a: '**Nej**, vår webbaserade QR-kodsläsare låter dig skanna QR-koder utan appinstallation. Du kan använda vår avancerade QR-kodsläsare gratis på vilken enhet som helst.' },
+      { q: 'Varför känner skannern inte igen QR-koden?', a: 'QR-koden kanske inte skannas av någon av följande orsaker: i. Otillräckligt ljus: Att skanna i svagt ljus kan ge problem. Slå på ficklampan och öka skärmens ljusstyrka om du skannar från en skärm. ii. Avstånd: Fel avstånd kan också orsaka problem. Optimalt avstånd är cirka 10 tum (25 cm). iii. Smutsig kameralins: QR-koder kan misslyckas om linsen är smutsig. Rengör linsen innan skanning. “Ser du en rutnätsruta i skannern? Placera QR-koden i rutan för att skanna den korrekt.”' },
+      { q: 'Kan verktyget skanna en inverterad eller färgstark QR-kod?', a: '**Ja**, du kan skanna QR-koder i valfri färg eller orientering. Om kontrasten mellan bakgrund och förgrund är låg kan skanningen dock bli svårare.' },
+      { q: 'Är detta verktyg gratis att använda?', a: '**Ja**, detta verktyg är helt gratis att använda. Du kan skanna obegränsat antal QR-koder gratis för alltid.' },
     ],
     faceBlur: [
       { q: 'Hur fungerar ansiktsidentifiering?', a: 'Den AI-drivna ansiktsidentifieringsmodellen körs direkt i din webbläsare. Den identifierar ansikten i bilder.' },

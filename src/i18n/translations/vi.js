@@ -980,10 +980,18 @@ const vi = {
     supportedFormats: 'Hỗ trợ JPG, PNG, GIF, WEBP',
     ctrlVPaste: 'Dán bằng Ctrl+V',
     scanFromGallery: 'Quét Từ Thư Viện',
+    instantScanning: 'Quét Tức Thì',
+    instantScanningDesc: 'Phát hiện mã QR theo thời gian thực từ camera hoặc ảnh đã tải lên',
+    private100: 'Riêng Tư 100%',
+    private100Desc: 'Mọi xử lý diễn ra trong trình duyệt của bạn. Không có gì được tải lên',
+    multiFormat: 'Đa Định Dạng',
+    multiFormatDesc: 'Phát hiện URL, văn bản, WiFi, danh bạ, email, điện thoại và hơn thế nữa',
     accessingCamera: 'Đang truy cập camera…',
     cameraDenied: 'Quyền truy cập camera bị từ chối. Vui lòng cho phép quyền camera và thử lại.',
     noCamera: 'Không tìm thấy camera trên thiết bị này.',
     cameraError: 'Không thể truy cập camera. Vui lòng thử lại.',
+    videoError: 'Không thể bắt đầu phát video.',
+    switchError: 'Không thể chuyển camera.',
     tryAgain: 'Thử Lại',
     switchCamera: 'Đổi Camera',
     stop: 'Dừng',
@@ -1001,6 +1009,100 @@ const vi = {
     password: 'Mật Khẩu',
     security: 'Bảo Mật',
     unknown: 'Không Xác Định',
+    typeText: 'Văn bản',
+    typeUrl: 'URL',
+    typeWifi: 'Mạng WiFi',
+    typeContact: 'Thẻ liên hệ',
+    typeEmail: 'Email',
+    typePhone: 'Số điện thoại',
+    typeSms: 'SMS',
+    typeLocation: 'Vị trí',
+    blog: {
+      tocTitle: 'Nội dung',
+      sections: [
+        {
+          id: 'why-use-qr-code-scanner',
+          title: '1. Vì sao nên dùng trình quét mã QR?',
+          paragraphs: [
+            'Trình quét mã QR về cơ bản là camera di động giải mã thông tin được lưu trong mã QR. Bạn chỉ cần hướng camera vào mã QR; bất kể hướng của mã QR, công cụ sẽ đọc các mẫu cụ thể, phát hiện lỗi, sửa lỗi nếu cần và hiển thị thông tin bên trong.',
+          ],
+          listTitle: 'Các loại trình quét mã QR:',
+          bullets: [
+            'Trình quét mã QR trên web: Bạn có thể quét mã QR bằng các trình quét trực tuyến mà trình duyệt của bạn hỗ trợ. Bạn có thể truy cập thông tin qua camera hoặc quét bằng cách tải ảnh lên. Để tự động chuyển hướng và các tính năng nâng cao khác, bạn có thể truy cập https://photremium.com.',
+            'Camera di động: Một số điện thoại hiện đại có trình quét mã QR tích hợp trong ứng dụng camera gốc. Chúng có thể lấy và giải mã thông tin chỉ bằng cách quét mã QR qua camera thông thường.',
+            'Ứng dụng: Có một số ứng dụng được tạo riêng để quét mã QR. Tuy nhiên, để chuyển hướng nâng cao và nhiều tính năng khác, bạn có thể cài ứng dụng miễn phí qua liên kết này: https://photremium.com.',
+            'Thiết bị phần cứng: Một số thiết bị phần cứng cũng được tạo ra để quét mã QR. Các thiết bị này được dùng rộng rãi trong các trung tâm mua sắm lớn để thanh toán sản phẩm.',
+          ],
+        },
+        {
+          id: 'why-choose-our-qr-code-scanner',
+          title: '2. Vì sao chọn trình quét mã QR của chúng tôi?',
+          paragraphs: [
+            'Bạn có thể khám phá nhiều tính năng nâng cao, từ chuyển hướng đến sao chép nội dung giải mã từ mã QR. Bạn có thể khám phá thêm nhiều tính năng thú vị trong trình quét mã QR của chúng tôi như:',
+          ],
+          bullets: [
+            'Tốc độ nhanh: Trình quét mã QR của chúng tôi giúp giải mã mã QR cực nhanh. Bạn chỉ cần quét mã QR, công cụ của chúng tôi sẽ trả thông tin ngay lập tức với tùy chọn nâng cao để sao chép văn bản/liên kết, mở nếu phát hiện liên kết hoặc tự động lưu nếu phát hiện liên hệ.',
+            'Không cần cài đặt: Bạn không cần cài ứng dụng riêng để truy cập trình quét mã QR của chúng tôi. Bạn có thể dùng công cụ này miễn phí qua trình duyệt trên thiết bị của mình.',
+            'Truy cập đa nền tảng: Bạn có thể truy cập trên bất kỳ thiết bị nào. Không cần lo về phiên bản hệ điều hành hay yêu cầu khác. Công cụ hỗ trợ mọi phiên bản và mọi thiết bị.',
+            'Hỗ trợ mọi định dạng: Tất cả định dạng dữ liệu có thể lưu trong mã QR, bao gồm văn bản thuần, WiFi, URL, danh bạ, Gmail và Google Maps, v.v. đều được công cụ của chúng tôi hỗ trợ.',
+          ],
+        },
+        {
+          id: 'step-by-step-guide',
+          title: '3. Hướng dẫn từng bước:',
+          steps: [
+            {
+              heading: '1. Trước hết, hãy chọn phương pháp để quét mã QR. Có hai phương pháp sau:',
+              subSteps: [
+                {
+                  heading: 'i. Phương pháp camera',
+                  paragraphs: [
+                    'Bạn có thể quét mã QR bằng camera thiết bị ngay cả khi đang dùng laptop, PC hoặc bất kỳ thiết bị nào hỗ trợ camera thông thường. Chỉ cần nhấn nút “Start Camera”, một yêu cầu quyền sẽ hiện lên; hãy cho phép trang web này sử dụng camera để quét QR. Nếu bạn lỡ từ chối hoặc yêu cầu quyền không hiển thị, bạn có thể cấp quyền camera thủ công theo các bước sau:',
+                  ],
+                  notes: [
+                    '➔ Với Chrome (Android / Desktop):',
+                    '1. Nhấp vào ba dấu chấm',
+                    '2. Vào Settings',
+                    '3. (Bỏ qua bước này trên Android) Privacy and Security',
+                    '4. Nhấp vào Site Settings',
+                    '5. Sau đó, trong phần permissions, nhấp Camera',
+                    '6. Tìm URL trang web của chúng tôi là https://photremium.com/qr-code-scanner',
+                    '7. Cho phép camera từ menu thả xuống.',
+                    '➔ Với Safari (iPhone / iOS):',
+                    '1. Chạm biểu tượng AA hoặc Website Settings trên thanh địa chỉ.',
+                    '2. Chọn Website Settings.',
+                    '3. Chạm Camera và chọn Allow.',
+                    '4. Nếu vẫn bị chặn: Vào iPhone Settings > Safari > Camera và đặt thành Ask hoặc Allow.',
+                  ],
+                },
+                {
+                  heading: 'ii. Phương pháp thư viện',
+                  paragraphs: [
+                    'Bạn có thể tải ảnh mã QR lên để truy cập thông tin của nó. Nhấp nút “Scan from Gallery”, trình duyệt tệp sẽ mở ra. Sau đó chọn ảnh mã QR. Tất cả định dạng ảnh đều được hỗ trợ như jpg, .jpeg, .png, .gif, .webp, .svg, .avif, .heic, .heif, .jxl, .bmp, .ico, .tiff, .tif, .jfif, .jpe, .pjpeg, .pjp, .apng, .svgz và .xbm, v.v.',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: '2. Khi bạn chọn mã QR, toàn bộ thông tin sẽ hiển thị; cho phép bạn sao chép, chia sẻ hoặc mở liên kết nếu được phát hiện. Bạn cũng có thể quét lại nếu muốn.',
+            },
+          ],
+        },
+        {
+          id: 'benefits-of-qr-code-scanner',
+          title: 'Lợi ích của trình quét mã QR:.',
+          paragraphs: [
+            'Trình quét mã QR mang lại nhiều lợi ích trong thế giới số này. Nó giúp thanh toán, xác minh và truy cập thông tin trở nên dễ dàng và nhanh chóng ngay cả khi ngoại tuyến.',
+          ],
+          bullets: [
+            'Truy cập thông tin tức thì: Quét mã QR sẽ cung cấp thông tin chỉ trong vài mili-giây. Công cụ giải mã mẫu, phát hiện lỗi và loại bỏ lỗi rất nhanh, mang lại trải nghiệm cực kỳ nhanh cho người dùng.',
+            'Giao tiếp liền mạch: Trong thời đại phát triển này, nhu cầu giao tiếp nhanh và an toàn cho thông tin nhỏ như chi tiết ngân hàng, thông tin sản phẩm, v.v. là rất cấp thiết. Trình quét mã QR giải quyết vấn đề này vì thanh toán được thực hiện bằng cách quét mã QR. Ngoài ra, Google xác minh điện thoại bằng QR khi tạo tài khoản mới trên laptop.',
+            'Vé điện tử: Ở bến xe, ga tàu hoặc sân bay, bạn có thể xác minh vé dễ dàng mà không phải chờ lâu trong hàng. Hơn nữa, trình quét mã QR được lắp ở nhiều vị trí tại sân bay để tránh hàng chờ. Điều này cũng giảm nhu cầu nhân sự, từ đó tự động tiết kiệm ngân sách hãng hàng không.',
+            'Xác thực sản phẩm: Các thương hiệu cao cấp thường đặt mã QR trên sản phẩm. Khách hàng có thể quét mã đó để kiểm tra tính xác thực của sản phẩm có phải hàng chính hãng hay không.',
+          ],
+        },
+      ],
+    },
   },
 
   faceBlur: {
@@ -1111,11 +1213,11 @@ const vi = {
       { q: 'Tôi có cần đăng nhập/đăng ký để tạo mã QR không?', a: 'Không, chỉ cần nhập văn bản của bạn, tạo mã QR và tải xuống sau khi tùy chỉnh. Không cần đăng nhập hoặc đăng ký vì tất cả các tính năng đều có thể truy cập hoàn toàn miễn phí.' },
     ],
     qrCodeScanner: [
-      { q: 'Làm thế nào để quét mã QR?', a: 'Bạn có thể sử dụng camera thiết bị để quét trực tiếp, hoặc tải ảnh chứa mã QR lên.' },
-      { q: 'Có thể đọc những loại mã QR nào?', a: 'Chúng tôi đọc tất cả định dạng mã QR tiêu chuẩn bao gồm URL, văn bản, WiFi và vCard.' },
-      { q: 'Máy quét có hoạt động trên thiết bị di động không?', a: 'Có. Máy quét sử dụng camera thiết bị qua trình duyệt và hoạt động trên Android và iOS.' },
-      { q: 'Nguồn cấp camera của tôi có được lưu trữ hoặc truyền đi không?', a: 'Không. Xử lý camera chỉ diễn ra trong trình duyệt của bạn.' },
-      { q: 'Tôi có thể quét mã QR từ ảnh chụp màn hình hoặc ảnh đã lưu không?', a: 'Tất nhiên rồi. Sử dụng tùy chọn tải lên.' },
+      { q: 'Tôi có thể quét mã QR từ ảnh đã lưu và ảnh chụp màn hình không?', a: '**Có**, bạn có thể quét mã QR từ ảnh đã lưu hoặc ảnh chụp màn hình. Trình quét mã QR của chúng tôi https://photremium.com/qr-code-scanner cho phép bạn quét mã QR từ thư viện. Bạn chỉ cần chọn ảnh và bạn sẽ nhận được toàn bộ thông tin được giải mã từ mã QR đó.' },
+      { q: 'Tôi có cần cài App để dùng trình quét mã QR không?', a: '**Không**, trình quét mã QR trên web của chúng tôi cho phép bạn quét mã QR mà không cần cài bất kỳ ứng dụng nào. Bạn có thể truy cập trình quét mã QR nâng cao của chúng tôi trên mọi thiết bị miễn phí.' },
+      { q: 'Vì sao trình quét không nhận mã QR?', a: 'Mã QR của bạn không quét được do một trong các lý do sau: i. Ánh sáng không đủ: Quét mã QR trong điều kiện thiếu sáng có thể gây khó khăn. Hãy bật đèn pin và tăng độ sáng nếu bạn quét từ màn hình. ii. Khoảng cách: Quét mã QR ở khoảng cách không phù hợp cũng gây lỗi. Khoảng cách tối ưu để quét mã QR là khoảng 10 inch (25cm). iii. Ống kính camera bẩn: Mã QR cũng có thể không quét được do ống kính bẩn. Hãy lau ống kính trước khi quét. “Bạn thấy khung lưới trong trình quét chứ? Chỉ cần đưa mã QR vào trong đó để quét thành công.”' },
+      { q: 'Công cụ này có quét được mã QR đảo màu hoặc nhiều màu không?', a: '**Có**, bạn có thể quét QR ở bất kỳ màu sắc hoặc hướng nào. Tuy nhiên, nếu độ tương phản giữa màu nền và màu tiền cảnh thấp, việc quét có thể gặp khó khăn.' },
+      { q: 'Công cụ này có miễn phí không?', a: '**Có**, công cụ này hoàn toàn miễn phí để sử dụng. Bạn có thể quét không giới hạn mã QR miễn phí mãi mãi.' },
     ],
     faceBlur: [
       { q: 'Nhận diện khuôn mặt hoạt động như thế nào?', a: 'Mô hình nhận diện khuôn mặt AI chạy trực tiếp trong trình duyệt của bạn. Nó xác định khuôn mặt trong ảnh.' },

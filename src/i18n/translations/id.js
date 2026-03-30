@@ -1022,6 +1022,92 @@ const id = {
     typePhone: 'Nomor Telepon',
     typeSms: 'SMS',
     typeLocation: 'Lokasi',
+    blog: {
+      tocTitle: 'Daftar Isi',
+      sections: [
+        {
+          id: 'why-use-qr-code-scanner',
+          title: '1. Mengapa menggunakan pemindai kode QR?',
+          paragraphs: [
+            'Pemindai kode QR pada dasarnya adalah kamera ponsel yang mendekode informasi yang tersimpan di dalam kode QR. Anda hanya perlu mengarahkan kamera ke kode QR; apa pun orientasinya, alat ini akan membaca pola tertentu, mendeteksi kesalahan, memperbaiki kesalahan bila diperlukan, dan menampilkan informasi di dalamnya.',
+          ],
+          listTitle: 'Jenis pemindai kode QR:',
+          bullets: [
+            'Pemindai kode QR berbasis web: Anda dapat memindai kode QR dengan pemindai online yang didukung browser Anda. Anda bisa mengakses informasi melalui kamera atau dengan mengunggah gambar. Untuk auto-redirect dan fitur lanjutan lainnya, Anda dapat mengunjungi https://photremium.com.',
+            'Kamera ponsel: Beberapa ponsel modern memiliki pemindai kode QR bawaan di aplikasi kamera asli. Kamera ini dapat mengambil dan mendekode informasi hanya dengan memindai kode QR.',
+            'Aplikasi: Ada aplikasi yang dibuat khusus untuk memindai kode QR. Namun, untuk redirect lanjutan dan banyak fitur lainnya, Anda dapat memasang aplikasi melalui tautan ini secara gratis: https://photremium.com.',
+            'Perangkat keras: Beberapa perangkat keras juga dibuat untuk memindai kode QR. Perangkat ini banyak digunakan di pusat perbelanjaan besar untuk proses penagihan barang.',
+          ],
+        },
+        {
+          id: 'why-choose-our-qr-code-scanner',
+          title: '2. Mengapa memilih pemindai kode QR kami?',
+          paragraphs: [
+            'Anda bisa mengeksplor berbagai fitur lanjutan mulai dari redirect hingga menyalin konten hasil decode dari kode QR. Anda juga dapat menemukan banyak fitur menarik lainnya di pemindai kode QR kami, seperti:',
+          ],
+          bullets: [
+            'Kecepatan tinggi: Pemindai kode QR kami membuat proses decoding sangat cepat. Anda hanya perlu memindai kode QR, lalu alat kami langsung menampilkan informasi dengan opsi lanjutan untuk menyalin teks/tautan, membuka jika terdeteksi tautan, atau menyimpan otomatis jika terdeteksi kontak.',
+            'Tanpa instalasi: Anda tidak perlu memasang aplikasi terpisah untuk mengakses pemindai kode QR kami. Anda dapat memakai alat ini lewat browser lokal secara gratis.',
+            'Akses lintas platform: Anda dapat mengaksesnya di perangkat apa pun. Tidak perlu khawatir soal versi OS atau syarat lain. Alat ini didukung di semua versi dan semua perangkat.',
+            'Semua format didukung: Semua format data yang bisa disimpan di dalam kode QR didukung, termasuk teks biasa, WiFi, URL, kontak, Gmail, dan Google Maps, dll.',
+          ],
+        },
+        {
+          id: 'step-by-step-guide',
+          title: '3. Panduan langkah demi langkah:',
+          steps: [
+            {
+              heading: '1. Pertama-tama, pilih metode untuk memindai kode QR. Ada dua metode berikut:',
+              subSteps: [
+                {
+                  heading: 'i. Metode kamera',
+                  paragraphs: [
+                    'Anda dapat memindai kode QR menggunakan kamera perangkat, baik di laptop, PC, maupun perangkat lain yang mendukung kamera sederhana. Cukup klik tombol “Mulai Kamera”, lalu permintaan izin akan muncul; izinkan situs ini menggunakan kamera Anda untuk pemindaian QR. Jika Anda tidak sengaja menolak izin atau permintaan tidak muncul, Anda dapat memberi akses kamera secara manual dengan langkah berikut:',
+                  ],
+                  notes: [
+                    '➔ Untuk Chrome (Android / Desktop):',
+                    '1. Klik tiga titik',
+                    '2. Buka Setelan',
+                    '3. (Lewati langkah ini untuk Android) Privasi dan keamanan',
+                    '4. Klik Setelan situs',
+                    '5. Lalu di bagian izin, klik Kamera',
+                    '6. Cari URL situs kami: https://photremium.com/qr-code-scanner',
+                    '7. Atur izin kamera ke Allow pada dropdown.',
+                    '➔ Untuk Safari (iPhone / iOS):',
+                    '1. Ketuk ikon AA atau Pengaturan Situs Web di bilah alamat.',
+                    '2. Pilih Website Settings.',
+                    '3. Ketuk Camera lalu pilih Allow.',
+                    '4. Jika masih terblokir: buka Pengaturan iPhone > Safari > Camera lalu set ke Ask atau Allow.',
+                  ],
+                },
+                {
+                  heading: 'ii. Metode galeri',
+                  paragraphs: [
+                    'Anda dapat mengunggah gambar kode QR untuk mengakses informasinya. Klik tombol “Pindai dari Galeri”, lalu file explorer akan terbuka. Setelah itu pilih gambar kode QR. Semua format gambar didukung seperti .jpg, .jpeg, .png, .gif, .webp, .svg, .avif, .heic, .heif, .jxl, .bmp, .ico, .tiff, .tif, .jfif, .jpe, .pjpeg, .pjp, .apng, .svgz, dan .xbm, dll.',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: '2. Saat Anda memilih kode QR, semua informasi akan ditampilkan; memungkinkan Anda menyalin, membagikan, atau membuka tautan jika terdeteksi. Anda juga bisa memindai lagi jika mau.',
+            },
+          ],
+        },
+        {
+          id: 'benefits-of-qr-code-scanner',
+          title: 'Manfaat pemindai kode QR:.',
+          paragraphs: [
+            'Pemindai kode QR menawarkan berbagai manfaat di dunia digital ini. Alat ini membuat pembayaran, verifikasi, dan akses informasi menjadi mudah dan cepat bahkan dalam mode offline.',
+          ],
+          bullets: [
+            'Akses informasi instan: Memindai kode QR memberikan informasi dalam hitungan milidetik. Alat ini mendekode pola, mendeteksi kesalahan, dan memperbaikinya sangat cepat, sehingga memberi pengalaman pengguna yang sangat cepat.',
+            'Komunikasi mulus: Di era kemajuan ini, ada kebutuhan tinggi akan komunikasi cepat dan aman untuk informasi kecil seperti detail bank dan detail produk, dll. Pemindai kode QR menyelesaikan masalah ini karena pembayaran dapat dilakukan dengan memindai kode QR. Selain itu, Google memverifikasi ponsel melalui QR saat membuat akun baru di laptop.',
+            'E-Tickets: Di terminal bus, stasiun kereta, atau bandara, Anda dapat memverifikasi tiket dengan mudah tanpa menunggu lama di antrean. Selain itu, pemindai QR dipasang di banyak titik bandara untuk mengurangi antrean. Hal ini juga meminimalkan kebutuhan pegawai, sehingga otomatis menghemat anggaran maskapai.',
+            'Autentikasi produk: Merek premium dan berteknologi tinggi memasang kode QR pada produknya. Pelanggan dapat memindai kode QR tersebut untuk mengecek keaslian produk, apakah asli atau tidak.',
+          ],
+        },
+      ],
+    },
   },
   faceBlur: {
     seo: {
@@ -1130,11 +1216,11 @@ const id = {
       { q: 'Apakah saya perlu login/daftar untuk membuat kode QR?', a: 'Tidak. Cukup masukkan teks Anda, buat kode QR, lalu unduh setelah dikustomisasi. Tidak perlu login atau daftar karena semua fitur dapat diakses sepenuhnya gratis.' },
     ],
     qrCodeScanner: [
-      { q: 'Bagaimana cara memindai kode QR?', a: 'Anda dapat menggunakan kamera perangkat Anda untuk pemindaian langsung, atau mengunggah gambar yang berisi kode QR. Hasilnya ditampilkan secara instan.' },
-      { q: 'Jenis kode QR apa yang bisa dibaca?', a: 'Pemindai kami membaca semua format kode QR standar termasuk URL, teks, kredensial Wi-Fi, vCard, dan lainnya.' },
-      { q: 'Apakah pemindai bekerja di perangkat mobile?', a: 'Ya. Pemindai menggunakan kamera perangkat Anda melalui browser dan bekerja pada perangkat Android dan iOS tanpa menginstal aplikasi apa pun.' },
-      { q: 'Apakah umpan kamera saya disimpan atau dikirim ke mana pun?', a: 'Tidak. Pemrosesan kamera terjadi sepenuhnya di browser Anda. Kami tidak pernah merekam, menyimpan, atau mengirimkan umpan kamera Anda.' },
-      { q: 'Bisakah saya memindai kode QR dari tangkapan layar atau gambar yang disimpan?', a: 'Tentu saja. Gunakan opsi unggah untuk memindai kode QR dari gambar yang disimpan, tangkapan layar, atau foto apa pun di perangkat Anda.' },
+      { q: 'Bisakah saya memindai kode QR dari gambar tersimpan dan tangkapan layar?', a: '**Ya**, Anda bisa memindai kode QR dari gambar tersimpan atau tangkapan layar. Pemindai kode QR kami di https://photremium.com/qr-code-scanner memungkinkan Anda memindai dari galeri. Anda cukup memilih gambarnya dan semua informasi yang didekode dari kode QR tersebut akan ditampilkan.' },
+      { q: 'Apakah saya perlu menginstal aplikasi untuk pemindai kode QR?', a: '**Tidak**, pemindai kode QR berbasis web kami memungkinkan Anda memindai tanpa instalasi aplikasi apa pun. Anda bisa mengakses pemindai QR lanjutan kami di perangkat apa pun secara gratis.' },
+      { q: 'Mengapa pemindai tidak mengenali kode QR?', a: 'Kode QR Anda tidak terbaca karena salah satu alasan berikut: i. Cahaya tidak memadai: Memindai dalam cahaya redup dapat menyebabkan masalah. Nyalakan flash dan tingkatkan kecerahan jika Anda memindai dari layar. ii. Jarak: Memindai dari jarak yang tidak tepat juga menyebabkan masalah. Jarak optimal untuk memindai kode QR adalah sekitar 10 inci (25 cm). iii. Lensa kamera kotor: Kode QR juga bisa gagal dipindai karena lensa kotor. Bersihkan lensa sebelum memindai. “Anda melihat kotak grid di pemindai? Cukup pas-kan kode QR di dalamnya agar berhasil dipindai.”' },
+      { q: 'Apakah alat ini bisa memindai kode QR terbalik atau berwarna?', a: '**Ya**, Anda bisa memindai QR dalam warna apa pun atau orientasi apa pun. Namun, jika kontras warna latar belakang dan foreground terlalu rendah, pemindaian bisa menjadi sulit.' },
+      { q: 'Apakah alat ini gratis?', a: '**Ya**, alat ini sepenuhnya gratis. Anda bisa memindai kode QR tanpa batas secara gratis selamanya.' },
     ],
     faceBlur: [
       { q: 'Bagaimana cara kerja deteksi wajah?', a: 'Kami menggunakan model deteksi wajah bertenaga AI yang berjalan langsung di browser Anda. Model ini mengidentifikasi wajah dalam gambar sehingga Anda dapat menerapkan efek blur.' },

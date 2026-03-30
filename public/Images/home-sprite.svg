@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" xmlns:bx="https://boxy-svg.com">
+  <rect x="-0.943" y="-0.253" width="101.907" height="501.041" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);"/>
+  <rect x="100.114" y="-0.253" width="101.907" height="501.041" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 1;"/>
+  <rect x="200.322" y="-0.253" width="101.907" height="501.041" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 1;"/>
+  <rect x="300.53" y="-0.253" width="101.907" height="501.041" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 1;"/>
+  <rect x="399.889" y="-0.404" width="101.907" height="501.041" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 1;"/>
+  <line style="fill: none; stroke: rgb(0, 0, 0);" x1="-1.453" y1="99.305" x2="501.462" y2="100.292"/>
+  <line style="fill: none; stroke: rgb(0, 0, 0);" x1="-0.679" y1="199.497" x2="501.407" y2="200.349"/>
+  <line style="fill: none; stroke: rgb(0, 0, 0);" x1="-0.789" y1="300.106" x2="501.407" y2="300.106"/>
+  <line style="fill: none; stroke: rgb(0, 0, 0);" x1="-1" y1="399.863" x2="501.407" y2="400.716"/>
+  <rect x="-0.962" y="-0.277" width="101.248" height="99.976" style="stroke: rgb(0, 0, 0); fill: rgb(239, 207, 248);"/>
+  <rect x="12.752" y="12.558" width="74.683" height="74.942" style="fill: rgb(226, 140, 247); paint-order: stroke markers; stroke: rgb(226, 140, 247);" rx="5" ry="5"/>
+  <g transform="matrix(2.388401, 0, 0, 2.380084, 22.063082, 21.536908)" style="">
+    <path d="M5 11.1005L7 9.1005L12.5 14.6005L16 11.1005L19 14.1005V5H5V11.1005ZM4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM15.5 10C14.6716 10 14 9.32843 14 8.5C14 7.67157 14.6716 7 15.5 7C16.3284 7 17 7.67157 17 8.5C17 9.32843 16.3284 10 15.5 10Z" style="fill: rgb(178, 0, 193);"/>
+  </g>
+  <path d="M 4.266 15.719 H 14.923 L 14.923 13.537 L 19.706 16.91 L 14.923 20.282 L 14.923 18.1 H 4.266 V 15.719 Z" bx:shape="arrow 4.266 13.537 15.44 6.745 2.381 4.783 0 1@6ac6b461" style="fill: rgb(122, 16, 149); stroke: rgb(122, 16, 149);" transform="matrix(0.711847, -0.702335, 0.702335, 0.711847, 1.741208, 74.681002)"/>
+  <path d="M 4.266 15.719 H 14.923 L 14.923 13.537 L 19.706 16.91 L 14.923 20.282 L 14.923 18.1 H 4.266 V 15.719 Z" bx:shape="arrow 4.266 13.537 15.44 6.745 2.381 4.783 0 1@6ac6b461" style="fill: rgb(122, 16, 149); stroke: rgb(122, 16, 149); stroke-width: 1;" transform="matrix(-0.711847, -0.702335, -0.702335, 0.711847, 99.130251, 74.785888)"/>
+  <path d="M -4.266 -11.355 H 6.391 L 6.391 -13.537 L 11.174 -10.165 L 6.391 -6.792 L 6.391 -8.974 H -4.266 V -11.355 Z" bx:shape="arrow -4.266 -13.537 15.44 6.745 2.381 4.783 0 1@b43bed3e" style="fill: rgb(122, 16, 149); stroke: rgb(122, 16, 149); stroke-width: 1;" transform="matrix(-0.711847, 0.702335, -0.702335, -0.711847, 73.681956, 12.020767)"/>
+  <path d="M 4.266 15.719 H 14.923 L 14.923 13.537 L 19.706 16.91 L 14.923 20.282 L 14.923 18.1 H 4.266 V 15.719 Z" bx:shape="arrow 4.266 13.537 15.44 6.745 2.381 4.783 0 1@6ac6b461" style="fill: rgb(122, 16, 149); stroke: rgb(122, 16, 149); stroke-width: 1;" transform="matrix(0.711847, 0.702335, 0.702335, -0.711847, 2.041631, 25.300988)"/>
+</svg>

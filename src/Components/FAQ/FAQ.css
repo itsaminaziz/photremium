@@ -223,6 +223,16 @@
   line-height: 1;
 }
 
+.faq-table__answer-link {
+  color: #2563eb;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.faq-table__answer-link:hover {
+  color: #1d4ed8;
+}
+
 @keyframes faqFadeIn {
   from {
     opacity: 0;

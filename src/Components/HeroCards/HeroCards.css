@@ -72,22 +72,25 @@
 .hero-card:hover {
   border-color: #c7d2fe;
   transform: scale(1.025);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.413);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
 }
 
 
 /* Badge */
 .hero-card__badge {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
   background: #dcfce7;
-  color: #16a34a;
+  color: #15803d;
+  border: 1px solid #86efac;
   font-size: 0.7rem;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 6px;
-  letter-spacing: 0.3px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.2px;
+  line-height: 1;
 }
 
 /* Icon / Image */

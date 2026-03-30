@@ -4,22 +4,25 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border: 1px solid #dbeafe;
-  background: #f8fbff;
-  color: #3730a3;
+  background: #3730a3;
+  color: #ffffff;
   border-radius: 12px;
   font-size: 1.05rem;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 0 0 rgba(55, 48, 163, 0);
+  transform: translateY(0) scale(1);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.22s ease, box-shadow 0.22s ease;
 }
 
 .mip-trigger::after {
   content: attr(data-tooltip);
+  width: auto;
   position: absolute;
   bottom: calc(100% + 8px);
-  left: 50%;
+  left: 0.00001%;
   transform: translateX(-50%);
   background: #0f172a;
   color: #ffffff;
@@ -35,8 +38,15 @@
 }
 
 .mip-trigger:hover {
-  background: #eef2ff;
+  background: #231b93ba;
   border-color: #c7d2fe;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 18px rgba(55, 48, 163, 0.32);
+}
+
+.mip-trigger:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 8px rgba(55, 48, 163, 0.22);
 }
 
 .mip-trigger:hover::after {
@@ -50,6 +60,8 @@
   display: grid;
   place-items: center;
   padding: 18px;
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .mip-modal__backdrop {
@@ -60,9 +72,9 @@
 
 .mip-modal__dialog {
   position: relative;
-  width: min(620px, 100%);
-  max-height: calc(100vh - 36px);
-  overflow: auto;
+  width: min(620px, calc(100vw - 36px));
+  max-height: calc(100dvh - 36px);
+  overflow: hidden;
   z-index: 1;
 }
 
@@ -70,34 +82,28 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #d1d5db;
+  min-width: 78px;
+  height: 34px;
+  border: 1px solid #fca5a5;
   border-radius: 9px;
-  background: #ffffff;
-  color: #475569;
+  background: #fee2e2;
+  color: #b91c1c;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
   transition: transform 0.18s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   animation: mipClosePop 0.26s ease-out both;
 }
 
-.mip-modal__close i {
-  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
 .mip-modal__close:hover {
-  background: #eef2ff;
-  border-color: #c7d2fe;
-  color: #312e81;
-  box-shadow: 0 6px 14px rgba(79, 70, 229, 0.16);
+  background: #fecaca;
+  border-color: #f87171;
+  color: #991b1b;
+  box-shadow: 0 6px 14px rgba(185, 28, 28, 0.16);
   transform: translateY(-1px) scale(1.04);
-}
-
-.mip-modal__close:hover i {
-  transform: rotate(90deg) scale(1.06);
 }
 
 .mip-modal__close:active {
@@ -127,8 +133,12 @@
   padding: 18px;
   text-align: left;
   min-height: 430px;
+  max-height: calc(100dvh - 36px);
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mip-card__content {
@@ -276,9 +286,38 @@
 }
 
 .mip-info-card--link .mip-card__btn {
-  margin-top: 10px;
-  width: 100%;
+  margin-top: 0;
+  width: auto;
+  flex: 1 1 auto;
   justify-content: center;
+}
+
+.mip-info-card__actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.mip-card__scan-btn {
+  min-width: 42px;
+  height: 42px;
+  border: 1px solid #c7d2fe;
+  background: #eef2ff;
+  color: #3730a3;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.mip-card__scan-btn:hover {
+  background: #e0e7ff;
 }
 
 .mip-card__btn--success {
@@ -344,8 +383,9 @@
 }
 
 .mip-card__qr {
-  width: 280px;
-  height: 280px;
+  width: min(280px, 100%);
+  aspect-ratio: 1 / 1;
+  height: auto;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   background: #fff;
@@ -525,6 +565,34 @@
 }
 
 @media (max-width: 680px) {
+  .mip-modal {
+    padding: 12px;
+    place-items: stretch;
+  }
+
+  .mip-modal__dialog {
+    width: 100%;
+    max-height: calc(100dvh - 24px);
+    align-self: center;
+  }
+
+  .mip-card {
+    max-height: calc(100dvh - 24px);
+    min-height: 0;
+    padding: 14px;
+  }
+
+  .mip-card__qr-wrap {
+    min-height: 0;
+    width: 100%;
+  }
+
+  .mip-skeleton--qr {
+    width: min(280px, 100%);
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
+
   .mip-card__content {
     grid-template-columns: 1fr;
   }

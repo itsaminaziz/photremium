@@ -129,6 +129,17 @@ const FAQ = ({ faqs, faqKey }) => {
       );
     }
 
+    const leadingBoldMatch = clean.match(/^\*\*([^*]+)\*\*([,:-]?)\s*(.*)$/);
+    if (leadingBoldMatch) {
+      const [, label, punctuation, rest] = leadingBoldMatch;
+      return (
+        <p className="faq-table__answer-text">
+          <strong>{`${label}${punctuation}`}</strong>
+          {rest ? <> {renderInlineTextWithLinks(rest)}</> : null}
+        </p>
+      );
+    }
+
     return <p className="faq-table__answer-text">{renderInlineTextWithLinks(clean)}</p>;
   };
 

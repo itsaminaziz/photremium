@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import QRCode from 'qrcode';
-import { deleteDoc, doc, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import { db, hasFirebaseConfig } from '../../lib/firebase';
 import { LANG_CODES } from '../../i18n/languages';
 import './MobileImportPopup.css';
@@ -83,12 +83,18 @@ const MobileImportPopup = ({ onImportFiles }) => {
       const sessionRef = doc(db, MOBILE_IMPORT_COLLECTION, sessionId);
       mobileSessionUnsubRef.current = onSnapshot(sessionRef, async (snapshot) => {
         if (!snapshot.exists()) {
-          setMobileImportState('error');
-          setMobileImportMessage('Import session not found.');
+          setMobileImportState('disconnected');
+          setMobileImportMessage('Session disconnected.');
           return;
         }
 
         const payload = snapshot.data();
+        if (payload?.status === 'terminated') {
+          setMobileImportState('disconnected');
+          setMobileImportMessage(payload?.errorMessage || 'Session disconnected by mobile.');
+          return;
+        }
+
         if (payload?.status === 'uploaded' && Array.isArray(payload.images) && payload.images.length) {
           const files = payload.images.map((item, index) =>
             dataUrlToFile(item.dataUrl, item.name || `mobile-import-${index + 1}.jpg`, item.type || 'image/jpeg')
@@ -102,8 +108,6 @@ const MobileImportPopup = ({ onImportFiles }) => {
             status: 'consumed',
             consumedAt: serverTimestamp(),
           });
-
-          stopMobileSessionListener();
         }
 
         if (payload?.status === 'failed' && payload?.errorMessage) {
@@ -130,10 +134,30 @@ const MobileImportPopup = ({ onImportFiles }) => {
 
       stopMobileSessionListener();
       if (replaceCurrent && db && mobileSessionId) {
+        const previousSessionRef = doc(db, MOBILE_IMPORT_COLLECTION, mobileSessionId);
         try {
-          await deleteDoc(doc(db, MOBILE_IMPORT_COLLECTION, mobileSessionId));
+          await updateDoc(previousSessionRef, {
+            status: 'terminated',
+            terminatedAt: serverTimestamp(),
+            terminatedBy: 'sender',
+            errorMessage: 'Session refreshed on sender. Please scan the new QR code.',
+          });
         } catch {
-          // ignore cleanup failure
+          try {
+            await setDoc(
+              previousSessionRef,
+              {
+                tool: MOBILE_IMPORT_TOOL,
+                status: 'terminated',
+                terminatedAt: serverTimestamp(),
+                terminatedBy: 'sender',
+                errorMessage: 'Session refreshed on sender. Please scan the new QR code.',
+              },
+              { merge: true }
+            );
+          } catch {
+            // ignore cleanup failure
+          }
         }
       }
 
@@ -196,10 +220,30 @@ const MobileImportPopup = ({ onImportFiles }) => {
     stopMobileSessionListener();
 
     if (db && mobileSessionId) {
+      const sessionRef = doc(db, MOBILE_IMPORT_COLLECTION, mobileSessionId);
       try {
-        await deleteDoc(doc(db, MOBILE_IMPORT_COLLECTION, mobileSessionId));
+        await updateDoc(sessionRef, {
+          status: 'terminated',
+          terminatedAt: serverTimestamp(),
+          terminatedBy: 'sender',
+          errorMessage: 'Session disconnected by receiver.',
+        });
       } catch {
-        // ignore cleanup failure
+        try {
+          await setDoc(
+            sessionRef,
+            {
+              tool: MOBILE_IMPORT_TOOL,
+              status: 'terminated',
+              terminatedAt: serverTimestamp(),
+              terminatedBy: 'sender',
+              errorMessage: 'Session disconnected by receiver.',
+            },
+            { merge: true }
+          );
+        } catch {
+          // ignore termination failure
+        }
       }
     }
 
@@ -209,9 +253,10 @@ const MobileImportPopup = ({ onImportFiles }) => {
     setMobileImportState('idle');
     setMobileImportMessage('');
     setIsOpen(false);
-  }, [mobileSessionId, stopMobileSessionListener]);
+  }, [db, mobileSessionId, stopMobileSessionListener]);
 
   const statusConfig = (() => {
+    if (mobileImportState === 'disconnected') return { label: 'Disconnected', className: 'mip-info-card--status-error' };
     if (mobileImportState === 'error') return { label: 'Error', className: 'mip-info-card--status-error' };
     if (mobileImportState === 'done') return { label: 'Completed', className: 'mip-info-card--status-done' };
     if (mobileSessionId) return { label: 'Active', className: 'mip-info-card--status-active' };
@@ -236,11 +281,35 @@ const MobileImportPopup = ({ onImportFiles }) => {
   useEffect(() => {
     if (!isOpen) return undefined;
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    const body = document.body;
+    const html = document.documentElement;
+    const scrollY = window.scrollY;
+
+    const previousBodyOverflow = body.style.overflow;
+    const previousBodyPosition = body.style.position;
+    const previousBodyTop = body.style.top;
+    const previousBodyLeft = body.style.left;
+    const previousBodyRight = body.style.right;
+    const previousBodyWidth = body.style.width;
+    const previousHtmlOverflow = html.style.overflow;
+
+    body.style.overflow = 'hidden';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+    html.style.overflow = 'hidden';
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      body.style.overflow = previousBodyOverflow;
+      body.style.position = previousBodyPosition;
+      body.style.top = previousBodyTop;
+      body.style.left = previousBodyLeft;
+      body.style.right = previousBodyRight;
+      body.style.width = previousBodyWidth;
+      html.style.overflow = previousHtmlOverflow;
+      window.scrollTo(0, scrollY);
     };
   }, [isOpen]);
 
@@ -260,23 +329,24 @@ const MobileImportPopup = ({ onImportFiles }) => {
       <button
         className="mip-trigger"
         onClick={openAndStartMobileImport}
-        data-tooltip="Import from mobile"
-        aria-label="Import from mobile"
+        data-tooltip="Import from mobile / other device"
+
+        aria-label="Import from mobile / other device"
       >
         <i className="fa-solid fa-mobile-screen-button"></i>
       </button>
 
       {isOpen ? (
-        <div className="mip-modal" role="dialog" aria-modal="true" aria-label="Scan with mobile">
+        <div className="mip-modal" role="dialog" aria-modal="true" aria-label="Scan with other device or open link">
           <div className="mip-modal__backdrop" onClick={() => closeMobileImportPopup()}></div>
           <div className="mip-modal__dialog">
-            <button className="mip-modal__close" onClick={() => closeMobileImportPopup()} aria-label="Close">
-              <i className="fa-solid fa-xmark"></i>
+            <button className="mip-modal__close" onClick={() => closeMobileImportPopup()} aria-label="Cancel import session">
+              Cancel
             </button>
 
             <div className="mip-card">
               <div className="mip-card__head">
-                <h3><i className="fa-solid fa-mobile-screen-button"></i> Scan with mobile</h3>
+                <h3><i className="fa-solid fa-mobile-screen-button"></i> Scan OR open link in<br></br> other device</h3>
               </div>
 
               <div className="mip-card__content">
@@ -322,7 +392,7 @@ const MobileImportPopup = ({ onImportFiles }) => {
                     </div>
                   ) : !mobileSessionId ? (
                     <button className="mip-card__start" onClick={() => startMobileImportSession(false)} disabled={startingSession}>
-                      <><i className="fa-solid fa-link"></i> Start Mobile Import</>
+                      <><i className="fa-solid fa-link"></i> Start Import Again</>
                     </button>
                   ) : (
                     <>
@@ -342,9 +412,11 @@ const MobileImportPopup = ({ onImportFiles }) => {
                       <div className="mip-info-card mip-info-card--link">
                         <span className="mip-info-card__label">Scan QR code or open this link in mobile</span>
                         <span className="mip-info-card__link" title={mobileShareUrl}>{mobileShareUrl}</span>
-                        <button className={`mip-card__btn ${copyLinkSuccess ? 'mip-card__btn--success' : ''}`} onClick={copyMobileImportLink}>
-                          {copyLinkSuccess ? <i className="fa-solid fa-check"></i> : <><i className="fa-regular fa-copy"></i> Copy Link</>}
-                        </button>
+                        <div className="mip-info-card__actions">
+                          <button className={`mip-card__btn ${copyLinkSuccess ? 'mip-card__btn--success' : ''}`} onClick={copyMobileImportLink}>
+                            {copyLinkSuccess ? <i className="fa-solid fa-check"></i> : <><i className="fa-regular fa-copy"></i> Copy Link</>}
+                          </button>
+                        </div>
                       </div>
                     </>
                   )}

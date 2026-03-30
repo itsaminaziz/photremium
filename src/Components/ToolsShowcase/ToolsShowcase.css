@@ -8,7 +8,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 64px;
-  height: calc(100vh - 64px);
+  height: calc(var(--tsc-vh, 100vh) - 64px);
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -382,7 +382,7 @@
 
 /* Small screens: badges reposition ABOVE image */
 @media (max-width: 600px) {
-  .tsc-sticky { top: 64px; height: calc(100vh - 64px); }
+  .tsc-sticky { top: 64px; height: calc(var(--tsc-vh, 100vh) - 64px); }
 
   .tsc-screen { padding: 10px 10px 8px 18px; }
   .tsc-tool-hdr { font-size: 0.88rem; margin-bottom: 6px; }

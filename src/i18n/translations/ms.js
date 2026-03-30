@@ -983,10 +983,18 @@ const ms = {
     supportedFormats: 'Sokong JPG, PNG, GIF, WEBP',
     ctrlVPaste: 'Tampal dengan Ctrl+V',
     scanFromGallery: 'Imbas dari Galeri',
+    instantScanning: 'Imbasan Segera',
+    instantScanningDesc: 'Pengesanan kod QR masa nyata daripada kamera atau imej yang dimuat naik',
+    private100: '100% Peribadi',
+    private100Desc: 'Semua pemprosesan berlaku dalam pelayar anda. Tiada apa-apa dimuat naik',
+    multiFormat: 'Pelbagai Format',
+    multiFormatDesc: 'Kesan URL, teks, WiFi, kenalan, e-mel, telefon dan banyak lagi',
     accessingCamera: 'Mengakses kamera…',
     cameraDenied: 'Akses kamera dinafikan. Sila benarkan kebenaran kamera dan cuba lagi.',
     noCamera: 'Tiada kamera ditemui pada peranti ini.',
     cameraError: 'Tidak dapat mengakses kamera. Sila cuba lagi.',
+    videoError: 'Tidak dapat memulakan main balik video.',
+    switchError: 'Tidak dapat menukar kamera.',
     tryAgain: 'Cuba Lagi',
     switchCamera: 'Tukar Kamera',
     stop: 'Berhenti',
@@ -1004,6 +1012,100 @@ const ms = {
     password: 'Kata Laluan',
     security: 'Keselamatan',
     unknown: 'Tidak diketahui',
+    typeText: 'Teks',
+    typeUrl: 'URL',
+    typeWifi: 'Rangkaian WiFi',
+    typeContact: 'Kad Kenalan',
+    typeEmail: 'E-mel',
+    typePhone: 'Nombor Telefon',
+    typeSms: 'SMS',
+    typeLocation: 'Lokasi',
+    blog: {
+      tocTitle: 'Kandungan',
+      sections: [
+        {
+          id: 'why-use-qr-code-scanner',
+          title: '1. Mengapa guna pengimbas kod QR?',
+          paragraphs: [
+            'Pengimbas kod QR pada asasnya ialah kamera mudah alih yang menyahkod maklumat yang disimpan dalam kod QR. Anda hanya perlu halakan kamera ke kod QR; tanpa mengira orientasi kod QR, ia akan membaca corak tertentu, mengesan ralat, membetulkan ralat jika perlu, dan memaparkan maklumat di dalamnya.',
+          ],
+          listTitle: 'Jenis pengimbas kod QR:',
+          bullets: [
+            'Pengimbas kod QR Berasaskan Web: Anda boleh mengimbas kod QR dengan pengimbas dalam talian yang disokong oleh pelayar anda. Anda boleh mengakses maklumat melalui kamera atau dengan memuat naik imej untuk diimbas. Untuk auto-pengalihan dan ciri lanjutan lain, anda boleh melawat https://photremium.com.',
+            'Kamera mudah alih: Sesetengah telefon moden mempunyai pengimbas kod QR terbina dalam aplikasi kamera asal. Ini boleh mendapatkan dan menyahkod maklumat hanya dengan mengimbas kod QR melalui kamera biasa.',
+            'Aplikasi: Terdapat beberapa aplikasi yang dibina khusus untuk mengimbas kod QR. Namun, untuk pengalihan lanjutan dan banyak ciri lain, anda boleh memasang aplikasi melalui pautan ini secara percuma: https://photremium.com.',
+            'Peranti perkakasan: Sesetengah peranti perkakasan juga dibuat untuk mengimbas kod QR. Peranti ini digunakan secara meluas di pusat beli-belah besar untuk pengebilan barangan.',
+          ],
+        },
+        {
+          id: 'why-choose-our-qr-code-scanner',
+          title: '2. Mengapa pilih pengimbas kod QR kami?',
+          paragraphs: [
+            'Anda boleh meneroka pelbagai ciri lanjutan termasuk pengalihan hingga menyalin kandungan yang dinyahkod daripada kod QR. Anda juga boleh meneroka banyak ciri menarik lain dalam pengimbas kod QR kami seperti:',
+          ],
+          bullets: [
+            'Kelajuan Pantas: Pengimbas kod QR kami menjadikan penyahkodan kod QR sangat pantas. Anda hanya perlu mengimbas kod QR, dan alat kami memberi maklumat serta-merta dengan pilihan lanjutan untuk menyalin teks/pautan, membuka jika pautan dikesan, atau menyimpan secara automatik jika kenalan dikesan.',
+            'Tiada Pemasangan Diperlukan: Anda tidak perlu memasang aplikasi berasingan untuk mengakses pengimbas kod QR kami. Anda boleh mengakses alat ini melalui pelayar tempatan anda secara percuma.',
+            'Akses Merentas Platform: Anda boleh mengaksesnya pada mana-mana peranti. Tidak perlu risau tentang versi OS atau keperluan lain. Ini disokong pada semua versi dan semua peranti.',
+            'Semua Format Disokong: Semua format data yang boleh disimpan dalam kod QR termasuk teks biasa, WiFi, URL, kenalan, Gmail, dan Google Maps, dsb. disokong oleh alat kami.',
+          ],
+        },
+        {
+          id: 'step-by-step-guide',
+          title: '3. Panduan langkah demi langkah:',
+          steps: [
+            {
+              heading: '1. Pertama sekali, pilih kaedah untuk mengimbas kod QR. Terdapat dua kaedah berikut untuk melakukannya:',
+              subSteps: [
+                {
+                  heading: 'i. Kaedah kamera',
+                  paragraphs: [
+                    'Anda boleh mengimbas kod QR menggunakan kamera peranti anda walaupun anda menggunakan komputer riba, PC, atau mana-mana peranti yang menyokong kamera biasa. Hanya klik butang “Start Camera” dan permintaan kebenaran akan muncul; benarkan kebenaran untuk laman ini menggunakan kamera anda bagi imbasan QR. Jika anda tersalah tolak atau permintaan kebenaran tidak muncul, anda boleh beri akses kamera secara manual dengan langkah berikut:',
+                  ],
+                  notes: [
+                    '➔ Untuk Chrome (Android / Desktop):',
+                    '1. Klik tiga titik',
+                    '2. Pergi ke Settings',
+                    '3. (Langkau langkah ini untuk Android) Privacy and Security',
+                    '4. Klik Site Settings',
+                    '5. Kemudian, dalam bahagian permissions, klik Camera',
+                    '6. Cari URL laman kami iaitu https://photremium.com/qr-code-scanner',
+                    '7. Benarkan kamera daripada menu juntai bawah.',
+                    '➔ Untuk Safari (iPhone / iOS):',
+                    '1. Ketik ikon AA atau Website Settings pada bar alamat.',
+                    '2. Pilih Website Settings.',
+                    '3. Ketik Camera dan pilih Allow.',
+                    '4. Jika masih disekat: Pergi ke iPhone Settings > Safari > Camera dan tetapkan kepada Ask atau Allow.',
+                  ],
+                },
+                {
+                  heading: 'ii. Kaedah galeri',
+                  paragraphs: [
+                    'Anda boleh memuat naik imej kod QR untuk mengakses maklumatnya. Klik butang “Scan from Gallery”, dan ia akan membuka peneroka fail. Kemudian, pilih imej kod QR. Semua format imej disokong seperti jpg, .jpeg, .png, .gif, .webp, .svg, .avif, .heic, .heif, .jxl, .bmp, .ico, .tiff, .tif, .jfif, .jpe, .pjpeg, .pjp, .apng, .svgz, dan .xbm, dsb.',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: '2. Apabila anda memilih kod QR, semua maklumat akan dipaparkan; membolehkan anda menyalin, berkongsi, atau membuka pautan jika dikesan. Anda juga boleh mengimbas semula jika mahu.',
+            },
+          ],
+        },
+        {
+          id: 'benefits-of-qr-code-scanner',
+          title: 'Manfaat pengimbas kod QR:.',
+          paragraphs: [
+            'Pengimbas kod QR menawarkan beberapa manfaat dalam dunia digital ini. Ia menjadikan pembayaran, pengesahan, dan akses kepada maklumat mudah serta pantas walaupun dalam mod luar talian.',
+          ],
+          bullets: [
+            'Akses segera kepada maklumat: Mengimbas kod QR akan memberikan maklumat dalam beberapa mili saat. Ia menyahkod corak, mengesan ralat, dan membuangnya dengan sangat cepat, memberikan pengalaman yang sangat pantas kepada pengguna.',
+            'Komunikasi Lancar: Dalam era kemajuan ini, terdapat keperluan mendesak untuk komunikasi yang pantas dan selamat bagi maklumat kecil seperti butiran bank dan butiran produk, dsb. Pengimbas kod QR menyelesaikan masalah ini kerana pembayaran dibuat dengan mengimbas kod QR. Selain itu, Google mengesahkan telefon mudah alih melalui QR semasa mencipta akaun baharu pada komputer riba.',
+            'E-Tiket: Di stesen bas, stesen kereta api, atau lapangan terbang, anda boleh mengesahkan tiket dengan mudah tanpa menunggu giliran dalam barisan lama. Selain itu, pengimbas kod QR dipasang di pelbagai lokasi di lapangan terbang untuk mengelakkan barisan menunggu. Ini juga mengurangkan keperluan pekerja, sekali gus menjimatkan bajet syarikat penerbangan secara automatik.',
+            'Pengesahan Produk: Jenama maju dan berkelas tinggi meletakkan kod QR pada produk mereka. Pelanggan boleh mengimbas kod QR tersebut untuk menyemak ketulenan produk sama ada asli atau tidak.',
+          ],
+        },
+      ],
+    },
   },
 
   faceBlur: {
@@ -1114,11 +1216,11 @@ const ms = {
       { q: 'Adakah saya perlu log masuk/daftar untuk menjana kod QR?', a: 'Tidak, hanya masukkan teks anda, janakan kod QR dan muat turun selepas penyesuaian. Tidak perlu log masuk atau daftar kerana semua ciri boleh diakses sepenuhnya tanpa kos.' },
     ],
     qrCodeScanner: [
-      { q: 'Bagaimana saya mengimbas kod QR?', a: 'Anda boleh menggunakan kamera peranti untuk pengimbasan langsung, atau memuat naik imej yang mengandungi kod QR.' },
-      { q: 'Jenis kod QR apa yang boleh dibaca?', a: 'Kami membaca semua format kod QR standard termasuk URL, teks, WiFi dan vCard.' },
-      { q: 'Adakah pengimbas berfungsi pada peranti mudah alih?', a: 'Ya. Pengimbas menggunakan kamera peranti anda melalui pelayar dan berfungsi pada Android dan iOS.' },
-      { q: 'Adakah suapan kamera saya disimpan atau dihantar?', a: 'Tidak. Pemprosesan kamera berlaku hanya dalam pelayar anda.' },
-      { q: 'Bolehkah saya mengimbas kod QR dari tangkapan skrin atau imej tersimpan?', a: 'Sudah tentu. Gunakan pilihan muat naik.' },
+      { q: 'Bolehkah saya mengimbas kod QR daripada imej tersimpan dan tangkapan skrin?', a: '**Ya**, anda boleh mengimbas kod QR daripada imej tersimpan atau tangkapan skrin. Pengimbas kod QR kami https://photremium.com/qr-code-scanner membolehkan anda mengimbas kod QR daripada galeri. Anda hanya perlu memilih imej dan anda akan mendapat semua maklumat yang ditebus daripada kod QR itu.' },
+      { q: 'Adakah saya perlu memasang Aplikasi untuk pengimbas kod QR?', a: '**Tidak**, pengimbas kod QR berasaskan web kami membolehkan anda mengimbas kod QR tanpa perlu memasang sebarang aplikasi. Anda boleh mengakses pengimbas kod QR lanjutan kami pada mana-mana peranti secara percuma.' },
+      { q: 'Mengapa pengimbas tidak mengenali kod QR?', a: 'Kod QR anda tidak diimbas disebabkan salah satu sebab berikut: i. Cahaya tidak mencukupi: Mengimbas kod QR dalam cahaya malap boleh menyebabkan masalah imbasan. Hidupkan lampu suluh dan tingkatkan kecerahan jika anda mengimbas dari mana-mana skrin. ii. Jarak: Mengimbas kod QR dari jarak yang tidak sesuai juga akan menyebabkan isu. Jarak optimum untuk mengimbas kod QR ialah sekitar 10 inci (25cm). iii. Lensa kamera kotor: Kod QR juga boleh gagal diimbas kerana lensa kotor. Bersihkan lensa sebelum mengimbasnya. “Anda nampak grid kotak dalam pengimbas? Hanya muatkan kod QR ke dalamnya untuk mengimbasnya dengan berjaya.”' },
+      { q: 'Adakah alat ini mengimbas kod QR songsang atau berwarna?', a: '**Ya**, anda boleh mengimbas QR dalam sebarang warna atau orientasi. Namun, jika kontras warna latar belakang dan latar hadapan rendah, ia mungkin menyebabkan kesukaran semasa mengimbas.' },
+      { q: 'Adakah alat ini percuma untuk digunakan?', a: '**Ya**, alat ini sepenuhnya percuma untuk digunakan. Anda boleh mengimbas kod QR tanpa had secara percuma selama-lamanya.' },
     ],
     faceBlur: [
       { q: 'Bagaimana pengesanan wajah berfungsi?', a: 'Model pengesanan wajah berkuasa AI berjalan terus dalam pelayar anda. Ia mengenal pasti wajah dalam imej.' },

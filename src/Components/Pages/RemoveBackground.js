@@ -377,6 +377,7 @@ const RemoveBackground = () => {
   const compareDragging = useRef(false);
   const didPrefillFromStateRef = useRef(false);
   const dragDepthRef = useRef(0);
+  const supportsPointerEvents = typeof window !== 'undefined' && 'PointerEvent' in window;
 
   const selected = images.find((i) => i.id === selectedId) || null;
   const totalSize = images.reduce((s, i) => s + i.file.size, 0);
@@ -416,20 +417,52 @@ const RemoveBackground = () => {
   }, [images.length]);
 
   /* --- compare slider drag handlers --- */
-  const onComparePointerDown = useCallback((e) => {
-    compareDragging.current = true;
-    e.target.setPointerCapture?.(e.pointerId);
-  }, []);
-
-  const onComparePointerMove = useCallback((e) => {
-    if (!compareDragging.current || !compareRef.current) return;
+  const setComparePosFromClientX = useCallback((clientX) => {
+    if (!compareRef.current || typeof clientX !== 'number') return;
     const rect = compareRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
+    if (rect.width <= 0) return;
+    const x = clientX - rect.left;
     const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setComparePos(pct);
   }, []);
 
-  const onComparePointerUp = useCallback(() => {
+  const getEventClientX = useCallback((e) => {
+    if (typeof e.clientX === 'number') return e.clientX;
+    if (e.touches && e.touches[0]) return e.touches[0].clientX;
+    if (e.changedTouches && e.changedTouches[0]) return e.changedTouches[0].clientX;
+    return null;
+  }, []);
+
+  const onComparePointerDown = useCallback((e) => {
+    compareDragging.current = true;
+    setComparePosFromClientX(getEventClientX(e));
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+  }, [getEventClientX, setComparePosFromClientX]);
+
+  const onComparePointerMove = useCallback((e) => {
+    if (!compareDragging.current) return;
+    setComparePosFromClientX(getEventClientX(e));
+  }, [getEventClientX, setComparePosFromClientX]);
+
+  const onComparePointerUp = useCallback((e) => {
+    compareDragging.current = false;
+    e.currentTarget?.releasePointerCapture?.(e.pointerId);
+  }, []);
+
+  const onCompareTouchStart = useCallback((e) => {
+    if (supportsPointerEvents) return;
+    compareDragging.current = true;
+    setComparePosFromClientX(getEventClientX(e));
+    e.preventDefault();
+  }, [getEventClientX, setComparePosFromClientX, supportsPointerEvents]);
+
+  const onCompareTouchMove = useCallback((e) => {
+    if (supportsPointerEvents || !compareDragging.current) return;
+    setComparePosFromClientX(getEventClientX(e));
+    e.preventDefault();
+  }, [getEventClientX, setComparePosFromClientX, supportsPointerEvents]);
+
+  const onCompareTouchEnd = useCallback(() => {
     compareDragging.current = false;
   }, []);
 
@@ -799,9 +832,15 @@ const RemoveBackground = () => {
                 <div
                   className="rbg-compare-wrap"
                   ref={compareRef}
+                  onPointerDown={onComparePointerDown}
                   onPointerMove={onComparePointerMove}
                   onPointerUp={onComparePointerUp}
+                  onPointerCancel={onComparePointerUp}
                   onPointerLeave={onComparePointerUp}
+                  onTouchStart={onCompareTouchStart}
+                  onTouchMove={onCompareTouchMove}
+                  onTouchEnd={onCompareTouchEnd}
+                  onTouchCancel={onCompareTouchEnd}
                 >
                   {/* Original (full background layer) */}
                   <img src={selected.preview} alt="" draggable={false} />
@@ -813,7 +852,6 @@ const RemoveBackground = () => {
                   <div className="rbg-compare__line" style={{ left: `${comparePos}%` }}>
                     <div
                       className="rbg-compare__handle"
-                      onPointerDown={onComparePointerDown}
                     >
                       <i className="fa-solid fa-chevron-left"></i>
                       <i className="fa-solid fa-chevron-right"></i>

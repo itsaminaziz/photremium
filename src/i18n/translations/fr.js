@@ -1031,6 +1031,92 @@ const fr = {
     typePhone: 'Numéro de téléphone',
     typeSms: 'SMS',
     typeLocation: 'Localisation',
+    blog: {
+      tocTitle: 'Sommaire',
+      sections: [
+        {
+          id: 'why-use-qr-code-scanner',
+          title: '1. Pourquoi utiliser un scanner de QR code ?',
+          paragraphs: [
+            'Un scanner de QR code est essentiellement une caméra mobile qui décode les informations stockées dans le QR code. Il vous suffit de pointer la caméra vers le QR code ; quelle que soit son orientation, il lit les motifs spécifiques, détecte les erreurs, corrige les erreurs si nécessaire, puis affiche les informations qu’il contient.',
+          ],
+          listTitle: 'Types de scanners de QR code :',
+          bullets: [
+            'Scanner de QR code basé sur le web : Vous pouvez scanner un QR code avec des scanners en ligne pris en charge par votre navigateur. Vous pouvez accéder aux informations via la caméra ou en téléversant une image. Pour la redirection automatique et d’autres fonctionnalités avancées, vous pouvez visiter https://photremium.com.',
+            'Caméras mobiles : Certains téléphones modernes disposent d’un scanner de QR code intégré à leur application caméra native. Ils peuvent récupérer et décoder les informations simplement en scannant le QR code avec la caméra.',
+            'Applications : Certaines applications sont conçues spécifiquement pour scanner les QR codes. Cependant, pour une redirection avancée et de nombreuses autres fonctionnalités, vous pouvez installer l’application gratuitement via ce lien : https://photremium.com.',
+            'Appareils matériels : Certains appareils matériels sont également conçus pour scanner les QR codes. Ces appareils sont largement utilisés dans les grands centres commerciaux pour la facturation des articles.',
+          ],
+        },
+        {
+          id: 'why-choose-our-qr-code-scanner',
+          title: '2. Pourquoi choisir notre scanner de QR code ?',
+          paragraphs: [
+            'Vous pouvez découvrir plusieurs fonctionnalités avancées, de la redirection à la copie du contenu décodé depuis le QR code. Vous pouvez explorer de nombreuses autres fonctionnalités intéressantes de notre scanner de QR code, telles que :',
+          ],
+          bullets: [
+            'Vitesse rapide : Notre scanner de QR code rend le décodage extrêmement rapide. Il vous suffit de scanner le QR code, et notre outil vous donne instantanément les informations avec une option avancée pour copier le texte/lien, ouvrir si un lien est détecté, ou enregistrer automatiquement si un contact est détecté.',
+            'Aucune installation requise : Vous n’avez pas besoin d’installer une application séparée pour utiliser notre scanner de QR code. Vous pouvez accéder gratuitement à cet outil depuis votre navigateur local.',
+            'Accès multiplateforme : Vous pouvez y accéder sur n’importe quel appareil. Pas d’inquiétude concernant la version du système d’exploitation ou d’autres exigences. Cet outil est pris en charge sur toutes les versions et tous les appareils.',
+            'Tous les formats pris en charge : Tous les formats de données pouvant être stockés dans un QR code, y compris le texte brut, le WiFi, les URL, les contacts, Gmail et Google Maps, etc., sont pris en charge par notre outil.',
+          ],
+        },
+        {
+          id: 'step-by-step-guide',
+          title: '3. Guide étape par étape :',
+          steps: [
+            {
+              heading: '1. Tout d’abord, choisissez une méthode pour scanner le QR code. Il existe les deux méthodes suivantes :',
+              subSteps: [
+                {
+                  heading: 'i. Méthode caméra',
+                  paragraphs: [
+                    'Vous pouvez scanner le QR code avec la caméra de votre appareil, même si vous utilisez un ordinateur portable, un PC, ou tout appareil prenant en charge une caméra simple. En cliquant sur le bouton “Démarrer la caméra”, une demande d’autorisation apparaîtra ; autorisez ce site à utiliser votre caméra pour le scan QR. Si vous l’avez refusée par erreur ou si la demande n’apparaît pas, vous pouvez accorder l’accès manuellement en suivant ces étapes :',
+                  ],
+                  notes: [
+                    '➔ Pour Chrome (Android / Desktop) :',
+                    '1. Cliquez sur les trois points',
+                    '2. Allez dans Paramètres',
+                    '3. (Ignorez cette étape sur Android) Confidentialité et sécurité',
+                    '4. Cliquez sur Paramètres du site',
+                    '5. Ensuite, dans la section des autorisations, cliquez sur Caméra',
+                    '6. Recherchez l’URL de notre site : https://photremium.com/qr-code-scanner',
+                    '7. Autorisez la caméra dans le menu déroulant.',
+                    '➔ Pour Safari (iPhone / iOS) :',
+                    '1. Touchez l’icône AA ou Réglages du site web dans la barre d’adresse.',
+                    '2. Sélectionnez Réglages du site web.',
+                    '3. Touchez Caméra et choisissez Autoriser.',
+                    '4. Si c’est toujours bloqué : allez dans Réglages iPhone > Safari > Caméra et réglez sur Demander ou Autoriser.',
+                  ],
+                },
+                {
+                  heading: 'ii. Méthode galerie',
+                  paragraphs: [
+                    'Vous pouvez téléverser l’image d’un QR code pour accéder à ses informations. Cliquez sur le bouton “Scanner depuis la galerie”, et l’explorateur de fichiers s’ouvrira. Ensuite, sélectionnez l’image du QR code. Tous les formats d’image sont pris en charge, tels que .jpg, .jpeg, .png, .gif, .webp, .svg, .avif, .heic, .heif, .jxl, .bmp, .ico, .tiff, .tif, .jfif, .jpe, .pjpeg, .pjp, .apng, .svgz et .xbm, etc.',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: '2. Lorsque vous sélectionnez le QR code, toutes les informations sont affichées ; vous permettant de copier, partager ou ouvrir le lien s’il est détecté. Vous pouvez aussi scanner à nouveau si vous le souhaitez.',
+            },
+          ],
+        },
+        {
+          id: 'benefits-of-qr-code-scanner',
+          title: 'Avantages du scanner de QR code:.',
+          paragraphs: [
+            'Le scanner de QR code offre plusieurs avantages dans ce monde numérique. Il rend les paiements, les vérifications et l’accès à l’information faciles et rapides, même en mode hors ligne.',
+          ],
+          bullets: [
+            'Accès instantané à l’information : Scanner le QR code fournit les informations en quelques millisecondes. Il décode les motifs, détecte les erreurs et les corrige très rapidement, offrant à l’utilisateur une expérience extrêmement rapide.',
+            'Communication fluide : À l’ère du numérique, il existe un besoin urgent de communication rapide et sécurisée pour de petites informations comme les détails bancaires et les informations produit, etc. Le scanner de QR code résout ce problème, car les paiements se font en scannant un QR code. De plus, Google vérifie les téléphones via QR lors de la création d’un nouveau compte sur ordinateur portable.',
+            'E-Tickets : Dans les gares routières, les gares ferroviaires ou les aéroports, vous pouvez vérifier vos billets facilement sans attendre longtemps en file. De plus, des scanners de QR code sont installés à plusieurs endroits dans les aéroports pour éviter les files d’attente. Cela réduit aussi le besoin en personnel, et permet automatiquement d’économiser le budget de la compagnie aérienne.',
+            'Authentification des produits : Les marques avancées et haut de gamme placent un QR code sur leurs produits. Le client peut scanner ce QR code pour vérifier l’authenticité du produit, qu’il soit original ou non.',
+          ],
+        },
+      ],
+    },
   },
 
   faceBlur: {
@@ -1141,11 +1227,11 @@ const fr = {
       { q: 'Dois-je me connecter/m’inscrire pour générer un code QR ?', a: 'Non. Entrez simplement votre texte, générez le code QR et téléchargez-le après personnalisation. Aucune connexion ni inscription n’est nécessaire, car toutes les fonctionnalités sont accessibles gratuitement.' },
     ],
     qrCodeScanner: [
-      { q: 'Comment scanner un code QR ?', a: 'Vous pouvez utiliser la caméra de votre appareil pour scanner en direct, ou télécharger une image contenant un code QR. Le résultat s\'affiche instantanément.' },
-      { q: 'Quels types de codes QR peuvent être lus ?', a: 'Notre scanner lit tous les formats QR standard, y compris les URL, le texte, les identifiants Wi-Fi et les vCards.' },
-      { q: 'Le scanner fonctionne-t-il sur les appareils mobiles ?', a: 'Oui. Le scanner utilise la caméra de votre appareil via le navigateur et fonctionne sur Android et iOS.' },
-      { q: 'Mon flux caméra est-il stocké ou envoyé quelque part ?', a: 'Non. Le traitement de la caméra se fait entièrement dans votre navigateur. Nous ne enregistrons jamais votre flux caméra.' },
-      { q: 'Puis-je scanner des codes QR à partir de captures d\'écran ou d\'images sauvegardées ?', a: 'Absolument. Utilisez l\'option de téléchargement pour scanner un code QR depuis n\'importe quelle image sauvegardée.' },
+      { q: 'Puis-je scanner un QR code depuis des images enregistrées et des captures d’écran ?', a: '**Oui**, vous pouvez scanner un QR code depuis des images enregistrées ou des captures d’écran. Notre scanner de QR code https://photremium.com/qr-code-scanner vous permet de scanner un QR code depuis la galerie. Il vous suffit de sélectionner l’image, et vous obtiendrez toutes les informations décodées de ce QR code.' },
+      { q: 'Dois-je installer une application pour utiliser le scanner de QR code ?', a: '**Non**, notre scanner de QR code basé sur le web vous permet de scanner un QR code sans installer d’application. Vous pouvez accéder gratuitement à notre scanner avancé sur n’importe quel appareil.' },
+      { q: 'Pourquoi le scanner ne reconnaît-il pas le QR code ?', a: 'Votre QR code n’est pas scanné pour l’une des raisons suivantes : i. Lumière insuffisante : scanner un QR code dans un environnement sombre peut causer des difficultés. Activez la lampe torche et augmentez la luminosité si vous scannez depuis un écran. ii. Distance : scanner un QR code à une distance inappropriée peut aussi causer des problèmes. La distance optimale pour scanner un QR code est d’environ 10 pouces (25 cm). iii. Lentilles de caméra sales : un QR code peut aussi échouer à cause de lentilles sales. Nettoyez les lentilles avant de scanner. “Vous voyez une grille carrée dans le scanner ? Placez simplement le QR code à l’intérieur pour le scanner correctement.”' },
+      { q: 'Cet outil peut-il scanner un QR code inversé ou coloré ?', a: '**Oui**, vous pouvez scanner un QR code dans n’importe quelle couleur ou orientation. Cependant, si le contraste entre la couleur de fond et la couleur de premier plan est faible, cela peut rendre le scan difficile.' },
+      { q: 'Cet outil est-il gratuit ?', a: '**Oui**, cet outil est totalement gratuit. Vous pouvez scanner un nombre illimité de QR codes gratuitement pour toujours.' },
     ],
     faceBlur: [
       { q: 'Comment fonctionne la détection des visages ?', a: 'Nous utilisons un modèle de détection de visages par IA qui s\'exécute directement dans votre navigateur. Il identifie les visages dans l\'image.' },

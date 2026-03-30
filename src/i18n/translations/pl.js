@@ -981,10 +981,18 @@ const pl = {
     supportedFormats: 'Obsługuje JPG, PNG, GIF, WEBP',
     ctrlVPaste: 'Wklej przez Ctrl+V',
     scanFromGallery: 'Skanuj z Galerii',
+    instantScanning: 'Natychmiastowe skanowanie',
+    instantScanningDesc: 'Wykrywanie kodów QR w czasie rzeczywistym z kamery lub przesłanych obrazów',
+    private100: '100% prywatnie',
+    private100Desc: 'Całe przetwarzanie odbywa się w Twojej przeglądarce. Nic nie jest przesyłane',
+    multiFormat: 'Wiele formatów',
+    multiFormatDesc: 'Wykrywa URL, tekst, WiFi, kontakty, e-mail, telefon i więcej',
     accessingCamera: 'Uzyskiwanie dostępu do kamery…',
     cameraDenied: 'Dostęp do kamery odrzucony. Zezwól na uprawnienia kamery i spróbuj ponownie.',
     noCamera: 'Nie znaleziono kamery w tym urządzeniu.',
     cameraError: 'Nie można uzyskać dostępu do kamery. Spróbuj ponownie.',
+    videoError: 'Nie udało się uruchomić odtwarzania wideo.',
+    switchError: 'Nie udało się przełączyć kamery.',
     tryAgain: 'Spróbuj Ponownie',
     switchCamera: 'Przełącz Kamerę',
     stop: 'Zatrzymaj',
@@ -1002,6 +1010,100 @@ const pl = {
     password: 'Hasło',
     security: 'Zabezpieczenia',
     unknown: 'Nieznany',
+    typeText: 'Tekst',
+    typeUrl: 'URL',
+    typeWifi: 'Sieć WiFi',
+    typeContact: 'Wizytówka kontaktu',
+    typeEmail: 'E-mail',
+    typePhone: 'Numer telefonu',
+    typeSms: 'SMS',
+    typeLocation: 'Lokalizacja',
+    blog: {
+      tocTitle: 'Spis treści',
+      sections: [
+        {
+          id: 'why-use-qr-code-scanner',
+          title: '1. Dlaczego warto używać skanera kodów QR?',
+          paragraphs: [
+            'Skaner kodów QR to w zasadzie aparat mobilny, który dekoduje informacje zapisane w kodzie QR. Wystarczy skierować aparat na kod QR — niezależnie od orientacji kodu odczyta on konkretne wzorce, wykryje błędy, poprawi je w razie potrzeby i wyświetli zawarte informacje.',
+          ],
+          listTitle: 'Rodzaje skanerów kodów QR:',
+          bullets: [
+            'Skaner kodów QR oparty na WWW: Możesz skanować kod QR za pomocą skanerów online obsługiwanych przez Twoją przeglądarkę. Do informacji możesz uzyskać dostęp przez aparat lub skanowanie po przesłaniu obrazu. Aby skorzystać z automatycznego przekierowania i innych zaawansowanych funkcji, odwiedź https://photremium.com.',
+            'Aparaty w telefonach: Niektóre nowoczesne telefony mają wbudowany skaner kodów QR w natywnej aplikacji aparatu. Potrafią pobrać i zdekodować informacje, po prostu skanując kod QR zwykłym aparatem.',
+            'Aplikacje: Istnieją aplikacje stworzone specjalnie do skanowania kodów QR. Jednak w przypadku zaawansowanego przekierowania i wielu innych funkcji możesz zainstalować aplikację za darmo przez ten link: https://photremium.com.',
+            'Urządzenia sprzętowe: Niektóre urządzenia sprzętowe również służą do skanowania kodów QR. Są one powszechnie używane w dużych centrach handlowych do rozliczania produktów.',
+          ],
+        },
+        {
+          id: 'why-choose-our-qr-code-scanner',
+          title: '2. Dlaczego wybrać nasz skaner kodów QR?',
+          paragraphs: [
+            'Możesz odkryć wiele zaawansowanych funkcji — od przekierowania po kopiowanie treści zdekodowanej z kodu QR. W naszym skanerze kodów QR znajdziesz też wiele innych ciekawych funkcji, takich jak:',
+          ],
+          bullets: [
+            'Duża szybkość: Nasz skaner kodów QR sprawia, że dekodowanie kodu QR jest wyjątkowo szybkie. Wystarczy zeskanować kod QR, a nasze narzędzie natychmiast poda informacje z zaawansowaną opcją kopiowania tekstu/linku, otwarcia po wykryciu linku lub automatycznego zapisu po wykryciu kontaktu.',
+            'Bez instalacji: Nie musisz instalować osobnej aplikacji, aby korzystać z naszego skanera kodów QR. Narzędzie jest dostępne bezpłatnie w lokalnej przeglądarce.',
+            'Dostęp międzyplatformowy: Możesz korzystać na dowolnym urządzeniu. Nie musisz się martwić wersją systemu ani innymi wymaganiami. Narzędzie działa na wszystkich wersjach i urządzeniach.',
+            'Obsługa wszystkich formatów: Wszystkie formaty danych, które mogą być zapisane w kodzie QR, w tym zwykły tekst, WiFi, URL, kontakty, Gmail i Google Maps itp., są obsługiwane przez nasze narzędzie.',
+          ],
+        },
+        {
+          id: 'step-by-step-guide',
+          title: '3. Przewodnik krok po kroku:',
+          steps: [
+            {
+              heading: '1. Najpierw wybierz metodę skanowania kodu QR. Są na to dwie metody:',
+              subSteps: [
+                {
+                  heading: 'i. Metoda aparatu',
+                  paragraphs: [
+                    'Możesz skanować kod QR kamerą urządzenia, nawet jeśli używasz laptopa, komputera PC lub dowolnego urządzenia obsługującego zwykłą kamerę. Kliknięcie przycisku “Start Camera” wywoła prośbę o uprawnienie — zezwól tej stronie na użycie aparatu do skanowania QR. Jeśli przypadkowo odmówiłeś lub prośba nie pojawia się, możesz nadać dostęp do aparatu ręcznie, wykonując te kroki:',
+                  ],
+                  notes: [
+                    '➔ Dla Chrome (Android / Desktop):',
+                    '1. Kliknij trzy kropki',
+                    '2. Przejdź do Settings',
+                    '3. (Pomiń ten krok na Androidzie) Privacy and Security',
+                    '4. Kliknij Site Settings',
+                    '5. Następnie w sekcji permissions kliknij Camera',
+                    '6. Znajdź URL naszej strony: https://photremium.com/qr-code-scanner',
+                    '7. Zezwól na kamerę z listy rozwijanej.',
+                    '➔ Dla Safari (iPhone / iOS):',
+                    '1. Stuknij ikonę AA lub Website Settings na pasku adresu.',
+                    '2. Wybierz Website Settings.',
+                    '3. Stuknij Camera i wybierz Allow.',
+                    '4. Jeśli nadal jest blokowane: przejdź do iPhone Settings > Safari > Camera i ustaw Ask lub Allow.',
+                  ],
+                },
+                {
+                  heading: 'ii. Metoda galerii',
+                  paragraphs: [
+                    'Możesz przesłać obraz kodu QR, aby uzyskać dostęp do jego informacji. Kliknij przycisk “Scan from Gallery”, a otworzy się eksplorator plików. Następnie wybierz obraz kodu QR. Obsługiwane są wszystkie formaty obrazów, takie jak jpg, .jpeg, .png, .gif, .webp, .svg, .avif, .heic, .heif, .jxl, .bmp, .ico, .tiff, .tif, .jfif, .jpe, .pjpeg, .pjp, .apng, .svgz oraz .xbm itd.',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: '2. Po wybraniu kodu QR wyświetlane są wszystkie informacje, co pozwala kopiować, udostępniać lub otworzyć link, jeśli zostanie wykryty. Możesz też zeskanować ponownie, jeśli chcesz.',
+            },
+          ],
+        },
+        {
+          id: 'benefits-of-qr-code-scanner',
+          title: 'Korzyści ze skanera kodów QR:.',
+          paragraphs: [
+            'Skaner kodów QR oferuje wiele korzyści w tym cyfrowym świecie. Ułatwia i przyspiesza płatności, weryfikacje oraz dostęp do informacji nawet w trybie offline.',
+          ],
+          bullets: [
+            'Natychmiastowy dostęp do informacji: Zeskanowanie kodu QR dostarcza informacje w ułamku milisekundy. Narzędzie dekoduje wzorce, wykrywa błędy i bardzo szybko je usuwa, zapewniając użytkownikowi wyjątkowo szybkie działanie.',
+            'Płynna komunikacja: W tej erze rozwoju istnieje pilna potrzeba szybkiej i bezpiecznej komunikacji dla drobnych informacji, takich jak dane bankowe i dane produktu itp. Skaner kodów QR rozwiązuje ten problem, ponieważ płatności realizuje się przez zeskanowanie kodu QR. Google również weryfikuje telefon przez QR podczas tworzenia nowego konta na laptopie.',
+            'E-bilety: Na dworcach autobusowych, kolejowych czy lotniskach możesz łatwo zweryfikować bilet bez długiego czekania w kolejce. Co więcej, skanery kodów QR są instalowane w wielu miejscach na lotniskach, aby ograniczyć kolejki. To także zmniejsza zapotrzebowanie na pracowników, automatycznie oszczędzając budżet linii lotniczych.',
+            'Uwierzytelnianie produktu: Zaawansowane i premium marki umieszczają kod QR na produkcie. Klient może zeskanować ten kod QR, aby sprawdzić autentyczność produktu i potwierdzić, czy jest oryginalny.',
+          ],
+        },
+      ],
+    },
   },
 
   faceBlur: {
@@ -1112,11 +1214,11 @@ const pl = {
       { q: 'Czy muszę się zalogować/zarejestrować, aby wygenerować kod QR?', a: 'Nie, po prostu wpisz swój tekst, wygeneruj kod QR i pobierz go po dostosowaniu. Nie ma potrzeby logowania ani rejestracji, ponieważ wszystkie funkcje są dostępne całkowicie za darmo.' },
     ],
     qrCodeScanner: [
-      { q: 'Jak skanować kod QR?', a: 'Możesz użyć kamery urządzenia do skanowania na żywo lub przesłać obraz zawierający kod QR.' },
-      { q: 'Jakie typy kodów QR można odczytać?', a: 'Odczytujemy wszystkie standardowe formaty kodów QR, w tym URL, tekst, WiFi i vCard.' },
-      { q: 'Czy skaner działa na urządzeniach mobilnych?', a: 'Tak. Skaner używa kamery urządzenia przez przeglądarkę i działa na Androidzie i iOS.' },
-      { q: 'Czy obraz z kamery jest zapisywany lub przesyłany?', a: 'Nie. Przetwarzanie kamery odbywa się tylko w Twojej przeglądarce.' },
-      { q: 'Czy mogę skanować kody QR z zrzutów ekranu lub zapisanych obrazów?', a: 'Oczywiście. Użyj opcji przesyłania.' },
+      { q: 'Czy mogę skanować kod QR z zapisanych obrazów i zrzutów ekranu?', a: '**Tak**, możesz skanować kod QR z zapisanych obrazów lub zrzutów ekranu. Nasz skaner kodów QR https://photremium.com/qr-code-scanner pozwala skanować kod QR z galerii. Wystarczy wybrać obraz, a otrzymasz wszystkie informacje odczytane z tego kodu QR.' },
+      { q: 'Czy muszę instalować aplikację do skanera kodów QR?', a: '**Nie**, nasz webowy skaner kodów QR pozwala skanować kod QR bez instalowania jakiejkolwiek aplikacji. Z naszego zaawansowanego skanera kodów QR możesz korzystać bezpłatnie na każdym urządzeniu.' },
+      { q: 'Dlaczego skaner nie rozpoznaje kodu QR?', a: 'Twój kod QR nie jest skanowany z jednego z następujących powodów: i. Niewystarczające światło: Skanowanie kodu QR przy słabym oświetleniu może powodować problemy. Włącz latarkę i zwiększ jasność, jeśli skanujesz z ekranu. ii. Odległość: Skanowanie kodu QR z nieodpowiedniej odległości również powoduje problemy. Optymalna odległość do skanowania kodu QR to około 10 cali (25cm). iii. Brudne soczewki aparatu: Kod QR może też nie zostać zeskanowany z powodu zabrudzonych soczewek. Wyczyść soczewki przed skanowaniem. “Widzisz siatkę w skanerze? Po prostu dopasuj do niej kod QR, aby zeskanować go poprawnie.”' },
+      { q: 'Czy to narzędzie skanuje odwrócony lub kolorowy kod QR?', a: '**Tak**, możesz skanować QR w dowolnym kolorze i orientacji. Jednak jeśli kontrast między tłem a pierwszym planem jest niski, skanowanie może być utrudnione.' },
+      { q: 'Czy to narzędzie jest darmowe?', a: '**Tak**, to narzędzie jest całkowicie darmowe. Możesz skanować nieograniczoną liczbę kodów QR za darmo na zawsze.' },
     ],
     faceBlur: [
       { q: 'Jak działa wykrywanie twarzy?', a: 'Model wykrywania twarzy zasilany AI działa bezpośrednio w Twojej przeglądarce. Identyfikuje twarze na obrazach.' },

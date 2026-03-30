@@ -983,10 +983,18 @@ const nl = {
     supportedFormats: 'Ondersteunt JPG, PNG, GIF, WEBP',
     ctrlVPaste: 'Plakken via Ctrl+V',
     scanFromGallery: 'Scannen uit Galerij',
+    instantScanning: 'Direct Scannen',
+    instantScanningDesc: 'Realtime QR-codedetectie vanaf camera of geüploade afbeeldingen',
+    private100: '100% Privé',
+    private100Desc: 'Alle verwerking gebeurt in je browser. Niets wordt geüpload',
+    multiFormat: 'Meerdere Formaten',
+    multiFormatDesc: 'Detecteert URL\'s, tekst, WiFi, contacten, e-mail, telefoon en meer',
     accessingCamera: 'Toegang tot camera…',
     cameraDenied: 'Cameratoegang geweigerd. Sta camera-rechten toe en probeer opnieuw.',
     noCamera: 'Geen camera gevonden op dit apparaat.',
     cameraError: 'Kan geen toegang krijgen tot camera. Probeer opnieuw.',
+    videoError: 'Kon videoweergave niet starten.',
+    switchError: 'Kon camera niet wisselen.',
     tryAgain: 'Opnieuw Proberen',
     switchCamera: 'Camera Wisselen',
     stop: 'Stoppen',
@@ -1004,6 +1012,100 @@ const nl = {
     password: 'Wachtwoord',
     security: 'Beveiliging',
     unknown: 'Onbekend',
+    typeText: 'Tekst',
+    typeUrl: 'URL',
+    typeWifi: 'WiFi-netwerk',
+    typeContact: 'Contactkaart',
+    typeEmail: 'E-mail',
+    typePhone: 'Telefoonnummer',
+    typeSms: 'SMS',
+    typeLocation: 'Locatie',
+    blog: {
+      tocTitle: 'Inhoud',
+      sections: [
+        {
+          id: 'why-use-qr-code-scanner',
+          title: '1. Waarom een QR-codescanner gebruiken?',
+          paragraphs: [
+            'Een QR-codescanner is in feite een mobiele camera die de informatie decodeert die in de QR-code is opgeslagen. Je hoeft alleen de camera op de QR-code te richten; ongeacht de oriëntatie van de QR-code leest hij specifieke patronen, detecteert fouten, corrigeert fouten indien nodig en toont de informatie erin.',
+          ],
+          listTitle: 'Soorten QR-codescanners:',
+          bullets: [
+            'Webgebaseerde QR-codescanner: Je kunt de QR-code scannen met online scanners die je browser ondersteunt. Je kunt de informatie openen via de camera of door een afbeelding te uploaden. Voor automatische doorverwijzing en andere geavanceerde functies kun je https://photremium.com bezoeken.',
+            'Mobiele camera\'s: Sommige moderne telefoons hebben een ingebouwde QR-codescanner in hun standaard camera-apps. Deze kunnen informatie ophalen en decoderen door de QR-code met een gewone camera te scannen.',
+            'Apps: Er zijn apps die speciaal zijn gemaakt om QR-codes te scannen. Voor geavanceerde doorverwijzing en veel andere functies kun je de app echter gratis installeren via deze link: https://photremium.com.',
+            'Hardware-apparaten: Er zijn ook hardware-apparaten gemaakt om QR-codes te scannen. Deze apparaten worden veel gebruikt in grote winkelcentra voor het afrekenen van producten.',
+          ],
+        },
+        {
+          id: 'why-choose-our-qr-code-scanner',
+          title: '2. Waarom kiezen voor onze QR-codescanner?',
+          paragraphs: [
+            'Je kunt meerdere geavanceerde functies verkennen, van doorverwijzen tot het kopiëren van inhoud die uit de QR-code is gedecodeerd. Je kunt nog veel meer interessante functies in onze QR-codescanner ontdekken, zoals:',
+          ],
+          bullets: [
+            'Hoge snelheid: Onze QR-codescanner maakt het decoderen van QR-codes extreem snel. Je hoeft alleen de QR-code te scannen, en onze tool geeft direct de informatie met geavanceerde opties om tekst/link te kopiëren, te openen als er een link is gedetecteerd, of automatisch op te slaan als er een contact is gedetecteerd.',
+            'Geen installatie nodig: Je hoeft geen aparte app te installeren om onze QR-codescanner te gebruiken. Je kunt deze tool gratis via je lokale browser openen.',
+            'Platformonafhankelijke toegang: Je kunt het op elk apparaat gebruiken. Geen zorgen over OS-versie of andere vereisten. Dit wordt ondersteund op alle versies en alle apparaten.',
+            'Alle formaten ondersteund: Alle gegevensformaten die in de QR-code kunnen worden opgeslagen, waaronder platte tekst, WiFi, URL\'s, contacten, Gmail en Google Maps, enz., worden door onze tool ondersteund.',
+          ],
+        },
+        {
+          id: 'step-by-step-guide',
+          title: '3. Stapsgewijze handleiding:',
+          steps: [
+            {
+              heading: '1. Kies eerst een methode om de QR-code te scannen. Er zijn twee methoden:',
+              subSteps: [
+                {
+                  heading: 'i. Cameramethode',
+                  paragraphs: [
+                    'Je kunt de QR-code scannen met de camera van je apparaat, zelfs als je een laptop, pc of ander apparaat gebruikt dat een gewone camera ondersteunt. Door op de knop “Start Camera” te klikken verschijnt een toestemmingsverzoek; geef deze site toestemming om je camera te gebruiken voor QR-scannen. Als je per ongeluk hebt geweigerd of het verzoek niet verschijnt, kun je cameratoegang handmatig verlenen met deze stappen:',
+                  ],
+                  notes: [
+                    '➔ Voor Chrome (Android / Desktop):',
+                    '1. Klik op de drie puntjes',
+                    '2. Ga naar Settings',
+                    '3. (Sla deze stap over op Android) Privacy and Security',
+                    '4. Klik op Site Settings',
+                    '5. Klik daarna in de permissions-sectie op Camera',
+                    '6. Zoek de URL van onze site: https://photremium.com/qr-code-scanner',
+                    '7. Sta camera toe via het dropdownmenu.',
+                    '➔ Voor Safari (iPhone / iOS):',
+                    '1. Tik op het AA- of Website Settings-icoon in de adresbalk.',
+                    '2. Selecteer Website Settings.',
+                    '3. Tik op Camera en kies Allow.',
+                    '4. Als het nog steeds geblokkeerd is: ga naar iPhone Settings > Safari > Camera en zet dit op Ask of Allow.',
+                  ],
+                },
+                {
+                  heading: 'ii. Galerijmethode',
+                  paragraphs: [
+                    'Je kunt een afbeelding van een QR-code uploaden om de informatie te openen. Klik op de knop “Scan from Gallery” en de bestandsverkenner wordt geopend. Selecteer daarna de QR-codeafbeelding. Alle afbeeldingsformaten worden ondersteund zoals jpg, .jpeg, .png, .gif, .webp, .svg, .avif, .heic, .heif, .jxl, .bmp, .ico, .tiff, .tif, .jfif, .jpe, .pjpeg, .pjp, .apng, .svgz en .xbm, enz.',
+                  ],
+                },
+              ],
+            },
+            {
+              heading: '2. Wanneer je de QR-code selecteert, wordt alle informatie weergegeven; je kunt dan kopiëren, delen of de link openen als die is gedetecteerd. Je kunt ook opnieuw scannen als je wilt.',
+            },
+          ],
+        },
+        {
+          id: 'benefits-of-qr-code-scanner',
+          title: 'Voordelen van QR-codescanner:.',
+          paragraphs: [
+            'De QR-codescanner biedt verschillende voordelen in deze digitale wereld. Het maakt betalingen, verificaties en toegang tot informatie gemakkelijk en snel, zelfs in offline modus.',
+          ],
+          bullets: [
+            'Directe toegang tot informatie: Het scannen van de QR-code levert informatie op in milliseconden. Het decodeert patronen, detecteert fouten en verwijdert ze razendsnel, wat de gebruiker een zeer snelle ervaring geeft.',
+            'Naadloze communicatie: In dit tijdperk van vooruitgang is er veel behoefte aan snelle en veilige communicatie voor kleine informatie zoals bankgegevens en productdetails, enz. De QR-codescanner lost dit op omdat betalingen worden gedaan door een QR-code te scannen. Google verifieert ook mobiele telefoons via QR bij het maken van een nieuw account op laptop.',
+            'E-tickets: Op busstations, treinstations of luchthavens kun je je tickets eenvoudig verifiëren zonder lang in de rij te wachten. Bovendien zijn op meerdere plekken op luchthavens QR-codescanners geïnstalleerd om wachtrijen te voorkomen. Dit vermindert ook de behoefte aan personeel en bespaart zo automatisch op het budget van de luchtvaartmaatschappij.',
+            'Productauthenticatie: Geavanceerde en premium merken plaatsen een QR-code op hun product. Klanten kunnen die QR-code scannen om de echtheid van het product te controleren.',
+          ],
+        },
+      ],
+    },
   },
 
   faceBlur: {
@@ -1114,11 +1216,11 @@ const nl = {
       { q: 'Moet ik inloggen/inschrijven om een QR-code te genereren?', a: 'Nee, voer uw tekst in, genereer de QR-code en download deze na het aanpassen. U hoeft niet in te loggen of in te schrijven, omdat alle functies volledig gratis toegankelijk zijn.' },
     ],
     qrCodeScanner: [
-      { q: 'Hoe scan ik een QR-code?', a: 'U kunt de camera van uw apparaat gebruiken voor live scannen of een afbeelding met een QR-code uploaden.' },
-      { q: 'Welke soorten QR-codes kunnen worden gelezen?', a: 'We lezen alle standaard QR-code-formaten, waaronder URL, tekst, WiFi en vCard.' },
-      { q: 'Werkt de scanner op mobiele apparaten?', a: 'Ja. De scanner gebruikt de camera van het apparaat via de browser en werkt op Android en iOS.' },
-      { q: 'Wordt het camerabeeld opgeslagen of geüpload?', a: 'Nee. Cameraverwerking vindt alleen in uw browser plaats.' },
-      { q: 'Kan ik QR-codes scannen van schermafbeeldingen of opgeslagen afbeeldingen?', a: 'Zeker. Gebruik de uploadoptie.' },
+      { q: 'Kan ik een QR-code scannen vanaf opgeslagen afbeeldingen en screenshots?', a: '**Ja**, je kunt een QR-code scannen vanaf opgeslagen afbeeldingen of screenshots. Onze QR-codescanner https://photremium.com/qr-code-scanner laat je de QR-code uit de galerij scannen. Je hoeft alleen de afbeelding te selecteren en je krijgt alle informatie die uit die QR-code is gehaald.' },
+      { q: 'Moet ik de app installeren voor een QR-codescanner?', a: '**Nee**, onze webgebaseerde QR-codescanner laat je QR-codes scannen zonder dat je een app hoeft te installeren. Je kunt onze geavanceerde QR-codescanner gratis op elk apparaat gebruiken.' },
+      { q: 'Waarom herkent de scanner de QR-code niet?', a: 'Je QR-code wordt niet gescand door een van de volgende redenen: i. Onvoldoende licht: Het scannen van de QR-code in weinig licht kan problemen geven. Zet de zaklamp aan en verhoog de helderheid als je vanaf een scherm scant. ii. Afstand: Scannen vanaf een onjuiste afstand veroorzaakt ook problemen. De optimale afstand om de QR-code te scannen is ongeveer 10 inch (25cm). iii. Vuile cameralenzen: QR-code scannen kan ook mislukken door vuile lenzen. Maak de lenzen schoon voordat je scant. “Zie je een rastervak in de scanner? Plaats de QR-code er gewoon in om hem succesvol te scannen.”' },
+      { q: 'Scant deze tool een omgekeerde of kleurrijke QR-code?', a: '**Ja**, je kunt QR scannen in elke kleur of oriëntatie. Als het contrast tussen achtergrond en voorgrondkleur laag is, kan dit het scannen wel bemoeilijken.' },
+      { q: 'Is deze tool gratis te gebruiken?', a: '**Ja**, deze tool is volledig gratis te gebruiken. Je kunt onbeperkt QR-codes gratis voor altijd scannen.' },
     ],
     faceBlur: [
       { q: 'Hoe werkt gezichtsdetectie?', a: 'Het AI-gestuurde gezichtsdetectiemodel draait direct in uw browser. Het identificeert gezichten in afbeeldingen.' },

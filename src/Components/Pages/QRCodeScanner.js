@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../SEO/SEO';
 import FAQ from '../FAQ/FAQ';
 import { useLanguage } from '../../context/LanguageContext';
+import './ImageCompressor.css';
 import './QRCodeScanner.css';
 
 /* ================================================================
@@ -59,7 +60,23 @@ const parseWifi = (data) => {
    QR CODE SCANNER PAGE
    ================================================================ */
 const QRCodeScanner = () => {
-  const { t, localePath } = useLanguage();
+  const { t, localePath, lang } = useLanguage();
+  const isBlogRtl = lang === 'ur' || lang === 'ar';
+  const blog = t('qrScanner.blog');
+  const blogSections = useMemo(() => (Array.isArray(blog?.sections) ? blog.sections : []), [blog]);
+  const blogFaqId = 'qrscan-blog-faq';
+  const blogContentSections = useMemo(
+    () => blogSections.filter((section) => !Array.isArray(section.faqs)),
+    [blogSections]
+  );
+  const [activeBlogId, setActiveBlogId] = useState(blogContentSections[0]?.id || blogContentSections[0]?.title || '');
+  const blogToc = useMemo(
+    () => [
+      ...blogContentSections.map((section) => ({ id: section.id || section.title, label: section.title })),
+      { id: blogFaqId, label: t('faq.heading') },
+    ],
+    [blogContentSections, t]
+  );
   /* ---------- state ---------- */
   const [showCamera, setShowCamera] = useState(false);
   const [scanning, setScanning] = useState(false);
@@ -79,6 +96,7 @@ const QRCodeScanner = () => {
   const streamRef = useRef(null);
   const animRef = useRef(null);
   const fileInputRef = useRef(null);
+  const autoStartHandledRef = useRef(false);
 
   const refreshTorchSupport = useCallback((stream) => {
     const videoTrack = stream?.getVideoTracks?.()[0];
@@ -311,6 +329,14 @@ const QRCodeScanner = () => {
 
   const onDrop = (e) => { e.preventDefault(); setDragOver(false); handleFiles(e.dataTransfer.files); };
 
+  useEffect(() => {
+    if (autoStartHandledRef.current) return;
+    const query = new URLSearchParams(window.location.search);
+    if (query.get('autostart') !== '1') return;
+    autoStartHandledRef.current = true;
+    startCamera();
+  }, [startCamera]);
+
   /* ---------- copy to clipboard ---------- */
   const copyToClipboard = async () => {
     if (!result?.data) return;
@@ -350,6 +376,15 @@ const QRCodeScanner = () => {
     closePopup();
   };
 
+  const handleBlogTocClick = useCallback((e, id) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (!element) return;
+    const top = element.getBoundingClientRect().top + window.pageYOffset - 110;
+    window.scrollTo({ top, behavior: 'smooth' });
+    setActiveBlogId(id);
+  }, []);
+
   /* ---------- render WiFi details ---------- */
   const renderWifiDetails = (data) => {
     const wifi = parseWifi(data);
@@ -372,6 +407,32 @@ const QRCodeScanner = () => {
       </div>
     );
   };
+
+  useEffect(() => {
+    const newActive = blogContentSections[0]?.id || blogContentSections[0]?.title || '';
+    setActiveBlogId(newActive);
+  }, [blogContentSections]);
+
+  useEffect(() => {
+    if (!blogToc.length) return;
+    const observers = [];
+    blogToc.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (!element) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveBlogId(item.id);
+          }
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+      observer.observe(element);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((observer) => observer.disconnect());
+  }, [blogToc]);
 
   /* ================================================================
      RENDER
@@ -462,24 +523,130 @@ const QRCodeScanner = () => {
             </div>
           </div>
 
-          {/* Features */}
-          <div className="qrscan-features">
-            <div className="qrscan-feature">
-              <div className="qrscan-feature__icon"><i className="fa-solid fa-bolt"></i></div>
-              <h4>{t('qrScanner.instantScanning')}</h4>
-              <p>{t('qrScanner.instantScanningDesc')}</p>
+          {blogSections.length ? (
+            <div className="qrscan-blog-host">
+              <nav className={`comp-blog-toc--mobile ${isBlogRtl ? 'comp-blog-toc--mobile--rtl' : ''}`} aria-label="QR scanner blog sections">
+                {blogToc.map((item) => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className={activeBlogId === item.id ? 'toc-active' : ''}
+                    onClick={(e) => handleBlogTocClick(e, item.id)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+
+              <div className={`comp-blog-layout ${isBlogRtl ? 'comp-blog-layout--rtl' : ''}`}>
+                <aside className="comp-blog-toc" aria-label="QR scanner blog TOC">
+                  <p className="comp-blog-toc__title">{blog.tocTitle || 'Contents'}</p>
+                  <ul className="comp-blog-toc__list">
+                    {blogToc.map((item) => (
+                      <li key={item.id}>
+                        <a
+                          href={`#${item.id}`}
+                          className={activeBlogId === item.id ? 'toc-active' : ''}
+                          onClick={(e) => handleBlogTocClick(e, item.id)}
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </aside>
+
+                <section className="comp-blog">
+                  {blogContentSections.map((section) => (
+                    <article className="comp-blog__card" id={section.id || section.title} key={section.id || section.title}>
+                      <h2>{section.title}</h2>
+
+                      {Array.isArray(section.paragraphs)
+                        ? section.paragraphs.map((paragraph, idx) => <p key={`p-${idx}`}>{paragraph}</p>)
+                        : null}
+
+                      {section.listTitle ? <h3>{section.listTitle}</h3> : null}
+
+                      {Array.isArray(section.bullets) ? (
+                        <ul className="comp-blog__list">
+                          {section.bullets.map((bullet, idx) => (
+                            <li key={`b-${idx}`}>{bullet}</li>
+                          ))}
+                        </ul>
+                      ) : null}
+
+                      {Array.isArray(section.steps) ? (
+                        <div className="comp-blog__steps">
+                          {section.steps.map((step, idx) => (
+                            <div className="comp-blog__step" key={`step-${idx}`}>
+                              <div className="comp-blog__step-title">{step.heading}</div>
+                              {Array.isArray(step.paragraphs)
+                                ? step.paragraphs.map((paragraph, pIdx) => <p key={`sp-${pIdx}`}>{paragraph}</p>)
+                                : null}
+                              {Array.isArray(step.bullets) ? (
+                                <ul className="comp-blog__list comp-blog__list--nested">
+                                  {step.bullets.map((bullet, bIdx) => (
+                                    <li key={`sb-${bIdx}`}>{bullet}</li>
+                                  ))}
+                                </ul>
+                              ) : null}
+                              {Array.isArray(step.notes)
+                                ? step.notes.map((note, nIdx) => {
+                                  const isNoteLabel = typeof note === 'string' && note.trim().startsWith('➔');
+                                  return (
+                                    <p key={`note-${nIdx}`}>
+                                      {isNoteLabel ? <strong>{note}</strong> : note}
+                                    </p>
+                                  );
+                                })
+                                : null}
+
+                              {Array.isArray(step.subSteps) ? (
+                                <div className="comp-blog__substeps">
+                                  {step.subSteps.map((subStep, sIdx) => (
+                                    <div className="comp-blog__step comp-blog__step--sub" key={`sub-${sIdx}`}>
+                                      <div className="comp-blog__step-title">{subStep.heading}</div>
+
+                                      {Array.isArray(subStep.paragraphs)
+                                        ? subStep.paragraphs.map((paragraph, pIdx) => <p key={`sub-p-${pIdx}`}>{paragraph}</p>)
+                                        : null}
+
+                                      {Array.isArray(subStep.bullets) ? (
+                                        <ul className="comp-blog__list comp-blog__list--nested">
+                                          {subStep.bullets.map((bullet, bIdx) => (
+                                            <li key={`sub-b-${bIdx}`}>{bullet}</li>
+                                          ))}
+                                        </ul>
+                                      ) : null}
+
+                                      {Array.isArray(subStep.notes)
+                                        ? subStep.notes.map((note, nIdx) => {
+                                          const isNoteLabel = typeof note === 'string' && note.trim().startsWith('➔');
+                                          return (
+                                            <p key={`sub-note-${nIdx}`}>
+                                              {isNoteLabel ? <strong>{note}</strong> : note}
+                                            </p>
+                                          );
+                                        })
+                                        : null}
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : null}
+                            </div>
+                          ))}
+                        </div>
+                      ) : null}
+                    </article>
+                  ))}
+
+                  <section className="comp-blog__faq-section" id={blogFaqId}>
+                    <FAQ faqKey="qrCodeScanner" />
+                  </section>
+                </section>
+              </div>
             </div>
-            <div className="qrscan-feature">
-              <div className="qrscan-feature__icon"><i className="fa-solid fa-shield-halved"></i></div>
-              <h4>{t('qrScanner.private100')}</h4>
-              <p>{t('qrScanner.private100Desc')}</p>
-            </div>
-            <div className="qrscan-feature">
-              <div className="qrscan-feature__icon"><i className="fa-solid fa-layer-group"></i></div>
-              <h4>{t('qrScanner.multiFormat')}</h4>
-              <p>{t('qrScanner.multiFormatDesc')}</p>
-            </div>
-          </div>
+          ) : null}
         </div>
       </section>
 
@@ -622,7 +789,6 @@ const QRCodeScanner = () => {
         </div>
       )}
 
-      <FAQ faqKey="qrCodeScanner" />
     </>
   );
 };
