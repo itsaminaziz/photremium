@@ -124,7 +124,322 @@ const tr = {
     aboutKeywords: 'photremium.com hakkında, görüntü araçları, ücretsiz görüntü editörü',
   },
 
-  common: {
+    privacyPolicyPage: {
+    seo: {
+      title: 'Gizlilik Politikası — Photremium | Sunucu Yüklemesi Yok, Sıfır Veri Depolama',
+      description: 'Photremium\'un Gizlilik Politikası gizliliğinizi nasıl koruduğumuzu açıklar. Tüm görüntü işleme %100 tarayıcınızda gerçekleşir; herhangi bir sunucuya dosya yüklenmez, kişisel veriler toplanmaz, takip yapılmaz.',
+      ogTitle: 'Gizlilik Politikası — Photremium | Yükleme Yok, Sıfır Depolama',
+      ogDescription: 'Dosyalarınız cihazınızda kalır. Photremium, sunucu bağlantısı olmadan, veri saklanmadan ve izleme olmadan tüm görüntüleri tarayıcınızda yerel olarak işler.',
+      twitterTitle: 'Gizlilik Politikası — Photremium',
+      twitterDescription: '%100 tarayıcı tabanlı görsel araçları. Yükleme yok, depolama yok, izleme yok. Gizlilik politikamızın tamamını okuyun.',
+      schemaName: 'Gizlilik Politikası - Photremium',
+      schemaDescription: 'Photremium Gizlilik Politikası - sunucuya yükleme yok, veri saklanmıyor, %100 tarayıcıda görüntü işleme yok.'
+    },
+    hero: {
+      badge: 'Gizlilik Politikası',
+      titlePrefix: 'Gizliliğiniz Bizimdir',
+      titleHighlight: 'En Yüksek Öncelik',
+      subPrefix: 'photremium.com basit bir prensip üzerine inşa edilmiştir:',
+      subStrong: 'dosyalarınız asla cihazınızdan ayrılmaz',
+      subSuffix: 'Bu sitedeki her resim aracı tamamen tarayıcınızın içinde çalışır. Yükleme yok. Bulut yok. Uzlaşma yok.',
+      effectiveLabel: 'Etkili',
+      lastUpdatedLabel: 'Son güncelleme',
+      worldwideLabel: 'Dünya çapında geçerlidir'
+    },
+    trustCards: [
+      {
+        title: 'Sunucu Yüklemesi Yok',
+        desc: 'Dosyalarınız asla cihazınızdan ayrılmaz. Tüm işlemler %100 tarayıcıda gerçekleştirilir.'
+      },
+      {
+        title: 'Sıfır Veri Depolama',
+        desc: 'Sizinle, görsellerinizle veya etkinliklerinizle ilgili hiçbir şeyi saklamayız.'
+      },
+      {
+        title: 'Takip Yok',
+        desc: 'Davranış takibi yok, parmak izi yok, profil çıkarma yok.'
+      },
+      {
+        title: 'GDPR Dostu',
+        desc: 'Baştan sona küresel gizlilik düzenlemelerine uyacak şekilde tasarlandı.'
+      }
+    ],
+    contentsTitle: 'İçindekiler',
+    toc: {
+      overview: 'Genel Bakış',
+      'no-upload': 'Sunucu İşleme Yok',
+      'data-collect': 'Topladığımız Veriler',
+      cookies: 'Çerezler ve Depolama',
+      'third-party': 'Üçüncü Taraf Hizmetleri',
+      analytics: 'Analitik',
+      children: 'Çocukların Gizliliği',
+      rights: 'Haklarınız',
+      security: 'Güvenlik',
+      changes: 'Politika Değişiklikleri',
+      contact: 'Bize Ulaşın'
+    },
+    sections: {
+      overview: {
+        title: '1. Genel Bakış',
+        subtitle: 'Bu politikanın kapsamı',
+        p1Prefix: 'Bu Gizlilik Politikasında bunun nasıl yapılacağı açıklanmaktadır',
+        p1Middle: '("biz", "bize" veya "bizim") idare eder - veya daha doğrusu,',
+        p1Italic: 'idare edemiyor',
+        p1Suffix: 'adresindeki ücretsiz çevrimiçi görsel araçlarımızı kullandığınızda kişisel bilgileriniz',
+        p2: 'Dosyaları işlenmek üzere uzak sunuculara gönderen geleneksel web uygulamalarının aksine, photremium.com, cihazınızda her işlemi yerel olarak gerçekleştirmek için modern tarayıcı API\'lerini (Canvas API, WebAssembly, WebWorkers) kullanır. Sonuç: veri aktarımı yok, depolama yok, risk yok.',
+        calloutLabel: 'Düz İngilizce özeti:',
+        calloutText: 'Görüntülerinizi göremiyoruz, istemiyoruz ve teknolojimiz, asla göremeyeceğimiz şekilde özel olarak tasarlanmıştır.'
+      },
+      noUpload: {
+        title: '2. Sunucu İşleme Yok - Hiçbir Zaman',
+        subtitle: 'Araçlarımız aslında nasıl çalışıyor?',
+        introPrefix: 'Photremium.com\'daki her araç (görüntü dönüştürücü, sıkıştırıcı, yeniden boyutlandırıcı, arka plan temizleyici, yüz bulanıklaştırma, filigran, kırpma ve QR kodu araçları) dosyalarınızı işler',
+        introStrong: '%100 web tarayıcınızın içinde',
+        introSuffix: 'istemci tarafı JavaScript ve WebAssembly kullanarak.',
+        points: [
+          {
+            label: 'Hiçbir dosya yükleme işlemi gerçekleşmez.',
+            text: 'Bir dosya seçtiğinizde, tarayıcınızın Dosya API\'si tarafından okunur ve bellekte işlenir; hiçbir zaman ağ üzerinden gönderilmez.'
+          },
+          {
+            label: 'Hiçbir sunucu resminizi almıyor.',
+            text: 'CDN\'miz, dosyalarınızı değil, yalnızca uygulamayı çalıştırmak için gereken HTML, CSS ve JavaScript varlıklarını sunar.'
+          },
+          {
+            label: 'Geçici depolama yok.',
+            text: 'İşlenen sonuçlar yalnızca tarayıcınızın belleğinde bulunur ve sayfayı kapattığınızda veya sayfadan ayrıldığınızda yayınlanır.'
+          },
+          {
+            label: 'Çevrimdışı çalışır.',
+            text: 'Çoğu araç, ilk sayfa yüklendikten sonra internet bağlantısı olmadan çalışmaya devam eder; bu da herhangi bir sunucunun dahil olmadığının bir başka kanıtıdır.'
+          }
+        ],
+        callout: 'Bunu kendiniz doğrulayabilirsiniz: Geliştirici Araçları\'nda tarayıcınızın Ağ sekmesini açın, bir görüntü seçin ve herhangi bir harici sunucuya hiçbir dosya verisinin aktarılmadığını doğrulayın.'
+      },
+      dataCollect: {
+        title: '3. Topladığımız (ve Toplamadığımız) Veriler',
+        subtitle: 'Veri uygulamalarında tam şeffaflık',
+        headers: {
+          type: 'Veri Türü',
+          collected: 'Toplanmış mı?',
+          whereWhy: 'Nerede / Neden'
+        },
+        rows: [
+          {
+            type: 'Resimleriniz / dosyalarınız',
+            badge: 'Asla',
+            variant: 'yeşil',
+            showX: true,
+            whereWhy: 'Tamamen tarayıcınızda işlenir; asla iletilmez'
+          },
+          {
+            type: 'İsim / e-posta adresi',
+            badge: 'Asla',
+            variant: 'yeşil',
+            showX: true,
+            whereWhy: 'Herhangi bir aracı kullanmak için hesap veya kayıt olmanıza gerek yoktur'
+          },
+          {
+            type: 'IP adresi',
+            badge: 'Asgari',
+            variant: 'gri',
+            showX: false,
+            whereWhy: 'Standart web sunucusu günlükleri <= 30 gün süreyle saklanır, kimliğe bağlı değildir'
+          },
+          {
+            type: 'Tarayıcı / İşletim Sistemi türü',
+            badge: 'Asgari',
+            variant: 'gri',
+            showX: false,
+            whereWhy: 'Tarayıcınız tarafından otomatik olarak gönderilir; yalnızca uyumluluk için kullanılır'
+          },
+          {
+            type: 'Ziyaret edilen sayfalar / tıklamalar',
+            badge: 'Toplu',
+            variant: 'mavi',
+            showX: false,
+            whereWhy: 'Yalnızca anonim analizler (kişisel kimlik tespiti yok)'
+          },
+          {
+            type: 'Dil tercihi',
+            badge: 'Yalnızca yerel',
+            variant: 'mavi',
+            showX: false,
+            whereWhy: 'Cihazınızdaki localStorage\'a kaydedildi; bize asla gönderilmedi'
+          },
+          {
+            type: 'Ödeme / finansal veriler',
+            badge: 'Asla',
+            variant: 'yeşil',
+            showX: true,
+            whereWhy: 'photremium.com hiçbir ödeme gerektirmeden tamamen ücretsizdir'
+          }
+        ]
+      },
+      cookies: {
+        title: '4. Çerezler ve Yerel Depolama',
+        subtitle: 'Cihazınızda neler saklanır?',
+        intro: 'photremium.com reklam çerezleri, siteler arası izleme çerezleri ve üçüncü taraf çerezleri kullanmaz. Kullandığımız tek tarayıcı depolama alanı temel site işlevleri içindir.',
+        points: [
+          {
+            label: 'Dil tercihi',
+            text: 'Sitenin ziyaretler arasında tercih ettiğiniz dili hatırlaması için localStorage\'da saklanır. Hiçbir zaman sunucularımıza gönderilmedi.'
+          },
+          {
+            label: 'Tema / kullanıcı arayüzü tercihleri',
+            text: 'Bir görüntüleme tercihi ayarlarsanız, bu tercih yerel olarak yalnızca cihazınıza kaydedilir.'
+          },
+          {
+            label: 'Oturum çerezi yok.',
+            text: 'photremium.com\'un oturum açma sistemi yoktur, dolayısıyla hiçbir oturum kimliği çerezi yazılmaz.'
+          }
+        ],
+        callout: 'Tarayıcınızın ayarlarını kullanarak (Ayarlar -> Gizlilik -> Tarama verilerini temizle -> Önbelleğe alınmış veriler ve çerezler) tüm photremium.com yerel depolama alanını istediğiniz zaman temizleyebilirsiniz. Bunun, araçları kullanma beceriniz üzerinde hiçbir etkisi yoktur.'
+      },
+      thirdParty: {
+        title: '5. Üçüncü Taraf Hizmetleri',
+        subtitle: 'Kullandığımız harici hizmetler ve nedenleri',
+        intro: 'photremium.com, yalnızca altyapı ve performans için minimum düzeyde güvenilir üçüncü taraf hizmetleri kullanır. Bu hizmetlerin hiçbiri görsellerinizi veya kişisel olarak tanımlanabilecek herhangi bir bilgiyi almaz.',
+        headers: {
+          service: 'Hizmet',
+          purpose: 'Amaç',
+          dataShared: 'Paylaşılan Veriler',
+          privacyPolicy: 'Gizlilik Politikası'
+        },
+        rows: [
+          {
+            service: 'Cloudflare Sayfaları',
+            purpose: 'Site varlıklarının barındırılması ve CDN teslimi',
+            dataShared: 'IP adresi, HTTP başlıkları (standart)',
+            privacyLink: 'https://www.cloudflare.com/privacypolicy/',
+            privacyText: 'cloudflare.com/privacypolicy'
+          },
+          {
+            service: 'Harika Yazı Tipi',
+            purpose: 'CDN\'den yüklenen simge yazı tipleri',
+            dataShared: 'IP adresi (yalnızca CSS isteği)',
+            privacyLink: 'https://fontawesome.com/privacy',
+            privacyText: 'fontawesome.com/privacy'
+          },
+          {
+            service: 'Google Yazı Tipleri',
+            purpose: 'Yazı tipi yükleme (varsa)',
+            dataShared: 'IP adresi (yalnızca yazı tipi isteği)',
+            privacyLink: 'https://policies.google.com/privacy',
+            privacyText: 'policies.google.com'
+          }
+        ],
+        outro: 'Verilerinizi reklamverenlerle, veri komisyoncularıyla veya yukarıda listelenen altyapı sağlayıcılarının dışındaki herhangi bir üçüncü tarafla paylaşmıyoruz.'
+      },
+      analytics: {
+        title: '6. Analitik',
+        subtitle: 'Toplu, gizliliğe saygılı kullanım verileri',
+        introPrefix: 'Hangi araçların popüler olduğunu ve siteyi nasıl geliştirebileceğimizi anlamak için şunları toplayabiliriz:',
+        introStrong: 'toplu, anonimleştirilmiş',
+        introSuffix: 'aşağıdakiler gibi kullanım istatistikleri:',
+        points: [
+          'Araç başına sayfa görüntüleme sayısı (kullanıcı kimliği yok)',
+          'Yönlendirme kaynağı (ör. Google arama, doğrudan bağlantı) — kişisel veri yok',
+          'Ülke düzeyinde coğrafi veriler (şehir veya kesin konum değil)',
+          'Uyumluluk analizi için tarayıcı / cihaz türü'
+        ],
+        calloutLabel: 'Hiçbir veri kişisel olarak sizinle bağlantılı değildir.',
+        calloutText: 'Google Analytics veya Meta Pixel kullanmıyoruz. Kullandığımız tüm analizler gizliliğe öncelik veren araçlardır (ör. Makul veya benzeri).'
+      },
+      children: {
+        title: '7. Çocukların Gizliliği',
+        subtitle: 'COPPA ve çocuk güvenliği uyumluluğu',
+        p1: 'photremium.com, 13 yaşın (veya GDPR uyarınca Avrupa Birliği\'nde 16 yaşın) altındaki çocuklardan bilerek herhangi bir kişisel bilgi toplamaz. Hiçbir kullanıcıdan kişisel veri toplamadığımız için, genç kullanıcılar için yapılacak özel bir şey yoktur; site herkes için eşit derecede güvenlidir.',
+        p2Prefix: 'Bir çocuğun bir şekilde kişisel bilgilerini iletişim formumuz aracılığıyla gönderdiğini düşünüyorsanız lütfen şu adresten hemen bizimle iletişime geçin:',
+        p2Suffix: 've derhal sileceğiz.'
+      },
+      rights: {
+        title: '8. Haklarınız',
+        subtitle: 'GDPR, CCPA ve küresel gizlilik hakları',
+        intro: 'Photremium.com kişisel olarak tanımlanabilecek hiçbir bilgi toplamadığından, veri sahibi hakların çoğu önemsiz bir şekilde geçerlidir; hakkınızda erişebileceğiniz, düzeltebileceğiniz veya silebileceğiniz hiçbir veri yoktur. Bununla birlikte, aşağıdaki hakları tam olarak kabul ediyor ve bunlara saygı duyuyoruz:',
+        points: [
+          {
+            label: 'Erişim hakkı',
+            text: 'Hakkınızda tuttuğumuz verilerin bir kopyasını isteyebilirsiniz. (Anonimleştirilmiş günlüklerin ötesinde bir şey yoktur.)'
+          },
+          {
+            label: 'Düzeltme hakkı',
+            text: 'Yanlış kişisel verilerinizin düzeltilmesini talep edebilirsiniz.'
+          },
+          {
+            label: 'Silme hakkı ("Unutulma hakkı")',
+            text: 'Tuttuğumuz tüm kişisel verilerin silinmesini talep edebilirsiniz (GDPR Madde 17, CCPA).'
+          },
+          {
+            label: 'İtiraz etme / vazgeçme hakkı',
+            text: 'Tarayıcı düzeyinde bir devre dışı bırakma veya reklam engelleme aracı kullanarak gelecekteki herhangi bir analiz koleksiyonundan vazgeçebilirsiniz.'
+          },
+          {
+            label: 'Veri taşınabilirliği hakkı',
+            text: 'Tüm çalışmalarınız doğrudan cihazınıza indirilir; dışa aktarma isteği gerekmez.'
+          }
+        ],
+        callout: 'Bu haklar, yargı yetkisine bakılmaksızın dünya çapındaki tüm kullanıcılar için geçerlidir; temel olarak en yüksek standardı (GDPR) uyguluyoruz.'
+      },
+      security: {
+        title: '9. Güvenlik',
+        subtitle: 'Deneyiminizi nasıl koruyoruz',
+        intro: 'En güvenli veriler hiçbir zaman toplanmayan verilerdir. photremium.com istemci tarafı mimarisi, dosyalarınız hiçbir zaman sunucularımızda olmadığından sunucu ihlalinin dosyalarınızı açığa çıkaramayacağı anlamına gelir. Ek güvenlik önlemleri şunları içerir:',
+        points: [
+          {
+            label: 'HTTPS yaptırımı',
+            text: 'Tarayıcınız ile CDN\'miz arasındaki tüm trafik, HSTS\'li TLS 1.2+ aracılığıyla şifrelenir.'
+          },
+          {
+            label: 'İçerik Güvenliği Politikası (CSP)',
+            text: 'Katı başlıklar, siteler arası komut dosyası çalıştırmayı ve satır içi komut dosyası eklemeyi önler.'
+          },
+          {
+            label: 'Düzenli bağımlılık denetimleri',
+            text: 'Bilinen güvenlik açıklarını gidermek için npm paketlerini düzenli olarak denetleyip güncelliyoruz.'
+          }
+        ],
+        disclosurePrefix: 'Sorumlu açıklama',
+        disclosureTextPrefix: 'Bir güvenlik sorunu mu buldunuz? Bize e-posta gönderin',
+        disclosureTextSuffix: 've 48 saat içinde cevap vereceğiz.'
+      },
+      changes: {
+        title: '10. Bu Politikadaki Değişiklikler',
+        subtitle: 'Politika güncellemelerini nasıl ele alıyoruz?',
+        intro: 'Uygulamalarımız, araçlarımız veya yasal gereksinimlerimizdeki değişiklikleri yansıtacak şekilde bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Bunu yaptığımızda:',
+        points: [
+          {
+            label: '"Son Güncelleme"',
+            text: 'Bu sayfanın üst kısmındaki tarih revize edilecektir.'
+          },
+          {
+            label: 'Malzeme değişiklikleri',
+            text: 'en az 30 gün süreyle ana sayfada dikkat çekici bir duyuruyla duyurulacaktır.'
+          },
+          {
+            label: 'Önceki sürümler',
+            text: 'Bu politika arşivlenecek ve talep üzerine sunulacaktır.'
+          }
+        ],
+        outro: 'Değişiklikler yayınlandıktan sonra photremium.com\'u kullanmaya devam etmek, güncellenen politikanın kabul edildiği anlamına gelir. Bu sayfayı periyodik olarak incelemenizi öneririz.'
+      },
+      contact: {
+        title: '11. İletişim ve Veri Talepleri',
+        subtitle: 'Gizlilik konusunda iletişime geçin',
+        p1Prefix: 'Bu Gizlilik Politikasıyla ilgili her türlü soru, endişe veya resmi veri talebi için lütfen bizimle iletişime geçin. Gizlilikle ilgili tüm sorulara şu kapsamda yanıt vermeyi amaçlıyoruz:',
+        p1Strong: '5 iş günü'
+      }
+    },
+    footer: {
+      privacyQuestionsTitle: 'Gizlilik Sorularınız mı var?',
+      privacyQuestionsDesc: 'Gizlilikle ilgili sorularınızı, veri taleplerinizi veya endişelerinizi bize gönderin, hemen yanıt verelim.',
+      versionHistoryTitle: 'Sürüm Geçmişi',
+      v2Label: 'v2.0 — Major rewrite',
+      v11Label: 'v1.1 — Added CCPA rights',
+      v10Label: 'v1.0 — Initial policy'
+    }
+  },
+common: {
     new: 'Yeni!',
     download: 'İndir',
     downloadAll: 'Hepsini İndir',

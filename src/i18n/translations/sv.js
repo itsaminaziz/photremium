@@ -124,7 +124,322 @@ const sv = {
     aboutKeywords: 'om photremium.com, bildverktyg, gratis bildredigerare',
   },
 
-  common: {
+      privacyPolicyPage: {
+    seo: {
+      title: 'Sekretesspolicy — Photremium | Inga serveruppladdningar, noll datalagring',
+      description: 'Photremiums sekretesspolicy förklarar hur vi skyddar din integritet. All bildbehandling sker till 100 % i din webbläsare – inga filuppladdningar till någon server, inga personliga data samlas in, ingen spårning.',
+      ogTitle: 'Sekretesspolicy — Photremium | Inga uppladdningar, noll lagringsutrymme',
+      ogDescription: 'Dina filer stannar på din enhet. Photremium bearbetar alla bilder lokalt i din webbläsare utan serverkontakt, ingen data lagrad och ingen spårning.',
+      twitterTitle: 'Sekretesspolicy – ​​Photremium',
+      twitterDescription: '100 % webbläsarbaserade bildverktyg. Inga uppladdningar, ingen lagring, ingen spårning. Läs vår fullständiga integritetspolicy.',
+      schemaName: 'Sekretesspolicy - Photremium',
+      schemaDescription: 'Photremiums sekretesspolicy - inga serveruppladdningar, ingen data lagrad, 100 % bildbehandling i webbläsaren.'
+    },
+    hero: {
+      badge: 'Sekretesspolicy',
+      titlePrefix: 'Din integritet är vår',
+      titleHighlight: 'Högsta prioritet',
+      subPrefix: 'photremium.com bygger på en enkel princip —',
+      subStrong: 'dina filer lämnar aldrig din enhet',
+      subSuffix: 'Varje bildverktyg på den här webbplatsen körs helt i din webbläsare. Inga uppladdningar. Inget moln. Ingen kompromiss.',
+      effectiveLabel: 'Effektiv',
+      lastUpdatedLabel: 'Senast uppdaterad',
+      worldwideLabel: 'Gäller över hela världen'
+    },
+    trustCards: [
+      {
+        title: 'Inga serveruppladdningar',
+        desc: 'Dina filer lämnar aldrig din enhet. All bearbetning sker till 100 % i webbläsaren.'
+      },
+      {
+        title: 'Noll datalagring',
+        desc: 'Vi lagrar ingenting om dig, dina bilder eller din aktivitet.'
+      },
+      {
+        title: 'Ingen spårning',
+        desc: 'Ingen beteendespårning, inga fingeravtryck, ingen profilering.'
+      },
+      {
+        title: 'GDPR-vänlig',
+        desc: 'Designad från grunden för att respektera globala integritetsbestämmelser.'
+      }
+    ],
+    contentsTitle: 'Innehåll',
+    toc: {
+      overview: 'Översikt',
+      'no-upload': 'Ingen serverbearbetning',
+      'data-collect': 'Data vi samlar in',
+      cookies: 'Cookies och lagring',
+      'third-party': 'Tredjepartstjänster',
+      analytics: 'Analytics',
+      children: 'Barns integritet',
+      rights: 'Dina rättigheter',
+      security: 'Säkerhet',
+      changes: 'Policyändringar',
+      contact: 'Kontakta oss'
+    },
+    sections: {
+      overview: {
+        title: '1. Översikt',
+        subtitle: 'Vad denna policy omfattar',
+        p1Prefix: 'Denna integritetspolicy beskriver hur',
+        p1Middle: '("vi", "oss" eller "vår") hanterar - eller mer exakt,',
+        p1Italic: 'hanterar inte',
+        p1Suffix: 'din personliga information när du använder våra kostnadsfria bildverktyg online på',
+        p2: 'Till skillnad från traditionella webbapplikationer som skickar filer till fjärrservrar för bearbetning, använder photremium.com moderna webbläsar-API:er (Canvas API, WebAssembly, WebWorkers) för att utföra varje operation lokalt på din enhet. Resultatet: ingen dataöverföring, ingen lagring, ingen risk.',
+        calloutLabel: 'Enkel engelsk sammanfattning:',
+        calloutText: 'Vi kan inte se dina bilder, vi vill inte, och vår teknik är speciellt framtagen så att vi aldrig kunde.'
+      },
+      noUpload: {
+        title: '2. Ingen serverbearbetning — någonsin',
+        subtitle: 'Hur våra verktyg faktiskt fungerar',
+        introPrefix: 'Varje verktyg på photremium.com - bildkonverterare, kompressor, resizer, bakgrundsborttagning, ansiktsoskärpa, vattenstämpel, beskärning och QR-kodverktyg - bearbetar dina filer',
+        introStrong: '100 % i din webbläsare',
+        introSuffix: 'med JavaScript och WebAssembly på klientsidan.',
+        points: [
+          {
+            label: 'Ingen filuppladdning sker någonsin.',
+            text: 'När du väljer en fil läses den av din webbläsares File API och bearbetas i minnet – den skickas aldrig över nätverket.'
+          },
+          {
+            label: 'Ingen server tar emot din bild.',
+            text: 'Vårt CDN serverar bara HTML-, CSS- och JavaScript-tillgångarna som behövs för att köra appen – inte dina filer.'
+          },
+          {
+            label: 'Ingen tillfällig förvaring.',
+            text: 'Bearbetade resultat finns bara i din webbläsares minne och släpps när du stänger eller navigerar bort från sidan.'
+          },
+          {
+            label: 'Fungerar offline.',
+            text: 'De flesta verktyg fortsätter att fungera utan internetanslutning efter den första sidladdningen - ytterligare ett bevis att ingen server är inblandad.'
+          }
+        ],
+        callout: 'Du kan verifiera detta själv: öppna webbläsarens nätverksfliken i utvecklarverktyg, välj en bild och bekräfta att ingen fildata överförs till någon extern server.'
+      },
+      dataCollect: {
+        title: '3. Data vi samlar in (och inte samlar in)',
+        subtitle: 'Full insyn i datapraxis',
+        headers: {
+          type: 'Datatyp',
+          collected: 'Samlade?',
+          whereWhy: 'Var / Varför'
+        },
+        rows: [
+          {
+            type: 'Dina bilder/filer',
+            badge: 'Aldrig',
+            variant: 'grön',
+            showX: true,
+            whereWhy: 'Bearbetas helt i din webbläsare – överförs aldrig'
+          },
+          {
+            type: 'Namn/e-postadress',
+            badge: 'Aldrig',
+            variant: 'grön',
+            showX: true,
+            whereWhy: 'Inget konto eller registrering krävs för att använda något verktyg'
+          },
+          {
+            type: 'IP-adress',
+            badge: 'Minimal',
+            variant: 'grå',
+            showX: false,
+            whereWhy: 'Standardwebbserverloggar bevaras <= 30 dagar, inte kopplade till identitet'
+          },
+          {
+            type: 'Webbläsare / OS-typ',
+            badge: 'Minimal',
+            variant: 'grå',
+            showX: false,
+            whereWhy: 'Skickas automatiskt av din webbläsare; används endast för kompatibilitet'
+          },
+          {
+            type: 'Besökta sidor/klick',
+            badge: 'Aggregerad',
+            variant: 'blå',
+            showX: false,
+            whereWhy: 'Endast anonym analys (ingen personlig identifiering)'
+          },
+          {
+            type: 'Språkinställning',
+            badge: 'Endast lokalt',
+            variant: 'blå',
+            showX: false,
+            whereWhy: 'Sparad till localStorage på din enhet – har aldrig skickats till oss'
+          },
+          {
+            type: 'Betalning/ekonomidata',
+            badge: 'Aldrig',
+            variant: 'grön',
+            showX: true,
+            whereWhy: 'photremium.com är helt gratis och inga betalningar krävs'
+          }
+        ]
+      },
+      cookies: {
+        title: '4. Cookies och lokal lagring',
+        subtitle: 'Vad som lagras på din enhet',
+        intro: 'photremium.com använder inga reklamcookies, inga spårningscookies över flera webbplatser och inga tredjepartscookies. Den enda webbläsarlagringen vi använder är för väsentlig webbplatsfunktionalitet.',
+        points: [
+          {
+            label: 'Språkinställning',
+            text: 'Lagras i localStorage så att sajten kommer ihåg ditt föredragna språk mellan besöken. Har aldrig skickats till våra servrar.'
+          },
+          {
+            label: 'Tema/gränssnittsinställningar',
+            text: 'Om du ställer in en visningsinställning sparas den endast lokalt på din enhet.'
+          },
+          {
+            label: 'Inga sessionscookies.',
+            text: 'photremium.com har inget inloggningssystem, så inga sessions-ID-cookies skrivs någonsin.'
+          }
+        ],
+        callout: 'Du kan rensa all lokal lagring på photremium.com när som helst via din webbläsarinställningar (Inställningar -> Sekretess -> Rensa webbinformation -> Cachad data & cookies). Att göra det har ingen effekt på din förmåga att använda verktygen.'
+      },
+      thirdParty: {
+        title: '5. Tredjepartstjänster',
+        subtitle: 'Externa tjänster vi använder och varför',
+        intro: 'photremium.com använder en minimal uppsättning betrodda tredjepartstjänster strikt för infrastruktur och prestanda. Ingen av dessa tjänster tar emot dina bilder eller någon personlig identifierbar information.',
+        headers: {
+          service: 'Service',
+          purpose: 'Ändamål',
+          dataShared: 'Data delad',
+          privacyPolicy: 'Sekretesspolicy'
+        },
+        rows: [
+          {
+            service: 'Cloudflare-sidor',
+            purpose: 'Hosting & CDN-leverans av webbplatstillgångar',
+            dataShared: 'IP-adress, HTTP-rubriker (standard)',
+            privacyLink: 'https://www.cloudflare.com/privacypolicy/',
+            privacyText: 'cloudflare.com/privacypolicy'
+          },
+          {
+            service: 'Typsnitt fantastiskt',
+            purpose: 'Ikonteckensnitt laddade från CDN',
+            dataShared: 'IP-adress (endast CSS-begäran)',
+            privacyLink: 'https://fontawesome.com/privacy',
+            privacyText: 'fontawesome.com/privacy'
+          },
+          {
+            service: 'Google Fonts',
+            purpose: 'Typsnittsladdning (om tillämpligt)',
+            dataShared: 'IP-adress (endast teckensnittsbegäran)',
+            privacyLink: 'https://policies.google.com/privacy',
+            privacyText: 'policies.google.com'
+          }
+        ],
+        outro: 'Vi delar inte dina uppgifter med annonsörer, datamäklare eller någon annan tredje part utöver de infrastrukturleverantörer som anges ovan.'
+      },
+      analytics: {
+        title: '6. Analys',
+        subtitle: 'Aggregerad, integritetsrespekterande användningsdata',
+        introPrefix: 'För att förstå vilka verktyg som är populära och hur man kan förbättra webbplatsen kan vi samla in',
+        introStrong: 'aggregerad, anonymiserad',
+        introSuffix: 'användningsstatistik som:',
+        points: [
+          'Antal sidvisningar per verktyg (ingen användaridentifiering)',
+          'Hänvisningskälla (t.ex. Google-sökning, direktlänk) – inga personliga uppgifter',
+          'Geografisk data på landsnivå (inte stad eller exakt plats)',
+          'Webbläsare/enhetstyp för kompatibilitetsanalys'
+        ],
+        calloutLabel: 'Ingen data är kopplad till dig personligen.',
+        calloutText: 'Vi använder inte Google Analytics eller Meta Pixel. All analys som vi använder är verktyg som tar integritet först (t.ex. Plausible eller liknande).'
+      },
+      children: {
+        title: '7. Barns integritet',
+        subtitle: 'COPPA & barnsäkerhetsöverensstämmelse',
+        p1: 'photremium.com samlar inte medvetet in någon personlig information från barn under 13 år (eller 16 i Europeiska unionen enligt GDPR). Eftersom vi inte samlar in personlig information från någon användare finns det inget speciellt att göra för yngre användare – sidan är lika säker för alla.',
+        p2Prefix: 'Om du tror att ett barn på något sätt har lämnat in personlig information via vårt kontaktformulär, vänligen kontakta oss omedelbart på',
+        p2Suffix: 'och vi kommer omedelbart att ta bort det.'
+      },
+      rights: {
+        title: '8. Dina rättigheter',
+        subtitle: 'GDPR, CCPA och globala integritetsrättigheter',
+        intro: 'Eftersom photremium.com inte samlar in någon personligt identifierbar information, gäller de flesta datasubjekträttigheter trivialt – det finns ingen data om dig att komma åt, korrigera eller radera. Ändå erkänner och respekterar vi till fullo följande rättigheter:',
+        points: [
+          {
+            label: 'Rätt till tillträde',
+            text: 'Du kan begära en kopia av alla uppgifter vi har om dig. (Det finns inga utöver anonymiserade loggar.)'
+          },
+          {
+            label: 'Rätt till rättelse',
+            text: 'Du kan begära rättelse av felaktiga personuppgifter.'
+          },
+          {
+            label: 'Rätt till radering ("Rätt att bli glömd")',
+            text: 'Du kan begära radering av alla personuppgifter vi har (GDPR Art. 17, CCPA).'
+          },
+          {
+            label: 'Rätt att invända / välja bort',
+            text: 'Du kan välja bort alla framtida analyssamlingar genom att använda ett borttagnings- eller annonsblockeringsverktyg på webbläsarnivå.'
+          },
+          {
+            label: 'Rätt till dataportabilitet',
+            text: 'Allt ditt arbete laddas ner direkt till din enhet – ingen exportförfrågan behövs.'
+          }
+        ],
+        callout: 'Dessa rättigheter gäller för alla användare över hela världen oavsett jurisdiktion – vi tillämpar den högsta standarden (GDPR) som vår baslinje.'
+      },
+      security: {
+        title: '9. Säkerhet',
+        subtitle: 'Hur vi skyddar din upplevelse',
+        intro: 'Den säkraste datan är data som aldrig samlas in. photremium.com klientsida-arkitektur innebär att ett serverintrång inte kan exponera dina filer eftersom dina filer aldrig finns på våra servrar. Ytterligare säkerhetsåtgärder inkluderar:',
+        points: [
+          {
+            label: 'HTTPS-tillämpning',
+            text: 'All trafik mellan din webbläsare och vårt CDN är krypterad via TLS 1.2+ med HSTS.'
+          },
+          {
+            label: 'Content Security Policy (CSP)',
+            text: 'Strikta rubriker förhindrar cross-site scripting och inline scriptinjection.'
+          },
+          {
+            label: 'Regelbundna beroenderevisioner',
+            text: 'Vi granskar och uppdaterar npm-paket regelbundet för att korrigera kända sårbarheter.'
+          }
+        ],
+        disclosurePrefix: 'Ansvarsfullt avslöjande',
+        disclosureTextPrefix: 'Hittade du ett säkerhetsproblem? Maila oss på',
+        disclosureTextSuffix: 'och vi kommer att svara inom 48 timmar.'
+      },
+      changes: {
+        title: '10. Ändringar av denna policy',
+        subtitle: 'Hur vi hanterar policyuppdateringar',
+        intro: 'Vi kan uppdatera denna integritetspolicy då och då för att återspegla förändringar i vår praxis, verktyg eller juridiska krav. När vi gör:',
+        points: [
+          {
+            label: '"Senast uppdaterad"',
+            text: 'datumet högst upp på denna sida kommer att revideras.'
+          },
+          {
+            label: 'Materialförändringar',
+            text: 'kommer att meddelas via ett framträdande meddelande på hemsidan i minst 30 dagar.'
+          },
+          {
+            label: 'Tidigare versioner',
+            text: 'av denna policy kommer att arkiveras och tillgänglig på begäran.'
+          }
+        ],
+        outro: 'Fortsatt användning av photremium.com efter att ändringar har publicerats utgör ett godkännande av den uppdaterade policyn. Vi uppmuntrar dig att granska den här sidan med jämna mellanrum.'
+      },
+      contact: {
+        title: '11. Kontakt & dataförfrågningar',
+        subtitle: 'Hör av dig angående integritet',
+        p1Prefix: 'För alla frågor, funderingar eller formella dataförfrågningar relaterade till denna sekretesspolicy, vänligen kontakta oss. Vi strävar efter att svara på alla integritetsrelaterade förfrågningar inom',
+        p1Strong: '5 arbetsdagar'
+      }
+    },
+    footer: {
+      privacyQuestionsTitle: 'Sekretessfrågor?',
+      privacyQuestionsDesc: 'Skicka oss dina integritetsfrågor, dataförfrågningar eller funderingar så svarar vi omgående.',
+      versionHistoryTitle: 'Versionshistorik',
+      v2Label: 'v2.0 — Major rewrite',
+      v11Label: 'v1.1 — Added CCPA rights',
+      v10Label: 'v1.0 — Initial policy'
+    }
+  },
+common: {
     new: 'Nytt!',
     download: 'Ladda ner',
     downloadAll: 'Ladda ner Alla',

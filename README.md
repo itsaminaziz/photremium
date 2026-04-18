@@ -65,6 +65,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
+## Cloudflare Pages Deployment
+
+This app is configured to deploy as a static Create React App build on Cloudflare Pages.
+
+### Build settings (Cloudflare Pages)
+
+- Build command: `CI=false npm run build`
+- Build output directory: `build`
+
+### SPA routing
+
+Client-side routes are handled by `public/_redirects`:
+
+```
+/* /index.html 200
+```
+
+### Required environment variables
+
+Set these in Cloudflare Pages Project Settings -> Environment Variables:
+
+- `REACT_APP_FIREBASE_API_KEY`
+- `REACT_APP_FIREBASE_AUTH_DOMAIN`
+- `REACT_APP_FIREBASE_PROJECT_ID`
+- `REACT_APP_FIREBASE_STORAGE_BUCKET`
+- `REACT_APP_FIREBASE_MESSAGING_SENDER_ID`
+- `REACT_APP_FIREBASE_APP_ID`
+
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

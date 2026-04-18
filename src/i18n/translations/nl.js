@@ -124,7 +124,322 @@ const nl = {
     aboutKeywords: 'over photremium.com, afbeeldingstools, gratis afbeeldingsbewerker',
   },
 
-  common: {
+      privacyPolicyPage: {
+    seo: {
+      title: 'Privacybeleid — Photremium | Geen serveruploads, geen gegevensopslag',
+      description: 'In het privacybeleid van Photremium wordt uitgelegd hoe wij uw privacy beschermen. Alle beeldverwerking gebeurt 100% in uw browser: er worden geen bestanden geüpload naar een server, er worden geen persoonlijke gegevens verzameld, geen tracking.',
+      ogTitle: 'Privacybeleid — Photremium | Geen uploads, geen opslag',
+      ogDescription: 'Uw bestanden blijven op uw apparaat staan. Photremium verwerkt alle afbeeldingen lokaal in uw browser zonder servercontact, zonder opgeslagen gegevens en zonder tracking.',
+      twitterTitle: 'Privacybeleid — Photremium',
+      twitterDescription: '100% browsergebaseerde beeldtools. Geen uploads, geen opslag, geen tracking. Lees ons volledige privacybeleid.',
+      schemaName: 'Privacybeleid - Photremium',
+      schemaDescription: 'Photremium Privacybeleid - geen serveruploads, geen gegevens opgeslagen, 100% beeldverwerking in de browser.'
+    },
+    hero: {
+      badge: 'Privacybeleid',
+      titlePrefix: 'Uw privacy is onze',
+      titleHighlight: 'Topprioriteit',
+      subPrefix: 'phototremium.com is gebouwd op een eenvoudig principe:',
+      subStrong: 'uw bestanden verlaten nooit uw apparaat',
+      subSuffix: 'Elke afbeeldingstool op deze site draait volledig in uw browser. Geen uploads. Geen wolk. Geen compromis.',
+      effectiveLabel: 'Effectief',
+      lastUpdatedLabel: 'Laatst bijgewerkt',
+      worldwideLabel: 'Geldt wereldwijd'
+    },
+    trustCards: [
+      {
+        title: 'Geen serveruploads',
+        desc: 'Uw bestanden verlaten nooit uw apparaat. Alle verwerking vindt 100% in de browser plaats.'
+      },
+      {
+        title: 'Geen gegevensopslag',
+        desc: 'We slaan niets op over u, uw afbeeldingen of uw activiteit.'
+      },
+      {
+        title: 'Geen tracking',
+        desc: 'Geen gedragsregistratie, geen vingerafdrukken, geen profilering.'
+      },
+      {
+        title: 'AVG-vriendelijk',
+        desc: 'Vanaf de basis ontworpen om de wereldwijde privacyregelgeving te respecteren.'
+      }
+    ],
+    contentsTitle: 'Inhoud',
+    toc: {
+      overview: 'Overzicht',
+      'no-upload': 'Geen serververwerking',
+      'data-collect': 'Gegevens die we verzamelen',
+      cookies: 'Cookies en opslag',
+      'third-party': 'Diensten van derden',
+      analytics: 'Analyse',
+      children: 'Privacy van kinderen',
+      rights: 'Uw rechten',
+      security: 'Beveiliging',
+      changes: 'Beleidswijzigingen',
+      contact: 'Neem contact met ons op'
+    },
+    sections: {
+      overview: {
+        title: '1. Overzicht',
+        subtitle: 'Wat dit beleid dekt',
+        p1Prefix: 'Dit privacybeleid beschrijft hoe',
+        p1Middle: '("wij", "ons" of "onze") verwerkt - of beter gezegd,',
+        p1Italic: 'hanteert niet',
+        p1Suffix: 'uw persoonlijke gegevens wanneer u onze gratis online beeldhulpmiddelen gebruikt op',
+        p2: 'In tegenstelling tot traditionele webapplicaties die bestanden ter verwerking naar externe servers sturen, gebruikt photremium.com moderne browser-API\'s (Canvas API, WebAssembly, WebWorkers) om elke bewerking lokaal op uw apparaat uit te voeren. Het resultaat: geen datatransmissie, geen opslag, geen risico.',
+        calloutLabel: 'Duidelijke Engelse samenvatting:',
+        calloutText: 'We kunnen uw afbeeldingen niet zien, dat willen we niet, en onze technologie is speciaal zo ontworpen dat we dat nooit kunnen zien.'
+      },
+      noUpload: {
+        title: '2. Geen serververwerking – ooit',
+        subtitle: 'Hoe onze tools daadwerkelijk werken',
+        introPrefix: 'Elke tool op photremium.com – beeldconverter, compressor, resizer, achtergrondverwijderaar, gezichtsvervaging, watermerk, bijsnijden en QR-codetools – verwerkt uw bestanden',
+        introStrong: '100% in uw webbrowser',
+        introSuffix: 'met behulp van JavaScript en WebAssembly aan de clientzijde.',
+        points: [
+          {
+            label: 'Er vindt nooit een bestandsupload plaats.',
+            text: 'Wanneer u een bestand selecteert, wordt het gelezen door de File API van uw browser en in het geheugen verwerkt; het wordt nooit via het netwerk verzonden.'
+          },
+          {
+            label: 'Geen enkele server ontvangt uw afbeelding.',
+            text: 'Ons CDN levert alleen de HTML-, CSS- en JavaScript-items die nodig zijn om de app uit te voeren, niet uw bestanden.'
+          },
+          {
+            label: 'Geen tijdelijke opslag.',
+            text: 'Verwerkte resultaten bestaan ​​alleen in uw browsergeheugen en worden vrijgegeven wanneer u de pagina sluit of weg navigeert.'
+          },
+          {
+            label: 'Werkt offline.',
+            text: 'De meeste tools blijven functioneren zonder internetverbinding nadat de pagina voor het eerst is geladen – verder bewijs dat er geen server bij betrokken is.'
+          }
+        ],
+        callout: 'U kunt dit zelf verifiëren: open het tabblad Netwerk van uw browser in Developer Tools, selecteer een afbeelding en controleer of er geen bestandsgegevens naar een externe server worden verzonden.'
+      },
+      dataCollect: {
+        title: '3. Gegevens die we verzamelen (en niet verzamelen)',
+        subtitle: 'Volledige transparantie over datapraktijken',
+        headers: {
+          type: 'Gegevenstype',
+          collected: 'Verzameld?',
+          whereWhy: 'Waar / waarom'
+        },
+        rows: [
+          {
+            type: 'Uw afbeeldingen / bestanden',
+            badge: 'Nooit',
+            variant: 'groente',
+            showX: true,
+            whereWhy: 'Volledig verwerkt in uw browser - nooit verzonden'
+          },
+          {
+            type: 'Naam / e-mailadres',
+            badge: 'Nooit',
+            variant: 'groente',
+            showX: true,
+            whereWhy: 'Er is geen account of aanmelding vereist om welke tool dan ook te gebruiken'
+          },
+          {
+            type: 'IP-adres',
+            badge: 'Minimaal',
+            variant: 'grijs',
+            showX: false,
+            whereWhy: 'Standaard webserverlogboeken worden <= 30 dagen bewaard, niet gebonden aan identiteit'
+          },
+          {
+            type: 'Browser/OS-type',
+            badge: 'Minimaal',
+            variant: 'grijs',
+            showX: false,
+            whereWhy: 'Automatisch verzonden door uw browser; alleen gebruikt voor compatibiliteit'
+          },
+          {
+            type: 'Bezochte pagina\'s / klikken',
+            badge: 'Geaggregeerd',
+            variant: 'blauw',
+            showX: false,
+            whereWhy: 'Alleen anonieme analyses (geen persoonlijke identificatie)'
+          },
+          {
+            type: 'Taalvoorkeur',
+            badge: 'Alleen lokaal',
+            variant: 'blauw',
+            showX: false,
+            whereWhy: 'Opgeslagen in localStorage op uw apparaat - nooit naar ons verzonden'
+          },
+          {
+            type: 'Betalings-/financiële gegevens',
+            badge: 'Nooit',
+            variant: 'groente',
+            showX: true,
+            whereWhy: 'phototremium.com is volledig gratis en er zijn geen betalingen vereist'
+          }
+        ]
+      },
+      cookies: {
+        title: '4. Cookies en lokale opslag',
+        subtitle: 'Wat wordt opgeslagen op uw apparaat',
+        intro: 'phototremium.com gebruikt geen advertentiecookies, geen cross-site tracking cookies en geen cookies van derden. De enige browseropslag die we gebruiken is voor essentiële sitefunctionaliteit.',
+        points: [
+          {
+            label: 'Taalvoorkeur',
+            text: 'Opgeslagen in localStorage, zodat de site uw voorkeurstaal onthoudt tussen bezoeken. Nooit verzonden naar onze servers.'
+          },
+          {
+            label: 'Thema-/UI-voorkeuren',
+            text: 'Als u een weergavevoorkeur instelt, wordt deze alleen lokaal op uw apparaat opgeslagen.'
+          },
+          {
+            label: 'Geen sessiecookies.',
+            text: 'phototremium.com heeft geen inlogsysteem, dus er worden nooit sessie-ID-cookies geschreven.'
+          }
+        ],
+        callout: 'U kunt op elk moment alle lokale opslag van photremium.com wissen via uw browserinstellingen (Instellingen -> Privacy -> Browsegegevens wissen -> Gegevens in cache en cookies). Als u dit wel doet, heeft dit geen invloed op uw vermogen om de tools te gebruiken.'
+      },
+      thirdParty: {
+        title: '5. Diensten van derden',
+        subtitle: 'Externe diensten die we gebruiken en waarom',
+        intro: 'phototremium.com gebruikt een minimale set vertrouwde services van derden, uitsluitend voor infrastructuur en prestaties. Geen van deze services ontvangt uw afbeeldingen of persoonlijk identificeerbare informatie.',
+        headers: {
+          service: 'Dienst',
+          purpose: 'Doel',
+          dataShared: 'Gegevens gedeeld',
+          privacyPolicy: 'Privacybeleid'
+        },
+        rows: [
+          {
+            service: 'Cloudflare-pagina\'s',
+            purpose: 'Hosting en CDN-levering van sitemiddelen',
+            dataShared: 'IP-adres, HTTP-headers (standaard)',
+            privacyLink: 'https://www.cloudflare.com/privacypolicy/',
+            privacyText: 'cloudflare.com/privacypolicy'
+          },
+          {
+            service: 'Lettertype Geweldig',
+            purpose: 'Pictogramlettertypen geladen vanuit CDN',
+            dataShared: 'IP-adres (alleen CSS-verzoek)',
+            privacyLink: 'https://fontawesome.com/privacy',
+            privacyText: 'fontawesome.com/privacy'
+          },
+          {
+            service: 'Google-lettertypen',
+            purpose: 'Lettertype laden (indien van toepassing)',
+            dataShared: 'IP-adres (alleen lettertypeverzoek)',
+            privacyLink: 'https://policies.google.com/privacy',
+            privacyText: 'policies.google.com'
+          }
+        ],
+        outro: 'We delen uw gegevens niet met adverteerders, datamakelaars of andere derde partijen dan de hierboven genoemde infrastructuuraanbieders.'
+      },
+      analytics: {
+        title: '6. Analyses',
+        subtitle: 'Geaggregeerde, privacy respecterende gebruiksgegevens',
+        introPrefix: 'Om te begrijpen welke tools populair zijn en hoe we de site kunnen verbeteren, kunnen we gegevens verzamelen',
+        introStrong: 'geaggregeerd, geanonimiseerd',
+        introSuffix: 'gebruiksstatistieken zoals:',
+        points: [
+          'Aantal paginaweergaven per tool (geen gebruikersidentificatie)',
+          'Verwijzingsbron (bijv. Google-zoekopdracht, directe link) – geen persoonlijke gegevens',
+          'Geografische gegevens op landniveau (geen stad of exacte locatie)',
+          'Browser-/apparaattype voor compatibiliteitsanalyse'
+        ],
+        calloutLabel: 'Er worden geen gegevens aan u persoonlijk gekoppeld.',
+        calloutText: 'Wij maken geen gebruik van Google Analytics of Meta Pixel. Alle analyses die we gebruiken zijn tools waarbij de privacy voorop staat (bijvoorbeeld Plausibel of iets dergelijks).'
+      },
+      children: {
+        title: '7. Privacy van kinderen',
+        subtitle: 'COPPA en naleving van de kinderveiligheid',
+        p1: 'phototremium.com verzamelt niet bewust persoonlijke gegevens van kinderen jonger dan 13 jaar (of 16 jaar in de Europese Unie onder de AVG). Omdat we van geen enkele gebruiker persoonlijke gegevens verzamelen, is er niets speciaals te doen voor jongere gebruikers; de site is voor iedereen even veilig.',
+        p2Prefix: 'Als u denkt dat een kind op een of andere manier persoonlijke gegevens heeft verstrekt via ons contactformulier, neem dan onmiddellijk contact met ons op via',
+        p2Suffix: 'en we zullen het onmiddellijk verwijderen.'
+      },
+      rights: {
+        title: '8. Uw rechten',
+        subtitle: 'AVG, CCPA en wereldwijde privacyrechten',
+        intro: 'Omdat phototremium.com geen persoonlijk identificeerbare informatie verzamelt, zijn de meeste rechten van de betrokkenen triviaal van toepassing: er zijn geen gegevens over u die u kunt openen, corrigeren of verwijderen. Niettemin erkennen en respecteren wij de volgende rechten volledig:',
+        points: [
+          {
+            label: 'Recht op toegang',
+            text: 'U kunt een kopie opvragen van alle gegevens die wij over u bewaren. (Er is niets anders dan geanonimiseerde logbestanden.)'
+          },
+          {
+            label: 'Recht op correctie',
+            text: 'U kunt verzoeken om correctie van onjuiste persoonsgegevens.'
+          },
+          {
+            label: 'Recht op verwijdering ("Recht om vergeten te worden")',
+            text: 'U kunt verzoeken om verwijdering van alle persoonlijke gegevens die wij bewaren (AVG Art. 17, CCPA).'
+          },
+          {
+            label: 'Recht van bezwaar/opt-out',
+            text: 'U kunt zich afmelden voor elke toekomstige verzameling van analyses door gebruik te maken van een opt-out- of advertentieblokkeringstool op browserniveau.'
+          },
+          {
+            label: 'Recht op gegevensportabiliteit',
+            text: 'Al uw werk wordt rechtstreeks naar uw apparaat gedownload – er is geen exportverzoek nodig.'
+          }
+        ],
+        callout: 'Deze rechten zijn van toepassing op alle gebruikers wereldwijd, ongeacht het rechtsgebied. Wij hanteren de hoogste standaard (AVG) als uitgangspunt.'
+      },
+      security: {
+        title: '9. Beveiliging',
+        subtitle: 'Hoe wij uw ervaring beschermen',
+        intro: 'De veiligste gegevens zijn gegevens die nooit worden verzameld. De client-side architectuur van phototremium.com betekent dat een serverlek uw bestanden niet kan blootleggen, omdat uw bestanden nooit op onze servers staan. Aanvullende beveiligingsmaatregelen zijn onder meer:',
+        points: [
+          {
+            label: 'HTTPS-handhaving',
+            text: 'Al het verkeer tussen uw browser en ons CDN wordt gecodeerd via TLS 1.2+ met HSTS.'
+          },
+          {
+            label: 'Inhoudsbeveiligingsbeleid (CSP)',
+            text: 'Strenge headers voorkomen cross-site scripting en inline scriptinjectie.'
+          },
+          {
+            label: 'Regelmatige afhankelijkheidsaudits',
+            text: 'We controleren en updaten npm-pakketten regelmatig om bekende kwetsbaarheden te patchen.'
+          }
+        ],
+        disclosurePrefix: 'Verantwoorde openbaarmaking',
+        disclosureTextPrefix: 'Een beveiligingsprobleem gevonden? E-mail ons op',
+        disclosureTextSuffix: 'en wij reageren binnen 48 uur.'
+      },
+      changes: {
+        title: '10. Wijzigingen in dit beleid',
+        subtitle: 'Hoe we omgaan met beleidsupdates',
+        intro: 'We kunnen dit privacybeleid van tijd tot tijd bijwerken om wijzigingen in onze praktijken, hulpmiddelen of wettelijke vereisten weer te geven. Wanneer we dat doen:',
+        points: [
+          {
+            label: '"Laatst bijgewerkt"',
+            text: 'datum bovenaan deze pagina wordt herzien.'
+          },
+          {
+            label: 'Materiële veranderingen',
+            text: 'zal gedurende minimaal 30 dagen via een prominente kennisgeving op de startpagina worden gecommuniceerd.'
+          },
+          {
+            label: 'Vorige versies',
+            text: 'van dit beleid zal worden gearchiveerd en op verzoek beschikbaar zijn.'
+          }
+        ],
+        outro: 'Voortgezet gebruik van phototremium.com nadat de wijzigingen zijn gepubliceerd, betekent acceptatie van het bijgewerkte beleid. Wij raden u aan deze pagina regelmatig te bekijken.'
+      },
+      contact: {
+        title: '11. Contact- en gegevensverzoeken',
+        subtitle: 'Neem contact op over privacy',
+        p1Prefix: 'Voor vragen, zorgen of formele gegevensverzoeken met betrekking tot dit privacybeleid kunt u contact met ons opnemen. Wij streven ernaar om op alle privacygerelateerde vragen binnen onze website te reageren',
+        p1Strong: '5 werkdagen'
+      }
+    },
+    footer: {
+      privacyQuestionsTitle: 'Privacyvragen?',
+      privacyQuestionsDesc: 'Stuur ons uw privacyvragen, gegevensverzoeken of zorgen en wij zullen snel reageren.',
+      versionHistoryTitle: 'Versiegeschiedenis',
+      v2Label: 'v2.0 — Major rewrite',
+      v11Label: 'v1.1 — Added CCPA rights',
+      v10Label: 'v1.0 — Initial policy'
+    }
+  },
+common: {
     new: 'Nieuw!',
     download: 'Downloaden',
     downloadAll: 'Alles Downloaden',

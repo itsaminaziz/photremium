@@ -124,7 +124,322 @@ const ms = {
     aboutKeywords: 'tentang photremium.com, alat imej, editor imej percuma',
   },
 
-  common: {
+    privacyPolicyPage: {
+    seo: {
+      title: 'Dasar Privasi — Photremium | Tiada Muat Naik Pelayan, Sifar Penyimpanan Data',
+      description: 'Dasar Privasi Photremium menerangkan cara kami melindungi privasi anda. Semua pemprosesan imej berlaku 100% dalam penyemak imbas anda — tiada muat naik fail ke mana-mana pelayan, tiada data peribadi dikumpul, tiada penjejakan.',
+      ogTitle: 'Dasar Privasi — Photremium | Tiada Muat Naik, Sifar Storan',
+      ogDescription: 'Fail anda kekal pada peranti anda. Photremium memproses semua imej secara setempat dalam penyemak imbas anda tanpa hubungan pelayan, tiada data disimpan dan tiada penjejakan.',
+      twitterTitle: 'Dasar Privasi — Photremium',
+      twitterDescription: '100% alatan imej berasaskan pelayar. Tiada muat naik, tiada storan, tiada penjejakan. Baca dasar privasi penuh kami.',
+      schemaName: 'Dasar Privasi - Photremium',
+      schemaDescription: 'Dasar Privasi Photremium - tiada muat naik pelayan, tiada data disimpan, 100% pemprosesan imej dalam penyemak imbas.'
+    },
+    hero: {
+      badge: 'Dasar Privasi',
+      titlePrefix: 'Privasi Anda Adalah Kami',
+      titleHighlight: 'Keutamaan Teratas',
+      subPrefix: 'photremium.com dibina berdasarkan prinsip mudah —',
+      subStrong: 'fail anda tidak pernah meninggalkan peranti anda',
+      subSuffix: 'Setiap alat imej di tapak ini berjalan sepenuhnya di dalam penyemak imbas anda. Tiada muat naik. Tiada awan. Tiada kompromi.',
+      effectiveLabel: 'Berkesan',
+      lastUpdatedLabel: 'Kemas kini terakhir',
+      worldwideLabel: 'Berlaku di seluruh dunia'
+    },
+    trustCards: [
+      {
+        title: 'Tiada Muat Naik Pelayan',
+        desc: 'Fail anda tidak pernah meninggalkan peranti anda. Semua pemprosesan adalah 100% dalam penyemak imbas.'
+      },
+      {
+        title: 'Sifar Penyimpanan Data',
+        desc: 'Kami tidak menyimpan apa-apa tentang anda, imej anda atau aktiviti anda.'
+      },
+      {
+        title: 'Tiada Penjejakan',
+        desc: 'Tiada penjejakan tingkah laku, tiada cap jari, tiada profil.'
+      },
+      {
+        title: 'Mesra GDPR',
+        desc: 'Direka dari bawah ke atas untuk menghormati peraturan privasi global.'
+      }
+    ],
+    contentsTitle: 'Kandungan',
+    toc: {
+      overview: 'Gambaran keseluruhan',
+      'no-upload': 'Tiada Pemprosesan Pelayan',
+      'data-collect': 'Data yang Kami Kumpul',
+      cookies: 'Kuki & Storan',
+      'third-party': 'Perkhidmatan Pihak Ketiga',
+      analytics: 'Analitis',
+      children: 'Privasi Kanak-kanak',
+      rights: 'Hak Anda',
+      security: 'Keselamatan',
+      changes: 'Perubahan Dasar',
+      contact: 'Hubungi Kami'
+    },
+    sections: {
+      overview: {
+        title: '1. Gambaran keseluruhan',
+        subtitle: 'Perkara yang dilindungi oleh dasar ini',
+        p1Prefix: 'Dasar Privasi ini menerangkan bagaimana',
+        p1Middle: '("kami", "kami", atau "kami") mengendalikan - atau lebih tepat,',
+        p1Italic: 'tidak mengendalikan',
+        p1Suffix: 'maklumat peribadi anda apabila anda menggunakan alat imej dalam talian percuma kami di',
+        p2: 'Tidak seperti aplikasi web tradisional yang menghantar fail ke pelayan jauh untuk diproses, photremium.com menggunakan API pelayar moden (Canvas API, WebAssembly, WebWorkers) untuk melaksanakan setiap operasi secara setempat pada peranti anda. Hasilnya: tiada penghantaran data, tiada storan, tiada risiko.',
+        calloutLabel: 'Ringkasan bahasa Inggeris biasa:',
+        calloutText: 'Kami tidak dapat melihat imej anda, kami tidak mahu, dan teknologi kami direka bentuk secara khusus supaya kami tidak dapat melihatnya.'
+      },
+      noUpload: {
+        title: '2. Tiada Pemprosesan Pelayan — Pernah',
+        subtitle: 'Bagaimana alat kami sebenarnya berfungsi',
+        introPrefix: 'Setiap alat di photremium.com — penukar imej, pemampat, penubah saiz semula, pengalih keluar latar belakang, kabur muka, tera air, pangkas dan alatan kod QR — memproses fail anda',
+        introStrong: '100% di dalam pelayar web anda',
+        introSuffix: 'menggunakan JavaScript dan WebAssembly pihak pelanggan.',
+        points: [
+          {
+            label: 'Tiada muat naik fail pernah berlaku.',
+            text: 'Apabila anda memilih fail, ia dibaca oleh API Fail penyemak imbas anda dan diproses dalam memori — ia tidak pernah dihantar melalui rangkaian.'
+          },
+          {
+            label: 'Tiada pelayan menerima imej anda.',
+            text: 'CDN kami hanya menyediakan aset HTML, CSS dan JavaScript yang diperlukan untuk menjalankan apl — bukan fail anda.'
+          },
+          {
+            label: 'Tiada simpanan sementara.',
+            text: 'Hasil yang diproses hanya wujud dalam memori penyemak imbas anda dan dikeluarkan apabila anda menutup atau menavigasi keluar dari halaman.'
+          },
+          {
+            label: 'Berfungsi di luar talian.',
+            text: 'Kebanyakan alatan terus berfungsi tanpa sambungan internet selepas pemuatan halaman awal — bukti selanjutnya tiada pelayan terlibat.'
+          }
+        ],
+        callout: 'Anda boleh mengesahkannya sendiri: buka tab Rangkaian penyemak imbas anda dalam Alat Pembangun, pilih imej dan sahkan bahawa tiada data fail dihantar ke mana-mana pelayan luaran.'
+      },
+      dataCollect: {
+        title: '3. Data yang Kami Kumpul (dan Jangan Kumpul)',
+        subtitle: 'Ketelusan penuh pada amalan data',
+        headers: {
+          type: 'Jenis Data',
+          collected: 'Dikumpul?',
+          whereWhy: 'Di mana / Mengapa'
+        },
+        rows: [
+          {
+            type: 'Imej / fail anda',
+            badge: 'tidak pernah',
+            variant: 'hijau',
+            showX: true,
+            whereWhy: 'Diproses sepenuhnya dalam penyemak imbas anda — tidak pernah dihantar'
+          },
+          {
+            type: 'Nama / alamat e-mel',
+            badge: 'tidak pernah',
+            variant: 'hijau',
+            showX: true,
+            whereWhy: 'Tiada akaun atau pendaftaran diperlukan untuk menggunakan sebarang alat'
+          },
+          {
+            type: 'alamat IP',
+            badge: 'minima',
+            variant: 'kelabu',
+            showX: false,
+            whereWhy: 'Log pelayan web standard dikekalkan <= 30 hari, tidak terikat dengan identiti'
+          },
+          {
+            type: 'Jenis penyemak imbas / OS',
+            badge: 'minima',
+            variant: 'kelabu',
+            showX: false,
+            whereWhy: 'Dihantar oleh penyemak imbas anda secara automatik; digunakan hanya untuk keserasian'
+          },
+          {
+            type: 'Halaman yang dilawati / klik',
+            badge: 'Agregat',
+            variant: 'biru',
+            showX: false,
+            whereWhy: 'Analitik tanpa nama sahaja (tiada pengenalan peribadi)'
+          },
+          {
+            type: 'Keutamaan bahasa',
+            badge: 'Tempatan sahaja',
+            variant: 'biru',
+            showX: false,
+            whereWhy: 'Disimpan ke localStorage pada peranti anda — tidak pernah dihantar kepada kami'
+          },
+          {
+            type: 'Data pembayaran / kewangan',
+            badge: 'tidak pernah',
+            variant: 'hijau',
+            showX: true,
+            whereWhy: 'photremium.com adalah percuma sepenuhnya tanpa bayaran diperlukan'
+          }
+        ]
+      },
+      cookies: {
+        title: '4. Kuki & Storan Tempatan',
+        subtitle: 'Perkara yang disimpan pada peranti anda',
+        intro: 'photremium.com tidak menggunakan kuki pengiklanan, tiada kuki penjejakan merentas tapak dan tiada kuki pihak ketiga. Satu-satunya storan penyemak imbas yang kami gunakan adalah untuk fungsi tapak penting.',
+        points: [
+          {
+            label: 'Keutamaan bahasa',
+            text: 'Disimpan dalam localStorage supaya tapak mengingati bahasa pilihan anda antara lawatan. Tidak pernah dihantar ke pelayan kami.'
+          },
+          {
+            label: 'Pilihan tema / UI',
+            text: 'Jika anda menetapkan pilihan paparan, ia disimpan secara setempat pada peranti anda sahaja.'
+          },
+          {
+            label: 'Tiada kuki sesi.',
+            text: 'photremium.com tidak mempunyai sistem log masuk, jadi tiada kuki ID sesi pernah ditulis.'
+          }
+        ],
+        callout: 'Anda boleh mengosongkan semua storan tempatan photremium.com pada bila-bila masa melalui tetapan penyemak imbas anda (Tetapan -> Privasi -> Kosongkan data penyemakan imbas -> Data & kuki cache). Melakukannya tidak mempunyai kesan ke atas keupayaan anda untuk menggunakan alatan.'
+      },
+      thirdParty: {
+        title: '5. Perkhidmatan Pihak Ketiga',
+        subtitle: 'Perkhidmatan luar yang kami gunakan dan sebabnya',
+        intro: 'photremium.com menggunakan set minimum perkhidmatan pihak ketiga yang dipercayai semata-mata untuk infrastruktur dan prestasi. Tiada satu pun daripada perkhidmatan ini menerima imej anda atau sebarang maklumat yang boleh dikenal pasti secara peribadi.',
+        headers: {
+          service: 'Perkhidmatan',
+          purpose: 'Tujuan',
+          dataShared: 'Data Dikongsi',
+          privacyPolicy: 'Dasar Privasi'
+        },
+        rows: [
+          {
+            service: 'Halaman Cloudflare',
+            purpose: 'Pengehosan & penghantaran CDN aset tapak',
+            dataShared: 'Alamat IP, pengepala HTTP (standard)',
+            privacyLink: 'https://www.cloudflare.com/privacypolicy/',
+            privacyText: 'cloudflare.com/privacypolicy'
+          },
+          {
+            service: 'Font Hebat',
+            purpose: 'Fon ikon dimuatkan daripada CDN',
+            dataShared: 'Alamat IP (permintaan CSS sahaja)',
+            privacyLink: 'https://fontawesome.com/privacy',
+            privacyText: 'fontawesome.com/privacy'
+          },
+          {
+            service: 'Fon Google',
+            purpose: 'Pemuatan muka taip (jika berkenaan)',
+            dataShared: 'Alamat IP (permintaan fon sahaja)',
+            privacyLink: 'https://policies.google.com/privacy',
+            privacyText: 'policies.google.com'
+          }
+        ],
+        outro: 'Kami tidak berkongsi data anda dengan pengiklan, broker data atau mana-mana pihak ketiga lain selain daripada penyedia infrastruktur yang disenaraikan di atas.'
+      },
+      analytics: {
+        title: '6. Analitis',
+        subtitle: 'Agregat, data penggunaan yang menghormati privasi',
+        introPrefix: 'Untuk memahami alat yang popular dan cara menambah baik tapak, kami mungkin mengumpul',
+        introStrong: 'diagregatkan, tanpa nama',
+        introSuffix: 'statistik penggunaan seperti:',
+        points: [
+          'Bilangan paparan halaman setiap alat (tiada pengenalan pengguna)',
+          'Sumber rujukan (cth. Carian Google, pautan terus) — tiada data peribadi',
+          'Data geografi peringkat negara (bukan bandar atau lokasi tepat)',
+          'Jenis penyemak imbas / peranti untuk analisis keserasian'
+        ],
+        calloutLabel: 'Tiada data dipautkan kepada anda secara peribadi.',
+        calloutText: 'Kami tidak menggunakan Google Analitis atau Meta Pixel. Sebarang analitis yang kami gunakan ialah alatan yang mengutamakan privasi (mis. Boleh dipercayai atau serupa).'
+      },
+      children: {
+        title: '7. Privasi Kanak-kanak',
+        subtitle: 'COPPA & pematuhan keselamatan kanak-kanak',
+        p1: 'photremium.com tidak mengumpul sebarang maklumat peribadi daripada kanak-kanak di bawah umur 13 tahun (atau 16 tahun di Kesatuan Eropah di bawah GDPR) dengan sengaja. Memandangkan kami tidak mengumpul data peribadi daripada mana-mana pengguna, tiada apa yang istimewa untuk dilakukan untuk pengguna yang lebih muda — tapak ini sama selamat untuk semua orang.',
+        p2Prefix: 'Jika anda percaya seorang kanak-kanak telah menyerahkan maklumat peribadi melalui borang hubungan kami, sila hubungi kami dengan segera di',
+        p2Suffix: 'dan kami akan segera memadamkannya.'
+      },
+      rights: {
+        title: '8. Hak Anda',
+        subtitle: 'GDPR, CCPA, and global privacy rights',
+        intro: 'Oleh kerana photremium.com tidak mengumpul maklumat yang boleh dikenal pasti secara peribadi, kebanyakan hak subjek data digunakan secara remeh — tiada data tentang anda untuk diakses, diperbetulkan atau dipadamkan. Namun begitu, kami mengiktiraf sepenuhnya dan menghormati hak berikut:',
+        points: [
+          {
+            label: 'Hak untuk mengakses',
+            text: 'Anda boleh meminta salinan mana-mana data yang kami simpan tentang anda. (Tiada satu pun selain log tanpa nama.)'
+          },
+          {
+            label: 'Hak untuk pembetulan',
+            text: 'Anda boleh meminta pembetulan data peribadi yang tidak tepat.'
+          },
+          {
+            label: 'Hak untuk memadam ("Hak untuk dilupakan")',
+            text: 'Anda boleh meminta pemadaman mana-mana data peribadi yang kami pegang (GDPR Art. 17, CCPA).'
+          },
+          {
+            label: 'Hak untuk membantah / menarik diri',
+            text: 'Anda boleh menarik diri daripada mana-mana koleksi analitis masa hadapan dengan menggunakan alat pilih keluar atau blok iklan peringkat penyemak imbas.'
+          },
+          {
+            label: 'Hak untuk mudah alih data',
+            text: 'Semua kerja anda dimuat turun terus ke peranti anda — tiada permintaan eksport diperlukan.'
+          }
+        ],
+        callout: 'Hak ini dikenakan kepada semua pengguna di seluruh dunia tanpa mengira bidang kuasa — kami menggunakan standard tertinggi (GDPR) sebagai garis dasar kami.'
+      },
+      security: {
+        title: '9. Keselamatan',
+        subtitle: 'Bagaimana kami melindungi pengalaman anda',
+        intro: 'Data yang paling selamat adalah data yang tidak pernah dikumpulkan. photremium.com seni bina sisi klien bermakna pelanggaran pelayan tidak boleh mendedahkan fail anda kerana fail anda tidak pernah berada di pelayan kami. Langkah keselamatan tambahan termasuk:',
+        points: [
+          {
+            label: 'Penguatkuasaan HTTPS',
+            text: 'Semua trafik antara penyemak imbas anda dan CDN kami disulitkan melalui TLS 1.2+ dengan HSTS.'
+          },
+          {
+            label: 'Dasar Keselamatan Kandungan (CSP)',
+            text: 'Pengepala yang ketat menghalang skrip merentas tapak dan suntikan skrip sebaris.'
+          },
+          {
+            label: 'Audit pergantungan yang kerap',
+            text: 'Kami mengaudit dan mengemas kini pakej npm dengan kerap untuk menambal kelemahan yang diketahui.'
+          }
+        ],
+        disclosurePrefix: 'Pendedahan yang bertanggungjawab',
+        disclosureTextPrefix: 'Menjumpai isu keselamatan? E-mel kami di',
+        disclosureTextSuffix: 'dan kami akan membalas dalam masa 48 jam.'
+      },
+      changes: {
+        title: '10. Perubahan kepada Polisi Ini',
+        subtitle: 'Cara kami mengendalikan kemas kini dasar',
+        intro: 'Kami mungkin mengemas kini Dasar Privasi ini dari semasa ke semasa untuk mencerminkan perubahan dalam amalan, alatan atau keperluan undang-undang kami. Apabila kita lakukan:',
+        points: [
+          {
+            label: '"Terakhir Dikemas Kini"',
+            text: 'tarikh di bahagian atas halaman ini akan disemak.'
+          },
+          {
+            label: 'Perubahan material',
+            text: 'akan dimaklumkan melalui notis yang menonjol di halaman utama selama sekurang-kurangnya 30 hari.'
+          },
+          {
+            label: 'Versi sebelumnya',
+            text: 'dasar ini akan diarkibkan dan tersedia atas permintaan.'
+          }
+        ],
+        outro: 'Penggunaan photremium.com yang berterusan selepas perubahan diterbitkan merupakan penerimaan dasar yang dikemas kini. Kami menggalakkan anda menyemak halaman ini secara berkala.'
+      },
+      contact: {
+        title: '11. Permintaan Hubungan & Data',
+        subtitle: 'Hubungi tentang privasi',
+        p1Prefix: 'Untuk sebarang pertanyaan, kebimbangan atau permintaan data rasmi yang berkaitan dengan Dasar Privasi ini, sila hubungi kami. Kami berhasrat untuk menjawab semua pertanyaan berkaitan privasi dalam',
+        p1Strong: '5 hari bekerja'
+      }
+    },
+    footer: {
+      privacyQuestionsTitle: 'Soalan Privasi?',
+      privacyQuestionsDesc: 'Hantarkan kepada kami soalan privasi, permintaan data atau kebimbangan anda dan kami akan membalas dengan segera.',
+      versionHistoryTitle: 'Sejarah Versi',
+      v2Label: 'v2.0 — Major rewrite',
+      v11Label: 'v1.1 — Added CCPA rights',
+      v10Label: 'v1.0 — Initial policy'
+    }
+  },
+common: {
     new: 'Baharu!',
     download: 'Muat Turun',
     downloadAll: 'Muat Turun Semua',

@@ -122,7 +122,322 @@ const vi = {
     aboutKeywords: 'giới thiệu photremium.com, công cụ ảnh, chỉnh sửa ảnh miễn phí',
   },
 
-  common: {
+    privacyPolicyPage: {
+    seo: {
+      title: 'Chính sách bảo mật — Photremium | Không tải lên máy chủ, không lưu trữ dữ liệu',
+      description: 'Chính sách quyền riêng tư của Photremium giải thích cách chúng tôi bảo vệ quyền riêng tư của bạn. Tất cả quá trình xử lý hình ảnh diễn ra 100% trong trình duyệt của bạn — không tải tệp lên bất kỳ máy chủ nào, không thu thập dữ liệu cá nhân, không theo dõi.',
+      ogTitle: 'Chính sách bảo mật — Photremium | Không tải lên, không lưu trữ',
+      ogDescription: 'Các tập tin của bạn vẫn còn trên thiết bị của bạn. Photremium xử lý cục bộ tất cả hình ảnh trong trình duyệt của bạn mà không cần liên hệ với máy chủ, không lưu trữ dữ liệu và không theo dõi.',
+      twitterTitle: 'Chính sách bảo mật — Photremium',
+      twitterDescription: 'Công cụ hình ảnh dựa trên trình duyệt 100%. Không tải lên, không lưu trữ, không theo dõi. Đọc chính sách bảo mật đầy đủ của chúng tôi.',
+      schemaName: 'Chính sách bảo mật - Photremium',
+      schemaDescription: 'Chính sách bảo mật của Photremium - không tải lên máy chủ, không lưu trữ dữ liệu, xử lý hình ảnh 100% trong trình duyệt.'
+    },
+    hero: {
+      badge: 'Chính sách bảo mật',
+      titlePrefix: 'Quyền riêng tư của bạn là của chúng tôi',
+      titleHighlight: 'Ưu tiên hàng đầu',
+      subPrefix: 'photremium.com được xây dựng trên một nguyên tắc đơn giản —',
+      subStrong: 'các tập tin của bạn không bao giờ rời khỏi thiết bị của bạn',
+      subSuffix: 'Mọi công cụ hình ảnh trên trang web này đều chạy hoàn toàn bên trong trình duyệt của bạn. Không tải lên. Không có đám mây. Không thỏa hiệp.',
+      effectiveLabel: 'Hiệu quả',
+      lastUpdatedLabel: 'Cập nhật lần cuối',
+      worldwideLabel: 'Áp dụng trên toàn thế giới'
+    },
+    trustCards: [
+      {
+        title: 'Không có tải lên máy chủ',
+        desc: 'Các tập tin của bạn không bao giờ rời khỏi thiết bị của bạn. Tất cả quá trình xử lý đều diễn ra 100% trong trình duyệt.'
+      },
+      {
+        title: 'Không lưu trữ dữ liệu',
+        desc: 'Chúng tôi không lưu trữ gì về bạn, hình ảnh hoặc hoạt động của bạn.'
+      },
+      {
+        title: 'Không theo dõi',
+        desc: 'Không theo dõi hành vi, không lấy dấu vân tay, không lập hồ sơ.'
+      },
+      {
+        title: 'Thân thiện với GDPR',
+        desc: 'Được thiết kế từ đầu để tôn trọng các quy định về quyền riêng tư toàn cầu.'
+      }
+    ],
+    contentsTitle: 'Nội dung',
+    toc: {
+      overview: 'Tổng quan',
+      'no-upload': 'Không có máy chủ xử lý',
+      'data-collect': 'Dữ liệu chúng tôi thu thập',
+      cookies: 'Cookie & Lưu trữ',
+      'third-party': 'Dịch vụ của bên thứ ba',
+      analytics: 'Phân tích',
+      children: 'Quyền riêng tư của trẻ em',
+      rights: 'Quyền của bạn',
+      security: 'Bảo vệ',
+      changes: 'Thay đổi chính sách',
+      contact: 'Liên hệ với chúng tôi'
+    },
+    sections: {
+      overview: {
+        title: '1. Tổng quan',
+        subtitle: 'Chính sách này bao gồm những gì',
+        p1Prefix: 'Chính sách quyền riêng tư này mô tả cách',
+        p1Middle: '("chúng tôi", "chúng tôi" hoặc "của chúng tôi") xử lý - hay chính xác hơn là',
+        p1Italic: 'không xử lý',
+        p1Suffix: 'thông tin cá nhân của bạn khi bạn sử dụng các công cụ hình ảnh trực tuyến miễn phí của chúng tôi tại',
+        p2: 'Không giống như các ứng dụng web truyền thống gửi tệp đến máy chủ từ xa để xử lý, photremium.com sử dụng API trình duyệt hiện đại (API Canvas, WebAssugging, WebWorkers) để thực hiện mọi thao tác cục bộ trên thiết bị của bạn. Kết quả: không truyền dữ liệu, không lưu trữ, không rủi ro.',
+        calloutLabel: 'Tóm tắt bằng tiếng Anh đơn giản:',
+        calloutText: 'Chúng tôi không thể nhìn thấy hình ảnh của bạn, chúng tôi không muốn và công nghệ của chúng tôi được thiết kế đặc biệt để chúng tôi không bao giờ có thể.'
+      },
+      noUpload: {
+        title: '2. Không xử lý máy chủ - Chưa bao giờ',
+        subtitle: 'Công cụ của chúng tôi thực sự hoạt động như thế nào',
+        introPrefix: 'Mọi công cụ trên photremium.com — công cụ chuyển đổi hình ảnh, nén, thay đổi kích thước, xóa nền, làm mờ khuôn mặt, hình mờ, cắt xén và mã QR — đều xử lý tệp của bạn',
+        introStrong: '100% bên trong trình duyệt web của bạn',
+        introSuffix: 'sử dụng JavaScript phía máy khách và WebAssembly.',
+        points: [
+          {
+            label: 'Không có tập tin tải lên bao giờ xảy ra.',
+            text: 'Khi bạn chọn một tệp, API tệp của trình duyệt của bạn sẽ đọc và xử lý trong bộ nhớ — tệp đó không bao giờ được gửi qua mạng.'
+          },
+          {
+            label: 'Không có máy chủ nhận được hình ảnh của bạn.',
+            text: 'CDN của chúng tôi chỉ phục vụ các nội dung HTML, CSS và JavaScript cần thiết để chạy ứng dụng — chứ không phải các tệp của bạn.'
+          },
+          {
+            label: 'Không có lưu trữ tạm thời.',
+            text: 'Kết quả đã xử lý chỉ tồn tại trong bộ nhớ trình duyệt của bạn và được giải phóng khi bạn đóng hoặc điều hướng khỏi trang.'
+          },
+          {
+            label: 'Hoạt động ngoại tuyến.',
+            text: 'Hầu hết các công cụ tiếp tục hoạt động mà không cần kết nối internet sau lần tải trang đầu tiên — thêm bằng chứng nữa là không có máy chủ nào liên quan.'
+          }
+        ],
+        callout: 'Bạn có thể tự xác minh điều này: mở tab Mạng của trình duyệt trong Công cụ dành cho nhà phát triển, chọn hình ảnh và xác nhận rằng không có dữ liệu tệp nào được truyền đến bất kỳ máy chủ bên ngoài nào.'
+      },
+      dataCollect: {
+        title: '3. Dữ liệu chúng tôi thu thập (và không thu thập)',
+        subtitle: 'Hoàn toàn minh bạch về thực hành dữ liệu',
+        headers: {
+          type: 'Kiểu dữ liệu',
+          collected: 'Thu thập?',
+          whereWhy: 'Ở đâu / Tại sao'
+        },
+        rows: [
+          {
+            type: 'Hình ảnh/tập tin của bạn',
+            badge: 'Không bao giờ',
+            variant: 'màu xanh lá',
+            showX: true,
+            whereWhy: 'Được xử lý hoàn toàn trong trình duyệt của bạn — không bao giờ được truyền đi'
+          },
+          {
+            type: 'Tên/địa chỉ email',
+            badge: 'Không bao giờ',
+            variant: 'màu xanh lá',
+            showX: true,
+            whereWhy: 'Không cần tài khoản hoặc đăng ký để sử dụng bất kỳ công cụ nào'
+          },
+          {
+            type: 'địa chỉ IP',
+            badge: 'Tối thiểu',
+            variant: 'xám',
+            showX: false,
+            whereWhy: 'Nhật ký máy chủ web tiêu chuẩn được lưu giữ <= 30 ngày, không bị ràng buộc với danh tính'
+          },
+          {
+            type: 'Loại trình duyệt/hệ điều hành',
+            badge: 'Tối thiểu',
+            variant: 'xám',
+            showX: false,
+            whereWhy: 'Được gửi tự động bởi trình duyệt của bạn; chỉ được sử dụng để tương thích'
+          },
+          {
+            type: 'Các trang đã truy cập / số lần nhấp chuột',
+            badge: 'tổng hợp',
+            variant: 'màu xanh da trời',
+            showX: false,
+            whereWhy: 'Chỉ phân tích ẩn danh (không có nhận dạng cá nhân)'
+          },
+          {
+            type: 'Tùy chọn ngôn ngữ',
+            badge: 'Chỉ địa phương',
+            variant: 'màu xanh da trời',
+            showX: false,
+            whereWhy: 'Đã lưu vào localStorage trên thiết bị của bạn — chưa bao giờ được gửi cho chúng tôi'
+          },
+          {
+            type: 'Dữ liệu thanh toán / tài chính',
+            badge: 'Không bao giờ',
+            variant: 'màu xanh lá',
+            showX: true,
+            whereWhy: 'photremium.com hoàn toàn miễn phí và không cần thanh toán'
+          }
+        ]
+      },
+      cookies: {
+        title: '4. Cookie & bộ nhớ cục bộ',
+        subtitle: 'Những gì được lưu trữ trên thiết bị của bạn',
+        intro: 'photremium.com không sử dụng cookie quảng cáo, không có cookie theo dõi trên nhiều trang web và không có cookie của bên thứ ba. Bộ nhớ trình duyệt duy nhất mà chúng tôi sử dụng là dành cho chức năng thiết yếu của trang web.',
+        points: [
+          {
+            label: 'Tùy chọn ngôn ngữ',
+            text: 'Được lưu trữ trong localStorage để trang web ghi nhớ ngôn ngữ ưa thích của bạn giữa các lần truy cập. Không bao giờ được gửi đến máy chủ của chúng tôi.'
+          },
+          {
+            label: 'Tùy chọn chủ đề/giao diện người dùng',
+            text: 'Nếu bạn đặt tùy chọn hiển thị, nó sẽ chỉ được lưu cục bộ trên thiết bị của bạn.'
+          },
+          {
+            label: 'Không có cookie phiên.',
+            text: 'photremium.com không có hệ thống đăng nhập nên không có cookie ID phiên nào được ghi.'
+          }
+        ],
+        callout: 'Bạn có thể xóa tất cả bộ nhớ cục bộ của photremium.com bất kỳ lúc nào thông qua cài đặt trình duyệt của bạn (Cài đặt -> Quyền riêng tư -> Xóa dữ liệu duyệt web -> Dữ liệu được lưu trong bộ nhớ cache & cookie). Làm như vậy không ảnh hưởng gì đến khả năng sử dụng các công cụ của bạn.'
+      },
+      thirdParty: {
+        title: '5. Dịch vụ của bên thứ ba',
+        subtitle: 'Các dịch vụ bên ngoài chúng tôi sử dụng và lý do',
+        intro: 'photremium.com sử dụng một bộ dịch vụ bên thứ ba đáng tin cậy tối thiểu cho cơ sở hạ tầng và hiệu suất. Không có dịch vụ nào trong số này nhận được hình ảnh của bạn hoặc bất kỳ thông tin nhận dạng cá nhân nào.',
+        headers: {
+          service: 'Dịch vụ',
+          purpose: 'Mục đích',
+          dataShared: 'Dữ liệu được chia sẻ',
+          privacyPolicy: 'Chính sách bảo mật'
+        },
+        rows: [
+          {
+            service: 'Trang đám mây',
+            purpose: 'Lưu trữ & phân phối CDN nội dung trang web',
+            dataShared: 'Địa chỉ IP, tiêu đề HTTP (tiêu chuẩn)',
+            privacyLink: 'https://www.cloudflare.com/privacypolicy/',
+            privacyText: 'cloudflare.com/privacypolicy'
+          },
+          {
+            service: 'Phông chữ tuyệt vời',
+            purpose: 'Phông chữ biểu tượng được tải từ CDN',
+            dataShared: 'Địa chỉ IP (chỉ yêu cầu CSS)',
+            privacyLink: 'https://fontawesome.com/privacy',
+            privacyText: 'fontawesome.com/privacy'
+          },
+          {
+            service: 'Phông chữ của Google',
+            purpose: 'Đang tải kiểu chữ (nếu có)',
+            dataShared: 'Địa chỉ IP (chỉ yêu cầu phông chữ)',
+            privacyLink: 'https://policies.google.com/privacy',
+            privacyText: 'policies.google.com'
+          }
+        ],
+        outro: 'Chúng tôi không chia sẻ dữ liệu của bạn với các nhà quảng cáo, nhà môi giới dữ liệu hoặc bất kỳ bên thứ ba nào khác ngoài các nhà cung cấp cơ sở hạ tầng được liệt kê ở trên.'
+      },
+      analytics: {
+        title: '6. Phân tích',
+        subtitle: 'Dữ liệu sử dụng tổng hợp, tôn trọng quyền riêng tư',
+        introPrefix: 'Để hiểu công cụ nào phổ biến và cách cải thiện trang web, chúng tôi có thể thu thập',
+        introStrong: 'tổng hợp, ẩn danh',
+        introSuffix: 'thống kê sử dụng như:',
+        points: [
+          'Số lượt xem trang trên mỗi công cụ (không có nhận dạng người dùng)',
+          'Nguồn giới thiệu (ví dụ: tìm kiếm của Google, liên kết trực tiếp) — không có dữ liệu cá nhân',
+          'Dữ liệu địa lý cấp quốc gia (không phải thành phố hoặc vị trí chính xác)',
+          'Loại trình duyệt/thiết bị để phân tích khả năng tương thích'
+        ],
+        calloutLabel: 'Không có dữ liệu nào được liên kết với cá nhân bạn.',
+        calloutText: 'Chúng tôi không sử dụng Google Analytics hoặc Meta Pixel. Mọi phân tích chúng tôi sử dụng đều là công cụ ưu tiên quyền riêng tư (ví dụ: Hợp lý hoặc tương tự).'
+      },
+      children: {
+        title: '7. Quyền riêng tư của trẻ em',
+        subtitle: 'COPPA và tuân thủ an toàn trẻ em',
+        p1: 'photremium.com không cố ý thu thập bất kỳ thông tin cá nhân nào từ trẻ em dưới 13 tuổi (hoặc 16 tuổi ở Liên minh Châu Âu theo GDPR). Vì chúng tôi không thu thập dữ liệu cá nhân từ bất kỳ người dùng nào nên không có gì đặc biệt để làm đối với người dùng trẻ tuổi — trang web này an toàn như nhau cho mọi người.',
+        p2Prefix: 'Nếu bạn tin rằng một đứa trẻ bằng cách nào đó đã gửi thông tin cá nhân thông qua biểu mẫu liên hệ của chúng tôi, vui lòng liên hệ ngay với chúng tôi theo địa chỉ',
+        p2Suffix: 'và chúng tôi sẽ nhanh chóng xóa nó.'
+      },
+      rights: {
+        title: '8. Quyền của bạn',
+        subtitle: 'GDPR, CCPA và quyền riêng tư toàn cầu',
+        intro: 'Vì photremium.com không thu thập thông tin nhận dạng cá nhân nên hầu hết các quyền đối với dữ liệu đều được áp dụng một cách tầm thường — không có dữ liệu nào về bạn để truy cập, chỉnh sửa hoặc xóa. Tuy nhiên, chúng tôi hoàn toàn thừa nhận và tôn trọng các quyền sau:',
+        points: [
+          {
+            label: 'Quyền truy cập',
+            text: 'Bạn có thể yêu cầu bản sao của bất kỳ dữ liệu nào chúng tôi lưu giữ về bạn. (Không có gì ngoài nhật ký ẩn danh.)'
+          },
+          {
+            label: 'Quyền sửa chữa',
+            text: 'Bạn có thể yêu cầu chỉnh sửa dữ liệu cá nhân không chính xác.'
+          },
+          {
+            label: 'Quyền xóa ("Quyền được lãng quên")',
+            text: 'Bạn có thể yêu cầu xóa bất kỳ dữ liệu cá nhân nào mà chúng tôi nắm giữ (Điều 17 GDPR, CCPA).'
+          },
+          {
+            label: 'Quyền phản đối/từ chối',
+            text: 'Bạn có thể chọn không tham gia bất kỳ bộ sưu tập phân tích nào trong tương lai bằng cách sử dụng công cụ chặn quảng cáo hoặc chọn không tham gia ở cấp trình duyệt.'
+          },
+          {
+            label: 'Quyền di chuyển dữ liệu',
+            text: 'Tất cả tác phẩm của bạn được tải trực tiếp xuống thiết bị của bạn — không cần yêu cầu xuất.'
+          }
+        ],
+        callout: 'Các quyền này áp dụng cho tất cả người dùng trên toàn thế giới bất kể khu vực pháp lý — chúng tôi áp dụng tiêu chuẩn cao nhất (GDPR) làm cơ sở của mình.'
+      },
+      security: {
+        title: '9. Bảo mật',
+        subtitle: 'Cách chúng tôi bảo vệ trải nghiệm của bạn',
+        intro: 'Dữ liệu an toàn nhất là dữ liệu không bao giờ được thu thập. Kiến trúc phía máy khách của photremium.com có ​​nghĩa là vi phạm máy chủ không thể làm lộ các tệp của bạn vì các tệp của bạn không bao giờ có trên máy chủ của chúng tôi. Các biện pháp an ninh bổ sung bao gồm:',
+        points: [
+          {
+            label: 'Thực thi HTTPS',
+            text: 'Tất cả lưu lượng truy cập giữa trình duyệt của bạn và CDN của chúng tôi được mã hóa qua TLS 1.2+ với HSTS.'
+          },
+          {
+            label: 'Chính sách bảo mật nội dung (CSP)',
+            text: 'Các tiêu đề nghiêm ngặt ngăn chặn việc chèn tập lệnh chéo trang và chèn tập lệnh nội tuyến.'
+          },
+          {
+            label: 'Kiểm tra phụ thuộc thường xuyên',
+            text: 'Chúng tôi kiểm tra và cập nhật các gói npm thường xuyên để vá các lỗ hổng đã biết.'
+          }
+        ],
+        disclosurePrefix: 'Tiết lộ có trách nhiệm',
+        disclosureTextPrefix: 'Tìm thấy một vấn đề bảo mật? Gửi email cho chúng tôi tại',
+        disclosureTextSuffix: 'và chúng tôi sẽ trả lời trong vòng 48 giờ.'
+      },
+      changes: {
+        title: '10. Những thay đổi đối với Chính sách này',
+        subtitle: 'Cách chúng tôi xử lý các cập nhật chính sách',
+        intro: 'Đôi khi, chúng tôi có thể cập nhật Chính sách quyền riêng tư này để phản ánh những thay đổi trong thực tiễn, công cụ hoặc yêu cầu pháp lý của chúng tôi. Khi chúng tôi làm:',
+        points: [
+          {
+            label: '"Cập nhật lần cuối"',
+            text: 'ngày ở đầu trang này sẽ được sửa đổi.'
+          },
+          {
+            label: 'Thay đổi vật chất',
+            text: 'sẽ được thông báo qua thông báo nổi bật trên trang chủ trong ít nhất 30 ngày.'
+          },
+          {
+            label: 'Các phiên bản trước',
+            text: 'của chính sách này sẽ được lưu trữ và cung cấp theo yêu cầu.'
+          }
+        ],
+        outro: 'Việc tiếp tục sử dụng photremium.com sau khi các thay đổi được công bố sẽ đồng nghĩa với việc chấp nhận chính sách cập nhật. Chúng tôi khuyến khích bạn xem lại trang này định kỳ.'
+      },
+      contact: {
+        title: '11. Yêu cầu liên hệ và dữ liệu',
+        subtitle: 'Liên hệ về quyền riêng tư',
+        p1Prefix: 'Nếu có bất kỳ câu hỏi, thắc mắc hoặc yêu cầu dữ liệu chính thức nào liên quan đến Chính sách quyền riêng tư này, vui lòng liên hệ với chúng tôi. Chúng tôi mong muốn phản hồi tất cả các câu hỏi liên quan đến quyền riêng tư trong vòng',
+        p1Strong: '5 ngày làm việc'
+      }
+    },
+    footer: {
+      privacyQuestionsTitle: 'Câu hỏi về quyền riêng tư?',
+      privacyQuestionsDesc: 'Hãy gửi cho chúng tôi câu hỏi về quyền riêng tư, yêu cầu dữ liệu hoặc mối quan ngại của bạn và chúng tôi sẽ phản hồi kịp thời.',
+      versionHistoryTitle: 'Lịch sử phiên bản',
+      v2Label: 'v2.0 — Major rewrite',
+      v11Label: 'v1.1 — Added CCPA rights',
+      v10Label: 'v1.0 — Initial policy'
+    }
+  },
+common: {
     new: 'Mới!',
     download: 'Tải Về',
     downloadAll: 'Tải Tất Cả',

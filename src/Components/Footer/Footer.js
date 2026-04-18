@@ -81,7 +81,7 @@ const Footer = () => {
             <h4 style={{ marginTop: 24 }}>{t('footer.contact')}</h4>
             <ul>
               <li>
-                <a href="mailto:photremium@gmail.com"><i className="fa-solid fa-envelope"></i> photremium@gmail.com</a>
+                <a href="mailto:contact@photremium.com"><i className="fa-solid fa-envelope"></i> contact@photremium.com</a>
               </li>
               <li>
                 <button className="footer__contact-btn" onClick={openContact}>

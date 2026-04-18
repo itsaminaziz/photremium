@@ -124,6 +124,322 @@ const it = {
     aboutKeywords: 'chi siamo photremium.com, strumenti immagine, editor immagini gratuito',
   },
 
+        privacyPolicyPage: {
+    seo: {
+      title: 'Informativa sulla privacy — Fotremio | Nessun caricamento sul server, zero archiviazione di dati',
+      description: 'L\'Informativa sulla privacy di Photremium spiega come proteggiamo la tua privacy. Tutta l\'elaborazione delle immagini avviene al 100% nel tuo browser: nessun caricamento di file su nessun server, nessun dato personale raccolto, nessun tracciamento.',
+      ogTitle: 'Informativa sulla privacy — Fotremio | Nessun caricamento, zero spazio di archiviazione',
+      ogDescription: 'I tuoi file rimangono sul tuo dispositivo. Photremium elabora tutte le immagini localmente nel tuo browser senza contatto con il server, senza dati archiviati e senza tracciamento.',
+      twitterTitle: 'Informativa sulla privacy – Fotremio',
+      twitterDescription: 'Strumenti di immagine basati al 100% su browser. Nessun caricamento, nessuno spazio di archiviazione, nessun tracciamento. Leggi la nostra politica sulla privacy completa.',
+      schemaName: 'Informativa sulla privacy - Fotremio',
+      schemaDescription: 'Informativa sulla privacy di Photremium: nessun caricamento sul server, nessun dato archiviato, elaborazione delle immagini nel browser al 100%.'
+    },
+    hero: {
+      badge: 'politica sulla riservatezza',
+      titlePrefix: 'La tua privacy è nostra',
+      titleHighlight: 'Massima priorità',
+      subPrefix: 'photremium.com si basa su un principio semplice:',
+      subStrong: 'i tuoi file non lasciano mai il tuo dispositivo',
+      subSuffix: 'Ogni strumento per le immagini su questo sito viene eseguito interamente all\'interno del tuo browser. Nessun caricamento. Nessuna nuvola. Nessun compromesso.',
+      effectiveLabel: 'Efficace',
+      lastUpdatedLabel: 'Ultimo aggiornamento',
+      worldwideLabel: 'Si applica in tutto il mondo'
+    },
+    trustCards: [
+      {
+        title: 'Nessun caricamento sul server',
+        desc: 'I tuoi file non lasciano mai il tuo dispositivo. Tutta l\'elaborazione avviene al 100% nel browser.'
+      },
+      {
+        title: 'Zero archiviazione dei dati',
+        desc: 'Non memorizziamo nulla su di te, sulle tue immagini o sulla tua attività.'
+      },
+      {
+        title: 'Nessun tracciamento',
+        desc: 'Nessun tracciamento comportamentale, nessuna impronta digitale, nessuna profilazione.'
+      },
+      {
+        title: 'Rispettoso del GDPR',
+        desc: 'Progettato da zero per rispettare le normative globali sulla privacy.'
+      }
+    ],
+    contentsTitle: 'Contenuto',
+    toc: {
+      overview: 'Panoramica',
+      'no-upload': 'Nessuna elaborazione del server',
+      'data-collect': 'Dati che raccogliamo',
+      cookies: 'Cookie e archiviazione',
+      'third-party': 'Servizi di terze parti',
+      analytics: 'Analitica',
+      children: 'Privacy dei bambini',
+      rights: 'I tuoi diritti',
+      security: 'Sicurezza',
+      changes: 'Modifiche alle politiche',
+      contact: 'Contattaci'
+    },
+    sections: {
+      overview: {
+        title: '1. Panoramica',
+        subtitle: 'Cosa copre questa polizza',
+        p1Prefix: 'La presente Informativa sulla privacy descrive come',
+        p1Middle: '("noi", "ci" o "nostro") gestisce - o più precisamente,',
+        p1Italic: 'non gestisce',
+        p1Suffix: 'le tue informazioni personali quando utilizzi i nostri strumenti di immagine online gratuiti su',
+        p2: 'A differenza delle applicazioni web tradizionali che inviano file a server remoti per l\'elaborazione, photremium.com utilizza le moderne API del browser (API Canvas, WebAssembly, WebWorkers) per eseguire ogni operazione localmente sul tuo dispositivo. Il risultato: nessuna trasmissione di dati, nessuna memorizzazione, nessun rischio.',
+        calloutLabel: 'Riepilogo in inglese semplice:',
+        calloutText: 'Non possiamo vedere le tue immagini, non vogliamo e la nostra tecnologia è appositamente progettata in modo che non potremmo mai vederla.'
+      },
+      noUpload: {
+        title: '2. Nessuna elaborazione del server: mai',
+        subtitle: 'Come funzionano effettivamente i nostri strumenti',
+        introPrefix: 'Tutti gli strumenti su photremium.com (convertitore di immagini, compressore, ridimensionatore, rimozione sfondo, sfocatura viso, filigrana, ritaglio e strumenti per codici QR) elaborano i tuoi file',
+        introStrong: '100% all\'interno del tuo browser web',
+        introSuffix: 'utilizzando JavaScript lato client e WebAssembly.',
+        points: [
+          {
+            label: 'Non avviene mai il caricamento di file.',
+            text: 'Quando selezioni un file, questo viene letto dall\'API File del tuo browser ed elaborato in memoria: non viene mai inviato in rete.'
+          },
+          {
+            label: 'Nessun server riceve la tua immagine.',
+            text: 'La nostra CDN fornisce solo le risorse HTML, CSS e JavaScript necessarie per eseguire l\'app, non i tuoi file.'
+          },
+          {
+            label: 'Nessun deposito temporaneo.',
+            text: 'I risultati elaborati esistono solo nella memoria del tuo browser e vengono rilasciati quando chiudi o esci dalla pagina.'
+          },
+          {
+            label: 'Funziona offline.',
+            text: 'La maggior parte degli strumenti continua a funzionare senza una connessione Internet dopo il caricamento iniziale della pagina: un\'ulteriore prova che non è coinvolto alcun server.'
+          }
+        ],
+        callout: 'Puoi verificarlo tu stesso: apri la scheda Rete del browser in Strumenti per sviluppatori, seleziona un\'immagine e conferma che nessun dato di file viene trasmesso a nessun server esterno.'
+      },
+      dataCollect: {
+        title: '3. Dati che raccogliamo (e non raccogliamo)',
+        subtitle: 'Piena trasparenza sulle pratiche relative ai dati',
+        headers: {
+          type: 'Tipo di dati',
+          collected: 'Raccolto?',
+          whereWhy: 'Dove/Perché'
+        },
+        rows: [
+          {
+            type: 'Le tue immagini/file',
+            badge: 'Mai',
+            variant: 'verde',
+            showX: true,
+            whereWhy: 'Elaborato interamente nel tuo browser, mai trasmesso'
+          },
+          {
+            type: 'Nome/indirizzo e-mail',
+            badge: 'Mai',
+            variant: 'verde',
+            showX: true,
+            whereWhy: 'Non è richiesto alcun account o registrazione per utilizzare alcuno strumento'
+          },
+          {
+            type: 'Indirizzo IP',
+            badge: 'Minimo',
+            variant: 'grigio',
+            showX: false,
+            whereWhy: 'Registri del server Web standard conservati <= 30 giorni, non legati all\'identità'
+          },
+          {
+            type: 'Tipo di browser/sistema operativo',
+            badge: 'Minimo',
+            variant: 'grigio',
+            showX: false,
+            whereWhy: 'Inviato automaticamente dal tuo browser; usato solo per compatibilità'
+          },
+          {
+            type: 'Pagine visitate/clic',
+            badge: 'Aggregato',
+            variant: 'blu',
+            showX: false,
+            whereWhy: 'Solo analisi anonime (nessuna identificazione personale)'
+          },
+          {
+            type: 'Preferenza della lingua',
+            badge: 'Solo locale',
+            variant: 'blu',
+            showX: false,
+            whereWhy: 'Salvato in localStorage sul tuo dispositivo e mai inviato a noi'
+          },
+          {
+            type: 'Pagamento/dati finanziari',
+            badge: 'Mai',
+            variant: 'verde',
+            showX: true,
+            whereWhy: 'photremium.com è completamente gratuito e non sono richiesti pagamenti'
+          }
+        ]
+      },
+      cookies: {
+        title: '4. Cookie e archiviazione locale',
+        subtitle: 'Cosa viene memorizzato sul tuo dispositivo',
+        intro: 'photremium.com non utilizza cookie pubblicitari, cookie di tracciamento tra siti e cookie di terze parti. L\'unico spazio di archiviazione del browser che utilizziamo è per le funzionalità essenziali del sito.',
+        points: [
+          {
+            label: 'Preferenza della lingua',
+            text: 'Memorizzato in localStorage in modo che il sito ricordi la tua lingua preferita tra una visita e l\'altra. Mai inviato ai nostri server.'
+          },
+          {
+            label: 'Preferenze tema/interfaccia utente',
+            text: 'Se imposti una preferenza di visualizzazione, questa verrà salvata localmente solo sul tuo dispositivo.'
+          },
+          {
+            label: 'Nessun cookie di sessione.',
+            text: 'photremium.com non dispone di un sistema di accesso, quindi non vengono mai scritti cookie ID di sessione.'
+          }
+        ],
+        callout: 'Puoi cancellare tutta la memoria locale di photremium.com in qualsiasi momento tramite le impostazioni del browser (Impostazioni -> Privacy -> Cancella dati di navigazione -> Dati e cookie memorizzati nella cache). Ciò non ha alcun effetto sulla tua capacità di utilizzare gli strumenti.'
+      },
+      thirdParty: {
+        title: '5. Servizi di terze parti',
+        subtitle: 'Servizi esterni che utilizziamo e perché',
+        intro: 'photremium.com utilizza un insieme minimo di servizi di terze parti affidabili esclusivamente per l\'infrastruttura e le prestazioni. Nessuno di questi servizi riceve le tue immagini o informazioni di identificazione personale.',
+        headers: {
+          service: 'Servizio',
+          purpose: 'Scopo',
+          dataShared: 'Dati condivisi',
+          privacyPolicy: 'politica sulla riservatezza'
+        },
+        rows: [
+          {
+            service: 'Pagine di Cloudflare',
+            purpose: 'Hosting e consegna CDN delle risorse del sito',
+            dataShared: 'Indirizzo IP, intestazioni HTTP (standard)',
+            privacyLink: 'https://www.cloudflare.com/privacypolicy/',
+            privacyText: 'cloudflare.com/privacypolicy'
+          },
+          {
+            service: 'Carattere fantastico',
+            purpose: 'Caratteri delle icone caricati dalla CDN',
+            dataShared: 'Indirizzo IP (solo richiesta CSS)',
+            privacyLink: 'https://fontawesome.com/privacy',
+            privacyText: 'fontawesome.com/privacy'
+          },
+          {
+            service: 'Google Fonts',
+            purpose: 'Caricamento del carattere tipografico (se applicabile)',
+            dataShared: 'Indirizzo IP (solo richiesta carattere)',
+            privacyLink: 'https://policies.google.com/privacy',
+            privacyText: 'policies.google.com'
+          }
+        ],
+        outro: 'Non condividiamo i tuoi dati con inserzionisti, intermediari di dati o altre terze parti oltre ai fornitori di infrastrutture sopra elencati.'
+      },
+      analytics: {
+        title: '6. Analitica',
+        subtitle: 'Dati di utilizzo aggregati e rispettosi della privacy',
+        introPrefix: 'Per capire quali strumenti sono popolari e come migliorare il sito, potremmo raccogliere',
+        introStrong: 'aggregato, anonimizzato',
+        introSuffix: 'statistiche di utilizzo come:',
+        points: [
+          'Numero di pagine visualizzate per strumento (nessuna identificazione dell\'utente)',
+          'Fonte di riferimento (ad esempio ricerca Google, collegamento diretto) – nessun dato personale',
+          'Dati geografici a livello di paese (non città o posizione precisa)',
+          'Tipo di browser/dispositivo per l\'analisi della compatibilità'
+        ],
+        calloutLabel: 'Nessun dato è collegato a te personalmente.',
+        calloutText: 'Non utilizziamo Google Analytics o Meta Pixel. Qualsiasi analisi che utilizziamo è uno strumento che mette al primo posto la privacy (ad esempio Plausible o simili).'
+      },
+      children: {
+        title: '7. Privacy dei bambini',
+        subtitle: 'COPPA e conformità alla sicurezza dei bambini',
+        p1: 'photremium.com non raccoglie consapevolmente alcuna informazione personale da bambini di età inferiore a 13 anni (o 16 nell\'Unione Europea ai sensi del GDPR). Poiché non raccogliamo dati personali di nessun utente, non c\'è niente di speciale da fare per gli utenti più giovani: il sito è ugualmente sicuro per tutti.',
+        p2Prefix: 'Se ritieni che un bambino abbia in qualche modo inviato informazioni personali tramite il nostro modulo di contatto, contattaci immediatamente all\'indirizzo',
+        p2Suffix: 'e lo elimineremo tempestivamente.'
+      },
+      rights: {
+        title: '8. I tuoi diritti',
+        subtitle: 'GDPR, CCPA e diritti globali sulla privacy',
+        intro: 'Poiché photremium.com non raccoglie informazioni di identificazione personale, la maggior parte dei diritti dell\'interessato si applicano banalmente: non ci sono dati su di te a cui accedere, correggere o eliminare. Tuttavia, riconosciamo e rispettiamo pienamente i seguenti diritti:',
+        points: [
+          {
+            label: 'Diritto di accesso',
+            text: 'Puoi richiedere una copia di tutti i dati che conserviamo su di te. (Non ce n\'è altro oltre ai registri anonimi.)'
+          },
+          {
+            label: 'Diritto alla correzione',
+            text: 'È possibile richiedere la correzione di dati personali inesatti.'
+          },
+          {
+            label: 'Diritto alla cancellazione ("Diritto all\'oblio")',
+            text: 'Puoi richiedere la cancellazione di tutti i dati personali in nostro possesso (GDPR Art. 17, CCPA).'
+          },
+          {
+            label: 'Diritto di opposizione/opt-out',
+            text: 'Puoi disattivare qualsiasi futura raccolta di analisi utilizzando uno strumento di disattivazione a livello di browser o di blocco degli annunci.'
+          },
+          {
+            label: 'Diritto alla portabilità dei dati',
+            text: 'Tutto il tuo lavoro viene scaricato direttamente sul tuo dispositivo: non è necessaria alcuna richiesta di esportazione.'
+          }
+        ],
+        callout: 'Questi diritti si applicano a tutti gli utenti in tutto il mondo, indipendentemente dalla giurisdizione: applichiamo lo standard più elevato (GDPR) come base di riferimento.'
+      },
+      security: {
+        title: '9. Sicurezza',
+        subtitle: 'Come proteggiamo la tua esperienza',
+        intro: 'I dati più sicuri sono quelli che non vengono mai raccolti. L\'architettura lato client di photremium.com significa che una violazione del server non può esporre i tuoi file perché i tuoi file non sono mai sui nostri server. Ulteriori misure di sicurezza includono:',
+        points: [
+          {
+            label: 'Applicazione HTTPS',
+            text: 'Tutto il traffico tra il tuo browser e il nostro CDN è crittografato tramite TLS 1.2+ con HSTS.'
+          },
+          {
+            label: 'Politica di sicurezza dei contenuti (CSP)',
+            text: 'Intestazioni rigorose impediscono lo scripting cross-site e l\'inserimento di script inline.'
+          },
+          {
+            label: 'Controlli regolari delle dipendenze',
+            text: 'Controlliamo e aggiorniamo regolarmente i pacchetti npm per correggere le vulnerabilità note.'
+          }
+        ],
+        disclosurePrefix: 'Divulgazione responsabile',
+        disclosureTextPrefix: 'Hai riscontrato un problema di sicurezza? Inviaci un\'e-mail a',
+        disclosureTextSuffix: 'e risponderemo entro 48 ore.'
+      },
+      changes: {
+        title: '10. Modifiche a questa politica',
+        subtitle: 'Come gestiamo gli aggiornamenti delle politiche',
+        intro: 'Potremmo aggiornare la presente Informativa sulla privacy di tanto in tanto per riflettere i cambiamenti nelle nostre pratiche, strumenti o requisiti legali. Quando facciamo:',
+        points: [
+          {
+            label: '"Ultimo aggiornamento"',
+            text: 'la data nella parte superiore di questa pagina verrà modificata.'
+          },
+          {
+            label: 'Cambiamenti materiali',
+            text: 'sarà comunicato mediante avviso ben visibile in home page per almeno 30 giorni.'
+          },
+          {
+            label: 'Versioni precedenti',
+            text: 'di questa politica sarà archiviata e disponibile su richiesta.'
+          }
+        ],
+        outro: 'L\'uso continuato di photremium.com dopo la pubblicazione delle modifiche costituisce l\'accettazione della politica aggiornata. Ti invitiamo a rivedere periodicamente questa pagina.'
+      },
+      contact: {
+        title: '11. Richieste di contatto e dati',
+        subtitle: 'Contattaci per la privacy',
+        p1Prefix: 'Per qualsiasi domanda, dubbio o richiesta formale di dati relativa alla presente Informativa sulla privacy, contattaci. Il nostro obiettivo è rispondere a tutte le domande relative alla privacy all\'interno di',
+        p1Strong: '5 giorni lavorativi'
+      }
+    },
+    footer: {
+      privacyQuestionsTitle: 'Domande sulla privacy?',
+      privacyQuestionsDesc: 'Inviaci le tue domande sulla privacy, richieste di dati o dubbi e ti risponderemo tempestivamente.',
+      versionHistoryTitle: 'Cronologia delle versioni',
+      v2Label: 'v2.0 — Major rewrite',
+      v11Label: 'v1.1 — Added CCPA rights',
+      v10Label: 'v1.0 — Initial policy'
+    }
+  },
+/* ————— Common / shared UI strings ————— */
   common: {
     new: 'Nuovo!',
     download: 'Scarica',

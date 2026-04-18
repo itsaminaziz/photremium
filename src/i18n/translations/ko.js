@@ -124,6 +124,322 @@ const ko = {
     aboutKeywords: 'photremium.com 소개, 이미지 도구, 무료 이미지 편집기',
   },
 
+        privacyPolicyPage: {
+    seo: {
+      title: '개인 정보 보호 정책 — Photremium | 서버 업로드 없음, 데이터 저장 없음',
+      description: 'Photremium의 개인정보 보호정책은 당사가 귀하의 개인정보를 보호하는 방법을 설명합니다. 모든 이미지 처리는 브라우저에서 100% 이루어집니다. 서버에 파일이 업로드되지 않으며, 개인 데이터가 수집되지 않으며, 추적되지 않습니다.',
+      ogTitle: '개인 정보 보호 정책 — Photremium | 업로드 없음, 저장 공간 없음',
+      ogDescription: '파일은 기기에 그대로 유지됩니다. Photremium은 서버 접속이나 데이터 저장, 추적 없이 브라우저에서 로컬로 모든 이미지를 처리합니다.',
+      twitterTitle: '개인정보 보호정책 — Photremium',
+      twitterDescription: '100% 브라우저 기반 이미지 도구입니다. 업로드, 저장, 추적이 없습니다. 개인 정보 보호 정책 전문을 읽어보세요.',
+      schemaName: '개인 정보 보호 정책 - Photremium',
+      schemaDescription: 'Photremium 개인 정보 보호 정책 - 서버 업로드 없음, 데이터 저장 없음, 100% 브라우저 내 이미지 처리.'
+    },
+    hero: {
+      badge: '개인 정보 보호 정책',
+      titlePrefix: '귀하의 개인정보는 우리의 것입니다',
+      titleHighlight: '최우선 순위',
+      subPrefix: 'photremium.com은 간단한 원칙을 바탕으로 구축되었습니다.',
+      subStrong: '파일이 장치를 떠나지 않습니다',
+      subSuffix: '이 사이트의 모든 이미지 도구는 전적으로 귀하의 브라우저 내에서 실행됩니다. 업로드가 없습니다. 클라우드가 없습니다. 타협은 없습니다.',
+      effectiveLabel: '효과적인',
+      lastUpdatedLabel: '마지막 업데이트',
+      worldwideLabel: '전 세계적으로 적용됩니다'
+    },
+    trustCards: [
+      {
+        title: '서버 업로드 없음',
+        desc: '귀하의 파일은 절대로 장치를 떠나지 않습니다. 모든 처리는 100% 브라우저 내에서 이루어집니다.'
+      },
+      {
+        title: '제로 데이터 스토리지',
+        desc: '우리는 귀하, 귀하의 이미지 또는 활동에 대해 아무것도 저장하지 않습니다.'
+      },
+      {
+        title: '추적 없음',
+        desc: '행동 추적, 지문 채취, 프로파일링이 없습니다.'
+      },
+      {
+        title: 'GDPR 친화적',
+        desc: '처음부터 글로벌 개인 정보 보호 규정을 존중하도록 설계되었습니다.'
+      }
+    ],
+    contentsTitle: '내용물',
+    toc: {
+      overview: '개요',
+      'no-upload': '서버 처리 없음',
+      'data-collect': '우리가 수집하는 데이터',
+      cookies: '쿠키 및 저장',
+      'third-party': '제3자 서비스',
+      analytics: '해석학',
+      children: '아동의 개인정보 보호',
+      rights: '귀하의 권리',
+      security: '보안',
+      changes: '정책 변경',
+      contact: '문의하기'
+    },
+    sections: {
+      overview: {
+        title: '1. 개요',
+        subtitle: '이 정책이 다루는 내용',
+        p1Prefix: '본 개인정보 보호정책은 다음과 같은 방법을 설명합니다.',
+        p1Middle: '("당사", "당사" 또는 "당사")는 더 정확하게는 다음을 처리합니다.',
+        p1Italic: '처리하지 않습니다',
+        p1Suffix: '당사의 무료 온라인 이미지 도구를 사용할 때 귀하의 개인정보',
+        p2: '처리를 위해 파일을 원격 서버로 보내는 기존 웹 애플리케이션과 달리 photremium.com은 최신 브라우저 API(Canvas API, WebAssembly, WebWorkers)를 사용하여 장치에서 로컬로 모든 작업을 수행합니다. 결과적으로 데이터 전송, 저장, 위험이 없습니다.',
+        calloutLabel: '일반 영어 요약:',
+        calloutText: '우리는 귀하의 이미지를 볼 수 없고 볼 수도 없으며, 우리의 기술은 결코 볼 수 없도록 특별히 설계되었습니다.'
+      },
+      noUpload: {
+        title: '2. 서버 처리가 전혀 이루어지지 않습니다.',
+        subtitle: '우리 도구가 실제로 작동하는 방식',
+        introPrefix: 'photremium.com의 모든 도구(이미지 변환기, 압축기, 크기 조정 도구, 배경 제거 도구, 얼굴 흐림 효과, 워터마크, 자르기 및 QR 코드 도구)는 파일을 처리합니다.',
+        introStrong: '100% 웹 브라우저 내부',
+        introSuffix: '클라이언트 측 JavaScript 및 WebAssembly를 사용합니다.',
+        points: [
+          {
+            label: '파일 업로드가 발생하지 않습니다.',
+            text: '파일을 선택하면 브라우저의 파일 API가 해당 파일을 읽고 메모리에서 처리하며 네트워크를 통해 전송되지 않습니다.'
+          },
+          {
+            label: '어떤 서버도 이미지를 수신하지 않습니다.',
+            text: '당사의 CDN은 파일이 아닌 앱을 실행하는 데 필요한 HTML, CSS 및 JavaScript 자산만 제공합니다.'
+          },
+          {
+            label: '임시 저장 공간이 없습니다.',
+            text: '처리된 결과는 브라우저 메모리에만 존재하며 페이지를 닫거나 다른 곳으로 이동할 때 해제됩니다.'
+          },
+          {
+            label: '오프라인으로 작동합니다.',
+            text: '대부분의 도구는 초기 페이지 로드 후 인터넷 연결 없이도 계속 작동합니다. 이는 서버가 관련되지 않는다는 추가 증거입니다.'
+          }
+        ],
+        callout: '직접 확인할 수 있습니다. 개발자 도구에서 브라우저의 네트워크 탭을 열고 이미지를 선택한 다음 파일 데이터가 외부 서버로 전송되지 않는지 확인하세요.'
+      },
+      dataCollect: {
+        title: '3. 당사가 수집하는 데이터(및 수집하지 않는 데이터)',
+        subtitle: '데이터 관행에 대한 완전한 투명성',
+        headers: {
+          type: '데이터 유형',
+          collected: '모은?',
+          whereWhy: '어디서 / 왜'
+        },
+        rows: [
+          {
+            type: '귀하의 이미지 / 파일',
+            badge: '절대',
+            variant: '녹색',
+            showX: true,
+            whereWhy: '귀하의 브라우저에서 완전히 처리되며 전송되지 않습니다.'
+          },
+          {
+            type: '이름 / 이메일 주소',
+            badge: '절대',
+            variant: '녹색',
+            showX: true,
+            whereWhy: '도구를 사용하기 위해 계정이나 가입이 필요하지 않습니다'
+          },
+          {
+            type: 'IP 주소',
+            badge: '최소한의',
+            variant: '회색',
+            showX: false,
+            whereWhy: '표준 웹 서버 로그는 ID와 연결되지 않고 30일 미만으로 보관됩니다.'
+          },
+          {
+            type: '브라우저 / OS 유형',
+            badge: '최소한의',
+            variant: '회색',
+            showX: false,
+            whereWhy: '귀하의 브라우저에서 자동으로 전송됩니다. 호환성을 위해서만 사용됨'
+          },
+          {
+            type: '방문한 페이지/클릭수',
+            badge: '집계된',
+            variant: '파란색',
+            showX: false,
+            whereWhy: '익명 분석만 가능(개인 식별 불가)'
+          },
+          {
+            type: '언어 환경설정',
+            badge: '로컬 전용',
+            variant: '파란색',
+            showX: false,
+            whereWhy: '기기의 localStorage에 저장되었으나 우리에게 전송되지 않았습니다.'
+          },
+          {
+            type: '결제/금융 데이터',
+            badge: '절대',
+            variant: '녹색',
+            showX: true,
+            whereWhy: 'photremium.com은 결제가 필요 없이 완전 무료입니다.'
+          }
+        ]
+      },
+      cookies: {
+        title: '4. 쿠키 및 로컬 저장소',
+        subtitle: '기기에 저장되는 내용',
+        intro: 'photremium.com은 광고 쿠키, 사이트 간 추적 쿠키 및 제3자 쿠키를 사용하지 않습니다. 우리가 사용하는 유일한 브라우저 저장 공간은 필수 사이트 기능을 위한 것입니다.',
+        points: [
+          {
+            label: '언어 환경설정',
+            text: '사이트가 방문할 때마다 선호하는 언어를 기억할 수 있도록 localStorage에 저장됩니다. 우리 서버로 전송되지 않았습니다.'
+          },
+          {
+            label: '테마/UI 환경설정',
+            text: '디스플레이 기본 설정을 지정하면 해당 내용은 장치에만 로컬로 저장됩니다.'
+          },
+          {
+            label: '세션 쿠키가 없습니다.',
+            text: 'photremium.com에는 로그인 시스템이 없으므로 세션 ID 쿠키가 기록되지 않습니다.'
+          }
+        ],
+        callout: '브라우저 설정(설정 -> 개인정보 보호 -> 검색 데이터 지우기 -> 캐시된 데이터 및 쿠키)을 통해 언제든지 photremium.com 로컬 저장소를 모두 지울 수 있습니다. 그렇게 해도 도구 사용 능력에는 아무런 영향이 없습니다.'
+      },
+      thirdParty: {
+        title: '5. 제3자 서비스',
+        subtitle: '우리가 사용하는 외부 서비스와 그 이유',
+        intro: 'photremium.com은 인프라와 성능을 위해 엄격하게 신뢰할 수 있는 최소한의 제3자 서비스 세트를 사용합니다. 이러한 서비스 중 어느 것도 귀하의 이미지나 개인 식별 정보를 수신하지 않습니다.',
+        headers: {
+          service: '서비스',
+          purpose: '목적',
+          dataShared: '데이터 공유',
+          privacyPolicy: '개인 정보 보호 정책'
+        },
+        rows: [
+          {
+            service: 'Cloudflare 페이지',
+            purpose: '사이트 자산의 호스팅 및 CDN 제공',
+            dataShared: 'IP 주소, HTTP 헤더(표준)',
+            privacyLink: 'https://www.cloudflare.com/privacypolicy/',
+            privacyText: 'cloudflare.com/privacypolicy'
+          },
+          {
+            service: '멋진 글꼴',
+            purpose: 'CDN에서 로드된 아이콘 글꼴',
+            dataShared: 'IP 주소(CSS 요청에만 해당)',
+            privacyLink: 'https://fontawesome.com/privacy',
+            privacyText: 'fontawesome.com/privacy'
+          },
+          {
+            service: '구글 글꼴',
+            purpose: '서체 로딩(해당되는 경우)',
+            dataShared: 'IP 주소(글꼴 요청에만 해당)',
+            privacyLink: 'https://policies.google.com/privacy',
+            privacyText: 'policies.google.com'
+          }
+        ],
+        outro: '당사는 위에 나열된 인프라 제공업체 이외의 광고주, 데이터 브로커 또는 기타 제3자와 귀하의 데이터를 공유하지 않습니다.'
+      },
+      analytics: {
+        title: '6. 분석',
+        subtitle: '개인정보를 보호하는 집계된 사용 데이터',
+        introPrefix: '인기 있는 도구와 사이트 개선 방법을 이해하기 위해 당사는 다음과 같은 정보를 수집할 수 있습니다.',
+        introStrong: '집계, 익명 처리',
+        introSuffix: '다음과 같은 사용 통계:',
+        points: [
+          '도구당 페이지 조회수(사용자 식별 없음)',
+          '추천 소스(예: Google 검색, 직접 링크) — 개인 데이터 없음',
+          '국가 수준의 지리 데이터(도시 또는 정확한 위치 아님)',
+          '호환성 분석을 위한 브라우저/기기 유형'
+        ],
+        calloutLabel: '귀하와 개인적으로 연결된 데이터는 없습니다.',
+        calloutText: '우리는 Google Analytics나 Meta Pixel을 사용하지 않습니다. 우리가 사용하는 모든 분석은 개인 정보 보호를 최우선으로 하는 도구입니다(예: 그럴듯하거나 유사한 도구).'
+      },
+      children: {
+        title: '7. 아동의 개인정보 보호',
+        subtitle: 'COPPA 및 아동 안전 규정 준수',
+        p1: 'photremium.com은 13세(또는 GDPR에 따라 유럽 연합의 경우 16세) 미만 어린이로부터 고의로 개인 정보를 수집하지 않습니다. 우리는 어떤 사용자로부터도 개인 데이터를 수집하지 않기 때문에 어린 사용자가 특별히 할 일은 없습니다. 이 사이트는 모든 사람에게 동등하게 안전합니다.',
+        p2Prefix: '아동이 당사 문의 양식을 통해 개인정보를 제출했다고 생각되면 즉시 다음 주소로 연락해 주십시오.',
+        p2Suffix: '그리고 즉시 삭제하겠습니다.'
+      },
+      rights: {
+        title: '8. 귀하의 권리',
+        subtitle: 'GDPR, CCPA 및 글로벌 개인 정보 보호 권리',
+        intro: 'photremium.com은 개인 식별 정보를 수집하지 않기 때문에 대부분의 데이터 주체 권리는 사소하게 적용됩니다. 즉, 액세스, 수정 또는 삭제할 귀하에 관한 데이터가 없습니다. 그럼에도 불구하고 우리는 다음 권리를 전적으로 인정하고 존중합니다.',
+        points: [
+          {
+            label: '접근할 권리',
+            text: '귀하는 당사가 귀하에 대해 보유하고 있는 모든 데이터의 사본을 요청할 수 있습니다. (익명화된 로그 외에는 아무것도 없습니다.)'
+          },
+          {
+            label: '정정할 권리',
+            text: '귀하는 부정확한 개인정보에 대한 정정을 요청할 수 있습니다.'
+          },
+          {
+            label: '삭제할 권리("잊혀질 권리")',
+            text: '귀하는 당사가 보유하고 있는 모든 개인 데이터의 삭제를 요청할 수 있습니다(GDPR 제17조, CCPA).'
+          },
+          {
+            label: '반대/거부할 권리',
+            text: '귀하는 브라우저 수준의 거부 또는 광고 차단 도구를 사용하여 향후 분석 수집을 거부할 수 있습니다.'
+          },
+          {
+            label: '데이터 이동성에 대한 권리',
+            text: '모든 작업은 장치에 직접 다운로드되므로 내보내기 요청이 필요하지 않습니다.'
+          }
+        ],
+        callout: '이러한 권리는 관할권에 관계없이 전 세계 모든 사용자에게 적용됩니다. 당사는 가장 높은 기준(GDPR)을 기준으로 적용합니다.'
+      },
+      security: {
+        title: '9. 보안',
+        subtitle: '귀하의 경험을 보호하는 방법',
+        intro: '가장 안전한 데이터는 절대 수집되지 않는 데이터입니다. photremium.com 클라이언트 측 아키텍처는 귀하의 파일이 당사 서버에 없기 때문에 서버 위반으로 인해 귀하의 파일이 노출될 수 없음을 의미합니다. 추가 보안 조치에는 다음이 포함됩니다.',
+        points: [
+          {
+            label: 'HTTPS 시행',
+            text: '귀하의 브라우저와 CDN 간의 모든 트래픽은 HSTS가 포함된 TLS 1.2+를 통해 암호화됩니다.'
+          },
+          {
+            label: '콘텐츠 보안 정책(CSP)',
+            text: '엄격한 헤더는 크로스 사이트 스크립팅과 인라인 스크립트 삽입을 방지합니다.'
+          },
+          {
+            label: '정기적인 종속성 감사',
+            text: '우리는 알려진 취약점을 패치하기 위해 정기적으로 npm 패키지를 감사하고 업데이트합니다.'
+          }
+        ],
+        disclosurePrefix: '책임있는 공개',
+        disclosureTextPrefix: '보안 문제를 발견하셨나요? 이메일을 보내주세요',
+        disclosureTextSuffix: '48시간 이내에 응답해 드리겠습니다.'
+      },
+      changes: {
+        title: '10. 본 정책의 변경 사항',
+        subtitle: '정책 업데이트를 처리하는 방법',
+        intro: '당사는 당사의 관행, 도구 또는 법적 요구 사항의 변경 사항을 반영하기 위해 수시로 본 개인 정보 보호 정책을 업데이트할 수 있습니다. 우리가 할 때:',
+        points: [
+          {
+            label: '"최종 업데이트"',
+            text: '페이지 상단의 날짜가 수정될 예정입니다.'
+          },
+          {
+            label: '소재 변경',
+            text: '최소 30일 동안 홈페이지에 눈에 띄는 공지를 통해 전달됩니다.'
+          },
+          {
+            label: '이전 버전',
+            text: '본 정책의 내용은 요청 시 보관되어 제공됩니다.'
+          }
+        ],
+        outro: '변경 사항이 게시된 후에도 photremium.com을 계속 사용하면 업데이트된 정책을 수락하는 것으로 간주됩니다. 이 페이지를 정기적으로 검토하는 것이 좋습니다.'
+      },
+      contact: {
+        title: '11. 연락처 및 데이터 요청',
+        subtitle: '개인정보 보호에 관해 문의하기',
+        p1Prefix: '본 개인정보 보호정책과 관련된 질문, 우려 사항 또는 공식적인 데이터 요청이 있는 경우 당사에 문의하십시오. 당사는 모든 개인정보 보호 관련 문의에 대해',
+        p1Strong: '영업일 기준 5일'
+      }
+    },
+    footer: {
+      privacyQuestionsTitle: '개인정보 보호에 관해 질문이 있으신가요?',
+      privacyQuestionsDesc: '개인 정보 보호 관련 질문, 데이터 요청 또는 우려 사항을 보내주시면 즉시 답변해 드리겠습니다.',
+      versionHistoryTitle: '버전 기록',
+      v2Label: 'v2.0 — Major rewrite',
+      v11Label: 'v1.1 — Added CCPA rights',
+      v10Label: 'v1.0 — Initial policy'
+    }
+  },
+/* ————— Common / shared UI strings ————— */
   common: {
     new: '새로운!',
     download: '다운로드',

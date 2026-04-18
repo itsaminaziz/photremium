@@ -117,6 +117,322 @@ const zh = {
     aboutDesc: '了解 photremium.com——数百万人信赖的免费在线图片工具集。',
     aboutKeywords: '关于 photremium.com, 图片工具, 免费图片编辑器',
   },
+        privacyPolicyPage: {
+    seo: {
+      title: '隐私政策 — Photremium |无服务器上传，零数据存储',
+      description: 'Photremium 的隐私政策解释了我们如何保护您的隐私。所有图像处理 100% 在您的浏览器中进行 — 不会将文件上传到任何服务器，不会收集个人数据，也不会进行跟踪。',
+      ogTitle: '隐私政策 — Photremium |无需上传，零存储',
+      ogDescription: '您的文件保留在您的设备上。 Photremium 在您的浏览器中本地处理所有图像，无需与服务器联系，不存储数据，也不进行跟踪。',
+      twitterTitle: '隐私政策 — Photremium',
+      twitterDescription: '100% 基于浏览器的图像工具。没有上传，没有存储，没有跟踪。请阅读我们完整的隐私政策。',
+      schemaName: '隐私政策 - Photremium',
+      schemaDescription: 'Photremium 隐私政策 - 无服务器上传、无数据存储、100% 浏览器内图像处理。'
+    },
+    hero: {
+      badge: '隐私政策',
+      titlePrefix: '您的隐私就是我们的',
+      titleHighlight: '最优先',
+      subPrefix: 'photremium.com 的建立基于一个简单的原则 —',
+      subStrong: '您的文件永远不会离开您的设备',
+      subSuffix: '该网站上的每个图像工具都完全在您的浏览器内运行。没有上传。没有云。没有妥协。',
+      effectiveLabel: '有效的',
+      lastUpdatedLabel: '最后更新',
+      worldwideLabel: '适用于全球'
+    },
+    trustCards: [
+      {
+        title: '无服务器上传',
+        desc: '您的文件永远不会离开您的设备。所有处理都是 100% 在浏览器内进行。'
+      },
+      {
+        title: '零数据存储',
+        desc: '我们不会存储任何有关您、您的图像或您的活动的信息。'
+      },
+      {
+        title: '无追踪',
+        desc: '没有行为跟踪，没有指纹识别，没有分析。'
+      },
+      {
+        title: 'GDPR 友好',
+        desc: '从头开始设计就尊重全球隐私法规。'
+      }
+    ],
+    contentsTitle: '内容',
+    toc: {
+      overview: '概述',
+      'no-upload': '无服务器处理',
+      'data-collect': '我们收集的数据',
+      cookies: 'Cookie 和存储',
+      'third-party': '第三方服务',
+      analytics: '分析',
+      children: '儿童隐私',
+      rights: '您的权利',
+      security: '安全',
+      changes: '政策变化',
+      contact: '联系我们'
+    },
+    sections: {
+      overview: {
+        title: '1. 概述',
+        subtitle: '该政策涵盖哪些内容',
+        p1Prefix: '本隐私政策描述了如何',
+        p1Middle: '（“我们”、“我们”或“我们的”）处理 - 或者更准确地说，',
+        p1Italic: '不处理',
+        p1Suffix: '当您使用我们的免费在线图像工具时您的个人信息',
+        p2: '与将文件发送到远程服务器进行处理的传统 Web 应用程序不同，photremium.com 使用现代浏览器 API（Canvas API、WebAssembly、WebWorkers）在您的设备上本地执行每个操作。结果：没有数据传输、没有存储、没有风险。',
+        calloutLabel: '简单的英文总结：',
+        calloutText: '我们看不到您的图像，我们也不想看到，而且我们的技术经过专门设计，因此我们永远看不到。'
+      },
+      noUpload: {
+        title: '2. 永远没有服务器处理',
+        subtitle: '我们的工具实际上是如何工作的',
+        introPrefix: 'photremium.com 上的每个工具（图像转换器、压缩器、缩放器、背景去除器、面部模糊、水印、裁剪和二维码工具）都会处理您的文件',
+        introStrong: '100% 在您的网络浏览器中',
+        introSuffix: '使用客户端 JavaScript 和 WebAssembly。',
+        points: [
+          {
+            label: '不会发生任何文件上传。',
+            text: '当您选择一个文件时，浏览器的文件 API 会读取该文件并在内存中进行处理 - 它永远不会通过网络发送。'
+          },
+          {
+            label: '没有服务器接收您的图像。',
+            text: '我们的 CDN 仅提供运行应用程序所需的 HTML、CSS 和 JavaScript 资源，而不是您的文件。'
+          },
+          {
+            label: '没有临时存储。',
+            text: '处理后的结果仅存在于您的浏览器内存中，并在您关闭或离开页面时释放。'
+          },
+          {
+            label: '离线工作。',
+            text: '大多数工具在初始页面加载后无需互联网连接即可继续运行 - 进一步证明不涉及服务器。'
+          }
+        ],
+        callout: '您可以自己验证这一点：在开发者工具中打开浏览器的“网络”选项卡，选择一个图像，并确认没有文件数据传输到任何外部服务器。'
+      },
+      dataCollect: {
+        title: '3. 我们收集（和不收集）的数据',
+        subtitle: '数据实践完全透明',
+        headers: {
+          type: '数据类型',
+          collected: '集？',
+          whereWhy: '地点/原因'
+        },
+        rows: [
+          {
+            type: '您的图像/文件',
+            badge: '绝不',
+            variant: '绿色的',
+            showX: true,
+            whereWhy: '完全在您的浏览器中处理 - 从未传输'
+          },
+          {
+            type: '姓名/电子邮件地址',
+            badge: '绝不',
+            variant: '绿色的',
+            showX: true,
+            whereWhy: '使用任何工具无需帐户或注册'
+          },
+          {
+            type: 'IP地址',
+            badge: '最小',
+            variant: '灰色的',
+            showX: false,
+            whereWhy: '标准 Web 服务器日志保留 <= 30 天，与身份无关'
+          },
+          {
+            type: '浏览器/操作系统类型',
+            badge: '最小',
+            variant: '灰色的',
+            showX: false,
+            whereWhy: '由您的浏览器自动发送；仅用于兼容性'
+          },
+          {
+            type: '访问页面/点击次数',
+            badge: '聚合',
+            variant: '蓝色的',
+            showX: false,
+            whereWhy: '仅匿名分析（无个人身份识别）'
+          },
+          {
+            type: '语言偏好',
+            badge: '仅限本地',
+            variant: '蓝色的',
+            showX: false,
+            whereWhy: '保存到您设备上的 localStorage — 从未发送给我们'
+          },
+          {
+            type: '付款/财务数据',
+            badge: '绝不',
+            variant: '绿色的',
+            showX: true,
+            whereWhy: 'photremium.com 完全免费，无需付款'
+          }
+        ]
+      },
+      cookies: {
+        title: '4. Cookie 和本地存储',
+        subtitle: '您的设备上存储的内容',
+        intro: 'photremium.com 不使用广告 cookie、跨站点跟踪 cookie 和第三方 cookie。我们使用的唯一浏览器存储用于基本的网站功能。',
+        points: [
+          {
+            label: '语言偏好',
+            text: '存储在 localStorage 中，以便网站在访问之间记住您的首选语言。从未发送到我们的服务器。'
+          },
+          {
+            label: '主题/用户界面首选项',
+            text: '如果您设置显示首选项，它只会保存在您的设备本地。'
+          },
+          {
+            label: '没有会话 cookie。',
+            text: 'photremium.com 没有登录系统，因此不会写入会话 ID cookie。'
+          }
+        ],
+        callout: '您可以随时通过浏览器设置（设置 -> 隐私 -> 清除浏览数据 -> 缓存数据和 cookie）清除所有 photremium.com 本地存储。这样做不会影响您使用这些工具的能力。'
+      },
+      thirdParty: {
+        title: '5. 第三方服务',
+        subtitle: '我们使用的外部服务以及原因',
+        intro: 'photremium.com 使用最少的一组受信任的第三方服务，严格确保基础设施和性能。这些服务均不会接收您的图像或任何个人身份信息。',
+        headers: {
+          service: '服务',
+          purpose: '目的',
+          dataShared: '数据共享',
+          privacyPolicy: '隐私政策'
+        },
+        rows: [
+          {
+            service: 'Cloudflare 页面',
+            purpose: '网站资产的托管和 CDN 交付',
+            dataShared: 'IP 地址、HTTP 标头（标准）',
+            privacyLink: 'https://www.cloudflare.com/privacypolicy/',
+            privacyText: 'cloudflare.com/privacypolicy'
+          },
+          {
+            service: '字体真棒',
+            purpose: '从 CDN 加载的图标字体',
+            dataShared: 'IP 地址（仅限 CSS 请求）',
+            privacyLink: 'https://fontawesome.com/privacy',
+            privacyText: 'fontawesome.com/privacy'
+          },
+          {
+            service: '谷歌字体',
+            purpose: '字体加载（如果适用）',
+            dataShared: 'IP 地址（仅限字体请求）',
+            privacyLink: 'https://policies.google.com/privacy',
+            privacyText: 'policies.google.com'
+          }
+        ],
+        outro: '我们不会与广告商、数据经纪人或上述基础设施提供商之外的任何其他第三方共享您的数据。'
+      },
+      analytics: {
+        title: '6. 分析',
+        subtitle: '聚合、尊重隐私的使用数据',
+        introPrefix: '为了了解哪些工具受欢迎以及如何改进网站，我们可能会收集',
+        introStrong: '汇总、匿名',
+        introSuffix: '使用统计数据，例如：',
+        points: [
+          '每个工具的页面浏览量（无用户识别）',
+          '推荐来源（例如 Google 搜索、直接链接）——无个人数据',
+          '国家级地理数据（不是城市或精确位置）',
+          '用于兼容性分析的浏览器/设备类型'
+        ],
+        calloutLabel: '没有任何数据与您个人相关。',
+        calloutText: '我们不使用 Google Analytics 或 Meta Pixel。我们使用的任何分析都是隐私优先的工具（例如 Plasible 或类似工具）。'
+      },
+      children: {
+        title: '7. 儿童隐私',
+        subtitle: 'COPPA 和儿童安全合规性',
+        p1: 'photremium.com 不会故意收集 13 岁以下（欧盟 GDPR 规定为 16 岁）以下儿童的任何个人信息。由于我们不收集任何用户的个人数据，因此年轻用户无需做任何特别的事情 - 该网站对每个人来说都同样安全。',
+        p2Prefix: '如果您认为孩子以某种方式通过我们的联系表提交了个人信息，请立即联系我们：',
+        p2Suffix: '我们将及时删除。'
+      },
+      rights: {
+        title: '8. 您的权利',
+        subtitle: 'GDPR、CCPA 和全球隐私权',
+        intro: '由于 photremium.com 不收集任何个人身份信息，因此大多数数据主体权利的适用性并不重要 - 没有关于您的数据可供访问、更正或删除。尽管如此，我们完全承认并尊重以下权利：',
+        points: [
+          {
+            label: '访问权',
+            text: '您可以索取我们持有的有关您的任何数据的副本。 （除了匿名日志之外，没有其他任何内容。）'
+          },
+          {
+            label: '纠正权',
+            text: '您可以要求更正不准确的个人数据。'
+          },
+          {
+            label: '删除权（“被遗忘权”）',
+            text: '您可以要求删除我们持有的任何个人数据（GDPR 第 17 条、CCPA）。'
+          },
+          {
+            label: '反对/选择退出的权利',
+            text: '您可以使用浏览器级选择退出或广告拦截工具选择退出任何未来的分析收集。'
+          },
+          {
+            label: '数据可移植性的权利',
+            text: '您的所有作品都会直接下载到您的设备 - 无需导出请求。'
+          }
+        ],
+        callout: '这些权利适用于全球所有用户，无论司法管辖区如何——我们采用最高标准 (GDPR) 作为基准。'
+      },
+      security: {
+        title: '9. 安全',
+        subtitle: '我们如何保护您的体验',
+        intro: '最安全的数据是从未被收集的数据。 photremium.com 客户端架构意味着服务器漏洞无法暴露您的文件，因为您的文件永远不会在我们的服务器上。其他安全措施包括：',
+        points: [
+          {
+            label: 'HTTPS 强制执行',
+            text: '您的浏览器和我们的 CDN 之间的所有流量均通过 TLS 1.2+ 和 HSTS 进行加密。'
+          },
+          {
+            label: '内容安全策略 (CSP)',
+            text: '严格的标头可防止跨站点脚本编写和内联脚本注入。'
+          },
+          {
+            label: '定期依赖性审计',
+            text: '我们定期审核和更新 npm 软件包以修补已知漏洞。'
+          }
+        ],
+        disclosurePrefix: '负责任的披露',
+        disclosureTextPrefix: '发现安全问题？给我们发电子邮件：',
+        disclosureTextSuffix: '我们将在 48 小时内回复。'
+      },
+      changes: {
+        title: '10. 本政策的变更',
+        subtitle: '我们如何处理政策更新',
+        intro: '我们可能会不时更新本隐私政策，以反映我们的做法、工具或法律要求的变化。当我们这样做时：',
+        points: [
+          {
+            label: '“最后更新”',
+            text: '本页顶部的日期将被修改。'
+          },
+          {
+            label: '重大变化',
+            text: '将通过主页上的显着通知进行传达至少 30 天。'
+          },
+          {
+            label: '以前的版本',
+            text: '本政策的内容将被存档并根据要求提供。'
+          }
+        ],
+        outro: '在更改发布后继续使用 photremium.com 即表示接受更新后的政策。我们鼓励您定期查看此页面。'
+      },
+      contact: {
+        title: '11. 联系方式和数据请求',
+        subtitle: '联系我们了解隐私问题',
+        p1Prefix: '对于与本隐私政策相关的任何问题、疑虑或正式数据请求，请联系我们。我们的目标是在以下范围内回复所有与隐私相关的询问',
+        p1Strong: '5个工作日'
+      }
+    },
+    footer: {
+      privacyQuestionsTitle: '隐私问题？',
+      privacyQuestionsDesc: '将您的隐私问题、数据请求或疑虑发送给我们，我们将立即回复。',
+      versionHistoryTitle: '版本历史',
+      v2Label: 'v2.0 — Major rewrite',
+      v11Label: 'v1.1 — Added CCPA rights',
+      v10Label: 'v1.0 — Initial policy'
+    }
+  },
+/* ————— Common / shared UI strings ————— */
   common: {
     new: '新功能！',
     download: '下载',

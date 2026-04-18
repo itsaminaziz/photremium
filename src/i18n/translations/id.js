@@ -117,6 +117,322 @@ const id = {
     aboutDesc: 'Pelajari tentang photremium.com, toolkit gambar online gratis yang dipercaya jutaan orang. Misi kami adalah membuat pengeditan gambar profesional dapat diakses semua orang.',
     aboutKeywords: 'tentang photremium.com, perusahaan alat gambar, editor gambar gratis, tentang kami',
   },
+          privacyPolicyPage: {
+    seo: {
+      title: 'Kebijakan Privasi — Photremium | Tanpa Pengunggahan Server, Tanpa Penyimpanan Data',
+      description: 'Kebijakan Privasi Photremium menjelaskan bagaimana kami melindungi privasi Anda. Semua pemrosesan gambar terjadi 100% di browser Anda — tidak ada file yang diunggah ke server mana pun, tidak ada data pribadi yang dikumpulkan, tidak ada pelacakan.',
+      ogTitle: 'Kebijakan Privasi — Photremium | Tanpa Unggahan, Tanpa Penyimpanan',
+      ogDescription: 'File Anda tetap ada di perangkat Anda. Photremium memproses semua gambar secara lokal di browser Anda tanpa kontak server, tanpa penyimpanan data, dan tanpa pelacakan.',
+      twitterTitle: 'Kebijakan Privasi — Photremium',
+      twitterDescription: '100% alat gambar berbasis browser. Tidak ada unggahan, tidak ada penyimpanan, tidak ada pelacakan. Baca kebijakan privasi lengkap kami.',
+      schemaName: 'Kebijakan Privasi - Photremium',
+      schemaDescription: 'Kebijakan Privasi Photremium - tidak ada unggahan server, tidak ada data yang disimpan, 100% pemrosesan gambar dalam browser.'
+    },
+    hero: {
+      badge: 'Kebijakan Privasi',
+      titlePrefix: 'Privasi Anda Adalah Kami',
+      titleHighlight: 'Prioritas Utama',
+      subPrefix: 'photremium.com dibangun berdasarkan prinsip sederhana —',
+      subStrong: 'file Anda tidak pernah meninggalkan perangkat Anda',
+      subSuffix: 'Setiap alat gambar di situs ini berjalan sepenuhnya di dalam browser Anda. Tidak ada unggahan. Tidak ada awan. Tidak ada kompromi.',
+      effectiveLabel: 'Efektif',
+      lastUpdatedLabel: 'Terakhir diperbarui',
+      worldwideLabel: 'Berlaku di seluruh dunia'
+    },
+    trustCards: [
+      {
+        title: 'Tidak Ada Unggahan Server',
+        desc: 'File Anda tidak pernah meninggalkan perangkat Anda. Semua pemrosesan 100% dilakukan di browser.'
+      },
+      {
+        title: 'Penyimpanan Data Nol',
+        desc: 'Kami tidak menyimpan apa pun tentang Anda, gambar Anda, atau aktivitas Anda.'
+      },
+      {
+        title: 'Tidak Ada Pelacakan',
+        desc: 'Tidak ada pelacakan perilaku, tidak ada sidik jari, tidak ada pembuatan profil.'
+      },
+      {
+        title: 'Ramah GDPR',
+        desc: 'Dirancang dari awal untuk menghormati peraturan privasi global.'
+      }
+    ],
+    contentsTitle: 'Isi',
+    toc: {
+      overview: 'Ringkasan',
+      'no-upload': 'Tidak Ada Pemrosesan Server',
+      'data-collect': 'Data yang Kami Kumpulkan',
+      cookies: 'Cookie & Penyimpanan',
+      'third-party': 'Layanan Pihak Ketiga',
+      analytics: 'Analisis',
+      children: 'Privasi Anak',
+      rights: 'Hak Anda',
+      security: 'Keamanan',
+      changes: 'Perubahan Kebijakan',
+      contact: 'Hubungi kami'
+    },
+    sections: {
+      overview: {
+        title: '1. Ikhtisar',
+        subtitle: 'Apa saja yang tercakup dalam kebijakan ini',
+        p1Prefix: 'Kebijakan Privasi ini menjelaskan caranya',
+        p1Middle: '("kami", "kami", atau "milik kami") menangani - atau lebih tepatnya,',
+        p1Italic: 'tidak menangani',
+        p1Suffix: 'informasi pribadi Anda saat Anda menggunakan alat gambar online gratis kami di',
+        p2: 'Tidak seperti aplikasi web tradisional yang mengirim file ke server jarak jauh untuk diproses, photremium.com menggunakan API browser modern (Canvas API, WebAssembly, WebWorkers) untuk melakukan setiap operasi secara lokal di perangkat Anda. Hasilnya: tidak ada transmisi data, tidak ada penyimpanan, tidak ada risiko.',
+        calloutLabel: 'Ringkasan bahasa Inggris biasa:',
+        calloutText: 'Kami tidak dapat melihat gambar Anda, kami tidak menginginkannya, dan teknologi kami dirancang secara khusus sehingga kami tidak akan pernah bisa melihatnya.'
+      },
+      noUpload: {
+        title: '2. Tidak Ada Pemrosesan Server — Selamanya',
+        subtitle: 'Bagaimana sebenarnya alat kami bekerja',
+        introPrefix: 'Setiap alat di photremium.com — pengonversi gambar, kompresor, pengubah ukuran, penghapus latar belakang, pengaburan wajah, tanda air, pemotongan, dan alat kode QR — memproses file Anda',
+        introStrong: '100% di dalam browser web Anda',
+        introSuffix: 'menggunakan JavaScript sisi klien dan WebAssembly.',
+        points: [
+          {
+            label: 'Tidak ada pengunggahan file yang pernah terjadi.',
+            text: 'Saat Anda memilih file, file tersebut dibaca oleh File API browser Anda dan diproses di memori — file tersebut tidak pernah dikirim melalui jaringan.'
+          },
+          {
+            label: 'Tidak ada server yang menerima gambar Anda.',
+            text: 'CDN kami hanya melayani aset HTML, CSS, dan JavaScript yang diperlukan untuk menjalankan aplikasi — bukan file Anda.'
+          },
+          {
+            label: 'Tidak ada penyimpanan sementara.',
+            text: 'Hasil yang diproses hanya ada di memori browser Anda dan dilepaskan saat Anda menutup atau keluar dari halaman.'
+          },
+          {
+            label: 'Bekerja offline.',
+            text: 'Sebagian besar alat terus berfungsi tanpa koneksi internet setelah halaman pertama dimuat — bukti lebih lanjut tidak ada server yang terlibat.'
+          }
+        ],
+        callout: 'Anda dapat memverifikasinya sendiri: buka tab Jaringan browser Anda di Alat Pengembang, pilih gambar, dan konfirmasikan bahwa tidak ada data file yang dikirimkan ke server eksternal mana pun.'
+      },
+      dataCollect: {
+        title: '3. Data yang Kami Kumpulkan (dan Tidak Kami Kumpulkan)',
+        subtitle: 'Transparansi penuh pada praktik data',
+        headers: {
+          type: 'Tipe Data',
+          collected: 'Dikumpulkan?',
+          whereWhy: 'Dimana / Mengapa'
+        },
+        rows: [
+          {
+            type: 'Gambar/file Anda',
+            badge: 'Tidak pernah',
+            variant: 'hijau',
+            showX: true,
+            whereWhy: 'Diproses sepenuhnya di browser Anda — tidak pernah dikirimkan'
+          },
+          {
+            type: 'Nama/alamat email',
+            badge: 'Tidak pernah',
+            variant: 'hijau',
+            showX: true,
+            whereWhy: 'Tidak diperlukan akun atau pendaftaran untuk menggunakan alat apa pun'
+          },
+          {
+            type: 'alamat IP',
+            badge: 'Minimal',
+            variant: 'abu-abu',
+            showX: false,
+            whereWhy: 'Log server web standar disimpan <= 30 hari, tidak terikat dengan identitas'
+          },
+          {
+            type: 'Jenis peramban/OS',
+            badge: 'Minimal',
+            variant: 'abu-abu',
+            showX: false,
+            whereWhy: 'Dikirim oleh browser Anda secara otomatis; hanya digunakan untuk kompatibilitas'
+          },
+          {
+            type: 'Halaman yang dikunjungi / diklik',
+            badge: 'Diagregasi',
+            variant: 'biru',
+            showX: false,
+            whereWhy: 'Hanya analitik anonim (tidak ada identifikasi pribadi)'
+          },
+          {
+            type: 'Preferensi bahasa',
+            badge: 'Hanya lokal',
+            variant: 'biru',
+            showX: false,
+            whereWhy: 'Disimpan ke Penyimpanan lokal di perangkat Anda — tidak pernah dikirimkan kepada kami'
+          },
+          {
+            type: 'Data pembayaran/keuangan',
+            badge: 'Tidak pernah',
+            variant: 'hijau',
+            showX: true,
+            whereWhy: 'photremium.com sepenuhnya gratis tanpa perlu pembayaran'
+          }
+        ]
+      },
+      cookies: {
+        title: '4. Cookie & Penyimpanan Lokal',
+        subtitle: 'Apa yang disimpan di perangkat Anda',
+        intro: 'photremium.com tidak menggunakan cookie iklan, tidak ada cookie pelacakan lintas situs, dan tidak ada cookie pihak ketiga. Satu-satunya penyimpanan browser yang kami gunakan adalah untuk fungsionalitas situs yang penting.',
+        points: [
+          {
+            label: 'Preferensi bahasa',
+            text: 'Disimpan di Penyimpanan lokal sehingga situs mengingat bahasa pilihan Anda di antara kunjungan. Tidak pernah dikirim ke server kami.'
+          },
+          {
+            label: 'Preferensi Tema / UI',
+            text: 'Jika Anda menetapkan preferensi tampilan, preferensi tersebut akan disimpan secara lokal di perangkat Anda saja.'
+          },
+          {
+            label: 'Tidak ada cookie sesi.',
+            text: 'photremium.com tidak memiliki sistem login, jadi tidak ada cookie ID sesi yang pernah ditulis.'
+          }
+        ],
+        callout: 'Anda dapat menghapus semua penyimpanan lokal photremium.com kapan saja melalui pengaturan browser Anda (Pengaturan -> Privasi -> Hapus data penelusuran -> Data cache & cookie). Melakukan hal itu tidak berpengaruh pada kemampuan Anda menggunakan alat tersebut.'
+      },
+      thirdParty: {
+        title: '5. Layanan Pihak Ketiga',
+        subtitle: 'Layanan eksternal yang kami gunakan dan alasannya',
+        intro: 'photremium.com menggunakan serangkaian layanan pihak ketiga tepercaya hanya untuk infrastruktur dan kinerja. Tak satu pun dari layanan ini menerima gambar Anda atau informasi identitas pribadi apa pun.',
+        headers: {
+          service: 'Melayani',
+          purpose: 'Tujuan',
+          dataShared: 'Data Dibagikan',
+          privacyPolicy: 'Kebijakan Privasi'
+        },
+        rows: [
+          {
+            service: 'Halaman Cloudflare',
+            purpose: 'Hosting & pengiriman CDN aset situs',
+            dataShared: 'Alamat IP, header HTTP (standar)',
+            privacyLink: 'https://www.cloudflare.com/privacypolicy/',
+            privacyText: 'cloudflare.com/privacypolicy'
+          },
+          {
+            service: 'Font Luar Biasa',
+            purpose: 'Font ikon dimuat dari CDN',
+            dataShared: 'Alamat IP (hanya permintaan CSS)',
+            privacyLink: 'https://fontawesome.com/privacy',
+            privacyText: 'fontawesome.com/privacy'
+          },
+          {
+            service: 'Google Font',
+            purpose: 'Pemuatan jenis huruf (jika ada)',
+            dataShared: 'Alamat IP (hanya permintaan font)',
+            privacyLink: 'https://policies.google.com/privacy',
+            privacyText: 'policies.google.com'
+          }
+        ],
+        outro: 'Kami tidak membagikan data Anda kepada pengiklan, pialang data, atau pihak ketiga mana pun di luar penyedia infrastruktur yang tercantum di atas.'
+      },
+      analytics: {
+        title: '6. Analisis',
+        subtitle: 'Data penggunaan agregat yang menghormati privasi',
+        introPrefix: 'Untuk memahami alat mana yang populer dan cara meningkatkan situs, kami dapat mengumpulkannya',
+        introStrong: 'dikumpulkan, dianonimkan',
+        introSuffix: 'statistik penggunaan seperti:',
+        points: [
+          'Jumlah tampilan halaman per alat (tidak ada identifikasi pengguna)',
+          'Sumber rujukan (misalnya pencarian Google, tautan langsung) — tidak ada data pribadi',
+          'Data geografis tingkat negara (bukan kota atau lokasi tepatnya)',
+          'Jenis browser/perangkat untuk analisis kompatibilitas'
+        ],
+        calloutLabel: 'Tidak ada data yang ditautkan ke Anda secara pribadi.',
+        calloutText: 'Kami tidak menggunakan Google Analytics atau Meta Pixel. Analisis apa pun yang kami gunakan adalah alat yang mengutamakan privasi (misalnya Masuk Akal atau serupa).'
+      },
+      children: {
+        title: '7. Privasi Anak',
+        subtitle: 'COPPA & kepatuhan keselamatan anak',
+        p1: 'photremium.com tidak dengan sengaja mengumpulkan informasi pribadi apa pun dari anak-anak di bawah usia 13 tahun (atau 16 tahun di Uni Eropa berdasarkan GDPR). Karena kami tidak mengumpulkan data pribadi dari pengguna mana pun, tidak ada tindakan khusus yang dapat dilakukan untuk pengguna muda — situs ini sama amannya bagi semua orang.',
+        p2Prefix: 'Jika Anda yakin ada anak yang mengirimkan informasi pribadi melalui formulir kontak kami, harap segera menghubungi kami di',
+        p2Suffix: 'dan kami akan segera menghapusnya.'
+      },
+      rights: {
+        title: '8. Hak Anda',
+        subtitle: 'GDPR, CCPA, dan hak privasi global',
+        intro: 'Karena photremium.com tidak mengumpulkan informasi identitas pribadi, sebagian besar hak subjek data berlaku secara sepele — tidak ada data tentang Anda yang dapat diakses, diperbaiki, atau dihapus. Meskipun demikian, kami sepenuhnya mengakui dan menghormati hak-hak berikut:',
+        points: [
+          {
+            label: 'Hak untuk mengakses',
+            text: 'Anda dapat meminta salinan data apa pun yang kami miliki tentang Anda. (Tidak ada yang lain selain log yang dianonimkan.)'
+          },
+          {
+            label: 'Hak untuk dikoreksi',
+            text: 'Anda dapat meminta koreksi atas data pribadi yang tidak akurat.'
+          },
+          {
+            label: 'Hak untuk menghapus (“Hak untuk dilupakan”)',
+            text: 'Anda dapat meminta penghapusan data pribadi apa pun yang kami simpan (GDPR Pasal 17, CCPA).'
+          },
+          {
+            label: 'Hak untuk menolak/memilih keluar',
+            text: 'Anda dapat membatalkan pengumpulan analisis apa pun di masa mendatang dengan menggunakan alat penyisihan atau pemblokiran iklan di tingkat browser.'
+          },
+          {
+            label: 'Hak atas portabilitas data',
+            text: 'Semua pekerjaan Anda diunduh langsung ke perangkat Anda — tidak perlu permintaan ekspor.'
+          }
+        ],
+        callout: 'Hak-hak ini berlaku untuk semua pengguna di seluruh dunia, apa pun yurisdiksinya — kami menerapkan standar tertinggi (GDPR) sebagai pedoman dasar kami.'
+      },
+      security: {
+        title: '9. Keamanan',
+        subtitle: 'Bagaimana kami melindungi pengalaman Anda',
+        intro: 'Data yang paling aman adalah data yang tidak pernah dikumpulkan. Arsitektur sisi klien photremium.com berarti pelanggaran server tidak dapat mengekspos file Anda karena file Anda tidak pernah ada di server kami. Langkah-langkah keamanan tambahan meliputi:',
+        points: [
+          {
+            label: 'Penegakan HTTPS',
+            text: 'Semua lalu lintas antara browser Anda dan CDN kami dienkripsi melalui TLS 1.2+ dengan HSTS.'
+          },
+          {
+            label: 'Kebijakan Keamanan Konten (CSP)',
+            text: 'Header yang ketat mencegah pembuatan skrip lintas situs dan injeksi skrip sebaris.'
+          },
+          {
+            label: 'Audit ketergantungan rutin',
+            text: 'Kami mengaudit dan memperbarui paket npm secara rutin untuk menambal kerentanan yang diketahui.'
+          }
+        ],
+        disclosurePrefix: 'Pengungkapan yang bertanggung jawab',
+        disclosureTextPrefix: 'Menemukan masalah keamanan? Email kami di',
+        disclosureTextSuffix: 'dan kami akan merespons dalam waktu 48 jam.'
+      },
+      changes: {
+        title: '10. Perubahan Kebijakan Ini',
+        subtitle: 'Cara kami menangani pembaruan kebijakan',
+        intro: 'Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu untuk mencerminkan perubahan dalam praktik, alat, atau persyaratan hukum kami. Ketika kita melakukan:',
+        points: [
+          {
+            label: '"Terakhir Diperbarui"',
+            text: 'tanggal di bagian atas halaman ini akan direvisi.'
+          },
+          {
+            label: 'Perubahan materi',
+            text: 'akan dikomunikasikan melalui pemberitahuan yang jelas di halaman beranda setidaknya selama 30 hari.'
+          },
+          {
+            label: 'Versi sebelumnya',
+            text: 'kebijakan ini akan diarsipkan dan tersedia berdasarkan permintaan.'
+          }
+        ],
+        outro: 'Penggunaan berkelanjutan dari photremium.com setelah perubahan dipublikasikan merupakan penerimaan terhadap kebijakan yang diperbarui. Kami mendorong Anda untuk meninjau halaman ini secara berkala.'
+      },
+      contact: {
+        title: '11. Permintaan Kontak & Data',
+        subtitle: 'Hubungi kami tentang privasi',
+        p1Prefix: 'Untuk pertanyaan, kekhawatiran, atau permintaan data formal apa pun terkait Kebijakan Privasi ini, silakan hubungi kami. Kami bertujuan untuk menanggapi semua pertanyaan terkait privasi di dalamnya',
+        p1Strong: '5 hari kerja'
+      }
+    },
+    footer: {
+      privacyQuestionsTitle: 'Pertanyaan Privasi?',
+      privacyQuestionsDesc: 'Kirimkan pertanyaan privasi, permintaan data, atau kekhawatiran Anda kepada kami dan kami akan segera meresponsnya.',
+      versionHistoryTitle: 'Riwayat Versi',
+      v2Label: 'v2.0 — Major rewrite',
+      v11Label: 'v1.1 — Added CCPA rights',
+      v10Label: 'v1.0 — Initial policy'
+    }
+  },
+/* ————— Common / shared UI strings ————— */
   common: {
     new: 'Baru!',
     download: 'Unduh',

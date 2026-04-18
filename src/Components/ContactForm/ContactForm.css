@@ -33,7 +33,7 @@
   max-width: 520px;
   height: 100%;
   background: #f8faff;
-  overflow-y: auto;
+  overflow: hidden;
   transform: translateX(100%);
   transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -49,6 +49,10 @@
 .cf__panel::-webkit-scrollbar-track { background: transparent; }
 .cf__panel::-webkit-scrollbar-thumb { background: rgba(148, 99, 227, 0.35); border-radius: 10px; }
 
+.cf__card--popup::-webkit-scrollbar { width: 5px; }
+.cf__card--popup::-webkit-scrollbar-track { background: transparent; }
+.cf__card--popup::-webkit-scrollbar-thumb { background: rgba(148, 99, 227, 0.35); border-radius: 10px; }
+
 /* ================================================================
    Card (shared between popup panel and section)
    ================================================================ */
@@ -63,8 +67,11 @@
 }
 
 .cf__card--popup {
-  min-height: calc(100% - 20px);
+  flex: 1;
+  min-height: 0;
+  max-height: calc(100% - 20px);
   margin: 10px;
+  overflow-y: auto;
   border-radius: 20px;
   border: 1px solid transparent;
   background:
@@ -409,7 +416,9 @@
 
   .cf__card--popup {
     margin: 8px;
-    min-height: calc(100% - 16px);
+    flex: 1;
+    min-height: 0;
+    max-height: calc(100% - 16px);
     border-radius: 16px;
   }
 
@@ -865,4 +874,3 @@ button.cf__share-icon {
     grid-template-columns: 1fr;
   }
 }
-
