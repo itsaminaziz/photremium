@@ -1,7 +1,9 @@
-const CACHE_VERSION = 'photremium.com-images-v1';
+const CACHE_VERSION = 'photremium.com-assets-v2';
 const CACHE_NAME = `${CACHE_VERSION}`;
 
-const IMAGES_TO_CACHE = [
+const ASSETS_TO_CACHE = [
+  '/',
+  '/index.html',
   '/Images/hero.webp',
   '/Images/image-compressor.webp',
   '/Images/image-resizer.webp',
@@ -17,7 +19,7 @@ const IMAGES_TO_CACHE = [
 
 const scopePath = new URL(self.registration.scope).pathname.replace(/\/$/, '');
 const withScope = (assetPath) => `${scopePath}${assetPath.startsWith('/') ? assetPath : `/${assetPath}`}`;
-const scopedAssets = IMAGES_TO_CACHE.map(withScope);
+const scopedAssets = ASSETS_TO_CACHE.map(withScope);
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -30,7 +32,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) =>
       Promise.all(
         keys
-          .filter((key) => key.startsWith('photremium.com-images-') && key !== CACHE_NAME)
+          .filter((key) => key.startsWith('photremium.com-assets-') && key !== CACHE_NAME)
           .map((key) => caches.delete(key))
       )
     ).then(() => self.clients.claim())
@@ -43,8 +45,8 @@ self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url);
   if (requestUrl.origin !== self.location.origin) return;
 
-  const isCachedImage = scopedAssets.includes(requestUrl.pathname);
-  if (!isCachedImage) return;
+  const isCachedAsset = scopedAssets.includes(requestUrl.pathname);
+  if (!isCachedAsset) return;
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
